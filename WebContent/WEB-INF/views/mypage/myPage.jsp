@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>mypage</title>
-    <link rel="stylesheet" href="resources/css/actibuddy.css">
-    <link rel="stylesheet" href="resources/css/mypage.css">
+    <link rel="stylesheet" href="../resources/css/actibuddy.css">
+    <link rel="stylesheet" href="../resources/css/mypage.css">
 
 </head>
 
@@ -19,7 +19,7 @@
 
     <nav class="navbar">
         <ul class="navbar_menu">
-            <a href="../main/main.html"><img src="resources/image/actibuddylogo.png" class="nav_logo"></a>
+            <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
             <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
             <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
             <li><input type="text" placeholder="Search"></li>
@@ -36,7 +36,7 @@
 
     <div class="logo" >
     
-        <img src="resources/image/mypage/mainlogo.png" width="400px" height="350px" />
+        <img src="../resources/image/mainlogo.png" width="400px" height="350px" />
         
     </div>
 
@@ -55,7 +55,7 @@
     
             <div class="side-1">
                 <br><br><br>
-                <img src="resources/image/mypage/profile.png" width="100px" height="100px"/>
+                <img src="../resources/image/profile.png" width="100px" height="100px"/>
                 <h4>해씨초코볼</h4>
                 
                 <hr>

@@ -244,8 +244,8 @@
 			</ul>
 			<ul>
 				회사소개
-				<li><a href="../introduce/introduce.html">액티버디소개</a></li>
-				<li><a href="../mypage/mypage.html">마이페이지</a></li>
+				<li><a href="/introduce/introduce.html">액티버디소개</a></li>
+				<li><a href="/acti/mypage/main">마이페이지</a></li>
 
 			</ul>
 

@@ -1,0 +1,98 @@
+.tabs {
+  margin-top: 50px;
+  padding-bottom: 40px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  margin: 0 auto 100px auto;
+}
+
+/* 탭 스타일 */
+.tab_item {
+  width: calc(100% / 2);
+  height: 50px;
+  border-bottom: 3px solid #333333;
+  background-color: #f8f8f8;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #333333;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/* 라디오 버튼 UI삭제*/
+input[name="tab_item"] {
+  display: none;
+}
+
+input[name="slide"] {
+  display: none;
+}
+
+/* 탭 컨텐츠 스타일 */
+.tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+.tab_content p ul {
+  list-style: none;
+}
+
+/* 선택 된 탭 콘텐츠를 표시 */
+#policy:checked ~ #policy_content,
+#payment:checked ~ #payment_content {
+  display: block;
+}
+
+/* 선택된 탭 스타일 */
+.tabs input:checked + .tab_item {
+  background-color: #333333;
+  color: #fff;
+}
+
+.faq {
+  width: 100%;
+  /* height: auto; */
+  /* border:1px solid red; */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.faq img {
+  width: 100%;
+  margin-top: -80px;
+  /* padding-top: 80px; */
+}
+
+faq_main {
+  padding-top: 80px;
+}
+
+.detail {
+  width: 90%;
+  height: 40px;
+  margin: 60px auto 0px;
+  background-color: beige;
+  font-size: 25px;
+  padding: 8px 10px 0px 40px;
+  left: 5%;
+  transition: all 0s ease;
+}
+
+.policy1 {
+  list-style: none;
+}
+
+.policy1 li {
+  margin-top: 15px;
+}

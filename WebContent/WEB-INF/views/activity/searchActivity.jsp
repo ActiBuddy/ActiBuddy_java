@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="../../resources/css/activity-style.css">
     <link rel="stylesheet" href="../../resources/css/FAQ.css">
     <script src="../../resources/js/activity.js"></script>
-</head>
 <body>
   <!-- 네비게이션 바.mainStyle{
     
@@ -71,8 +70,8 @@
       </div>
       <hr>
       <div class="menu">
-        <h3 style="margin-left: 20px;">카테고리</h3>
-        <br>
+        <h3 style="margin-left: 10%;">카테고리</h3>
+      <br>
         <div class="btn-group mb-5">
           <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             아웃도어 & 스포츠

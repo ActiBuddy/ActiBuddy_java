@@ -1,0 +1,432 @@
+a {
+  font-size: 18px;
+}
+
+.mate_logo img{
+    width: 100%;
+    margin-top: 70px;
+}
+
+.mate_ad {
+   width: 60%;
+/* 이미지 가운데 정렬해주는 속성 */
+   display: block;
+   margin: 0px auto; 
+}
+
+.mate_ad img{
+    width: 100%;
+    margin-top: 70px;
+}
+
+.mate_review1 {
+    position: relative;
+    width: 80%;
+    height: auto;
+    margin: 5% 0 1% 20%;
+}
+
+.mate_review1 img {
+    position: relative;
+    left: -2.8%;
+    width: 15%;
+    height: auto;
+}
+
+.mate_review2 {
+    /* border: 1px solid green; */
+    position: relative;
+    width: 61%;
+    height: 125px;
+    margin: 0px 0% 0.5% 20%;
+}
+
+.mate_review2 img {
+    float: left; 
+    width: calc(90%/5);
+    margin-right: 2%;
+}
+
+.mate_review3{
+    /* border: 1px solid green; */
+    position: relative;
+    width: 61%;
+    margin: 0 8.8% 100px 20%;
+    display: flex;
+}
+
+.mate_review3 div{
+    background-color: #D6E8B8;
+    position: relative;
+    width: calc(90%/5);
+    height: 15px;
+    margin-right: 2%;
+    padding: 9px;
+    text-align: center;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.mate_hurry1 {
+  /* border: 1px solid green; */
+    position: relative;
+    width: 80%;
+    height: auto;
+    margin: 5% 0 1% 20%;
+}
+
+.mate_hurry1 img {
+  /* border: 1px solid green; */
+    position: relative;
+    left: -2.5%;
+    width: 20%;
+    height: auto;
+}
+
+.mate_hurry2 {
+  /* border: 1px solid limegreen; */
+    /* position:relative; */
+    width: 62%;
+    height: 50%;
+    margin: 1.5% 0% 1% 19.5%;
+    display: flex;
+}
+
+.mate_hurry2 div{
+    /* border: 1px solid orange; */
+    width: calc(102%/3);
+    height: 100%;
+    margin: 0px 0% 0px 0%;
+    text-align: center;
+}
+
+.mate_hurry2 img {
+    width: 100%;
+    height: 100%;
+}
+
+.mate_hurry3 {
+  position: relative;
+}
+
+.h_title {
+  /* border: 1px solid hotpink; */
+  position: absolute;
+  width: 90%;
+  top:21%;
+  left:0%;
+  text-align: center;
+  z-index: 1;
+}
+
+.h_text {
+  /* border: 1px solid blue; */
+  position: absolute;
+  width: 30%;
+  top: 32%;
+  left: 10%;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.3;
+  z-index: 1;
+}
+
+.h_date {
+  /* border: 1px solid blue; */
+  position: absolute;
+  width: 30%;
+  top: 37%;
+  left: 52%;
+  text-align: left;
+  font-size: 25px;
+  line-height: 1.3;
+  z-index: 1;
+}
+
+.h_btn {
+  /* border: 1px solid red; */
+  position: absolute;
+  width: 41%;
+  height: 9.2%;
+  top: 70.3%;
+  left: 24%;
+  text-align: left;
+  line-height: 1.3;
+  z-index: 1;
+}
+
+.h_btn button {
+  /* border: 1px solid red; */
+  width:100%;
+  height: 100%;   
+  border-radius: 5px;
+  border-color: olivedrab;
+  background-color: #F5F5DC;
+  color: olivedrab;
+  font-size: 15px;
+}
+
+/* 
+.btn:hover,
+.btn:focus,
+.btn.focus,
+.btn:active,
+.btn.active {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+ box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+} */
+
+
+.mate_find1 {
+    position: relative;
+    width: 80%;
+    height: auto;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+.mate_find1 img {
+  /* border: 1px solid hotpink; */
+    position: relative;
+    left: -2.8%;
+    width: 15%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.mate_tabs {
+  /* border: 1px solid hotpink; */
+    margin-top: 50px;
+    padding-bottom: 40px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 60%;
+    margin: 0 auto 12% auto;
+}
+
+  
+  /* 탭 스타일 */
+  .mtab_item {
+    width: calc(100%/9);
+    height: 50px;
+    border-bottom: 3px solid #7DB249;
+    background-color: #f8f8f8;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #333333;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+
+  .mtab_item:hover {
+    opacity: 0.75;
+  }
+
+ /* 선택된 탭 스타일 */
+ .mate_tabs input:checked + .mtab_item {
+    background-color: #7DB249;
+    color: #fff;
+  }
+
+   /* 라디오 버튼 UI삭제*/
+   input[name="mtab_item"] {
+    display: none;
+  }
+  
+  input[name="slide"] {
+    display: none;
+  }
+
+  /* 탭 컨텐츠 스타일 */
+  .mtab_content {
+    display: none;
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+  }
+
+
+.post{
+    width: 90%;
+    height: 40px;
+    /* margin: 50px auto 0px; */
+    margin-bottom: 50px;
+    background-color: beige;
+    font-size: 25px;
+    /* padding: 8px 10px 0px 40px; */
+    left: 5%;
+    transition: all 0s ease;
+
+}
+
+  table {
+  /* width: 100%; */
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 10px;
+  }
+  table thead th {
+    width: 300px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: gainsboro;
+    margin: 20px 10px;
+    text-align: center;
+  }
+  table tbody th {
+    /* height: 50px; */
+    /* width: 100px; */
+    padding: 10px;
+    text-align: center;
+  }
+  table td {
+    /* height: 50px; */
+    width: 50px;
+    padding: 10px;
+    vertical-align: top;
+    text-align: center;
+  }
+
+/* .post div{
+    position: relative;
+    width: calc(100%/5);
+    height: 40px;
+    margin: 60px auto 0px;
+    background-color: pink;
+    font-size: 25px;
+    text-align: center;
+    padding: 8px 10px 0px 40px;
+    left: 5%;
+    display: flex;
+} */
+  
+  /* 선택 된 탭 콘텐츠를 표시 */
+  #all:checked ~ #all_content,
+  #seoul:checked ~ #seoul_content,
+  #gyeonggi:checked ~ #gyeonggi_content,
+  #gangwon:checked ~ #gangwon_content,
+  #chungcheong:checked ~ #chungcheong_content,
+  #jeolla:checked ~ #jeolla_content,
+  #gyeongsang:checked ~ #gyeongsang_content,
+  #busan:checked ~ #busan_content,
+  #jeju:checked ~ #jeju_content {
+    display: block;
+  }
+
+  .write-border{
+    /* border: 1px solid greenyellow; */
+    position:relative;
+    width: 87%;
+    height: 40px;
+    margin: 0 10% 50px 10%;
+  }
+
+ 
+
+  /* ===== pagination ===== */ 
+/* 영역 테두리 */
+.pagination {
+  /* border: 3px solid springgreen; */
+  height: 36px;
+  width: 50%;
+  margin: 0px 0 0 20%;
+  color: #6c58bF;
+}
+
+
+/* ul 태그 정렬(컬러추가해도 안보임) */
+.pagination ul {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+  *zoom: 1;
+  color: #ffffff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* 작성하기 버튼 */
+ .write-border button{
+   position: relative;
+   float: right;
+    height: 95%;
+    width: 16%;
+    margin-top: -6.7%;
+    background-color: olivedrab;
+    /* border-color: rgb(207, 228, 204); */
+    border: none;
+    border-radius: 5%;
+  }
+
+/* li태그 정렬(컬러추가해도 안보임) */
+.pagination li {
+  display: inline;
+}
+
+/* 테두리와 폰트 */
+.pagination a {
+  float: left;
+  padding: 0 14px;
+  line-height: 34px;
+  text-decoration: none;
+  /* 폰트 색상 */
+  color: black;
+  /* border: 1px solid pink; -> 테두리 색상 */
+  border-width: 0;
+  /* border-left-width: 0; -> ㅌㅔ두리 없애는거 */
+}
+
+/* <> 눌렀을 때(main.css와 겹쳐서 설정해줘야함)  */
+.page-link:hover {
+  background-color: white;
+  /* border-radius: 4px; */
+  /* height: auto; */
+  width:17.5px;
+  /* border-radius: 100%; */
+  font-size: 25px;
+}
+
+/* 숫자 눌렀을 때  */
+.page-link-num:hover {
+  background-color: rgb(207, 228, 204);
+  /* border-radius: 4px; */
+  height: 35px;
+  border-radius: 100%;
+  /* font-size: 22px; */
+}
+
+/* 누르면 고정 */
+.page-link-num:focus {
+  background-color: rgb(207, 228, 204);
+  height: 35px;
+  border-radius: 100%;
+  color: #ffffff;
+}
+
+
+
+  .searchtext {
+    margin-left: 23%;
+    margin-bottom: 1%;
+    width: 40%;
+    height: 25px;
+  }
+  
+  .searchbutton{
+    width: 10%;
+    height: 32px;
+  }

@@ -30,9 +30,9 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     <!-- 만든 스크립트 및 CSS-->
-    <link rel="stylesheet" href="resources/css/actibuddy.css">
-    <link rel="stylesheet" href="resources/css/activity-style.css">
-    <link rel="stylesheet" href="resources/css/FAQ.css">
+    <link rel="stylesheet" href="../resources/css/actibuddy.css">
+    <link rel="stylesheet" href="../resources/css/activity-style.css">
+    <link rel="stylesheet" href="../resources/css/FAQ.css">
     <script src="resources/js/activity.js"></script>
   </head>
   <br>
@@ -40,8 +40,8 @@
     <!-- 네비게이션 바-->
     <nav class="navbar">
       <ul class="navbar_menu">
-          <a href="../main/main.html"><img src="../../resources/image/actibuddylogo.png" class="nav_logo"></a>
-          <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
+          <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
+          <li class="dropbox"><a href="/acti/activity/information">액티비티</a></li>
           <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
           <li><input type="text" placeholder="Search"></li>
           <li><button type="button" onclick="location.href='../activity/searchActivity.html'">Submit</button></li>
@@ -58,7 +58,7 @@
     <div class="container mb-4">
         <div class="image">
           <div class="faq">
-            <img src="../../resources/image/kang.jpg">
+            <img src="../resources/image/kang.jpg">
           </div>
             <div>
             <h1 id="title">강원</h1>
@@ -112,7 +112,7 @@
         <div class="row">
             <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../../resources/image/seoul.jpeg" class="card-img-top" alt="...">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
                       <div class="card-body">
                       <h3 class="card-text">등산</h3>
                     </div>
@@ -120,7 +120,7 @@
             </div>
             <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../../resources/image/seoul.jpeg" class="card-img-top" alt="...">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
                       <div class="card-body">
                       <h3 class="card-text">서핑</h3>
                     </div>
@@ -128,7 +128,7 @@
             </div>
             <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../../resources/image/seoul.jpeg" class="card-img-top">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top">
                       <div class="card-body">
                       <h3 class="card-text">페러글라이딩</h3>
                     </div>
@@ -136,7 +136,7 @@
             </div>
             <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../../resources/image/seoul.jpeg" class="card-img-top" alt="...">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
                       <div class="card-body">
                       <h3 class="card-text">스키</h3>
                     </div>
@@ -144,7 +144,7 @@
             </div>
             <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../../resources/image/seoul.jpeg" class="card-img-top" alt="...">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
                       <div class="card-body">
                       <h3 class="card-text">짚라인</h3>
                     </div>
@@ -267,7 +267,7 @@
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
             <div class="col">
               <div class="card shadow-sm">
-                <img src="../../resources/image/busan.jpeg"  id="check1" width="100%" height="225"  role="img" ></img>
+                <img src="../resources/image/busan.jpeg"  id="check1" width="100%" height="225"  role="img" ></img>
                 <div class="card-body">
                   <p class="card-text">
                       하슬라이트월드 할인
@@ -282,7 +282,7 @@
             </div>
             <div class="col">
               <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../../resources/image/busan.jpeg"  width="100%" height="225"  role="img" ></img></a>
+                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  width="100%" height="225"  role="img" ></img></a>
                 <div class="card-body">
                     <p class="card-text">
                         런닝맨 파크
@@ -297,7 +297,7 @@
             </div>
             <div class="col">
               <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
+                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
                 <div class="card-body">
                     <p class="card-text">
                         강원 페러글라이딩
@@ -312,7 +312,7 @@
             </div>
             <div class="col">
               <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
+                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
                 <div class="card-body">
                     <p class="card-text">
                         루지루지
@@ -327,7 +327,7 @@
             </div>
             <div class="col">
               <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
+                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
                 <div class="card-body">
                     <p class="card-text">
                         졸리구만
@@ -342,7 +342,7 @@
             </div>
             <div class="col">
               <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
+                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
                 <div class="card-body">
                     <p class="card-text">
                         하슬라이트월드 할인
@@ -357,7 +357,7 @@
             </div>
             <div class="col">
               <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
+                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
                 <div class="card-body">
                     <p class="card-text">
                         하슬라이트월드 할인
@@ -372,7 +372,7 @@
             </div>
             <div class="col">
               <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
+                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
                 <div class="card-body">
                     <p class="card-text">
                         하슬라이트월드 할인
@@ -388,7 +388,7 @@
             <div class="col">
               <div class="card shadow-sm">
                 <div class="card shadow-sm">
-                    <a href="https://www.naver.com"><img src="../../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
+                    <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
                   <div class="card-body">
                     <p class="card-text">
                         하슬라이트월드 할인
@@ -435,12 +435,12 @@
       <h1 style="margin-right: 75%;">메이트 마감 임박</h1>
       <div class="row" id="box">
         <div class="col">
-          <a href="../Mate/matemain.html"><img id="mateImg" src="../../resources/image/mate.png"></a>
+          <a href="../Mate/matemain.html"><img id="mateImg" src="../resources/image/mate.png"></a>
         </div>
         <div class="col">
           <div class="mateBox">
             <div class="mateTop">
-              <img src="../../resources/image/heart.png">
+              <img src="../resources/image/heart.png">
               <h5 id="mateTitle">감귤마을 스쿠버 다이빙</h5>
             </div>
             <div class="matebody">
@@ -453,7 +453,7 @@
         <div class="col">
           <div class="mateBox">
             <div class="mateTop">
-              <img src="../../resources/image/heart.png">
+              <img src="../resources/image/heart.png">
               <h5 id="mateTitle">감귤마을 스쿠버 다이빙</h5>
             </div>
             <div class="matebody">
@@ -474,7 +474,7 @@
       <ul>2021 액티버디</ul>
       <ul> 회사소개
           <li><a href="../introduce/introduce.html">액티버디소개</a></li>
-          <li><a href="../mypage/mypage.html">마이페이지</a></li>
+          <li><a href="/acti/mypage/main">마이페이지</a></li>
       </ul>
 
       <ul> 파트너십

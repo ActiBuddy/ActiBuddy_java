@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>mypage</title>
+    <title>마이페이지</title>
     <link rel="stylesheet" href="../resources/css/actibuddy.css">
     <link rel="stylesheet" href="../resources/css/mypage.css">
 
@@ -20,7 +20,7 @@
     <nav class="navbar">
         <ul class="navbar_menu">
             <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
-            <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
+            <li class="dropbox"><a href="/acti/activity/information">액티비티</a></li>
             <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
             <li><input type="text" placeholder="Search"></li>
             <li><button type="button" onclick="location.href='../activity/searchActivity.html'">Submit</button></li>
@@ -129,7 +129,7 @@
         <ul>2021 액티버디</ul>
         <ul> 회사소개
             <li><a href="../introduce/introduce.html">액티버디소개</a></li>
-            <li><a href="../mypage/mypage.html">마이페이지</a></li>
+            <li><a href="/acti/mypage/main">마이페이지</a></li>
 
             </ul>
 

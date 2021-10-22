@@ -1,0 +1,144 @@
+.faq {
+  width: 100%;
+  /* height: auto; */
+  /* border:1px solid red; */
+  margin: 0 auto 150px auto;
+  overflow: hidden;
+}
+
+.faq img {
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+  /* padding-top: 80px; */
+}
+
+faq_main {
+  padding-top: 80px;
+}
+
+.faq p {
+  font-size: 50px;
+  text-align: center;
+}
+
+.detail {
+  width: 100%;
+  height: auto;
+}
+
+.detail h1 {
+  text-align: center;
+  font-size: 50px;
+  color: #178817;
+}
+
+.detail h3 {
+  text-align: center;
+}
+
+.detail button {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  top: 15%;
+  /* left: 50%; */
+  float: right;
+}
+
+.detail input {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  top: 15%;
+  /* left: 50%; */
+  float: right;
+}
+
+.detail label {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  top: 15%;
+  /* left: 50%; */
+  float: right;
+}
+
+.content {
+  width: 90%;
+  height: 150px;
+  margin: 0 auto;
+  background-color: rgba(17, 88, 17, 0.2);
+  padding: 20px 10px 0px 40px;
+  transition: all 0s ease;
+}
+
+main_intro {
+  padding-top: 100px;
+}
+
+.detail1 {
+  width: 100%;
+  height: auto;
+  /* margin-top: 100px; */
+  /* margin-bottom: 200px; */
+}
+
+.detail1 div {
+  position: relative;
+  width: 25%;
+  left: 12%;
+  float: left;
+  height: auto;
+  /* border: 1px solid black; */
+}
+
+.detail1 div h1 {
+  text-align: center;
+}
+
+.detail1 div h3 {
+  text-align: center;
+}
+
+.image {
+  position: relative;
+  /* left: 40%; */
+  width: 100%;
+  height: 100%;
+}
+
+.image img {
+  position: relative;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  width: 40%;
+  left: 30%;
+  height: auto;
+}
+
+.detail2 {
+  width: 100%;
+  height: auto;
+
+  text-align: center;
+
+  margin-bottom: 150px;
+}
+
+.detail3 {
+  width: 100%;
+  height: 700px;
+  /* border: 2px solid black; */
+  float: left;
+  /* margin-bottom: 400px; */
+}
+
+.detail3 div {
+  position: relative;
+  width: 40%;
+  left: 10%;
+  float: left;
+  height: 100%;
+  /* border: 1px solid red; */
+}

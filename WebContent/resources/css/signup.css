@@ -1,0 +1,152 @@
+.signup {
+  width: 30%;
+  height: 900px;
+  margin: 0 auto 0 auto;
+  /* border: 1px solid red; */
+}
+
+.wrapper {
+  height: 100%;
+  background-color: rgb(17, 88, 17, 0.05);
+}
+
+.mainlogo {
+  position: relative;
+  width: 20%;
+  height: auto;
+  left: 40%;
+  margin: 50px auto;
+}
+
+.signup1 {
+  width: 100%;
+  height: auto;
+  margin: 0 auto 30px auto;
+  /* border: 1px solid blue; */
+}
+
+.signup2 textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
+
+/* .signup div {
+  width: 100%;
+  height: 300px;
+} */
+
+.signup2 {
+  width: 100%;
+  height: 200px;
+  margin: 0 auto 20px auto;
+
+  /* border: 1px solid pink; */
+}
+
+.signup2 .text {
+  width: 100%;
+  height: 150px;
+  /* position: relative; */
+  overflow: auto;
+  /* height: 88px; */
+  /* margin-top: 8px; */
+  padding: 12px;
+  border: 1px solid #dadada;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.signup3 {
+  width: 35%;
+  height: 70px;
+  /* margin: 0 auto; */
+  /* border: 1px solid purple; */
+  float: left;
+}
+
+.signup4 {
+  /* position: relative; */
+  width: 35%;
+  height: 70px;
+  /* left: 55%; */
+  /* margin: 0 auto; */
+  /* border: 1px solid orange; */
+  float: right;
+}
+
+.but {
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  color: white;
+  background: rgba(0, 166, 81, 1);
+  border: none;
+  box-shadow: 2px 2px 2px black;
+}
+
+.but:active {
+  box-shadow: none;
+}
+
+.but1 {
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  color: white;
+  background: rgba(100, 100, 100, 0.3);
+  border: none;
+  box-shadow: 2px 2px 2px black;
+}
+
+.but1:active {
+  box-shadow: none;
+}
+
+.signup5 {
+  /* width: 120%; */
+  /* margin: 0 auto; */
+  height: 70px;
+  border: 2px solid blueviolet;
+  margin-top: 100px;
+  float: left;
+}
+
+.signup5 span {
+  /* position: relative; */
+  /* display: block; */
+  /* width: 43%; */
+  /* height: auto; */
+  border: 5px solid blueviolet;
+  padding: 10px 135px;
+  margin: 20px 10px 0px 10px;
+}
+
+.signup1 input {
+  width: 20px;
+  height: 40px;
+}
+
+.signup6 input {
+  position: relative;
+  width: 7%;
+  margin-top: 8px;
+  height: 20px;
+  float: left;
+}
+.signup6 {
+  width: 100%;
+  height: auto;
+  /* border: 2px solid green; */
+  float: left;
+  margin-top: 20px;
+}
+
+.signup6_2 {
+  /* position: relative; */
+  width: 90%;
+  height: 100%;
+  /* border: 2px solid black; */
+  margin-bottom: 30px;
+  float: right;
+}

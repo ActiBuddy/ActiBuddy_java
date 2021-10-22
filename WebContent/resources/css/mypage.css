@@ -1,0 +1,521 @@
+.logo {
+  height: 400px;
+  padding-top: 100px;
+  background: rgba(240, 240, 240, 1);
+}
+.logo > img {
+  position: relative;
+  padding: 0;
+  top: 10%;
+  left: 40%;
+}
+.page-text {
+    position: relative;
+    width: 40%;
+    left: 46%;
+    transform: translate(-50%);
+    /* border: 1px solid blue; */
+    margin-bottom: 20px;
+  }
+  
+.body-all {
+  position: relative;
+  width: 70%;
+  height: 100%;
+  background: rgba(249, 249, 249, 1);
+  /* border: 2px solid rgb(19, 19, 39); */
+  left: 15%;
+  margin-bottom: 100px;
+  padding: 1%;
+}
+
+.side-all {
+  position: relative;
+  left: 15%;
+  display: inline-block;
+  width: 22%;
+  float: left;
+
+}
+.side-1 {
+  width: 100%;
+  height: 300px;
+  /* margin-left: 10px; */
+
+  border-style: solid;
+  box-shadow: 2px 2px 3px 2px gray;
+}
+.side-1 > img {
+  position: relative;   
+  left: 35%;
+}
+.side-1 h4 {
+  position: relative;
+  left: 50%;
+  transform: translate(-37px);
+}
+.side-2 {
+  /* margin: 10px; */
+  margin-top: 30px;
+  margin-bottom: 100px;
+  width: 100%;
+  height: 630px;
+
+  border-style: solid;
+  box-shadow: 2px 2px 3px 2px gray;
+}
+#quit {
+  position: relative;
+  left: 40%;
+}
+.menu {
+  margin: 90px;
+}
+.container {
+
+    background: rgb(131, 94, 94); 
+    position: relative;
+}
+.center-all{
+    position: relative;
+    display: inline-block;
+    left: 19%;
+    width: 45%;
+
+}
+.center-1 {
+    width: 100%;
+    height: 500px;
+    border-style: solid ; box-shadow: 2px 2px 3px 2px gray;
+    margin-bottom: 30px;
+}
+.center-1 textarea {
+  width: 93%;
+  height: 150px;
+  border-style: hidden;
+}
+.center-1 button {
+  position: relative;
+  left: 87%;
+  top: 12%;
+}
+.center-2 {
+  width: 100%;
+  height: 420px;
+  border-style: solid;
+  box-shadow: 2px 2px 3px 2px gray;
+  padding: 5px;
+  margin-bottom: 5%;
+}
+
+ .center-2 button {
+  background: url("../../resources/image/mypage/wraning.png") no-repeat;
+  background-position: center;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: relative;
+  left: 73%;
+  top: 6%;
+}
+.center-2 h5 {
+  display: inline-block;
+}
+
+/* ----------------회원탈퇴------------------ */
+.q-body-all{   
+  position: relative;
+  width: 70%;
+  left: 15%;
+  margin-bottom: 100px;
+  padding: 1%;
+}
+.q-side-all {
+  position: relative;
+  left: 25%;
+  float: left;
+  width: 25%;
+}
+.q-center-all {
+  position: relative;
+  left: 20%;
+  float: right;
+  width: 75%;
+}
+.q-center-1 {
+  width: 600px;
+  height: 500px;
+  border-style: solid;
+  box-shadow: 2px 2px 3px 2px gray;
+  margin-bottom: 20px;
+}
+.q-text {
+  position: relative;
+  left: 20px;
+  width: 550px;
+}
+.q-check {
+  margin: 0px auto;
+  display: table;
+}
+.q-center-all button {
+  margin: 0px auto;
+  display: table;
+}
+/* ----------확인탈퇴2------------ */
+.q-text2 {
+  margin: 0px auto;
+  display: table;
+  text-align: center;
+}
+
+/* -----------여행내역------------- */
+
+.a-center-all {
+    position: relative;
+    display: inline-block;
+    left: 19%;
+    width: 45%;
+} */
+.a-center-1 {
+    width: 100%;
+    height: 500px;
+    border-style: solid ; 
+    box-shadow: 2px 2px 3px 2px gray;
+    margin-bottom: 30px;
+}
+.a-center-text{
+    width: 100%;
+    height: 921px;
+    border-style: solid ; 
+    box-shadow: 2px 2px 3px 2px gray;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+.a-center-text h4{
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+.a-buttons #one {
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+#move {
+  float: right;
+  margin-right: 10px;
+  border: none;
+  background: none;
+} 
+#delete {
+  position: relative;
+  left: 90%;
+  margin-right: 10px;
+}
+#usestatus {
+  display: contents;
+}
+.a-center-text h5 {
+  margin-bottom: 0px;
+}
+.a-center-text h3 {
+  display: inline;
+}
+#pay {
+  position: relative;
+  left: 87%;
+
+  color: white;
+  background: rgba(0, 166, 81, 1);
+
+  border-radius: 5px;
+  border: none;
+  box-shadow: 2px 2px 2px black;
+}
+#pay:active {
+  box-shadow: none;
+}
+.payment {
+  display: inline-block;
+}
+.forgreen {
+  color: white;
+  background: rgba(0, 166, 81, 1);
+
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 2px 2px black;
+}
+
+.a-center-all button:active {
+  box-shadow: none;
+}
+
+#complete{
+  float: right;
+  margin-right: 10px;
+  color: darkgray;
+  border: none;
+}
+
+
+
+/* -----------메이트 후기 작성------------- */
+#background {
+  position: relative;
+  width: 70%;
+  height: 1000px;
+  background: rgba(249, 249, 249, 1);
+  /* border: 2px solid rgb(19, 19, 39); */
+  left: 15%;
+  margin-bottom: 100px;
+  padding: 1%;
+}
+.r-center-all {
+  position: relative;
+  left: 20%;
+  float: right;
+  width: 75%;
+}
+.r-center-1 {
+  width: 600px;
+  height: 940px;
+  border-style: solid;
+  box-shadow: 2px 2px 3px 2px gray;
+  margin-bottom: 20px;
+}
+.one-line h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.one-line {
+    display: flex;
+}
+.one-line button {
+    position: relative;
+    left: 245px;
+}
+.r-center-all{
+  position: relative;
+  left: 20%;
+    float: right;
+    width: 75%;
+  }
+.r-center-1{
+  width: 600px;
+    height: 940px;
+    border-style: solid ; box-shadow: 2px 2px 3px 2px gray;
+    margin-bottom: 20px;
+  }
+.r-center-1 h3> {
+    padding-left: 10px;
+    
+  }
+.r-center-1 h6 {
+  margin-bottom: 3px;
+    margin-top: 3px;
+  }
+
+  textarea {
+    width: 550px;
+    height: 200px;  
+    border: none; 
+    margin: 3%;
+  }
+.r-center-1 button{
+  margin: 0px auto;
+    display: table;
+    
+    width: 140px;
+    height: 40px;
+
+    color: white;
+    background: rgba(0, 166, 81, 1);
+    
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 2px 2px black;
+  }
+
+  .r-center-1 button:active {
+    box-shadow: none;
+  }
+/* --------------장바구니-------------- */
+
+.c-center-text{
+  width: 100%;
+  height: 921px;
+  border-style: solid ; 
+  box-shadow: 2px 2px 3px 2px gray;
+  margin-bottom: 30px;
+  padding: 5px;
+}
+.c-center-text h4{
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+.c-center-text h5 {
+  margin-bottom: 0px;
+}
+.c-center-text h3 {
+  display: inline;
+}
+#x {
+  border: none;
+  background: rgba(255, 167, 183, 1);
+  border-radius: 50px;
+}
+/* --------------메이트 내역--------------- */
+.l-center-text{
+  width: 100%;
+  height: 921px;
+  border-style: solid ; 
+  box-shadow: 2px 2px 3px 2px gray;
+  margin-bottom: 30px;
+  padding: 5px;
+}
+.l-center-text h4{
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+.l-center-text h5 {
+  margin-bottom: 0px;
+}
+.l-center-text h3 {
+  display: inline;
+}
+#reviewGo {
+    color: white;
+    background: rgba(0, 166, 81, 1);
+    
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 2px 2px black;
+
+    float: right;
+    margin-right: 10px;
+}
+#reviewGo:active {
+  box-shadow: none;
+}
+.l-one-line button {
+  position: relative;
+  left: 39%;
+  width: 18%;
+  border-radius: 8px;
+  background: none;
+}
+#l-list {
+  color: white;
+  background: rgba(0, 166, 81, 1);
+  
+  border-radius: 5px;
+  border: none;
+  box-shadow: 2px 2px 2px black;
+}
+#magam {
+  left: 88%;
+  position: relative;
+}
+
+/* ------------여행 리뷰 쓰기 페이지------------- */
+.t-center-1{
+  width: 100%;
+  height: 1000px;
+  border-style: solid ; box-shadow: 2px 2px 3px 2px gray;
+  margin-bottom: 30px;
+}
+.t-buttons {
+  color: white;
+  background: rgba(0, 166, 81, 1);
+  margin: 8px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 2px 2px 2px black;
+  width: 16%;
+  height: 3%;
+}
+.t-buttons:active{
+  box-shadow: none;
+}
+.t-center-1 h5 {
+  margin: 10px;
+}
+.t-center-text{
+  margin: 10px;
+}
+.t-center-btn{
+  margin: 0px auto;
+    display: table;
+    
+    width: 140px;
+    height: 40px;
+
+    color: white;
+    background: rgba(0, 166, 81, 1);
+    
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 2px 2px black;
+}
+.t-center-btn:active{
+  box-shadow: none;
+}
+
+/*------------------------------------*/
+.answer {
+  width: 99%;
+  height: 15%;
+  background: ivory;
+  
+
+}
+
+
+
+/* }
+.div1 {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 40%;
+    height: auto;
+    border: 1px solid red;
+  }
+  
+  .div2 {
+    width: 80%;
+    height: 1000px;
+    border: 1px solid blue;
+    margin: 0 auto;
+  }
+  
+  .div3 {
+    position: relative;
+  
+    width: 30%;
+    height: 1000px;
+    border: 1px solid purple;
+    float: left;
+  }
+  
+  .div4 {
+    position: relative;
+    width: 60%;
+    height: 1000px;
+    border: 1px solid pink;
+    float: right;
+  }
+  
+  .div5 {
+    width: 100%;
+    height: 300px;
+    border: 1px solid lime;
+  }
+  .div6 {
+    width: 100%;
+    height: 700px;
+    border: 1px solid lime;
+  } */
+
+

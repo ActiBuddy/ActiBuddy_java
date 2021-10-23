@@ -54,17 +54,21 @@
       </div>
 
       <div class="signup">
-        <form>
+      
+      
+        <form id="loginForm" action="../member/loging" method="post">
           <div class="signup1">
-            <input type="text" placeholder="아이디" />
+            <input type="text" placeholder="아이디" name="memberId" />
           </div>
           <div class="signup1">
-            <input type="password" placeholder="비밀번호" />
+            <input type="password" placeholder="비밀번호" name="memberPwd" />
           </div>
           <div class="signup2">
-            <button>로그인</button>
+            <button type="submit" value="로그인" id="login">로그인</button>
           </div>
         </form>
+        
+        
         <h3><a href="../singup/signup.html">회원가입</a></h3>
       </div>
 

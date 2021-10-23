@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="MemberDAO">
+ 
+ 
+ <resultMap type="com.actibuddy.member.model.dto.MemberDTO" id="memberResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="pwd" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="birth" column="BIRTH"/>
+		<result property="gender" column="GENDER"/>
+		<result property="warn_count" column="WARN_COUNT"/>
+		<result property="quitYn" column="QUIT_YN"/>
+		<result property="memType" column="MEM_TYPE"/>
+		<result property="memPhone" column="MEM_PHONE"/>
+	</resultMap>
+	
+	<insert id="insertMember" parameterType="com.actibuddy.member.model.dto.MemberDTO">
+        INSERT
+          INTO MEMBER A
+        (
+          A.USER_ID
+        , A.USER_NAME
+        , A.PASSWORD
+        , A.EMAIL
+        , A.BIRTH
+        , A.GENDER
+        , A.WARN_COUNT
+        , A.QUIT_YN
+        , A.MEM_TYPE
+        , A.MEM_PHONE        
+        )
+        VALUES 
+        (
+          #{ userId, jdbcType=VARCHAR}
+        , #{ userName, jdbcType=VARCHAR}
+        , #{ pwd }
+        , #{ email, jdbcType=VARCHAR}
+        , #{ birth, jdbcType=VARCHAR}
+        , #{ gender, jdbcType=VARCHAR}
+        , #{ warn_count }
+        , #{ quitYn, jdbcType=VARCHAR}
+        , #{ memType, jdbcType=VARCHAR}
+        , #{ memPhone, jdbcType=VARCHAR}
+        )
+	</insert>
+	
+ 	<select id="selectEncryptedPwd" resultMap="memberResultMap">
+        SELECT
+               A.PASSWORD
+          FROM MEMBER A
+         WHERE A.QUIT_YN = 'N'
+           AND A.USER_ID = #{ userId, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectLoginMember" resultMap="memberResultMap">
+		SELECT
+			   A.USER_ID
+		     , A.USER_NAME
+		     , A.PASSWORD
+		     , A.EMAIL
+		     , A.BIRTH
+		     , A.GENDER
+		     , A.WARN_COUNT
+		     , A.QUIT_YN
+		     , A.MEM_TYPE
+		     , A.MEM_PHONE
+		 FROM  MEMBER A
+		WHERE  A.QUIT_YN = 'N'
+		  AND  A.USER_ID = #{ userId }
+	</select>
+ 
+ 
+ </mapper>
+ 

@@ -10,17 +10,17 @@
 
     <link href="../resources/css/actibuddy.css" rel="stylesheet">
     <link href="../resources/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../resources/css/activitymain.css">
+    <link rel="stylesheet" href="../resources/css/activitymain.css">
     <title>activity-main</title>
 </head>
 <body id="body">
     <nav class="navbar1">
         <ul class="navbar_menu">
             <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
-            <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
+            <li class="dropbox"><a href="/acti/activity/information">액티비티</a></li>
             <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
             <li><input type="text" placeholder="Search"></li>
-            <li><button type="button" class="search-btn" onclick="location.href='../activity/searchActivity.html'">Submit</button></li>
+            <li><button type="button" class="search-btn" onclick="location.href='/acti/search/activity'">Submit</button></li>
         </ul>
 
         <ul class="navbar_link">
@@ -35,10 +35,12 @@
         <h2 class="mainTitle">액티비티 & 체험</h2>
         <p style="margin:0.2% 0 0 15%" >어트랙션 투어 및 체험 등 다양한 상품을 둘러보세요!</p>
         <div class="search">
+            <form action="">
             <ul>
             <input type="text" class="searchtext" placeholder="액티비티 또는 상품검색"></li>
             <button type="submit" class="searchbutton">검색하기</button></li>
             </ul>
+            </form>
         </div>
     </div>
 
@@ -52,19 +54,19 @@
             <div class="col-md-3">
                 <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">롯데월드 자유 이용권</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
                 <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">경복궁</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png"" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
                 <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">서울 어린이대공원</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
         </div>
@@ -79,21 +81,21 @@
                 <p>서울부터 서울 근교까지 한번에!</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">롯데월드 자유 이용권</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">경복궁</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">서울 어린이대공원</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
         </div>
@@ -108,21 +110,21 @@
                 <h3>제주도하면 액티비티!</h3>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">롯데월드 자유 이용권</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">경복궁</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">서울 어린이대공원</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
         </div>
@@ -137,21 +139,21 @@
                 <p>서울부터 서울 근교까지 한번에!</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">롯데월드 자유 이용권</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">경복궁</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">서울 어린이대공원</h3>
-                <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
         </div>

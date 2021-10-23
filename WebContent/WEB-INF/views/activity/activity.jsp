@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="../resources/css/actibuddy.css">
     <link rel="stylesheet" href="../resources/css/activity-style.css">
     <link rel="stylesheet" href="../resources/css/FAQ.css">
-    <script src="resources/js/activity.js"></script>
+    <script src="../resources/js/activity.js"></script>
   </head>
   <br>
   <body>
@@ -42,14 +42,14 @@
       <ul class="navbar_menu">
           <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
           <li class="dropbox"><a href="/acti/activity/information">액티비티</a></li>
-          <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
+          <li class="dropbox"><a href="Mate/matemain.html">메이팅</a></li>
           <li><input type="text" placeholder="Search"></li>
-          <li><button type="button" onclick="location.href='../activity/searchActivity.html'">Submit</button></li>
+          <li><button type="button" onclick="location.href='/acti/search/activity'">Submit</button></li>
       </ul>
 
       <ul class="navbar_link">
           <li><a href="../FAQ/FAQ_main.html">FAQ</a></li>
-          <li><a href="../singup/signup.html">회원가입</a></li>
+          <li><a href="singup/signup.html">회원가입</a></li>
           <li><button type="button" class="login_btn" onclick="location.href='../login/login.html'">로그인</button></li>
       </ul>
     </nav>
@@ -492,6 +492,6 @@
       <span></span>
   </div>
   
-</footer>
+</foote../r>
   </body>
 </html>

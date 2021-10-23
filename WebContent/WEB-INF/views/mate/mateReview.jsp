@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,13 +9,14 @@
     <title>메이트 리뷰</title>
 
     <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
-    <link href="../../resources/css/mate_review.css" rel="stylesheet" />
+    <link href="../../resources/css/mateReview.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
     <title>메이팅 후기</title>
   </head>
   <body>
+      <!-- 네비게이션바 -->
     <nav class="navbar">
         <ul class="navbar_menu">
             <a href="../main/main.html"><img src="../../resources/image/actibuddylogo.png" class="nav_logo"></a>
@@ -32,16 +33,18 @@
         </ul>
     </nav>
 
+    <!-- 주요 html -->
     <div class="around">
+        <!-- 로고 이미지 -->
         <div class="mate_logo">
             <a href="#"><img src="../../resources/image/matereview.png"></a>
           </div>
-      
+          <!-- 광고 이미지 -->
           <div class="mate_ad">
               <a href="https://www.hyundailivart.co.kr/"><img src="../../resources/image/livartad.png"></a>
           </div>
       
-      
+          <!-- 베스트 메이팅 후기 -->
           <div class="mate_review1">
               <img src="../../resources/image/mate_best.png">
       
@@ -84,6 +87,7 @@
               </div>
           </div>
         
+        <!-- 메이팅 후기 -->
         <div class="mate_review4">
             <img src="../../resources/image/mate_review.png">
         </div>
@@ -159,6 +163,7 @@
            
         </div>
 
+        <!-- pagination + 버튼 -->
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <button class="write">작성하기</button>
@@ -180,6 +185,7 @@
             </ul>
           </nav>
 
+        <!-- 검색 부분 -->
         <div class="search">
             <ul>
                <input type="text" class="searchtext" placeholder="찾고싶은 게시물의 제목을 입력해주세요"></li>
@@ -218,4 +224,3 @@
     </footer>
     </body>
   </html>
-

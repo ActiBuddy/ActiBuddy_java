@@ -1,0 +1,192 @@
+.around {
+    height:auto;
+    weight:100%;
+    /* border: 3px solid springgreen; */
+}
+
+/* 로고 이미지 */
+.mate_logo img{
+    width: 60%;
+    margin-top: 70px;
+    margin-left: 20%;
+}
+
+/* 제목부분 */
+.title {
+    width:60%;
+    height: 50px;
+    background-color: #e8e8e8;
+    margin: 20px 20% 0 20%;
+    position: relative;
+    display: flex;
+    border-radius: 10px;
+}
+
+.first {
+    /* border: 1px solid red; */
+    width: 30px;
+    height: 28px;
+    margin-left: 23px;
+    margin-top: 13px;
+}
+
+.second {
+    /* border: 1px solid green; */
+    width: 70px;
+    height: 25px;
+    margin-left: 23px;
+    margin-top: 13px;
+    background-color: #D6E8B8;
+    border: 2px solid #D6E8B8;
+    width: 70px;
+    height: 20px;
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 3px;
+}
+
+
+.third {
+    width: 650px;
+    height: 50px;
+    margin-left: 23px;
+}
+
+.third p{
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.first img {
+    width: 100%;
+    height: 25px;
+}
+
+hr {
+    width: 60%;
+    margin: 10px 20%;
+}
+
+.detail {
+    /* border: 3px solid hotpink; */
+    width:auto;
+    height:30px;
+    margin-top: 15px;
+    /* display: flex; */
+}
+
+.detail .writer {
+    /* border: 1px solid red; */
+    width:5%;
+    height: 65%;
+    margin-top: 5px;
+    text-align: center;
+    margin-left: 20%;
+    float:left;
+}
+
+.detail .name {
+    /* border: 1px solid blue; */
+    width: auto;
+    height: 65%;
+    margin-top: 5px;
+    float:left;
+}
+
+.detail .writer_date{
+    /* border: 1px solid red; */
+    width:7%;
+    height: 65%;
+    margin-top: 5px;
+    text-align: center;
+    /* margin-right: 10%; */
+    float: right;
+}
+
+.detail .view {
+    /* border: 1px solid blue; */
+    width:auto;
+    height: 65%;
+    margin-top: 5px;
+    margin-right: 22%;
+    float: right;
+}
+
+/* 텍스트 부분 */
+.text_box{
+    /* border: 1px solid red; */
+    height: 800px;
+    width: 60%;
+    margin: 2% 20% 2% 20%;
+    background-color: #e8e8e8;
+    border-radius: 20px;
+}
+
+.text_box textarea {
+    /* border: 1px solid red; */
+    border: 1px solid #e8e8e8 ;
+    margin: 10% 10%;
+    height: 80%;
+    width: 80%;
+    background-color:#e8e8e8 ;
+    font-size: 24px;
+    /* line-height: 50px; */
+}
+
+/* 첨부 부분 */
+.bottom_border {
+    /* border: 1px solid red; */
+    margin: 0 20% 0 19.3%;
+    height: 210px;
+    width: 60%;
+}
+
+.img_border {
+    border: 1px solid #cbcbcb;
+    margin: 4% 0 0 3%;
+    padding: 4% 0 0 6%;
+    height: 70%;
+    width: 90%;
+    border-radius: 30px;
+}
+
+
+.file {
+    /* border: 1px solid blue; */
+    height:auto;
+    width:85%;
+    margin-bottom: 2%;
+    float: left;
+}
+
+.condition {
+    /* border: 2px solid yellowgreen; */
+    height: 15%;
+    width: 30%;
+    margin-right: 5%;
+    color: yellowgreen;
+    float: right; 
+}
+
+/* 버튼 부분 */
+.btnborder{
+    margin: 3% 0 10% 55%;
+    width: 23%;
+    height: 40px;
+}
+
+.btnok{
+    width:150px;
+    height: 40px;
+    margin-right: 6%;
+    background-color:rgba(0, 166, 81, 1);
+    border-color: rgba(0, 166, 81, 1);
+    border-radius: 10px;
+}
+
+.btnno{
+    width:150px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #e8e8e8;
+}

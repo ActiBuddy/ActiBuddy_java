@@ -65,7 +65,7 @@
 
              $('#birthResult').html('생년월일을 확인해주세요').css('color','red');
             } else{
-              $('#birthResult').html('나 ');
+            	 $('#birthResult').html('맞습니다 ');
             }
           });
         });
@@ -108,28 +108,27 @@
       </div>
 
       <div class="signup1">
-        <form>
+        <form id="joinForm" action="../member/regist" method="post">
 
          <span><h2>아이디</h2></span>
-         <input type="text" name="id" id="id"/>
+         <input type="text" name="userId" id="userId"/>
          <label id="idResult"></label>
 
          <span><h2>비밀번호</h2></span>
-         <input type="password" name="name" id="userPwd1"/>
+         <input type="password" name="pwd" id="userPwd1"/>
 
          <span><h2>비밀번호 확인</h2></span>
          <input type="password" name="name" id="userPwd2"/>
          <label id="pwdREsult"></label>
 
          <span><h2>이름</h2></span>
-         <input type="text" name="name" id="name"/>
+         <input type="text" name="userName" id="name"/>
          <label id="nameResult"></label>
-
 
          <span><h2>생년월일</h2></span>
          <div class="bir_wrap">
              <div class="bir_yy">
-              <input type="text" class="birth" id="yy" placeholder="년(4자)" aria-label="년(4자)" maxlength="4">
+              <input type="number" class="birth" name="birth" id="yy" placeholder="년(4자)" aria-label="년(4자)" maxlength="4">
              </div>
              
             <div class="bir_mm">
@@ -147,12 +146,12 @@
          <label id="emailResult"></label>
 
          <span><h2>연락처</h2></span>
-         <input type="text" name="phone" id="phone"/>
+         <input type="text" name="memPhone" id="phone"/>
          <label id="phoneResult"></label>
 
          <br><br><br><br>
          <div>
-           <button class="login_btn">회원가입하기</button>
+           <button type="submit" class="login_btn">회원가입하기</button>
          </div>
 
          </form>

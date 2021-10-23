@@ -19,7 +19,6 @@
 	             }
 	         });
 	      });
-
 	      $(function(){
 	          $("#acti_detail1").on({
 	              mouseover: function(){
@@ -63,12 +62,12 @@
 
 			<span> <img src="resources/image/actibuddylogo.png"
 				class="nav_logo">
-			</span> <span id="acti_1"><a href="/acti/activity/main">액티비티</a>
+			</span> <span id="acti_1"><a href="acti/activity/information">액티비티</a>
 			</span> <span id="acti_2"><a href="../Mate/matemain.html">메이팅</a>
 			</span> <span> <input type="text" placeholder="Search">
 			</span> <span>
 				<button type="button" class="search-btn"
-					onclick="location.href='/acti/search/activity'">Submit</button>
+					onclick="location.href='../activity/searchActivity.html'">Submit</button>
 			</span>
 			<div id="acti_detail1">
 				<div>액티비티</div>
@@ -82,10 +81,10 @@
 
 		<div class="navbar_link">
 			<span> <a href="../FAQ/FAQ_main.html">FAQ</a>
-			</span> <span> <a href="../singup/signup.html">회원가입</a>
+			</span> <span> <a href="acti/member/regist">회원가입</a>
 			</span> <span>
 				<button type="button" class="login_btn"
-					onclick="location.href='../login/login.html'">로그인</button>
+					onclick="location.href='../login/login.html'"><a href="acti/member/login">로그인</a></button>
 			</span>
 		</div>
 
@@ -111,8 +110,7 @@
 
 			<div class="mainimage">
 				<div class="si">
-					<a href="/acti/activity/information"><img
-						src="resources/image/seoul.jpeg"></a>
+					<a href="/acti/activity/information"><img src="resources/image/seoul.jpeg"></a>
 					<div>
 						<h1>서울</h1>
 					</div>

@@ -1,0 +1,87 @@
+.jumbotron{
+    background-image: url(../image/activitymain.png);
+    background-size: contain;
+    width: 100%;
+    color: white;
+}
+
+.mainTitle{
+    font-weight: 900;
+    margin: 10% 0px 0px 14.8%;
+}
+
+.searchtext {
+    margin-left: 13.2%;
+    margin-bottom: 10%;
+    width: 20%;
+    height: 40px;
+    color: black;
+    border: 1px solid rgba(253, 253, 237, 1);
+
+  }
+  
+  .searchbutton{
+    width: 4%;
+    height: 40px;
+    color: white;
+    background-color: rgba(0, 166, 81, 1);
+  }
+
+.menu1{
+  
+  height: 530px;
+  background-image: url(../image/Rectangle\ 803.png);
+  background-size: contain;
+}
+
+.menu2{
+  height: 530px;
+  background-image: url(../image/Rectangle\ 803.png);
+  background-size: contain;
+}
+
+.menu3{
+  height: 530px;
+  background-image: url(../image/Rectangle\ 803.png);
+  background-size: contain;
+}
+
+.menu4{
+  height: 530px;
+  background-image: url(../image/Rectangle\ 803.png);
+  background-size: contain;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.imgback{
+  
+  width: 60%;
+  height: 80%;
+  margin-top: 20%;
+  
+}
+
+#body{
+  background-color: rgba(253, 253, 237, 1);
+}
+
+.bodyText{
+  text-align: left;
+}
+
+.bottomText{
+  margin-left: 20%; 
+  font-size: 15px;
+}
+
+.moreBtn{
+  position: absolute;
+  left: 50%;
+  width: 5%;
+  height: 4%;
+  margin-top: 2%;
+  border-radius: 20px;
+  font-size: 15px;
+  background-color: rgba(0, 166, 81, 1);
+  color: black;
+}

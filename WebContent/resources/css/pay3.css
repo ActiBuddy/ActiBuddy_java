@@ -1,0 +1,104 @@
+#top {
+    width: 60%;
+    margin: 0 auto;
+    height: 300px;
+    /* border:1px solid black; */
+}
+
+#circle {
+    position: relative;
+    margin: 0 auto;
+    width: 20%;
+    height: 40%;
+    border:1px solid black;
+    border-radius: 50%;
+    background-color: mintcream;
+}
+
+#info {
+    text-align: center;
+    margin-top: 25%;
+}
+
+#middle{
+    width: 60%;
+    margin: 0 auto;
+    height: 600px;
+    background-color: mintcream;
+    /* border:1px solid black; */
+    margin-bottom: 10%;
+}
+
+#confirm {
+    position: relative;
+    text-align: left;
+    left: 5%;    
+}
+
+#img {
+    position: relative;
+    left: 10%;
+    width: 35%;
+    height: 30%;
+    float: left;
+}
+
+#activity-name{
+    position: relative;
+    left: 25%;
+}
+
+#option {
+    position: relative;
+    left: 35%;
+}
+
+#date, #person {
+    position: relative;
+    left: 10%;
+}
+
+#all {
+    position: relative;
+    left: 50%;
+    float: left;
+}
+
+#price {
+    position: relative;
+    left: 60%;
+    color: orange;
+}
+
+#completion{
+    position: relative;
+    text-align: left;
+    left: 5%;
+    width: 70%;
+    color: orange;
+    float: left;
+    /* border: 1px solid red; */
+}
+
+#payment {
+    position: relative;
+    text-align: left;
+    left: 5%;
+    width: 70%;
+    color: orange;
+    float: left;
+    /* border: 1px solid red; */
+}
+
+#next {
+    position: relative;
+    left: 7%;
+    width: 20%;
+    background-color: green;
+    color: white;
+    border-radius: 5%;
+}
+
+#a {
+    background-color: mintcream;
+}

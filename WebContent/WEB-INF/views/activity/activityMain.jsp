@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet">
-    <link href="../../resources/css/bootstrap.css" rel="stylesheet">
+    <link href="../resources/css/actibuddy.css" rel="stylesheet">
+    <link href="../resources/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="../../resources/css/activitymain.css">
     <title>activity-main</title>
 </head>
 <body id="body">
     <nav class="navbar1">
         <ul class="navbar_menu">
-            <a href="../main/main.html"><img src="../../resources/image/actibuddylogo.png" class="nav_logo"></a>
+            <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
             <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
             <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
             <li><input type="text" placeholder="Search"></li>
@@ -49,19 +50,19 @@
                 <p>서울부터 서울 근교까지 한번에!</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">롯데월드 자유 이용권</h3>
                 <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">경복궁</h3>
                 <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>
             </div>
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../../resources/image/seoul.jpeg"></a>
+                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
                 <h3 class="bodyText">서울 어린이대공원</h3>
                 <img src="../../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
                 <p class="bottomText">￦18,000원부터</p>

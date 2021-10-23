@@ -1,0 +1,446 @@
+
+.activity-1 {
+    width: 100%;
+}
+
+#carouselExampleIndicators{
+    width:70%; 
+    /* height: auto; */
+    /* border:1px solid red; */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.breadcrumb {
+    position: relative;
+    margin: 0 auto;
+    width: 23%;
+    /* border: 1px solid red; */
+}
+
+#activityname {
+    position: relative;
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    /* border: 1px solid red; */
+}
+
+.bi-star-fill{
+    position: relative;
+    left: 1%;
+    color : gold;
+}
+
+.starscore {
+    position: relative;
+    left: 22%;
+    float: left;
+    margin-top: 1%;
+}
+
+#reviewnum {
+    position: relative;
+    left: 25%;
+    float: left;
+    color : green;
+    margin-top: 1%;
+}
+
+.activity-2 {
+    width: 100%;
+}
+
+.bi-currency-dollar {
+    position: relative;
+    left: 23%;
+    color: gold;
+    float: left;
+}
+
+#condition1 {
+    position: relative;
+    left: 25%;
+    float: left;
+}
+
+.bi-calendar-check {
+    position: relative;
+    left: 45%;
+    float: left;
+    color:firebrick
+}
+
+#condition2 {
+    position: relative;
+    left: 48%;
+    float: left;
+}
+
+.bi-people-fill {
+    position: relative;
+    left: 23%;
+    float: left;
+}
+
+#condition3 {
+    position: relative;
+    left: 25%;;
+    float: left;
+}
+
+.bi-clock {
+    position: relative;
+    left: 50%;
+    float: left;
+}
+
+#condition4 {
+    position: relative;
+    left: 53%;
+    float: left;
+}
+
+.activity-3 {
+    width: 100%;
+}
+
+.explan {
+    position: relative;
+    width:50%;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+}
+
+.option {
+    width: 100%;
+}
+
+#option {
+    position: relative;
+    width: 30%;
+    left: 20%;
+    /* border: 1px solid red; */
+}
+
+.option1 {
+    position: relative;
+    margin: 0 auto;
+    background-color: mintcream;
+    width:70%; 
+    height: auto;
+}
+
+#date {
+    position: relative;
+    width: 30%;
+    left: 60%;
+    /* border: 1px solid red; */
+}
+
+.calender {
+    position: relative;
+    left: 64%;
+}
+
+#select {
+    position: relative;
+    width: 15%;
+    left: 20%;
+    /* border: 1px solid red; */
+}
+
+.btn-group-vertical{
+    width: 250px;
+}
+
+.btn-radio-option1 {
+    position: relative;
+    left: 50%;
+    background-color: green;
+    color: white;
+    border: white;
+}
+
+.btn-radio-option2 {
+    position: relative;
+    left: 50%;
+    background-color: green;
+    color: white;
+    border: white;
+}
+
+#person {
+    position: relative;
+    left: 10%;
+}
+
+.person-bar {
+    position: relative;
+    left: 5%;
+    width: 20%;
+}
+
+#price {
+    position: relative;
+    left: 10%;
+}
+
+#confirm {
+    position: relative;
+    left: 10%;
+}
+
+.btn-pay-select1 {
+    position: relative;
+    left: 110%;
+    width: 200px;
+    background-color: green;
+    margin-bottom: 10%;
+    color: white;
+    border: white;
+}
+
+.btn-pay-select2 {
+    position: relative;
+    width: 200px;
+    color: white;
+    /* border: 1px solid red; */
+}
+
+#move-pay {
+    position: relative;
+    left: 130%;
+    width: 200px;
+    background-color: green;
+    margin-bottom: 10%;
+    color: white;
+    border: white;
+}
+
+#location {
+    position: relative;
+    width: 15%;
+    left: 20%;
+    /* border: 1px solid red; */
+}
+
+.map {
+    position: relative;
+    left: 20%;
+    width: 60%; 
+}
+
+#reveiw {
+    position: relative;
+    width: 15%;
+    left: 20%;
+    /* border: 1px solid red; */
+}
+
+#starscore2 {
+    position: relative;
+    left: 20%;
+    float: left;
+    margin-top: 1%;
+}
+
+.stars {
+    position: relative;
+    left: 25%;
+    float: left;
+    color: gold;
+}
+
+#review-all {
+    position: relative;
+    left: 45%;
+    float: left;
+    color: green;
+    margin-top: 1%;
+}
+
+#sort {
+    position: relative;
+    width: 15%;
+    left: 65%;
+    /* border: 1px solid red; */
+
+}
+
+#sort-select {
+    width: 150px;
+}
+
+.bi-person-fill {
+    position: relative;
+    left: 20%;
+    float: left;
+   
+}
+
+#nickname {
+    position: relative;
+    left: 21%;
+    width: 17%;
+    /* border: 1px solid red; */
+}
+
+.stars-user {
+    position: relative;   
+    width: 80%;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+}
+
+.bi-star-user1 {
+    position: relative;
+    left: 15%;
+    color: gold;
+    /* border: 1px solid red */
+}
+
+.bi-star-user2 {
+    position: relative;
+    left: 14%;
+    color: gold;
+    /* border: 1px solid red */
+}
+
+.bi-star-user3 {
+    position: relative;
+    left: 18%;
+    color: gold;
+    /* border: 1px solid red */
+}
+
+.bi-star-user4 {
+    position: relative;
+    left: 18%;
+    color: gold;
+    /* border: 1px solid red */
+}
+
+#review-auto {
+    position: relative;
+    left: 32%;
+    float: left;
+    color: grey;
+    margin-top: 1px;
+}
+
+#goods-detail{
+    color: grey; 
+    position: relative; 
+    left: 22%;
+    float: left;
+
+}
+
+#review-date {
+    position: relative;
+    width: 20%;
+    float: left;
+    left: 60%;
+    color: gray; 
+}
+
+.review-img {
+    position: relative;
+    left: 8%;
+}
+
+#review-p {
+    position: relative;
+    left: 8%;
+}
+
+.review-detail {
+    position: relative;
+    left: 10%;
+    width: 50%;
+}
+
+#suggestion {
+    position: relative;
+    left: 22%;
+    background-color: mintcream; 
+    border-radius: 10px; 
+    width: 130px; 
+    height: 35px;
+    float: left;
+}
+
+#declaration {
+    background-color : white; 
+    border-style: none; 
+    position: relative; 
+    left: 70%;
+}
+
+#declaration-icon {
+    width:50px;
+}
+
+.pagination {
+    position: relative;
+    width: 22%;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+}
+
+.page-link {
+    background-color: mintcream;
+    color: black;
+}
+
+#suggestion2 {
+    position: relative;
+    left: 22%;
+    background-color: mintcream; 
+    border-radius: 10px; 
+    width: 130px; 
+    height: 35px;
+    float: left;
+}
+
+#declaration2{
+    background-color : white; 
+    border-style: none; 
+    position: relative; 
+    left: 70%;
+}
+
+#declaration-icon2{
+    width:50px;
+}
+
+#recomend {
+    position: relative;
+    width: 15%;
+    left: 20%;
+    /* border: 1px solid red; */
+}
+
+.card1 {
+    position: relative;
+    left: 20%;
+    float: left;
+}
+
+.card2 {
+    position: relative;
+    left: 22%;
+    float: left;
+}
+
+.card3{
+    position: relative;
+    left: 24%;
+    float: left;
+}
+
+.card-body {
+    margin-bottom: 30%;
+}

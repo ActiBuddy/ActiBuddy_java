@@ -8,6 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.actibuddy.activity.model.dto.LocationDTO;
+import com.actibuddy.activity.service.ActivityService;
+
+import oracle.security.o3logon.a;
 @WebServlet("/activity/information")
 public class ActivityInformationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +24,14 @@ public class ActivityInformationServlet extends HttpServlet {
 		
 		// request객체에다가 setAttribute("activity", activity);
 		
+		String locationName = request.getParameter("locationName");
+		System.out.println(locationName);
+		
+		ActivityService activityService = new ActivityService();
+		LocationDTO location = activityService.selectLocationInfo(locationName);
+		
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/activity/activity.jsp");
 		rd.forward(request, response);
 	
@@ -26,7 +39,7 @@ public class ActivityInformationServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
+		
 	}
 
 }

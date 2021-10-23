@@ -43,9 +43,13 @@ public class MemberService {
 
 
 	public int registMember(MemberDTO requestMember) {
+		
+		
 		SqlSession session = getSqlSession();
 		
 		int result = memberDAO.insertMember(session, requestMember);
+		
+		
 		if(result > 0) {
 			session.commit();
 		} else {

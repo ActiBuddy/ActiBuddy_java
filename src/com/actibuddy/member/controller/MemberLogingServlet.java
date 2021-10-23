@@ -20,7 +20,7 @@ public class MemberLogingServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
 
 		String memberId = request.getParameter("memberId");
 		String memberPwd = request.getParameter("memberPwd");
@@ -43,7 +43,8 @@ public class MemberLogingServlet extends HttpServlet {
 		
 		System.out.println("하 거의 끝나따");
 
-		
+		System.out.println("requestMember.getPwd() : " + requestMember.getPwd());
+
 		if(loginMember != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", loginMember);

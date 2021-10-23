@@ -107,6 +107,8 @@
         <img src="../../resources/image/actibuddylogo.png" class="mainlogo" />
       </div>
 
+
+
       <div class="signup1">
         <form id="joinForm" action="../member/regist" method="post">
 
@@ -155,6 +157,12 @@
          </div>
 
          </form>
+         
+         
+         
+         
+         
+         
     </div>
 
     <br><br><br><br>

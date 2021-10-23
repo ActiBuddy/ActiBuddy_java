@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,6 +59,8 @@
 </head>
 <body>
 
+
+
 	<div class="activity_main">
 		<div class="navbar_menu">
 
@@ -78,7 +82,7 @@
 				<div>메이트 후기</div>
 			</div>
 		</div>
-
+	<c:if test="${ empty sessionScope.loginMember }">
 		<div class="navbar_link">
 			<span> <a href="../FAQ/FAQ_main.html">FAQ</a>
 			</span> <span> <a href="acti/member/regist">회원가입</a>
@@ -87,7 +91,13 @@
 					onclick="location.href='../login/login.html'"><a href="acti/member/login">로그인</a></button>
 			</span>
 		</div>
-
+	</c:if>
+	
+		<c:if test="${ !empty sessionScope.loginMember }">
+			<div class="navbar_link">
+				<span> <a href="../FAQ/FAQ_main.html">FAQ</a></span>
+			</div>
+		</c:if>
 	</div>
 
 

@@ -24,7 +24,6 @@ public class MemberRegistServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/signup/signup2.jsp");
 		rd.forward(request, response);
 		
-		System.out.println("왔구려~");
 	
 	}
 
@@ -53,6 +52,7 @@ public class MemberRegistServlet extends HttpServlet {
 		
 		
 		System.out.println("memberController requestMember : " + requestMember.getPwd());
+		
 		System.out.println("memberController requestMember : " + requestMember);
 
 		int result = new MemberService().registMember(requestMember);

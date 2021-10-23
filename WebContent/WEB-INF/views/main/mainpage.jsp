@@ -63,12 +63,12 @@
 
 			<span> <img src="resources/image/actibuddylogo.png"
 				class="nav_logo">
-			</span> <span id="acti_1"><a href="/acti/activity/information">액티비티</a>
+			</span> <span id="acti_1"><a href="/acti/activity/main">액티비티</a>
 			</span> <span id="acti_2"><a href="../Mate/matemain.html">메이팅</a>
 			</span> <span> <input type="text" placeholder="Search">
 			</span> <span>
 				<button type="button" class="search-btn"
-					onclick="location.href='../activity/searchActivity.html'">Submit</button>
+					onclick="location.href='/acti/search/activity'">Submit</button>
 			</span>
 			<div id="acti_detail1">
 				<div>액티비티</div>
@@ -102,7 +102,7 @@
 			<ul>
 				<input type="text" size="50" placeholder="Search">
 				</li>
-				<button type="submit" class="search-btn">검색하기</button>
+				<button type="submit" class="search-btn" onclick="location.href='/acti/search/activity'">검색하기</button>
 				</li>
 			</ul>
 		</div>
@@ -111,7 +111,7 @@
 
 			<div class="mainimage">
 				<div class="si">
-					<a href="https://www.naver.com/"><img
+					<a href="/acti/activity/information"><img
 						src="resources/image/seoul.jpeg"></a>
 					<div>
 						<h1>서울</h1>

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.actibuddy.activity.model.dto.LocationDTO;
 import com.actibuddy.activity.service.ActivityService;
 
-import oracle.security.o3logon.a;
 @WebServlet("/activity/location")
 public class ActivityLocationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

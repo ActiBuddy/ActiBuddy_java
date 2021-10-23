@@ -98,7 +98,7 @@
           
     <!-- 인기 액티비티 -->
     <div class="container mt-5 mb-md-5">
-        <h1>강원도 인기 액티비티</h1>
+        <h1>${location.name} 인기 액티비티</h1>
     </div>
     <div class="container mt-4">
         <div class="row">
@@ -220,7 +220,7 @@
       </div>
     </div>
     <div class="div2">
-        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;">47건의 검색 결과</h2>
+        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;">${location.activityList.size()}건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
@@ -257,145 +257,25 @@
         </div>
         <div class="container" style="float: none; margin:100 auto;">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
+            <c:forEach items="${location.activityList}" var="acti">
             <div class="col">
               <div class="card shadow-sm">
-                <img src="../resources/image/busan.jpeg"  id="check1" width="100%" height="225"  role="img" ></img>
+                <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
                 <div class="card-body">
                   <p class="card-text">
-                      하슬라이트월드 할인
+                      ${acti.name}
                   </p>
                   <p>별점 : 4점</p>
                   <p>best 액티비티</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">₩9,400부터</small>
+                    <small class="text-muted">₩${acti.price}부터</small>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  width="100%" height="225"  role="img" ></img></a>
-                <div class="card-body">
-                    <p class="card-text">
-                        런닝맨 파크
-                    </p>
-                    <p>별점 : 4점</p>
-                    <p>best 액티비티</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
-                <div class="card-body">
-                    <p class="card-text">
-                        강원 페러글라이딩
-                    </p>
-                    <p>별점 : 4점</p>
-                    <p>best 액티비티</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
-                <div class="card-body">
-                    <p class="card-text">
-                        루지루지
-                    </p>
-                    <p>별점 : 4점</p>
-                    <p>best 액티비티</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
-                <div class="card-body">
-                    <p class="card-text">
-                        졸리구만
-                    </p>
-                    <p>별점 : 4점</p>
-                    <p>best 액티비티</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
-                <div class="card-body">
-                    <p class="card-text">
-                        하슬라이트월드 할인
-                    </p>
-                    <p>별점 : 4점</p>
-                    <p>best 액티비티</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
-                <div class="card-body">
-                    <p class="card-text">
-                        하슬라이트월드 할인
-                    </p>
-                    <p>별점 : 4점</p>
-                    <p>best 액티비티</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
-                <div class="card-body">
-                    <p class="card-text">
-                        하슬라이트월드 할인
-                    </p>
-                    <p>별점 : 4점</p>
-                    <p>best 액티비티</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card shadow-sm">
-                    <a href="https://www.naver.com"><img src="../resources/image/busan.jpeg"  class="bd-placeholder-img card-img-top" width="100%" height="225"  role="img" ></img></a>
-                  <div class="card-body">
-                    <p class="card-text">
-                        하슬라이트월드 할인
-                    </p>
-                    <p>별점 : 4점</p>
-                    <p>best 액티비티</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small small class="text-muted">9 mins</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </c:forEach>
           </div> 
-        </div>
+        </div> 
       </div>
     </div>  
     
@@ -424,7 +304,7 @@
   
     <!-- 메이트 마감 임박 -->
     <div class="mateDiv">
-      <h1 style="margin-right: 75%;">메이트 마감 임박</h1>
+      <h1 style="margin-right: 75%; margin-top: 10%">메이트 마감 임박</h1>
       <div class="row" id="box">
         <div class="col">
           <a href="../Mate/matemain.html"><img id="mateImg" src="../resources/image/mate.png"></a>

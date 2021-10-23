@@ -27,17 +27,17 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     <!-- 만든 스크립트 및 CSS-->
-    <link rel="stylesheet" href="../../resources/css/actibuddy.css">
-    <link rel="stylesheet" href="../../resources/css/activity-style.css">
-    <link rel="stylesheet" href="../../resources/css/FAQ.css">
-    <script src="../../resources/js/activity.js"></script>
+    <link rel="stylesheet" href="../resources/css/actibuddy.css">
+    <link rel="stylesheet" href="../resources/css/activity-style.css">
+    <link rel="stylesheet" href="../resources/css/FAQ.css">
+    <script src="../resources/js/activity.js"></script>
 <body>
   <!-- 네비게이션 바.mainStyle{
     
 }-->
   <nav class="navbar">
     <ul class="navbar_menu">
-        <a href="../main/main.html"><img src="../../resources/image/actibuddylogo.png" class="nav_logo"></a>
+        <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
         <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
         <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
         <li><input type="text" placeholder="Search"></li>

@@ -84,7 +84,7 @@
 			</span> <span> <a href="acti/member/regist">회원가입</a>
 			</span> <span>
 				<button type="button" class="login_btn"
-					onclick="location.href='../login/login.html'"><a href="/acti/member/login">로그인</a></button>
+					onclick="location.href='../login/login.html'"><a href="acti/member/login">로그인</a></button>
 			</span>
 		</div>
 

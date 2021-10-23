@@ -34,10 +34,12 @@
         <h2 class="mainTitle">액티비티 & 체험</h2>
         <p style="margin:0.2% 0 0 15%" >어트랙션 투어 및 체험 등 다양한 상품을 둘러보세요!</p>
         <div class="search">
+            <form action="">
             <ul>
             <input type="text" class="searchtext" placeholder="액티비티 또는 상품검색"></li>
             <button type="submit" class="searchbutton">검색하기</button></li>
             </ul>
+            </form>
         </div>
     </div>
 

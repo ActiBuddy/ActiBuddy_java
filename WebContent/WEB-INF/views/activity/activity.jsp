@@ -58,17 +58,12 @@
     <div class="container mb-4">
         <div class="image">
           <div class="faq">
-            <img src="../resources/image/kang.jpg">
+            <img src="${location.image}">
           </div>
             <div>
-            <h1 id="title">강원</h1>
+            <h1 id="title">${location.name}</h1>
             <p id="content">
-                국내 휴가지 중 최고로 손꼽히는 강원도. 국내에서 가장 아름다운 풍경을 볼 수 있는 곳이기도 합니다. <br>
-                청정 자연을 자랑하는 대관령, 설악산과 가슴이 탁 트이는 동해 바다까지! 한국인들에게 사랑받는 강원도를 여행해보세요. <br>
-                야외 액티비티를 좋아한다면 강촌 레일 바이크를 타고 경치를 감상하고 <br> 
-                패러글라이딩 체험으로 하늘 위에서 숨 막히는 절경을 내려다보세요. <br><br>
-                신나는 액티비티를 즐긴 후에는 강릉 커피 거리에서 바다를 바라보며 향긋한 커피를 음미해보는 건 어떨까요? <br>
-                오감을 만족시켜 줄 강원도로의 여행, 지금 떠나보세요.
+                ${location.info}
             </p>
             </div>
         </div>
@@ -78,13 +73,10 @@
     <div class="container mt-5 mb-5">
         <div class="row">
           <div class="col">
-            <h1 id="tipTitle" style="margin-bottom: 20px;">강원도 여행 가이드 및 팁</h1>
+            <h1 id="tipTitle" style="margin-bottom: 20px;">${location.name} 여행 가이드 및 팁</h1>
             <div class=tip>
             <p id="tipBody">
-            볼거리 즐길거리 먹거리 모두 다 즐길 수 있다! <br>
-            산과 바다가 공존하는 국내 최고로 손꼽히는 강원도! <br>
-            강원도에 최대 인기 관광명소인 남이섬,정동진 등 다양한 관광명소가 있고 DMZ 박물관. 오죽헌 등 역사적인 요소를 탐방할 수 도 있습니다. <br>
-            또한 다양한 먹거리로도 유명한 춘천,속초등등 다양할 먹거리도 즐길 수 있습니다! 
+            ${location.tip}
             </p>
             </div>
         </div>

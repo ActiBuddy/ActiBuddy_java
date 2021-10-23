@@ -8,7 +8,7 @@ public class ActivityDAO {
 
 	public LocationDTO selectLocationInfo(SqlSession session, String locationName) {
 		
-		return session.selectOne("LocationDTO.selectLocationInfo",locationName);
+		return session.selectOne("ActivityDAO.selectLocationInfo",locationName);
 	}
 
 }

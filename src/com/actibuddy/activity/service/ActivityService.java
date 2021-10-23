@@ -9,14 +9,14 @@ import com.actibuddy.activity.model.dto.LocationDTO;
 
 public class ActivityService {
 	
-	private ActivityDAO activityDAO;
+	private ActivityDAO activityDAO = new ActivityDAO();
 
 	public LocationDTO selectLocationInfo(String locationName) {
 
 		SqlSession session = getSqlSession();
 		
 		LocationDTO location = activityDAO.selectLocationInfo(session,locationName);
-		
+
 		session.close();
 		
 		return location;

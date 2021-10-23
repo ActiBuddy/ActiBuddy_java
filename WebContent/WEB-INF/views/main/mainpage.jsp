@@ -84,7 +84,7 @@
 			</span> <span> <a href="acti/member/regist">회원가입</a>
 			</span> <span>
 				<button type="button" class="login_btn"
-					onclick="location.href='../login/login.html'"><a href="acti/member/login">로그인</a></button>
+					onclick="location.href='../login/login.html'"><a href="/acti/member/login">로그인</a></button>
 			</span>
 		</div>
 
@@ -110,7 +110,7 @@
 
 			<div class="mainimage">
 				<div class="si">
-					<a href="/acti/activity/information?locationName=서울"><img src="resources/image/seoul.jpeg"></a>
+					<a href="/acti/activity/location?locationName=서울"><img src="resources/image/seoul.jpeg"></a>
 					<div>
 						<h1>서울</h1>
 					</div>

@@ -6,26 +6,26 @@ public class ActivityDTO implements java.io.Serializable{
 	
 	private int code;
 	private String name;
-	private String loaction;
+	private String location;
 	private int price;
 	private Date StartDate;
 	private Date EndDate;
 	private String tip;
 	private String image;
 	private String loactionCode;
-	private int activitTypeCode;
+	private String activitTypeCode;
 	private String userId;
 
 	public ActivityDTO() {
 
 	}
 
-	public ActivityDTO(int code, String name, String loaction, int price, Date startDate, Date endDate, String tip,
-			String image, String loactionCode, int activitTypeCode, String userId) {
+	public ActivityDTO(int code, String name, String location, int price, Date startDate, Date endDate, String tip,
+			String image, String loactionCode, String activitTypeCode, String userId) {
 		super();
 		this.code = code;
 		this.name = name;
-		this.loaction = loaction;
+		this.location = location;
 		this.price = price;
 		StartDate = startDate;
 		EndDate = endDate;
@@ -53,11 +53,11 @@ public class ActivityDTO implements java.io.Serializable{
 	}
 
 	public String getLoaction() {
-		return loaction;
+		return location;
 	}
 
 	public void setLoaction(String loaction) {
-		this.loaction = loaction;
+		this.location = loaction;
 	}
 
 	public int getPrice() {
@@ -108,11 +108,11 @@ public class ActivityDTO implements java.io.Serializable{
 		this.loactionCode = loactionCode;
 	}
 
-	public int getActivitTypeCode() {
+	public String getActivitTypeCode() {
 		return activitTypeCode;
 	}
 
-	public void setActivitTypeCode(int activitTypeCode) {
+	public void setActivitTypeCode(String activitTypeCode) {
 		this.activitTypeCode = activitTypeCode;
 	}
 
@@ -126,7 +126,7 @@ public class ActivityDTO implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "ActivityDTO [code=" + code + ", name=" + name + ", loaction=" + loaction + ", price=" + price
+		return "ActivityDTO [code=" + code + ", name=" + name + ", location=" + location + ", price=" + price
 				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", tip=" + tip + ", image=" + image
 				+ ", loactionCode=" + loactionCode + ", activitTypeCode=" + activitTypeCode + ", userId=" + userId
 				+ "]";

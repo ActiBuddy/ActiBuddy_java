@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="ActivityDAO">
+ 	
+ 	<resultMap type="com.actibuddy.activity.model.dto.LocationDTO" id="locationResultMap">
+ 	   <id property="code" column="LOCATION_CODE"/>
+ 	   <result property="name" column="LOCATION_NAME"/>
+ 	   <result property="info" column="LOCATION_INFO"/>
+ 	   <result property="image" column="LOCATION_IMG"/>
+ 	   <result property="tip" column="GUIDE_TIP"/>
+ 	   <collection property="activityList" resultMap="activityResultMap"/>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.actibuddy.activity.model.dto.ActivityDTO" id="activityResultMap">
+ 	   <id property="code" column="ACTI_NUM"/>
+ 	   <result property="name" column="ACTI_NAME"/>
+ 	   <result property="location" column="LOCATION"/>
+ 	   <result property="price" column="PRICE"/>
+ 	   <result property="StartDate" column="START_DATE"/>
+ 	   <result property="EndDate" column="END_DATE"/>
+ 	   <result property="tip" column="ACTI_TIP"/>
+ 	   <result property="image" column="ACTI_IMG"/>
+ 	   <result property="loactionCode" column="LOCATION_CODE"/>
+ 	   <result property="activitTypeCode" column="ACTI_TYPE_NUM"/>
+ 	   <result property="userId" column="USER_ID"/>
+ 	</resultMap>
+ 	
+ 	<select id="selectLocationInfo" resultMap="locationResultMap" parameterType="string">
+	 	SELECT
+	      	   A.LOCATION_NAME
+    	   	 , A.LOCATION_INFO
+     		 , A.LOCATION_IMG
+     		 , A.GUIDE_TIP
+     		 , B.ACTI_NUM
+     		 , B.ACTI_NAME
+     		 , B.LOCATION
+     		 , B.PRICE
+     		 , B.START_DATE
+     		 , B.END_DATE
+     		 , B.ACTI_TIP
+     		 , B.ACTI_IMG
+     		 , B.LOCATION_CODE
+     		 , B.ACTI_TYPE_NUM
+     		 , B.USER_ID  
+	  	  FROM LOCATION A
+	      JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
+	     WHERE A.LOCATION_NAME = #{ locationName, jdbcType=VARCHAR}
+ 	</select>
+ 
+ </mapper>

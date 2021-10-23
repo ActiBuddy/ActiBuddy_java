@@ -13,8 +13,8 @@ import com.actibuddy.activity.model.dto.LocationDTO;
 import com.actibuddy.activity.service.ActivityService;
 
 import oracle.security.o3logon.a;
-@WebServlet("/activity/information")
-public class ActivityInformationServlet extends HttpServlet {
+@WebServlet("/activity/location")
+public class ActivityLocationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,10 +30,18 @@ public class ActivityInformationServlet extends HttpServlet {
 		ActivityService activityService = new ActivityService();
 		LocationDTO location = activityService.selectLocationInfo(locationName);
 		
+		System.out.println(location);
 		
+		String path = "";
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/activity/activity.jsp");
-		rd.forward(request, response);
+		if(location != null) {
+			path = "/WEB-INF/views/activity/activity.jsp";
+			request.setAttribute("location", location);
+		} else {
+			
+		}
+		
+		request.getRequestDispatcher(path).forward(request, response);
 	
 	}
 

@@ -260,12 +260,12 @@
             <c:forEach items="${location.activityList}" var="acti">
             <div class="col">
               <div class="card shadow-sm">
-                <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+                <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
                 <div class="card-body">
                   <p class="card-text">
                       ${acti.name}
-                  </p>
-                  <p>별점 : 4점</p>
+                  </p></a>
+                  <p>별점 : 5점</p>
                   <p>best 액티비티</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">₩${acti.price}부터</small>

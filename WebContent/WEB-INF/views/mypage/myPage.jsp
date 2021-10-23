@@ -128,17 +128,17 @@
 
         <ul>2021 액티버디</ul>
         <ul> 회사소개
-            <li><a href="../introduce/introduce.html">액티버디소개</a></li>
+            <li><a href="/acti/introduce">액티버디소개</a></li>
             <li><a href="/acti/mypage/main">마이페이지</a></li>
 
             </ul>
 
         <ul> 파트너십
-            <li><a href="../partnership/partnership.html">파트너십</a></li>
+            <li><a href="/acti/partnership">파트너십</a></li>
         </ul>
 
         <ul> 이용약관
-            <li><a href="../FAQ/Privacy_Policy.html">약관</a></li>
+            <li><a href="/acti/privacyPolicy">약관</a></li>
         </ul>
 
         <ul>결제수단

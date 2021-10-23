@@ -1,0 +1,191 @@
+.around {
+    height:auto;
+    weight:100%;
+    border: 3px solid springgreen;
+}
+
+.activity {
+    width: 100%;
+    height: 350px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+  
+.activity img {
+    width: 60%;
+    height: auto;
+    margin-top: 75px;
+    margin-left: 20%;
+}
+
+.title {
+    width:60%;
+    height: 50px;
+    background-color: #e8e8e8;
+    margin: 20px 20% 0 20%;
+    position: relative;
+    display: flex;
+    border-radius: 10px;
+}
+
+.first {
+    /* border: 1px solid red; */
+    width: 30px;
+    height: 28px;
+    margin-left: 23px;
+    margin-top: 13px;
+}
+
+.second {
+    /* border: 1px solid green; */
+    width: 70px;
+    height: 25px;
+    margin-left: 23px;
+    margin-top: 13px;
+
+}
+
+
+.location {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-color: #D6E8B8;
+    border: 2px solid #D6E8B8;
+    width: 70px;
+    height: 25px;
+    text-align: center;
+}
+
+.third {
+    width: 650px;
+    height: 50px;
+    margin-left: 23px;
+}
+
+.third p{
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.first img {
+    width: 100%;
+    height: 25px;
+}
+
+hr {
+    width: 60%;
+    margin: 10px 20%;
+}
+
+.writer {
+    width:210px;
+    height:30px;
+    margin-top: 15px;
+    margin-left: 60%;
+    display: flex;
+}
+
+.writer .fix {
+    width:70px;
+    height:20px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.writer .name {
+    width: 140px;
+    height: 20px;
+    margin-top: 5px;
+}
+
+/* 여기서 바꾸기 */
+
+.choose{
+    width:60%;
+    height:230px;
+    margin: 30px 18.5% 30px 20.5%;
+}
+
+.border{
+    position: relative;
+    width: 23%;
+    height: 100%;
+    margin-right: 1.7706%;
+    float: left;
+}
+
+.border .yellowback{
+    width: 100%;
+    height: 85%;
+    background-color: #FDFDED;
+    border-radius: 15px;
+}
+
+.condition{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.imgborder{
+    width: 100%;
+    height: 65%;
+    border: 1px solid pink;
+}
+
+
+.imgborder1 img{
+    width: 35%;
+    height: 35%;
+    margin: 20% 33%;
+    /* border: 1px solid blueviolet; */
+}
+
+.imgborder2 img{
+    width: 60%;
+    height: 60%;
+    margin: 7.4% 20%;
+    /* border: 1px solid blueviolet; */
+}
+
+.selectborder{
+    height: 13%;
+    width: 80%;
+    margin-left: 10%;
+    border: 1px solid brown;
+}
+
+/* 여기까지가 선택박스 */
+
+.text_box{
+    height: 800px;
+    width: 60%;
+    margin: 30px 20% 2% 20%;
+
+    background-color: #e8e8e8;
+    border-radius: 20px;
+}
+
+.btnborder{
+    margin-left: 55%;
+    margin-bottom: 10%;
+    width: 23%;
+    height: 40px;
+}
+
+.btnok{
+    width:150px;
+    height: 40px;
+    margin-right: 6%;
+    background-color:yellowgreen;
+    border-color: yellowgreen;
+}
+
+.btnno{
+    width:150px;
+    height: 40px;
+}

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:forward page="/WEB-INF/views/Mate/matemain_search.jsp"/>
+<jsp:forward page="/WEB-INF/views/main/mainpage.jsp"/>
 </body>
 </html>

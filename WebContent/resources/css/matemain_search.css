@@ -1,0 +1,244 @@
+a {
+    font-size: 18px;
+ }
+  
+.mate_logo img{
+      width: 100%;
+      margin-top: 70px;
+ }
+  
+.mate_ad {
+     width: 60%;
+  /* 이미지 가운데 정렬해주는 속성 */
+     display: block;
+     margin: 0px auto; 
+  }
+
+  .mate_ad img{
+      width: 100%;
+      margin-top: 70px;
+  }
+
+.notion {
+      /* border: 1px solid black; */
+      width:50%;
+      height: 22px;
+      margin: 1% 0 1% 25%;
+      padding-top: 0.2%;
+      border-radius: 5px;
+      background-color: #D6E8B8;
+      text-align: center;
+      font-size: 18px;
+  }
+
+.title_border {
+    /* border: 1px solid black; */
+    width: 60%;
+    height: 40px;
+    margin: 5% 0 2% 19%;
+    display: flex;
+  }
+
+.title_border img {
+    width: 7.8%;
+    height: 175%;
+    margin-top: -1.4%;
+}
+
+.t1 {
+    /* border: 1px solid red; */
+    width:auto;
+    height:auto;
+    padding-top: 1.1%;
+    font-size: 26px;
+}
+.t2 {
+    /* border: 1px solid red; */
+    width:auto;
+    height:auto;
+    padding-top: 1.1%;
+    margin-left: 1%;
+    font-size: 26px;
+    
+}
+.t3 {
+    /* border: 1px solid red; */
+    width:auto;
+    height:auto;
+    padding-top: 0.8%;
+    margin-left: 3%;
+    font-size: 30px;
+    color: gray;
+}
+
+.list_border {
+    /* border: 1px solid red; */
+    margin-left: 20%;
+    height: 50px;
+    width: 60%;
+    border-bottom: solid 4px #7DB249;
+}
+
+.list_border button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color:  #7DB249;
+    border: 2px solid  #7DB249;
+    width: calc(100%/9);
+    height: 52px;
+    text-align: center;
+}
+
+.mate_tabs {
+    /* border: 1px solid hotpink; */
+      margin-top: 50px;
+      padding-bottom: 40px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      width: 60%;
+      margin: 0 auto 12% auto;
+  }
+
+.mtab_content {
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+  }
+
+  table {
+    /* width: 100%; */
+      border-collapse: collapse;
+      text-align: left;
+      line-height: 1.5;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      margin: 20px 10px;
+    }
+    table thead th {
+      width: 300px;
+      padding: 10px;
+      font-weight: bold;
+      vertical-align: top;
+      color: #fff;
+      background: gainsboro;
+      margin: 20px 10px;
+      text-align: center;
+    }
+    table tbody th {
+      /* height: 50px; */
+      /* width: 100px; */
+      padding: 10px;
+      text-align: center;
+    }
+    table td {
+      /* height: 50px; */
+      width: 50px;
+      padding: 10px;
+      vertical-align: top;
+      text-align: center;
+    }
+
+     /* ===== pagination ===== */ 
+/* 영역 테두리 */
+.pagination {
+    /* border: 3px solid springgreen; */
+    height: 36px;
+    width: 50%;
+    margin: 0 0 0 37%;
+    color: #6c58bF;
+  }
+  
+  
+  /* ul 태그 정렬(컬러추가해도 안보임) */
+  .pagination ul {
+    display: inline-block;
+    *display: inline;
+    /* IE7 inline-block hack */
+    *zoom: 1;
+    color: #ffffff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* 작성하기 버튼 */
+   .write-border button{
+     position: relative;
+     float: right;
+      height: 38px;
+      width: 14%;
+      margin-top: -5.7%;
+      margin-right: 2.5%;
+      background-color: olivedrab;
+      /* border-color: rgb(207, 228, 204); */
+      border: none;
+      border-radius: 5%;
+    }
+  
+  /* li태그 정렬(컬러추가해도 안보임) */
+  .pagination li {
+    display: inline;
+  }
+  
+  /* 테두리와 폰트 */
+  .pagination a {
+    float: left;
+    padding: 0 14px;
+    line-height: 34px;
+    text-decoration: none;
+    /* 폰트 색상 */
+    color: black;
+    /* border: 1px solid pink; -> 테두리 색상 */
+    border-width: 0;
+    /* border-left-width: 0; -> ㅌㅔ두리 없애는거 */
+  }
+  
+  /* <> 눌렀을 때(main.css와 겹쳐서 설정해줘야함)  */
+  .page-link:hover {
+    background-color: white;
+    /* border-radius: 4px; */
+    /* height: auto; */
+    width:17.5px;
+    /* border-radius: 100%; */
+    font-size: 25px;
+  }
+  
+  /* 숫자 눌렀을 때  */
+  .page-link-num:hover {
+    background-color: rgb(207, 228, 204);
+    /* border-radius: 4px; */
+    height: 35px;
+    border-radius: 100%;
+    /* font-size: 22px; */
+  }
+  
+  /* 누르면 고정 */
+  .page-link-num:focus {
+    background-color: rgb(207, 228, 204);
+    height: 35px;
+    border-radius: 100%;
+    color: #ffffff;
+  }
+  
+  
+  
+    .searchtext {
+      margin-top: 2.5%;
+      margin-left: 23%;
+      margin-bottom: 1%;
+      width: 40%;
+      height: 25px;
+    }
+    
+    .searchbutton{
+      width: 10%;
+      height: 32px;
+    }

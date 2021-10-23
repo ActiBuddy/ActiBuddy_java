@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
-    <link href="../../resources/css/introduce.css" rel="stylesheet" />
+    <title>액티비티 소개</title>
+    <link rel="stylesheet" href="resources/css/actibuddy.css">
+    <link href="resources/css/introduce.css" rel="stylesheet">
 
-    <title>main</title>
   </head>
   <body>
     <nav class="navbar">
       <ul class="navbar_menu">
         <a href="../main/main.html"
-          ><img src="../../resources/image/actibuddylogo.png" class="nav_logo"
+          ><img src="resources/image/actibuddylogo.png" class="nav_logo"
         /></a>
         <li class="dropbox">
           <a href="../activity/activity.html">액티비티</a>
@@ -43,7 +44,7 @@
     </nav>
 
     <div class="faq">
-      <img src="../../resources/image/introduce.png" />
+      <img src="resources/image/introduce.png" />
     </div>
 
     <main_intro>
@@ -73,7 +74,7 @@
       </div>
 
       <div class="image">
-        <img src="../../resources/image/intro4.gif" />
+        <img src="resources/image/intro4.gif" />
       </div>
 
       <div class="detail2">
@@ -86,7 +87,7 @@
 
       <div class="detail3">
         <div>
-          <img src="../../resources/image/intro1.png" class="image" />
+          <img src="resources/image/intro1.png" class="image" />
         </div>
         <div style="text-align: center">
           <h1 style="margin-top: 300px">원하는곳은 어디든!</h1>
@@ -102,10 +103,10 @@
           <h3>수상액티비티부터 겨울에만 즐길수 있는 액티비티,</h3>
           <h3>실내에서만 즐길수 있는 액티비티도 한 번에!</h3>
         </div>
-        <div><img src="../../resources/image/intro2.png" class="image" /></div>
+        <div><img src="resources/image/intro2.png" class="image" /></div>
       </div>
       <div class="detail3">
-        <div><img src="../../resources/image/intro3.png" class="image" /></div>
+        <div><img src="resources/image/intro3.png" class="image" /></div>
         <div style="text-align: center">
           <h1 style="margin-top: 300px">액티버디와 함께라면!</h1>
           <h3>
@@ -124,8 +125,8 @@
         </ul>
         <ul>
           회사소개
-          <li><a href="../introduce/introduce.html">액티버디소개</a></li>
-          <li><a href="../mypage/mypage.html">마이페이지</a></li>
+          <li><a href="/acti/introduce">액티버디소개</a></li>
+          <li><a href="/acti/mypage/main">마이페이지</a></li>
         </ul>
 
         <ul>

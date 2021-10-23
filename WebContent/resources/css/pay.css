@@ -1,0 +1,176 @@
+#top {
+    width: 60%;
+    margin: 0 auto;
+    height: 300px;
+    /* border:1px solid black; */
+}
+
+#circle1 {
+    position: relative;
+    width: 20%;
+    height: 40%;
+    border:1px solid black;
+    border-radius: 50%;
+    float: left;
+    background-color: mintcream;
+}
+
+#circle2 {
+    position: relative;
+    /* margin: 0 auto; */
+    left: 8%;
+    width: 20%;
+    height: 40%;
+    border:1px solid black;
+    border-radius: 50%;
+    float: left;
+    background-color: mintcream;
+}
+
+#circle3 {
+    position: relative;
+    width: 20%;
+    height: 40%;
+    border:1px solid black;
+    border-radius: 50%;
+    float: right;
+    background-color: mintcream;
+}
+
+#dott1 {
+    position: relative;
+    left: 5%;
+    width: 2%;
+    height: 4%;
+    border-radius: 50%;
+    border: 1px solid black;
+    float: left;
+    margin-top : 6%;
+    margin-right: 2%;
+    background-color: gray
+}
+
+#dott2 {
+    position: relative;
+    left: 13%;
+    width: 2%;
+    height: 4%;
+    border-radius: 50%;
+    border: 1px solid black;
+    float: left;
+    margin-top : 6%;
+    margin-right: 2%;
+}
+
+#info {
+    text-align: center;
+    margin-top: 25%;
+}
+
+#middle{
+    width: 60%;
+    margin: 0 auto;
+    height: 1150px;
+    background-color: mintcream;
+    /* border:1px solid black; */
+    margin-bottom: 10%;
+}
+
+#enter{
+    position: relative;
+    text-align: left;
+    left: 5%;    
+}
+
+#warning {
+    position: relative;
+    text-align: center;
+    color: orange;
+}
+
+#confirm {
+    position: relative;
+    text-align: left;
+    left: 5%; 
+}
+
+#img {
+    position: relative;
+    left: 10%;
+    width: 30%;
+    height: 15%;
+    float: left;
+}
+
+#activity-name{
+    position: relative;
+    left: 25%;
+}
+
+#option {
+    position: relative;
+    left: 35%;
+}
+
+#date, #person {
+    position: relative;
+    left: 10%;
+}
+
+#all {
+    position: relative;
+    left: 50%;
+    float: left;
+}
+
+#price {
+    position: relative;
+    left: 60%;
+    color: orange;
+}
+
+#concat {
+    position: relative;
+    text-align: left;
+    left: 5%;    
+}
+
+#guide {
+    position: relative;
+    text-align: left;
+    left: 5%;  
+    color: gray;
+}
+
+#firstname {
+    position: relative;
+    left: 15%;
+}
+
+#lastname {
+    position: relative;
+    left: 30%;
+}
+
+#phone{
+    position: relative;
+    left: 12%;
+}
+
+#email{
+    position: relative;
+    left: 23%;
+}
+
+#progress{
+    position: relative;
+    left: 70%;
+    width: 20%;
+    background-color: green;
+    color: white;
+    border-radius: 5%;
+}
+
+#a {
+    background-color: mintcream;
+}

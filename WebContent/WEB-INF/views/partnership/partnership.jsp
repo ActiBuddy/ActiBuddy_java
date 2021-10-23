@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,16 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
-    <link href="../../resources/css/partnership.css" rel="stylesheet" />
+    <link href="resources/css/actibuddy.css" rel="stylesheet" />
+    <link href="resources/css/partnership.css" rel="stylesheet" />
 
-    <title>main</title>
+    <title>파트너십</title>
   </head>
   <body>
     <nav class="navbar">
       <ul class="navbar_menu">
         <a href="../main/main.html"
-          ><img src="../../resources/image/actibuddylogo.png" class="nav_logo"
+          ><img src="resources/image/actibuddylogo.png" class="nav_logo"
         /></a>
         <li class="dropbox">
           <a href="../activity/activity.html">액티비티</a>
@@ -44,7 +45,7 @@
     </nav>
 
     <div class="faq">
-      <img src="../../resources/image/introduce.png" />
+      <img src="resources/image/introduce.png" />
     </div>
 
     <div class="first" style="margin-bottom: 100px">
@@ -55,7 +56,7 @@
 
     <div class="second">
       <div>
-        <img src="../../resources/image/partner1.gif" class="image" />
+        <img src="resources/image/partner1.gif" class="image" />
       </div>
       <div>
         <h1>전국 방방곡곡</h1>
@@ -72,13 +73,13 @@
         <h3>다양한 액티비티를 제공하고 있습니다.</h3>
       </div>
       <div>
-        <img src="../../resources/image/partner2.gif" class="image" />
+        <img src="resources/image/partner2.gif" class="image" />
       </div>
     </div>
 
     <div class="second">
       <div>
-        <img src="../../resources/image/partner3.gif" class="image" />
+        <img src="resources/image/partner3.gif" class="image" />
       </div>
       <div style="text-align: center">
         <h1>전문성&다양성</h1>
@@ -95,13 +96,13 @@
         <h3>세계 최고 수준의 기업들과 공식 파트너십을 맺고 있습니다.</h3>
       </div>
       <div>
-        <img src="../../resources/image/partner4.gif" class="image" />
+        <img src="resources/image/partner4.gif" class="image" />
       </div>
     </div>
 
     <div class="second">
       <div>
-        <img src="../../resources/image/partner5.gif" class="image" />
+        <img src="resources/image/partner5.gif" class="image" />
       </div>
       <div>
         <h1>신뢰할 수 있는 기술&솔루션</h1>
@@ -117,11 +118,11 @@
 
     <div class="second">
       <div>
-        <img src="../../resources/image/intro1.png" class="image" />
+        <img src="resources/image/intro1.png" class="image" />
       </div>
       <div style="width: 6%"></div>
       <div>
-        <img src="../../resources/image/intro1.png" class="image" />
+        <img src="resources/image/intro1.png" class="image" />
       </div>
     </div>
     <div class="third">
@@ -145,11 +146,11 @@
 
     <div class="second">
       <div>
-        <img src="../../resources/image/intro1.png" class="image" />
+        <img src="resources/image/intro1.png" class="image" />
       </div>
       <div style="width: 6%"></div>
       <div>
-        <img src="../../resources/image/intro1.png" class="image" />
+        <img src="resources/image/intro1.png" class="image" />
       </div>
     </div>
     <div class="third">
@@ -203,7 +204,8 @@
         </ul>
         <ul>
           회사소개
-          <li><a href="../views/introduce/introduce.html">액티버디소개</a></li>
+          <li><a href="/acti/introduce">액티버디소개</a></li>
+          <li><a href="/acti/mypage/main">마이페이지</a></li>
         </ul>
 
         <ul>

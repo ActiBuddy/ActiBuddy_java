@@ -37,7 +37,7 @@ public class ActivityLocationServlet extends HttpServlet {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("location", location);
 		} else {
-			
+			path = "/WEB-INF/views/common/actiFail.jsp";
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);

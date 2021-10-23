@@ -110,7 +110,7 @@
 
 			<div class="mainimage">
 				<div class="si">
-					<a href="/acti/activity/location?locationName=서울"><img src="resources/image/seoul.jpeg"></a>
+					<a href="activity/location?locationName=서울"><img src="resources/image/seoul.jpeg"></a>
 					<div>
 						<h1>서울</h1>
 					</div>

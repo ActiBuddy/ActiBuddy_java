@@ -14,7 +14,6 @@ public class ActiReview implements java.io.Serializable{
 	private String image;
 	private int recommend;
 	private char recYn;
-	private String option;
 	
 	
 }

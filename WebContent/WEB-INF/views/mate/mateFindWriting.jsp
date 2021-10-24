@@ -27,6 +27,7 @@
             <div class="first">
                 <img src="../../resources/image/heart2.png">
             </div>
+            
             <div class="second">
                 <select class="location" name="location">
                     <option value="none">지역</option>
@@ -145,14 +146,14 @@
        
         <!-- 텍스트 부분 -->
        <div class="text_box">
-          <textarea class="write_text" placeholder="글을 입력해주세요."></textarea>
+          <textarea name="text" class="write_text" placeholder="글을 입력해주세요."></textarea>
        </div>
        <!-- 버튼 부분 -->
        <div class="btnborder">
-          <button class="btnok"><a href="#">등록</a></button>
+          <button type="submit" class="btnok"><a href="#">등록</a></button>
           <button class="btnno"><a href="#">취소</a></button>
        </div>
-
+</form>
       <div class="mate5"></div>
 
       <!-- 찐짜div-->

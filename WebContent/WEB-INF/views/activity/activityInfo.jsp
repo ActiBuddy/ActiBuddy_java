@@ -245,7 +245,7 @@
 
 <hr>
 
-<div class="activity-5">
+<div class="activity-5">	
   <!-- 이용 후기 -->
   <strong><h3 id="reveiw">이용 후기</h3></strong> <br>
   <h2 id="starscore2"> 4.9 </h2>

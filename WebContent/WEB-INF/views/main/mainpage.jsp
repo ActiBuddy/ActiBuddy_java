@@ -1,97 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>ACTIBUDDY</title>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link href="resources/css/actibuddy.css" rel="stylesheet"/>
-	<script>
-	      $(function(){
-	         $("#acti_1").on({
-	             mouseover: function(){
-	                 $('#acti_detail1').css('display', 'block');
-	                 $('#acti_detail2').css('display', 'none');
-	             },
-	             mouseleave: function(){
-	                 $('#acti_detail1').css('display','none');
-	             }
-	         });
-	      });
-	      $(function(){
-	          $("#acti_detail1").on({
-	              mouseover: function(){
-	                  $('#acti_detail1').css('display', 'block');
-	              },
-	              mouseleave: function(){
-	                  $('#acti_detail1').css('display','none');
-	              }
-	          });
-	      });
-	          
-	
-	      $(function(){
-	          $("#acti_2").on({
-	              mouseover: function(){
-	                  $('#acti_detail2').css('display', 'block');
-	                  $('#acti_detail1').css('display', 'none');
-	              },
-	              mouseleave: function(){
-	                  $('#acti_detail2').css('display','none');
-	              }
-	          });
-	      });
-	
-	      $(function(){
-	          $("#acti_detail2").on({
-	              mouseover: function(){
-	                  $('#acti_detail2').css('display', 'block');
-	              },
-	              mouseleave: function(){
-	                  $('#acti_detail2').css('display','none');
-	              }
-	          });
-	      });
-	</script>
+	<link href="resources/css/menubar.css" rel="stylesheet"/>
 </head>
 <body>
 
-	<div class="activity_main">
-		<div class="navbar_menu">
-
-			<span> <img src="resources/image/actibuddylogo.png"
-				class="nav_logo">
-			</span> <span id="acti_1"><a href="/acti/activity/main">액티비티</a>
-			</span> <span id="acti_2"><a href="../Mate/matemain.html">메이팅</a>
-			</span> <span> <input type="text" placeholder="Search">
-			</span> <span>
-				<button type="button" class="search-btn"
-					onclick="location.href='../activity/searchActivity.html'">Submit</button>
-			</span>
-			<div id="acti_detail1">
-				<div>액티비티</div>
-				<div>액티비티</div>
-			</div>
-			<div id="acti_detail2">
-				<div>메이트 매칭</div>
-				<div>메이트 후기</div>
-			</div>
-		</div>
-
-		<div class="navbar_link">
-			<span> <a href="../FAQ/FAQ_main.html">FAQ</a>
-			</span> <span> <a href="acti/member/regist">회원가입</a>
-			</span> <span>
-				<button type="button" class="login_btn"
-					onclick="location.href='../login/login.html'"><a href="acti/member/login">로그인</a></button>
-			</span>
-		</div>
-
-	</div>
-
-
+	<jsp:include page="../common/menubar.jsp"/>
 
 	<main class="wrapper">
 		<div>
@@ -187,36 +108,8 @@
 
 
 	</main>
-
-	<footer>
-		<div class="footer">
-			<span></span>
-
-			<ul>2021 액티버디
-			</ul>
-			<ul>
-				회사소개
-				<li><a href="/acti/introduce">액티버디소개</a></li>
-				<li><a href="/acti/mypage/main">마이페이지</a></li>
-
-			</ul>
-
-			<ul>
-				파트너십
-				<li><a href="/acti/partnership">파트너십</a></li>
-			</ul>
-
-			<ul>
-				이용약관
-				<li><a href="/acti/privacyPolicy">약관</a></li>
-			</ul>
-
-			<ul>
-				결제수단
-				<li><a href="#">카카오페이</a></li>
-			</ul>
-			<span></span> <span></span>
-		</div>
-	</footer>
+	
+		<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 </html>

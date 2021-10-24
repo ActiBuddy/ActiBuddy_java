@@ -18,6 +18,8 @@
 		<result property="memPhone" column="MEM_PHONE"/>
 	</resultMap>
 	
+	
+	
 	<insert id="insertMember" parameterType="com.actibuddy.member.model.dto.MemberDTO">
         INSERT
           INTO MEMBER A
@@ -35,20 +37,21 @@
         )
         VALUES 
         (
-          #{ userId, jdbcType=VARCHAR}
-        , #{ userName, jdbcType=VARCHAR}
+          #{ userId }
+        , #{ userName }
         , #{ pwd }
-        , #{ email, jdbcType=VARCHAR}
-        , #{ birth, jdbcType=VARCHAR}
-        , #{ gender, jdbcType=VARCHAR}
+        , #{ email }
+        , #{ birth }
+        , #{ gender }
         , #{ warn_count }
-        , #{ quitYn, jdbcType=VARCHAR}
-        , #{ memType, jdbcType=VARCHAR}
-        , #{ memPhone, jdbcType=VARCHAR}
+        , #{ quitYn }
+        , #{ memType }
+        , #{ memPhone }
         )
 	</insert>
 	
- 	<select id="selectEncryptedPwd" resultMap="memberResultMap">
+ 	<select id="selectEncryptedPwd" resultType="java.lang.String">
+      
         SELECT
                A.PASSWORD
           FROM MEMBER A
@@ -57,17 +60,18 @@
 	</select>
 	
 	<select id="selectLoginMember" resultMap="memberResultMap">
+		
 		SELECT
-			   A.USER_ID
-		     , A.USER_NAME
-		     , A.PASSWORD
-		     , A.EMAIL
-		     , A.BIRTH
-		     , A.GENDER
-		     , A.WARN_COUNT
-		     , A.QUIT_YN
-		     , A.MEM_TYPE
-		     , A.MEM_PHONE
+			    A.USER_ID
+        	  , A.USER_NAME
+    	      , A.PASSWORD
+        	  , A.EMAIL
+        	  , A.BIRTH
+       	  	  , A.GENDER
+        	  , A.WARN_COUNT
+        	  , A.QUIT_YN
+        	  , A.MEM_TYPE
+       	      , A.MEM_PHONE        
 		 FROM  MEMBER A
 		WHERE  A.QUIT_YN = 'N'
 		  AND  A.USER_ID = #{ userId }

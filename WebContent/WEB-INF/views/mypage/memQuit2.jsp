@@ -12,22 +12,7 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <ul class="navbar_menu">
-            <img src="../../resources/image/actibuddylogo.png" class="nav_logo">
-            <li class="dropbox"><a href="#">액티비티</a></li>
-            <li class="dropbox"><a href="#">메이팅</a></li>
-            <li><input type="text" placeholder="Search"></li>
-            <li><button type="submit">Submit</button></li>
-        </ul>
-
-        <ul class="navbar_link">
-            <li><a href="">FAQ</a></li>
-            <li><a href="">회원가입</a></li>
-            <li><button type="button" class="login_btn" onclick="location.href='main.html'">로그인</button></li>
-        </ul> 
-    </nav>
-
+       <jsp:include page="../common/menubar.jsp"/>
 
     <div class="logo" >
     
@@ -82,32 +67,7 @@
     </div>
 
     <!-- 하단 바 -->
-    <footer>
-        <div class="footer">
-            <span></span>
-    
-            <ul>2021 액티버디</ul>
-            <ul> 회사소개
-                <li><a href="../views/introduce/introduce.html">액티버디소개</a></li>
-                <li><a href="../views/mypage/mypage.html">마이페이지</a></li>
-    
-                </ul>
-    
-            <ul> 파트너십
-                <li><a href="../views/partnership/partnership.html">파트너십</a></li>
-            </ul>
-    
-            <ul> 이용약관
-                <li><a href="FAQ/Privacy_Policy.html">약관</a></li>
-            </ul>
-    
-            <ul>결제수단
-                <li><a href="#">카카오페이</a></li>
-            </ul>
-            <span></span>
-            <span></span>
-        </div>
-    </footer>
+   <jsp:include page="../common/footer.jsp"/>
     
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>triplist</title>
-    <link rel="stylesheet" href="../../resources/css/actibuddy.css">
-    <link rel="stylesheet" href="../../resources/css/mypage.css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mypage.css">
 
 </head>
 
@@ -18,7 +19,7 @@
 
     <nav class="navbar">
         <ul class="navbar_menu">
-            <a href="../main/main.html"><img src="../../resources/image/actibuddylogo.png" class="nav_logo"></a>
+            <a href="../main/main.html"><img src="${ pageContext.servletContext.contextPath }/resources/image/actibuddylogo.png" class="nav_logo"></a>
             <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
             <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
             <li><input type="text" placeholder="Search"></li>
@@ -35,34 +36,43 @@
 
     <div class="logo" >
     
-        <img src="../../resources/image/mypage/mainlogo.png" width="400px" height="350px" />
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/mainlogo.png" width="400px" height="350px" />
         
     </div>
 
     <hr>
     
-    <div class="page-text">
-        <h2>해씨초코볼  님의 마이페이지</h2>
-    </div>
+    <c:if test="${ !empty sessionScope.loginMember }">
+		<div class="page-text">
+
+        	<h2><c:out value="${ sessionScope.loginMember.userName }"/>님의 마이페이지</h2>
+        	
+		</div>
+	</c:if>
+
+
 
     <div class="body-all">
-    
-        
         <div class="side-all">
-            
-    
             <div class="side-1">
                 <br><br><br>
-                <img src="../../resources/image/mypage/profile.png" width="100px" height="100px"/>
-                <h4>해씨초코볼</h4>
+                <img src="../resources/image/profile.png" width="100px" height="100px"/>
+                
+                <c:if test="${ !empty sessionScope.loginMember }">
+		
+        			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
+
+				</c:if>
+                
                 
                 <hr>
                 <br>
-                <a href="../main/main.html" onclick="alert('로그아웃하시겠습니까?')">로그아웃</a>
+
                 <a href="../mypage/memQuit.html" id="quit">회원탈퇴</a>
     
                 
             </div>
+            
             <div class="side-2">
                 
                 <br><br>

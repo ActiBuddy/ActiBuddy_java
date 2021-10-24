@@ -41,27 +41,37 @@
 
     <hr>
     
-    <div class="page-text">
-        <h2>해씨초코볼  님의 마이페이지</h2>
-    </div>
+    <c:if test="${ !empty sessionScope.loginMember }">
+		<div class="page-text">
 
-    <div class="body-all" id="background">
+        	<h2><c:out value="${ sessionScope.loginMember.userName }"/>님의 마이페이지</h2>
+        	
+		</div>
+	</c:if>
 
+    <div class="body-all">
+    
+        
         <div class="side-all">
             
     
             <div class="side-1">
                 <br><br><br>
-                <img src="../../resources/image/mypage/profile.png" width="100px" height="100px"/>
-                <h4>해씨초코볼</h4>
+                <img src="../resources/image/profile.png" width="100px" height="100px"/>
+                
+                <c:if test="${ !empty sessionScope.loginMember }">
+		
+        			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
+
+				</c:if>
+                
                 
                 <hr>
                 <br>
-                <a href="../main/main.html" onclick="alert('로그아웃하시겠습니까?')">로그아웃</a>
-                <a href="" id="quit">회원탈퇴</a>
-    
-                
-            </div>
+
+                <a href="../mypage/memQuit.html" id="quit">회원탈퇴</a>
+          	</div>
+          	
             <div class="side-2">
                 
                 <br><br>

@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="../../resources/css/login.css" rel="stylesheet" />
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
+    <link href="../resources/css/login.css" rel="stylesheet" />
+    <link href="../resources/css/actibuddy.css" rel="stylesheet" />
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
     <title>main</title>
@@ -17,7 +17,7 @@
     <nav class="navbar">
       <ul class="navbar_menu">
         <a href="../main/main.html"
-          ><img src="../../resources/image/actibuddylogo.png" class="nav_logo"
+          ><img src="../resources/image/actibuddylogo.png" class="nav_logo"
         /></a>
         <li class="dropbox">
           <a href="../activity/activity.html">액티비티</a>
@@ -50,7 +50,7 @@
     </nav>
     <main class="wrapper">
       <div>
-        <img src="../../resources/image/actibuddylogo.png" class="mainlogo" />
+        <img src="../resources/image/actibuddylogo.png" class="mainlogo" />
       </div>
 
       <div class="signup">

@@ -171,7 +171,6 @@
 
   <script>
     $('input:radio').change(changeOption);
-
     function changeOption() {
       if($('#btnradio1').prop("checked")) {
         $('.btn-radio-option1').css({
@@ -182,7 +181,6 @@
           'background-color' : "green",
         });
       }
-
       if($('#btnradio2').prop("checked")) {
         $('.btn-radio-option2').css({
           'background-color' : "blue",
@@ -192,8 +190,6 @@
           'background-color' : "green",
         });
       }
-
-
     }
   </script>
 
@@ -209,11 +205,8 @@
   <h4 id="price"> ₩ ${ activity.price }
   <script>
     $('.person-bar').change(pricePrint);
-
     function pricePrint() {
-
       let value = $('.person-bar').val();
-
       $('#price').html('₩ ' + value * ${ activity.price });
     }
   </script>
@@ -337,7 +330,6 @@
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 </svg> 
 <h3 id="nickname"> 권순권순표 </h3>
-
 <div class="stars-user">
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gold;">
     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
@@ -354,36 +346,26 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gray;">
     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
   </svg>
-
   <h5 id="review-auto"> 매우 불만족</h5> <br><br>
-
   <h6 id="goods-detail"> 후기 상품 상세 : 써티파이드 다이빙 </h6>
-
   <h5 id="review-date"> 2021년 10월 1일</h5> <br><br>
-
 <div class="review-detail">
 <p id="review-p"> 가는날 비가 너무 많이 와서 너무 힘들었습니다 ㅜ</p>
 <img src="../resources/image/activity-info-review2(1).png" alt="..." class="review-img">
 </div>
 </div>
-
 <br>
-
 <button id="suggestion">추천</button>
-
 <button id="declaration">
   <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
   </button>
-
 <br> <br>
 <hr>
 <br>
-
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 </svg> 
 <h3 id="nickname"> 김주김주환 </h3>
-
 <div class="stars-user">
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gold;">
     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
@@ -400,26 +382,18 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gray;">
     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
   </svg>
-
   <h5 id="review-auto"> 만족 </h5> <br><br>
-
   <h6 id="goods-detail"> 후기 상품 상세 : 써티파이드 다이빙 </h6>
-
   <h5 id="review-date"> 2021년 9월 27일</h5> <br><br>
-
 <div class="review-detail">
 <p id="review-p"> 맑은 바다보고 힐링하고 왔어요~ 호호</p>
 </div>
 </div>
-
 <br>
-
 <button id="suggestion">추천</button>
-
 <button id="declaration">
   <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
   </button>
-
   <br> <br>
   <hr>
   <br>

@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="../../resources/css/signup.css" rel="stylesheet" />
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
+    <link href="../resources/css/signup.css" rel="stylesheet" />
+    <link href="../resources/css/actibuddy.css" rel="stylesheet" />
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -17,7 +17,7 @@
   <body>
     <main class="wrapper">
       <div>
-        <img src="../../resources/image/actibuddylogo.png" class="mainlogo" />
+        <img src="../resources/image/actibuddylogo.png" class="mainlogo" />
       </div>
       <div class="signup">
         <form>

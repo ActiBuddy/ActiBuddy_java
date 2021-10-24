@@ -1,3 +1,4 @@
+
 package com.actibuddy.activity.controller;
 
 import java.io.IOException;
@@ -42,3 +43,4 @@ public class ActivityInformationServlet extends HttpServlet {
 	}
 
 }
+

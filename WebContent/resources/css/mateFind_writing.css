@@ -1,9 +1,10 @@
 .around {
     height:auto;
     weight:100%;
-    border: 3px solid springgreen;
+    /* border: 3px solid springgreen; */
 }
 
+/* 액티비티 이미지 */
 .activity {
     width: 100%;
     height: 350px;
@@ -18,6 +19,7 @@
     margin-left: 20%;
 }
 
+/* 제목 부분 */
 .title {
     width:60%;
     height: 50px;
@@ -44,7 +46,6 @@
     margin-top: 13px;
 
 }
-
 
 .location {
     -moz-appearance: none;
@@ -83,7 +84,7 @@ hr {
     width:210px;
     height:30px;
     margin-top: 15px;
-    margin-left: 60%;
+    margin-left: 20%;
     display: flex;
 }
 
@@ -100,8 +101,7 @@ hr {
     margin-top: 5px;
 }
 
-/* 여기서 바꾸기 */
-
+/* 선택박스 부분 */
 .choose{
     width:60%;
     height:230px;
@@ -159,8 +159,7 @@ hr {
     border: 1px solid brown;
 }
 
-/* 여기까지가 선택박스 */
-
+/* 텍스트 부분 */
 .text_box{
     height: 800px;
     width: 60%;
@@ -170,6 +169,16 @@ hr {
     border-radius: 20px;
 }
 
+.write_text {
+    border: 1px solid #e8e8e8 ;
+    margin: 7% 9%;
+    height: 80%;
+    width:80%;
+    font-size: 24px;
+    background-color:#e8e8e8 ;
+}
+
+/* 버튼 부분 */
 .btnborder{
     margin-left: 55%;
     margin-bottom: 10%;
@@ -181,11 +190,14 @@ hr {
     width:150px;
     height: 40px;
     margin-right: 6%;
-    background-color:yellowgreen;
-    border-color: yellowgreen;
+    background-color:rgba(0, 166, 81, 1);
+    border-color: rgba(0, 166, 81, 1);
+    border-radius: 10px;
 }
 
 .btnno{
     width:150px;
     height: 40px;
+    border-color: #e8e8e8;
+    border-radius: 10px;
 }

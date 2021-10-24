@@ -129,11 +129,6 @@ public class ActivityDTO implements java.io.Serializable{
 	public String toString() {
 		return "ActivityDTO [code=" + code + ", name=" + name + ", location=" + location + ", price=" + price
 				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", tip=" + tip + ", image=" + image
-				+ ", loactionCode=" + loactionCode + ", activitTypeCode=" + activitTypeCode + ", userId=" + userId
-				+ "]";
+				+ ", loactionCode=" + loactionCode + ", activitTypeCode=" + activitTypeCode + ", userId=" + userId;
 	}
-
-	
-	
-	
 }

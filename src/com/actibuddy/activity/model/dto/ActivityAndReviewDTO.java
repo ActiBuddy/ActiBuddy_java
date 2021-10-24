@@ -16,14 +16,16 @@ public class ActivityAndReviewDTO {
 	private String loactionCode;
 	private String activitTypeCode;
 	private String userId;
-	private List<ActiReview> reviewList;
+	private List<ActiReviewDTO> reviewList;
+	private double avgStar;
+	private int count;
 	
 	public ActivityAndReviewDTO() {
 	}
 
 	public ActivityAndReviewDTO(int code, String name, String location, int price, Date startDate, Date endDate,
 			String tip, String image, String loactionCode, String activitTypeCode, String userId,
-			List<ActiReview> reviewList) {
+			List<ActiReviewDTO> reviewList, double avgStar, int count) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -37,7 +39,11 @@ public class ActivityAndReviewDTO {
 		this.activitTypeCode = activitTypeCode;
 		this.userId = userId;
 		this.reviewList = reviewList;
+		this.avgStar = avgStar;
+		this.count = count;
 	}
+
+
 
 	public int getCode() {
 		return code;
@@ -127,12 +133,28 @@ public class ActivityAndReviewDTO {
 		this.userId = userId;
 	}
 
-	public List<ActiReview> getReviewList() {
+	public List<ActiReviewDTO> getReviewList() {
 		return reviewList;
 	}
 
-	public void setReviewList(List<ActiReview> reviewList) {
+	public void setReviewList(List<ActiReviewDTO> reviewList) {
 		this.reviewList = reviewList;
+	}
+
+	public double getAvgStar() {
+		return avgStar;
+	}
+
+	public void setAvgStar(double avgStar) {
+		this.avgStar = avgStar;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	@Override
@@ -140,12 +162,6 @@ public class ActivityAndReviewDTO {
 		return "ActivityAndReviewDTO [code=" + code + ", name=" + name + ", location=" + location + ", price=" + price
 				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", tip=" + tip + ", image=" + image
 				+ ", loactionCode=" + loactionCode + ", activitTypeCode=" + activitTypeCode + ", userId=" + userId
-				+ ", reviewList=" + reviewList + "]";
+				+ ", reviewList=" + reviewList + ", avgStar=" + avgStar + "]" +", count=" + count;
 	}
-	
-	
-	
-	
-	
-	
 }

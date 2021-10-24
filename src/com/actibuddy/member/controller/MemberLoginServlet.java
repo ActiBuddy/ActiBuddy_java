@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.member.model.service.MemberService;
 
-@WebServlet("/acti/member/login")
+@WebServlet("/member/login")
 public class MemberLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,6 +22,13 @@ public class MemberLoginServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
 		rd.forward(request, response);
 		
+		HttpServletRequest hrequest = (HttpServletRequest) request;
+		
+		String uri = hrequest.getRequestURI();
+		System.out.println("uri : " + uri);
+		
+		String intent = uri.substring(uri.lastIndexOf("/"));
+		System.out.println("intent : " + intent);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

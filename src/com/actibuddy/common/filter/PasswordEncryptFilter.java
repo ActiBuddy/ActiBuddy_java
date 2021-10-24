@@ -38,8 +38,11 @@ public class PasswordEncryptFilter implements Filter {
 			EncryptRequestWrapper wrapper = new EncryptRequestWrapper(hrequest);
 			
 			chain.doFilter(wrapper, response);
+			
 		} else {
+
 			chain.doFilter(request, response);
+			
 		}
 	}
 

@@ -11,16 +11,18 @@ import javax.servlet.http.HttpSession;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.member.model.service.MemberService;
 
-@WebServlet("/acti/member/loging")
+@WebServlet("/member/loging")
 public class MemberLogingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
+
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
 
 		String memberId = request.getParameter("memberId");
 		String memberPwd = request.getParameter("memberPwd");
@@ -31,25 +33,29 @@ public class MemberLogingServlet extends HttpServlet {
 		MemberDTO requestMember = new MemberDTO();
 		requestMember.setUserId(memberId);
 		requestMember.setPwd(memberPwd);
+		
 		System.out.println("requestMember.getPwd() : " + requestMember.getPwd());
+		
 		MemberService memberService = new MemberService();
 		
-		System.out.println("과연 값이 나올까요? : " +requestMember);
-		
+		System.out.println("과연 값이 나올까요? : " + requestMember);
 		
 		
 		MemberDTO loginMember = memberService.loginCheck(requestMember);
+		
 		System.out.println(loginMember);
 		
 		System.out.println("하 거의 끝나따");
 
-		
+		System.out.println("requestMember.getPwd() : " + requestMember.getPwd());
+		/*    ================================================================================  */
+
 		if(loginMember != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", loginMember);
 			
 			response.sendRedirect(request.getContextPath());
-			request.getRequestDispatcher("/WEB-INF/views/main/mainpage.jsp").forward(request, response);
+//			request.getRequestDispatcher("/WEB-INF/views/main/mainpage.jsp").forward(request, response);
 
 		} else {
 			request.setAttribute("message", "로그인 실패!");

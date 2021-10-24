@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>정보를 가져오지 못하였습니다!</h1>
+	<h1 align="center">${ requestScope.message }</h1>
 </body>
 </html>

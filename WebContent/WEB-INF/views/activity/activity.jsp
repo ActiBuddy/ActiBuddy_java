@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="../resources/css/actibuddy.css">
     <link rel="stylesheet" href="../resources/css/activity-style.css">
     <link rel="stylesheet" href="../resources/css/FAQ.css">
-    <script src="../resources/js/activity.js"></script>
+    <script src="../resources/js/activity.js?ver=1.1"></script>
   </head>
   <br>
   <body>
@@ -233,11 +233,13 @@
                 <span id="spanPrice">가격</span>
                 </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+	                <form action="">
                     <div class="price">
                       <input type="text" id="amount2" readonly style="border:0; color:#f6931f; font-weight:bold;">
                       <div id="slider-range" style="margin-top: 10px;"></div>
                       <button type="submit" class="btn btn-success" id="submit">확인</button>
                     </div>
+                 	</form>
                   </ul>
               </div>
             </div>

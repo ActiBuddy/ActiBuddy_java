@@ -31,7 +31,7 @@
 		<div class="all1">
 
 			<div class="mainimage">
-				<c:forEach var="location" items="${locationList}">
+				<c:forEach var="location" items="${ locationList }">
 				<div class="si">
 					<a href="activity/location?locationName=${ location.name }"><img src="${ location.image } "></a>
 					<div>

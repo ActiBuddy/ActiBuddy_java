@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
-    <link href="../../resources/css/activity_info.css" rel="stylesheet">
+    <link href="../resources/css/actibuddy.css" rel="stylesheet" />
+    <link href="../resources/css/activity_info.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -18,7 +18,7 @@
   <body>
     <nav class="navbar">
       <ul class="navbar_menu">
-          <a href="../main/main.html"><img src="../../resources/image/actibuddylogo.png" class="nav_logo"></a>
+          <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
           <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
           <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
           <li><input type="text" placeholder="Search"></li>
@@ -49,13 +49,13 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
+      <img src="../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
+      <img src="../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
+      <img src="../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -238,7 +238,7 @@
 <div class="activity-4">
   <!-- 위치 api-->
   <strong><h3 id="location"> 위치</h3></strong>
-  <img class="map" src="../../resources/image/activity_info/Activity_info_map.png" alt="...">
+  <img class="map" src="../resources/image/activity_info/Activity_info_map.png" alt="...">
 </div>
 
 <hr>
@@ -311,8 +311,8 @@
 
 <div class="review-detail">
 <p id="review-p"> 강사님도 친절하시고 하나도 불안함 없이 잘 체험했습니다! 짧다면 짧고 길다면 길었는데 저는 충분히 만족했습니다 ㅋㅋㅋㅋ 그리고 강사님 최고입니다!</p>
-<img src="../../resources/image/activity_info/activity_info_review(1).png" alt="..." class="review-img">
-<img src="../../resources/image/activity_info/activity_info_review(2).png" alt="..." class="review-img">
+<img src="../resources/image/activity_info/activity_info_review(1).png" alt="..." class="review-img">
+<img src="../resources/image/activity_info/activity_info_review(2).png" alt="..." class="review-img">
 </div>
 </div>
 
@@ -321,7 +321,7 @@
 <button id="suggestion">추천</button>
 
 <button id="declaration">
-  <img id="declaration-icon" src="../../resources/image/activity_info/activity_info_declaration.png" alt="">
+  <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
   </button>
 
 <br> <br>
@@ -358,7 +358,7 @@
 
 <div class="review-detail">
 <p id="review-p"> 가는날 비가 너무 많이 와서 너무 힘들었습니다 ㅜ</p>
-<img src="../../resources/image/activity_info/activity-info-review2(1).png" alt="..." class="review-img">
+<img src="../resources/image/activity_info/activity-info-review2(1).png" alt="..." class="review-img">
 </div>
 </div>
 
@@ -367,7 +367,7 @@
 <button id="suggestion">추천</button>
 
 <button id="declaration">
-  <img id="declaration-icon" src="../../resources/image/activity_info/activity_info_declaration.png" alt="">
+  <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
   </button>
 
 <br> <br>
@@ -412,7 +412,7 @@
 <button id="suggestion">추천</button>
 
 <button id="declaration">
-  <img id="declaration-icon" src="../../resources/image/activity_info/activity_info_declaration.png" alt="">
+  <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
   </button>
 
   <br> <br>
@@ -457,7 +457,7 @@
   <button id="suggestion">추천</button>
   
   <button id="declaration">
-    <img id="declaration-icon" src="../../resources/image/activity_info/activity_info_declaration.png" alt="">
+    <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
     </button>
 
 
@@ -492,7 +492,7 @@
  <strong><h3 id="recomend">추천 액티비티</h3></strong> <br>
 
  <div class="card1" style="width: 18rem;">
-  <img src="../../resources/image/activity_info/activity_info_recommend(1).png" class="card-img-top" alt="...">
+  <img src="../resources/image/activity_info/activity_info_recommend(1).png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">울릉도 학포해변 학포다이버리조트 스노쿨링 체험</h5>
     <p class="card-text">₩ 24,000</p>
@@ -501,7 +501,7 @@
 </div>
 
 <div class="card2" style="width: 18rem;">
-  <img src="../../resources/image/activity_info/activity_info_recommend(2).png" class="card-img-top" alt="...">
+  <img src="../resources/image/activity_info/activity_info_recommend(2).png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">울릉도 학포해변 학포다이버리조트 호핑투어 체험</h5>
     <p class="card-text">₩ 95,000</p>
@@ -510,7 +510,7 @@
 </div>
 
 <div class="card3" style="width: 18rem;">
-  <img src="../../resources/image/activity_info/activity_info_recommend(3).png" class="card-img-top" alt="...">
+  <img src="../resources/image/activity_info/activity_info_recommend(3).png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">울릉아일랜드 투어패스 (독도 전망 케이블카/예림원 등)</h5>
     <p class="card-text">₩ 7,900</p>

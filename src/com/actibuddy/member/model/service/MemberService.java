@@ -27,6 +27,7 @@ public class MemberService {
 		String encPwd = memberDAO.selectEncryptedPwd(session, requestMember);
 		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
 		/* 로그인 요청한 원문 비밀번호화 저장되어있는 암호화된 비밀번호가 일치하는지 확인한다. */
 //		if(passwordEncoder.matches(requestMember.getPwd(), encPwd)) {
 		

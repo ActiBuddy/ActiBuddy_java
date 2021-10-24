@@ -66,7 +66,7 @@
 
 			<span> <img src="resources/image/actibuddylogo.png"
 				class="nav_logo">
-			</span> <span id="acti_1"><a href="acti/activity/main">액티비티</a>
+			</span> <span id="acti_1"><a href="activity/main">액티비티</a>
 			</span> <span id="acti_2"><a href="../Mate/matemain.html">메이팅</a>
 			</span> <span> <input type="text" placeholder="Search">
 			</span> <span>
@@ -82,20 +82,25 @@
 				<div>메이트 후기</div>
 			</div>
 		</div>
+	
+	<!--  로그인 안되었을 때 -->
 	<c:if test="${ empty sessionScope.loginMember }">
 		<div class="navbar_link">
 			<span> <a href="../FAQ/FAQ_main.html">FAQ</a>
-			</span> <span> <a href="acti/member/regist">회원가입</a>
+			</span> <span> <a href="member/regist">회원가입</a>
 			</span> <span>
-				<button type="button" class="login_btn"
-					onclick="location.href='../login/login.html'"><a href="acti/member/login">로그인</a></button>
+				<button type="button" class="login_btn"><a href="member/login">로그인</a></button>
 			</span>
 		</div>
 	</c:if>
 	
+	<!--  로그인 되었을 때 -->
 		<c:if test="${ !empty sessionScope.loginMember }">
 			<div class="navbar_link">
+			<h3><c:out value="${ sessionScope.loginMember.userName }"/>님의 방문을 환영합니다.</h3>
 				<span> <a href="../FAQ/FAQ_main.html">FAQ</a></span>
+				<button type="button" class="login_btn"><a href="mypage/main">마이페이</a></button>
+				<button type="button" class="login_btn"><a href="member/logout">로그인</a></button>
 			</div>
 		</c:if>
 	</div>
@@ -120,7 +125,7 @@
 
 			<div class="mainimage">
 				<div class="si">
-					<a href="acti/activity/location?locationName=서울"><img src="resources/image/seoul.jpeg"></a>
+					<a href="activity/location?locationName=서울"><img src="resources/image/seoul.jpeg"></a>
 					<div>
 						<h1>서울</h1>
 					</div>

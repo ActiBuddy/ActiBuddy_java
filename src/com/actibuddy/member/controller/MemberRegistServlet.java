@@ -15,7 +15,7 @@ import com.actibuddy.member.model.service.MemberService;
 /**
  * Servlet implementation class MemberRegistServlet
  */
-@WebServlet("/acti/member/regist")
+@WebServlet("/member/regist")
 public class MemberRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,26 +29,30 @@ public class MemberRegistServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
 
+		
+		
 		String userId = request.getParameter("userId");
-		String pwd = request.getParameter("userPwd");
+		String pwd = request.getParameter("pwd");
 		String userName = request.getParameter("userName");
 		/*사용자가 '-'기호를 이용하여 전화번호를 입력하는 경우 통일시키기 위해서 replace 이용함 */
 		String memPhone = request.getParameter("memPhone").replace("-", "");
 		String email = request.getParameter("email");
 		String birth =  request.getParameter("birth");
 	
+		System.out.println(pwd);
+		
 		MemberDTO requestMember = new MemberDTO();
 		requestMember.setUserId(userId);
-		requestMember.setPwd("123");
+		requestMember.setPwd(pwd);
 		requestMember.setUserName(userName);
 		requestMember.setMemPhone(memPhone);
 		requestMember.setEmail(email);
 		requestMember.setBirth(birth);
 		requestMember.setGender("M");
-		requestMember.setQuitYn("Y");
-		requestMember.setMemType("M");
+		requestMember.setQuitYn("N");
+		requestMember.setMemType("U");
 		
 		
 		System.out.println("memberController requestMember : " + requestMember.getPwd());

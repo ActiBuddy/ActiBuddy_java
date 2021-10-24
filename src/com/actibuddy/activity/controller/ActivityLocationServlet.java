@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.actibuddy.activity.model.dto.LocationDTO;
 import com.actibuddy.activity.service.ActivityService;
 
-@WebServlet("/acti/activity/location")
+@WebServlet("/activity/location")
 public class ActivityLocationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

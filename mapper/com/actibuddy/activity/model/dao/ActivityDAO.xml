@@ -10,6 +10,8 @@
  	   <result property="info" column="LOCATION_INFO"/>
  	   <result property="image" column="LOCATION_IMG"/>
  	   <result property="tip" column="GUIDE_TIP"/>
+ 	   <result property="visitMonth" column="VISIT_MONTH"/>
+ 	   <result property="visitName" column="VISIT_NAME"/>
  	   <collection property="activityList" resultMap="activityResultMap"/>
  	</resultMap>
  	
@@ -67,6 +69,8 @@
     	   	 , A.LOCATION_INFO
      		 , A.LOCATION_IMG
      		 , A.GUIDE_TIP
+     		 , A.VISIT_MONTH
+     		 , A.VISIT_NAME
      		 , B.ACTI_NUM
      		 , B.ACTI_NAME
      		 , B.LOCATION

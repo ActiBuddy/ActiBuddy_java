@@ -3,8 +3,8 @@ package com.actibuddy.activity.model.dto;
 import java.sql.Date;
 import java.util.List;
 
-public class ActivityDTO implements java.io.Serializable{
-	
+public class ActivityAndReviewDTO {
+
 	private int code;
 	private String name;
 	private String location;
@@ -16,13 +16,14 @@ public class ActivityDTO implements java.io.Serializable{
 	private String loactionCode;
 	private String activitTypeCode;
 	private String userId;
+	private List<ActiReview> reviewList;
 	
-	public ActivityDTO() {
-
+	public ActivityAndReviewDTO() {
 	}
 
-	public ActivityDTO(int code, String name, String location, int price, Date startDate, Date endDate, String tip,
-			String image, String loactionCode, String activitTypeCode, String userId) {
+	public ActivityAndReviewDTO(int code, String name, String location, int price, Date startDate, Date endDate,
+			String tip, String image, String loactionCode, String activitTypeCode, String userId,
+			List<ActiReview> reviewList) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -35,6 +36,7 @@ public class ActivityDTO implements java.io.Serializable{
 		this.loactionCode = loactionCode;
 		this.activitTypeCode = activitTypeCode;
 		this.userId = userId;
+		this.reviewList = reviewList;
 	}
 
 	public int getCode() {
@@ -125,14 +127,24 @@ public class ActivityDTO implements java.io.Serializable{
 		this.userId = userId;
 	}
 
-	@Override
-	public String toString() {
-		return "ActivityDTO [code=" + code + ", name=" + name + ", location=" + location + ", price=" + price
-				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", tip=" + tip + ", image=" + image
-				+ ", loactionCode=" + loactionCode + ", activitTypeCode=" + activitTypeCode + ", userId=" + userId
-				+ "]";
+	public List<ActiReview> getReviewList() {
+		return reviewList;
 	}
 
+	public void setReviewList(List<ActiReview> reviewList) {
+		this.reviewList = reviewList;
+	}
+
+	@Override
+	public String toString() {
+		return "ActivityAndReviewDTO [code=" + code + ", name=" + name + ", location=" + location + ", price=" + price
+				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", tip=" + tip + ", image=" + image
+				+ ", loactionCode=" + loactionCode + ", activitTypeCode=" + activitTypeCode + ", userId=" + userId
+				+ ", reviewList=" + reviewList + "]";
+	}
+	
+	
+	
 	
 	
 	

@@ -9,6 +9,7 @@
 	<title>ACTIBUDDY</title>
 	 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link href="resources/css/actibuddy.css" rel="stylesheet"/>
+	<link href="resources/css/menubar.css" rel="stylesheet"/>
 </head>
 <body>
 

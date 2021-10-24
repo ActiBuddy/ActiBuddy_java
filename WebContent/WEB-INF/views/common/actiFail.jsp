@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- 	<jsp:forward page="/WEB-INF/views/main/mainpage.jsp"/>
+	<h1>정보를 가져오지 못하였습니다!</h1>
 </body>
 </html>

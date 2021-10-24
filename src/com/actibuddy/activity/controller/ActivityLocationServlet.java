@@ -1,8 +1,9 @@
 package com.actibuddy.activity.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,14 +31,29 @@ public class ActivityLocationServlet extends HttpServlet {
 		LocationDTO location = activityService.selectLocationInfo(locationName);
 		
 		System.out.println(location);
+		String[] month = location.getVisitMonth().split(",");
+		String[] name = location.getVisitName().split(",");
+		
+		for(String mo : month) {
+			System.out.println(mo);
+		}
+		
+		for(String na : name) {
+			System.out.println(na);
+		}
+		
+		Map<String, String[]> map = new HashMap<>();
+		map.put("month", month);
+		map.put("name", name);
 		
 		String path = "";
 		
 		if(location != null) {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("location", location);
+			request.setAttribute("map", map);
 		} else {
-			
+			path = "/WEB-INF/views/common/actiFail.jsp";
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);

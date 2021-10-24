@@ -1,558 +1,327 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../resources/css/actibuddy.css" rel="stylesheet" />
-    <link href="../resources/css/activity_info.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-    <title>main</title>
-  </head>
-  <body>
-    <nav class="navbar">
-      <ul class="navbar_menu">
-          <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
-          <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
-          <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
-          <li><input type="text" placeholder="Search"></li>
-          <li><button type="button" onclick="location.href='../activity/searchActivity.html'">Submit</button></li>
-      </ul>
-
-      <ul class="navbar_link">
-          <li><a href="../FAQ/FAQ_main.html">FAQ</a></li>
-          <li><a href="../singup/signup.html">회원가입</a></li>
-          <li><button type="button" class="login_btn" onclick="location.href='../login/login.html'">로그인</button></li>
-      </ul>
-  </nav>
-
-
-
-<!---------------------------------메인------------------------------------------------->
-
-<main>
-
-<div class="activity-1">
-  
-<!-- 이미지 슬라이드 -->
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-<!-- 브래드 크럼 -->
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="../activity/activity.html">제주</a></li>
-    <li class="breadcrumb-item"><a href="#">수상 액티비티</a></li>
-    <li class="breadcrumb-item active"><a href="#">다이빙&스노쿨링</a></li>
-  </ol>
-</nav>
-
-<!-- 액티비티 이름 -->
-<h1 id="activityname"> 제주도 감귤마을 스쿠버 다이빙 </h1>
-
-<!-- 별점과 후기 건수-->
-<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-</svg>
-<h2 class="starscore"> 4.9 </h2>
-<a href="..." target="_blank"> 
-  <h3 id="reviewnum"> (이용후기 60건)</h3>
-</a>
-</div>
-
-<br>
-<hr>
-<br><br>
-
-<div class=activity-2>
-<!-- 조건 -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-  </svg>
-  <h3 id="condition1"> 48시간 전 취소 가능</h3>
- 
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
-    <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-  </svg> 
-  <h3 id="condition2">날짜 지정 티켓</h3>
-
-  <br> <br> <br>
-
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-    <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-  </svg>
-  <h3 id="condition3">그룹당 2~3명 </h3>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-      <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-    </svg>
-  <h3 id="condition4">일정 약 2시간 소요 </h3>
-
-</div>
-
-<br> <br> 
-<hr>
-<br>
-
-<div class="activity-3">
-<!-- 설명 -->
-
-<ul class="explan">
-  <li>울릉도의 에메랄드빛 학포해변에서 자유롭게 체험 다이빙을 즐겨보세요.</li>
-  <li>1박 2일, 불타는 청춘, 정글의 법칙 등 인기 프로그램도 촬영을 다녀간 곳에서 멋진 울릉도의 자연을 느껴보세요.</li>
-  <li>숙련된 강사들 및 크루들과 함께 안전한 다이빙 체험이 가능합니다.</li>
-  <li>체험 다이빙에 필요한 필수 장비가 모두 포함되어 있으니 편안하게 방문해 다이빙을 즐겨보세요!</li>
-  <li>체험 다이빙 참여시 사진 및 동영상 촬영까지 도와주시니 멋진 인생샷을 남겨보세요</li>
-  <li>학포해변에서 즐기는 스노쿨링, 호핑투어, 보트투어 등 다양한 액티비티도 함께 즐겨보세요!</li>
-</ul>
-</left>
-
-</div>
-
-<hr>
-
-<div class="option">
-<!-- 옵션 선택-->
-<strong><h3 id="option"> 날짜 및 패키지 옵션 선택</h3></strong>
-
-<div class="option1">
-  <br>
-<form>
-  <h4 id="date"> 액티비티 참여 일자 선택</h4> <br>
-  <input class="calender" type="date">
-
-  <h4 id="select">옵션 선택</h4><br>
-  <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-    <label class="btn btn-radio-option1" for="btnradio1">체험 다이빙</label>
-
-    <br>
-  
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-    <label class="btn btn-radio-option2" for="btnradio2">써티파이드 다이빙</label>
-  </div>
-
-  <script>
-    $('input:radio').change(changeOption);
-
-    function changeOption() {
-      if($('#btnradio1').prop("checked")) {
-        $('.btn-radio-option1').css({
-          'background-color' : "blue",
-        });
-      } else {
-        $('.btn-radio-option1').css({
-          'background-color' : "green",
-        });
-      }
-
-      if($('#btnradio2').prop("checked")) {
-        $('.btn-radio-option2').css({
-          'background-color' : "blue",
-        });
-      } else {
-        $('.btn-radio-option2').css({
-          'background-color' : "green",
-        });
-      }
-
-
-    }
-  </script>
-
-  <br><br><br><br>
-
-  <h4 id="person"> 인원
-    <input class="person-bar" type="number" name="" id="" max="10" min="0" value="1" step="1">
-  </h4>
-</form>
-  
-  <br> <br>
-
-  <h4 id="price"> ₩ 25000
-  <script>
-    $('.person-bar').change(pricePrint);
-
-    function pricePrint() {
-
-      let value = $('.person-bar').val();
-
-      $('#price').html('₩ ' + value * 25000);
-    }
-  </script>
-  </h4>
-
-
-
-  <h5 id="confirm"> 계속 진행하려면 옵션 선택을 완료해주세요</h5>
-
-  <br> <br>
-
-  <div class="btn-group" type = "submit" role="group" aria-label="...">
-    <label  class="btn btn-pay-select1">장바구니</label> 
-   <a id="move-pay" href="../pay/pay.html"> 
-    <label  class="btn btn-pay-select2">바로 예약</label> 
-  </a>
-  </div>
-</div>
-
-</div>
-
-<hr>
-
-<div class="activity-4">
-  <!-- 위치 api-->
-  <strong><h3 id="location"> 위치</h3></strong>
-  <img class="map" src="../resources/image/activity_info/Activity_info_map.png" alt="...">
-</div>
-
-<hr>
-
-<div class="activity-5">
-  <!-- 이용 후기 -->
-  <strong><h3 id="reveiw">이용 후기</h3></strong> <br>
-  <h2 id="starscore2"> 4.9 </h2>
-  <div class="stars">
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-</div>
-
-  <h3 id="review-all">(이용후기 60건)</h3>
-
-  <br> <br> <br>
-
-  <h5 id="sort"> 정렬 : 
-  <select id="sort-select">
-    <option value="추천순">추천 순</option>
-    <option value="최신순">최신 순</option>
-    <option value="별점높은순">별점 높은 순</option>
-    <option value="별점낮은순">별점 낮은 순</option>
-</select>
-</h5>
-
-<br><br>
-
-<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-</svg>
-<h3 id="nickname"> 혜씨초코볼 </h3>
-
-<div class="stars-user">
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-
-
-  <h5 id="review-auto"> 매우 만족</h5> <br><br>
-
-  <h6 id="goods-detail"> 후기 상품 상세 : 체험 다이빙 </h6>
-
-  <h5 id="review-date"> 2021년 10월 12일</h5> <br><br>
-
-<div class="review-detail">
-<p id="review-p"> 강사님도 친절하시고 하나도 불안함 없이 잘 체험했습니다! 짧다면 짧고 길다면 길었는데 저는 충분히 만족했습니다 ㅋㅋㅋㅋ 그리고 강사님 최고입니다!</p>
-<img src="../resources/image/activity_info/activity_info_review(1).png" alt="..." class="review-img">
-<img src="../resources/image/activity_info/activity_info_review(2).png" alt="..." class="review-img">
-</div>
-</div>
-
-<br>
-
-<button id="suggestion">추천</button>
-
-<button id="declaration">
-  <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
-  </button>
-
-<br> <br>
-<hr>
-<br>
-
-<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-</svg> 
-<h3 id="nickname"> 권순권순표 </h3>
-
-<div class="stars-user">
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-
-  <h5 id="review-auto"> 매우 불만족</h5> <br><br>
-
-  <h6 id="goods-detail"> 후기 상품 상세 : 써티파이드 다이빙 </h6>
-
-  <h5 id="review-date"> 2021년 10월 1일</h5> <br><br>
-
-<div class="review-detail">
-<p id="review-p"> 가는날 비가 너무 많이 와서 너무 힘들었습니다 ㅜ</p>
-<img src="../resources/image/activity_info/activity-info-review2(1).png" alt="..." class="review-img">
-</div>
-</div>
-
-<br>
-
-<button id="suggestion">추천</button>
-
-<button id="declaration">
-  <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
-  </button>
-
-<br> <br>
-<hr>
-<br>
-
-<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-</svg> 
-<h3 id="nickname"> 김주김주환 </h3>
-
-<div class="stars-user">
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-
-  <h5 id="review-auto"> 만족 </h5> <br><br>
-
-  <h6 id="goods-detail"> 후기 상품 상세 : 써티파이드 다이빙 </h6>
-
-  <h5 id="review-date"> 2021년 9월 27일</h5> <br><br>
-
-<div class="review-detail">
-<p id="review-p"> 맑은 바다보고 힐링하고 왔어요~ 호호</p>
-</div>
-</div>
-
-<br>
-
-<button id="suggestion">추천</button>
-
-<button id="declaration">
-  <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
-  </button>
-
-  <br> <br>
-  <hr>
-  <br>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-  </svg> 
-  <h3 id="nickname"> 김준김준희 </h3>
-  
-  <div class="stars-user">
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gray;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gray;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gold;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gold;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gold;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-  
-    <h5 id="review-auto"> 보통 </h5> <br><br>
-  
-    <h6 id="goods-detail"> 후기 상품 상세 : 체험 다이빙 </h6>
-  
-    <h5 id="review-date"> 2021년 9월 25일</h5> <br><br>
-  
-  <div class="review-detail">
-  <p id="review-p"> 저는 그럭저럭이였습니다 ^^ </p>
-  </div>
-  </div>
-  
-  <br>
-  
-  <button id="suggestion">추천</button>
-  
-  <button id="declaration">
-    <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
-    </button>
-
-
-<br> <br>
-<!-- 페이지 네이션 -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-
-<hr>
-<br>
-
-<div class="activity-6">
- <!-- 추천 액티비티 -->
- <strong><h3 id="recomend">추천 액티비티</h3></strong> <br>
-
- <div class="card1" style="width: 18rem;">
-  <img src="../resources/image/activity_info/activity_info_recommend(1).png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">울릉도 학포해변 학포다이버리조트 스노쿨링 체험</h5>
-    <p class="card-text">₩ 24,000</p>
-    <a href="#" class="btn btn-primary">보러가기</a>
-  </div>
-</div>
-
-<div class="card2" style="width: 18rem;">
-  <img src="../resources/image/activity_info/activity_info_recommend(2).png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">울릉도 학포해변 학포다이버리조트 호핑투어 체험</h5>
-    <p class="card-text">₩ 95,000</p>
-    <a href="#" class="btn btn-primary">보러가기</a>
-  </div>
-</div>
-
-<div class="card3" style="width: 18rem;">
-  <img src="../resources/image/activity_info/activity_info_recommend(3).png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">울릉아일랜드 투어패스 (독도 전망 케이블카/예림원 등)</h5>
-    <p class="card-text">₩ 7,900</p>
-    <a href="#" class="btn btn-primary">보러가기</a>
-  </div>
-</div>
-</div>
-
-
-</div>
-
-</main>
-
-
-  <!---------------------------------하단바-------------------------------------->
-
-  <footer>
-    <div class="footer">
-        <span></span>
-
-        <ul>2021 액티버디</ul>
-        <ul> 회사소개
-            <li><a href="../introduce/introduce.html">액티버디소개</a></li>
-            <li><a href="../mypage/mypage.html">마이페이지</a></li>
-
-            </ul>
-
-        <ul> 파트너십
-            <li><a href="../partnership/partnership.html">파트너십</a></li>
-        </ul>
-
-        <ul> 이용약관
-            <li><a href="../FAQ/Privacy_Policy.html">약관</a></li>
-        </ul>
-
-        <ul>결제수단
-            <li><a href="#">카카오페이</a></li>
-        </ul>
-        <span></span>
-        <span></span>
-    </div>
-</footer>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>액티비티 조회 메인 화면</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#7952b3">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+    <!-- 만든 스크립트 및 CSS-->
+    <link rel="stylesheet" href="../resources/css/actibuddy.css">
+    <link rel="stylesheet" href="../resources/css/activity-style.css">
+    <link rel="stylesheet" href="../resources/css/FAQ.css">
+    <script src="../resources/js/activity.js"></script>
+  </head>
+  <br>
+  <body>
+    <!-- 네비게이션 바-->
+  <jsp:include page="../common/menubar.jsp"/>
+    <!-- 메인 이미지 및 설명 -->
+    <div class="container mb-4">
+        <div class="image">
+          <div class="faq">
+            <img src="${location.image}">
+          </div>
+            <div>
+            <h1 id="title">${location.name}</h1>
+            <p id="content">
+                ${location.info}
+            </p>
+            </div>
+        </div>
+    </div>    
+        
+    <!-- 여행 가이드 및 팁-->
+    <div class="container mt-5 mb-5">
+        <div class="row">
+          <div class="col">
+            <h1 id="tipTitle" style="margin-bottom: 20px;">${location.name} 여행 가이드 및 팁</h1>
+            <div class=tip>
+            <p id="tipBody">
+            ${location.tip}
+            </p>
+            </div>
+        </div>
+      <div class="col" id="visit">
+        <h1 style="margin-bottom: 20px;">방문하기 좋은 시기</h1>
+        <ul>
+        <c:forEach var="map" items="${map}">
+          <li>
+            <header id="visitHeader">${map[month]}</header>
+            <p id="visitBody">${map[name]}</p>
+          </li>
+          </c:forEach>
+        </ul>
+      </div>
+      </div>
+    </div>
+          
+    <!-- 인기 액티비티 -->
+    <div class="container mt-5 mb-md-5">
+        <h1>${location.name} 인기 액티비티</h1>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                      <h3 class="card-text">등산</h3>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                      <h3 class="card-text">서핑</h3>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top">
+                      <div class="card-body">
+                      <h3 class="card-text">페러글라이딩</h3>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                      <h3 class="card-text">스키</h3>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                      <h3 class="card-text">짚라인</h3>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+      <!-- 액티비티 조회 -->
+    <div class="container mt-5">
+      <h1>${location.name} 액티비티</h1>
+      <hr>
+    </div>   
+  <div class="bigDiv">
+    <div class="side-2" style="height: 530px;">
+      <h3 style="margin-left: 10%;">카테고리</h3>
+      <br>
+      <div class="menu">
+        <div class="btn-group mb-5">
+          <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            아웃도어 & 스포츠
+          </span>
+          <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
+            <li class="mb-4"><input type="checkbox" name="sport" value="comping"><span>캠핑 & 글램핑</span></li>
+            <li class="mb-4"><input type="checkbox" name="sport" value="luge"><span>루지 & 짚라인 & 어드벤처</span></li>
+            <li class="mb-4"><input type="checkbox" name="sport" value="ski"><span>스키 & 스노보드<span></li>
+            <li class="mb-4"><input type="checkbox" name="selectAll" value="selectAll"><span>모두선택</span></li>
+          </ul>
+        </div>
+      </div> 
+      <div class="menu">
+        <div class="btn-group mb-5">
+          <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            티켓 & 입장권
+          </span>
+          <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
+            <li class="mb-4"><input type="checkbox" name="ticket" value="park"><span>공원 & 자연</span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="zoo"><span>아쿠아리움 & 동물원</span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="water park"><span>테마파크 & 워터파크<span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="museum"><span>박물관 & 미술관<span></li>
+            <li class="mb-4"><input type="checkbox" name="selectAll2" value="selectAll2"><span>모두선택</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu">
+        <div class="btn-group mb-5">
+          <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            스파 & 테라피
+          </span>
+          <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
+            <li class="mb-4"><input type="checkbox" name="spa" value="spa"><span>온천</span></li>
+            <li class="mb-4"><input type="checkbox" name="spa" value="wellbeing"><span>웰빙& 웰니스</span></li>
+            <li class="mb-4"><input type="checkbox" name="selectAll3" value="selectAll3"><span>모두선택</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu">
+        <div class="btn-group mb-5">
+          <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            투어
+          </span>
+          <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
+            <li class="mb-4"><input type="checkbox" name="tour" value="working"><span>워킹 & 자전거투어</span></li>
+            <li class="mb-4"><input type="checkbox" name="tour" value="bus"><span>버스 & 스쿠터 & ATV투어</span></li>
+            <li class="mb-4"><input type="checkbox" name="selectAll4" value="selectAll4"><span>모두선택</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu">
+        <div class="btn-group mb-5">
+          <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            수상 액티비티
+          </span>
+          <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
+            <li class="mb-4"><input type="checkbox" name="water" value="surfing"><span>서핑</span></li>
+            <li class="mb-4"><input type="checkbox" name="water" value="kayak"><span>패들보드 & 카약 & 래프팅</span></li>
+            <li class="mb-4"><input type="checkbox" name="selectAll5" value="selectAll5"><span>모두선택</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="div2">
+        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;">${location.activityList.size()}건의 검색 결과</h2>
+        <div class="container" style="float: none; margin:100 auto;">
+          <div class="row mb-5" style="float: none; margin:0 auto;">
+            <div class="col" style="flex: 0;">
+              <div class="date">
+                <form action="" ><p style="font-size: 18px">예약날짜 : <input type="text" id="datepicker" readonly="readonly"></p></form>
+              </div>
+            </div>
+            <div class="col" style="flex: 1.0; padding: 0px;" >
+              <div class="dropdown" style="margin-left: 50px;">
+                <button class="btn btn-secondary dropdown-toggle"  id="priceBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                <span id="spanPrice">가격</span>
+                </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <div class="price">
+                      <input type="text" id="amount2" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                      <div id="slider-range" style="margin-top: 10px;"></div>
+                      <button type="submit" class="btn btn-success" id="submit">확인</button>
+                    </div>
+                  </ul>
+              </div>
+            </div>
+            <div class="col">
+              <span id="sort">정렬 : </span>
+              <div class="dropdown">
+                <select id="sortBtn" aria-labelledby="dropdownMenuButton1">
+                    <li><option class="dropdown-item">인기순</option></li>
+                    <li><option class="dropdown-item">별점순</option></li>
+                    <li><option class="dropdown-item">낮은가격순</option></li>
+                    <li><option class="dropdown-item">최신순</option></li>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container" style="float: none; margin:100 auto;">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
+            <c:forEach items="${location.activityList}" var="acti">
+            <div class="col">
+              <div class="card shadow-sm">
+                <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+                <div class="card-body">
+                  <p class="card-text">
+                      ${acti.name}
+                  </p></a>
+                  <p>별점 : 5점</p>
+                  <p>best 액티비티</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">₩${acti.price}부터</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </c:forEach>
+          </div> 
+        </div> 
+      </div>
+    </div>  
+    
+  <!-- 페이지 이동창 -->    
+  <nav>
+    <div class="container row" style="float: right; margin:100 auto;">
+    <ul class="pagination" style="float: right;">
+      <li>
+        <a href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li>
+        <a href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  </nav>
+  
+    <!-- 메이트 마감 임박 -->
+    <div class="mateDiv">
+      <h1 style="margin-right: 75%; margin-top: 10%">메이트 마감 임박</h1>
+      <div class="row" id="box">
+        <div class="col">
+          <a href="../Mate/matemain.html"><img id="mateImg" src="../resources/image/mate.png"></a>
+        </div>
+        <div class="col">
+          <div class="mateBox">
+            <div class="mateTop">
+              <img src="../resources/image/heart.png">
+              <h5 id="mateTitle">감귤마을 스쿠버 다이빙</h5>
+            </div>
+            <div class="matebody">
+            <p id="left">작성자 : </p><p id="left">감귤</p> 
+            <p id="date">~10/8</p>  
+            <button type="button" class="btn btn-success" id="btn">참여하기</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mateBox">
+            <div class="mateTop">
+              <img src="../resources/image/heart.png">
+              <h5 id="mateTitle">감귤마을 스쿠버 다이빙</h5>
+            </div>
+            <div class="matebody">
+            <p id="left">작성자 : </p><span id="left">감귤</span> 
+            <p id="date">~10/8</p>
+            <button type="button" class="btn btn-success" id="btn">참여하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ <!-- 하단 footer-->
+   <jsp:include page="../common/footer.jsp"/>
   </body>
 </html>

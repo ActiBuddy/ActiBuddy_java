@@ -2,11 +2,11 @@ package com.actibuddy.activity.model.dto;
 
 import java.sql.Date;
 
-public class ActiReview implements java.io.Serializable{
+public class ActiReviewDTO implements java.io.Serializable{
 	
-	private int reviewNum;
+	private int num;
 	private Date writeDate;
-	private int actiNum;
+	private int acitNum;
 	private String userId;
 	private String title;
 	private String content;
@@ -15,15 +15,17 @@ public class ActiReview implements java.io.Serializable{
 	private int recommend;
 	private char recYn;
 	
-	public ActiReview() {
+	
+	public ActiReviewDTO() {
+
 	}
 
-	public ActiReview(int reviewNum, Date writeDate, int actiNum, String userId, String title, String content,
+	public ActiReviewDTO(int num, Date writeDate, int acitNum, String userId, String title, String content,
 			double reviewStar, String image, int recommend, char recYn) {
 		super();
-		this.reviewNum = reviewNum;
+		this.num = num;
 		this.writeDate = writeDate;
-		this.actiNum = actiNum;
+		this.acitNum = acitNum;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
@@ -33,12 +35,12 @@ public class ActiReview implements java.io.Serializable{
 		this.recYn = recYn;
 	}
 
-	public int getReviewNum() {
-		return reviewNum;
+	public int getNum() {
+		return num;
 	}
 
-	public void setReviewNum(int reviewNum) {
-		this.reviewNum = reviewNum;
+	public void setNum(int num) {
+		this.num = num;
 	}
 
 	public Date getWriteDate() {
@@ -49,12 +51,12 @@ public class ActiReview implements java.io.Serializable{
 		this.writeDate = writeDate;
 	}
 
-	public int getActiNum() {
-		return actiNum;
+	public int getAcitNum() {
+		return acitNum;
 	}
 
-	public void setActiNum(int actiNum) {
-		this.actiNum = actiNum;
+	public void setAcitNum(int acitNum) {
+		this.acitNum = acitNum;
 	}
 
 	public String getUserId() {
@@ -115,11 +117,8 @@ public class ActiReview implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "ActiReview [reviewNum=" + reviewNum + ", writeDate=" + writeDate + ", actiNum=" + actiNum + ", userId="
-				+ userId + ", title=" + title + ", content=" + content + ", reviewStar=" + reviewStar + ", image="
-				+ image + ", recommend=" + recommend + ", recYn=" + recYn + "]";
+		return "ActiReview [num=" + num + ", writeDate=" + writeDate + ", acitNum=" + acitNum + ", userId=" + userId
+				+ ", title=" + title + ", content=" + content + ", reviewStar=" + reviewStar + ", image=" + image
+				+ ", recommend=" + recommend + ", recYn=" + recYn + "]";
 	}
-
-	
-	
 }

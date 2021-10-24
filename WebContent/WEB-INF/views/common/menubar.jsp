@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<title>ACTIBUDDY</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link href="/resources/css/actibuddy.css" rel="stylesheet"/>
+    <link href="../resources/css/actibuddy.css" rel="stylesheet" />
 	<script>
 	      $(function(){
 	         $("#acti_1").on({
@@ -99,7 +99,7 @@
 			<div class="navbar_link">
 			<h3><c:out value="${ sessionScope.loginMember.userName }"/>님의 방문을 환영합니다.</h3>
 				<span> <a href="../FAQ/FAQ_main.html">FAQ</a></span>
-				<button type="button" class="login_btn"><a href="mypage/main">마이페이</a></button>
+				<button type="button" class="login_btn"><a href="mypage/main">마이페이지</a></button>
 				<button type="button" class="login_btn"><a href="member/logout">로그인</a></button>
 			</div>
 		</c:if>

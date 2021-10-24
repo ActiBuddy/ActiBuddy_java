@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:forward page="/WEB-INF/views/main/menubar.jsp"/>
+<<<<<<< HEAD
+<%-- <jsp:forward page="/WEB-INF/views/main/mainpage.jsp"/> --%>
+<jsp:forward page="main/page"/>
+=======
+ 	<jsp:forward page="/WEB-INF/views/main/mainpage.jsp"/>
+>>>>>>> refs/remotes/origin/jihwan
 </body>
 </html>

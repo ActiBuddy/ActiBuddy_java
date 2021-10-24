@@ -1,14 +1,29 @@
 package com.actibuddy.activity.model.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
+import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 
 public class ActivityDAO {
 
-	public LocationDTO selectLocationInfo(SqlSession session, String locationName) {
+	public LocationAndActivityDTO selectLocationInfo(SqlSession session, String locationName) {
 		
 		return session.selectOne("ActivityDAO.selectLocationInfo",locationName);
+	}
+
+	public ActivityAndReviewDTO selectActivityInfo(SqlSession session, String actiName) {
+		
+		return session.selectOne("ActivityDAO.selectActivityInfo", actiName);
+	}
+
+	public List<LocationDTO> selectLocation(SqlSession session) {
+
+		
+		return session.selectList("ActivityDAO.selectLocation");
 	}
 
 }

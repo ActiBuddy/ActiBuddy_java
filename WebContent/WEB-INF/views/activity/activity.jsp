@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -83,14 +84,12 @@
       <div class="col" id="visit">
         <h1 style="margin-bottom: 20px;">방문하기 좋은 시기</h1>
         <ul>
+        <c:forEach var="map" items="${map}">
           <li>
-            <header id="visitHeader">1월</header>
-            <p id="visitBody">화천 산천어 축제</p>
+            <header id="visitHeader">${map[month]}</header>
+            <p id="visitBody">${map[name]}</p>
           </li>
-          <li>
-            <header id="visitHeader">12월</header>
-            <p id="visitBody">평창송어축제</p>
-          </li>
+          </c:forEach>
         </ul>
       </div>
       </div>
@@ -148,7 +147,7 @@
 
       <!-- 액티비티 조회 -->
     <div class="container mt-5">
-      <h1>강원도 액티비티</h1>
+      <h1>${location.name} 액티비티</h1>
       <hr>
     </div>   
   <div class="bigDiv">
@@ -260,13 +259,13 @@
             <c:forEach items="${location.activityList}" var="acti">
             <div class="col">
               <div class="card shadow-sm">
-                <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+                <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
                 <div class="card-body">
                   <p class="card-text">
                       ${acti.name}
-                  </p>
-                  <p>별점 : 4점</p>
-                  <p>best 액티비티</p>
+                  </p></a>
+                  <p>별점 : ${acti.name}</p>
+                  <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">₩${acti.price}부터</small>
                   </div>
@@ -337,7 +336,6 @@
         </div>
       </div>
     </div>
-  </div>
  <!-- 하단 footer-->
  <footer>
   <div class="footer">
@@ -357,13 +355,13 @@
           <li><a href="../FAQ/Privacy_Policy.html">약관</a></li>
       </ul>
 
-      <ul>결제수단
+      <ul> 결제수단
           <li><a href="#">카카오페이</a></li>
       </ul>
       <span></span>
       <span></span>
   </div>
   
-</foote../r>
+</footer>
   </body>
 </html>

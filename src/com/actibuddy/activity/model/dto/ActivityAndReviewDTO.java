@@ -3,8 +3,8 @@ package com.actibuddy.activity.model.dto;
 import java.sql.Date;
 import java.util.List;
 
-public class ActivityDTO implements java.io.Serializable{
-	
+public class ActivityAndReviewDTO {
+
 	private int code;
 	private String name;
 	private String location;
@@ -16,13 +16,16 @@ public class ActivityDTO implements java.io.Serializable{
 	private String loactionCode;
 	private String activitTypeCode;
 	private String userId;
+	private List<ActiReviewDTO> reviewList;
+	private double avgStar;
+	private int count;
 	
-	public ActivityDTO() {
-
+	public ActivityAndReviewDTO() {
 	}
 
-	public ActivityDTO(int code, String name, String location, int price, Date startDate, Date endDate, String tip,
-			String image, String loactionCode, String activitTypeCode, String userId) {
+	public ActivityAndReviewDTO(int code, String name, String location, int price, Date startDate, Date endDate,
+			String tip, String image, String loactionCode, String activitTypeCode, String userId,
+			List<ActiReviewDTO> reviewList, double avgStar, int count) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -35,7 +38,12 @@ public class ActivityDTO implements java.io.Serializable{
 		this.loactionCode = loactionCode;
 		this.activitTypeCode = activitTypeCode;
 		this.userId = userId;
+		this.reviewList = reviewList;
+		this.avgStar = avgStar;
+		this.count = count;
 	}
+
+
 
 	public int getCode() {
 		return code;
@@ -125,10 +133,35 @@ public class ActivityDTO implements java.io.Serializable{
 		this.userId = userId;
 	}
 
+	public List<ActiReviewDTO> getReviewList() {
+		return reviewList;
+	}
+
+	public void setReviewList(List<ActiReviewDTO> reviewList) {
+		this.reviewList = reviewList;
+	}
+
+	public double getAvgStar() {
+		return avgStar;
+	}
+
+	public void setAvgStar(double avgStar) {
+		this.avgStar = avgStar;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	@Override
 	public String toString() {
-		return "ActivityDTO [code=" + code + ", name=" + name + ", location=" + location + ", price=" + price
+		return "ActivityAndReviewDTO [code=" + code + ", name=" + name + ", location=" + location + ", price=" + price
 				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", tip=" + tip + ", image=" + image
-				+ ", loactionCode=" + loactionCode + ", activitTypeCode=" + activitTypeCode + ", userId=" + userId;
+				+ ", loactionCode=" + loactionCode + ", activitTypeCode=" + activitTypeCode + ", userId=" + userId
+				+ ", reviewList=" + reviewList + ", avgStar=" + avgStar + "]" +", count=" + count;
 	}
 }

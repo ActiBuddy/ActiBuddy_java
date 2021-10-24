@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,22 +18,7 @@
     <title>main</title>
   </head>
   <body>
-    <nav class="navbar">
-      <ul class="navbar_menu">
-          <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
-          <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
-          <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
-          <li><input type="text" placeholder="Search"></li>
-          <li><button type="button" onclick="location.href='../activity/searchActivity.html'">Submit</button></li>
-      </ul>
-
-      <ul class="navbar_link">
-          <li><a href="../FAQ/FAQ_main.html">FAQ</a></li>
-          <li><a href="../singup/signup.html">회원가입</a></li>
-          <li><button type="button" class="login_btn" onclick="location.href='../login/login.html'">로그인</button></li>
-      </ul>
-  </nav>
-
+    <jsp:include page="../common/menubar.jsp"/>
 
 
 <!---------------------------------메인------------------------------------------------->
@@ -49,13 +36,13 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
+      <img src=${ activity.image } class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
+      <img src=${ activity.image } class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../resources/image/activity_info/Activity_info_scuba_diving(1).png" class="d-block w-100" alt="...">
+      <img src=${ activity.image } class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -79,15 +66,15 @@
 </nav>
 
 <!-- 액티비티 이름 -->
-<h1 id="activityname"> 제주도 감귤마을 스쿠버 다이빙 </h1>
+<h2 id="activityname"> ${ activity.name } </h2>
 
 <!-- 별점과 후기 건수-->
 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
 </svg>
-<h2 class="starscore"> 4.9 </h2>
+<h2 class="starscore">${ activity.avgStar } </h2>
 <a href="..." target="_blank"> 
-  <h3 id="reviewnum"> (이용후기 60건)</h3>
+  <h3 id="reviewnum"> (이용후기 ${ activity.count }건)</h3>
 </a>
 </div>
 
@@ -133,12 +120,13 @@
 <!-- 설명 -->
 
 <ul class="explan">
-  <li>울릉도의 에메랄드빛 학포해변에서 자유롭게 체험 다이빙을 즐겨보세요.</li>
+   ${ activity.tip }
+  <!-- <li>울릉도의 에메랄드빛 학포해변에서 자유롭게 체험 다이빙을 즐겨보세요.</li>
   <li>1박 2일, 불타는 청춘, 정글의 법칙 등 인기 프로그램도 촬영을 다녀간 곳에서 멋진 울릉도의 자연을 느껴보세요.</li>
   <li>숙련된 강사들 및 크루들과 함께 안전한 다이빙 체험이 가능합니다.</li>
   <li>체험 다이빙에 필요한 필수 장비가 모두 포함되어 있으니 편안하게 방문해 다이빙을 즐겨보세요!</li>
   <li>체험 다이빙 참여시 사진 및 동영상 촬영까지 도와주시니 멋진 인생샷을 남겨보세요</li>
-  <li>학포해변에서 즐기는 스노쿨링, 호핑투어, 보트투어 등 다양한 액티비티도 함께 즐겨보세요!</li>
+  <li>학포해변에서 즐기는 스노쿨링, 호핑투어, 보트투어 등 다양한 액티비티도 함께 즐겨보세요!</li> -->
 </ul>
 </left>
 
@@ -204,7 +192,7 @@
   
   <br> <br>
 
-  <h4 id="price"> ₩ 25000
+  <h4 id="price"> ₩ ${ activity.price }
   <script>
     $('.person-bar').change(pricePrint);
 
@@ -212,7 +200,7 @@
 
       let value = $('.person-bar').val();
 
-      $('#price').html('₩ ' + value * 25000);
+      $('#price').html('₩ ' + value * ${ activity.price });
     }
   </script>
   </h4>
@@ -238,15 +226,15 @@
 <div class="activity-4">
   <!-- 위치 api-->
   <strong><h3 id="location"> 위치</h3></strong>
-  <img class="map" src="../resources/image/activity_info/Activity_info_map.png" alt="...">
+  <img class="map" src="../resources/image/Activity_info_map.png" alt="...">
 </div>
 
 <hr>
 
-<div class="activity-5">
+<div class="activity-5">	
   <!-- 이용 후기 -->
   <strong><h3 id="reveiw">이용 후기</h3></strong> <br>
-  <h2 id="starscore2"> 4.9 </h2>
+  <h2 id="starscore2"> ${ activity.avgStar } </h2>
   <div class="stars">
   <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
@@ -265,7 +253,7 @@
   </svg>
 </div>
 
-  <h3 id="review-all">(이용후기 60건)</h3>
+  <h3 id="review-all">(이용후기 ${ activity.count }건)</h3>
 
   <br> <br> <br>
 
@@ -280,10 +268,12 @@
 
 <br><br>
 
+<c:forEach items="${ activity.reviewList }" var="review">
+
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 </svg>
-<h3 id="nickname"> 혜씨초코볼 </h3>
+<h3 id="nickname"> ${ review.userId } </h3>
 
 <div class="stars-user">
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
@@ -307,12 +297,11 @@
 
   <h6 id="goods-detail"> 후기 상품 상세 : 체험 다이빙 </h6>
 
-  <h5 id="review-date"> 2021년 10월 12일</h5> <br><br>
+  <h5 id="review-date"> ${ review.writeDate } </h5> <br><br>
 
 <div class="review-detail">
-<p id="review-p"> 강사님도 친절하시고 하나도 불안함 없이 잘 체험했습니다! 짧다면 짧고 길다면 길었는데 저는 충분히 만족했습니다 ㅋㅋㅋㅋ 그리고 강사님 최고입니다!</p>
-<img src="../resources/image/activity_info/activity_info_review(1).png" alt="..." class="review-img">
-<img src="../resources/image/activity_info/activity_info_review(2).png" alt="..." class="review-img">
+<p id="review-p"> ${ review.content }</p>
+<img src= ${ review.image } alt="..." class="review-img">
 </div>
 </div>
 
@@ -321,14 +310,16 @@
 <button id="suggestion">추천</button>
 
 <button id="declaration">
-  <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
+  <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
   </button>
 
 <br> <br>
 <hr>
 <br>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+</c:forEach>
+
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 </svg> 
 <h3 id="nickname"> 권순권순표 </h3>
@@ -358,7 +349,7 @@
 
 <div class="review-detail">
 <p id="review-p"> 가는날 비가 너무 많이 와서 너무 힘들었습니다 ㅜ</p>
-<img src="../resources/image/activity_info/activity-info-review2(1).png" alt="..." class="review-img">
+<img src="../resources/image/activity-info-review2(1).png" alt="..." class="review-img">
 </div>
 </div>
 
@@ -367,7 +358,7 @@
 <button id="suggestion">추천</button>
 
 <button id="declaration">
-  <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
+  <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
   </button>
 
 <br> <br>
@@ -412,7 +403,7 @@
 <button id="suggestion">추천</button>
 
 <button id="declaration">
-  <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
+  <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
   </button>
 
   <br> <br>
@@ -450,15 +441,15 @@
   <div class="review-detail">
   <p id="review-p"> 저는 그럭저럭이였습니다 ^^ </p>
   </div>
-  </div>
+  </div> -->
   
-  <br>
+  <!-- <br>
   
   <button id="suggestion">추천</button>
   
   <button id="declaration">
-    <img id="declaration-icon" src="../resources/image/activity_info/activity_info_declaration.png" alt="">
-    </button>
+    <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
+    </button> -->
 
 
 <br> <br>
@@ -492,7 +483,7 @@
  <strong><h3 id="recomend">추천 액티비티</h3></strong> <br>
 
  <div class="card1" style="width: 18rem;">
-  <img src="../resources/image/activity_info/activity_info_recommend(1).png" class="card-img-top" alt="...">
+  <img src="../resources/image/activity_info_recommend(1).png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">울릉도 학포해변 학포다이버리조트 스노쿨링 체험</h5>
     <p class="card-text">₩ 24,000</p>
@@ -501,7 +492,7 @@
 </div>
 
 <div class="card2" style="width: 18rem;">
-  <img src="../resources/image/activity_info/activity_info_recommend(2).png" class="card-img-top" alt="...">
+  <img src="../resources/image/activity_info_recommend(2).png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">울릉도 학포해변 학포다이버리조트 호핑투어 체험</h5>
     <p class="card-text">₩ 95,000</p>
@@ -510,7 +501,7 @@
 </div>
 
 <div class="card3" style="width: 18rem;">
-  <img src="../resources/image/activity_info/activity_info_recommend(3).png" class="card-img-top" alt="...">
+  <img src="../resources/image/activity_info_recommend(3).png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">울릉아일랜드 투어패스 (독도 전망 케이블카/예림원 등)</h5>
     <p class="card-text">₩ 7,900</p>
@@ -523,36 +514,7 @@
 </div>
 
 </main>
-
-
-  <!---------------------------------하단바-------------------------------------->
-
-  <footer>
-    <div class="footer">
-        <span></span>
-
-        <ul>2021 액티버디</ul>
-        <ul> 회사소개
-            <li><a href="../introduce/introduce.html">액티버디소개</a></li>
-            <li><a href="../mypage/mypage.html">마이페이지</a></li>
-
-            </ul>
-
-        <ul> 파트너십
-            <li><a href="../partnership/partnership.html">파트너십</a></li>
-        </ul>
-
-        <ul> 이용약관
-            <li><a href="../FAQ/Privacy_Policy.html">약관</a></li>
-        </ul>
-
-        <ul>결제수단
-            <li><a href="#">카카오페이</a></li>
-        </ul>
-        <span></span>
-        <span></span>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ <!-- 하단 footer-->
+   <jsp:include page="../common/footer.jsp"/>
   </body>
 </html>

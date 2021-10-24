@@ -32,7 +32,6 @@ public class MemberRegistServlet extends HttpServlet {
 //		request.setCharacterEncoding("UTF-8");
 
 		
-		
 		String userId = request.getParameter("userId");
 		String pwd = request.getParameter("pwd");
 		String userName = request.getParameter("userName");
@@ -42,6 +41,8 @@ public class MemberRegistServlet extends HttpServlet {
 		String birth =  request.getParameter("birth");
 	
 		System.out.println(pwd);
+		
+		
 		
 		MemberDTO requestMember = new MemberDTO();
 		requestMember.setUserId(userId);
@@ -59,6 +60,7 @@ public class MemberRegistServlet extends HttpServlet {
 		
 		System.out.println("memberController requestMember : " + requestMember);
 
+		
 		int result = new MemberService().registMember(requestMember);
 
 		System.out.println("memberController result : " + result);

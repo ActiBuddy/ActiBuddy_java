@@ -14,35 +14,7 @@
     <title>파트너십</title>
   </head>
   <body>
-    <nav class="navbar">
-      <ul class="navbar_menu">
-        <a href="../main/main.html"
-          ><img src="resources/image/actibuddylogo.png" class="nav_logo"
-        /></a>
-        <li class="dropbox">
-          <a href="../activity/activity.html">액티비티</a>
-        </li>
-        <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
-        <li><input type="text" placeholder="Search" /></li>
-        <li>
-          <li><button type="button" class="login_btn" onclick="location.href='../login/login.html'">로그인</button></li>
-        </li>
-      </ul>
-
-      <ul class="navbar_link">
-        <li><a href="../FAQ/FAQ_main.html">FAQ</a></li>
-        <li><a href="../singup/signup.html">회원가입</a></li>
-        <li>
-          <button
-            type="button"
-            class="login_btn"
-            onclick="location.href='main.html'"
-          >
-            로그인
-          </button>
-        </li>
-      </ul>
-    </nav>
+      <jsp:include page="../common/menubar.jsp"/>
 
     <div class="faq">
       <img src="resources/image/introduce.png" />
@@ -195,36 +167,6 @@
       <button type="submit" value="submit">문의하기</button>
     </div>
 
-    <footer>
-      <div class="footer">
-        <span></span>
-
-        <ul>
-          2021 액티버디
-        </ul>
-        <ul>
-          회사소개
-          <li><a href="/acti/introduce">액티버디소개</a></li>
-          <li><a href="/acti/mypage/main">마이페이지</a></li>
-        </ul>
-
-        <ul>
-          파트너십
-          <li><a href="../views/partnership/partnership.html">파트너십</a></li>
-        </ul>
-
-        <ul>
-          이용약관
-          <li><a href="../FAQ/Privacy_Policy.html">약관</a></li>
-        </ul>
-
-        <ul>
-          결제수단
-          <li><a href="#">카카오페이</a></li>
-        </ul>
-        <span></span>
-        <span></span>
-      </div>
-    </footer>
+   <jsp:include page="../common/footer.jsp"/>
   </body>
 </html>

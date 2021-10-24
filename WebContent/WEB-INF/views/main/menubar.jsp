@@ -8,7 +8,8 @@
 	<meta charset="UTF-8">
 	<title>ACTIBUDDY</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link href="resources/css/actibuddy.css" rel="stylesheet"/>
+	<link href="/acti/resources/css/menubar.css" rel="stylesheet"/>
+	<link href="/acti/resources/css/actibuddy.css" rel="stylesheet"/>
 	<script>
 	 $(function () {
 	        $("#acti_2").on({

@@ -2,10 +2,13 @@ package com.actibuddy.activity.service;
 
 import static com.actibuddy.common.config.Template.getSqlSession;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.activity.model.dao.ActivityDAO;
 import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
+import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 
 public class ActivityService {
@@ -18,11 +21,11 @@ public class ActivityService {
 	 * @param locationName
 	 * @return
 	 */
-	public LocationDTO selectLocationInfo(String locationName) {
+	public LocationAndActivityDTO selectLocationInfo(String locationName) {
 
 		SqlSession session = getSqlSession();
 		
-		LocationDTO location = activityDAO.selectLocationInfo(session,locationName);
+		LocationAndActivityDTO location = activityDAO.selectLocationInfo(session,locationName);
 
 		session.close();
 		
@@ -44,6 +47,17 @@ public class ActivityService {
 		session.close();
 		
 		return activity;
+	}
+
+	public List<LocationDTO> selectLocation() {
+		
+		SqlSession session = getSqlSession();
+		
+		List<LocationDTO> locationList = activityDAO.selectLocation(session);
+		
+		session.close();
+		
+		return locationList;
 	}
 	
 

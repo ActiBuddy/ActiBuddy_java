@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 import com.actibuddy.activity.service.ActivityService;
 
@@ -24,7 +25,7 @@ public class ActivityLocationServlet extends HttpServlet {
 		System.out.println(locationName);
 		
 		ActivityService activityService = new ActivityService();
-		LocationDTO location = activityService.selectLocationInfo(locationName);
+		LocationAndActivityDTO location = activityService.selectLocationInfo(locationName);
 		
 		System.out.println(location);
 		String[] month = location.getVisitMonth().split(",");

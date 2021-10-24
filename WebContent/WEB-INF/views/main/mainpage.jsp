@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,61 +110,14 @@
 		<div class="all1">
 
 			<div class="mainimage">
+				<c:forEach var="location" items="${locationList}">
 				<div class="si">
-					<a href="activity/location?locationName=서울"><img src="resources/image/seoul.jpeg"></a>
+					<a href="activity/location?locationName=${ location.name }"><img src="${ location.image } "></a>
 					<div>
-						<h1>서울</h1>
+						<h1>${ location.name }</h1>
 					</div>
 				</div>
-				<div class="si">
-					<a href="https://www.naver.com/"><img
-						src="resources/image/jeju.jpeg"></a>
-					<div>
-						<h1>제주</h1>
-					</div>
-				</div>
-				<div class="si">
-					<a href="https://www.naver.com/"><img
-						src="resources/image/busan.jpeg"></a>
-					<div>
-						<h1>부산</h1>
-					</div>
-				</div>
-				<div class="si">
-					<a href="https://www.naver.com/"><img
-						src="resources/image/jeonju.jpeg"></a>
-					<div>
-						<h1>전주</h1>
-					</div>
-				</div>
-
-				<div class="si">
-					<a href="https://www.naver.com/"><img
-						src="resources/image/seoul.jpeg"></a>
-					<div>
-						<h1>강릉</h1>
-					</div>
-				</div>
-				<div class="si">
-					<a href="https://www.naver.com/"><img
-						src="resources/image/seoul.jpeg"></a>
-					<div>
-						<h1>강원</h1>
-					</div>
-				</div>
-				<div class="si">
-					<a href="https://www.naver.com/"><img
-						src="resources/image/seoul.jpeg"></a>
-					<div>
-						<h1>충청</h1>
-					</div>
-				</div>
-				<div class="si">
-					<a href="https://www.naver.com/"><img
-						src="resources/image/seoul.jpeg"></a>
-					<div>
-						<h1>전라</h1>
-					</div>
+				</c:forEach>
 				</div>
 
 				<!-- <div><a href="https://www.naver.com/"><img src="resources/image/seoul.jpeg"></a></div>

@@ -12,6 +12,16 @@
  	   <result property="tip" column="GUIDE_TIP"/>
  	   <result property="visitMonth" column="VISIT_MONTH"/>
  	   <result property="visitName" column="VISIT_NAME"/>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.actibuddy.activity.model.dto.LocationAndActivityDTO" id="locationAndActivityResultMap">
+ 	   <id property="code" column="LOCATION_CODE"/>
+ 	   <result property="name" column="LOCATION_NAME"/>
+ 	   <result property="info" column="LOCATION_INFO"/>
+ 	   <result property="image" column="LOCATION_IMG"/>
+ 	   <result property="tip" column="GUIDE_TIP"/>
+ 	   <result property="visitMonth" column="VISIT_MONTH"/>
+ 	   <result property="visitName" column="VISIT_NAME"/>
  	   <collection property="activityList" resultMap="activityResultMap"/>
  	</resultMap>
  	
@@ -59,7 +69,7 @@
  	  <collection property="reviewList" resultMap="reviewResultMap"/>
  	</resultMap>
  	
- 	<select id="selectLocationInfo" resultMap="locationResultMap" parameterType="string">
+ 	<select id="selectLocationInfo" resultMap="locationAndActivityResultMap" parameterType="string">
 	 	SELECT
 	      	   A.LOCATION_NAME
     	   	 , A.LOCATION_INFO
@@ -84,7 +94,6 @@
  	</select>
  	
  	<select id="selectActivityInfo" resultMap="activityAndReviewMap" parameterType="String">
- 	    
  	    SELECT 
                A.*
              , B.* 
@@ -99,7 +108,14 @@
           FROM ACTIVITY_INFO A
           JOIN ACTI_REVIEW B ON(A.ACTI_NUM = B.ACTI_NUM)
          WHERE A.ACTI_NAME = #{ actiName }
+ 	</select>
  	
+ 	<select id="selectLocation" resultMap="locationResultMap">
+ 		SELECT
+      		   A.LOCATION_NAME
+             , A.LOCATION_INFO
+     		 , A.LOCATION_IMG
+  		  FROM LOCATION A
  	</select>
  
  </mapper>

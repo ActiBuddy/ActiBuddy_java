@@ -26,18 +26,17 @@
           </ul>
           <ul>
             회사소개
-            <li><a href="../introduce/introduce.html">액티버디소개</a></li>
-            <li><a href="../mypage/mypage.html">마이페이지</a></li>
+            <li><a href = "${ pageContext.servletContext.contextPath }/introduce">액티버디소개</a></li>
           </ul>
 
           <ul>
             파트너십
-            <li><a href="../partnership/partnership.html">파트너십</a></li>
+            <li><a href="${ pageContext.servletContext.contextPath }/partnership">파트너십</a></li>
           </ul>
 
           <ul>
             이용약관
-            <li><a href="../FAQ/Privacy_Policy.html">약관</a></li>
+            <li><a href="${ pageContext.servletContext.contextPath }/privacyPolicy">약관</a></li>
           </ul>
 
           <ul>

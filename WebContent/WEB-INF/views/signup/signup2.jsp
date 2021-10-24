@@ -7,9 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="../../resources/css/signup2.css" rel="stylesheet" />
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+  	<link href="../resources/css/signup2.css" rel="stylesheet" />
+    <link href="../resources/css/actibuddy.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
@@ -104,7 +103,7 @@
   <body>
     <main class="wrapper">
       <div>
-        <img src="../../resources/image/actibuddylogo.png" class="mainlogo" />
+        <img src="../resources/image/actibuddylogo.png" class="mainlogo" />
       </div>
 
 
@@ -115,7 +114,6 @@
 
          <span><h2>아이디</h2></span>
          <input type="text" name="userId" id="userId"/>
-         asfdasd,fb,wdbf,qbwflbqwlfbqlwbflqwbv,nbq,v
          <label id="idResult"></label>
 
          <span><h2>비밀번호</h2></span>

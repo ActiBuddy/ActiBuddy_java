@@ -8,7 +8,6 @@
 	<title>ACTIBUDDY</title>
 	 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link href="resources/css/actibuddy.css" rel="stylesheet"/>
-	<link href="resources/css/menubar.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -40,15 +39,6 @@
 				</div>
 				</c:forEach>
 				</div>
-
-				<!-- <div><a href="https://www.naver.com/"><img src="resources/image/seoul.jpeg"></a></div>
-             <div><a href="https://www.naver.com/"><img src="resources/image/seoul.jpeg"></a></div>
-             <div><a href="https://www.naver.com/"><img src="resources/image/seoul.jpeg"></a></div>
-           
-             <a href="https://www.naver.com/"><img src="resources/image/seoul.jpeg"></a>
-             <a href="https://www.google.com/"><img src="resources/image/jeju.jpeg"></a>
-             <a href="https://www.naver.com/"><img src="resources/image/busan.jpeg"></a>
-             <a href="https://www.naver.com/"><img src="resources/image/jeonju.jpeg"></a> -->
 			</div>
 
 			<div class="event">

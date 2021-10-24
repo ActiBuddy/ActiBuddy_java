@@ -50,9 +50,9 @@
   left: 35%;
 }
 .side-1 h4 {
-  position: relative;
-  left: 50%;
-  transform: translate(-37px);
+    position: relative;
+    left: 13%;
+    transform: translate(-37px);
 }
 .side-2 {
   /* margin: 10px; */

@@ -68,7 +68,7 @@
 			<span> <a href="../FAQ/FAQ_main.html">FAQ</a>
 			</span> <span> <a href="member/regist">회원가입</a>
 			</span> <span>
-				<button type="button" class="login_btn"><a href="member/login">로그인</a></button>
+				<button type="button" class="login_btn" onclick="location.href='member/login'">로그인</button>
 			</span>
 		</div>
 	</c:if>

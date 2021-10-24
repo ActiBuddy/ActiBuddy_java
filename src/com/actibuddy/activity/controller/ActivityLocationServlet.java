@@ -18,11 +18,7 @@ public class ActivityLocationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 데이터베이스 가서 현재 페이지를 구성하는 값을 조회해서 
 		
-		// 객체를 넣고
-		
-		// request객체에다가 setAttribute("activity", activity);
 		
 		String locationName = request.getParameter("locationName");
 		System.out.println(locationName);

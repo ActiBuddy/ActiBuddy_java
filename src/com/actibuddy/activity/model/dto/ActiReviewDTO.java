@@ -6,7 +6,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 	
 	private int num;
 	private Date writeDate;
-	private int acitNum;
+	private int actiNum;
 	private String userId;
 	private String title;
 	private String content;
@@ -20,12 +20,12 @@ public class ActiReviewDTO implements java.io.Serializable{
 
 	}
 
-	public ActiReviewDTO(int num, Date writeDate, int acitNum, String userId, String title, String content,
+	public ActiReviewDTO(int num, Date writeDate, int actiNum, String userId, String title, String content,
 			double reviewStar, String image, int recommend, char recYn) {
 		super();
 		this.num = num;
 		this.writeDate = writeDate;
-		this.acitNum = acitNum;
+		this.actiNum = actiNum;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
@@ -51,12 +51,12 @@ public class ActiReviewDTO implements java.io.Serializable{
 		this.writeDate = writeDate;
 	}
 
-	public int getAcitNum() {
-		return acitNum;
+	public int getActiNum() {
+		return actiNum;
 	}
 
-	public void setAcitNum(int acitNum) {
-		this.acitNum = acitNum;
+	public void setActiNum(int actiNum) {
+		this.actiNum = actiNum;
 	}
 
 	public String getUserId() {
@@ -117,7 +117,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "ActiReview [num=" + num + ", writeDate=" + writeDate + ", acitNum=" + acitNum + ", userId=" + userId
+		return "ActiReview [num=" + num + ", writeDate=" + writeDate + ", actiNum=" + actiNum + ", userId=" + userId
 				+ ", title=" + title + ", content=" + content + ", reviewStar=" + reviewStar + ", image=" + image
 				+ ", recommend=" + recommend + ", recYn=" + recYn + "]";
 	}

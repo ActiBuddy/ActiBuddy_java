@@ -264,8 +264,8 @@
                   <p class="card-text">
                       ${acti.name}
                   </p></a>
-                  <p>별점 : 5점</p>
-                  <p>best 액티비티</p>
+                  <p>별점 : ${acti.name}</p>
+                  <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">₩${acti.price}부터</small>
                   </div>

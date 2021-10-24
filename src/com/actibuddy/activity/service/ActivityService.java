@@ -12,6 +12,12 @@ public class ActivityService {
 	
 	private ActivityDAO activityDAO = new ActivityDAO();
 
+	/**
+	 * 지역 및 액티비티 정보 조회용 메소드
+	 * @author 김주환
+	 * @param locationName
+	 * @return
+	 */
 	public LocationDTO selectLocationInfo(String locationName) {
 
 		SqlSession session = getSqlSession();

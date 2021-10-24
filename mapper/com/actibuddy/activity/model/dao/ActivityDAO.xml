@@ -27,11 +27,10 @@
  	   <result property="loactionCode" column="LOCATION_CODE"/>
  	   <result property="activitTypeCode" column="ACTI_TYPE_NUM"/>
  	   <result property="userId" column="USER_ID"/>
- 	   
  	</resultMap>
  	
- 	<resultMap type="com.actibuddy.activity.model.dto.ActiReview" id="reviewResultMap">
- 	<id property="reviewNum" column="ACTI_REVIEW_NUM"/>
+ 	<resultMap type="com.actibuddy.activity.model.dto.ActiReviewDTO" id="reviewResultMap">
+ 	<id property="num" column="ACTI_REVIEW_NUM"/>
  	<result property="writeDate" column="ACTI_REVIEW_DATE"/>
  	<result property="actiNum" column="ACTI_NUM"/>
  	<result property="userId" column="USER_ID"/>
@@ -55,13 +54,10 @@
  	   <result property="loactionCode" column="LOCATION_CODE"/>
  	   <result property="activitTypeCode" column="ACTI_TYPE_NUM"/>
  	   <result property="userId" column="USER_ID"/>
- 	   
+ 	   <result property="avgStar" column="AVG"/>
+ 	   <result property="count" column="COUNT"/>
  	  <collection property="reviewList" resultMap="reviewResultMap"/>
- 	   
  	</resultMap>
- 	
- 	
- 	
  	
  	<select id="selectLocationInfo" resultMap="locationResultMap" parameterType="string">
 	 	SELECT
@@ -90,7 +86,16 @@
  	<select id="selectActivityInfo" resultMap="activityAndReviewMap" parameterType="String">
  	    
  	    SELECT 
-               *
+               A.*
+             , B.* 
+             , (SELECT TRUNC(AVG(C.ACTI_REVIEW_STAR),1)
+                  FROM ACTI_REVIEW C
+                  JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+                 WHERE B.ACTI_NAME = #{ actiName })AS AVG
+             ,(SELECT COUNT(c.acti_review_title)
+         		 FROM ACTI_REVIEW C
+         		 JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+         		WHERE B.ACTI_NAME = #{ actiName })AS COUNT    
           FROM ACTIVITY_INFO A
           JOIN ACTI_REVIEW B ON(A.ACTI_NUM = B.ACTI_NUM)
          WHERE A.ACTI_NAME = #{ actiName }

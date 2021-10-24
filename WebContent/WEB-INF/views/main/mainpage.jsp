@@ -14,29 +14,6 @@
 
 	<jsp:include page="../common/menubar.jsp"/>
 	
-	<!--  로그인 안되었을 때 -->
-	<c:if test="${ empty sessionScope.loginMember }">
-		<div class="navbar_link">
-			<span> <a href="../FAQ/FAQ_main.html">FAQ</a>
-			</span> <span> <a href="member/regist">회원가입</a>
-			</span> <span>
-				<button type="button" class="login_btn"><a href="member/login">로그인</a></button>
-			</span>
-		</div>
-	</c:if>
-	
-	<!--  로그인 되었을 때 -->
-		<c:if test="${ !empty sessionScope.loginMember }">
-			<div class="navbar_link">
-			<h3><c:out value="${ sessionScope.loginMember.userName }"/>님의 방문을 환영합니다.</h3>
-				<span> <a href="../FAQ/FAQ_main.html">FAQ</a></span>
-				<button type="button" class="login_btn"><a href="mypage/main">마이페이</a></button>
-				<button type="button" class="login_btn"><a href="member/logout">로그아웃</a></button>
-			</div>
-		</c:if>
-	</div>
-
-
 	<main class="wrapper">
 		<div>
 			<img src="resources/image/actibuddylogo.png" class="mainlogo">

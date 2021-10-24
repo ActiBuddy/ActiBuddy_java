@@ -17,26 +17,7 @@
 <body>
 
 
-<<<<<<< HEAD
       <jsp:include page="../common/menubar.jsp"/>
-=======
-    <nav class="navbar">
-        <ul class="navbar_menu">
-            <a href="../main/main.html"><img src="${ pageContext.servletContext.contextPath }/resources/image/actibuddylogo.png" class="nav_logo"></a>
-            <li class="dropbox"><a href="../activity/activity.html">액티비티</a></li>
-            <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
-            <li><input type="text" placeholder="Search"></li>
-            <li><button type="button" onclick="location.href='../activity/searchActivity.html'">Submit</button></li>
-        </ul>
-
-        <ul class="navbar_link">
-            <li><a href="../FAQ/FAQ_main.html">FAQ</a></li>
-            <li><a href="../singup/signup.html">회원가입</a></li>
-            <li><button type="button" class="login_btn" onclick="location.href='../login/login.html'">로그인</button></li>
-        </ul>
-    </nav>
->>>>>>> refs/remotes/origin/hyejoo
-
 
     <div class="logo" >
     
@@ -65,7 +46,7 @@
                 <c:if test="${ !empty sessionScope.loginMember }">
 		
         			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
-
+        			
 				</c:if>
                 
                 

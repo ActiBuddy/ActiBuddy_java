@@ -18,7 +18,7 @@ public class LocationDTO implements java.io.Serializable{
 	}
 
 	public LocationDTO(int code, String name, String info, String image, String tip, String visitMonth,
-			String visitName, List<ActivityDTO> activityList) {
+			String visitName, List<ActivityDTO> activityList, List<ActiReviewDTO> reviewList) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -94,9 +94,13 @@ public class LocationDTO implements java.io.Serializable{
 		this.activityList = activityList;
 	}
 
+
 	@Override
 	public String toString() {
 		return "LocationDTO [code=" + code + ", name=" + name + ", info=" + info + ", image=" + image + ", tip=" + tip
-				+ ", visitMonth=" + visitMonth + ", visitName=" + visitName + ", activityList=" + activityList + "]";
+				+ ", visitMonth=" + visitMonth + ", visitName=" + visitName + ", activityList=" + activityList
+				+ "]";
 	}
+
+	
 }

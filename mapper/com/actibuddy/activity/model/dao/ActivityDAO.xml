@@ -12,7 +12,7 @@
  	   <result property="tip" column="GUIDE_TIP"/>
  	   <result property="visitMonth" column="VISIT_MONTH"/>
  	   <result property="visitName" column="VISIT_NAME"/>
- 	   <collection property="activityList" resultMap="activityResultMap"/>
+ 	   <collection property="activityList" resultMap="activityAndReviewMap"/>
  	</resultMap>
  	
  	<resultMap type="com.actibuddy.activity.model.dto.ActivityDTO" id="activityResultMap">
@@ -61,25 +61,12 @@
  	
  	<select id="selectLocationInfo" resultMap="locationResultMap" parameterType="string">
 	 	SELECT
-	      	   A.LOCATION_NAME
-    	   	 , A.LOCATION_INFO
-     		 , A.LOCATION_IMG
-     		 , A.GUIDE_TIP
-     		 , A.VISIT_MONTH
-     		 , A.VISIT_NAME
-     		 , B.ACTI_NUM
-     		 , B.ACTI_NAME
-     		 , B.LOCATION
-     		 , B.PRICE
-     		 , B.START_DATE
-     		 , B.END_DATE
-     		 , B.ACTI_TIP
-     		 , B.ACTI_IMG
-     		 , B.LOCATION_CODE
-     		 , B.ACTI_TYPE_NUM
-     		 , B.USER_ID  
+	      	  A.*
+            , B.*
+            , C.*
 	  	  FROM LOCATION A
-	      JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
+	      LEFT JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
+	      LEFT JOIN ACTI_REVIEW C ON (B.ACTI_NUM = C.ACTI_NUM)
 	     WHERE A.LOCATION_NAME = #{ locationName }
  	</select>
  	
@@ -88,7 +75,7 @@
  	    SELECT 
                A.*
              , B.* 
-             , (SELECT TRUNC(AVG(C.ACTI_REVIEW_STAR),1)
+             , (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
                   FROM ACTI_REVIEW C
                   JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
                  WHERE B.ACTI_NAME = #{ actiName })AS AVG

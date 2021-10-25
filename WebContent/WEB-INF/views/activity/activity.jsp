@@ -11,15 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>액티비티 조회 메인 화면</title>
     <script src="https://code.jquery.com//jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
-    $(function(){
-    	  $('select optin').click(function(){
-    	    let value =  $('select optin').val();
-    	    $('#sortBtn').submit(value);
-    	    console.log('hi');
-    	  });
-    	});
-    </script>
   </head>
   <br>
   <body>
@@ -54,12 +45,10 @@
       <div class="col" id="visit">
         <h1 style="margin-bottom: 20px;">방문하기 좋은 시기</h1>
         <ul>
-       
           <li>
            <c:forEach var="data1" items="${ vistis['vistis'] }">
            ${data1}
           </c:forEach>
-         
           </li>
         </ul>
       </div>
@@ -194,7 +183,10 @@
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
               <div class="date">
-                <form action="" ><p style="font-size: 18px">예약날짜 : <input type="text" id="datepicker" readonly="readonly"></p></form>
+              <form action="${ pageContext.servletContext.contextPath }/activity/location" method="get">
+              <p style="font-size: 18px">예약날짜 : <input type="text" id="datepicker" name="date" readonly="readonly"></p>
+              <button type="submit">조회</button>
+              </form>
               </div>
             </div>
             <div class="col" style="flex: 1.0; padding: 0px;" >
@@ -203,7 +195,7 @@
                 <span id="spanPrice">가격</span>
                 </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-	                <form action="${ pageContext.servletContext.contextPath }/sort/controll" method="get">
+	                <form action="${ pageContext.servletContext.contextPath }/activity/location" method="get">
                     <div class="price">
                       <input type="text" id="amount2" name="price" readonly style="border:0; color:#f6931f; font-weight:bold;">
                       <div id="slider-range" style="margin-top: 10px;"></div>
@@ -216,13 +208,14 @@
             <div class="col">
               <span id="sort">정렬 : </span>
               <div class="dropdown">
-              <form action="sort/controll" method="get">
+                <form action="${ pageContext.servletContext.contextPath }/activity/location" method="get" id="fo">
                 <select id="sortBtn" name="sort">
-                  <option value="popular">인기순</option>
+                  	<option value="popular">인기순</option>
                     <option value="star">별점순</option>
                     <option value="price">낮은가격순</option>
-                    <option value="recent">최신순</option>
+                    <option value="new">최신순</option>
                 </select>
+                <button type="submit">조회</button>
                 </form>
               </div>
             </div>

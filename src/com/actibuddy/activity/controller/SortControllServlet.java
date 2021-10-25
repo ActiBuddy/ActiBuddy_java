@@ -19,28 +19,29 @@ public class SortControllServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String price = request.getParameter("price");
-//		String sort = request.getParameter("sort");
-//		System.out.println(sort);
-		String[] prices = price.split("- ");
-		
-		Map<String,String> priceMap = new HashMap<>();
-		priceMap.put("price1", prices[0]);
-		priceMap.put("price2", prices[1]);
-		
-		
-		
-		ActivityService activityService = new ActivityService();
-		
-		LocationAndActivityDTO locationActivity =  activityService.selectActivityByPrice(priceMap);
-		
-		String path = "";
-		if(price != null) {
-			path = "/WEB-INF/views/activity/activity.jsp";
-			request.setAttribute("price", locationActivity);
-		} 
-		
-		request.getRequestDispatcher(path).forward(request, response);
+		String date = request.getParameter("date");
+		System.out.println("date");
+//		String price = request.getParameter("price");
+//		String[] prices = price.split("- ");
+//		
+//		
+//		Map<String,String> priceMap = new HashMap<>();
+//		priceMap.put("price1", prices[0]);
+//		priceMap.put("price2", prices[1]);
+//		
+//		
+//		
+//		ActivityService activityService = new ActivityService();
+//		
+//		LocationAndActivityDTO locationActivity =  activityService.selectActivityByPrice(priceMap);
+//		
+//		String path = "";
+//		if(price != null) {
+//			path = "/WEB-INF/views/activity/activity.jsp";
+//			request.setAttribute("price", locationActivity);
+//		} 
+//		
+//		request.getRequestDispatcher(path).forward(request, response);
 		
 
 	}

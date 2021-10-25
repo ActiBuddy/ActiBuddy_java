@@ -39,21 +39,7 @@
   <br>
   <body>
     <!-- 네비게이션 바-->
-    <nav class="navbar">
-      <ul class="navbar_menu">
-          <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
-          <li class="dropbox"><a href="/acti/activity/information">액티비티</a></li>
-          <li class="dropbox"><a href="Mate/matemain.html">메이팅</a></li>
-          <li><input type="text" placeholder="Search"></li>
-          <li><button type="button" onclick="location.href='/acti/search/activity'">Submit</button></li>
-      </ul>
-
-      <ul class="navbar_link">
-          <li><a href="../FAQ/FAQ_main.html">FAQ</a></li>
-          <li><a href="singup/signup.html">회원가입</a></li>
-          <li><button type="button" class="login_btn" onclick="location.href='../login/login.html'">로그인</button></li>
-      </ul>
-    </nav>
+    <jsp:include page="../common/menubar.jsp"/>
     
     <!-- 메인 이미지 및 설명 -->
     <div class="container mb-4">
@@ -143,7 +129,6 @@
             </div>
         </div>
     </div>
-  </div>
 
       <!-- 액티비티 조회 -->
     <div class="container mt-5">
@@ -233,13 +218,13 @@
                 <span id="spanPrice">가격</span>
                 </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-	                <form action="">
+	                <%-- <form action="${ pageContext.servletContext.contextPath }/sort/controll" method="get"> --%>
                     <div class="price">
                       <input type="text" id="amount2" readonly style="border:0; color:#f6931f; font-weight:bold;">
                       <div id="slider-range" style="margin-top: 10px;"></div>
                       <button type="submit" class="btn btn-success" id="submit">확인</button>
                     </div>
-                 	</form>
+                 	<!-- </form> -->
                   </ul>
               </div>
             </div>
@@ -247,10 +232,10 @@
               <span id="sort">정렬 : </span>
               <div class="dropdown">
                 <select id="sortBtn" aria-labelledby="dropdownMenuButton1">
-                    <li><option class="dropdown-item">인기순</option></li>
-                    <li><option class="dropdown-item">별점순</option></li>
-                    <li><option class="dropdown-item">낮은가격순</option></li>
-                    <li><option class="dropdown-item">최신순</option></li>
+                    <option class="dropdown-item" value="popular">인기순</option>
+                    <option class="dropdown-item" value="star">별점순</option>
+                    <option class="dropdown-item" value="price">낮은가격순</option>
+                    <option class="dropdown-item" value="recent">최신순</option>
                 </select>
               </div>
             </div>
@@ -339,31 +324,6 @@
       </div>
     </div>
  <!-- 하단 footer-->
- <footer>
-  <div class="footer">
-      <span></span>
-
-      <ul>2021 액티버디</ul>
-      <ul> 회사소개
-          <li><a href="/acti/introduce">액티버디소개</a></li>
-          <li><a href="/acti/mypage/main">마이페이지</a></li>
-      </ul>
-
-      <ul> 파트너십
-          <li><a href="/acti/partnership">파트너십</a></li>
-      </ul>
-
-      <ul> 이용약관
-          <li><a href="../FAQ/Privacy_Policy.html">약관</a></li>
-      </ul>
-
-      <ul> 결제수단
-          <li><a href="#">카카오페이</a></li>
-      </ul>
-      <span></span>
-      <span></span>
-  </div>
-  
-</footer>
+<jsp:include page="../common/footer.jsp"/>
   </body>
 </html>

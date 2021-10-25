@@ -46,7 +46,6 @@
                 <c:if test="${ !empty sessionScope.loginMember }">
 		
         			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
-        			<% session.setAttribute("userId", "userId"); %>
 
 				</c:if>
                 

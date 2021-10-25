@@ -46,6 +46,13 @@ $(function() {
 });
 
 $(function(){
+  $('#submit').click(function(){
+    let value = $("#amount2").val();
+    $('#spanPrice').text(value);
+  });
+});
+
+$(function(){
   $('#check1').click(function(){
       location.href="https://www.naver.com";
   });
@@ -87,12 +94,6 @@ $(function(){
   });
 });
 
-$(function(){
-  $('#submit').click(function(){
-    let value = $("#amount2").val();
-    $('#spanPrice').text(value);
-  });
-});
 
 
 

@@ -19,7 +19,6 @@
 
       <jsp:include page="../common/menubar.jsp"/>
 
-
     <div class="logo" >
     
         <img src="../resources/image/mainlogo.png" width="400px" height="350px" />
@@ -163,11 +162,6 @@
    
    
     </div>
-
-
-    
-    
-
 
 
 <!-- 하단 바 -->

@@ -49,6 +49,11 @@ public class ActivityService {
 		return activity;
 	}
 
+	/**
+	 * 메인페이지 지역정보 조회용 메소드
+	 * @author 김주환
+	 * @return
+	 */
 	public List<LocationDTO> selectLocation() {
 		
 		SqlSession session = getSqlSession();

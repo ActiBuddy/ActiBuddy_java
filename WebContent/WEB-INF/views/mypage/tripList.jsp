@@ -19,7 +19,6 @@
 
       <jsp:include page="../common/menubar.jsp"/>
 
-
     <div class="logo" >
     
         <img src="${ pageContext.servletContext.contextPath }/resources/image/mainlogo.png" width="400px" height="350px" />
@@ -47,7 +46,7 @@
                 <c:if test="${ !empty sessionScope.loginMember }">
 		
         			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
-
+        			
 				</c:if>
                 
                 

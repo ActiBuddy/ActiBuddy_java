@@ -12,7 +12,6 @@
 <body>
 
 	<jsp:include page="../common/menubar.jsp"/>
-
 	<main class="wrapper">
 		<div>
 			<img src="resources/image/actibuddylogo.png" class="mainlogo">
@@ -30,7 +29,7 @@
 		<div class="all1">
 
 			<div class="mainimage">
-				<c:forEach var="location" items="${locationList}">
+				<c:forEach var="location" items="${ locationList }">
 				<div class="si">
 					<a href="activity/location?locationName=${ location.name }"><img src="${ location.image } "></a>
 					<div>

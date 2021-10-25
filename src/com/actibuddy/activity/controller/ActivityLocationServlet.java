@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
-import com.actibuddy.activity.model.dto.LocationDTO;
 import com.actibuddy.activity.service.ActivityService;
 
 @WebServlet("/activity/location")
@@ -19,7 +18,6 @@ public class ActivityLocationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		
 		String locationName = request.getParameter("locationName");
 		System.out.println(locationName);
@@ -44,13 +42,13 @@ public class ActivityLocationServlet extends HttpServlet {
 		map.put("name", name);
 		
 		String path = "";
-		
 		if(location != null) {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("location", location);
 			request.setAttribute("map", map);
 		} else {
-			path = "/WEB-INF/views/common/actiFail.jsp";
+			path = "/WEB-INF/views/actiFail.jsp";
+			request.setAttribute("message", "값을 불러오는데 실패하였습니다");
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);

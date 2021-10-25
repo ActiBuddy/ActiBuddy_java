@@ -17,6 +17,11 @@ public class MypagetripListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String userId = (String) request.getSession().getAttribute("userId");
+		System.out.println(userId);
+		
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/tripList.jsp");
 		rd.forward(request, response);
 		

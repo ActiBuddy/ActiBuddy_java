@@ -42,14 +42,15 @@ $(function() {
           $("#amount2").val("₩" + ui.values[0] + " - ₩" + ui.values[1]);
       }
   });
-  $("#amount2").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+  $("#amount2").val("₩" + $("#slider-range").slider("values", 0) + " - ₩" + $("#slider-range").slider("values", 1));
 });
 
 $(function(){
   $('#submit').click(function(){
-   $('#spanPrice').html($("#amount2").val); 
+    let value = $("#amount2").val();
+    $('#spanPrice').text(value);
   });
-})
+});
 
 $(function(){
   $('#check1').click(function(){
@@ -92,6 +93,7 @@ $(function(){
     $('input[name=water]').prop('checked',this.checked);
   });
 });
+
 
 
 

@@ -163,6 +163,18 @@
   margin: 0px auto;
   display: table;
 }
+
+.next {
+	color: white;
+    background: rgba(0, 166, 81, 1);
+    
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 2px 2px black;
+}
+.next:active {
+    box-shadow: none;
+}
 /* ----------확인탈퇴2------------ */
 .q-text2 {
   margin: 0px auto;
@@ -257,6 +269,19 @@
   color: darkgray;
   border: none;
 }
+#complete2{
+  float: right;
+  margin-right: 10px;
+  	color: white;
+    background: rgba(0, 166, 81, 1);
+    
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 2px 2px black;
+}
+#complete2:active {
+    box-shadow: none;
+  }
 
 
 

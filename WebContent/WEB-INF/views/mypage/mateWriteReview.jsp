@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>mate-write-review</title>
-    <link rel="stylesheet" href="../../resources/css/actibuddy.css">
-    <link rel="stylesheet" href="../../resources/css/mypage.css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mypage.css">
 
 </head>
 
@@ -18,15 +19,15 @@
      <jsp:include page="../common/menubar.jsp"/>
 
 
-    <div class="logo" >
+   <div class="logo" >
     
-        <img src="../../resources/image/mypage/mainlogo.png" width="400px" height="350px" />
+        <img src="../resources/image/mainlogo.png" width="400px" height="350px" />
         
     </div>
 
     <hr>
-    
-    <c:if test="${ !empty sessionScope.loginMember }">
+
+	<c:if test="${ !empty sessionScope.loginMember }">
 		<div class="page-text">
 
         	<h2><c:out value="${ sessionScope.loginMember.userName }"/>님의 마이페이지</h2>
@@ -34,15 +35,15 @@
 		</div>
 	</c:if>
 
+
+
     <div class="body-all">
     
-        
         <div class="side-all">
-            
-    
+        
             <div class="side-1">
                 <br><br><br>
-                <img src="../resources/image/profile.png" width="100px" height="100px"/>
+                <img src="${ pageContext.servletContext.contextPath }/resources/image/profile.png" width="100px" height="100px"/>
                 
                 <c:if test="${ !empty sessionScope.loginMember }">
 		
@@ -54,18 +55,18 @@
                 <hr>
                 <br>
 
-                <a href="../mypage/memQuit.html" id="quit">회원탈퇴</a>
-          	</div>
-          	
+                <a href="/acti/mypage/quit" id="quit">회원탈퇴</a>
+
+            </div>
             <div class="side-2">
                 
                 <br><br>
                 <div class="menu">
-                    <a href="../mypage/tripList.html">여행 내역</a><br><br><br>
-                    <a href="../mypage/review.html">이용 후기</a><br><br><br>
-                    <a href="../mypage/cart.html">장바구니</a><br><br><br>
-                    <a href="../mypage/mate-list.html">메이트 내역</a><br><br><br> 
-                    <a href="../mypage/my-question.html">문의 사항</a><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/triplist">여행 내역</a><br><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/review">이용 후기</a><br><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/myQuestion">문의 사항</a><br><br>
                 </div>
             </div> 
         </div>

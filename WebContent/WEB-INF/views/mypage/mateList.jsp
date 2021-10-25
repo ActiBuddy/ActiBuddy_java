@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,10 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../../resources/css/actibuddy.css">
-    <link rel="stylesheet" href="../../resources/css/mypage.css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mypage.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>mate-list</title>
+    <title>메이트 내역</title>
 
 </head>
 
@@ -22,31 +23,41 @@
 
     <div class="logo" >
     
-        <img src="../../resources/image/mypage/mainlogo.png" width="400px" height="350px" />
+        <img src="../resources/image/mainlogo.png" width="400px" height="350px" />
         
     </div>
 
     <hr>
     
-    <div class="page-text">
-        <h2>해씨초코볼  님의 마이페이지</h2>
-    </div>
+    <c:if test="${ !empty sessionScope.loginMember }">
+		<div class="page-text">
+
+        	<h2><c:out value="${ sessionScope.loginMember.userName }"/>님의 마이페이지</h2>
+        	
+		</div>
+	</c:if>
+
+
 
     <div class="body-all">
     
-        
         <div class="side-all">
-            
-    
+        
             <div class="side-1">
                 <br><br><br>
-                <img src="../../resources/image/mypage/profile.png" width="100px" height="100px"/>
-                <h4>해씨초코볼</h4>
+                <img src="${ pageContext.servletContext.contextPath }/resources/image/profile.png" width="100px" height="100px"/>
+                
+                <c:if test="${ !empty sessionScope.loginMember }">
+		
+        			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
+
+				</c:if>
+                
                 
                 <hr>
                 <br>
-                <a href="../main/main.html" onclick="alert('로그아웃하시겠습니까?')">로그아웃</a>
-                <a href="" id="quit">회원탈퇴</a>
+
+                <a href="/acti/mypage/quit" id="quit">회원탈퇴</a>
     
                 
             </div>
@@ -54,11 +65,11 @@
                 
                 <br><br>
                 <div class="menu">
-                    <a href="../mypage/tripList.html">여행 내역</a><br><br><br>
-                    <a href="../mypage/review.html">이용 후기</a><br><br><br>
-                    <a href="../mypage/cart.html">장바구니</a><br><br><br>
-                    <a href="../mypage/mate-list.html">메이트 내역</a><br><br><br> 
-                    <a href="../mypage/my-question.html">문의 사항</a><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/triplist">여행 내역</a><br><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/review">이용 후기</a><br><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/myQuestion">문의 사항</a><br><br>
                 </div>
             </div>
 
@@ -79,7 +90,7 @@
                     <hr>
                     <div class="l-one-line">
 
-                        <img src="../../resources/image/mypage/hreart.png" width="32px" height="30px">
+                        <img src="../resources/image/hreart.png" width="32px" height="30px">
                         <span></span>
                         <h3>메이팅 구인 제목 및 날짜 </h3>
                         <button type="button" onclick="location.href=''">댓글 확인하기</button>
@@ -94,7 +105,7 @@
 
                      <div class="l-one-line">
 
-                        <img src="../../resources/image/mypage/hreart.png" width="32px" height="30px">
+                        <img src="../resources/image/hreart.png" width="32px" height="30px">
                         <span></span>
                         <h3>메이팅 구인 제목 및 날짜 </h3>
                         
@@ -103,7 +114,7 @@
 
                         <h4>희망인원 : <br> 희망성별 : </h4>
                         <br><br>
-                        <button type="button" id="reviewGo" onclick="location.href='mate-write-review.html'">후기쓰기</button>
+                        <button type="button" id="reviewGo" onclick="location.href='/acti/mypage/mate/review/write'">후기쓰기</button>
                         <button type="button" id="complete">참가완료</button>
                         <br>
                         <hr>
@@ -111,7 +122,7 @@
                     <hr>
                     <div class="l-one-line">
 
-                        <img src="../../resources/image/mypage/hreart.png" width="32px" height="30px">
+                        <img src="../resources/image/hreart.png" width="32px" height="30px">
                         <span></span>
                         <h3>메이팅 구인 제목 및 날짜 </h3>
                         <button type="button" onclick="location.href=''">상세보기 ></button>

@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="../../resources/css/signup2.css" rel="stylesheet" />
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <link  rel="stylesheet" type="text/css" href="../resources/css/login.css"/>
+  <link  rel="stylesheet" type="text/css" href="../resources/css/signup2.css"/>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
        
@@ -30,7 +29,7 @@
     //       });
          
       // 이름 정의
-     $(function(){
+      $(function(){
           $('#name').keyup(function(){
               
             let regExp = /^[가-힣]+$/;
@@ -57,7 +56,7 @@
         });
      });
        
-       $(function(){
+      /*  $(function(){
         $('.birth').keyup(function(){
            if( ($('#yy').val() > 2022 || $('#yy').val() < 1900 || $('#yy').val() < null) ||
                ($('#mm').val() > 13 || $('#mm').val() < 1) ||
@@ -68,7 +67,20 @@
             	 $('#birthResult').html('맞습니다 ');
             }
           });
-        });
+        }); */
+        
+        $(function(){
+            $('.birth').keyup(function(){
+            	let filter = /([0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1,2][0-9]|3[0,1]))/
+            
+            	if(!filter.test($("#yy").val())){
+
+                 $('#birthResult').html('생년월일을 확인해주세요').css('color','red');
+                } else{
+                	 $('#birthResult').html(' ');
+                }
+              });
+              });
 
       $(function(){
       $('#email').keyup(function() {
@@ -97,17 +109,15 @@
         });
   
 </script>
-
-
     <title>main</title>
   </head>
+
+
   <body>
     <main class="wrapper">
       <div>
-        <img src="../../resources/image/actibuddylogo.png" class="mainlogo" />
+        <img src="../resources/image/actibuddylogo.png" class="mainlogo" />
       </div>
-
-
 
       <div class="signup1">
         <form id="joinForm" action="../member/regist" method="post">
@@ -128,18 +138,16 @@
          <label id="nameResult"></label>
 
          <span><h2>생년월일</h2></span>
-         <div class="bir_wrap">
-             <div class="bir_yy">
-              <input type="number" class="birth" name="birth" id="yy" placeholder="년(4자)" aria-label="년(4자)" maxlength="4">
-             </div>
+            <!--  <div class="bir_yy"> -->
+              <input type="number" class="birth" name="birth" id="yy" placeholder="19940922 -> 940922" aria-label="년(4자)" maxlength="6">
              
-            <div class="bir_mm">
+         <!--    <div class="bir_mm">
               <input type="text" class="birth" id="mm" placeholder="월" aria-label="년(4자)" maxlength="2">
              </div>
           <div class="bir_dd">
-            <input type="text" class="birth" id="dd" placeholder="일" aria-label="일" maxlength="2">
-          </div>
-         </div>
+            <input type="text" class="birth" id="dd" placeholder="일" aria-label="일" maxlength="2"> 
+          </div> -->
+       <!--   </div> -->
          <label id="birthResult"></label>
 
 
@@ -158,54 +166,11 @@
 
          </form>
          
-         
-         
-         
-         
-         
     </div>
 
     <br><br><br><br>
 
-
-
-
-      
-    </div>
-      </div>
-    </form>
-
-      <footer>
-        <div class="footer">
-          <span></span>
-
-          <ul>
-            2021 액티버디
-          </ul>
-          <ul>
-            회사소개
-            <li><a href="../introduce/introduce.html">액티버디소개</a></li>
-            <li><a href="../mypage/mypage.html">마이페이지</a></li>
-          </ul>
-
-          <ul>
-            파트너십
-            <li><a href="../partnership/partnership.html">파트너십</a></li>
-          </ul>
-
-          <ul>
-            이용약관
-            <li><a href="../FAQ/Privacy_Policy.html">약관</a></li>
-          </ul>
-
-          <ul>
-            결제수단
-            <li><a href="#">카카오페이</a></li>
-          </ul>
-          <span></span>
-          <span></span>
-        </div>
-      </footer>
+   <jsp:include page="../common/footer.jsp"/>
     </main>
   </body>
 </html>

@@ -18,6 +18,8 @@
 		<result property="memPhone" column="MEM_PHONE"/>
 	</resultMap>
 	
+	
+	
 	<insert id="insertMember" parameterType="com.actibuddy.member.model.dto.MemberDTO">
         INSERT
           INTO MEMBER A

@@ -1,7 +1,9 @@
 package com.actibuddy.activity.model.dto;
 
-public class LocationDTO implements java.io.Serializable{
+import java.util.List;
 
+public class LocationAndActivityDTO implements java.io.Serializable{
+	
 	private int code;
 	private String name;
 	private String info;
@@ -9,13 +11,14 @@ public class LocationDTO implements java.io.Serializable{
 	private String tip;
 	private String visitMonth;
 	private String visitName;
+	private List<ActivityDTO> activityList;
 	
-	public LocationDTO() {
+	public LocationAndActivityDTO() {
 
 	}
 
-	public LocationDTO(int code, String name, String info, String image, String tip, String visitMonth,
-			String visitName) {
+	public LocationAndActivityDTO(int code, String name, String info, String image, String tip, String visitMonth,
+			String visitName, List<ActivityDTO> activityList) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -24,6 +27,7 @@ public class LocationDTO implements java.io.Serializable{
 		this.tip = tip;
 		this.visitMonth = visitMonth;
 		this.visitName = visitName;
+		this.activityList = activityList;
 	}
 
 	public int getCode() {
@@ -82,9 +86,17 @@ public class LocationDTO implements java.io.Serializable{
 		this.visitName = visitName;
 	}
 
+	public List<ActivityDTO> getActivityList() {
+		return activityList;
+	}
+
+	public void setActivityList(List<ActivityDTO> activityList) {
+		this.activityList = activityList;
+	}
+
 	@Override
 	public String toString() {
 		return "LocationDTO [code=" + code + ", name=" + name + ", info=" + info + ", image=" + image + ", tip=" + tip
-				+ ", visitMonth=" + visitMonth + ", visitName=" + visitName + "]";
+				+ ", visitMonth=" + visitMonth + ", visitName=" + visitName + ", activityList=" + activityList + "]";
 	}
 }

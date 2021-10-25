@@ -17,24 +17,7 @@
 <body>
 
 
-    <nav class="navbar">
-        <ul class="navbar_menu">
-            <a href="../main/main.html"><img src="../resources/image/actibuddylogo.png" class="nav_logo"></a>
-            <li class="dropbox"><a href="/acti/activity/information">액티비티</a></li>
-            <li class="dropbox"><a href="../Mate/matemain.html">메이팅</a></li>
-            <li><input type="text" placeholder="Search"></li>
-            <li><button type="button" onclick="location.href='../activity/searchActivity.html'">Submit</button></li>
-        </ul>
-
-        <c:if test="${ !empty sessionScope.loginMember }">
-			<div class="navbar_link">
-			<h3><c:out value="${ sessionScope.loginMember.userName }"/>님의 방문을 환영합니다.</h3>
-				<span> <a href="../FAQ/FAQ_main.html">FAQ</a></span>
-				<button type="button" class="login_btn"><a href="mypage/main">마이페이지</a></button>
-				<button type="button" class="login_btn"><a href="member/logout">로그아웃</a></button>
-			</div>
-		</c:if>
-    </nav>
+      <jsp:include page="../common/menubar.jsp"/>
 
 
     <div class="logo" >
@@ -188,32 +171,7 @@
 
 
 <!-- 하단 바 -->
-<footer>
-    <div class="footer">
-        <span></span>
-
-        <ul>2021 액티버디</ul>
-        <ul> 회사소개
-            <li><a href="/acti/introduce">액티버디소개</a></li>
-            <li><a href="/acti/mypage/main">마이페이지</a></li>
-
-            </ul>
-
-        <ul> 파트너십
-            <li><a href="/acti/partnership">파트너십</a></li>
-        </ul>
-
-        <ul> 이용약관
-            <li><a href="/acti/privacyPolicy">약관</a></li>
-        </ul>
-
-        <ul>결제수단
-            <li><a href="#">카카오페이</a></li>
-        </ul>
-        <span></span>
-        <span></span>
-    </div>
-</footer>
+   <jsp:include page="../common/footer.jsp"/>
 
 
 </body>

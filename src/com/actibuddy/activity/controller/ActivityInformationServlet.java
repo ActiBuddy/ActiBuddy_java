@@ -1,4 +1,3 @@
-
 package com.actibuddy.activity.controller;
 
 import java.io.IOException;

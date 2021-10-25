@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -251,7 +252,26 @@
                   <p class="card-text">
                       ${acti.name}
                   </p></a>
-                  <p>별점 : ${acti.name}</p>
+                  <p id="star">별점 :
+                 
+                 <c:set var = "total" value = "0" />
+
+                 <c:forEach var="result" items="${ acti.reviewList}" varStatus="status">     
+
+                 <c:set var= "total" value="${total + result.reviewStar}"/>
+
+                 </c:forEach>
+
+                 <c:set var = "longAvg" value="${total / fn:length(acti.reviewList)}"/>
+
+                 <fmt:formatNumber type="number" pattern="#.0" value="${total / fn:length(acti.reviewList)}" />
+                 
+                 <%--
+                  해당 액티비티의 리뷰 갯수 공식
+                  <c:set var="count" value="${ fn:length(acti.reviewList) }"
+                  --%>
+
+                  </p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">₩${acti.price}부터</small>

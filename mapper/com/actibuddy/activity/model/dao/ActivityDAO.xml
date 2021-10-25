@@ -22,7 +22,7 @@
  	   <result property="tip" column="GUIDE_TIP"/>
  	   <result property="visitMonth" column="VISIT_MONTH"/>
  	   <result property="visitName" column="VISIT_NAME"/>
- 	   <collection property="activityList" resultMap="activityResultMap"/>
+ 	   <collection property="activityList" resultMap="activityAndReviewMap"/>
  	</resultMap>
  	
  	<resultMap type="com.actibuddy.activity.model.dto.ActivityDTO" id="activityResultMap">
@@ -71,25 +71,12 @@
  	
  	<select id="selectLocationInfo" resultMap="locationAndActivityResultMap" parameterType="string">
 	 	SELECT
-	      	   A.LOCATION_NAME
-    	   	 , A.LOCATION_INFO
-     		 , A.LOCATION_IMG
-     		 , A.GUIDE_TIP
-     		 , A.VISIT_MONTH
-     		 , A.VISIT_NAME
-     		 , B.ACTI_NUM
-     		 , B.ACTI_NAME
-     		 , B.LOCATION
-     		 , B.PRICE
-     		 , B.START_DATE
-     		 , B.END_DATE
-     		 , B.ACTI_TIP
-     		 , B.ACTI_IMG
-     		 , B.LOCATION_CODE
-     		 , B.ACTI_TYPE_NUM
-     		 , B.USER_ID  
+	      	  A.*
+            , B.*
+            , C.*
 	  	  FROM LOCATION A
-	      JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
+	      LEFT JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
+	      LEFT JOIN ACTI_REVIEW C ON (B.ACTI_NUM = C.ACTI_NUM)
 	     WHERE A.LOCATION_NAME = #{ locationName }
  	</select>
  	
@@ -97,7 +84,7 @@
  	    SELECT 
                A.*
              , B.* 
-             , (SELECT TRUNC(AVG(C.ACTI_REVIEW_STAR),1)
+             , (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
                   FROM ACTI_REVIEW C
                   JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
                  WHERE B.ACTI_NAME = #{ actiName })AS AVG
@@ -117,5 +104,32 @@
      		 , A.LOCATION_IMG
   		  FROM LOCATION A
  	</select>
+ 	
+ <!-- 수정할 쿼리문 
+   내일 할 것 각 테이블 디티오 만들고 내가쓰는 디티오에 다 꼬라박고 리줄트맵에도 갖다박아야됨 (맵은 새로 생성할것)
+ 	SELECT
+       A.*
+     , B.*
+     , C.*
+     , D.*
+     , E.*
+     , F.*
+     , G.*
+     , (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
+           FROM ACTI_REVIEW C
+           JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+          WHERE B.ACTI_NAME = '롯데월드 자유이용권 (QR코드 바로 입장)')AS AVG
+     , (SELECT COUNT(C.ACTI_REVIEW_TITLE)
+          FROM ACTI_REVIEW C
+      	  JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+         WHERE B.ACTI_NAME = '롯데월드 자유이용권 (QR코드 바로 입장)')AS COUNT    
+  FROM ACTIVITY_INFO A
+  LEFT JOIN ACTI_CONDITION_HIS B ON (A.ACTI_NUM = B.ACTI_NUM)
+  LEFT JOIN ACTI_CONDITION C ON (B.ACTI_CON_NUM = C.ACTI_CON_NUM)
+  LEFT JOIN ACTI_REVIEW D ON (A.ACTI_NUM = D.ACTI_NUM)
+  LEFT JOIN ACTI_TYPE E ON ( A.ACTI_TYPE_NUM = E.ACTI_TYPE_NUM)
+  LEFT JOIN ACTI_OPTION F ON (A.ACTI_NUM = F.ACTI_NUM)
+  LEFT JOIN LOCATION G ON (A.LOCATION_CODE = G.LOCATION_CODE)
+  WHERE A.ACTI_NAME = '롯데월드 자유이용권 (QR코드 바로 입장)'; -->
  
  </mapper>

@@ -87,4 +87,6 @@ public class LocationDTO implements java.io.Serializable{
 		return "LocationDTO [code=" + code + ", name=" + name + ", info=" + info + ", image=" + image + ", tip=" + tip
 				+ ", visitMonth=" + visitMonth + ", visitName=" + visitName + "]";
 	}
+
+	
 }

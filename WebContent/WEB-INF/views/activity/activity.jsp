@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>액티비티 조회 메인 화면</title>
-    
+    <script src="https://code.jquery.com//jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
     $(function(){
     	  $('select optin').click(function(){

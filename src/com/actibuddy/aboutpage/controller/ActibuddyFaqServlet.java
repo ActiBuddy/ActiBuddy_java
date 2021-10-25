@@ -15,8 +15,9 @@ public class ActibuddyFaqServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/FAQ/FAQMain.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/partnership/partnership.jsp");
 		rd.forward(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

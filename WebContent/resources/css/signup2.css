@@ -1,18 +1,14 @@
 .wrapper {
-  height: 100%;
+  height: 60%;
   background-color: rgb(17, 88, 17, 0.05);
 }
 
 .signup1 {
-  width: 20%;
+  width: 30% !important;
   height: 100%;
   margin: 0 auto;
-  /* border: 1px solid black; */
 }
 
-/* .signup1 span {
-  padding-bottom: -30px;
-} */
 .signup1 input {
   width: 93%;
   height: 23px;
@@ -39,12 +35,14 @@
 }
 
 .bir_yy {
-  width: 42%;
-  margin-right: 15px;
+  width: 100%;
+  height: 23px;
+ /*  margin-right: 15px; */
 }
+
 .bir_yy input {
   width: 89%;
-  height: 100%;
+  height: 23px;
   padding: 5px;
 }
 

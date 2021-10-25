@@ -9,6 +9,7 @@
 
     <link href="../resources/css/login.css" rel="stylesheet" />
     <link href="../resources/css/actibuddy.css" rel="stylesheet" />
+    <script src="${ pageContext.servletContext.contextPath }/resources/js/activity.js"></script>
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
     <title>main</title>

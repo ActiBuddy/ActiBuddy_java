@@ -19,7 +19,7 @@ public class ActivityLocationServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String locationName = request.getParameter("locationName");
+		String locationName = request.getParameter("locationName"); 
 		System.out.println(locationName);
 		
 		ActivityService activityService = new ActivityService();
@@ -37,15 +37,17 @@ public class ActivityLocationServlet extends HttpServlet {
 			System.out.println(na);
 		}
 		
-		Map<String, String[]> map = new HashMap<>();
-		map.put("month", month);
-		map.put("name", name);
+		Map<String, String> map = new HashMap<>();
+		for(int i = 0; i < month.length; i++) {
+			map.put("vistis", "<header id=\"visitHeader\">" + month[i] + "</header> <p id=\"visitBody\">" + name[i] +"</p>");
+		}
+		
 		
 		String path = "";
 		if(location != null) {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("location", location);
-			request.setAttribute("map", map);
+			request.setAttribute("vistis", map);
 		} else {
 			path = "/WEB-INF/views/actiFail.jsp";
 			request.setAttribute("message", "값을 불러오는데 실패하였습니다");

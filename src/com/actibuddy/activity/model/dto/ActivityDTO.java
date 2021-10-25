@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ActivityDTO implements java.io.Serializable{
 	
-	private int code;
+	private String code;
 	private String name;
 	private String location;
 	private int price;
@@ -21,7 +21,7 @@ public class ActivityDTO implements java.io.Serializable{
 
 	}
 
-	public ActivityDTO(int code, String name, String location, int price, Date startDate, Date endDate, String tip,
+	public ActivityDTO(String code, String name, String location, int price, Date startDate, Date endDate, String tip,
 			String image, String loactionCode, String activitTypeCode, String userId) {
 		super();
 		this.code = code;
@@ -37,11 +37,11 @@ public class ActivityDTO implements java.io.Serializable{
 		this.userId = userId;
 	}
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

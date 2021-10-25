@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ActivityAndReviewDTO {
 
-	private int code;
+	private String code;
 	private String name;
 	private String location;
 	private int price;
@@ -23,7 +23,7 @@ public class ActivityAndReviewDTO {
 	public ActivityAndReviewDTO() {
 	}
 
-	public ActivityAndReviewDTO(int code, String name, String location, int price, Date startDate, Date endDate,
+	public ActivityAndReviewDTO(String code, String name, String location, int price, Date startDate, Date endDate,
 			String tip, String image, String loactionCode, String activitTypeCode, String userId,
 			List<ActiReviewDTO> reviewList, double avgStar, int count) {
 		super();
@@ -45,11 +45,11 @@ public class ActivityAndReviewDTO {
 
 
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

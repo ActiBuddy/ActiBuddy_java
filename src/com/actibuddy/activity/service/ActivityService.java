@@ -3,6 +3,7 @@ package com.actibuddy.activity.service;
 import static com.actibuddy.common.config.Template.getSqlSession;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -64,7 +65,25 @@ public class ActivityService {
 		
 		return locationList;
 	}
+
+	/**
+	 * 가격으로 정렬한 액티비티 정보 조회
+	 * @author 김주환
+	 * @param priceMap
+	 * @return
+	 */
+	public LocationAndActivityDTO selectActivityByPrice(Map<String, String> priceMap) {
+
+		SqlSession session = getSqlSession();
 	
+		LocationAndActivityDTO location = activityDAO.selectActivityByPrice(session, priceMap);
+		
+		session.close();
+		
+		return location;
+	}
+
+
 
 	
 }

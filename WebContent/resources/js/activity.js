@@ -39,17 +39,10 @@ $(function() {
       max: 5000000,
       values: [0, 5000000],
       slide: function(event, ui) {
-          $("#amount2").val("₩" + ui.values[0] + " - ₩" + ui.values[1]);
+          $("#amount2").val(ui.values[0] + " - " + ui.values[1]);
       }
   });
-  $("#amount2").val("₩" + $("#slider-range").slider("values", 0) + " - ₩" + $("#slider-range").slider("values", 1));
-});
-
-$(function(){
-  $('#submit').click(function(){
-    let value = $("#amount2").val();
-    $('#spanPrice').text(value);
-  });
+  $("#amount2").val($("#slider-range").slider("values", 0) + " - " + $("#slider-range").slider("values", 1));
 });
 
 $(function(){
@@ -94,7 +87,12 @@ $(function(){
   });
 });
 
-
+$(function(){
+  $('#submit').click(function(){
+    let value = $("#amount2").val();
+    $('#spanPrice').text(value);
+  });
+});
 
 
 

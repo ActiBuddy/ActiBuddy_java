@@ -4,9 +4,9 @@ import java.sql.Date;
 
 public class ActiReviewDTO implements java.io.Serializable{
 	
-	private int num;
+	private String num;
 	private Date writeDate;
-	private int actiNum;
+	private String actiNum;
 	private String userId;
 	private String title;
 	private String content;
@@ -20,7 +20,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 
 	}
 
-	public ActiReviewDTO(int num, Date writeDate, int actiNum, String userId, String title, String content,
+	public ActiReviewDTO(String num, Date writeDate, String actiNum, String userId, String title, String content,
 			double reviewStar, String image, int recommend, char recYn) {
 		super();
 		this.num = num;
@@ -35,11 +35,11 @@ public class ActiReviewDTO implements java.io.Serializable{
 		this.recYn = recYn;
 	}
 
-	public int getNum() {
+	public String getNum() {
 		return num;
 	}
 
-	public void setNum(int num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
 
@@ -51,11 +51,11 @@ public class ActiReviewDTO implements java.io.Serializable{
 		this.writeDate = writeDate;
 	}
 
-	public int getActiNum() {
+	public String getActiNum() {
 		return actiNum;
 	}
 
-	public void setActiNum(int actiNum) {
+	public void setActiNum(String actiNum) {
 		this.actiNum = actiNum;
 	}
 

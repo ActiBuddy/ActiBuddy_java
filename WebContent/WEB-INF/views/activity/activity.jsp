@@ -10,40 +10,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>액티비티 조회 메인 화면</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
-    <meta name="theme-color" content="#7952b3">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
-    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-    <!-- 만든 스크립트 및 CSS-->
-    <link rel="stylesheet" href="../resources/css/actibuddy.css">
-    <link rel="stylesheet" href="../resources/css/activity-style.css">
-    <link rel="stylesheet" href="../resources/css/FAQ.css">
-    
-    
-    <script src="../resources/js/activity.js?ver=1.1"></script>
+
+    <script src="https://code.jquery.com//jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	  $('select optin').click(function(){
+    	    let value =  $('select optin').val();
+    	    $('#sortBtn').submit(value);
+    	    console.log('hi');
+    	  });
+    	});
+    </script>
   </head>
   <br>
   <body>
     <!-- 네비게이션 바-->
     <jsp:include page="../common/menubar.jsp"/>
-    
     <!-- 메인 이미지 및 설명 -->
     <div class="container mb-4">
         <div class="image">
@@ -73,12 +55,13 @@
       <div class="col" id="visit">
         <h1 style="margin-bottom: 20px;">방문하기 좋은 시기</h1>
         <ul>
-        <c:forEach var="map" items="${map}">
+       
           <li>
-            <header id="visitHeader">${map[month]}</header>
-            <p id="visitBody">${map[name]}</p>
-          </li>
+           <c:forEach var="data1" items="${ vistis['vistis'] }">
+           ${data1}
           </c:forEach>
+         
+          </li>
         </ul>
       </div>
       </div>
@@ -221,25 +204,27 @@
                 <span id="spanPrice">가격</span>
                 </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-	                <%-- <form action="${ pageContext.servletContext.contextPath }/sort/controll" method="get"> --%>
+	                <form action="${ pageContext.servletContext.contextPath }/sort/controll" method="get">
                     <div class="price">
-                      <input type="text" id="amount2" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                      <input type="text" id="amount2" name="price" readonly style="border:0; color:#f6931f; font-weight:bold;">
                       <div id="slider-range" style="margin-top: 10px;"></div>
                       <button type="submit" class="btn btn-success" id="submit">확인</button>
                     </div>
-                 	<!-- </form> -->
+                 	</form>
                   </ul>
               </div>
             </div>
             <div class="col">
               <span id="sort">정렬 : </span>
               <div class="dropdown">
-                <select id="sortBtn" aria-labelledby="dropdownMenuButton1">
-                    <option class="dropdown-item" value="popular">인기순</option>
-                    <option class="dropdown-item" value="star">별점순</option>
-                    <option class="dropdown-item" value="price">낮은가격순</option>
-                    <option class="dropdown-item" value="recent">최신순</option>
+              <form action="sort/controll" method="get">
+                <select id="sortBtn" name="sort">
+                  <option value="popular">인기순</option>
+                    <option value="star">별점순</option>
+                    <option value="price">낮은가격순</option>
+                    <option value="recent">최신순</option>
                 </select>
+                </form>
               </div>
             </div>
           </div>

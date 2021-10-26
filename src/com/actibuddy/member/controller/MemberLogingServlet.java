@@ -50,6 +50,8 @@ public class MemberLogingServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", loginMember);
 			
+			
+			
 			response.sendRedirect(request.getContextPath());
 //			request.getRequestDispatcher("/WEB-INF/views/main/mainpage.jsp").forward(request, response);
 
@@ -59,7 +61,9 @@ public class MemberLogingServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/common/failed.jsp").forward(request, response);
 		}
 		
-	
+		HttpSession session = request.getSession();
+
+		
 	}
 
 }

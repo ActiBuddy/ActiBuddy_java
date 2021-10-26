@@ -22,33 +22,8 @@ public class ActivityLocationServlet extends HttpServlet {
 		String locationName = request.getParameter("locationName"); 
 		System.out.println(locationName);
 		
-		String price = request.getParameter("price");
-		System.out.println(price);
-		
-		String date = request.getParameter("date");
-		System.out.println(date);
-		
-		String sort = request.getParameter("sort");
-		System.out.println(sort);
-		
 		Map<String,String> resultMap = new HashMap<>();	
-		
-		if(locationName != null && price == null) {
-			resultMap.put("locationName", locationName);
-		} else if(price != null) {
-			String[] prices = price.split("- ");
-			resultMap.put("loactionName", locationName);
-			resultMap.put("price1", prices[0]);
-			resultMap.put("price2", prices[1]);
-			resultMap.put("date", date);
-			resultMap.put("sort", sort);
-		} else {
-			resultMap.put("loactionName", locationName);
-			resultMap.put("date", date);
-			resultMap.put("sort", sort);
-		}
-		
-		System.out.println(resultMap);
+		resultMap.put("locationName", locationName);
 		
 		ActivityService activityService = new ActivityService();
 		LocationAndActivityDTO location = activityService.selectLocationInfo(resultMap);

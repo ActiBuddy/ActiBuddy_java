@@ -100,36 +100,47 @@
  	<collection property="optionList" resultMap="optionResultMap"/>
  	<collection property="locationList" resultMap="locationResultMap"/>
  	</resultMap>
- 	
- 	
- 	
- 	
- 	
- 	
- 	
+
  	<select id="selectLocationInfo" resultMap="locationAndActivityResultMap" parameterType="hashMap">
 	 	SELECT
-	      	  A.*
-            , B.*
-            , C.*
+	      	   A.LOCATION_CODE
+			 , A.LOCATION_NAME
+		  	 , A.LOCATION_INFO
+			 , A.LOCATION_IMG
+     		 , A.GUIDE_TIP
+			 , A.VISIT_MONTH
+			 , A.VISIT_NAME
+             , B.ACTI_NAME
+    		 , B.LOCATION
+     		 , B.PRICE
+			 , B.START_DATE
+			 , B.END_DATE
+			 , B.ACTI_IMG
+			 , B.LOCATION_CODE
+			 , B.ACTI_TYPE_NUM
+             , C.ACTI_REVIEW_STAR
+             , C.ACTI_REVIEW_REC
 	  	  FROM LOCATION A
 	      LEFT JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
 	      LEFT JOIN ACTI_REVIEW C ON (B.ACTI_NUM = C.ACTI_NUM)
-	     WHERE A.LOCATION_NAME = #{ locationName, jdbcType=VARCHAR }
 	      <where>
-	     	<if test="date != null">
-	     		B.START_DATE > #{ date }
-	     	</if>
+	       A.LOCATION_NAME = #{ locationName, jdbcType=VARCHAR }
 	     	<if test="price1 != null">
-	     		B.PRICE BETWEEN #{ price1 } AND #{ price2 }
+	     		AND B.PRICE BETWEEN #{ price1 } AND #{ price2 }
 	     	</if>
 	     	
 	     	<if test="sort != null and sort == 'star'">
-	   			EXISTS (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
+	   			AND EXISTS (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
 	                      FROM ACTI_REVIEW C
 	                      JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
 	                   )
 				   ORDER BY ACTI_REVIEW_STAR DESC
+	     	</if>
+	     	
+     		<if test="date != null">
+     		<![CDATA[
+     		 AND B.START_DATE < #{ date }
+     		 ]]>
 	     	</if>
 	     </where>
 	       <if test="sort != null and sort == 'popular'">
@@ -141,7 +152,6 @@
 	       <if test="sort != null and sort == 'new'">
 	       	 	ORDER BY B.START_DATE DESC
 	       </if>
-	       ORDER BY 1
  	</select>
  	
  	<select id="selectActivityInfo" resultMap="activityInfoResultMap" parameterType="String">

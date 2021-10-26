@@ -31,7 +31,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-    <!— 만든 스크립트 및 CSS—>
+    <!-- 만든 스크립트 -->
     <link rel="stylesheet" href="../resources/css/actibuddy.css">
     <link rel="stylesheet" href="../resources/css/activity-style.css">
     <link rel="stylesheet" href="../resources/css/FAQ.css">
@@ -40,10 +40,11 @@
    	$(function() {
    	 function requsetAjax (data) {
    		 $.ajax({
-	    	url : '${ pageContext.servletContext.contextPath }/activity/location',
+	    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
 	    	type : 'get',
 	    	data : { 
-	    		date : data,
+	    		price : 
+	    		date : ,
 	    		locationName : '${location.name}' 
 	    	},
 	    	success : function(data){
@@ -62,10 +63,10 @@
 		});
 		
 		$('#submit').on('click' , function() {
-			let price = $('amount2').val();
+			let price = $('#amount2').val();
 			console.log(price);
 			requsetAjax(price);
-		})
+		});
 		
 		$('#sortBtn').on('change', function(){
 			let sort = $('#sortBtn option:selected').val();

@@ -20,22 +20,36 @@ public class ActivityAjaxServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String locationName = request.getParameter("locationName");
-//		String price = request.getParameter("price");
-//		System.out.println(price);
-//		
-//		String[] prices = price.split("- ");
+		System.out.println(locationName);
+		
+		String price = request.getParameter("price");
+		System.out.println(price);
 		
 		String date = request.getParameter("date");
 		System.out.println(date);
 		
-//		String sort = request.getParameter("sort");
-//		System.out.println(sort);
+		String sort = request.getParameter("sort");
+		System.out.println(sort);
 
 		Map<String,String> resultMap = new HashMap<>();
-		resultMap.put("date", date);
+		if(price != null) {
+			String[] prices = price.split("- ");
+			resultMap.put("price1", prices[0]);
+			resultMap.put("price2", prices[1]);
+			resultMap.put("date", date);
+			resultMap.put("sort",sort);
+			resultMap.put("locationName", locationName);
+		} else {
+			resultMap.put("sort",sort);
+			resultMap.put("date", date);
+			resultMap.put("locationName", locationName);
+		}
+		
 		
 		ActivityService activityService = new ActivityService();
-		LocationAndActivityDTO locationActivity = activityService.selectLocationInfo(null);
+		LocationAndActivityDTO locationActivity = activityService.selectLocationInfo(resultMap);
+		
+		System.out.println("값"  + locationActivity);
 		
 		String path = "";
 		if(locationActivity != null) {

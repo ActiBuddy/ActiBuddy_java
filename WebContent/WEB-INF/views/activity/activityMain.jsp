@@ -7,13 +7,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--     <link href="../resources/css/bootstrap.css" rel="stylesheet">
- -->    <link rel="stylesheet" href="../resources/css/activitymain.css">
-    
- <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
-     <script src="${ pageContext.servletContext.contextPath }/resources/js/menubar.js"></script>
- 	
-    <title>activity-main</title>
+    <link href="../resources/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../resources/css/activitymain.css">
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
+    <script src="${ pageContext.servletContext.contextPath }/resources/js/menubar.js"></script>
+    <title>액티비티</title>
 </head>
 <body id="body">
     <jsp:include page="../common/menubar.jsp"/>

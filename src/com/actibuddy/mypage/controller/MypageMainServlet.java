@@ -1,6 +1,6 @@
 package com.actibuddy.mypage.controller;
 
-import static com.actibuddy.common.config.Template.getSqlSession;
+import static com.actibuddy.common.mybatis.Template.getSqlSession;
 
 import java.io.IOException;
 

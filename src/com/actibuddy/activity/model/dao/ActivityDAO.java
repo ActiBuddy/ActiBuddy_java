@@ -12,9 +12,9 @@ import com.actibuddy.activity.model.dto.LocationDTO;
 
 public class ActivityDAO {
 
-	public LocationAndActivityDTO selectLocationInfo(SqlSession session, String locationName) {
+	public LocationAndActivityDTO selectLocationInfo(SqlSession session, Map<String, String> resultMap) {
 		
-		return session.selectOne("ActivityDAO.selectLocationInfo",locationName);
+		return session.selectOne("ActivityDAO.selectLocationInfo",resultMap);
 	}
 
 	public ActivityInfoDTO selectActivityInfo(SqlSession session, String actiName) {

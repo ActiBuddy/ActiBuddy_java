@@ -21,14 +21,14 @@ public class ActivityService {
 	/**
 	 * 지역 및 액티비티 정보 조회용 메소드
 	 * @author 김주환
-	 * @param locationName
+	 * @param resultMap
 	 * @return
 	 */
-	public LocationAndActivityDTO selectLocationInfo(String locationName) {
+	public LocationAndActivityDTO selectLocationInfo(Map<String, String> resultMap) {
 
 		SqlSession session = getSqlSession();
 		
-		LocationAndActivityDTO location = activityDAO.selectLocationInfo(session,locationName);
+		LocationAndActivityDTO location = activityDAO.selectLocationInfo(session,resultMap);
 
 		session.close();
 		

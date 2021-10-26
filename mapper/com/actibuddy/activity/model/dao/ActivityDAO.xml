@@ -107,7 +107,7 @@
  	
  	
  	
- 	<select id="selectLocationInfo" resultMap="locationAndActivityResultMap" parameterType="string">
+ 	<select id="selectLocationInfo" resultMap="locationAndActivityResultMap" parameterType="hashMap">
 	 	SELECT
 	      	  A.*
             , B.*
@@ -115,7 +115,33 @@
 	  	  FROM LOCATION A
 	      LEFT JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
 	      LEFT JOIN ACTI_REVIEW C ON (B.ACTI_NUM = C.ACTI_NUM)
-	     WHERE A.LOCATION_NAME = #{ locationName }
+	     WHERE A.LOCATION_NAME = #{ locationName, jdbcType=VARCHAR }
+	      <where>
+	     	<if test="date != null">
+	     		B.START_DATE > #{ date }
+	     	</if>
+	     	<if test="price1 != null">
+	     		B.PRICE BETWEEN #{ price1 } AND #{ price2 }
+	     	</if>
+	     	
+	     	<if test="sort != null and sort == 'star'">
+	   			EXISTS (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
+	                      FROM ACTI_REVIEW C
+	                      JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+	                   )
+				   ORDER BY ACTI_REVIEW_STAR DESC
+	     	</if>
+	     </where>
+	       <if test="sort != null and sort == 'popular'">
+	       	 	ORDER BY C.ACTI_REVIEW_REC
+	       </if>
+	       <if test="sort != null and sort == 'price'">
+	       	 	ORDER BY B.PRICE ASC
+	       </if>
+	       <if test="sort != null and sort == 'new'">
+	       	 	ORDER BY B.START_DATE DESC
+	       </if>
+	       ORDER BY 1
  	</select>
  	
  	<select id="selectActivityInfo" resultMap="activityInfoResultMap" parameterType="String">

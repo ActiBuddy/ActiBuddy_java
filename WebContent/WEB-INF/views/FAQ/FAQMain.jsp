@@ -6,11 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../resources/css/FAQ.css" rel="stylesheet">
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet">
+ 	<link href="resources/css/FAQ.css" rel="stylesheet">
+    <link href="resources/css/actibuddy.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <title>Document</title>
+    <script src="${ pageContext.servletContext.contextPath }/resources/js/menubar.js"></script>
+    
+    <title>FAQ</title>
 </head>
 <body>
       <jsp:include page="../common/menubar.jsp"/>
@@ -18,7 +19,7 @@
 
  <faq_main class="wrapper">
         <div class="faq">
-           <img src="../../resources/image/faq_main.jpeg">
+           <img src="resources/image/faq_main.jpeg">
         </div>    
 
 

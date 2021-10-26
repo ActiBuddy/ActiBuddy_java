@@ -122,6 +122,11 @@ public String toString() {
 			+ birth + ", gender=" + gender + ", warn_count=" + warn_count + ", quitYn=" + quitYn + ", memType="
 			+ memType + ", memPhone=" + memPhone + "]";
 }
+
+public String idcheck(String userId2) {
+	// TODO Auto-generated method stub
+	return null;
+}
 	
 	
 	

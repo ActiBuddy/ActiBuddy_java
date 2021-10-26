@@ -8,30 +8,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link href="../resources/css/signup.css" rel="stylesheet" />
-    <link href="../resources/css/actibuddy.css" rel="stylesheet" />
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--     <link href="../resources/css/actibuddy.css" rel="stylesheet" />
+ -->    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
 
     <title>main</title>
   </head>
+  
+  
   <body>
+  
+  
     <main class="wrapper">
       <div>
         <img src="../resources/image/actibuddylogo.png" class="mainlogo" />
       </div>
+      
+      
+      
       <div class="signup">
-        <form>
+      
+      
           <div class="signup6">
             <input type="checkbox" id="chk_all">
             <div class="signup6_2">
              <label for="chk_all">액티버디 이용약관, 개인정보 수집 및 이용, <br>위치정보
              이용약관(선택), 프로모션 정보 수신(선택)에 모두 동의합니다.
             </div>
-           </div>
+          </div>
 
            <div style="height: 80px ;"></div>  <!--코드가 왜 겹쳐져있는지 모르겠네...-->
           <div class="signup2">
-            <input type="checkbox" name="chk" />
+            <input type="checkbox" name="chk1" />
             <span
               >액티버디 이용약관 동의
               <span>(필수)</span>
@@ -75,7 +83,7 @@
           </div>
 
           <div class="signup2">
-            <input type="checkbox" name="chk" />
+            <input type="checkbox" name="chk2" />
             <span
               >개인정보 수집 및 이용 동의
               <span>(필수)</span>
@@ -204,29 +212,44 @@
            </div>
           </div>
 
-          <script>
+           <script>
           $( document ).ready( function() {
             $( '#chk_all' ).click( function() {
               if($("#chk_all").prop("checked")){
-            $("input[name=chk]").prop("checked",true);
+                $("input[name=chk1]").prop("checked",true);
+                $("input[name=chk2]").prop("checked",true);
+                $("input[name=chk]").prop("checked",true);
         }else{
-            $("input[name=chk]").prop("checked",false);
+          $("input[name=chk1]").prop("checked",false);
+          $("input[name=chk2]").prop("checked",false);
+          $("input[name=chk]").prop("checked",false);
         }
 
+            });
+            $('.but').click(function(){
+                  if(
+                    (($("input[name=chk1]").prop("checked") == true)  &&  ($("input[name=chk2]").prop("checked") == true)) 
+                    && (($("input[name=chk]").prop("checked") == true) || ($("input[name=chk]").prop("checked") == false))) {
+
+                  
+                  }
+                    else{
+                      $(".but").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"#303033"}).prop("disabled",false);
+                      alert("안돼");
+                }
             });
           });
         </script>
 
-          
-         
-
-
           <div class="signup3"><button class="but1">취소</button></div>
-          <div class="signup4"><button class="but">확인</button></div>
-
-          
-        </form>
+          <div class="signup4"><a href="${ pageContext.servletContext.contextPath }/member/regist"><button class="but">확인</button></a></div>
+        
+        </div>
+        <div style="height=300px">
+        
+        </div>
   	 <jsp:include page="../common/footer.jsp"/>
+  	 
     </main>
   </body>
 </html>

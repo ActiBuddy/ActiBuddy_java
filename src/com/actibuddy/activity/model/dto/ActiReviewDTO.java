@@ -66,7 +66,6 @@ public class ActiReviewDTO implements java.io.Serializable{
 		this.actiNum = actiNum;
 	}
 
-
 	public String getWriterId() {
 		return writerId;
 	}

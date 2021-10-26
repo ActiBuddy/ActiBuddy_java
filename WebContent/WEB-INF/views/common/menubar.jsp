@@ -57,13 +57,11 @@
 </head>
 <body>
 
-
-
 	<div class="activity_main">
 		<div class="navbar_menu">
 
 			<span> 
-			<img src="${ pageContext.servletContext.contextPath }/resources/image/actibuddylogo.png" class="nav_logo">
+			<a href="${ pageContext.servletContext.contextPath }"><img src="${ pageContext.servletContext.contextPath }/resources/image/actibuddylogo.png" class="nav_logo"></a>
 			</span> 
 			<span id="acti_1">
 			<a href="${ pageContext.servletContext.contextPath }/activity/main">액티비티</a>
@@ -88,9 +86,9 @@
 	<c:if test="${ empty sessionScope.loginMember }">
 		<div class="navbar_link">
 			<span> <a href="${ pageContext.servletContext.contextPath }/faq">FAQ</a>
-			</span> <span> <a href="/acti/activity/information?actiName=롯데월드 자유이용권 (QR코드 바로 입장)">회원가입</a>
+			</span> <span> <a href="${ pageContext.servletContext.contextPath }/member/check">회원가입</a>
 			</span> <span>
-				<button type="button" class="login_btn" onclick="location.href='${ pageContext.servletContext.contextPath }/activity/location?locationName=서울'">로그인</button>
+				<button type="button" class="login_btn" onclick="location.href='${ pageContext.servletContext.contextPath }/member/login'">로그인</button>
 			</span>
 		</div>
 	</c:if>

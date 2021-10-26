@@ -16,7 +16,7 @@ public class MemberRegistCheckServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/signup/signup1.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/id.jsp");
 		rd.forward(request, response);
 	
 	

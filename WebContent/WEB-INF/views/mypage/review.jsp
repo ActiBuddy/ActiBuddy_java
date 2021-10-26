@@ -56,7 +56,7 @@
                 <hr>
                 <br>
 
-                <a href="../mypage/memQuit.html" id="quit">회원탈퇴</a>
+                <a href="/acti/mypage/quit" id="quit">회원탈퇴</a>
     
                 
             </div>

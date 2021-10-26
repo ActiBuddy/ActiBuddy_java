@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,9 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>mate-write-review</title>
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mypage.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>메이트 평가 작성</title>
 
 </head>
 
@@ -21,7 +23,7 @@
 
    <div class="logo" >
     
-        <img src="../resources/image/mainlogo.png" width="400px" height="350px" />
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/mainlogo.png" width="400px" height="350px" />
         
     </div>
 
@@ -37,7 +39,7 @@
 
 
 
-    <div class="body-all">
+    <div class="body-all" id="background">
     
         <div class="side-all">
         
@@ -50,8 +52,7 @@
         			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
 
 				</c:if>
-                
-                
+ 
                 <hr>
                 <br>
 
@@ -75,14 +76,17 @@
         <div class="r-center-all">
 
             <div class="r-center-1">
-                <h3>메이트 후기 작성  </h3>
+                <h2>메이트 평가 작성  </h2>
                 <hr>
-                <h4>제목 : </h4>
+                <form id="writeScore" action="../mypage/mate/score/write" method="post">
+                
+                <h3>제목 : </h3><textarea id="title" placeholder="제목를 작성해주세요"></textarea>
+                
                 <h5>참가한 메이팅 : </h5>
                 <br><br>
                 <h5> 평가할 메이트 : </h5>
                 <hr>
-                <h4>별점을 매겨수세요 ☆☆☆☆☆</h4>
+                <h4>별점을 매겨주세요 ☆☆☆☆☆</h4>
                 <hr>
                 <h6>후기 내용</h6>
                 <hr><br>
@@ -105,6 +109,8 @@
                 <br><br><br>
 
                 <button type="submit">후기 작성하기</button>
+                
+                </form>
 
             </div>
            

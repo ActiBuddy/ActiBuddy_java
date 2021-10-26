@@ -114,7 +114,7 @@
 
                         <h4>희망인원 : <br> 희망성별 : </h4>
                         <br><br>
-                        <button type="button" id="reviewGo" onclick="location.href='/acti/mypage/mate/review/write'">후기쓰기</button>
+                        <button type="button" id="reviewGo" onclick="location.href='/acti/mypage/mate/score/write'">후기쓰기</button>
                         <button type="button" id="complete">참가완료</button>
                         <br>
                         <hr>

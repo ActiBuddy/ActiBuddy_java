@@ -85,7 +85,7 @@
 
                     <h5>이용 후기 작성</h5>
                     <hr>
-                    <h2>제목 : </h2>
+                    <h2 id="titleH2">제목 : </h2><textarea id="title" placeholder="제목를 작성해주세요"></textarea>
                     <h3>후기 상품 : [제주] 차귀도 배낚시 체험</h3>
                     <br>
                     <h5> 날짜 : </h5>
@@ -102,7 +102,7 @@
                     <hr>
                     <h5>후기 내용</h5>
                     <hr>
-                    <textarea></textarea>
+                    <textarea placeholder="후기 내용을 작성해주세요"></textarea>
 
                     
                     <!-- <script>

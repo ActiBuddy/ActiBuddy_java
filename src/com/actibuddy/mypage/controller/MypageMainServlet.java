@@ -1,5 +1,7 @@
 package com.actibuddy.mypage.controller;
 
+import static com.actibuddy.common.config.Template.getSqlSession;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -8,6 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.actibuddy.member.model.dto.MemberDTO;
+import com.actibuddy.mypage.model.dto.MypageIntroduceDTO;
+import com.actibuddy.mypage.service.MypageService;
 
 
 @WebServlet("/mypage/main")
@@ -24,6 +32,32 @@ public class MypageMainServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+
+		//로그인된 아이디 담아주고
+		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
+		
+		
+		// jsp에서 값을 받아오자
+		/* String userId = request.getParameter("userId");  로그인된 아이디를 담아줘야하나*/
+		 String favoriteActi = request.getParameter("favoriteActi") ;
+		 String introduce = request.getParameter("introduce");
+		 
+		 System.out.println(favoriteActi); // 잘 들어오는지 확인하고 : ok
+		 System.out.println("로그인된 아이디 : " + userId);
+		 
+		 
+			/*
+			 * MypageIntroduceDTO requestIntroduce = new MypageIntroduceDTO();
+			 * requestIntroduce.setIntroduce(introduce);
+			 * requestIntroduce.setFavoriteActi(favoriteActi);
+			 * 
+			 * // 서비스에 메소드 생성하게 보내주고 int result = new
+			 * MypageService().registIntroduce(requestIntroduce);
+			 * 
+			 * System.out.println("mypageController result : " + result);
+			 */
+
 	}
 
 }

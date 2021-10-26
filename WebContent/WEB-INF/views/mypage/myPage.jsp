@@ -77,12 +77,16 @@
         <div class="center-all">
 
             <div class="center-1">
-                <textarea id ="text1" placeholder="소개를 작성해주세요"></textarea>
+            	<form id = "introduce" action="../mypage/main" method="post">
+            	
+                <textarea cols ="50" rows="6" id ="text1" name="introduce" placeholder="소개를 작성해주세요"></textarea>
         
                 <hr>
         
-                <textarea> 선호하는 액티비티 : </textarea>
-                <button type="submit">수정하기</button>
+                <textarea cols ="30" rows="2" name="favoriteActi"> 선호하는 액티비티 : </textarea>
+                <button type="submit">등록하기</button>
+            	
+            	</form>
     
             </div>
             <div class="center-2">

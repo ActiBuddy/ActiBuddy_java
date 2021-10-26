@@ -43,12 +43,11 @@
 	    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
 	    	type : 'get',
 	    	data : { 
-	    		price : 
-	    		date : ,
+	    		date : data
 	    		locationName : '${location.name}' 
 	    	},
 	    	success : function(data){
-	    		console.log('good!')
+	    		console.log(data);
 	    	},
 	    	error : function(error){
 	    		console.log(error)

@@ -1,4 +1,4 @@
-package com.actibuddy.aboutpage.controller;
+package com.actibuddy.member.controller;
 
 import java.io.IOException;
 
@@ -9,18 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/faq")
-public class ActibuddyFaqServlet extends HttpServlet {
+@WebServlet("/member/check")
+public class MemberRegistCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/FAQ/FAQMain.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/signup/signup1.jsp");
 		rd.forward(request, response);
-
+	
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
-   
+
 }

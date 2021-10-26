@@ -22,7 +22,6 @@ public class MemberLogingServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		request.setCharacterEncoding("UTF-8");
 
 		String memberId = request.getParameter("memberId");
 		String memberPwd = request.getParameter("memberPwd");
@@ -38,16 +37,13 @@ public class MemberLogingServlet extends HttpServlet {
 		
 		MemberService memberService = new MemberService();
 		
-		System.out.println("과연 값이 나올까요? : " + requestMember);
 		
 		
 		MemberDTO loginMember = memberService.loginCheck(requestMember);
 		
 		System.out.println(loginMember);
 		
-		System.out.println("하 거의 끝나따");
 
-		System.out.println("requestMember.getPwd() : " + requestMember.getPwd());
 		/*    ================================================================================  */
 
 		if(loginMember != null) {

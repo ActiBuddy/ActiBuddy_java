@@ -43,8 +43,6 @@ public class ActivityAndReviewDTO {
 		this.count = count;
 	}
 
-
-
 	public String getCode() {
 		return code;
 	}
@@ -148,7 +146,7 @@ public class ActivityAndReviewDTO {
 	public void setAvgStar(double avgStar) {
 		this.avgStar = avgStar;
 	}
-	
+
 	public int getCount() {
 		return count;
 	}
@@ -162,6 +160,15 @@ public class ActivityAndReviewDTO {
 		return "ActivityAndReviewDTO [code=" + code + ", name=" + name + ", location=" + location + ", price=" + price
 				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", tip=" + tip + ", image=" + image
 				+ ", loactionCode=" + loactionCode + ", activitTypeCode=" + activitTypeCode + ", userId=" + userId
-				+ ", reviewList=" + reviewList + ", avgStar=" + avgStar + "]" +", count=" + count;
+				+ ", reviewList=" + reviewList + ", avgStar=" + avgStar + ", count=" + count + ", getCode()="
+				+ getCode() + ", getName()=" + getName() + ", getLocation()=" + getLocation() + ", getPrice()="
+				+ getPrice() + ", getStartDate()=" + getStartDate() + ", getEndDate()=" + getEndDate() + ", getTip()="
+				+ getTip() + ", getImage()=" + getImage() + ", getLoactionCode()=" + getLoactionCode()
+				+ ", getActivitTypeCode()=" + getActivitTypeCode() + ", getUserId()=" + getUserId()
+				+ ", getReviewList()=" + getReviewList() + ", getAvgStar()=" + getAvgStar() + ", getCount()="
+				+ getCount() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
+
+	
 }

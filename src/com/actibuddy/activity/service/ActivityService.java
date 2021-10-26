@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.activity.model.dao.ActivityDAO;
 import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
+import com.actibuddy.activity.model.dto.ActivityDTO;
+import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 
@@ -39,11 +41,11 @@ public class ActivityService {
 	 * @param actiName
 	 * @return 액티비티 DTO
 	 */
-	public ActivityAndReviewDTO selectActivityInfo(String actiName) {
+	public ActivityInfoDTO selectActivityInfo(String actiName) {
 		
 		SqlSession session = getSqlSession();
 		
-		ActivityAndReviewDTO activity = activityDAO.selectActivityInfo(session,actiName);
+		ActivityInfoDTO activity = activityDAO.selectActivityInfo(session,actiName);
 		
 		session.close();
 		
@@ -81,6 +83,22 @@ public class ActivityService {
 		session.close();
 		
 		return location;
+	}
+
+	/**
+	 * 액티비티 인포 화면 하단에 표시되는 추천 액티비티 조회용 메소드
+	 * @param actiName
+	 * @return 선택한 액티비티와 같은 지역에 있는 액티비티 리스트
+	 */
+	public List<ActivityDTO> selectRecommendActivity(String actiName) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<ActivityDTO> recActivity = activityDAO.selectRecommendActivity(session, actiName);
+		
+		session.close();
+		
+		return recActivity;
 	}
 
 

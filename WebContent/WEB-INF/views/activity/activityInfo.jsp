@@ -20,7 +20,6 @@
   <body>
     <jsp:include page="../common/menubar.jsp"/>
 
-
 <!---------------------------------메인------------------------------------------------->
 
 <main>
@@ -36,13 +35,13 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src=${ activity.image } class="d-block w-100" alt="...">
+      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src=${ activity.image } class="d-block w-100" alt="...">
+      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src=${ activity.image } class="d-block w-100" alt="...">
+      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -59,14 +58,14 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="../activity/activity.html">제주</a></li>
-    <li class="breadcrumb-item"><a href="#">수상 액티비티</a></li>
-    <li class="breadcrumb-item active"><a href="#">다이빙&스노쿨링</a></li>
+    <li class="breadcrumb-item"><a href="../activity/activity.html">${ activity.locationList[0].name }</a></li>
+    <li class="breadcrumb-item"><a href="#">${ activity.typeList[0].firstTypeName }</a></li>
+    <li class="breadcrumb-item active"><a href="#">${ activity.typeList[0].secondTypeName }</a></li>
   </ol>
 </nav>
 
 <!-- 액티비티 이름 -->
-<h2 id="activityname"> ${ activity.name } </h2>
+<h2 id="activityname"> ${ activity.activityList[0].name } </h2>
 
 <!-- 별점과 후기 건수-->
 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -84,7 +83,11 @@
 
 <div class=activity-2>
 <!-- 조건 -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+  <c:forEach items="${ activity.conditionList }" var="conditionList">
+  ${ conditionList.conIcon }
+  <h3 id="condition1">${ conditionList.conName }</h3>
+  </c:forEach>
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
     <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
   </svg>
   <h3 id="condition1"> 48시간 전 취소 가능</h3>
@@ -108,7 +111,7 @@
       <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
       <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
     </svg>
-  <h3 id="condition4">일정 약 2시간 소요 </h3>
+  <h3 id="condition4">일정 약 2시간 소요 </h3> -->
 
 </div>
 
@@ -120,13 +123,7 @@
 <!-- 설명 -->
 
 <ul class="explan">
-   ${ activity.tip }
-  <!-- <li>울릉도의 에메랄드빛 학포해변에서 자유롭게 체험 다이빙을 즐겨보세요.</li>
-  <li>1박 2일, 불타는 청춘, 정글의 법칙 등 인기 프로그램도 촬영을 다녀간 곳에서 멋진 울릉도의 자연을 느껴보세요.</li>
-  <li>숙련된 강사들 및 크루들과 함께 안전한 다이빙 체험이 가능합니다.</li>
-  <li>체험 다이빙에 필요한 필수 장비가 모두 포함되어 있으니 편안하게 방문해 다이빙을 즐겨보세요!</li>
-  <li>체험 다이빙 참여시 사진 및 동영상 촬영까지 도와주시니 멋진 인생샷을 남겨보세요</li>
-  <li>학포해변에서 즐기는 스노쿨링, 호핑투어, 보트투어 등 다양한 액티비티도 함께 즐겨보세요!</li> -->
+   ${ activity.activityList[0].tip }
 </ul>
 </left>
 
@@ -142,20 +139,25 @@
   <br>
 <form>
   <h4 id="date"> 액티비티 참여 일자 선택</h4> <br>
-  <input class="calender" type="date">
-
+  <input class="calender" type="date" min= max="2021-10-30">
+  
+  
   <h4 id="select">옵션 선택</h4><br>
   <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
+    <c:forEach items="${ activity.optionList }" var="optionList">
     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-    <label class="btn btn-radio-option1" for="btnradio1">체험 다이빙</label>
+    <label class="btn btn-radio-option1" for="btnradio1">${ optionList.optionName }</label>
 
     <br>
+    </c:forEach>
   
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-    <label class="btn btn-radio-option2" for="btnradio2">써티파이드 다이빙</label>
+ <!--    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+    <label class="btn btn-radio-option2" for="btnradio2">써티파이드 다이빙</label> -->
   </div>
 
   <script>
+  
+  
     $('input:radio').change(changeOption);
     function changeOption() {
       if($('#btnradio1').prop("checked")) {
@@ -188,12 +190,12 @@
   
   <br> <br>
 
-  <h4 id="price"> ₩ ${ activity.price }
+  <h4 id="price"> ₩ ${ activity.activityList[0].price }
   <script>
     $('.person-bar').change(pricePrint);
     function pricePrint() {
       let value = $('.person-bar').val();
-      $('#price').html('₩ ' + value * ${ activity.price });
+      $('#price').html('₩ ' + value * ${ activity.activityList[0].price });
     }
   </script>
   </h4>
@@ -261,12 +263,12 @@
 
 <br><br>
 
-<c:forEach items="${ activity.reviewList }" var="review">
+<c:forEach items="${ activity.reviewList }" var="reviewList">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 </svg>
-<h3 id="nickname"> ${ review.userId } </h3>
+<h3 id="nickname"> ${ reviewList.writerId } </h3>
 
 <div class="stars-user">
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
@@ -290,11 +292,11 @@
 
   <h6 id="goods-detail"> 후기 상품 상세 : 체험 다이빙 </h6>
 
-  <h5 id="review-date"> ${ review.writeDate } </h5> <br><br>
+  <h5 id="review-date"> ${ reviewList.writeDate } </h5> <br><br>
 
 <div class="review-detail">
-<p id="review-p"> ${ review.content }</p>
-<img src= ${ review.image } alt="..." class="review-img">
+<p id="review-p"> ${ reviewList.content }</p>
+<img src= ${ reviewList.image } alt="..." class="review-img">
 </div>
 </div>
 
@@ -311,119 +313,6 @@
 <br>
 
 </c:forEach>
-
-<!-- <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-</svg> 
-<h3 id="nickname"> 권순권순표 </h3>
-<div class="stars-user">
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user2" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <h5 id="review-auto"> 매우 불만족</h5> <br><br>
-  <h6 id="goods-detail"> 후기 상품 상세 : 써티파이드 다이빙 </h6>
-  <h5 id="review-date"> 2021년 10월 1일</h5> <br><br>
-<div class="review-detail">
-<p id="review-p"> 가는날 비가 너무 많이 와서 너무 힘들었습니다 ㅜ</p>
-<img src="../resources/image/activity-info-review2(1).png" alt="..." class="review-img">
-</div>
-</div>
-<br>
-<button id="suggestion">추천</button>
-<button id="declaration">
-  <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
-  </button>
-<br> <br>
-<hr>
-<br>
-<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-</svg> 
-<h3 id="nickname"> 김주김주환 </h3>
-<div class="stars-user">
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gold;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user3" viewBox="0 0 16 16" style="color: gray;">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <h5 id="review-auto"> 만족 </h5> <br><br>
-  <h6 id="goods-detail"> 후기 상품 상세 : 써티파이드 다이빙 </h6>
-  <h5 id="review-date"> 2021년 9월 27일</h5> <br><br>
-<div class="review-detail">
-<p id="review-p"> 맑은 바다보고 힐링하고 왔어요~ 호호</p>
-</div>
-</div>
-<br>
-<button id="suggestion">추천</button>
-<button id="declaration">
-  <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
-  </button>
-  <br> <br>
-  <hr>
-  <br>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-  </svg> 
-  <h3 id="nickname"> 김준김준희 </h3>
-  
-  <div class="stars-user">
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gray;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gray;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gold;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gold;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user4" viewBox="0 0 16 16" style="color: gold;">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-    </svg>
-  
-    <h5 id="review-auto"> 보통 </h5> <br><br>
-  
-    <h6 id="goods-detail"> 후기 상품 상세 : 체험 다이빙 </h6>
-  
-    <h5 id="review-date"> 2021년 9월 25일</h5> <br><br>
-  
-  <div class="review-detail">
-  <p id="review-p"> 저는 그럭저럭이였습니다 ^^ </p>
-  </div>
-  </div> -->
-  
-  <!-- <br>
-  
-  <button id="suggestion">추천</button>
-  
-  <button id="declaration">
-    <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
-    </button> -->
 
 
 <br> <br>
@@ -451,21 +340,22 @@
 
 <hr>
 <br>
-
+<!--  새로운 JSP 만들어서 넘어갈 때 페이지 내에 있는 지역 이름을 받아서 넘어갈 수는 없을까? -->
 <div class="activity-6">
  <!-- 추천 액티비티 -->
  <strong><h3 id="recomend">추천 액티비티</h3></strong> <br>
 
+    <c:forEach items="${ recActivity }" var="rec">
  <div class="card1" style="width: 18rem;">
-  <img src="../resources/image/activity_info_recommend(1).png" class="card-img-top" alt="...">
+  <img src=${ rec.image } class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">울릉도 학포해변 학포다이버리조트 스노쿨링 체험</h5>
-    <p class="card-text">₩ 24,000</p>
+    <h5 class="card-title">${ rec.name }</h5>
+    <p class="card-text">${ rec.price }</p>
     <a href="#" class="btn btn-primary">보러가기</a>
   </div>
 </div>
-
-<div class="card2" style="width: 18rem;">
+</c:forEach>
+<!-- <div class="card2" style="width: 18rem;">
   <img src="../resources/image/activity_info_recommend(2).png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">울릉도 학포해변 학포다이버리조트 호핑투어 체험</h5>
@@ -481,7 +371,7 @@
     <p class="card-text">₩ 7,900</p>
     <a href="#" class="btn btn-primary">보러가기</a>
   </div>
-</div>
+</div> -->
 </div>
 
 
@@ -490,5 +380,6 @@
 </main>
  <!-- 하단 footer-->
    <jsp:include page="../common/footer.jsp"/>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -43,7 +43,7 @@
  	<id property="num" column="ACTI_REVIEW_NUM"/>
  	<result property="writeDate" column="ACTI_REVIEW_DATE"/>
  	<result property="actiNum" column="ACTI_NUM"/>
- 	<result property="userId" column="USER_ID"/>
+ 	<result property="writerId" column="WRITER_ID"/>
  	<result property="title" column="ACTI_REVIEW_TITLE"/>
  	<result property="content" column="ACTI_REVIEW_CON"/>
  	<result property="reviewStar" column="ACTI_REVIEW_STAR"/>
@@ -69,6 +69,44 @@
  	  <collection property="reviewList" resultMap="reviewResultMap"/>
  	</resultMap>
  	
+ 	<resultMap type="com.actibuddy.activity.model.dto.ActivityConditionDTO" id="conditionResultMap">
+ 	<id property="actiConNum" column="ACTI_CON_NUM"/>
+ 	<result property="conName" column="ACTI_CON_NAME"/>
+ 	<result property="conIcon" column="ACTI_CON_ICON"/>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.actibuddy.activity.model.dto.ActivityTypeDTO" id="typeResultMap">
+ 	<id property="actiTypeNum" column="ACTI_TYPE_NUM"/>
+ 	<result property="firstTypeNum" column="FIRST_TYPE_NUM"/>
+ 	<result property="firstTypeName" column="FIRST_TYPE_NAME"/>
+ 	<result property="secondTypeNum" column="SECOND_TYPE_NUM"/>
+ 	<result property="secondTypeName" column="SECOND_TYPE_NAME"/>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.actibuddy.activity.model.dto.ActivityOptionDTO" id="optionResultMap">
+ 	<id property="optionNum" column="OPTION_NUM"/>
+ 	<result property="price" column="PRICE"/>
+ 	<result property="optionName" column="OPTION_NAME"/>
+ 	<result property="actiNum" column="ACTI_NUM"/>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.actibuddy.activity.model.dto.ActivityInfoDTO" id="activityInfoResultMap">
+    <result property="avgStar" column="AVG"/>
+ 	<result property="count" column="COUNT"/>
+ 	<collection property="activityList" resultMap="activityResultMap"/>
+ 	<collection property="reviewList" resultMap="reviewResultMap"/>
+ 	<collection property="conditionList" resultMap="conditionResultMap"/>
+ 	<collection property="typeList" resultMap="typeResultMap"/>
+ 	<collection property="optionList" resultMap="optionResultMap"/>
+ 	<collection property="locationList" resultMap="locationResultMap"/>
+ 	</resultMap>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  	<select id="selectLocationInfo" resultMap="locationAndActivityResultMap" parameterType="string">
 	 	SELECT
 	      	  A.*
@@ -80,21 +118,30 @@
 	     WHERE A.LOCATION_NAME = #{ locationName }
  	</select>
  	
- 	<select id="selectActivityInfo" resultMap="activityAndReviewMap" parameterType="String">
- 	    SELECT 
+ 	<select id="selectActivityInfo" resultMap="activityInfoResultMap" parameterType="String">
+ 	    SELECT
                A.*
-             , B.* 
+             , C.*
+             , D.*
+             , E.*
+             , F.*
+             , G.*
              , (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
                   FROM ACTI_REVIEW C
                   JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
                  WHERE B.ACTI_NAME = #{ actiName })AS AVG
-             ,(SELECT COUNT(c.acti_review_title)
-         		 FROM ACTI_REVIEW C
-         		 JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
-         		WHERE B.ACTI_NAME = #{ actiName })AS COUNT    
-          FROM ACTIVITY_INFO A
-          JOIN ACTI_REVIEW B ON(A.ACTI_NUM = B.ACTI_NUM)
-         WHERE A.ACTI_NAME = #{ actiName }
+             , (SELECT COUNT(C.ACTI_REVIEW_TITLE)
+                  FROM ACTI_REVIEW C
+      	          JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+                 WHERE B.ACTI_NAME = #{ actiName })AS COUNT    
+        FROM ACTIVITY_INFO A
+        LEFT JOIN ACTI_CONDITION_HIS B ON (A.ACTI_NUM = B.ACTI_NUM)
+        LEFT JOIN ACTI_CONDITION C ON (B.ACTI_CON_NUM = C.ACTI_CON_NUM)
+        LEFT JOIN ACTI_REVIEW D ON (A.ACTI_NUM = D.ACTI_NUM)
+        LEFT JOIN ACTI_TYPE E ON ( A.ACTI_TYPE_NUM = E.ACTI_TYPE_NUM)
+        LEFT JOIN ACTI_OPTION F ON (A.ACTI_NUM = F.ACTI_NUM)
+        LEFT JOIN LOCATION G ON (A.LOCATION_CODE = G.LOCATION_CODE)
+       WHERE A.ACTI_NAME = #{ actiName }
  	</select>
  	
  	<select id="selectLocation" resultMap="locationResultMap">
@@ -131,31 +178,24 @@
    		 ORDER BY B.PRICE ASC
  	
  	</select>
- <!-- 수정할 쿼리문 
-   내일 할 것 각 테이블 디티오 만들고 내가쓰는 디티오에 다 꼬라박고 리줄트맵에도 갖다박아야됨 (맵은 새로 생성할것)
- 	SELECT
-       A.*
-     , B.*
-     , C.*
-     , D.*
-     , E.*
-     , F.*
-     , G.*
-     , (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
-           FROM ACTI_REVIEW C
-           JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
-          WHERE B.ACTI_NAME = '롯데월드 자유이용권 (QR코드 바로 입장)')AS AVG
-     , (SELECT COUNT(C.ACTI_REVIEW_TITLE)
-          FROM ACTI_REVIEW C
-      	  JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
-         WHERE B.ACTI_NAME = '롯데월드 자유이용권 (QR코드 바로 입장)')AS COUNT    
-  FROM ACTIVITY_INFO A
-  LEFT JOIN ACTI_CONDITION_HIS B ON (A.ACTI_NUM = B.ACTI_NUM)
-  LEFT JOIN ACTI_CONDITION C ON (B.ACTI_CON_NUM = C.ACTI_CON_NUM)
-  LEFT JOIN ACTI_REVIEW D ON (A.ACTI_NUM = D.ACTI_NUM)
-  LEFT JOIN ACTI_TYPE E ON ( A.ACTI_TYPE_NUM = E.ACTI_TYPE_NUM)
-  LEFT JOIN ACTI_OPTION F ON (A.ACTI_NUM = F.ACTI_NUM)
-  LEFT JOIN LOCATION G ON (A.LOCATION_CODE = G.LOCATION_CODE)
-  WHERE A.ACTI_NAME = '롯데월드 자유이용권 (QR코드 바로 입장)'; -->
+ 	
+ 	<select id="selectRecommendActivity" resultMap="activityResultMap" parameterType="String">
+ 	
+ 	    SELECT 
+               ROWNUM
+             , V2.*
+          FROM (SELECT V.*  
+                  FROM (SELECT A.*
+                  FROM ACTIVITY_INFO A
+                  LEFT JOIN LOCATION B ON (A.LOCATION_CODE = B.LOCATION_CODE)
+                 WHERE A.LOCATION_CODE = (SELECT LOCATION_CODE
+                                            FROM ACTIVITY_INFO A
+                                           WHERE ACTI_NAME = #{ actiName }
+                                         ) 
+                 ORDER BY DBMS_RANDOM.RANDOM
+                ) V
+        WHERE ROWNUM <![CDATA[ < ]]> 4) V2
+ 	
+ 	</select>
  
  </mapper>

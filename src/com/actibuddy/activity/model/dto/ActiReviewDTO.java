@@ -7,7 +7,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 	private String num;
 	private Date writeDate;
 	private String actiNum;
-	private String userId;
+	private String writerId;
 	private String title;
 	private String content;
 	private double reviewStar;
@@ -26,7 +26,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 		this.num = num;
 		this.writeDate = writeDate;
 		this.actiNum = actiNum;
-		this.userId = userId;
+		this.writerId = writerId;
 		this.title = title;
 		this.content = content;
 		this.reviewStar = reviewStar;
@@ -59,12 +59,12 @@ public class ActiReviewDTO implements java.io.Serializable{
 		this.actiNum = actiNum;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getWriterId() {
+		return writerId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setWriterId(String userId) {
+		this.writerId = userId;
 	}
 
 	public String getTitle() {
@@ -117,7 +117,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "ActiReview [num=" + num + ", writeDate=" + writeDate + ", actiNum=" + actiNum + ", userId=" + userId
+		return "ActiReview [num=" + num + ", writeDate=" + writeDate + ", actiNum=" + actiNum + ", writerId=" + writerId
 				+ ", title=" + title + ", content=" + content + ", reviewStar=" + reviewStar + ", image=" + image
 				+ ", recommend=" + recommend + ", recYn=" + recYn + "]";
 	}

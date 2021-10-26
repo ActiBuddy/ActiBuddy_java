@@ -74,7 +74,6 @@ public class MemberService {
 		if(result.matches(requestMember.getUserId())) {
 			loginMember = memberDAO.selectLoginMember(session, requestMember);
 		} else {
-			loginMember = memberDAO.selectLoginMember(session, requestMember);
 		}
 		
 		session.close();

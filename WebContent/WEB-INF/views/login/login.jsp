@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<link href="../resources/css/login.css" rel="stylesheet" />
-   <!--  <link href="../resources/css/actibuddy.css" rel="stylesheet" /> -->
+   <link href="../resources/css/actibuddy.css" rel="stylesheet" />
 
     <title>main</title>
   </head>

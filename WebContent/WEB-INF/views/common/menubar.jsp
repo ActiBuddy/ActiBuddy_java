@@ -51,8 +51,15 @@
 	              mouseleave: function(){
 	                  $('#acti_detail2').css('display','none');
 	              }
-	          });
+	          })
 	      });
+	      
+	      $(function(){
+	    	  $(".idcheck").click(function(){
+	    		  alert('${ sessionScope.loginMember.userId }'); 
+	    		  });
+	    	  });
+	      
 	</script>
 </head>
 <body>
@@ -101,6 +108,7 @@
 				<span>
 				<a href="${ pageContext.servletContext.contextPath }/mypage/main" style="color:green; font-weight: bold;">마이페이지</a>
 				</span>
+				<button class="idcheck">로그인 아이디 확인</button>
 				<span>
 				<button type="button" class="logout_btn" onclick="location.href='${ pageContext.servletContext.contextPath }/member/logout'">로그아웃</button>
 				</span>

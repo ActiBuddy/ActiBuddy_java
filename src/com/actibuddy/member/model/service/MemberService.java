@@ -71,9 +71,10 @@ public class MemberService {
 		String result = memberDAO.idcheck(session, requestMember);
 		
 		
-		if(result.matches(requestMember.getUserId())) {
+		if(result.equals(null)) {
 			loginMember = memberDAO.selectLoginMember(session, requestMember);
 		} else {
+			loginMember = memberDAO.selectLoginMember(session, requestMember);
 		}
 		
 		session.close();

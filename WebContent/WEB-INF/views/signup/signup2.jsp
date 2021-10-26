@@ -95,7 +95,11 @@
 			}); */
 	</script>
 			  
-	  
+	<script type="text/javascript">
+		
+	function idcheck(){
+		window.open("${ sessionScope.loginMember.userName }/member/id.jsp","member","width=640, height=400")
+	}
 
 </script>
 
@@ -113,8 +117,8 @@
          <input type="text" name="userId" id="userId"/>
          <input type="hidden" name="idchk" value="0"/>
          <label id="idResult"></label>
-      <button class="login_id">아이디체크</button>
          </form>
+    <a href="#" onclick="window.open('${ pageContext.servletContext.contextPath }/member/login', '_blank', 'width=600 height=600')"> <button class="login_id">아이디체크</button></a>
          
         <form id="joinForm" action="../member/regist" method="post">
          <span><h2>비밀번호</h2></span>

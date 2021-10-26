@@ -20,15 +20,15 @@ public class ActivityLocationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String locationName = request.getParameter("locationName"); 
-		System.out.println(locationName);
+		System.out.println("locationName 확인 : " + locationName);
 		
-		Map<String,String> resultMap = new HashMap<>();	
+		Map<String,Object> resultMap = new HashMap<>();	
 		resultMap.put("locationName", locationName);
 		
 		ActivityService activityService = new ActivityService();
 		LocationAndActivityDTO location = activityService.selectLocationInfo(resultMap);
 	
-		System.out.println(location);
+		System.out.println("location 확인 :" +location);
 		
 		String[] month = location.getVisitMonth().split(",");
 		String[] name = location.getVisitName().split(",");
@@ -50,7 +50,7 @@ public class ActivityLocationServlet extends HttpServlet {
 		String path = "";
 		if(location != null){
 			path = "/WEB-INF/views/activity/activity.jsp";
-			request.setAttribute("location", location);
+			request.setAttribute("locationActivity", location);
 			request.setAttribute("vistis", map);
 		} else {
 			path = "/WEB-INF/views/actiFail.jsp";

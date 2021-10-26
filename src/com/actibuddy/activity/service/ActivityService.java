@@ -24,7 +24,7 @@ public class ActivityService {
 	 * @param resultMap
 	 * @return
 	 */
-	public LocationAndActivityDTO selectLocationInfo(Map<String, String> resultMap) {
+	public LocationAndActivityDTO selectLocationInfo(Map<String, Object> resultMap) {
 
 		SqlSession session = getSqlSession();
 		
@@ -99,6 +99,22 @@ public class ActivityService {
 		session.close();
 		
 		return recActivity;
+	}
+
+	/**
+	 * 액티비티 메인 페이지에서 표시해줄 내용을 가져오는 메소드
+	 * @author 김주환
+	 * @return
+	 */
+	public ActivityInfoDTO selectAllList() {
+
+		SqlSession session = getSqlSession();
+		
+		ActivityInfoDTO locationList = activityDAO.selectAllList(session);
+		
+		session.close();
+		
+		return locationList;
 	}
 
 

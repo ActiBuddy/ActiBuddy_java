@@ -35,45 +35,113 @@
     <link rel="stylesheet" href="../resources/css/actibuddy.css">
     <link rel="stylesheet" href="../resources/css/activity-style.css">
     <link rel="stylesheet" href="../resources/css/FAQ.css">
-    <script src="${ pageContext.servletContext.contextPath }/resources/js/activity.js?ver=1"></script>
-   	<script>
+    <script src="${ pageContext.servletContext.contextPath }/resources/js/activity.js?ver=2"></script>
+  <!--  	<script>
    	$(function() {
-   	 function requsetAjax (data) {
-   		 $.ajax({
-	    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
-	    	type : 'get',
-	    	data : { 
-	    		date : data
-	    		locationName : '${location.name}' 
-	    	},
-	    	success : function(data){
-	    		console.log(data);
-	    	},
-	    	error : function(error){
-	    		console.log(error)
-	    	}
-	    });
-   	 }
-   		
+	   	   		
 		$("#datepicker").on("propertychange change keyup paste input", function(){
 		   let data = $('#datepicker').val();
-		   console.log(data);
-		   requsetAjax(data);
+
+		   $.ajax({
+		    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
+		    	type : 'get',
+		    	data : { 
+		    		dateValue : data,
+		    		locationName : '${location.name}' 
+		    	},
+		    	success : function(data){
+		    		//console.log(data);
+		    		if(data != null){
+		    			document.getElementById('actiSearch').innerHTML = '';
+		    			let str = '';
+		    			for(let i = 0; i < data.activityList.length; i++){
+		    				
+		    			str	 += '<div class="col">'
+	 		    		        +'<div class="card shadow-sm">'
+	 		    		          + '<a href="/acti/activity/information?actiName=' +data.activityList[i].name+ '"><img src="' + data.activityList[i].image + '"  id="check1" width="100%" height="225"  role="img" ></img>'
+	 		    		         + ' <div class="card-body">'
+	 		    		        + '<p class="card-text">'
+	 		    		        +        data.activityList[i].name
+	 		    		       + '</p></a>'
+	 		    		      + ' <p id="star">별점 : '         
+	 		    		     + '  </p> '
+	 		    		    + '   <p>액티비티 마감일 : '+ data.activityList[i].EndDate  + '</p>'
+	 		    		   + ' <div class="d-flex justify-content-between align-items-center"> '
+	 		    		  + '  <small class="text-muted">₩'+ data.activityList[i].price + '부터</small>'
+	 		    		 + '   </div> '
+	 		    		+ '    </div> '
+	 		    		+ '   </div> ';
+		    			}
+		    			
+		    			document.getElementById('actiSearch').innerHTML = str;
+	 		    		
+		    		} else {
+		    			document.getElementById('actiSearch').innerHTML = '';
+		    			
+		    			$('#actiSearch').html('<span>검색결과가 없습니다.</span>');
+		    		}
+		    	},
+		    	error : function(error){
+		    		console.log(error);
+		    	}
+		    });
 		});
 		
-		$('#submit').on('click' , function() {
+		$('#submit').on('click', function() {
 			let price = $('#amount2').val();
-			console.log(price);
-			requsetAjax(price);
+			
+			$.ajax({
+		    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
+		    	type : 'get',
+		    	data : { 
+		    		priceValue : price,
+		    		locationName : '${location.name}' 
+		    	},
+		    	success : function(data){
+		    		console.log(data);
+		    	},
+		    	error : function(error){
+		    		console.log(error);
+		    	}
+		    });
 		});
 		
 		$('#sortBtn').on('change', function(){
 			let sort = $('#sortBtn option:selected').val();
-			console.log(sort);
-			requsetAjax(sort);
+			
+			$.ajax({
+		    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
+		    	type : 'get',
+		    	data : { 
+		    		sortValue : sort,
+		    		locationName : '${location.name}' 
+		    	},
+		    	success : function(data){
+		    		console.log(data);
+		    	},
+		    	error : function(error){
+		    		console.log(error);
+		    	}
+		    });
 		});
 	});
-   	</script>
+   	</script> -->
+ <!--   <script>
+  $(function() {
+	   		
+	/* $("#datepicker").on("propertychange change keyup paste input", function(){
+			
+		$('#frm').attr("action","/acti/sort/controll");
+		$('#frm').submit();
+	}); */
+	
+	$('#sortBtn').on('change', function(){
+		$('#frm').submit();
+	});
+	
+  });
+  </script>  -->
+	
   </head>
   <br>
   <body>
@@ -83,12 +151,12 @@
     <div class="container mb-4">
         <div class="image">
           <div class="faq">
-            <img src="${location.image}">
+            <img src="${locationActivity.image}">
           </div>
             <div>
-            <h1 id="title">${location.name}</h1>
+            <h1 id="title">${locationActivity.name}</h1>
             <p id="content">
-                ${location.info}
+                ${locationActivity.info}
             </p>
             </div>
         </div>
@@ -98,10 +166,10 @@
     <div class="container mt-5 mb-5">
         <div class="row">
           <div class="col">
-            <h1 id="tipTitle" style="margin-bottom: 20px;">${location.name} 여행 가이드 및 팁</h1>
+            <h1 id="tipTitle" style="margin-bottom: 20px;">${locationActivity.name} 여행 가이드 및 팁</h1>
             <div class=tip>
             <p id="tipBody">
-            ${location.tip}
+            ${locationActivity.tip}
             </p>
             </div>
         </div>
@@ -120,7 +188,7 @@
           
     <!-- 인기 액티비티 -->
     <div class="container mt-5 mb-md-5">
-        <h1>${location.name} 인기 액티비티</h1>
+        <h1>${locationActivity.name} 인기 액티비티</h1>
     </div>
     <div class="container mt-4">
         <div class="row">
@@ -169,7 +237,7 @@
 
       <!-- 액티비티 조회 -->
     <div class="container mt-5">
-      <h1>${location.name} 액티비티</h1>
+      <h1>${locationActivity.name} 액티비티</h1>
       <hr>
     </div>   
   <div class="bigDiv">
@@ -241,12 +309,14 @@
       </div>
     </div>
     <div class="div2">
-        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;">${location.activityList.size()}건의 검색 결과</h2>
+    <form method="get" id="frm" action="/acti/sort/controll">
+        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;">${locationActivity.activityList.size()}건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
               <div class="date">
               <p style="font-size: 18px">예약날짜 : <input type="text" id="datepicker" name="date" readonly="readonly"></p>
+              <button type="submit">전송</button>
               </div>
             </div>
             <div class="col" style="flex: 1.0; padding: 0px;" >
@@ -272,13 +342,16 @@
                     <option value="price">낮은가격순</option>
                     <option value="new">최신순</option>
                 </select>
+                <button type="submit">전송</button>
               </div>
             </div>
           </div>
+          <input type="hidden" name="hdLocationName" value="${locationActivity.name}"/>
+          </form>
         </div>
-        <div class="container" style="float: none; margin:100 auto;">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
-            <c:forEach items="${location.activityList}" var="acti">
+        <div class="container" id="test" style="float: none; margin:100 auto;">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="actiSearch" style="float: none; margin:0 auto;">
+            <c:forEach items="${locationActivity.activityList}" var="acti">
             <div class="col">
               <div class="card shadow-sm">
                 <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>

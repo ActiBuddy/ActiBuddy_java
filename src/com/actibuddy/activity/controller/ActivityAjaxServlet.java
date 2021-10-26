@@ -1,6 +1,7 @@
 package com.actibuddy.activity.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.service.ActivityService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @WebServlet("/activity/ajax")
 public class ActivityAjaxServlet extends HttpServlet {
@@ -22,20 +25,20 @@ public class ActivityAjaxServlet extends HttpServlet {
 		String locationName = request.getParameter("locationName");
 		System.out.println(locationName);
 		
-		String price = request.getParameter("price");
+		String price = request.getParameter("priceValue");
 		System.out.println(price);
 		
-		String date = request.getParameter("date");
+		String date = request.getParameter("dateValue");
 		System.out.println(date);
 		
-		String sort = request.getParameter("sort");
+		String sort = request.getParameter("sortValue");
 		System.out.println(sort);
 
-		Map<String,String> resultMap = new HashMap<>();
+		Map<String,Object> resultMap = new HashMap<>();
 		if(price != null) {
-			String[] prices = price.split("- ");
-			resultMap.put("price1", prices[0]);
-			resultMap.put("price2", prices[1]);
+			String[] prices = price.split("-");
+			resultMap.put("price1", Integer.parseInt(prices[0]));
+			resultMap.put("price2", Integer.parseInt(prices[1]));
 			resultMap.put("date", date);
 			resultMap.put("sort",sort);
 			resultMap.put("locationName", locationName);
@@ -51,14 +54,15 @@ public class ActivityAjaxServlet extends HttpServlet {
 		
 		System.out.println("값"  + locationActivity);
 		
-		String path = "";
-		if(locationActivity != null) {
-			path = "/WEB-INF/views/activity/activity.jsp";
-			request.setAttribute("location", locationActivity);
-			
-		}
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		
-		request.getRequestDispatcher(path).forward(request, response);
+		
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(gson.toJson(locationActivity));
+		
+		out.flush();
+		out.close();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -137,7 +137,7 @@
 				   ORDER BY ACTI_REVIEW_STAR DESC
 	     	</if>
 	     	
-     		<if test="date != null">
+     		<if test="date != '' and date != null">
      		<![CDATA[
      		 AND B.START_DATE < #{ date }
      		 ]]>
@@ -232,6 +232,16 @@
                 ) V
         WHERE ROWNUM <![CDATA[ < ]]> 4) V2
  	
+ 	</select>
+ 
+ 	<select id="selectAllList" resultMap="activityInfoResultMap">
+ 		SELECT
+      		   A.LOCATION_NAME
+     		 , B.ACTI_NAME
+     		 , B.PRICE
+     		 , B.ACTI_IMG
+  		  FROM LOCATION A 
+  		  JOIN ACTIVITY_INFO B ON(A.LOCATION_CODE = B.LOCATION_CODE)
  	</select>
  
  </mapper>

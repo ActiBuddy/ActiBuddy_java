@@ -19,29 +19,45 @@ public class SortControllServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		String locationName = request.getParameter("hdLocationName");
+		System.out.println(locationName);
+		
+		String price = request.getParameter("price");
+		System.out.println(price);
+		
 		String date = request.getParameter("date");
-		System.out.println("date");
-//		String price = request.getParameter("price");
-//		String[] prices = price.split("- ");
-//		
-//		
-//		Map<String,String> priceMap = new HashMap<>();
-//		priceMap.put("price1", prices[0]);
-//		priceMap.put("price2", prices[1]);
-//		
-//		
-//		
-//		ActivityService activityService = new ActivityService();
-//		
-//		LocationAndActivityDTO locationActivity =  activityService.selectActivityByPrice(priceMap);
-//		
-//		String path = "";
-//		if(price != null) {
-//			path = "/WEB-INF/views/activity/activity.jsp";
-//			request.setAttribute("price", locationActivity);
-//		} 
-//		
-//		request.getRequestDispatcher(path).forward(request, response);
+		System.out.println(date);
+		
+		String sort = request.getParameter("sort");
+		System.out.println(sort);
+
+		Map<String,Object> resultMap = new HashMap<>();
+		if(price != null) {
+			String[] prices = price.trim().split("-");
+			resultMap.put("price1", Integer.parseInt(prices[0]));
+			resultMap.put("price2", Integer.parseInt(prices[1]));
+			resultMap.put("date", date);
+			resultMap.put("sort",sort);
+			resultMap.put("locationName", locationName);
+		} else {
+			resultMap.put("sort",sort);
+			resultMap.put("date", date);
+			resultMap.put("locationName", locationName);
+		}
+		
+		ActivityService activityService = new ActivityService();
+		LocationAndActivityDTO locationActivity = activityService.selectLocationInfo(resultMap);
+		
+		System.out.println("값"  + locationActivity);
+		
+		String path = "";
+		if(price != null) {
+			path = "/WEB-INF/views/activity/activity.jsp";
+			request.setAttribute("locationActivity", locationActivity);
+			request.setAttribute("move", "move");
+		} 
+		
+		request.getRequestDispatcher(path).forward(request, response);
 		
 
 	}

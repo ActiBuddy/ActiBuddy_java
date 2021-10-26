@@ -36,10 +36,10 @@ $(function() {
   $("#slider-range").slider({
       range: true,
       min: 0,
-      max: 5000000,
-      values: [0, 5000000],
+      max: 500000,
+      values: [0, 500000],
       slide: function(event, ui) {
-          $("#amount2").val(ui.values[0] + " - " + ui.values[1]);
+          $("#amount2").val(ui.values[0] + "-" + ui.values[1]);
       }
   });
   $("#amount2").val($("#slider-range").slider("values", 0) + " - " + $("#slider-range").slider("values", 1));

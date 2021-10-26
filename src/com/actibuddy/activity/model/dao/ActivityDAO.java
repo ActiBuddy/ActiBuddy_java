@@ -12,7 +12,7 @@ import com.actibuddy.activity.model.dto.LocationDTO;
 
 public class ActivityDAO {
 
-	public LocationAndActivityDTO selectLocationInfo(SqlSession session, Map<String, String> resultMap) {
+	public LocationAndActivityDTO selectLocationInfo(SqlSession session, Map<String, Object> resultMap) {
 		
 		return session.selectOne("ActivityDAO.selectLocationInfo",resultMap);
 	}
@@ -37,5 +37,10 @@ public class ActivityDAO {
 		
 		return session.selectList("ActivityDAO.selectRecommendActivity", actiName);
 	}
+
+	public ActivityInfoDTO selectAllList(SqlSession session) {
+
+		return session.selectOne("ActivityDAO.selectAllList");
+	} 
 
 }

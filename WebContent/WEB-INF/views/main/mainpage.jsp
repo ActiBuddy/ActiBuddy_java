@@ -8,6 +8,8 @@
 	<title>ACTIBUDDY</title>
 	 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link href="resources/css/actibuddy.css" rel="stylesheet"/>
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
+     <script src="${ pageContext.servletContext.contextPath }/resources/js/menubar.js"></script>
 </head>
 <body>
 

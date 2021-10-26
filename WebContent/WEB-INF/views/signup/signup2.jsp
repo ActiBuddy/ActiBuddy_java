@@ -8,129 +8,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
    <link  rel="stylesheet" type="text/css" href="../resources/css/login.css"/>
-  <link  rel="stylesheet" type="text/css" href="../resources/css/signup2.css"/>
+  <link  rel="stylesheet" type="text/css" href="../resources/css/signup.css"/>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-       
-      // 아이디 정의
-    //  $(function(){
-    //       $('#id').keyup(function(){
-    //           let regExp = /^[가-힣]+$/;
-
-    //           if(!regExp.test($(this).val())){
-    //               $('#idResult').html('한글로 입력하세요!').css('color','red')
-    //               $(this).focus().css('background','lightpink');
-    //           }else{
-    //               $('#idResult').html('맞았습니다~!').css('color','blue')
-    //               $(this).focus().css('background','palegreen');
-    //           }
-    //       });
-    //       });
-         
-      // 이름 정의
-      $(function(){
-          $('#name').keyup(function(){
-              
-            let regExp = /^[가-힣]+$/;
-
-              if(!regExp.test($(this).val())){
-                  $('#nameResult').html('한글로 입력하세요!').css('color','red')
-                  $(this).focus().css('background','lightpink');
-              }else{
-                  $('#nameResult').html('맞았습니다~!').css('color','blue')
-                  $(this).focus().css('background','palegreen');
-              }
-          });
-          });
-         
-
-    $(function(){
-      $('#userPwd2').keyup(function(){
-       
-         if($('#userPwd1').val() != $('#userPwd2').val()){
-           $('#pwdREsult').html('비밀번호 일치하지 않음<br><br>').css('color','red');
-          } else{
-            $('#pwdREsult').html('비밀번호 일치함<br><br>').css('color','blue');
-          }
-        });
-     });
-       
-      /*  $(function(){
-        $('.birth').keyup(function(){
-           if( ($('#yy').val() > 2022 || $('#yy').val() < 1900 || $('#yy').val() < null) ||
-               ($('#mm').val() > 13 || $('#mm').val() < 1) ||
-               ($('#dd').val() > 31 || $('#dd').val() < 1 ||  $('#dd').val() < null) ){
-
-             $('#birthResult').html('생년월일을 확인해주세요').css('color','red');
-            } else{
-            	 $('#birthResult').html('맞습니다 ');
-            }
-          });
-        }); */
-        
-        $(function(){
-            $('.birth').keyup(function(){
-            	let filter = /([0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1,2][0-9]|3[0,1]))/
-            
-            	if(!filter.test($("#yy").val())){
-
-                 $('#birthResult').html('생년월일을 확인해주세요').css('color','red');
-                } else{
-                	 $('#birthResult').html(' ');
-                }
-              });
-              });
-
-      $(function(){
-      $('#email').keyup(function() {
-        let filter = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-            if(filter.test($("#email").val())){
-              $('#emailResult').html('good').css('color','red');
-              $(this).focus().css('background','palegreen');
-            }else{ 
-              $('#emailResult').html('이메일을 확인해주세요').css('color','red');
-              $(this).focus().css('background','lightpink');
-            }
-          });
-        });
-
-      $(function(){
-      $('#phone').keyup(function() {
-        let regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-            if(regPhone.test($("#phone").val())){
-              $('#phoneResult').html('good').css('color','red');
-              $(this).focus().css('background','palegreen');
-            }else{ 
-              $('#phoneResult').html('번호를  확인해주세요').css('color','red');
-              $(this).focus().css('background','lightpink');
-            }
-          });
-        });
-  
-</script>
+   
+ <script src="${ pageContext.servletContext.contextPath }/resources/js/signup.js"></script>
+ <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
+ 
     <title>main</title>
   </head>
 
+<script>
+	
+	/*  $(function(){
+		 $('.login_id').click(function(){
+		  if(!$('input[name=userId]').val() == ""){
+			  alert("아이디 썼");
+		 } else {
+			 alert("아이디 써");
+		 
+		 }
+
+		 }),
+			 event.preventDefault();
+	/*  });/ */
+
+		 
+		 /* $(function(){ */
+		   $('.login_id').click(function(){
+		  if(!$('input[name=pwd]').val() == "")
+		  {
+		  } else {
+			 alert("비번 써");
+		 }
+		 })
+		 });
+		  */
+		 
+		/*   $('.login_btn').click(function(){
+			  if( !$('input[name=userName]').val() == ""){
+			 } else {
+				 alert("이름 써");
+			 }
+		 })
+		 
+	});  */
+	
+	/* <script>
+	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
+		$("#userId").blur(function() {
+			// id = "id_reg" / name = "userId"
+			var user_id = $('#userId').val();
+			
+			$.ajax({
+				url : 'acti/member/idcheck' 
+				type : 'POST',
+				data : {userId: userId},
+				success : function(data) {
+					console.log("1 = 중복o / 0 = 중복x : "+ data);							
+					
+					if (data == 1) {
+							// 1 : 아이디가 중복되는 문구
+							$("#idResult").text("사용중인 아이디입니다 :p");
+							$("#idResult").css("color", "red");
+						} else {
+							
+							if(idJ.test(user_id)){
+								// 0 : 아이디 길이 / 문자열 검사
+								$("#idResult").text("");
+					
+							} else if(user_id == ""){
+								
+								$('#idResult').text('아이디를 입력해주세요 :)');
+								$('#idResult').css('color', 'red');
+								
+							} else {
+								
+								$('#idResult').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+								$('#idResult').css('color', 'red');
+							}
+							
+						}
+					}, error : function() {
+							console.log("실패");
+					}
+				});
+			}); */
+	</script>
+			  
+	  
+
+</script>
 
   <body>
-    <main class="wrapper">
+    <main class="wrapper2">
       <div>
         <img src="../resources/image/actibuddylogo.png" class="mainlogo" />
       </div>
 
-      <div class="signup1">
-        <form id="joinForm" action="../member/regist" method="post">
-
+      <div class="signup2_1">
+      
+      
+		<form id="joinForm" action="../member/idcheck" method="post">
          <span><h2>아이디</h2></span>
          <input type="text" name="userId" id="userId"/>
+         <input type="hidden" name="idchk" value="0"/>
          <label id="idResult"></label>
-
+      <button class="login_id">아이디체크</button>
+         </form>
+         
+        <form id="joinForm" action="../member/regist" method="post">
          <span><h2>비밀번호</h2></span>
          <input type="password" name="pwd" id="userPwd1"/>
 
          <span><h2>비밀번호 확인</h2></span>
-         <input type="password" name="name" id="userPwd2"/>
+         <input type="password" name="name" id="userPwd2" />
          <label id="pwdREsult"></label>
 
          <span><h2>이름</h2></span>
@@ -138,21 +129,11 @@
          <label id="nameResult"></label>
 
          <span><h2>생년월일</h2></span>
-            <!--  <div class="bir_yy"> -->
-              <input type="number" class="birth" name="birth" id="yy" placeholder="19940922 -> 940922" aria-label="년(4자)" maxlength="6">
-             
-         <!--    <div class="bir_mm">
-              <input type="text" class="birth" id="mm" placeholder="월" aria-label="년(4자)" maxlength="2">
-             </div>
-          <div class="bir_dd">
-            <input type="text" class="birth" id="dd" placeholder="일" aria-label="일" maxlength="2"> 
-          </div> -->
-       <!--   </div> -->
+              <input type="number" class="birth" name="birth" id="yy" placeholder="19940922 -> 940922" aria-label="년(4자)" maxlength="6" />
          <label id="birthResult"></label>
 
-
          <span><h2>이메일</h2></span>
-         <input type="text" name="email" id="email"/>
+         <input type="text" name="email" id="email" />
          <label id="emailResult"></label>
 
          <span><h2>연락처</h2></span>
@@ -166,7 +147,7 @@
 
          </form>
          
-    </div>
+             </div>
 
     <br><br><br><br>
 

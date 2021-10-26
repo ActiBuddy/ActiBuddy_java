@@ -61,4 +61,24 @@ public class MemberService {
 		
 		return result;
 	}
+
+
+	public MemberDTO idcheck(MemberDTO requestMember) {
+
+		SqlSession session = getSqlSession();
+		MemberDTO loginMember = null;
+		
+		String result = memberDAO.idcheck(session, requestMember);
+		
+		
+		if(result.matches(requestMember.getUserId())) {
+			loginMember = memberDAO.selectLoginMember(session, requestMember);
+		} else {
+			loginMember = memberDAO.selectLoginMember(session, requestMember);
+		}
+		
+		session.close();
+		
+		return loginMember;
+	}
 }

@@ -3,8 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="MemberDAO">
- 
- 
  <resultMap type="com.actibuddy.member.model.dto.MemberDTO" id="memberResultMap">
 		<id property="userId" column="USER_ID"/>
 		<result property="userName" column="USER_NAME"/>
@@ -17,8 +15,6 @@
 		<result property="memType" column="MEM_TYPE"/>
 		<result property="memPhone" column="MEM_PHONE"/>
 	</resultMap>
-	
-	
 	
 	<insert id="insertMember" parameterType="com.actibuddy.member.model.dto.MemberDTO">
         INSERT
@@ -58,6 +54,17 @@
          WHERE A.QUIT_YN = 'N'
            AND A.USER_ID = #{ userId, jdbcType=VARCHAR}
 	</select>
+	
+	
+	<select id="idcheck" resultType="java.lang.String">
+      
+        SELECT
+               A.USER_ID
+          FROM MEMBER A
+         WHERE A.QUIT_YN = 'N'
+           AND A.USER_ID = #{ userId }
+	</select>
+	
 	
 	<select id="selectLoginMember" resultMap="memberResultMap">
 		

@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="../resources/css/actibuddy.css">
     <link rel="stylesheet" href="../resources/css/activity-style.css">
     <link rel="stylesheet" href="../resources/css/FAQ.css">
+    
+    
     <script src="../resources/js/activity.js?ver=1.1"></script>
   </head>
   <br>

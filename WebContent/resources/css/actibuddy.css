@@ -60,7 +60,7 @@ a {
   /* float: left; */
   height: 75px;
   width: 60%;
-  border: 1px solid black;
+/*   border: 1px solid black; */
   display: inline-block;
 }
 
@@ -76,7 +76,7 @@ a {
   float: right;
   width: 23%;
   height: 70px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .navbar_link span {
   position: relative;
@@ -89,7 +89,6 @@ a {
   float: right;
   width: 25%;
   height: 70px;
-  border: 1px solid black;
 }
 .navbar_link2 span {
   position: relative;

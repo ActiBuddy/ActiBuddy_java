@@ -7,65 +7,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ACTIBUDDY</title>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="${ pageContext.servletContext.contextPath }/resources/css/*" rel="stylesheet" />
-	<script>
-	      $(function(){
-	         $("#acti_1").on({
-	             mouseover: function(){
-	                 $('#acti_detail1').css('display', 'block');
-	                 $('#acti_detail2').css('display', 'none');
-	             },
-	             mouseleave: function(){
-	                 $('#acti_detail1').css('display','none');
-	             }
-	         });
-	      });
-	      $(function(){
-	          $("#acti_detail1").on({
-	              mouseover: function(){
-	                  $('#acti_detail1').css('display', 'block');
-	              },
-	              mouseleave: function(){
-	                  $('#acti_detail1').css('display','none');
-	              }
-	          });
-	      });
-	          
-	
-	      $(function(){
-	          $("#acti_2").on({
-	              mouseover: function(){
-	                  $('#acti_detail2').css('display', 'block');
-	                  $('#acti_detail1').css('display', 'none');
-	              },
-	              mouseleave: function(){
-	                  $('#acti_detail2').css('display','none');
-	              }
-	          });
-	      });
-	
-	      $(function(){
-	          $("#acti_detail2").on({
-	              mouseover: function(){
-	                  $('#acti_detail2').css('display', 'block');
-	              },
-	              mouseleave: function(){
-	                  $('#acti_detail2').css('display','none');
-	              }
-	          });
-	      });
-	</script>
 </head>
 <body>
-
-
 
 	<div class="activity_main">
 		<div class="navbar_menu">
 
 			<span> 
-			<img src="${ pageContext.servletContext.contextPath }/resources/image/actibuddylogo.png" class="nav_logo">
+			<a href="${ pageContext.servletContext.contextPath }"><img src="${ pageContext.servletContext.contextPath }/resources/image/actibuddylogo.png" class="nav_logo"></a>
 			</span> 
 			<span id="acti_1">
 			<a href="${ pageContext.servletContext.contextPath }/activity/main">액티비티</a>
@@ -90,7 +39,7 @@
 	<c:if test="${ empty sessionScope.loginMember }">
 		<div class="navbar_link">
 			<span> <a href="${ pageContext.servletContext.contextPath }/faq">FAQ</a>
-			</span> <span> <a href="${ pageContext.servletContext.contextPath }/member/regist">회원가입</a>
+			</span> <span> <a href="${ pageContext.servletContext.contextPath }/member/check">회원가입</a>
 			</span> <span>
 				<button type="button" class="login_btn" onclick="location.href='${ pageContext.servletContext.contextPath }/member/login'">로그인</button>
 			</span>

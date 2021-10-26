@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>trip-review-write</title>
-    <link rel="stylesheet" href="../../resources/css/actibuddy.css">
-    <link rel="stylesheet" href="../../resources/css/mypage.css">
+    <title>여행 후기 작성</title>
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mypage.css">
 
 </head>
 
@@ -22,7 +23,7 @@
 
     <div class="logo" >
     
-        <img src="../../resources/image/mypage/mainlogo.png" width="400px" height="350px" />
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/mainlogo.png" width="400px" height="350px" />
         
     </div>
 
@@ -45,7 +46,7 @@
     
             <div class="side-1">
                 <br><br><br>
-                <img src="../resources/image/profile.png" width="100px" height="100px"/>
+                <img src="${ pageContext.servletContext.contextPath }/resources/image/profile.png" width="100px" height="100px"/>
                 
                 <c:if test="${ !empty sessionScope.loginMember }">
 		
@@ -57,18 +58,18 @@
                 <hr>
                 <br>
 
-                <a href="../mypage/memQuit.html" id="quit">회원탈퇴</a>
+                <a href="/acti/mypage/quit" id="quit">회원탈퇴</a>
           	</div>
             
             <div class="side-2">
                 
                 <br><br>
                 <div class="menu">
-                    <a href="../mypage/tripList.html">여행 내역</a><br><br><br>
-                    <a href="../mypage/review.html">이용 후기</a><br><br><br>
-                    <a href="../mypage/cart.html">장바구니</a><br><br><br>
-                    <a href="../mypage/mate-list.html">메이트 내역</a><br><br><br> 
-                    <a href="../mypage/my-question.html">문의 사항</a><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/triplist">여행 내역</a><br><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/review">이용 후기</a><br><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/myQuestion">문의 사항</a><br><br>
                 </div>
             </div>
 
@@ -84,7 +85,7 @@
 
                     <h5>이용 후기 작성</h5>
                     <hr>
-                    <h2>제목 : </h2>
+                    <h2 id="titleH2">제목 : </h2><textarea id="title" placeholder="제목를 작성해주세요"></textarea>
                     <h3>후기 상품 : [제주] 차귀도 배낚시 체험</h3>
                     <br>
                     <h5> 날짜 : </h5>
@@ -101,7 +102,7 @@
                     <hr>
                     <h5>후기 내용</h5>
                     <hr>
-                    <textarea></textarea>
+                    <textarea placeholder="후기 내용을 작성해주세요"></textarea>
 
                     
                     <!-- <script>

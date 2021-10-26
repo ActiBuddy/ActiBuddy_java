@@ -55,7 +55,7 @@
                 <hr>
                 <br>
 
-                <a href="../mypage/memQuit.html" id="quit">회원탈퇴</a>
+                <a href="/acti/mypage/quit" id="quit">회원탈퇴</a>
     
                 
             </div>
@@ -66,8 +66,8 @@
                     <a href="${ pageContext.servletContext.contextPath }/mypage/triplist">여행 내역</a><br><br><br>
                     <a href="${ pageContext.servletContext.contextPath }/mypage/review">이용 후기</a><br><br><br>
                     <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
-                    <a href="../mypage/mate-list.html">메이트 내역</a><br><br><br> 
-                    <a href="">문의 사항</a><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/question">문의 사항</a><br><br>
                 </div>
             </div>
 
@@ -77,12 +77,16 @@
         <div class="center-all">
 
             <div class="center-1">
-                <textarea id ="text1" placeholder="소개를 작성해주세요"></textarea>
+            	<form id = "introduce" action="../mypage/main" method="post">
+            	
+                <textarea cols ="50" rows="6" id ="text1" name="introduce" placeholder="소개를 작성해주세요"></textarea>
         
                 <hr>
         
-                <textarea> 선호하는 액티비티 : </textarea>
-                <button type="submit">수정하기</button>
+                <textarea cols ="30" rows="2" name="favoriteActi"> 선호하는 액티비티 : </textarea>
+                <button type="submit">등록하기</button>
+            	
+            	</form>
     
             </div>
             <div class="center-2">

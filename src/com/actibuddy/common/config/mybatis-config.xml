@@ -21,5 +21,6 @@
  		<mapper resource="com/actibuddy/activity/model/dao/ActivityDAO.xml"/>
 		<!-- <mapper resource="com/greedy/jsp/notice/model/dao/NoticeDAO.xml"/> -->
 		<!-- <mapper resource="com/greedy/jsp/board/model/dao/BoardDAO.xml"/> -->
+		<!-- <mapper resource="com/actibuddy/mypage/model/dao/MypageIntroduceDAO.xml"/> -->
 	</mappers>
 </configuration>

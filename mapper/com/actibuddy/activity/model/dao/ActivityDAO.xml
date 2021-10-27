@@ -85,7 +85,7 @@
  	
  	<resultMap type="com.actibuddy.activity.model.dto.ActivityOptionDTO" id="optionResultMap">
  	<id property="optionNum" column="OPTION_NUM"/>
- 	<result property="price" column="PRICE"/>
+ 	<result property="price" column="OPTION_PRICE"/>
  	<result property="optionName" column="OPTION_NAME"/>
  	<result property="actiNum" column="ACTI_NUM"/>
  	</resultMap>
@@ -218,6 +218,7 @@
                                             FROM ACTIVITY_INFO A
                                            WHERE ACTI_NAME = #{ actiName }
                                          ) 
+                   AND A.ACTI_NAME <![CDATA[ <> ]]> #{ actiName }                      
                  ORDER BY DBMS_RANDOM.RANDOM
                 ) V
         WHERE ROWNUM <![CDATA[ < ]]> 4) V2

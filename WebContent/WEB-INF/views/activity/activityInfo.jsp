@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -13,7 +14,10 @@
     <link href="../resources/css/actibuddy.css" rel="stylesheet" />
     <link href="../resources/css/activity_info.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <!--  데이트피커 -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
     <title>main</title>
@@ -84,36 +88,13 @@
 
 <div class=activity-2>
 <!-- 조건 -->
-  <c:forEach items="${ activity.conditionList }" var="conditionList">
-  ${ conditionList.conIcon }
-  <h3 id="condition1">${ conditionList.conName }</h3>
-  </c:forEach>
-  <!-- <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-  </svg>
-  <h3 id="condition1"> 48시간 전 취소 가능</h3>
- 
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
-    <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-  </svg> 
-  <h3 id="condition2">날짜 지정 티켓</h3>
-
-  <br> <br> <br>
-
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-    <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-  </svg>
-  <h3 id="condition3">그룹당 2~3명 </h3>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-      <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-    </svg>
-  <h3 id="condition4">일정 약 2시간 소요 </h3> -->
-
+  <c:forEach var="size" begin="0" end="${ fn:length(activity.conditionList)-1 }">
+  <h3 id="condition${ size + 1 }" > ${ activity.conditionList[size].conIcon }
+  ${ activity.conditionList[size].conName }</h3>
+  <c:if test="${ size == 1}">
+  <br><br><br>
+  </c:if>
+  </c:forEach> 
 </div>
 
 <br> <br> 
@@ -126,7 +107,7 @@
 <ul class="explan">
    ${ activity.activityList[0].tip }
 </ul>
-</left>
+
 
 </div>
 
@@ -140,50 +121,72 @@
   <br>
 <form>
   <h4 id="date"> 액티비티 참여 일자 선택</h4> <br>
-  <input class="calender" type="date" min= max="2021-10-30">
+  <input type="text" id="datepicker" name="date" placeholder="날짜를 입력해주세요" readonly="readonly">
+  <script>
+  
+  $(function(){
+	  $("#datepicker").datepicker({ 
+	    minDate: "0", 
+	    maxDate: "${ activity.activityList[0].endDate }",
+	    dateFormat : "yy-mm-dd"
+	  });
+	});
+
+	$(function() {
+	   $( "#datepicker" ).datepicker(); 
+	  });
+
+	$(document).ready(function(){ 
+	  $.datepicker.setDefaults({ 
+	    changeMonth: true,
+	    changeYear: true, 
+	    nextText: '다음 달',
+	    prevText: '이전 달', 
+	    yearRange: 'c-50:c+20', 
+	    showButtonPanel: true, 
+	    currentText: '오늘 날짜', 
+	    closeText: '닫기', 
+	    showMonthAfterYear: true,
+	    dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	   }); 
+	  });
+
+	  $.datepicker._gotoToday = function(id) {
+	    $(id).datepicker('setDate', new Date()).datepicker('hide').blur();
+	};
+
+  </script>
   
   
   <h4 id="select">옵션 선택</h4><br>
   <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
-    <c:forEach items="${ activity.optionList }" var="optionList">
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-    <label class="btn btn-radio-option1" for="btnradio1">${ optionList.optionName }</label>
-
+  
+    <c:forEach var="size" begin="0" end="${ fn:length(activity.optionList) -1 }" varStatus="st">
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio${ size + 1 }" autocomplete="off">
+    <label class="btn btn-radio-option" for="btnradio${ size + 1 }">${ activity.optionList[size].optionName }</label> 
+    <input type="hidden" id="hd1" value="${ activity.optionList[size].price }"/>
     <br>
-    </c:forEach>
+    
+    <script>
   
- <!--    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-    <label class="btn btn-radio-option2" for="btnradio2">써티파이드 다이빙</label> -->
+    $('.btn-check').change(changePersonbar)
+    function changePersonbar(e) {
+    	checkprice = e.target.nextElementSibling.nextElementSibling.value;
+    	if($(`#btnradio${size + 1}`).prop("checked")) {
+    		$('#price').html('₩ ' + ${ activity.optionList[size].price });
+    		
+    	};
+    };
+    
+    </script>
+
+    </c:forEach> 
+    
   </div>
-
-  <script>
   
-  
-    $('input:radio').change(changeOption);
-    function changeOption() {
-      if($('#btnradio1').prop("checked")) {
-        $('.btn-radio-option1').css({
-          'background-color' : "blue",
-        });
-      } else {
-        $('.btn-radio-option1').css({
-          'background-color' : "green",
-        });
-      }
-      if($('#btnradio2').prop("checked")) {
-        $('.btn-radio-option2').css({
-          'background-color' : "blue",
-        });
-      } else {
-        $('.btn-radio-option2').css({
-          'background-color' : "green",
-        });
-      }
-    }
-  </script>
-
   <br><br><br><br>
-
+  
   <h4 id="person"> 인원
     <input class="person-bar" type="number" name="" id="" max="10" min="0" value="1" step="1">
   </h4>
@@ -191,28 +194,25 @@
   
   <br> <br>
 
-  <h4 id="price"> ₩ ${ activity.activityList[0].price }
-  <script>
-    $('.person-bar').change(pricePrint);
+  <h4 id="price"> ₩
+ <script>
+      $('.person-bar').change(pricePrint);
     function pricePrint() {
-      let value = $('.person-bar').val();
-      $('#price').html('₩ ' + value * ${ activity.activityList[0].price });
-    }
+      let person = $('.person-bar').val();
+      $('#price').html('₩ ' + (person * checkprice));
+    } ; 
+    
   </script>
   </h4>
 
 
 
   <h5 id="confirm"> 계속 진행하려면 옵션 선택을 완료해주세요</h5>
+  
 
   <br> <br>
 
-  <div class="btn-group" type = "submit" role="group" aria-label="...">
-    <label  class="btn btn-pay-select1">장바구니</label> 
-   <a id="move-pay" href="../pay/pay.html"> 
-    <label  class="btn btn-pay-select2">바로 예약</label> 
-  </a>
-  </div>
+    <input type="submit" class="btn btn-pay-select" value="장바구니"> 
 </div>
 
 </div>
@@ -345,36 +345,19 @@
 <div class="activity-6">
  <!-- 추천 액티비티 -->
  <strong><h3 id="recomend">추천 액티비티</h3></strong> <br>
-
-    <c:forEach items="${ recActivity }" var="rec">
- <div class="card1" style="width: 18rem;">
-  <img src=${ rec.image } class="card-img-top" alt="...">
+ 
+ <c:forEach var="size" begin="0" end="${ fn:length(recActivity) -1 }">
+ <div class="card${ size + 1 }" style="width: 18rem;">
+  <img src=${ recActivity[size].image } class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">${ rec.name }</h5>
-    <p class="card-text">${ rec.price }</p>
-    <a href="#" class="btn btn-primary">보러가기</a>
+    <h5 class="card-title">${ recActivity[size].name }</h5>
+    <p class="card-text">${ recActivity[size].price }</p>
+    <a href="/acti/activity/information?actiName=${ recActivity[size].name }" class="btn btn-primary">보러가기</a>
   </div>
 </div>
-</c:forEach>
-<!-- <div class="card2" style="width: 18rem;">
-  <img src="../resources/image/activity_info_recommend(2).png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">울릉도 학포해변 학포다이버리조트 호핑투어 체험</h5>
-    <p class="card-text">₩ 95,000</p>
-    <a href="#" class="btn btn-primary">보러가기</a>
-  </div>
+ 
+ </c:forEach>
 </div>
-
-<div class="card3" style="width: 18rem;">
-  <img src="../resources/image/activity_info_recommend(3).png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">울릉아일랜드 투어패스 (독도 전망 케이블카/예림원 등)</h5>
-    <p class="card-text">₩ 7,900</p>
-    <a href="#" class="btn btn-primary">보러가기</a>
-  </div>
-</div> -->
-</div>
-
 
 </div>
 

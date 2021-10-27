@@ -53,10 +53,7 @@
 }
 
 .bi-currency-dollar {
-    position: relative;
-    left: 23%;
     color: gold;
-    float: left;
 }
 
 #condition1 {
@@ -66,9 +63,6 @@
 }
 
 .bi-calendar-check {
-    position: relative;
-    left: 45%;
-    float: left;
     color:firebrick
 }
 
@@ -78,27 +72,15 @@
     float: left;
 }
 
-.bi-people-fill {
-    position: relative;
-    left: 23%;
-    float: left;
-}
-
 #condition3 {
     position: relative;
     left: 25%;;
     float: left;
 }
 
-.bi-clock {
-    position: relative;
-    left: 50%;
-    float: left;
-}
-
 #condition4 {
     position: relative;
-    left: 53%;
+    left: 44%;
     float: left;
 }
 
@@ -139,7 +121,7 @@
     /* border: 1px solid red; */
 }
 
-.calender {
+#datepicker {
     position: relative;
     left: 64%;
 }
@@ -155,7 +137,7 @@
     width: 250px;
 }
 
-.btn-radio-option1 {
+.btn-radio-option {
     position: relative;
     left: 50%;
     background-color: green;
@@ -163,13 +145,7 @@
     border: white;
 }
 
-.btn-radio-option2 {
-    position: relative;
-    left: 50%;
-    background-color: green;
-    color: white;
-    border: white;
-}
+input[type=radio]:checked + label {background-color: blue;}
 
 #person {
     position: relative;
@@ -192,26 +168,9 @@
     left: 10%;
 }
 
-.btn-pay-select1 {
+.btn-pay-select {
     position: relative;
-    left: 110%;
-    width: 200px;
-    background-color: green;
-    margin-bottom: 10%;
-    color: white;
-    border: white;
-}
-
-.btn-pay-select2 {
-    position: relative;
-    width: 200px;
-    color: white;
-    /* border: 1px solid red; */
-}
-
-#move-pay {
-    position: relative;
-    left: 130%;
+    left: 65%;
     width: 200px;
     background-color: green;
     margin-bottom: 10%;

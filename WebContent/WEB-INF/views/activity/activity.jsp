@@ -132,7 +132,6 @@
 
 	}); 
 	
-	
 	$("input[name=sport]").change(function(){
 		
 		let checkArr = $("input[name=sport]:checked");
@@ -173,6 +172,20 @@
 		let check = JSON.stringify(checkList); 
 		console.log(check);
 		$('#tour').val(check);
+	});
+	
+	$("input[name=spa]").change(function(){
+		
+		let checkArr = $("input[name=spa]:checked");
+		
+		let checkList = [];
+		for(let i = 0; i < checkArr.length; i++){
+			checkList[i] = checkArr[i].value;
+		}
+		
+		let check = JSON.stringify(checkList); 
+		console.log(check);
+		$('#spa').val(check);
 	});
 	 
 	 $("input[name=water]").change(function(){
@@ -328,7 +341,7 @@
             <li class="mb-4"><input type="checkbox" name="selectAll2" value="selectAll2" class="ch"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
-          <input type="hidden" name="hdCheck2" id="ticket"/>
+          <input type="hidden" name="hdCheck1" id="ticket"/>
         </div>
       </div>
       <div class="menu">
@@ -342,7 +355,7 @@
             <li class="mb-4"><input type="checkbox" name="selectAll3" value="selectAll3"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
-          <input type="hidden" name="hdCheck3" id="spa"/>
+          <input type="hidden" name="hdCheck2" id="spa"/>
         </div>
       </div>
       <div class="menu">
@@ -368,15 +381,16 @@
             <li class="mb-4"><input type="checkbox" name="water" value="surfing"><span>서핑</span></li>
             <li class="mb-4"><input type="checkbox" name="water" value="kayak"><span>패들보드 & 카약 & 래프팅</span></li>
             <li class="mb-4"><input type="checkbox" name="selectAll5" value="selectAll5"><span>모두선택</span></li>
+            <input type="submit" value="확인"/>
           </ul>
-          <input type="hidden" name="hdCheck3" id="water"/>
+          <input type="hidden" name="hdCheck4" id="water"/>
         </div>
       </div>
       <input type="hidden" name="hdLocationName" value="${locationActivity.name}"/>
       </form>
     </div>
     <div class="div2">
-    <form method="post" id="frn">
+    <form method="post" id="frm">
         <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">${locationActivity.activityList.size()}건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
           <div class="row mb-5" style="float: none; margin:0 auto;">

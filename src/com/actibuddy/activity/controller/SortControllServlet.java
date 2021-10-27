@@ -16,11 +16,6 @@ import com.actibuddy.activity.service.ActivityService;
 @WebServlet("/sort/controll")
 public class SortControllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String locationName = request.getParameter("hdLocationName");
@@ -37,7 +32,19 @@ public class SortControllServlet extends HttpServlet {
 		
 		String sport = request.getParameter("hdCheck");
 		System.out.println(sport);
-
+		
+		String ticket = request.getParameter("hdCheck1");
+		System.out.println(ticket);
+		
+		String spa = request.getParameter("hdCheck2");
+		System.out.println(spa);
+		
+		String tour = request.getParameter("hdCheck3");
+		System.out.println(tour);
+		
+		String water = request.getParameter("hdCheck4");
+		System.out.println(water);
+		
 		Map<String,Object> resultMap = new HashMap<>();
 		if(price != null) {
 			String[] prices = price.trim().split("-");
@@ -66,7 +73,7 @@ public class SortControllServlet extends HttpServlet {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("move", "move");
-		}
+		} 
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}

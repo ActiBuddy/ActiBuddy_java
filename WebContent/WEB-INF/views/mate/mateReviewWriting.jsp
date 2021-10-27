@@ -20,13 +20,11 @@
           $('.btnok').click(function() {
             if($('input[class="write_title"]').val() == ''){
               alert('제목을 입력해주세요.');
-              } else {
-                  if($('textarea[class=write_text]').val() == '') {
-                    alert('내용을 입력해주세요.');
-                  } else {
-                    $(location).attr('href', 'mateReview_view.html');
-                  }
-              }
+            } else {
+	            if($('textarea[name=con]').val() == '') {
+	              alert('내용을 입력해주세요.');
+	            }
+            }
           });
         });
   
@@ -36,7 +34,7 @@
       <!-- 네비게이션바 -->
       <jsp:include page="../common/menubar.jsp"/>
 
-	<form id="postReview" action="${ pageContext.servletContext.contextPath }/mate/review/regist" method="post" >
+	<form id="postReview" action="${ pageContext.servletContext.contextPath }/mate/review/regist" method="post" enctype="multipart/form-data">
     <!-- 주요 html -->
     <div class="around">
         <!-- 로고 이미지 -->

@@ -149,28 +149,8 @@
            
         </div>
 
-        <!-- pagination + 버튼 -->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/review/regist'">작성하기</button>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link-num" href="#">1</a></li>
-              <li class="page-item"><a class="page-link-num" href="#">2</a></li>
-              <li class="page-item"><a class="page-link-num" href="#">3</a></li>
-              <li class="page-item"><a class="page-link-num" href="#">4</a></li>
-              <li class="page-item"><a class="page-link-num" href="#">5</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-
+       <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/review/regist'">작성하기</button>
+       <jsp:include page="../common/paging.jsp"/>
         <!-- 검색 부분 -->
         <div class="search">
             <ul>
@@ -178,7 +158,7 @@
                <button type="submit" class="searchbutton">검색하기</button></li>
             </ul>
         </div>
-
+	
     <!-- 진짜 div -->
     </div>
 

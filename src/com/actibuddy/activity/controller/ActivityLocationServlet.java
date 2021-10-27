@@ -20,40 +20,15 @@ public class ActivityLocationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String locationName = request.getParameter("locationName"); 
-		System.out.println(locationName);
+		System.out.println("locationName 확인 : " + locationName);
 		
-		String price = request.getParameter("price");
-		System.out.println(price);
-		
-		String date = request.getParameter("date");
-		System.out.println(date);
-		
-		String sort = request.getParameter("sort");
-		System.out.println(sort);
-		
-		Map<String,String> resultMap = new HashMap<>();	
-		
-		if(locationName != null && price == null) {
-			resultMap.put("locationName", locationName);
-		} else if(price != null) {
-			String[] prices = price.split("- ");
-			resultMap.put("loactionName", locationName);
-			resultMap.put("price1", prices[0]);
-			resultMap.put("price2", prices[1]);
-			resultMap.put("date", date);
-			resultMap.put("sort", sort);
-		} else {
-			resultMap.put("loactionName", locationName);
-			resultMap.put("date", date);
-			resultMap.put("sort", sort);
-		}
-		
-		System.out.println(resultMap);
+		Map<String,Object> resultMap = new HashMap<>();	
+		resultMap.put("locationName", locationName);
 		
 		ActivityService activityService = new ActivityService();
 		LocationAndActivityDTO location = activityService.selectLocationInfo(resultMap);
 	
-		System.out.println(location);
+		System.out.println("location 확인 :" +location);
 		
 		String[] month = location.getVisitMonth().split(",");
 		String[] name = location.getVisitName().split(",");
@@ -75,7 +50,7 @@ public class ActivityLocationServlet extends HttpServlet {
 		String path = "";
 		if(location != null){
 			path = "/WEB-INF/views/activity/activity.jsp";
-			request.setAttribute("location", location);
+			request.setAttribute("locationActivity", location);
 			request.setAttribute("vistis", map);
 		} else {
 			path = "/WEB-INF/views/actiFail.jsp";

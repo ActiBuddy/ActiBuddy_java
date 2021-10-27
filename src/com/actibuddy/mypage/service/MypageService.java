@@ -1,6 +1,6 @@
 package com.actibuddy.mypage.service;
 
-import static com.actibuddy.common.config.Template.getSqlSession;
+import static com.actibuddy.common.mybatis.Template.getSqlSession;
 
 import org.apache.ibatis.session.SqlSession;
 

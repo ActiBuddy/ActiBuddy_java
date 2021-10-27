@@ -1,6 +1,6 @@
 package com.actibuddy.activity.service;
 
-import static com.actibuddy.common.config.Template.getSqlSession;
+import static com.actibuddy.common.mybatis.Template.getSqlSession;
 
 import java.util.List;
 import java.util.Map;
@@ -8,9 +8,9 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.activity.model.dao.ActivityDAO;
-import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
+import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 
@@ -24,7 +24,7 @@ public class ActivityService {
 	 * @param resultMap
 	 * @return
 	 */
-	public LocationAndActivityDTO selectLocationInfo(Map<String, String> resultMap) {
+	public LocationAndActivityDTO selectLocationInfo(Map<String, Object> resultMap) {
 
 		SqlSession session = getSqlSession();
 		
@@ -99,6 +99,22 @@ public class ActivityService {
 		session.close();
 		
 		return recActivity;
+	}
+
+	/**
+	 * 액티비티 메인 페이지에서 표시해줄 내용을 가져오는 메소드
+	 * @author 김주환
+	 * @return
+	 */
+	public List<LocationAndActivityDTO> selectAllList() {
+
+		SqlSession session = getSqlSession();
+		
+		List<LocationAndActivityDTO> locationList = activityDAO.selectAllList(session);
+		
+		session.close();
+		
+		return locationList;
 	}
 
 

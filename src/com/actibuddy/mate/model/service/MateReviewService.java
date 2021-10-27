@@ -1,6 +1,6 @@
 package com.actibuddy.mate.model.service;
 
-import static com.actibuddy.common.config.Template.getSqlSession;
+import static com.actibuddy.common.mybatis.Template.getSqlSession;
 
 import java.util.List;
 import java.util.Map;

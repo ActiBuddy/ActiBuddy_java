@@ -7,12 +7,13 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
+import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 
 public class ActivityDAO {
 
-	public LocationAndActivityDTO selectLocationInfo(SqlSession session, Map<String, String> resultMap) {
+	public LocationAndActivityDTO selectLocationInfo(SqlSession session, Map<String, Object> resultMap) {
 		
 		return session.selectOne("ActivityDAO.selectLocationInfo",resultMap);
 	}
@@ -37,5 +38,10 @@ public class ActivityDAO {
 		
 		return session.selectList("ActivityDAO.selectRecommendActivity", actiName);
 	}
+
+	public List<LocationAndActivityDTO> selectAllList(SqlSession session) {
+
+		return session.selectList("ActivityDAO.selectAllList");
+	} 
 
 }

@@ -1,6 +1,7 @@
 package com.actibuddy.activity.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.service.ActivityService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @WebServlet("/activity/ajax")
 public class ActivityAjaxServlet extends HttpServlet {
@@ -20,31 +23,46 @@ public class ActivityAjaxServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String locationName = request.getParameter("locationName");
-//		String price = request.getParameter("price");
-//		System.out.println(price);
-//		
-//		String[] prices = price.split("- ");
+		System.out.println(locationName);
 		
-		String date = request.getParameter("date");
+		String price = request.getParameter("priceValue");
+		System.out.println(price);
+		
+		String date = request.getParameter("dateValue");
 		System.out.println(date);
 		
-//		String sort = request.getParameter("sort");
-//		System.out.println(sort);
+		String sort = request.getParameter("sortValue");
+		System.out.println(sort);
 
-		Map<String,String> resultMap = new HashMap<>();
-		resultMap.put("date", date);
-		
-		ActivityService activityService = new ActivityService();
-		LocationAndActivityDTO locationActivity = activityService.selectLocationInfo(null);
-		
-		String path = "";
-		if(locationActivity != null) {
-			path = "/WEB-INF/views/activity/activity.jsp";
-			request.setAttribute("location", locationActivity);
-			
+		Map<String,Object> resultMap = new HashMap<>();
+		if(price != null) {
+			String[] prices = price.split("-");
+			resultMap.put("price1", Integer.parseInt(prices[0]));
+			resultMap.put("price2", Integer.parseInt(prices[1]));
+			resultMap.put("date", date);
+			resultMap.put("sort",sort);
+			resultMap.put("locationName", locationName);
+		} else {
+			resultMap.put("sort",sort);
+			resultMap.put("date", date);
+			resultMap.put("locationName", locationName);
 		}
 		
-		request.getRequestDispatcher(path).forward(request, response);
+		
+		ActivityService activityService = new ActivityService();
+		LocationAndActivityDTO locationActivity = activityService.selectLocationInfo(resultMap);
+		
+		System.out.println("값"  + locationActivity);
+		
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		
+		
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(gson.toJson(locationActivity));
+		
+		out.flush();
+		out.close();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

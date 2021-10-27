@@ -1,11 +1,12 @@
 package com.actibuddy.member.model.service;
 
+import static com.actibuddy.common.mybatis.Template.getSqlSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.actibuddy.member.model.dao.MemberDAO;
 import com.actibuddy.member.model.dto.MemberDTO;
-import static com.actibuddy.common.config.Template.getSqlSession;
 
 public class MemberService {
 

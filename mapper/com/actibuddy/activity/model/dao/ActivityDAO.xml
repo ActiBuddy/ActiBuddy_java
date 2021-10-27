@@ -100,7 +100,12 @@
  	<collection property="optionList" resultMap="optionResultMap"/>
  	<collection property="locationList" resultMap="locationResultMap"/>
  	</resultMap>
-
+ 	
+ 	<resultMap type="com.actibuddy.activity.model.dto.ActivityMainDTO" id="activityMainResultMap">
+ 	   <collection property="locationList" resultMap="locationResultMap"></collection>
+ 	   <collection property="activityList" resultMap="activityResultMap"></collection>
+ 	</resultMap>
+ 	
  	<select id="selectLocationInfo" resultMap="locationAndActivityResultMap" parameterType="hashMap">
 	 	SELECT
 	      	   A.LOCATION_CODE
@@ -234,14 +239,14 @@
  	
  	</select>
  
- 	<select id="selectAllList" resultMap="activityInfoResultMap">
+ 	<select id="selectAllList" resultMap="locationAndActivityResultMap">
  		SELECT
       		   A.LOCATION_NAME
      		 , B.ACTI_NAME
      		 , B.PRICE
      		 , B.ACTI_IMG
   		  FROM LOCATION A 
-  		  JOIN ACTIVITY_INFO B ON(A.LOCATION_CODE = B.LOCATION_CODE)
+  		  LEFT JOIN ACTIVITY_INFO B ON(A.LOCATION_CODE = B.LOCATION_CODE)
  	</select>
  
  </mapper>

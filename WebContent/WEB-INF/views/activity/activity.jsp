@@ -17,16 +17,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
-    <meta name="theme-color" content="#7952b3">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
@@ -126,22 +117,84 @@
 		});
 	});
    	</script> -->
- <!--   <script>
+  <script>
   $(function() {
 	   		
-	/* $("#datepicker").on("propertychange change keyup paste input", function(){
+	$("#datepicker").on("propertychange change keyup paste input", function(){
 			
-		$('#frm').attr("action","/acti/sort/controll");
-		$('#frm').submit();
-	}); */
+    	$("#frm").attr("action","/acti/sort/controll").submit();
+		
+	}); 
 	
 	$('#sortBtn').on('change', function(){
-		$('#frm').submit();
+    	
+		$('#frm').attr("action","/acti/sort/controll").submit();
+
+	}); 
+	
+	
+	$("input[name=sport]").change(function(){
+		
+		let checkArr = $("input[name=sport]:checked");
+		
+		let checkList = [];
+		for(let i = 0; i < checkArr.length; i++){
+			checkList[i] = checkArr[i].value;
+		}
+		
+		let check = JSON.stringify(checkList); 
+		console.log(check);
+		$('#sport').val(check);
 	});
 	
-  });
-  </script>  -->
+	$("input[name=ticket]").change(function(){
+		
+		let checkArr = $("input[name=ticket]:checked");
+		
+		let checkList = [];
+		for(let i = 0; i < checkArr.length; i++){
+			checkList[i] = checkArr[i].value;
+		}
+		
+		let check = JSON.stringify(checkList); 
+		console.log(check);
+		$('#ticket').val(check);
+	});	
+
+	$("input[name=tour]").change(function(){
+		
+		let checkArr = $("input[name=tour]:checked");
+		
+		let checkList = [];
+		for(let i = 0; i < checkArr.length; i++){
+			checkList[i] = checkArr[i].value;
+		}
+		
+		let check = JSON.stringify(checkList); 
+		console.log(check);
+		$('#tour').val(check);
+	});
+	 
+	 $("input[name=water]").change(function(){
+			
+			let checkArr = $("input[name=water]:checked");
+			
+			let checkList = [];
+			for(let i = 0; i < checkArr.length; i++){
+				checkList[i] = checkArr[i].value;
+			}
+			
+			let check = JSON.stringify(checkList); 
+			console.log(check);
+			$('#water').val(check);
+		});
 	
+	if( '${ move }' != null ){
+		location.href='#actiSearch';
+	}
+	  
+  });
+  </script>
   </head>
   <br>
   <body>
@@ -244,6 +297,7 @@
     <div class="side-2" style="height: 530px;">
       <h3 style="margin-left: 10%;">카테고리</h3>
       <br>
+      <form action="/acti/sort/controll" method="post">
       <div class="menu">
         <div class="btn-group mb-5">
           <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -254,7 +308,9 @@
             <li class="mb-4"><input type="checkbox" name="sport" value="luge"><span>루지 & 짚라인 & 어드벤처</span></li>
             <li class="mb-4"><input type="checkbox" name="sport" value="ski"><span>스키 & 스노보드<span></li>
             <li class="mb-4"><input type="checkbox" name="selectAll" value="selectAll"><span>모두선택</span></li>
+            <input type="submit" value="확인"/>
           </ul>
+          <input type="hidden" name="hdCheck" id="sport"/>
         </div>
       </div> 
       <div class="menu">
@@ -263,12 +319,14 @@
             티켓 & 입장권
           </span>
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
-            <li class="mb-4"><input type="checkbox" name="ticket" value="park"><span>공원 & 자연</span></li>
-            <li class="mb-4"><input type="checkbox" name="ticket" value="zoo"><span>아쿠아리움 & 동물원</span></li>
-            <li class="mb-4"><input type="checkbox" name="ticket" value="water park"><span>테마파크 & 워터파크<span></li>
-            <li class="mb-4"><input type="checkbox" name="ticket" value="museum"><span>박물관 & 미술관<span></li>
-            <li class="mb-4"><input type="checkbox" name="selectAll2" value="selectAll2"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="park" class="ch"><span>공원 & 자연</span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="zoo" class="ch"><span>아쿠아리움 & 동물원</span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="water park" class="ch"><span>테마파크 & 워터파크<span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="museum" class="ch"><span>박물관 & 미술관<span></li>
+            <li class="mb-4"><input type="checkbox" name="selectAll2" value="selectAll2" class="ch"><span>모두선택</span></li>
+            <input type="submit" value="확인"/>
           </ul>
+          <input type="hidden" name="hdCheck2" id="ticket"/>
         </div>
       </div>
       <div class="menu">
@@ -280,7 +338,9 @@
             <li class="mb-4"><input type="checkbox" name="spa" value="spa"><span>온천</span></li>
             <li class="mb-4"><input type="checkbox" name="spa" value="wellbeing"><span>웰빙& 웰니스</span></li>
             <li class="mb-4"><input type="checkbox" name="selectAll3" value="selectAll3"><span>모두선택</span></li>
+            <input type="submit" value="확인"/>
           </ul>
+          <input type="hidden" name="hdCheck3" id="spa"/>
         </div>
       </div>
       <div class="menu">
@@ -292,7 +352,9 @@
             <li class="mb-4"><input type="checkbox" name="tour" value="working"><span>워킹 & 자전거투어</span></li>
             <li class="mb-4"><input type="checkbox" name="tour" value="bus"><span>버스 & 스쿠터 & ATV투어</span></li>
             <li class="mb-4"><input type="checkbox" name="selectAll4" value="selectAll4"><span>모두선택</span></li>
+             <input type="submit" value="확인"/>
           </ul>
+          <input type="hidden" name="hdCheck3" id="tour"/>
         </div>
       </div>
       <div class="menu">
@@ -305,18 +367,20 @@
             <li class="mb-4"><input type="checkbox" name="water" value="kayak"><span>패들보드 & 카약 & 래프팅</span></li>
             <li class="mb-4"><input type="checkbox" name="selectAll5" value="selectAll5"><span>모두선택</span></li>
           </ul>
+          <input type="hidden" name="hdCheck3" id="water"/>
         </div>
       </div>
+      <input type="hidden" name="hdLocationName" value="${locationActivity.name}"/>
+      </form>
     </div>
     <div class="div2">
-    <form method="get" id="frm" action="/acti/sort/controll">
-        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;">${locationActivity.activityList.size()}건의 검색 결과</h2>
+    <form method="post" id="frn">
+        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">${locationActivity.activityList.size()}건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
               <div class="date">
               <p style="font-size: 18px">예약날짜 : <input type="text" id="datepicker" name="date" readonly="readonly"></p>
-              <button type="submit">전송</button>
               </div>
             </div>
             <div class="col" style="flex: 1.0; padding: 0px;" >
@@ -328,7 +392,7 @@
                     <div class="price">
                       <input type="text" id="amount2" name="price" readonly style="border:0; color:#f6931f; font-weight:bold;">
                       <div id="slider-range" style="margin-top: 10px;"></div>
-                      <button type="submit" class="btn btn-success" id="submit">확인</button>
+                      <button type="submit" class="btn btn-success" id="sub">확인</button>
                     </div>
                   </ul>
               </div>
@@ -342,7 +406,6 @@
                     <option value="price">낮은가격순</option>
                     <option value="new">최신순</option>
                 </select>
-                <button type="submit">전송</button>
               </div>
             </div>
           </div>
@@ -350,7 +413,7 @@
           </form>
         </div>
         <div class="container" id="test" style="float: none; margin:100 auto;">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="actiSearch" style="float: none; margin:0 auto;">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
             <c:forEach items="${locationActivity.activityList}" var="acti">
             <div class="col">
               <div class="card shadow-sm">

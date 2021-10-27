@@ -8,9 +8,9 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.activity.model.dao.ActivityDAO;
-import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
+import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 
@@ -106,11 +106,11 @@ public class ActivityService {
 	 * @author 김주환
 	 * @return
 	 */
-	public ActivityInfoDTO selectAllList() {
+	public List<LocationAndActivityDTO> selectAllList() {
 
 		SqlSession session = getSqlSession();
 		
-		ActivityInfoDTO locationList = activityDAO.selectAllList(session);
+		List<LocationAndActivityDTO> locationList = activityDAO.selectAllList(session);
 		
 		session.close();
 		

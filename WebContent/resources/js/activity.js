@@ -36,8 +36,8 @@ $(function() {
   $("#slider-range").slider({
       range: true,
       min: 0,
-      max: 500000,
-      values: [0, 500000],
+      max: 300000,
+      values: [0, 300000],
       slide: function(event, ui) {
           $("#amount2").val(ui.values[0] + "-" + ui.values[1]);
       }
@@ -94,6 +94,7 @@ $(function(){
   });
 });
 
+ 
 
 
 

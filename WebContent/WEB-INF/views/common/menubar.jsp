@@ -86,7 +86,7 @@
 			<span>
 				<button type="button" class="search-btn"
 					onclick="location.href='../activity/searchActivity.html'">Submit</button>
-			<a href="/manager/main">매니저 메뉴</a>		
+			<a href="${ pageContext.servletContext.contextPath }/manager/main">매니저 메뉴</a>		
 			</span>
 		</div>
 	

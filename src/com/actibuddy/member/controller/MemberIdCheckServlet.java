@@ -49,20 +49,14 @@ public class MemberIdCheckServlet extends HttpServlet {
 		System.out.println(loginMember);
 
 		
-//		if(loginMember != null) {
-//			
-//			System.out.println("됐어~");
-//			
-//			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/success.jsp");
-//			rd.forward(request, response);
-//			
-//		} else {
-//			
-//			System.out.println("안됐~");
-//
-//			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/failed.jsp");
-//			rd.forward(request, response);
-//		}
+		
+		// 중복확인만 result 1 0 
+		
+		
+		PrintWriter out = response.getWriter();
+		
+		
+		
 		
 	}
 

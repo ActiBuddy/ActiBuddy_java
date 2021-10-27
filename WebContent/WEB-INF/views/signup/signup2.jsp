@@ -79,7 +79,7 @@
 	            url:'${ pageContext.servletContext.contextPath }/member/check', //Controller에서 인식할 주소
 	            type:'post', //POST 방식으로 전달
 	            data:{id:id},
-	            success:function(data){
+	            success:function(data){ //callback
 	                alert("성공입니다.")
 	                $("#idREsult").css("display",'block')
 	            },

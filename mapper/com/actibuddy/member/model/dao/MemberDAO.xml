@@ -16,6 +16,18 @@
 		<result property="memPhone" column="MEM_PHONE"/>
 	</resultMap>
 	
+	<resultMap type="com.actibuddy.member.model.dto.MemberDTO" id="managerSelecttMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="birth" column="BIRTH"/>
+		<result property="gender" column="GENDER"/>
+		<result property="warn_count" column="WARN_COUNT"/>
+		<result property="quitYn" column="QUIT_YN"/>
+		<result property="memType" column="MEM_TYPE"/>
+		<result property="memPhone" column="MEM_PHONE"/>
+	</resultMap>
+	
 	<insert id="insertMember" parameterType="com.actibuddy.member.model.dto.MemberDTO">
         INSERT
           INTO MEMBER A
@@ -82,6 +94,22 @@
 		 FROM  MEMBER A
 		WHERE  A.QUIT_YN = 'N'
 		  AND  A.USER_ID = #{ userId }
+	</select>
+	
+	
+	<select id="selectAllMember" resultMap="managerSelecttMap">
+		
+		SELECT
+			    A.USER_ID
+        	  , A.USER_NAME
+        	  , A.EMAIL
+        	  , A.BIRTH
+       	  	  , A.GENDER
+        	  , A.WARN_COUNT
+        	  , A.QUIT_YN
+        	  , A.MEM_TYPE
+       	      , A.MEM_PHONE        
+		 FROM  MEMBER A
 	</select>
  
  

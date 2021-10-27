@@ -2,6 +2,8 @@ package com.actibuddy.member.model.service;
 
 import static com.actibuddy.common.mybatis.Template.getSqlSession;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -71,7 +73,7 @@ public class MemberService {
 		
 		String result = memberDAO.idcheck(session, requestMember);
 		
-		
+		// null 처리 
 		if(result != null) {
 			loginMember = memberDAO.selectLoginMember(session, requestMember);
 		} else {
@@ -82,4 +84,21 @@ public class MemberService {
 		
 		return loginMember;
 	}
+
+
+	public List<MemberDTO> selectAllMember() {
+
+			
+			SqlSession session = getSqlSession();
+			
+			List<MemberDTO> memberList = MemberDAO.selectAllMember(session);
+			
+			session.close();
+			
+			return memberList;
+			
+	}
+
+
+	
 }

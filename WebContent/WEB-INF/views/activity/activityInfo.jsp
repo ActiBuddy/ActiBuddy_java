@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../resources/css/actibuddy.css" rel="stylesheet" />
-    <link href="../resources/css/activity_info.css" rel="stylesheet">
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/activity_info.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 

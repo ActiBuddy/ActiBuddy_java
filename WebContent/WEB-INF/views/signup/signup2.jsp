@@ -53,49 +53,41 @@
 		 
 	});  */
 	
-	/* <script>
-	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
-		$("#userId").blur(function() {
-			// id = "id_reg" / name = "userId"
-			var user_id = $('#userId').val();
-			
-			$.ajax({
-				url : 'acti/member/idcheck' 
-				type : 'POST',
-				data : {userId: userId},
-				success : function(data) {
-					console.log("1 = 중복o / 0 = 중복x : "+ data);							
-					
-					if (data == 1) {
-							// 1 : 아이디가 중복되는 문구
-							$("#idResult").text("사용중인 아이디입니다 :p");
-							$("#idResult").css("color", "red");
-						} else {
-							
-							if(idJ.test(user_id)){
-								// 0 : 아이디 길이 / 문자열 검사
-								$("#idResult").text("");
-					
-							} else if(user_id == ""){
-								
-								$('#idResult').text('아이디를 입력해주세요 :)');
-								$('#idResult').css('color', 'red');
-								
-							} else {
-								
-								$('#idResult').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-								$('#idResult').css('color', 'red');
-							}
-							
-						}
-					}, error : function() {
-							console.log("실패");
-					}
-				});
-			}); */
+	
 	</script>
 			  
-	  
+	<script type="text/javascript">
+		
+	/* function winopen(){
+		
+		$(function(){
+			 $('#login_id').click(function(){
+			  if(!$('input[name=userId]').val() == " "){
+				  $('#idResult').text("아이디를 입력해주세요!");
+				  $('#userId').focus();
+		     } else {
+		
+		    	 window.open('${ pageContext.servletContext.contextPath }/member/check', '_blank', 'width=600 height=300');
+			 
+			 }
+		 })
+	}); */
+		
+	function checkId(){
+	        var id = $('#userId').val(); //id값이 "id"인 입력란의 값을 저장
+	        $.ajax({
+	            url:'${ pageContext.servletContext.contextPath }/member/check', //Controller에서 인식할 주소
+	            type:'post', //POST 방식으로 전달
+	            data:{id:id},
+	            success:function(data){ //callback
+	                alert("성공입니다.")
+	                $("#idREsult").css("display",'block')
+	            },
+	            error:function(){
+	                alert("에러입니다");
+	            }
+	        });
+	    }; 
 
 </script>
 
@@ -107,16 +99,13 @@
 
       <div class="signup2_1">
       
-      
-		<form id="joinForm" action="../member/idcheck" method="post">
-         <span><h2>아이디</h2></span>
-         <input type="text" name="userId" id="userId"/>
-         <input type="hidden" name="idchk" value="0"/>
-         <label id="idResult"></label>
-      <button class="login_id">아이디체크</button>
-         </form>
+         <form id="joinForm" action="../member/regist" method="post">
          
-        <form id="joinForm" action="../member/regist" method="post">
+         <span><h2>아이디</h2></span>
+         <input type="text" name="userId" id="userId" oninput="checkId()"/>
+         <label id="idResult" style="display: none">1234</label>
+   		 <button class="login_id" onclick="checkId()">아이디체크</button>
+         
          <span><h2>비밀번호</h2></span>
          <input type="password" name="pwd" id="userPwd1"/>
 

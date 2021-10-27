@@ -86,6 +86,7 @@
 			<span>
 				<button type="button" class="search-btn"
 					onclick="location.href='../activity/searchActivity.html'">Submit</button>
+			<a href="${ pageContext.servletContext.contextPath }/manager/main">매니저 메뉴</a>		
 			</span>
 		</div>
 	
@@ -93,7 +94,7 @@
 	<c:if test="${ empty sessionScope.loginMember }">
 		<div class="navbar_link">
 			<span> <a href="${ pageContext.servletContext.contextPath }/faq">FAQ</a>
-			</span> <span> <a href="/acti/activity/information?actiName=롯데월드 자유이용권 (QR코드 바로 입장)">회원가입</a>
+			</span> <span> <a href="${ pageContext.servletContext.contextPath }/member/regist">회원가입</a>
 			</span> <span>
 				<button type="button" class="login_btn" onclick="location.href='${ pageContext.servletContext.contextPath }/member/login'">로그인</button>
 			</span>

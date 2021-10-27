@@ -1,5 +1,7 @@
 package com.actibuddy.member.model.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -29,4 +31,10 @@ public class MemberDAO {
 
 		return session.selectOne("MemberDAO.idcheck", requestMember);
 	}
+
+	public static List<MemberDTO> selectAllMember(SqlSession session) {
+		
+		return session.selectList("MemberDAO.selectAllMember");
+	}
+
 }

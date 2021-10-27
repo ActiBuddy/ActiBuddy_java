@@ -14,6 +14,9 @@
 <body>
 
 	<jsp:include page="../common/menubar.jsp"/>
+	
+	
+	
 	<main class="wrapper">
 		<div>
 			<img src="resources/image/actibuddylogo.png" class="mainlogo">

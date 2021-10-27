@@ -25,12 +25,12 @@ public class ActivityInformationServlet extends HttpServlet {
 
 		ActivityService activityService = new ActivityService();
 		ActivityInfoDTO activity = activityService.selectActivityInfo(actiName);
-		System.out.println(activity.getActivityList());
-		System.out.println(activity.getConditionList());
-		System.out.println(activity.getLocationList());
-		System.out.println(activity.getOptionList());
-		System.out.println(activity.getReviewList());
-		System.out.println(activity.getTypeList());
+//		System.out.println(activity.getActivityList());
+//		System.out.println(activity.getConditionList());
+//		System.out.println(activity.getLocationList());
+//		System.out.println(activity.getOptionList());
+//		System.out.println(activity.getReviewList());
+//		System.out.println(activity.getTypeList());
 		
 		System.out.println("=====================================================");
 		

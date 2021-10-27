@@ -148,6 +148,7 @@
     <!-- 네비게이션 바-->
     <jsp:include page="../common/menubar.jsp"/>
     <!-- 메인 이미지 및 설명 -->
+  
     <div class="container mb-4">
         <div class="image">
           <div class="faq">
@@ -173,6 +174,7 @@
             </p>
             </div>
         </div>
+     
       <div class="col" id="visit">
         <h1 style="margin-bottom: 20px;">방문하기 좋은 시기</h1>
         <ul>

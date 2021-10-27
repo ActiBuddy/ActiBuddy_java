@@ -230,19 +230,21 @@
                   if(
                     (($("input[name=chk1]").prop("checked") == true)  &&  ($("input[name=chk2]").prop("checked") == true)) 
                     && (($("input[name=chk]").prop("checked") == true) || ($("input[name=chk]").prop("checked") == false))) {
+                	  
+                	  $(location).attr('href','${ pageContext.servletContext.contextPath }/member/loging');
 
-                  
                   }
                     else{
                       $(".but").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"#303033"}).prop("disabled",false);
                       alert("안돼");
+                      event.stopPropagation();
                 }
             });
           });
         </script>
 
           <div class="signup3"><button class="but1">취소</button></div>
-          <div class="signup4"><a href="${ pageContext.servletContext.contextPath }/member/regist"><button class="but">확인</button></a></div>
+          <div class="signup4"><button class="but">확인</button></div>
         
         </div>
         <div style="height=300px">

@@ -13,7 +13,7 @@
     <title>main</title>
   </head>
   <body>
-  
+  		
       <form id="joinForm" action="${ pageContext.servletContext.contextPath }/member/idcheck" method="post">
          <span><h2>아이디</h2></span>
          <input type="text" name="userId" id="userId"/>

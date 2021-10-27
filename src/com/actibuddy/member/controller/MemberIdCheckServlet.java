@@ -3,6 +3,7 @@ package com.actibuddy.member.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,23 +49,20 @@ public class MemberIdCheckServlet extends HttpServlet {
 		System.out.println(loginMember);
 
 		
-		if(loginMember != null) {
-			
-			System.out.println("됐어~");
-			
-//			HttpSession session = request.getSession();
-//			session.setAttribute("loginMember", loginMember);
+//		if(loginMember != null) {
 //			
-//			response.sendRedirect(request.getContextPath());
-
-		} else {
-			
-			System.out.println("안됐~");
-
-//			request.setAttribute("message", "로그인 실패!");
-//			System.out.println("dmd dkseho~");
-//			request.getRequestDispatcher("/WEB-INF/views/common/failed.jsp").forward(request, response);
-		}
+//			System.out.println("됐어~");
+//			
+//			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/success.jsp");
+//			rd.forward(request, response);
+//			
+//		} else {
+//			
+//			System.out.println("안됐~");
+//
+//			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/failed.jsp");
+//			rd.forward(request, response);
+//		}
 		
 	}
 

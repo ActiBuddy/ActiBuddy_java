@@ -45,29 +45,36 @@ public class MateReviewRegistServlet extends HttpServlet {
 		
 		requestReview.setNum(0);
 		requestReview.setTitle(title);
-		requestReview.setImg1(img1);
-		requestReview.setImg2(img2);
-		requestReview.setImg3(img3);
+		//requestReview.setImg1(img1);
+		//requestReview.setImg2(img2);
+		//requestReview.setImg3(img3);
 		requestReview.setContent(con);
-		requestReview.setDate(null);
-		requestReview.setRepYn('N');;
+		//requestReview.setDate(null);
+		requestReview.setRepYn("N");
 		requestReview.setUserId(userId);
 		
 		System.out.println(requestReview);
 		
 		int result = new MateReviewService().registReview(requestReview);
-		
+		// result 결과에 따라서 페이지이동
+		// 고려사항
+		// 1. 현재 페이지에 있는데이터를 다른 페이지(서블릿)으로 넘겨줄꺼냐 
+		// 2. 현재 페이지의 내용을 다 버리고 새로운 페이지를 요청할꺼
 		String page = "";
 		
 		if(result > 0) {
 			
-			page = "/WEB-INF/views/mate/mateReview.jsp";
+			page = "/acti//mate/review";
+			response.sendRedirect(page);
 			
 		} else {
 			
 			page = "/WEB-INF/views/common/failed.jsp";
 			
 			request.setAttribute("message", "등록실패!");
+			
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
 		}	
 		
 	}

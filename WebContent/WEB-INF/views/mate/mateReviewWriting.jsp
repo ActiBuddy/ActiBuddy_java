@@ -36,7 +36,7 @@
       <!-- 네비게이션바 -->
       <jsp:include page="../common/menubar.jsp"/>
 
-	<form id="postReview" action="${ pageContext.servletContext.contextPath }/mate/review/regist" method="post">
+	<form id="postReview" action="${ pageContext.servletContext.contextPath }/mate/review/regist" method="post" >
     <!-- 주요 html -->
     <div class="around">
         <!-- 로고 이미지 -->

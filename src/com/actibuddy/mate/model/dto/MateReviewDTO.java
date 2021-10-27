@@ -8,8 +8,8 @@ public class MateReviewDTO {
 	private String img2;
 	private String img3;
 	private String content;
-	private java.util.Date date;
-	private char repYn;
+	private java.sql.Date date;
+	private String repYn;
 	private String userId;
 	
 	public MateReviewDTO() {
@@ -55,13 +55,13 @@ public class MateReviewDTO {
 	public java.util.Date getDate() {
 		return date;
 	}
-	public void setDate(java.util.Date date) {
+	public void setDate(java.sql.Date date) {
 		this.date = date;
 	}
-	public char getRepYn() {
+	public String getRepYn() {
 		return repYn;
 	}
-	public void setRepYn(char repYn) {
+	public void setRepYn(String repYn) {
 		this.repYn = repYn;
 	}
 	public String getUserId() {

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MateDAO">
 
- <resultMap type="com.actibuddy.mate.model.dto.mateReviewDTO" id="mateReviewResultMap">
+ <resultMap type="com.actibuddy.mate.model.dto.MateReviewDTO" id="mateReviewResultMap">
 		<id property="num" column="MT_REVIEW_NUM"/>
 		<result property="title" column="MT_REVIEW_TITLE"/>
 		<result property="img1" column="MT_REVIEW_IMG1"/>
@@ -36,7 +36,7 @@
         , #{ title }
         , #{ img1 }
         , #{ content }
-        , #{ date }
+        , default
         , #{ repYn }
         , #{ userId } 
         , #{ img2 }

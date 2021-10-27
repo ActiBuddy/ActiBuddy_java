@@ -14,49 +14,45 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.member.model.dto.MemberDTO;
-import com.actibuddy.mypage.model.dto.MypageIntroduceDTO;
 import com.actibuddy.mypage.service.MypageService;
-
 
 @WebServlet("/mypage/main")
 public class MypageMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/myPage.jsp");
 		rd.forward(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-
-		//로그인된 아이디 담아주고
+		// 로그인된 아이디 담아주고
 		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
-		
-		
+
 		// jsp에서 값을 받아오자
-		/* String userId = request.getParameter("userId");  로그인된 아이디를 담아줘야하나*/
-		 String favoriteActi = request.getParameter("favoriteActi") ;
-		 String introduce = request.getParameter("introduce");
+		String favoriteActi = request.getParameter("favoriteActi");
+		String introduce = request.getParameter("introduce");
+		
+		
+		System.out.println(introduce);
+		System.out.println(favoriteActi); // 잘 들어오는지 확인하고 : ok
+//		System.out.println("로그인된 아이디 : " + userId); // : ok
+
+		// DTO에 담아 값을 넣어주고
+		  MemberDTO requestIntroduce = new MemberDTO();
+		  requestIntroduce.setUserId(userId);
+		  requestIntroduce.setIntroduce(introduce);
+		  requestIntroduce.setFavoriteActi(favoriteActi);
+		  
+		 // 서비스에 메소드 생성하게 보내주고 
+		  int result = new MypageService().registIntroduce(requestIntroduce);
+		  
+		  System.out.println("mypageController result : " + result);
 		 
-		 System.out.println(favoriteActi); // 잘 들어오는지 확인하고 : ok
-		 System.out.println("로그인된 아이디 : " + userId);
-		 
-		 
-			/*
-			 * MypageIntroduceDTO requestIntroduce = new MypageIntroduceDTO();
-			 * requestIntroduce.setIntroduce(introduce);
-			 * requestIntroduce.setFavoriteActi(favoriteActi);
-			 * 
-			 * // 서비스에 메소드 생성하게 보내주고 int result = new
-			 * MypageService().registIntroduce(requestIntroduce);
-			 * 
-			 * System.out.println("mypageController result : " + result);
-			 */
 
 	}
 

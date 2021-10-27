@@ -3,6 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   <configuration>
+  	<settings>
+  		<setting name="jdbcTypeForNull" value="NULL"/>
+  	</settings>
+  
   	<environments default="dev">
   		<environment id="dev">
 			<transactionManager type="JDBC"/>
@@ -21,6 +25,6 @@
  		<mapper resource="com/actibuddy/activity/model/dao/ActivityDAO.xml"/>
 		<!-- <mapper resource="com/greedy/jsp/notice/model/dao/NoticeDAO.xml"/> -->
 		<!-- <mapper resource="com/greedy/jsp/board/model/dao/BoardDAO.xml"/> -->
-		<!-- <mapper resource="com/actibuddy/mypage/model/dao/MypageIntroduceDAO.xml"/> -->
+		<mapper resource="com/actibuddy/mypage/model/dao/MypageDAO.xml"/>
 	</mappers>
 </configuration>

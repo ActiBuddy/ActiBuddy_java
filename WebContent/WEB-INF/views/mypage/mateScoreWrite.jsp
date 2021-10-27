@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
+	<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mypage.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>메이트 평가 작성</title>
@@ -78,34 +78,79 @@
             <div class="r-center-1">
                 <h2>메이트 평가 작성  </h2>
                 <hr>
-                <form id="writeScore" action="../mypage/mate/score/write" method="post">
                 
-                <h3>제목 : </h3><textarea id="title" placeholder="제목를 작성해주세요"></textarea>
+                <form id="writeScore" action="../score/write" method="post">
+                
+                <h3>제목 : </h3><textarea id="title" name="title" placeholder="제목를 작성해주세요"></textarea>
                 
                 <h5>참가한 메이팅 : </h5>
                 <br><br>
                 <h5> 평가할 메이트 : </h5>
                 <hr>
-                <h4>별점을 매겨주세요 ☆☆☆☆☆</h4>
+                <h4>별점을 매겨주세요</h4>
+				
+				
+				
+					<!-- <p class="star_rating" name="on" >
+					    <a href="#" name="on" value="1">★</a>
+					    <a href="#" name="on" value="2">★</a>
+					    <a href="#" name="on" value="3">★</a>
+					    <a href="#" name="on" value="4">★</a>
+					    <a href="#" name="on" value="5">★</a>
+					</p>
+					
+					<script>
+					$( ".star_rating a" ).click(function() {
+					     $(this).parent().children("a").removeClass("on");
+					     $(this).addClass("on").prevAll("a").addClass("on");
+					     console.log($(this).attr("value"));
+
+					});
+					</script> -->
+					
+					<fieldset name="myform" id="myform">
+				        
+				        <label for="rate1">⭐</label><input type="radio" name="rating" value="1" id="rate1">
+				        <label for="rate2">⭐</label><input type="radio" name="rating" value="2" id="rate2">
+				        <label for="rate3">⭐</label><input type="radio" name="rating" value="3" id="rate3">
+				        <label for="rate4">⭐</label><input type="radio" name="rating" value="4" id="rate4">
+				        <label for="rate5">⭐</label><input type="radio" name="rating" value="5" id="rate5">
+				    </fieldset>
+				
+		  
                 <hr>
                 <h6>후기 내용</h6>
                 <hr><br>
-                <input type="checkbox" id="b">
+                <input type="checkbox" name='checkScore' value='저와 딱 맞는 메이트였어요!' onclick='checkOnlyOne(this)' id="b">
                     <label for="b">저와 딱 맞는 메이트였어요!</label><br>
-                <input type="checkbox" id="c">
+                <input type="checkbox" name='checkScore' value='다음에도 같이 여행하고 싶어요.' onclick='checkOnlyOne(this)' id="c">
                     <label for="c">다음에도 같이 여행하고 싶어요.</label><br>
-                <input type="checkbox" id="d">
+                <input type="checkbox" name='checkScore' value='메이트와 좋은 친구가 되었어요.' onclick='checkOnlyOne(this)' id="d">
                     <label for="d">메이트와 좋은 친구가 되었어요.</label><br>
-                <input type="checkbox" id="e">
+                <input type="checkbox" name='checkScore' value='함께했던 여행이 아쉬웠어요.' onclick='checkOnlyOne(this)' id="e">
                     <label for="e">함께했던 여행이 아쉬웠어요.</label><br>
-                <input type="checkbox" id="f">
+                <input type="checkbox" name='checkScore' value='아쉽지만 잘 맞지 않은 메이트였어요.' onclick='checkOnlyOne(this)' id="f">
                     <label for="f">아쉽지만 잘 맞지 않은 메이트였어요.</label><br>
                 <br><hr>
+                
+                <script>
+                	function checkOnlyOne(element) {
+                	  
+                	  const checkboxes 
+                	      = document.getElementsByName("checkScore");
+                	  
+                	  checkboxes.forEach((cb) => {
+                	    cb.checked = false;
+                	  })
+                	  
+                	  element.checked = true;
+                	}
+                </script>
 
                 <h6>기타</h6>
                 <hr>
 
-                <textarea placeholder="기타 평가를 작성해주세요"></textarea>
+                <textarea name="elseWrite" placeholder="기타 평가를 작성해주세요"></textarea>
                 <br><br><br>
 
                 <button type="submit">후기 작성하기</button>

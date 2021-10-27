@@ -4,16 +4,26 @@ import static com.actibuddy.common.mybatis.Template.getSqlSession;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.actibuddy.mypage.model.dao.MypageIntroduceDAO;
-import com.actibuddy.mypage.model.dto.MypageIntroduceDTO;
+import com.actibuddy.member.model.dto.MemberDTO;
+import com.actibuddy.mypage.model.dao.MypageDAO;
+
 
 public class MypageService {
+	
+	private final MypageDAO mypageDAO;
+	
+	public MypageService() {
+		mypageDAO = new MypageDAO();
+	}
 
-	public int registIntroduce(MypageIntroduceDTO requestIntroduce) {
+	public int registIntroduce(MemberDTO requestIntroduce) {
 		
 		SqlSession session = getSqlSession();
+	
+		int	result = MypageDAO.updateIntroduce(session, requestIntroduce);
 		
-		int result = MypageIntroduceDAO.insertIntroduce(session, requestIntroduce);
+		System.out.println(result);
+		
 		
 		if(result > 0) {
 			session.commit();

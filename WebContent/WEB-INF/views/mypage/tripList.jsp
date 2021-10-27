@@ -94,7 +94,7 @@
 
                     <hr>
                     <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>옵션 선택 :  제주도 감귤마을 스쿠버 다이빙</h3>
+                    <h3>옵션 선택 : ${ activity.activityList[0].name }</h3> 
                     
                     <br>
                     <h5>날짜 : 2021년 11월 11일 <br> 수량 : 1</h5>

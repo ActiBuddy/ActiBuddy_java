@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="MypageDAO">
+  	
+   <resultMap type="com.actibuddy.member.model.dto.MemberDTO" id="memberResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="pwd" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="birth" column="BIRTH"/>
+		<result property="gender" column="GENDER"/>
+		<result property="warn_count" column="WARN_COUNT"/>
+		<result property="quitYn" column="QUIT_YN"/>
+		<result property="memType" column="MEM_TYPE"/>
+		<result property="memPhone" column="MEM_PHONE"/>
+		<result property="introduce" column="INTRODUCE"/>
+		<result property="favoriteActi" column="FAVORITE_ACTI"/>
+
+	</resultMap>
+
+	
+	
+	<update id="updateIntroduce" parameterType="com.actibuddy.member.model.dto.MemberDTO">
+			UPDATE MEMBER A
+			   SET A.INTRODUCE = #{ introduce }
+			     , A.FAVORITE_ACTI = #{ favoriteActi }
+		 	 WHERE A.USER_ID = #{ userId }
+	</update>
+	
+
+  
+  </mapper>

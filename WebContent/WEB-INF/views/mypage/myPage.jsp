@@ -83,7 +83,7 @@
         
                 <hr>
         
-                <textarea cols ="30" rows="2" name="favoriteActi"> 선호하는 액티비티 : </textarea>
+                <textarea cols ="30" rows="2" name="favoriteActi" placeholder="선호하는 액티비티 : "></textarea>
                 <button type="submit">등록하기</button>
             	
             	</form>
@@ -114,59 +114,6 @@
             </div>
         </div>
         
-   <!-- 여행내역 =========================================================== -->
-   
-<!--    	<form action="">
-   	
-            <div class="a-center-1">
-                <div class="a-center-text">
-
-                    <h4>완료된 여행</h4>
-                    <hr>
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>옵션 선택 :  제주도 감귤마을 스쿠버 다이빙</h3>
-                    <button id="review-write" class="forgreen" type="button" onclick="location.href='trip-review-write.html'">후기 작성하기</button>
-                    
-                    <br>
-                    <h5>날짜 : 2021년 11월 11일 <br> 수량 : 1</h5>
-    
-                    <br><br><br>
-    
-                    <h5 id="usestatus">이용상태 : </h5>
-                    <button id="complete">사용완료</button>
-    
-                    <hr>
-    
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>옵션 선택 : 차귀도 배낚시 체험</h3>
-                    <button id="review-write" class="forgreen" type="button" onclick="location.href=''">후기 작성완료</button>
-                    
-                    <br>
-                    <h5>날짜 : <br> 수량 : </h5>
-                    
-                    <br><br><br>
-
-                    <h5 id="usestatus">이용상태 : </h5>
-                    <button id="complete">사용완료</button>
-    
-                    <hr>
-                    <h4>취소된 여행</h4>
-                    <hr>
-
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>옵션 선택 : </h3>
-    
-                    <h5>날짜 : <br> 수량 : </h5>
-    
-                    <br><hr>
-
-
-                </div>
-            </div>		
-   	
-   	</form> -->
-   
-   
     </div>
 
 

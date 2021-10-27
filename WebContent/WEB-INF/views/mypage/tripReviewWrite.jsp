@@ -128,7 +128,7 @@
                         }
                     </script> -->
 
-                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/> 
+                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple height="50" width="50"/> 
                     <div id="image_container"></div>
 
                     <script> 

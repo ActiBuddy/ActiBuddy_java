@@ -85,32 +85,32 @@
             <div class="a-center-1">
                 
                 <div class="a-center-text">
-					
-				<c:if test="${ !empty sessionScope.loginMember }">
+				
 		
-        			<h4 ><c:out value="${ sessionScope.loginMember.userName }"/> 님의 여행</h4>
+        			<c:if test="${ !empty sessionScope.loginMember }">
+		
+        				<h4><c:out value="${ sessionScope.loginMember.userName }"/> 님의 여행</h4>
         			
-				</c:if>
+					</c:if>
 
+                 	<c:forEach var="trip" items="${ tripList }" varStatus="i">
                     <hr>
                     <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>옵션 선택 : ${ activity.activityList[0].name }</h3> 
+                    <h3>액티비티 : ${ tripList.activityInfo[i.index].name }</h3> 
                     
                     <br>
-                    <h5>날짜 : 2021년 11월 11일 <br> 수량 : 1</h5>
+                    <h5>날짜 : ${ tripList.cartList[i.index].chooseDate } <br> 수량 : ${ tripList.cartList[i.index].totalPerson }</h5>
     
                     <br><br><br>
     
                     <h5 id="usestatus">이용상태 : </h5>
                     
                     
-
-                    
-                    <button id="complete2" onclick='changeBtnName()'>사용완료</button>
-                    
-                    
-                    <!-- 사용완료를 누르면 -> 후기 작성하기 버튼으로 -->
-                    
+	                    <button id="complete2" onclick='changeBtnName()' >사용완료</button>
+                    <hr>
+    				</c:forEach> 
+    				
+    				
                     <script>
     	
                     	function changeBtnName()  {
@@ -119,46 +119,32 @@
 	                      		
 	                    	  const btnElement = document.getElementById('complete2');
 	                      	  btnElement.innerText = '후기 작성하기';
+	                      	}
+	                      	  $.ajax({
+								type: "POST",
+								url: '/acti/mypage/triplist',	// form을 전송할 실제 파일경로
+								data: {
+									useYn : 'Y',
+									userId : '${ sessionScope.loginMember.userId }'
+								}, 
+								success: function (data) {
+									console.log(data);
+								},
+								error: function (e) {
+									console.log("ERROR : ", e);
+								}
+							});
 	                      	  
+	                      	/*  // useYN -> Y로 변경
 	                     	} else if(complete2.innerText == "후기 작성하기"){
 	
 		                      		window.location.href = '/acti/mypage/trip/review/write';
-	                     	}
-                      	}
+	                     	} */
+                    	}
                     </script>
-    
-                    
- 
-                    
-                    <hr>
-    
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>옵션 선택 : 차귀도 배낚시 체험</h3>
-                    
-                    <br>
-                    <h5>날짜 : <br> 수량 : </h5>
-                    
-                    <br><br><br>
-
-                    <h5 id="usestatus">이용상태 : </h5>
-                    <button id="complete">후기 작성 완료</button>
-    
-                    <hr>
-                    <h4>취소된 여행</h4>
-                    <hr>
-
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>옵션 선택 : </h3>
-    
-                    <h5>날짜 : <br> 수량 : </h5>
-    
-                    <br><hr>
-
 
                 </div>
 
-
-    
             </div>
            
         </div>

@@ -23,6 +23,6 @@
 	<mappers>
  		<mapper resource="com/actibuddy/member/model/dao/MemberDAO.xml"/>
  		<mapper resource="com/actibuddy/activity/model/dao/ActivityDAO.xml"/>
-		
+		<mapper resource="com/actibuddy/mypage/model/dao/MypageDAO.xml"/>
 	</mappers>
 </configuration>

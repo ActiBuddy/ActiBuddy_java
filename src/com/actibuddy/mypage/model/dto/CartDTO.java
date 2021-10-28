@@ -2,7 +2,7 @@ package com.actibuddy.mypage.model.dto;
 
 import java.sql.Date;
 
-public class CartDTO {
+public class CartDTO implements java.io.Serializable{
 	
 	private String actiNum;
 	private String cartNum;
@@ -11,5 +11,105 @@ public class CartDTO {
 	private int totalPerson;
 	private int totalPrice;
 	private Date ChooseDate;
+	
+	
+	
+	public CartDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public CartDTO(String actiNum, String cartNum, String userId, String chooseOption, int totalPerson, int totalPrice,
+			Date chooseDate) {
+		super();
+		this.actiNum = actiNum;
+		this.cartNum = cartNum;
+		this.userId = userId;
+		this.chooseOption = chooseOption;
+		this.totalPerson = totalPerson;
+		this.totalPrice = totalPrice;
+		ChooseDate = chooseDate;
+	}
+
+
+	public String getActiNum() {
+		return actiNum;
+	}
+
+
+	public void setActiNum(String actiNum) {
+		this.actiNum = actiNum;
+	}
+
+
+	public String getCartNum() {
+		return cartNum;
+	}
+
+
+	public void setCartNum(String cartNum) {
+		this.cartNum = cartNum;
+	}
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+	public String getChooseOption() {
+		return chooseOption;
+	}
+
+
+	public void setChooseOption(String chooseOption) {
+		this.chooseOption = chooseOption;
+	}
+
+
+	public int getTotalPerson() {
+		return totalPerson;
+	}
+
+
+	public void setTotalPerson(int totalPerson) {
+		this.totalPerson = totalPerson;
+	}
+
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+
+	public Date getChooseDate() {
+		return ChooseDate;
+	}
+
+
+	public void setChooseDate(Date chooseDate) {
+		ChooseDate = chooseDate;
+	}
+
+
+	@Override
+	public String toString() {
+		return "CartDTO [actiNum=" + actiNum + ", cartNum=" + cartNum + ", userId=" + userId + ", chooseOption="
+				+ chooseOption + ", totalPerson=" + totalPerson + ", totalPrice=" + totalPrice + ", ChooseDate="
+				+ ChooseDate + "]";
+	}
+	
+	
 
 }

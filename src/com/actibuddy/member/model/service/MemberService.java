@@ -3,6 +3,7 @@ package com.actibuddy.member.model.service;
 import static com.actibuddy.common.mybatis.Template.getSqlSession;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -98,6 +99,8 @@ public class MemberService {
 			return memberList;
 			
 	}
+
+
 
 
 	

@@ -129,6 +129,7 @@
 	  	  FROM LOCATION A
 	      LEFT JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
 	      LEFT JOIN ACTI_REVIEW C ON (B.ACTI_NUM = C.ACTI_NUM)
+	      JOIN ACTI_TYPE D ON(B.ACTI_TYPE_NUM = D.ACTI_TYPE_NUM)
 	      <where>
 	       A.LOCATION_NAME = #{ locationName, jdbcType=VARCHAR }
 	     	<if test="price1 != null">
@@ -148,6 +149,27 @@
      		 AND B.START_DATE < #{ date }
      		 ]]>
 	     	</if>
+	     	
+	     	<if test="sport != null and sport != '' ">
+	     	AND D.SECOND_TYPE_NAME IN #{ sport }
+	     	</if>
+	     	
+	     	<if test="ticket != null">
+	     	AND D.SECOND_TYPE_NAME IN #{ ticket }
+	     	</if>
+	     	
+	     	<if test="spa != null">
+	     	AND D.SECOND_TYPE_NAME IN #{ spa }
+	     	</if>
+	     	
+	     	<if test="tour != null">
+	     	AND D.SECOND_TYPE_NAME IN #{ tour }
+	     	</if>
+	     	
+	     	<if test="water != null">
+	     	AND D.SECOND_TYPE_NAME IN #{ water }
+	     	</if>
+	     	
 	     </where>
 	       <if test="sort != null and sort == 'popular'">
 	       	 	ORDER BY C.ACTI_REVIEW_REC
@@ -278,5 +300,16 @@
   		  FROM LOCATION A 
   		  LEFT JOIN ACTIVITY_INFO B ON(A.LOCATION_CODE = B.LOCATION_CODE)
  	</select>
- 
+ 	
+ 	<select id="selectLocationOne" resultMap="locationResultMap" parameterType="String">
+ 		SELECT
+      		   A.LOCATION_NAME
+             , A.LOCATION_INFO
+     		 , A.LOCATION_IMG
+     		 , A.GUIDE_TIP
+     		 , A.VISIT_MONTH
+     		 , A.VISIT_NAME
+  		  FROM LOCATION A
+  		 WHERE A.LOCATION_NAME = #{ locationName } 
+ 	</select>
  </mapper>

@@ -117,6 +117,17 @@ public class ActivityService {
 		return locationList;
 	}
 
+	public LocationDTO selectLocationOne(String locationName) {
+
+		SqlSession session = getSqlSession();
+		
+		LocationDTO location = activityDAO.selectLocationOne(session,locationName);
+		
+		session.close();
+		
+		return location;
+	}
+
 
 
 	

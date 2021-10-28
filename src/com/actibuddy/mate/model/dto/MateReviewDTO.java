@@ -2,7 +2,7 @@ package com.actibuddy.mate.model.dto;
 
 public class MateReviewDTO {
 
-	private int num;
+	private String num;
 	private String title;
 	private String img1;
 	private String img2;
@@ -16,10 +16,10 @@ public class MateReviewDTO {
 		super();
 	}
 	
-	public int getNum() {
+	public String getNum() {
 		return num;
 	}
-	public void setNum(int num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
 	public String getTitle() {

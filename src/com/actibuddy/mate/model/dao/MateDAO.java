@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 
 public class MateDAO {
@@ -14,14 +15,14 @@ public class MateDAO {
 		return session.insert("MateDAO.insertReview", requestReview);
 	}
 
-	public static List<MateReviewDTO> selectAllReviewList(SqlSession session) {
+	public static List<MateReviewDTO> selectReviewList(SqlSession session, SelectCriteria selectCriteria) {
 		
-		return session.selectList("MateDAO.selectAllReviewList");
+		return session.selectList("MateDAO.selectReviewList", selectCriteria);
 	}
 	
-	public int selectTotalCount(SqlSession session, Map<String, String> searchMap) {
+	public int selectReviewTotalCount(SqlSession session, Map<String, String> searchMap) {
 		
-		return session.selectOne("MateDAO.selectTotalCount", searchMap);
+		return session.selectOne("MateDAO.selectReviewTotalCount", searchMap);
 	}
 
 

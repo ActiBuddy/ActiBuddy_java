@@ -75,85 +75,32 @@
           </div>
         
         <!-- 메이팅 후기 -->
-        <c:forEach var="review" items="${ reviewList }">
         <div class="mate_review4">
             <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_review.png">
         </div>
 
         <div class="review_border">
+        
+	        <c:forEach var="review" items="${ reviewList }">
             <div class="mate_review5">
                 <div class="mate_review6">
                     <img src="${ pageContext.servletContext.contextPath }/resources/image/${ review.img1 }">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
                 </div>
-                <div class="mate_review7">${ review.title }
-                </div>
-                     
-                <div class="mate_review7">${ review.title }
-                </div>
-                <div class="mate_review7">${ review.title }
-                </div>
-                <div class="mate_review8">parisbaguette</div>
-                <div class="mate_review8">parisbaguette</div>
-                <div class="mate_review8">parisbaguette</div>
-                <div class="mate_review9">2021.10.14  ・ 조회 34</div>
-                <div class="mate_review9">2021.10.14  ・ 조회 34</div>
-                <div class="mate_review9">2021.10.14  ・ 조회 34</div>
+                <div class="mate_review7">${ review.title }</div>
+                <div class="mate_review8">${ review.userId }</div>
+                <div class="mate_review9">${ review.date }</div>
             </div>
-            <div class="mate_review5">
-                <div class="mate_review6">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-                </div>
-                <div class="mate_review7">서핑엔 노을이 빠질 수 없죠
-                    <div class="com">[1]</div>
-                </div>
-                <div class="mate_review7">서핑엔 노을이 빠질 수 없죠
-                    <div class="com">[2]</div>
-                </div>
-                <div class="mate_review7">서핑엔 노을이 빠질 수 없죠
-                    <div class="com"></div>
-                </div>
-                <div class="mate_review8">noeul</div>
-                <div class="mate_review8">noeul</div>
-                <div class="mate_review8">noeul</div>
-                <div class="mate_review9">2021.10.12  ・ 조회 24</div>
-                <div class="mate_review9">2021.10.12  ・ 조회 24</div>
-                <div class="mate_review9">2021.10.12  ・ 조회 24</div>
-            </div>
-            <div class="mate_review5">
-                <div class="mate_review6">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-                </div>
-                <div class="mate_review7">스노보드 친구가 많아졌어요
-                    <div class="com">[1]</div>
-                </div>
-                <div class="mate_review7">스노보드 친구가 많아졌어요
-                    <div class="com">[2]</div>
-                </div>
-                <div class="mate_review7">스노보드 친구가 많아졌어요
-                    <div class="com"></div>
-                </div>
-                <div class="mate_review8">skyhigh</div>
-                <div class="mate_review8">skyhigh</div>
-                <div class="mate_review8">skyhigh</div>
-                <div class="mate_review9">2021.10.11  ・ 조회 19</div>
-                <div class="mate_review9">2021.10.11  ・ 조회 19</div>
-                <div class="mate_review9">2021.10.11  ・ 조회 19</div>
-            </div>
+         
            </c:forEach>
         </div>
-
+	   <c:if test="${ !empty sessionScope.loginMember }">
        <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/review/regist'">작성하기</button>
+       </c:if>
        <jsp:include page="../common/paging.jsp"/>
         <!-- 검색 부분 -->
         <div class="search">
             <ul>
-               <input type="text" class="searchtext" placeholder="찾고싶은 게시물의 제목을 입력해주세요"></li>
+               <input type="text" id="searchValue" class="searchtext" placeholder="찾고싶은 게시물의 제목을 입력해주세요"></li>
                <button type="submit" class="searchbutton">검색하기</button></li>
             </ul>
         </div>

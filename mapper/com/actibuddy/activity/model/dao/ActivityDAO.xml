@@ -50,6 +50,7 @@
  	<result property="image" column="ACTI_REVIEW_IMG"/>
  	<result property="recommend" column="ACTI_REVIEW_REC"/>
  	<result property="recYn" column="ACTI_REVIEW_REP_YN"/>
+ 	<result property="chooseOption" column="CHOOSE_OPTION"/>
  	</resultMap>
  	
  	<resultMap type="com.actibuddy.activity.model.dto.ActivityAndReviewDTO" id="activityAndReviewMap">
@@ -160,7 +161,7 @@
  	</select>
  	
  	<select id="selectActivityInfo" resultMap="activityInfoResultMap" parameterType="String">
- 	    SELECT
+ 	   <!--  SELECT
                A.*
              , C.*
              , D.*
@@ -182,6 +183,34 @@
         LEFT JOIN ACTI_TYPE E ON ( A.ACTI_TYPE_NUM = E.ACTI_TYPE_NUM)
         LEFT JOIN ACTI_OPTION F ON (A.ACTI_NUM = F.ACTI_NUM)
         LEFT JOIN LOCATION G ON (A.LOCATION_CODE = G.LOCATION_CODE)
+       WHERE A.ACTI_NAME = #{ actiName } -->
+       SELECT
+               A.*
+             , C.*
+             , D.*
+             , E.*
+             , F.*
+             , G.*
+             , K.CHOOSE_OPTION
+             , (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
+                  FROM ACTI_REVIEW C
+                  JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+                 WHERE B.ACTI_NAME = #{ actiName })AS AVG
+             , (SELECT COUNT(C.ACTI_REVIEW_TITLE)
+                  FROM ACTI_REVIEW C
+      	          JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+                 WHERE B.ACTI_NAME = #{ actiName })AS COUNT    
+        FROM ACTIVITY_INFO A
+        LEFT JOIN ACTI_CONDITION_HIS B ON (A.ACTI_NUM = B.ACTI_NUM)
+        LEFT JOIN ACTI_CONDITION C ON (B.ACTI_CON_NUM = C.ACTI_CON_NUM)
+        LEFT JOIN ACTI_REVIEW D ON (A.ACTI_NUM = D.ACTI_NUM)
+        LEFT JOIN ACTI_TYPE E ON ( A.ACTI_TYPE_NUM = E.ACTI_TYPE_NUM)
+        LEFT JOIN ACTI_OPTION F ON (A.ACTI_NUM = F.ACTI_NUM)
+        LEFT JOIN LOCATION G ON (A.LOCATION_CODE = G.LOCATION_CODE)
+        LEFT JOIN REVIEW_HIS H ON (D.ACTI_REVIEW_NUM = H.REVIEW_NUM)
+        LEFT JOIN ACTI_PAYMENT I ON (H.PAY_NUM = I.PAY_NUM)
+        LEFT JOIN PAY_HIS J ON (I.PAY_NUM = J.PAY_NUM)
+        LEFT JOIN CART K ON (J.CART_NUM = K.CART_NUM)
        WHERE A.ACTI_NAME = #{ actiName }
  	</select>
  	

@@ -18,7 +18,12 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
+<!--  지도 API -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0ad37ecda7af5b08b1d5e0d5ad79b693"></script>
+<!--  라이브러리 불러오기 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0ad37ecda7af5b08b1d5e0d5ad79b693&libraries=LIBRARY"></script>
+<!--  라이브러리 - 장소검색, 주소-좌표변환 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0ad37ecda7af5b08b1d5e0d5ad79b693&libraries=services,clusterer,drawing"></script>
 
     <title>main</title>
   </head>
@@ -77,7 +82,7 @@
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
 </svg>
 <h2 class="starscore">${ activity.avgStar } </h2>
-<a href="..." target="_blank"> 
+<a href="#review-all"> 
   <h3 id="reviewnum"> (이용후기 ${ activity.count }건)</h3>
 </a>
 </div>
@@ -222,7 +227,57 @@
 <div class="activity-4">
   <!-- 위치 api-->
   <strong><h3 id="location"> 위치</h3></strong>
-  <img class="map" src="../resources/image/Activity_info_map.png" alt="...">
+  <div id="map"></div>
+  <script>
+      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+          mapOption = {
+              center: new kakao.maps.LatLng(37.511146193443025, 127.09816401777348), // 지도의 중심좌표
+              level: 4, // 지도의 확대 레벨
+              mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+          }; 
+
+     // 지도를 생성한다 
+     var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+     // 지도 타입 변경 컨트롤을 생성한다  
+     var mapTypeControl = new kakao.maps.MapTypeControl();
+ 
+     // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+     map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
+
+     // 지도에 확대 축소 컨트롤을 생성한다
+     var zoomControl = new kakao.maps.ZoomControl();
+
+     // 지도의 우측에 확대 축소 컨트롤을 추가한다
+     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+     //지도에 마커를 생성하고 표시한다
+     var marker = new kakao.maps.Marker({
+     position: new kakao.maps.LatLng(37.511146193443025, 127.09816401777348), // 마커의 좌표
+     map: map // 마커를 표시할 지도 객체
+     }); 
+
+
+<!-- 정적 맵, 사용시 맵 아이디와 CSS 바꾼 뒤 적용시킬 것 -->
+//이미지 지도에서 마커가 표시될 위치입니다 
+/* var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+
+// 이미지 지도에 표시할 마커입니다
+// 이미지 지도에 표시할 마커는 Object 형태입니다
+var marker = {
+    position: markerPosition
+};
+
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+    staticMapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 이미지 지도의 중심좌표
+        level: 3, // 이미지 지도의 확대 레벨
+        marker: marker // 이미지 지도에 표시할 마커 
+    };    
+
+// 이미지 지도를 생성합니다
+var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); */
+</script>
 </div>
 
 <hr>
@@ -232,21 +287,39 @@
   <strong><h3 id="reveiw">이용 후기</h3></strong> <br>
   <h2 id="starscore2"> ${ activity.avgStar } </h2>
   <div class="stars">
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
+
+   <c:set var="totalStar" value="<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' fill='currentColor' class='bi bi-star-fill' viewBox='0 0 16 16'>
+    <path d='M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z'></path>
+  </svg>" scope="page" />
+  
+  <c:choose>
+      <c:when test="${ activity.avgStar <= 1.9 }">
+     <c:out value="${ totalStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ activity.avgStar <= 2.9 }">
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ activity.avgStar <= 3.9 }">
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ activity.avgStar <= 4.9 }">
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ activity.avgStar <= 5 }">
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+     <c:out value="${ totalStar }" escapeXml="false"/>
+  </c:when>
+ </c:choose> 
+  
 </div>
 
   <h3 id="review-all">(이용후기 ${ activity.count }건)</h3>
@@ -272,26 +345,58 @@
 <h3 id="nickname"> ${ reviewList.writerId } </h3>
 
 <div class="stars-user">
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-user1" viewBox="0 0 16 16">
-    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-  </svg>
+  <c:set var="userStar" value="<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='currentColor' class='bi bi-star-user1' viewBox='0 0 16 16'>
+    <path d='M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z'></path>
+  </svg>" scope="page" />
+  
+  <c:choose>
+      <c:when test="${ reviewList.reviewStar <= 1.9 }">
+     <c:out value="${ userStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ reviewList.reviewStar <= 2.9 }">
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ reviewList.reviewStar <= 3.9 }">
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ reviewList.reviewStar <= 4.9 }">
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ reviewList.reviewStar <= 5 }">
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+  </c:when>
+ </c:choose> 
+
+<c:choose>
+      <c:when test="${ reviewList.reviewStar <= 1.9 }">
+     <h5 id="review-auto"> 매우 불만족 </h5> <br><br>
+  </c:when>
+  <c:when test="${ reviewList.reviewStar <= 2.9 }">
+     <h5 id="review-auto"> 불만족 </h5> <br><br>
+  </c:when>
+  <c:when test="${ reviewList.reviewStar <= 3.9 }">
+     <h5 id="review-auto"> 보통 </h5> <br><br>
+  </c:when>
+  <c:when test="${ reviewList.reviewStar <= 4.9 }">
+     <h5 id="review-auto"> 만족 </h5> <br><br>
+  </c:when>
+  <c:when test="${ reviewList.reviewStar <= 5 }">
+     <h5 id="review-auto"> 매우 만족 </h5> <br><br>
+  </c:when>
+ </c:choose> 
 
 
-  <h5 id="review-auto"> 매우 만족</h5> <br><br>
-
-  <h6 id="goods-detail"> 후기 상품 상세 : 체험 다이빙 </h6>
+  <h6 id="goods-detail"> ${ reviewList.chooseOption } </h6>
 
   <h5 id="review-date"> ${ reviewList.writeDate } </h5> <br><br>
 
@@ -304,6 +409,7 @@
 <br>
 
 <button id="suggestion">추천</button>
+<h6 id="sugCount">${ reviewList.recommend }명이 추천한 후기입니다</h6>
 
 <button id="declaration">
   <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">

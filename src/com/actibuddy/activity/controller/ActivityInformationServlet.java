@@ -29,7 +29,7 @@ public class ActivityInformationServlet extends HttpServlet {
 //		System.out.println(activity.getConditionList());
 //		System.out.println(activity.getLocationList());
 //		System.out.println(activity.getOptionList());
-//		System.out.println(activity.getReviewList());
+  		System.out.println(activity.getReviewList());
 //		System.out.println(activity.getTypeList());
 		
 		System.out.println("=====================================================");

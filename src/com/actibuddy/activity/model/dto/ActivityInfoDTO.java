@@ -3,7 +3,7 @@ package com.actibuddy.activity.model.dto;
 import java.sql.Date;
 import java.util.List;
 
-public class ActivityInfoDTO {
+public class ActivityInfoDTO implements java.io.Serializable {
 	
 	private double avgStar;
 	private int count;
@@ -13,6 +13,7 @@ public class ActivityInfoDTO {
 	private List<ActivityTypeDTO> typeList;
 	private List<ActivityOptionDTO> optionList;
 	private List<LocationDTO> locationList;
+    
 	
 	public ActivityInfoDTO() {
 	}

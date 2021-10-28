@@ -14,6 +14,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 	private String image;
 	private int recommend;
 	private char recYn;
+	private String chooseOption;
 	
 	
 	public ActiReviewDTO() {
@@ -22,7 +23,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 
 
 	public ActiReviewDTO(String num, Date writeDate, String actiNum, String writerId, String title, String content,
-			double reviewStar, String image, int recommend, char recYn) {
+			double reviewStar, String image, int recommend, char recYn, String chooseOption) {
 		super();
 		this.num = num;
 		this.writeDate = writeDate;
@@ -34,6 +35,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 		this.image = image;
 		this.recommend = recommend;
 		this.recYn = recYn;
+		this.chooseOption = chooseOption;
 	}
 
 
@@ -65,6 +67,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 	public void setActiNum(String actiNum) {
 		this.actiNum = actiNum;
 	}
+
 
 	public String getWriterId() {
 		return writerId;
@@ -136,12 +139,24 @@ public class ActiReviewDTO implements java.io.Serializable{
 	}
 
 
+	public String getChooseOption() {
+		return chooseOption;
+	}
+
+
+	public void setChooseOption(String chooseOption) {
+		this.chooseOption = chooseOption;
+	}
+
+
 	@Override
 	public String toString() {
 		return "ActiReviewDTO [num=" + num + ", writeDate=" + writeDate + ", actiNum=" + actiNum + ", writerId="
 				+ writerId + ", title=" + title + ", content=" + content + ", reviewStar=" + reviewStar + ", image="
-				+ image + ", recommend=" + recommend + ", recYn=" + recYn + "]";
+				+ image + ", recommend=" + recommend + ", recYn=" + recYn + ", chooseOption=" + chooseOption + "]";
 	}
 
+
+	
 	
 }

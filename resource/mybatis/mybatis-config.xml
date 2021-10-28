@@ -23,6 +23,5 @@
 	<mappers>
  		<mapper resource="com/actibuddy/member/model/dao/MemberDAO.xml"/>
  		<mapper resource="com/actibuddy/activity/model/dao/ActivityDAO.xml"/>
-		
 	</mappers>
 </configuration>

@@ -8,7 +8,12 @@
 </head>
 <body>
  	 <%-- <jsp:forward page="/WEB-INF/views/main/mainpage.jsp"/> --%>
-
-<jsp:forward page="main/page"/> 
+	<%-- <jsp:forward page="/WEB-INF/views/mate/mateReview.jsp"/> --%>
+	
+	<script>
+		window.onload= function(){
+			location.href = '/acti/mate/review';
+		}
+	</script>
 </body>
 </html>

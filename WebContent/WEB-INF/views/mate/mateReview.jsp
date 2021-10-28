@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -74,6 +75,7 @@
           </div>
         
         <!-- 메이팅 후기 -->
+        <c:forEach var="review" items="${ reviewList }">
         <div class="mate_review4">
             <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_review.png">
         </div>
@@ -81,19 +83,16 @@
         <div class="review_border">
             <div class="mate_review5">
                 <div class="mate_review6">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
+                    <img src="${ pageContext.servletContext.contextPath }/resources/image/${ review.img1 }">
                     <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
                     <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
                 </div>
-                <div class="mate_review7">메이트분들과 패러글라이딩
-                    <div class="com">[1]</div>
+                <div class="mate_review7">${ review.title }
                 </div>
                      
-                <div class="mate_review7">메이트분들과 패러글라이딩
-                    <div class="com">[2]</div>
+                <div class="mate_review7">${ review.title }
                 </div>
-                <div class="mate_review7">메이트분들과 패러글라이딩
-                    <div class="com"></div>
+                <div class="mate_review7">${ review.title }
                 </div>
                 <div class="mate_review8">parisbaguette</div>
                 <div class="mate_review8">parisbaguette</div>
@@ -146,7 +145,7 @@
                 <div class="mate_review9">2021.10.11  ・ 조회 19</div>
                 <div class="mate_review9">2021.10.11  ・ 조회 19</div>
             </div>
-           
+           </c:forEach>
         </div>
 
        <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/review/regist'">작성하기</button>

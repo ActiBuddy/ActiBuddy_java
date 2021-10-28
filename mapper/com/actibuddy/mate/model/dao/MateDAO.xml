@@ -14,6 +14,11 @@
 		<result property="date" column="MT_REVIEW_DATE"/>
 		<result property="repYn" column="MT_REVIEW_REP_YN"/>
 		<result property="userId" column="USER_ID"/>
+		<collection property="reviewList" resultMap="mateReviewResultMap"/>
+	</resultMap>
+	
+	<resultMap type="com.acibuddy.mate.model.dto.MateReviewDTO" id="mateMainResultMap">
+		<collection property="reviewList" resultMap="mateReviewResultMap"></collection>
 	</resultMap>
 
 	<!-- 메이트 후기 페이징 -->

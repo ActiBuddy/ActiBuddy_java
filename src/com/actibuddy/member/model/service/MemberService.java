@@ -88,7 +88,6 @@ public class MemberService {
 
 	public List<MemberDTO> selectAllMember() {
 
-			
 			SqlSession session = getSqlSession();
 			
 			List<MemberDTO> memberList = MemberDAO.selectAllMember(session);
@@ -96,8 +95,23 @@ public class MemberService {
 			session.close();
 			
 			return memberList;
-			
 	}
+
+
+	public List<MemberDTO> selectWarnMember() {
+
+		SqlSession session = getSqlSession();
+		
+		List<MemberDTO> memberList = MemberDAO.selectWarnMember(session);
+		
+		session.close();
+		
+		return memberList;
+		
+	}
+
+
+	
 
 
 	

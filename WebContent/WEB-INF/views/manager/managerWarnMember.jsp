@@ -14,6 +14,9 @@
 
     <title>관리자 페이지</title>
 
+    <link href="${pageContext.servletContext.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
+    <link href=".${ pageContext.servletContext.contextPath }/resources/css/dashborad.css" rel="stylesheet">
+    <script src="${ pageContext.servletContext.contextPath }/resources/js/ie-emulation-modes-warning.js"></script>
 
   </head>
 
@@ -21,26 +24,22 @@
     
     <jsp:include page="../common/managersidebar.jsp"/>
 
-          <h2 class="sub-header">전체 회원 조회</h2>
+          <h2 class="sub-header">경고 회원 조회</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>회원 번호</th>
                   <th>아이디</th>
-                  <th>닉네임</th>
-                  <th>가입일자</th>
-                  <th>타입</th>
+                  <th>경고 건수</th>
+                  <th>회원타입</th>
                 </tr>
               </thead>
               <tbody>
-              
                 <c:forEach var="userId" items="${memberList}">
                 <tr>
+                	
                   <td>${ userId.userId }</td>
-                  <td>${ userId.userName }</td>
                   <td>${ userId.warn_count }</td>
-                  <td>${ userId.birth }</td>
                   <td>${ userId.memType }</td>
                 </tr>
                 </c:forEach>
@@ -48,9 +47,31 @@
               </tbody>
             </table>
 
+            <nav>
+              <ul class="pagination">
+                <li>
+                  <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
 
           </div>
-           <jsp:include page="../common/page.jsp"/>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript
     ================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="${ pageContext.servletContext.contextPath }/resources/js/bootstrap.min.js"></script>

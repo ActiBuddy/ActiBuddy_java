@@ -15,11 +15,9 @@ public class ActiReviewDTO implements java.io.Serializable{
 	private int recommend;
 	private char recYn;
 	
-	
 	public ActiReviewDTO() {
 
 	}
-
 
 	public ActiReviewDTO(String num, Date writeDate, String actiNum, String writerId, String title, String content,
 			double reviewStar, String image, int recommend, char recYn) {
@@ -135,7 +133,6 @@ public class ActiReviewDTO implements java.io.Serializable{
 		this.recYn = recYn;
 	}
 
-
 	@Override
 	public String toString() {
 		return "ActiReviewDTO [num=" + num + ", writeDate=" + writeDate + ", actiNum=" + actiNum + ", writerId="
@@ -143,5 +140,4 @@ public class ActiReviewDTO implements java.io.Serializable{
 				+ image + ", recommend=" + recommend + ", recYn=" + recYn + "]";
 	}
 
-	
 }

@@ -59,35 +59,7 @@
 
     
     
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">회원 관리<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">전체 회원 조회</a></li>
-            <li><a href="#">경고 회원 조회</a></li>
-            <li><a href="#">탈퇴 회원 조회</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">파트너십 관리</a></li>
-            <li><a href="">파트너십 플랫폼 조회</a></li>
-            <li><a href="">파트너십 문의 접수</a></li>
-            <li><a href="">파트너십 진행 상황</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">신고 접수</a></li>
-            <li><a href="">메이트 매칭</a></li>
-            <li><a href="">메이트 평가</a></li>
-            <li><a href="">메이팅 후기</a></li>
-            <li><a href="">액티비티 후기</a></li>
-            <li><a href="">댓글</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">관리자 관리</a></li>
-            <li><a href="">관리자 권한 부여</a></li>
-            <li><a href="">관리자 파트 부여</a></li>
-          </ul>
-        </div>
+   <jsp:include page="../common/managersidebar.jsp"/>
 
 
           <center>

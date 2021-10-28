@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="MemberDAO">
- <resultMap type="com.actibuddy.member.model.dto.MemberDTO" id="memberResultMap">
+ <mapper namespace="ManagerDAO">
+ <resultMap type="com.actibuddy.manager.model.dto.ManagerDTO" id="memberResultMap">
 		<id property="userId" column="USER_ID"/>
 		<result property="userName" column="USER_NAME"/>
 		<result property="pwd" column="PASSWORD"/>
@@ -16,12 +16,13 @@
 		<result property="memPhone" column="MEM_PHONE"/>
 		<result property="introduce" column="INTRODUCE"/>
 		<result property="favoriteActi" column="FAVORITE_ACTI"/>
-		
-	</resultMap>
-	
-	<resultMap type="com.actibuddy.member.model.dto.MemberDTO" id="managerSelecttMap">
+		</resultMap>
+ 
+ 
+ <resultMap type="com.actibuddy.manager.model.dto.ManagerPartDTO" id="managerPartResultMap">
 		<id property="userId" column="USER_ID"/>
 		<result property="userName" column="USER_NAME"/>
+		<result property="pwd" column="PASSWORD"/>
 		<result property="email" column="EMAIL"/>
 		<result property="birth" column="BIRTH"/>
 		<result property="gender" column="GENDER"/>
@@ -29,59 +30,18 @@
 		<result property="quitYn" column="QUIT_YN"/>
 		<result property="memType" column="MEM_TYPE"/>
 		<result property="memPhone" column="MEM_PHONE"/>
-	</resultMap>
-	
-	<insert id="insertMember" parameterType="com.actibuddy.member.model.dto.MemberDTO">
-        INSERT
-          INTO MEMBER A
-        (
-          A.USER_ID
-        , A.USER_NAME
-        , A.PASSWORD
-        , A.EMAIL
-        , A.BIRTH
-        , A.GENDER
-        , A.WARN_COUNT
-        , A.QUIT_YN
-        , A.MEM_TYPE
-        , A.MEM_PHONE        
-        )
-        VALUES 
-        (
-          #{ userId }
-        , #{ userName }
-        , #{ pwd }
-        , #{ email }
-        , #{ birth }
-        , #{ gender }
-        , #{ warn_count }
-        , #{ quitYn }
-        , #{ memType }
-        , #{ memPhone }
-        )
-	</insert>
-	
- 	<select id="selectEncryptedPwd" resultType="java.lang.String">
-      
-        SELECT
-               A.PASSWORD
-          FROM MEMBER A
-         WHERE A.QUIT_YN = 'N'
-           AND A.USER_ID = #{ userId, jdbcType=VARCHAR}
-	</select>
-	
-	
-	<select id="idcheck" resultType="java.lang.String">
-      
-        SELECT
-               A.USER_ID
-          FROM MEMBER A
-         WHERE A.QUIT_YN = 'N'
-           AND A.USER_ID = #{ userId }
-	</select>
-	
-	
-	<select id="selectLoginMember" resultMap="memberResultMap">
+		<result property="introduce" column="INTRODUCE"/>
+		<result property="favoriteActi" column="FAVORITE_ACTI"/>
+		<result property="manPart" column="MAN_PART"/>
+		</resultMap>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <select id="selectLoginMember" resultMap="memberResultMap">
 		
 		SELECT
 			    A.USER_ID
@@ -100,7 +60,7 @@
 	</select>
 	
 	
-	<select id="selectAllMember" resultMap="managerSelecttMap">
+	<select id="selectAllMember" resultMap="memberResultMap">
 		
 		SELECT
 			    A.USER_ID
@@ -115,7 +75,7 @@
 		 FROM  MEMBER A
 	</select>
  
- 	<select id="selectWarnMember" resultMap="managerSelecttMap">
+ 	<select id="selectWarnMember" resultMap="memberResultMap">
 		
 		SELECT
 			    A.USER_ID
@@ -131,18 +91,10 @@
 		 WHERE  A.MEM_TYPE = 'U'
         AND  A.WARN_COUNT >= 0
         ORDER BY A.WARN_COUNT DESC
+		 </select> 
 		  
-	</select>
- 
- 
- 	<select id="selectTotalCount" resultType="_int" parameterType="hashmap">
-        SELECT 
-               COUNT(*)
-          FROM MEMBER
-          </select>
- 
- 
- <select id="selectManagerMember" resultMap="managerSelecttMap">
+		  
+	<select id="selectManagerMember" resultMap="managerPartResultMap">
 		
 		SELECT
 			    A.USER_ID
@@ -153,11 +105,14 @@
         	  , A.WARN_COUNT
         	  , A.QUIT_YN
         	  , A.MEM_TYPE
-       	      , A.MEM_PHONE        
-		 FROM  MEMBER A
-		WHERE A.MEM_TYPE = 'M' 
+       	      , A.MEM_PHONE
+       	      , M.MAN_PART        
+		 FROM MEMBER A
+    		, MANAGER M
+		WHERE A.USER_ID = M.USER_ID
+
 	</select>
  
  
- </mapper>
  
+ </mapper>

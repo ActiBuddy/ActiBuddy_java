@@ -42,6 +42,11 @@ public class ActivityDAO {
 	public List<LocationAndActivityDTO> selectAllList(SqlSession session) {
 
 		return session.selectList("ActivityDAO.selectAllList");
+	}
+
+	public LocationDTO selectLocationOne(SqlSession session, String locationName) {
+
+		return session.selectOne("ActivityDAO.selectLocationOne", locationName);
 	} 
 
 }

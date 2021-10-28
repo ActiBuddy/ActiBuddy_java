@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,9 +16,10 @@ import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.mate.model.service.MateReviewService;
 
-@WebServlet("/mate/review")
-public class MateReviewMainServlet extends HttpServlet {
+@WebServlet("/mate/review/select")
+public class MateReviewSelectListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -40,8 +40,7 @@ public class MateReviewMainServlet extends HttpServlet {
 		Map<String, String> searchMap = new HashMap<>();
 		searchMap.put("searchValue", searchValue);
 		
-		// 전체 게시물 수 필요
-		// 검색 조건이 있는 경우 검색 조건에 맞는 전체 게시물 수 조회
+		// 서비스 메소드에 map 넣어주기
 		MateReviewService reviewService = new MateReviewService();
 		int totalCount = reviewService.selectReviewTotalCount(searchMap);
 		
@@ -52,11 +51,11 @@ public class MateReviewMainServlet extends HttpServlet {
 		
 		SelectCriteria selectCriteria = null;
 		
-		/* 여기는 조건 다르게 설정해주세요! */
+		/* 페이징 처리하실 분 여기는 각자 맞춰서 조건 다르게 설정해주세요! */
 		
 		// 검색 할 때 페이징 처리와 검색 안할 때 페이징 처리
 		if(searchValue != null && !"".equals(searchValue)) {
-			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, null, searchValue);
+			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue);
 		} else {
 			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
 		}
@@ -69,15 +68,16 @@ public class MateReviewMainServlet extends HttpServlet {
 		
 		String path = "";
 		if(reviewList != null) {
-			path = "/WEB-INF/views/mate/mateReview.jsp";
-			request.setAttribute("reviewList", reviewList);
+			path = "/WEB-INF/views/mate/review.jsp";
+			request.setAttribute("boardList", reviewList);
 			request.setAttribute("selectCriteria", selectCriteria);
-			
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";
-			request.setAttribute("message", "메이트 리뷰 페이지 조회 실패!");
+			request.setAttribute("message", "리뷰 검색 실패!");
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
+		
 	}
+
 }

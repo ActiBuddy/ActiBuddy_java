@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dao.MateDAO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 
@@ -42,25 +43,32 @@ public class MateReviewService {
 	}
 
 	/**
-	 * 메이팅 리뷰 전체 조회
+	 * 메이팅 리뷰 조회(페이징)
+	 * @param SelectCriteria
 	 * @return reviewList
 	 */
-	public List<MateReviewDTO> selectAllReviewList() {
+	public List<MateReviewDTO> selectAllReviewList(SelectCriteria selectCriteria) {
 		
 		SqlSession session = getSqlSession();
 		
-		List<MateReviewDTO> reviewList = MateDAO.selectAllReviewList(session);
+		List<MateReviewDTO> reviewList = reviewDAO.selectReviewList(session, selectCriteria);
 		
 		session.close();
 		
 		return reviewList;
 	}
 	
-	public int selectTotalCount(Map<String, String> searchMap) {
+	
+	/**
+	 * 페이징 처리위한 전체 게시물 '갯수' 조회 메소드
+	 * @param searchMap
+	 * @return totalCount
+	 */
+	public int selectReviewTotalCount(Map<String, String> searchMap) {
 		
 		SqlSession session = getSqlSession();
 		
-		int totalCount = reviewDAO.selectTotalCount(session, searchMap);
+		int totalCount = reviewDAO.selectReviewTotalCount(session, searchMap);
 		
 		session.close();
 		

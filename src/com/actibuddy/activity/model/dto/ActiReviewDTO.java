@@ -16,11 +16,9 @@ public class ActiReviewDTO implements java.io.Serializable{
 	private char recYn;
 	private String chooseOption;
 	
-	
 	public ActiReviewDTO() {
 
 	}
-
 
 	public ActiReviewDTO(String num, Date writeDate, String actiNum, String writerId, String title, String content,
 			double reviewStar, String image, int recommend, char recYn, String chooseOption) {
@@ -156,7 +154,4 @@ public class ActiReviewDTO implements java.io.Serializable{
 				+ image + ", recommend=" + recommend + ", recYn=" + recYn + ", chooseOption=" + chooseOption + "]";
 	}
 
-
-	
-	
 }

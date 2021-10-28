@@ -22,6 +22,7 @@
  	   <result property="tip" column="GUIDE_TIP"/>
  	   <result property="visitMonth" column="VISIT_MONTH"/>
  	   <result property="visitName" column="VISIT_NAME"/>
+ 	   
  	   <collection property="activityList" resultMap="activityAndReviewMap"/>
  	</resultMap>
  	

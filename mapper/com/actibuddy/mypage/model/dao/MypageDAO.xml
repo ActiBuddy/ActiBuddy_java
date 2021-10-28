@@ -19,6 +19,57 @@
 		<result property="favoriteActi" column="FAVORITE_ACTI"/>
 
 	</resultMap>
+	
+	<resultMap type="com.actibuddy.mypage.model.dto.CartDTO" id="CartResultMap">
+		<id property="cartNum" column="CART_NUM"/>
+		<result property="actiNum" column="ACTI_NUM"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="chooseOption" column="CHOOSE_OPTION"/>
+		<result property="totalPerson" column="TOTAL_PERSON"/>
+		<result property="totalPrice" column="TOTAL_PRICE"/>
+		<result property="chooseDate" column="CHOOSE_DATE"/>		
+	</resultMap>
+	
+	<resultMap type="com.actibuddy.mypage.model.dto.PayHisDTO" id="PayHisResultMap">
+		<result property="payNum" column="PAY_NUM"/>
+		<result property="cartNum" column="CART_NUM"/>
+		<result property="payStatus" column="PAY_STATUS"/>
+		<result property="useYn" column="USE_YN"/>
+	</resultMap>
+	
+	 <resultMap type="com.actibuddy.activity.model.dto.ActivityDTO" id="activityResultMap">
+ 	   <id property="code" column="ACTI_NUM"/>
+ 	   <result property="name" column="ACTI_NAME"/>
+ 	   <result property="location" column="LOCATION"/>
+ 	   <result property="price" column="PRICE"/>
+ 	   <result property="StartDate" column="START_DATE"/>
+ 	   <result property="EndDate" column="END_DATE"/>
+ 	   <result property="tip" column="ACTI_TIP"/>
+ 	   <result property="image" column="ACTI_IMG"/>
+ 	   <result property="loactionCode" column="LOCATION_CODE"/>
+ 	   <result property="activitTypeCode" column="ACTI_TYPE_NUM"/>
+ 	   <result property="userId" column="USER_ID"/>
+ 	</resultMap>
+	
+	<resultMap type="com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO" id="tripListResultMap">
+		<result property="userId" column="USER_ID"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="pwd" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="birth" column="BIRTH"/>
+		<result property="gender" column="GENDER"/>
+		<result property="warn_count" column="WARN_COUNT"/>
+		<result property="quitYn" column="QUIT_YN"/>
+		<result property="memType" column="MEM_TYPE"/>
+		<result property="memPhone" column="MEM_PHONE"/>
+		<result property="introduce" column="INTRODUCE"/>
+		<result property="favoriteActi" column="FAVORITE_ACTI"/>
+		<collection property="cartList" resultMap="CartResultMap"/>
+		<collection property="payHisList" resultMap="PayHisResultMap"/>
+		<collection property="activityInfo" resultMap="activityResultMap"/>
+	</resultMap>
+	
+	
 
 	
 	
@@ -29,6 +80,29 @@
 		 	 WHERE A.USER_ID = #{ userId }
 	</update>
 	
+	<update id="changeUseYn" parameterType="hashMap">
+ 
+ 	</update>
+ 	
+ 	<select id="selectTripList" parameterType="String" resultMap="tripListResultMap" >
+ 	
+			 	SELECT
+			        A.ACTI_NAME
+			      , C.CHOOSE_DATE
+			      , C.TOTAL_PERSON
+			      , C.CHOOSE_OPTION
+			      , P.USE_YN
+			      , M.USER_ID
+			  FROM CART C
+			 INNER JOIN ACTIVITY_INFO A
+			    ON A.ACTI_NUM = C.ACTI_NUM
+			 INNER JOIN PAY_HIS P
+			    ON C.CART_NUM = P.CART_NUM
+			 INNER JOIN MEMBER M
+			    ON C.USER_ID = M.USER_ID
+			 WHERE M.USER_ID = #{ userId }
+ 	
+ 	</select>
 
   
   </mapper>

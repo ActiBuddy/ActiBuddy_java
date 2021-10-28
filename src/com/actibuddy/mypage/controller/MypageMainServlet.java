@@ -1,7 +1,5 @@
 package com.actibuddy.mypage.controller;
 
-import static com.actibuddy.common.mybatis.Template.getSqlSession;
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.service.MypageService;

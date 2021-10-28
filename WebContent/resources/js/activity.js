@@ -94,7 +94,91 @@ $(function(){
   });
 });
 
- 
+/*$(function() {
+		$("#datepicker").on("propertychange change keyup paste input", function(){
+		   let data = $('#datepicker').val();
 
-
+		   $.ajax({
+		    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
+		    	type : 'get',
+		    	data : { 
+		    		dateValue : data,
+		    		locationName : '${location.name}' 
+		    	},
+		    	success : function(data){
+		    		//console.log(data);
+		    		if(data != null){
+		    			document.getElementById('actiSearch').innerHTML = '';
+		    			let str = '';
+		    			for(let i = 0; i < data.activityList.length; i++){
+		    				
+		    			str	 += '<div class="col">'
+	 		    		        +'<div class="card shadow-sm">'
+	 		    		          + '<a href="/acti/activity/information?actiName=' +data.activityList[i].name+ '"><img src="' + data.activityList[i].image + '"  id="check1" width="100%" height="225"  role="img" ></img>'
+	 		    		         + ' <div class="card-body">'
+	 		    		        + '<p class="card-text">'
+	 		    		        +        data.activityList[i].name
+	 		    		       + '</p></a>'
+	 		    		      + ' <p id="star">별점 : '         
+	 		    		     + '  </p> '
+	 		    		    + '   <p>액티비티 마감일 : '+ data.activityList[i].EndDate  + '</p>'
+	 		    		   + ' <div class="d-flex justify-content-between align-items-center"> '
+	 		    		  + '  <small class="text-muted">₩'+ data.activityList[i].price + '부터</small>'
+	 		    		 + '   </div> '
+	 		    		+ '    </div> '
+	 		    		+ '   </div> ';
+		    			}
+		    			
+		    			document.getElementById('actiSearch').innerHTML = str;
+	 		    		
+		    		} else {
+		    			document.getElementById('actiSearch').innerHTML = '';
+		    			
+		    			$('#actiSearch').html('<span>검색결과가 없습니다.</span>');
+		    		}
+		    	},
+		    	error : function(error){
+		    		console.log(error);
+		    	}
+		    });
+		});
+		
+		$('#submit').on('click', function() {
+			let price = $('#amount2').val();
+			
+			$.ajax({
+		    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
+		    	type : 'get',
+		    	data : { 
+		    		priceValue : price,
+		    		locationName : '${location.name}' 
+		    	},
+		    	success : function(data){
+		    		console.log(data);
+		    	},
+		    	error : function(error){
+		    		console.log(error);
+		    	}
+		    });
+		});
+		
+		$('#sortBtn').on('change', function(){
+			let sort = $('#sortBtn option:selected').val();
+			
+			$.ajax({
+		    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
+		    	type : 'get',
+		    	data : { 
+		    		sortValue : sort,
+		    		locationName : '${location.name}' 
+		    	},
+		    	success : function(data){
+		    		console.log(data);
+		    	},
+		    	error : function(error){
+		    		console.log(error);
+		    	}
+		    });
+		});
+	});*/
 

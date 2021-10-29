@@ -1,0 +1,38 @@
+/*버튼 공통 설정*/
+.pagingArea button {
+    border: 0;
+	width:40px;
+	height:40px;
+	cursor:pointer;
+    background-color: white;
+    font-size: 16px;
+    
+}
+
+/* 숫자에 마우스 올렸을 때  */
+/*  .page-link-num:hover {
+    background-color: rgb(207, 228, 204);
+    height: 40px;
+    border-radius: 100%;
+  } */
+  
+/* 현재 페이지 */  
+#page-link-num1 {
+    background-color: rgb(207, 228, 204);
+    height: 40px;
+    border-radius: 100%;
+    color: white;
+  }
+/* 숫자버튼 눌렀을 때 */
+.page-link-num:focus {
+    height: 40px;
+}
+
+/* <> 눌렀을 때  */
+.page-link:hover {
+    height: 40px;
+    width: 40px;
+    font-size: 16.5px;
+    font-weight: bold;
+    color: olive;
+  }

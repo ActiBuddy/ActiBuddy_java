@@ -76,9 +76,9 @@
        <!-- 첨부 부분 -->
        <div class="bottom_border">
            <div class="img_border">
-               <div class="file">첫번째 이미지 : <input type="file" name="img1" value="file1"></div>
-               <div class="file">두번째 이미지 : <input type="file" name="img2" value="file2"></div>
-               <div class="file">세번째 이미지 : <input type="file" name="img3" value="file3"></div>
+               <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="img1" value="file1"></div>
+               <div class="file">두번째 이미지 : <input accept="image/*" type="file" name="img2" value="file2"></div>
+               <div class="file">세번째 이미지 : <input accept="image/*" type="file" name="img3" value="file3"></div>
                <div class="condition">사진은 최대 3장까지 첨부가능합니다.</div>
            </div>
        </div>

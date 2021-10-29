@@ -61,11 +61,11 @@ public class MateReviewMainServlet extends HttpServlet {
 			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
 		}
 		
-		System.out.println(selectCriteria);
+		System.out.println("criteria : " + selectCriteria);
 		
 		List<MateReviewDTO> reviewList = reviewService.selectAllReviewList(selectCriteria);
 		
-		System.out.println("reviewList : " + reviewList);
+//		System.out.println("reviewList : " + reviewList);
 		
 		String path = "";
 		if(reviewList != null) {

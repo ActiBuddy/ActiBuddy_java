@@ -21,19 +21,19 @@
     <div class="around">
          <!-- 로고 이미지 -->
         <div class="mate_logo">
-            <a href="#"><img src="../../resources/image/matereview.png"></a>
+            <a href="#"><img src="${ pageContext.servletContext.contextPath }/resources/image/matereview.png"></a>
         </div>
 
         <!-- 제목 부분 -->
         <div class="title">
             <div class="first">
-                <img src="../../resources/image/heart2.png">
+                <img src="${ pageContext.servletContext.contextPath }/resources/image/heart2.png">
             </div>
             <div class="second">
-                제목
+               제목
             </div>
             <div class="third">
-                <p>메이트들과 첫 스쿠버다이빙~</p>
+                <p><c:out value="${ reviewList.title }"/></p>
             </div>
         </div>
             

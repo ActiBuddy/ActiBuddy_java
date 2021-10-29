@@ -24,11 +24,12 @@
     <div class="around">
         <!-- 로고 이미지 -->
         <div class="mate_logo">
-            <a href="#"><img src="${ pageContext.servletContext.contextPath }/resources/image/matereview.png"></a>
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/matereview.png" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/mate/review';" >
+          
           </div>
           <!-- 광고 이미지 -->
           <div class="mate_ad">
-              <a href="https://www.hyundailivart.co.kr/"><img src="${ pageContext.servletContext.contextPath }/resources/image/livartad.png"></a>
+              <a href="https://www.hyundailivart.co.kr/" target="_blank"><img src="${ pageContext.servletContext.contextPath }/resources/image/livartad.png"></a>
           </div>
       
           <!-- 베스트 메이팅 후기 -->
@@ -84,7 +85,7 @@
 	        <c:forEach var="review" items="${ reviewList }">
             <div class="mate_review5">
                 <div class="mate_review6">
-                    <img src="${ pageContext.servletContext.contextPath }/resources/image/${ review.img1 }">
+                   <a href="/acti/mate/review/select?num=${ review.num }"> <img src="${ pageContext.servletContext.contextPath }/resources/image/review/${ review.img1 }"></a>
                 </div>
                 <div class="mate_review7">${ review.title }</div>
                 <div class="mate_review8">${ review.userId }</div>
@@ -93,18 +94,23 @@
          
            </c:forEach>
         </div>
+        
+       <!-- 작성하기버튼 로그인처리 -->
 	   <c:if test="${ !empty sessionScope.loginMember }">
        <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/review/regist'">작성하기</button>
        </c:if>
+       
+       <!-- pagination -->
        <jsp:include page="../common/paging.jsp"/>
+       
         <!-- 검색 부분 -->
         <div class="search">
-            <ul>
-               <input type="text" id="searchValue" class="searchtext" placeholder="찾고싶은 게시물의 제목을 입력해주세요"></li>
-               <button type="submit" class="searchbutton">검색하기</button></li>
-            </ul>
+        <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+               <input type="hidden" name="currentPage" value="1">
+               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
+               <button type="submit" class="searchbutton">검색하기</button>
+		</form>
         </div>
-	
     <!-- 진짜 div -->
     </div>
 

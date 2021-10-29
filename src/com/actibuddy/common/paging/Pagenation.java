@@ -25,14 +25,12 @@ public class Pagenation {
 		 * 짜투리 목록이 최소 1개일 때, 1page 로 처리하기 위해
 		 * 0.9를 더하기 함
 		 * */
-//		maxPage = (int)((double) totalCount / limit + 0.9);
 		maxPage = (int) Math.ceil((double) totalCount / limit);
 
 		/* 현재 페이지에 보여줄 시작 페이지 수 (10개씩 보여지게 할 경우)
 		 * 아래쪽에 페이지 수가 10개씩 보여지게 한다면
 		 * 1, 11, 21, 31, .....
 		 * */
-//		startPage = (((int)((double) pageNo / buttonAmount + 0.9)) - 1) * buttonAmount + 1;
 		startPage = (int) (Math.ceil((double) pageNo / buttonAmount) - 1) * buttonAmount + 1;
 
 		/* 목록 아래쪽에 보여질 마지막 페이지 수 (10, 20, 30, ....) */

@@ -27,96 +27,6 @@
     <link rel="stylesheet" href="../resources/css/activity-style.css">
     <link rel="stylesheet" href="../resources/css/FAQ.css">
     <script src="${ pageContext.servletContext.contextPath }/resources/js/activity.js?ver=2"></script>
-  <!--  	<script>
-   	$(function() {
-	   	   		
-		$("#datepicker").on("propertychange change keyup paste input", function(){
-		   let data = $('#datepicker').val();
-
-		   $.ajax({
-		    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
-		    	type : 'get',
-		    	data : { 
-		    		dateValue : data,
-		    		locationName : '${location.name}' 
-		    	},
-		    	success : function(data){
-		    		//console.log(data);
-		    		if(data != null){
-		    			document.getElementById('actiSearch').innerHTML = '';
-		    			let str = '';
-		    			for(let i = 0; i < data.activityList.length; i++){
-		    				
-		    			str	 += '<div class="col">'
-	 		    		        +'<div class="card shadow-sm">'
-	 		    		          + '<a href="/acti/activity/information?actiName=' +data.activityList[i].name+ '"><img src="' + data.activityList[i].image + '"  id="check1" width="100%" height="225"  role="img" ></img>'
-	 		    		         + ' <div class="card-body">'
-	 		    		        + '<p class="card-text">'
-	 		    		        +        data.activityList[i].name
-	 		    		       + '</p></a>'
-	 		    		      + ' <p id="star">별점 : '         
-	 		    		     + '  </p> '
-	 		    		    + '   <p>액티비티 마감일 : '+ data.activityList[i].EndDate  + '</p>'
-	 		    		   + ' <div class="d-flex justify-content-between align-items-center"> '
-	 		    		  + '  <small class="text-muted">₩'+ data.activityList[i].price + '부터</small>'
-	 		    		 + '   </div> '
-	 		    		+ '    </div> '
-	 		    		+ '   </div> ';
-		    			}
-		    			
-		    			document.getElementById('actiSearch').innerHTML = str;
-	 		    		
-		    		} else {
-		    			document.getElementById('actiSearch').innerHTML = '';
-		    			
-		    			$('#actiSearch').html('<span>검색결과가 없습니다.</span>');
-		    		}
-		    	},
-		    	error : function(error){
-		    		console.log(error);
-		    	}
-		    });
-		});
-		
-		$('#submit').on('click', function() {
-			let price = $('#amount2').val();
-			
-			$.ajax({
-		    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
-		    	type : 'get',
-		    	data : { 
-		    		priceValue : price,
-		    		locationName : '${location.name}' 
-		    	},
-		    	success : function(data){
-		    		console.log(data);
-		    	},
-		    	error : function(error){
-		    		console.log(error);
-		    	}
-		    });
-		});
-		
-		$('#sortBtn').on('change', function(){
-			let sort = $('#sortBtn option:selected').val();
-			
-			$.ajax({
-		    	url : '${ pageContext.servletContext.contextPath }/activity/ajax',
-		    	type : 'get',
-		    	data : { 
-		    		sortValue : sort,
-		    		locationName : '${location.name}' 
-		    	},
-		    	success : function(data){
-		    		console.log(data);
-		    	},
-		    	error : function(error){
-		    		console.log(error);
-		    	}
-		    });
-		});
-	});
-   	</script> -->
   <script>
   $(function() {
 	   		
@@ -138,10 +48,11 @@
 		
 		let checkList = [];
 		for(let i = 0; i < checkArr.length; i++){
-			checkList[i] = checkArr[i].value;
+			checkList += { 'value' : checkArr[i].value}
 		}
 		
 		let check = JSON.stringify(checkList); 
+		let list 
 		console.log(check);
 		$('#sport').val(check);
 	});
@@ -150,9 +61,9 @@
 		
 		let checkArr = $("input[name=ticket]:checked");
 		
-		let checkList = [];
+		let checkList = "";
 		for(let i = 0; i < checkArr.length; i++){
-			checkList[i] = checkArr[i].value;
+			checkList += checkArr[i].value + ',';
 		}
 		
 		let check = JSON.stringify(checkList); 
@@ -164,9 +75,9 @@
 		
 		let checkArr = $("input[name=tour]:checked");
 		
-		let checkList = [];
+		let checkList = "";
 		for(let i = 0; i < checkArr.length; i++){
-			checkList[i] = checkArr[i].value;
+			checkList += checkArr[i].value + ',';
 		}
 		
 		let check = JSON.stringify(checkList); 
@@ -178,9 +89,9 @@
 		
 		let checkArr = $("input[name=spa]:checked");
 		
-		let checkList = [];
+		let checkList = {};
 		for(let i = 0; i < checkArr.length; i++){
-			checkList[i] = checkArr[i].value;
+			checkList += checkArr[i].value + ',';
 		}
 		
 		let check = JSON.stringify(checkList); 
@@ -192,9 +103,9 @@
 			
 			let checkArr = $("input[name=water]:checked");
 			
-			let checkList = [];
+			let checkList = "";
 			for(let i = 0; i < checkArr.length; i++){
-				checkList[i] = checkArr[i].value;
+				checkList += checkArr[i].value + ',' ;
 			}
 			
 			let check = JSON.stringify(checkList); 
@@ -350,8 +261,8 @@
             스파 & 테라피
           </span>
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
-            <li class="mb-4"><input type="checkbox" name="spa" value="spa"><span>온천</span></li>
-            <li class="mb-4"><input type="checkbox" name="spa" value="wellbeing"><span>웰빙& 웰니스</span></li>
+            <li class="mb-4"><input type="checkbox" name="spa" value="spa"><span>스파 & 온천</span></li>
+            <li class="mb-4"><input type="checkbox" name="spa" value="wellbeing"><span>웰빙 & 웰니스</span></li>
             <li class="mb-4"><input type="checkbox" name="selectAll3" value="selectAll3"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
@@ -378,8 +289,8 @@
             수상 액티비티
           </span>
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
-            <li class="mb-4"><input type="checkbox" name="water" value="surfing"><span>서핑</span></li>
             <li class="mb-4"><input type="checkbox" name="water" value="kayak"><span>패들보드 & 카약 & 래프팅</span></li>
+            <li class="mb-4"><input type="checkbox" name="water" value="surfing"><span>서핑 & 기타 수상레저</span></li>
             <li class="mb-4"><input type="checkbox" name="selectAll5" value="selectAll5"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
@@ -390,9 +301,9 @@
       </form>
     </div>
     <div class="div2">
-    <form method="post" action="/acti/sort/controll id="frm">
         <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">${locationActivity.activityList.size()}건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
+    	<form method="post" action="/acti/sort/controll" id="frm">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
               <div class="date">

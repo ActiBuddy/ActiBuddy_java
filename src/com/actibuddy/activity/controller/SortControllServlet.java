@@ -17,13 +17,10 @@ import org.json.simple.parser.JSONParser;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 import com.actibuddy.activity.service.ActivityService;
-import com.google.gson.Gson;
 
 @WebServlet("/sort/controll")
 public class SortControllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Gson gson = new Gson();
-	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -41,19 +38,19 @@ public class SortControllServlet extends HttpServlet {
 		String sort = request.getParameter("sort");
 		System.out.println(sort);
 		
-		String[] sport = request.getParameterValues("hdCheck");
+		String sport = request.getParameter("hdCheck");
 		System.out.println(sport);
 		
-		String[] ticket = request.getParameterValues("hdCheck1");
+		String ticket = request.getParameter("hdCheck1");
 		System.out.println(ticket);
 		
-		String[] spa = request.getParameterValues("hdCheck2");
+		String spa = request.getParameter("hdCheck2");
 		System.out.println(spa);
 		
-		String[] tour = request.getParameterValues("hdCheck3");
+		String tour = request.getParameter("hdCheck3");
 		System.out.println(tour);
 		
-		String[] water = request.getParameterValues("hdCheck4");
+		String water = request.getParameter("hdCheck4");
 		System.out.println(water);
 		
 		if(locationName != null) {
@@ -63,40 +60,39 @@ public class SortControllServlet extends HttpServlet {
 		}
 		
 		if(price != null) {
-			String[] prices = price.trim().split("-");
+			String[] prices = price.split("-");
 			resultMap.put("price1", (prices[0]));
 			resultMap.put("price2", (prices[1]));
 		}
 		
 		if(sport != null) {
-			for(int i = 0; i <sport.length; i++) {
-				resultMap.put("sport", sport[i]);
+			String[] sports = sport.split(",");
+			for(int i = 0; i < sports.length; i++) {
+				resultMap.put("sport [" + i + "]", sports[i]);
 			}
 		}
 		
 		if(ticket != null) {
-			for(int i = 0; i <sport.length; i++) {
-				resultMap.put("ticket", ticket[i]);
-			}
+			
+			resultMap.put("ticket", ticket);
 		}
 		
 		if(spa != null) {
-			for(int i = 0; i <sport.length; i++) {
-				resultMap.put("spa", spa[i]);
-			}
+			
+			resultMap.put("spa", spa);
 			
 		}
 		
 		if(tour != null) {
-			for(int i = 0; i <sport.length; i++) {
-				resultMap.put("tour", tour[i]);
-			}
+				
+			resultMap.put("tour", tour);
+		
 		}
 		
 		if(water != null) {
-			for(int i = 0; i <sport.length; i++) {
-				resultMap.put("water", water[i]);
-			}
+				
+			resultMap.put("water", water);
+		
 		}
 //		System.out.println(resultMap);
 		

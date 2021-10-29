@@ -29,7 +29,8 @@ public class ActivityLocationServlet extends HttpServlet {
 		
 		ActivityService activityService = new ActivityService();
 		LocationAndActivityDTO location = activityService.selectLocationInfo(resultMap);
-		System.out.println("location 확인 :" +location);
+	
+		System.out.println("location 확인 :" + location);
 		
 		String[] month = location.getVisitMonth().split(",");
 		String[] name = location.getVisitName().split(",");

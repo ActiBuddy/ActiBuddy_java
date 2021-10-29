@@ -12,11 +12,44 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>관리자 페이지</title>
 
   </head>
-
+  <script>
+  		$(function(){
+  			
+	  	/* 	$('select[name=interest]').change(function(){
+	  			$('select[name=] option:selected').each(function(){
+	  				
+	  				console.dir(this);
+	  			});
+	  		}); */
+	  		
+	  		$('select[name=interest]').change(function(e){
+	  			let checkValue;
+	  			let userId;
+	  			$(e.target.children).each(function(){
+	  				if(this.selected == true){
+	  					ch
+	  				} else{
+	  					}	
+	  				}
+	  			$.ajax({
+	  				url:'${ pageContext.servletContext.contextPath }/manager/part', //Controller에서 인식할 주소
+	  				type:'post',
+	  				data:{userId:id, manpart:manpart},
+	  				success:function(result){
+	  				
+	  				
+	  			});
+	  		});
+  		});
+  		
+  		
+  		
+  
+  </script>
   <body> 
     
     <jsp:include page="../common/managersidebar.jsp"/>
@@ -33,16 +66,19 @@
               </thead>
               <tbody>
               
-                <c:forEach var="userId" items="${memberList}">
+              
+                <c:forEach var="user" items="${memberList}">
                 <tr>
-                  <td>${ userId.userId }</td>
-                  <td>${ userId.manPart }</td>
+                  <td>${ user.userId }</td>
+                  <td>${ user.manPart }</td>
                   <td>
+                  <!-- <form action=""> -->
                   <select id="interest" name="interest" size="1">
-					<option value="report">신고</option>
-					<option value="member">회원</option>
-					<option value="faq">문의접수</option>
+					<option name="inten" value="report">신고</option>
+					<option name="inten" value="manager">회원</option>
+					<option name="inten" value="FAQ">문의접수</option>
 				</select>
+				<!-- </form> -->
 				</td>
                 </tr>
                 </c:forEach>

@@ -10,6 +10,8 @@
     <link href="resources/css/actibuddy.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="${ pageContext.servletContext.contextPath }/resources/js/menubar.js"></script>
+        <link href="resources/css/partnership.css" rel="stylesheet" />
+    
     
     <title>FAQ</title>
 </head>
@@ -177,6 +179,24 @@
             </div>
         </div>
         </div>
+        	
+    <form id="faq" action="${ pageContext.servletContext.contextPath }/faq/question" method="post">   	
+	<div class="question">
+      <textarea cols="50" rows="1" placeholder="글제목" name="queTitle"></textarea>
+      <textarea cols="50" rows="1" placeholder="이메일" name="queEmail"></textarea>
+      <textarea 
+        cols="50"
+        rows="10"
+        placeholder="내용"
+        style="height: 200px"
+        name="queCon"
+      >
+      </textarea>
+      <textarea style="display: none;" name="userId">${ sessionScope.loginMember.userId }</textarea>
+
+      <button type="submit" value="submit">문의하기</button>
+    </div>
+    </form>
 
 
         <script>

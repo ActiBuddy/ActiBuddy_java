@@ -152,6 +152,7 @@
       </h3>
     </div>
 
+	<form id="faq" action="../faq/question" method="post">
     <div class="question">
       <textarea cols="50" rows="1" placeholder="글제목"></textarea>
       <textarea cols="50" rows="1" placeholder="기업명"></textarea>
@@ -164,8 +165,9 @@
         style="height: 200px"
       ></textarea>
 
-      <button type="submit" value="submit">문의하기</button>
+      <button type="submit">문의하기</button>
     </div>
+    </form>
 
    <jsp:include page="../common/footer.jsp"/>
   </body>

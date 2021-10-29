@@ -17,77 +17,43 @@
     <title>main</title>
   </head>
 
-<script>
+	<script>
 	
-	/*  $(function(){
-		 $('.login_id').click(function(){
-		  if(!$('input[name=userId]').val() == ""){
-			  alert("아이디 썼");
-		 } else {
-			 alert("아이디 써");
-		 
-		 }
+	$(function(){			
+		$('#userId').on('keyup',function(){
+		   
+			let id = $('#userId').val(); //id값이 "id"인 입력란의 값을 저장
+	        
+			console.log(id);
+			 $.ajax({
+	            url:'${ pageContext.servletContext.contextPath }/member/idcheck', //Controller에서 인식할 주소
+	            type:'get',
+	            data:{userId:id},
+	            success:function(result){ //callback
+	                
+	            	console.log(result);
+	            	
+					if(result > 0 ){
+						$('#idResult1').css('display', 'block').css('color','red');
+						$('#idResult2').css('display', 'none');
+						$('#userId').focus();
+						$(".login_btn").attr("disabled", true);
 
-		 }),
-			 event.preventDefault();
-	/*  });/ */
+					} else {
+						$('#idResult2').css('display', 'block');
+						$('#idResult1').css('display', 'none');
+						$(".login_btn").attr("disabled", false);
 
-		 
-		 /* $(function(){ */
-		   $('.login_id').click(function(){
-		  if(!$('input[name=pwd]').val() == "")
-		  {
-		  } else {
-			 alert("비번 써");
-		 }
-		 })
-		 });
-		  */
-		 
-		/*   $('.login_btn').click(function(){
-			  if( !$('input[name=userName]').val() == ""){
-			 } else {
-				 alert("이름 써");
-			 }
-		 })
-		 
-	});  */
-	
-	
-	</script>
-			  
-	<script type="text/javascript">
-		
-	/* function winopen(){
-		
-		$(function(){
-			 $('#login_id').click(function(){
-			  if(!$('input[name=userId]').val() == " "){
-				  $('#idResult').text("아이디를 입력해주세요!");
-				  $('#userId').focus();
-		     } else {
-		
-		    	 window.open('${ pageContext.servletContext.contextPath }/member/check', '_blank', 'width=600 height=300');
-			 
-			 }
-		 })
-	}); */
-		
-	function checkId(){
-	        var id = $('#userId').val(); //id값이 "id"인 입력란의 값을 저장
-	        $.ajax({
-	            url:'${ pageContext.servletContext.contextPath }/member/check', //Controller에서 인식할 주소
-	            type:'post', //POST 방식으로 전달
-	            data:{id:id},
-	            success:function(data){ //callback
-	                alert("성공입니다.")
-	                $("#idREsult").css("display",'block')
+					}
 	            },
 	            error:function(){
-	                alert("에러입니다");
+	            	$(this).css('color', 'red');
 	            }
-	        });
-	    }; 
+	        }); 
+		});
+	});
+	
+	
 
 </script>
 
@@ -102,19 +68,19 @@
          <form id="joinForm" action="../member/regist" method="post">
          
          <span><h2>아이디</h2></span>
-         <input type="text" name="userId" id="userId" oninput="checkId()"/>
-         <label id="idResult" style="display: none">1234</label>
-   		 <button class="login_id" onclick="checkId()">아이디체크</button>
+         <input type="text" name="userId" id="userId" placeholder="아이디를 입력해주세요!"/>
+         <label id="idResult1" style="display: none">중복된 아이디 입니다. 다른 아이디를 입력해주세요!</label>
+         <label id="idResult2" style="display: none">사용가능한 아이디 입니다.</label>
          
          <span><h2>비밀번호</h2></span>
-         <input type="password" name="pwd" id="userPwd1"/>
+         <input type="password" name="pwd" id="userPwd1" placeholder="비밀번호를 입력해주세요!"/>
 
          <span><h2>비밀번호 확인</h2></span>
-         <input type="password" name="name" id="userPwd2" />
+         <input type="password" name="name" id="userPwd2" placeholder="비밀번호를 확인해주세요!"/>
          <label id="pwdREsult"></label>
 
          <span><h2>이름</h2></span>
-         <input type="text" name="userName" id="name"/>
+         <input type="text" name="userName" id="name" placeholder="이름을 입력해주세요!"/>
          <label id="nameResult"></label>
 
          <span><h2>생년월일</h2></span>
@@ -122,11 +88,11 @@
          <label id="birthResult"></label>
 
          <span><h2>이메일</h2></span>
-         <input type="text" name="email" id="email" />
+         <input type="text" name="email" id="email" placeholder="이메일을 입력해주세요!" />
          <label id="emailResult"></label>
 
          <span><h2>연락처</h2></span>
-         <input type="text" name="memPhone" id="phone"/>
+         <input type="text" name="memPhone" id="phone" placeholder="전화번호를 입력해주세요!"/>
          <label id="phoneResult"></label>
 
          <br><br><br><br>

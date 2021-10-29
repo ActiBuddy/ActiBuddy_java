@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="FaqDAO">
+ <resultMap type="com.actibuddy.faq.model.dto.FaqDTO" id="faqResultMap">
+		<id property="queNo" column="QUE_NUM"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="queTitle" column="QUE_TITLE"/>
+		<result property="queCon" column="QUE_CON"/>
+		<result property="queEmail" column="QUE_EMAIL"/>
+		<result property="quetype" column="QUE_TYPE"/>
+		<result property="date" column="QUE_DATE"/>
+	</resultMap>
+ 
+ <insert id="registFaqCommon" parameterType="com.actibuddy.faq.model.dto.FaqDTO">
+        INSERT
+          INTO FAQ
+        (
+          QUE_NUM
+        , USER_ID
+        , QUE_TITLE
+        , QUE_CON
+        , QUE_EMAIL
+        , QUE_TYPE
+        , QUE_DATE
+        )
+        VALUES 
+        (
+          SEQ_QUE_NUM.NEXTVAL
+        , #{ userId }
+        , #{ queTitle }
+        , #{ queCon }
+        , #{ queEmail }
+        , 'c'
+        , SYSDATE
+        )
+	</insert>
+ 
+ </mapper>

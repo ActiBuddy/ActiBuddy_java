@@ -235,6 +235,8 @@
   <body>
     <!-- 네비게이션 바-->
     <jsp:include page="../common/menubar.jsp"/>
+    
+    
     <!-- 메인 이미지 및 설명 -->
   
     <div class="container mb-4">

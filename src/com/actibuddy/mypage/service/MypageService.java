@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dao.MypageDAO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
+import com.actibuddy.mypage.model.dto.CartDTO;
 
 
 public class MypageService {
@@ -39,11 +40,11 @@ public class MypageService {
 		return result;
 	}
 
-	public int changeUseYn(Map<String, String> resultMap) {
+	public int changeUseYn(CartAndMemberAndPayHIsDTO tripList) {
 
 		SqlSession session = getSqlSession();
 		
-		int result = mypageDAO.changeUseYn(session,resultMap);
+		int result = mypageDAO.changeUseYn(session,tripList);
 		
 		if(result > 0) {
 		
@@ -69,6 +70,19 @@ public class MypageService {
 		
 		return tripList;
 	}
+
+	public CartAndMemberAndPayHIsDTO selectCart(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		CartAndMemberAndPayHIsDTO tripList = mypageDAO.selectCart(session,userId);
+		
+		session.close();
+		
+		return tripList;
+	}
+
+
 
 
 	

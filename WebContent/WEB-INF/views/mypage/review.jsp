@@ -64,11 +64,11 @@
                 
                 <br><br>
                 <div class="menu">
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/triplist">여행 내역</a><br><br><br>
+                     <a href="${ pageContext.servletContext.contextPath }/mypage/triplist">여행 내역</a><br><br><br>
                     <a href="${ pageContext.servletContext.contextPath }/mypage/review">이용 후기</a><br><br><br>
                     <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
-                    <a href="../mypage/mate-list.html">메이트 내역</a><br><br><br> 
-                    <a href="">문의 사항</a><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/question">문의 사항</a><br><br>
                 </div>
             </div>
 

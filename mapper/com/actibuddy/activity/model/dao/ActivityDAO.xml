@@ -144,31 +144,82 @@
 	                   )
 				   ORDER BY ACTI_REVIEW_STAR DESC
 	     	</if>
-	     	
+	     	<trim prefix="AND" prefixOverrides="AND">
      		<if test="date != '' and date != null">
      		<![CDATA[
      		 AND B.START_DATE < #{ date }
      		 ]]>
 	     	</if>
+	     	</trim>
 	     	
-	     	<if test="sport != null and sport != '' ">
-	     	AND D.SECOND_TYPE_NAME IN #{ sport }
+	     	<if test="sports != null ">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">
+	     	 #{ arr }
+	     	</foreach>
 	     	</if>
 	     	
-	     	<if test="ticket != null">
-	     	AND D.SECOND_TYPE_NAME IN #{ ticket }
+	     	<if test="tickets != null">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="tickets" item="arr" index="index" open="(" close=")" separator=",">
+	     	 #{ arr }
+	     	</foreach>
 	     	</if>
 	     	
-	     	<if test="spa != null">
-	     	AND D.SECOND_TYPE_NAME IN #{ spa }
+	     	<if test="spas != null">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="spas" item="arr" index="index" open="(" close=")" separator=",">
+	     	 #{ arr }
+	     	</foreach>
 	     	</if>
 	     	
-	     	<if test="tour != null">
-	     	AND D.SECOND_TYPE_NAME IN #{ tour }
+	     	<if test="tours != null">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="tours" item="arr" index="index" open="(" close=")" separator=",">
+	     	 #{ arr }
+	     	</foreach>
 	     	</if>
 	     	
-	     	<if test="water != null">
-	     	AND D.SECOND_TYPE_NAME IN #{ water }
+	     	<if test="waters != null">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="waters" item="arr" index="index" open="(" close=")" separator=",">
+	     	 #{ arr }
+	     	</foreach>
+	     	</if>
+	     	
+	     	<if test="selectAlls != null">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="selectAlls" item="arr" index="index" open="(" close=")" separator=",">
+	     	#{ arr }
+	     	</foreach>
+	     	</if>
+	     	
+	     	<if test="selectAlls2 != null">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="selectAlls2" item="arr" index="index" open="(" close=")" separator=",">
+	     	#{ arr }
+	     	</foreach>
+	     	</if>
+	     	
+	     	<if test="selectAlls3 != null">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="selectAlls3" item="arr" index="index" open="(" close=")" separator=",">
+	     	#{ arr }
+	     	</foreach>
+	     	</if>
+	     	
+	     	<if test="selectAlls4 != null">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="selectAlls4" item="arr" index="index" open="(" close=")" separator=",">
+	     	#{ arr }
+	     	</foreach>
+	     	</if>
+	     	
+	     	<if test="selectAlls5 != null">
+	     	AND D.SECOND_TYPE_NAME IN
+	     	<foreach collection="selectAlls5" item="arr" index="index" open="(" close=")" separator=",">
+	     	#{ arr }
+	     	</foreach>
 	     	</if>
 	     	
 	     </where>
@@ -180,6 +231,10 @@
 	       </if>
 	       <if test="sort != null and sort == 'new'">
 	       	 	ORDER BY B.START_DATE DESC
+	       </if>
+	       <if test="date != '' and date != null">
+	       
+	       
 	       </if>
  	</select>
  	

@@ -12,7 +12,6 @@ public class LocationAndActivityDTO implements java.io.Serializable{
 	private String visitMonth;
 	private String visitName;
 	private List<ActivityDTO> activityList;
-	
 	public LocationAndActivityDTO() {
 
 	}

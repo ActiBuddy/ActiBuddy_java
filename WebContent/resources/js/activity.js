@@ -58,31 +58,31 @@ $(function(){
 });
 
 $(function(){
-  $('input[name=selectAll]').click(function(){
+  $('input[name=select]').click(function(){
     $('input[name=sport]').prop('checked',this.checked);
   });
 });
 
 $(function(){
-  $('input[name=selectAll2]').click(function(){
+  $('input[name=select2]').click(function(){
     $('input[name=ticket]').prop('checked',this.checked);
   });
 });
 
 $(function(){
-  $('input[name=selectAll3]').click(function(){
+  $('input[name=select3]').click(function(){
     $('input[name=spa]').prop('checked',this.checked);
   });
 });
 
 $(function(){
-  $('input[name=selectAll4]').click(function(){
+  $('input[name=select4]').click(function(){
     $('input[name=tour]').prop('checked',this.checked);
   });
 });
 
 $(function(){
-  $('input[name=selectAll5]').click(function(){
+  $('input[name=select5]').click(function(){
     $('input[name=water]').prop('checked',this.checked);
   });
 });

@@ -343,16 +343,14 @@
         </div>
         <div class="container" id="test" style="float: none; margin:100 auto;">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
-            <div class="col">
-            <h1 class="display-1">해당 검색 결과가 없습니다</h1>
-          </div> 
+            <h1 class="container">해당 검색 결과가 없습니다</h1>
         </div> 
       </div>
-    </div>  
-    
+    </div> 
+   </div> 
   
     <!-- 메이트 마감 임박 -->
-    <div class="mateDiv">
+    <div class="mateDiv" style="margin-top : 33%; margin-left : 23%">
       <h1 style="margin-right: 75%; margin-top: 10%">메이트 마감 임박</h1>
       <div class="row" id="box">
         <div class="col">

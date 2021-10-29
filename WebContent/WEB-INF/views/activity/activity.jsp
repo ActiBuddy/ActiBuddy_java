@@ -26,12 +26,12 @@
     <link rel="stylesheet" href="../resources/css/actibuddy.css">
     <link rel="stylesheet" href="../resources/css/activity-style.css">
     <link rel="stylesheet" href="../resources/css/FAQ.css">
-    <script src="${ pageContext.servletContext.contextPath }/resources/js/activity.js?ver=2"></script>
+    <script src="${ pageContext.servletContext.contextPath }/resources/js/activity.js?ver=3"></script>
   <script>
   $(function() {
-	   		
+	
 	$("#datepicker").on("propertychange change keyup paste input", function(){
-			
+		
     	$("#frm").attr("action","/acti/sort/controll").submit();
 		
 	}); 
@@ -42,33 +42,42 @@
 
 	}); 
 	
+	$('#priceBtn').on('click', function() {
+		
+		$('#spanPrice').text(val);
+		
+	})
+	
 	$("input[name=sport]").change(function(){
 		
 		let checkArr = $("input[name=sport]:checked");
 		
-		let checkList = [];
+		let checkList = "";
 		for(let i = 0; i < checkArr.length; i++){
-			checkList += { 'value' : checkArr[i].value}
+			if(i < checkArr.length-1){
+				checkList += checkArr[i].value + ",";
+			} else {
+				checkList += checkArr[i].value;
+			}
 		}
-		
-		let check = JSON.stringify(checkList); 
-		let list 
-		console.log(check);
-		$('#sport').val(check);
+		console.log(checkList);
+	
+		$('#sport').val(checkList);
 	});
 	
 	$("input[name=ticket]").change(function(){
 		
 		let checkArr = $("input[name=ticket]:checked");
-		
 		let checkList = "";
 		for(let i = 0; i < checkArr.length; i++){
-			checkList += checkArr[i].value + ',';
+			if(i < checkArr.length-1){
+				checkList += checkArr[i].value + ",";
+			} else {
+				checkList += checkArr[i].value;
+			}
 		}
-		
-		let check = JSON.stringify(checkList); 
-		console.log(check);
-		$('#ticket').val(check);
+		console.log(checkList);
+		$('#ticket').val(checkList);
 	});	
 
 	$("input[name=tour]").change(function(){
@@ -77,26 +86,28 @@
 		
 		let checkList = "";
 		for(let i = 0; i < checkArr.length; i++){
-			checkList += checkArr[i].value + ',';
+			if(i < checkArr.length-1){
+				checkList += checkArr[i].value + ",";
+			} else {
+				checkList += checkArr[i].value;
+			}
 		}
-		
-		let check = JSON.stringify(checkList); 
-		console.log(check);
-		$('#tour').val(check);
+		$('#tour').val(checkList);
 	});
 	
 	$("input[name=spa]").change(function(){
 		
 		let checkArr = $("input[name=spa]:checked");
 		
-		let checkList = {};
+		let checkList = "";
 		for(let i = 0; i < checkArr.length; i++){
-			checkList += checkArr[i].value + ',';
+			if(i < checkArr.length-1){
+				checkList += checkArr[i].value + ",";
+			} else {
+				checkList += checkArr[i].value;
+			}
 		}
-		
-		let check = JSON.stringify(checkList); 
-		console.log(check);
-		$('#spa').val(check);
+		$('#spa').val(checkList);
 	});
 	 
 	 $("input[name=water]").change(function(){
@@ -105,18 +116,118 @@
 			
 			let checkList = "";
 			for(let i = 0; i < checkArr.length; i++){
-				checkList += checkArr[i].value + ',' ;
+				if(i < checkArr.length-1){
+					checkList += checkArr[i].value + ",";
+				} else {
+					checkList += checkArr[i].value;
+				}
+			}
+			$('#water').val(checkList);
+		});
+	 
+	 $("input[name=select]").change(function() {
+			
+			let checkArr = $("input[name=sport]:checked");
+			let checkList = "";
+			for(let i = 0; i < checkArr.length; i++){
+				if(i < checkArr.length-1){
+					checkList += checkArr[i].value + ",";
+				} else {
+					checkList += checkArr[i].value;
+				}
 			}
 			
-			let check = JSON.stringify(checkList); 
-			console.log(check);
-			$('#water').val(check);
+			console.log(checkList);
+			
+			$('#selectAll').val(checkList);
 		});
+	 
+	 $("input[name=select2]").change(function() {
+			
+			let checkArr = $("input[name=ticket]:checked");
+			let checkList = "";
+			for(let i = 0; i < checkArr.length; i++){
+				if(i < checkArr.length-1){
+					checkList += checkArr[i].value + ",";
+				} else {
+					checkList += checkArr[i].value;
+				}
+			}
+			
+			console.log(checkList);
+			
+			$('#selectAll2').val(checkList);
+		});
+	 
+	 $("input[name=select3]").change(function() {
+			
+			let checkArr = $("input[name=tour]:checked");
+			let checkList = "";
+			for(let i = 0; i < checkArr.length; i++){
+				if(i < checkArr.length-1){
+					checkList += checkArr[i].value + ",";
+				} else {
+					checkList += checkArr[i].value;
+				}
+			}
+			
+			console.log(checkList);
+			
+			$('#selectAll3').val(checkList);
+		});
+	 
+	 $("input[name=select4]").change(function() {
+			
+			let checkArr = $("input[name=spa]:checked");
+			let checkList = "";
+			for(let i = 0; i < checkArr.length; i++){
+				if(i < checkArr.length-1){
+					checkList += checkArr[i].value + ",";
+				} else {
+					checkList += checkArr[i].value;
+				}
+			}
+			
+			console.log(checkList);
+			
+			$('#selectAll4').val(checkList);
+		});
+	 
+	 $("input[name=select5]").change(function() {
+			
+			let checkArr = $("input[name=water]:checked");
+			let checkList = "";
+			for(let i = 0; i < checkArr.length; i++){
+				if(i < checkArr.length-1){
+					checkList += checkArr[i].value + ",";
+				} else {
+					checkList += checkArr[i].value;
+				}
+			}
+			
+			console.log(checkList);
+			
+			$('#selectAll5').val(checkList);
+		});
+	
+	if('${ price }' != 0 && '${ price }' != '0 - 300000'){
+		
+		$('#spanPrice').text('${ price }');
+	} else if('${ price }' == '0 - 300000'){
+		$('#spanPrice').text('가격')
+	}
+		$('#datepicker').val('${ date }');
+		$('#sortBtn').val('${ sort }');
+	
 	
 	if( '${ move }' != null ){
 		location.href='#actiSearch';
 	}
-	  
+	
+	if('${ sport }' != null){
+		
+	}
+	
   });
   </script>
   </head>
@@ -230,13 +341,14 @@
             아웃도어 & 스포츠
           </span>
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
-            <li class="mb-4"><input type="checkbox" name="sport" value="comping"><span>캠핑 & 글램핑</span></li>
-            <li class="mb-4"><input type="checkbox" name="sport" value="luge"><span>루지 & 짚라인 & 어드벤처</span></li>
-            <li class="mb-4"><input type="checkbox" name="sport" value="ski"><span>스키 & 스노보드<span></li>
-            <li class="mb-4"><input type="checkbox" name="selectAll" value="selectAll"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="sport" value="캠핑 & 글램핑"><span>캠핑 & 글램핑</span></li>
+            <li class="mb-4"><input type="checkbox" name="sport" value="루지 & 짚라인 & 어드벤처"><span>루지 & 짚라인 & 어드벤처</span></li>
+            <li class="mb-4"><input type="checkbox" name="sport" value="스키 & 스노보드"><span>스키 & 스노보드<span></li>
+            <li class="mb-4"><input type="checkbox" name="select" value="selectAll"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck" id="sport"/>
+          <input type="hidden" name="selectAll" id="selectAll">
         </div>
       </div> 
       <div class="menu">
@@ -245,14 +357,15 @@
             티켓 & 입장권
           </span>
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
-            <li class="mb-4"><input type="checkbox" name="ticket" value="park" class="ch"><span>공원 & 자연</span></li>
-            <li class="mb-4"><input type="checkbox" name="ticket" value="zoo" class="ch"><span>아쿠아리움 & 동물원</span></li>
-            <li class="mb-4"><input type="checkbox" name="ticket" value="water park" class="ch"><span>테마파크 & 워터파크<span></li>
-            <li class="mb-4"><input type="checkbox" name="ticket" value="museum" class="ch"><span>박물관 & 미술관<span></li>
-            <li class="mb-4"><input type="checkbox" name="selectAll2" value="selectAll2" class="ch"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="공원 & 자연"><span>공원 & 자연</span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="아쿠아리움 & 동물원"><span>아쿠아리움 & 동물원</span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="테마파크 & 워터파크"><span>테마파크 & 워터파크<span></li>
+            <li class="mb-4"><input type="checkbox" name="ticket" value="박물관 & 미술관"><span>박물관 & 미술관<span></li>
+            <li class="mb-4"><input type="checkbox" name="select2" value="selectAll2"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck1" id="ticket"/>
+          <input type="hidden" name="selectAll2" id="selectAll2">
         </div>
       </div>
       <div class="menu">
@@ -261,12 +374,13 @@
             스파 & 테라피
           </span>
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
-            <li class="mb-4"><input type="checkbox" name="spa" value="spa"><span>스파 & 온천</span></li>
-            <li class="mb-4"><input type="checkbox" name="spa" value="wellbeing"><span>웰빙 & 웰니스</span></li>
-            <li class="mb-4"><input type="checkbox" name="selectAll3" value="selectAll3"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="spa" value="스파 & 온천"><span>스파 & 온천</span></li>
+            <li class="mb-4"><input type="checkbox" name="spa" value="웰빙 & 웰니스"><span>웰빙 & 웰니스</span></li>
+            <li class="mb-4"><input type="checkbox" name="select3" value="selectAll3"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck2" id="spa"/>
+          <input type="hidden" name="selectAll3" id="selectAll3">
         </div>
       </div>
       <div class="menu">
@@ -275,12 +389,13 @@
             투어
           </span>
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
-            <li class="mb-4"><input type="checkbox" name="tour" value="working"><span>워킹 & 자전거투어</span></li>
-            <li class="mb-4"><input type="checkbox" name="tour" value="bus"><span>버스 & 스쿠터 & ATV투어</span></li>
-            <li class="mb-4"><input type="checkbox" name="selectAll4" value="selectAll4"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="tour" value="워킹 & 자전거투어"><span>워킹 & 자전거투어</span></li>
+            <li class="mb-4"><input type="checkbox" name="tour" value="버스 & 스쿠터 & ATV투어"><span>버스 & 스쿠터 & ATV투어</span></li>
+            <li class="mb-4"><input type="checkbox" name="select4" value="selectAll4"><span>모두선택</span></li>
              <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck3" id="tour"/>
+          <input type="hidden" name="selectAll4" id="selectAll4">
         </div>
       </div>
       <div class="menu">
@@ -289,12 +404,13 @@
             수상 액티비티
           </span>
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
-            <li class="mb-4"><input type="checkbox" name="water" value="kayak"><span>패들보드 & 카약 & 래프팅</span></li>
-            <li class="mb-4"><input type="checkbox" name="water" value="surfing"><span>서핑 & 기타 수상레저</span></li>
-            <li class="mb-4"><input type="checkbox" name="selectAll5" value="selectAll5"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="water" value="패들보드 & 카약 & 래프팅"><span>패들보드 & 카약 & 래프팅</span></li>
+            <li class="mb-4"><input type="checkbox" name="water" value="서핑 & 기타 수상레저"><span>서핑 & 기타 수상레저</span></li>
+            <li class="mb-4"><input type="checkbox" name="select5" value="selectAll5"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck4" id="water"/>
+          <input type="hidden" name="selectAll5" id="selectAll5">
         </div>
       </div>
       <input type="hidden" name="hdLocationName" value="${locationActivity.name}"/>
@@ -308,6 +424,7 @@
             <div class="col" style="flex: 0;">
               <div class="date">
               <p style="font-size: 18px">예약날짜 : <input type="text" id="datepicker" name="date" readonly="readonly"></p>
+              <input type="hidden" id="date" value="${ date }">
               </div>
             </div>
             <div class="col" style="flex: 1.0; padding: 0px;" >
@@ -320,6 +437,7 @@
                       <input type="text" id="amount2" name="price" readonly style="border:0; color:#f6931f; font-weight:bold;">
                       <div id="slider-range" style="margin-top: 10px;"></div>
                       <button type="submit" class="btn btn-success" id="sub">확인</button>
+		                <input type="hidden" id="price" value="${ price }">
                     </div>
                   </ul>
               </div>
@@ -328,11 +446,12 @@
               <span id="sort">정렬 : </span>
               <div class="dropdown">
                 <select id="sortBtn" name="sort">
-                  	<option value="popular">인기순</option>
+                   	<option value="popular">인기순</option>
                     <option value="star">별점순</option>
                     <option value="price">낮은가격순</option>
                     <option value="new">최신순</option>
                 </select>
+                <input type="hidden" id="sort" value="${ sort }">
               </div>
             </div>
           </div>

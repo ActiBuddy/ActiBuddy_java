@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -93,55 +95,54 @@
         			
 					</c:if>
 
-                 	<c:forEach var="trip" items="${ tripList }" varStatus="i">
+                 	<c:forEach var="size" begin="0" end="${fn:length(tripList.cartList)-1 }" >
                     <hr>
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>액티비티 : ${ tripList.activityInfo[i.index].name }</h3> 
+                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList.activityInfo[size].name  }'">상세보기 ></button>
+                    <h3>액티비티 : ${ tripList.activityInfo[size].name }</h3> 
                     
                     <br>
-                    <h5>날짜 : ${ tripList.cartList[i.index].chooseDate } <br> 수량 : ${ tripList.cartList[i.index].totalPerson }</h5>
+                    <h5>날짜 : ${ tripList.cartList[size].chooseDate } <br> 수량 : ${ tripList.cartList[size].totalPerson }</h5>
     
                     <br><br><br>
     
                     <h5 id="usestatus">이용상태 : </h5>
                     
-                    
-	                    <button id="complete2" onclick='changeBtnName()' >사용완료</button>
+ 
+	                    <button id="complete2" onclick='changeBtnName()' >후기 작성하기</button>
+
                     <hr>
+    				
     				</c:forEach> 
     				
-    				
-                    <script>
+    				<script>
     	
                     	function changeBtnName()  {
-
-	                      	if (complete2.innerText == "사용완료") {
+	                      	/* if (complete2.innerText == "사용완료") {
 	                      		
 	                    	  const btnElement = document.getElementById('complete2');
 	                      	  btnElement.innerText = '후기 작성하기';
-	                      	}
-	                      	  $.ajax({
-								type: "POST",
-								url: '/acti/mypage/triplist',	// form을 전송할 실제 파일경로
-								data: {
-									useYn : 'Y',
-									userId : '${ sessionScope.loginMember.userId }'
-								}, 
-								success: function (data) {
-									console.log(data);
-								},
-								error: function (e) {
-									console.log("ERROR : ", e);
-								}
-							});
 	                      	  
-	                      	/*  // useYN -> Y로 변경
-	                     	} else if(complete2.innerText == "후기 작성하기"){
-	
+	                      	}else if(complete2.innerText == "후기 작성하기"){
+	 */
 		                      		window.location.href = '/acti/mypage/trip/review/write';
-	                     	} */
+	                     	
                     	}
                     </script>
+    				
+<!--                     <script>
+                    
+                    $("#complete2").click(function(){
+                    	
+                        $(".btnBox").append('<button type="button" id="btn2">후기 작성하기</button>');
+                    });
+
+                    $(document).on("click","#btn2",function(){
+
+                    	window.location.href = '/acti/mypage/trip/review/write';
+                    });
+                    	
+                    </script> -->
+                   
 
                 </div>
 

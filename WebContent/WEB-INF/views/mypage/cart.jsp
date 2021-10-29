@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -88,30 +90,20 @@
 
                     <br>
                     <hr>
-                    <button id="x">X</button>
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>★★★★★ </h3>
-                    <h3>후기 제목 </h3>
-                    <h4>후기 상품 : </h4>
     
-                    <h5>날짜 : <br> 수량 : </h5>
-                    <br>
-                    <h4>총 결제할 금액 : </h4>
-                    <button id="pay">바로 결제</button>
-    
-                    <hr>
+
+                    <c:forEach var="size" begin="0" end="${fn:length(tripList.cartList)-1 }" >
                     <button id="x">X</button>
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>★★★★☆ </h3>
-                    <h3>후기 제목 </h3>
-                    <h4>후기 상품 : </h4>
+                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList.activityInfo[size].name  }'">상세보기 ></button>
+                    <h3>${ tripList.activityInfo[size].name }</h3>
+                    <br><br>
+                    <h5>날짜 : ${ tripList.cartList[size].chooseDate }<br> 수량 : ${ tripList.cartList[size].totalPerson }</h5>
                     <br>
-                    <h5>날짜 : <br> 수량 : </h5>
-                    <br>
-                    <h4>총 결제할 금액 : </h4>
+                    <h4>총 결제할 금액 : ${ tripList.cartList[size].totalPrice } 원</h4>
                     <button id="pay" type="button" onclick="location.href=''">바로 결제</button>
 
                     <hr>
+                    </c:forEach>
                     
 
 

@@ -40,11 +40,11 @@ public class MypageService {
 		return result;
 	}
 
-	public int changeUseYn(Map<String, String> resultMap) {
+	public int changeUseYn(CartAndMemberAndPayHIsDTO tripList) {
 
 		SqlSession session = getSqlSession();
 		
-		int result = mypageDAO.changeUseYn(session,resultMap);
+		int result = mypageDAO.changeUseYn(session,tripList);
 		
 		if(result > 0) {
 		
@@ -93,6 +93,18 @@ public class MypageService {
 		
 		return result;
 	}
+	public CartAndMemberAndPayHIsDTO selectCart(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		CartAndMemberAndPayHIsDTO tripList = mypageDAO.selectCart(session,userId);
+		
+		session.close();
+		
+		return tripList;
+	}
+
+
 
 
 	

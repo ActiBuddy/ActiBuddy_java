@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -69,7 +71,7 @@
                     <a href="${ pageContext.servletContext.contextPath }/mypage/review">이용 후기</a><br><br><br>
                     <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
                     <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/myQuestion">문의 사항</a><br><br>
+                    <a href="${ pageContext.servletContext.contextPath }/mypage/myquestion">문의 사항</a><br><br>
                 </div>
             </div>
 
@@ -85,78 +87,71 @@
 
                     <h5>이용 후기 작성</h5>
                     <hr>
-                    <h2 id="titleH2">제목 : </h2><textarea id="title" placeholder="제목를 작성해주세요"></textarea>
-                    <h3>후기 상품 : [제주] 차귀도 배낚시 체험</h3>
+                    <form action="${ pageContext.servletContext.contextPath }/mypage/trip/review/write" method="post" >
+                    
+                    <h2 id="titleH2">제목 : </h2><textarea id="title" placeholder="제목를 작성해주세요" name="title"></textarea>
+                    
+                    <c:forEach var="size" begin="0" end="${fn:length(tripList.activityInfo)-1 }" >
+                    <hr><h3>후기 상품 :  ${ tripList.activityInfo[size].name }</h3>
+                    <input type="hidden" name="hdActivityNum" value="${ tripList.cartList[size].actiNum }"  >
                     <br>
-                    <h5> 날짜 : </h5>
-                    <h5>수량 : </h5>
+                    <h5>선택 날짜 : ${ tripList.cartList[size].chooseDate }  </h5>
+                    <h5>선택한 옵션 : ${ tripList.cartList[size].chooseOption }</h5>
+                    <h5>선택한 수량 : ${ tripList.cartList[size].totalPerson }</h5>
+                    <input type="hidden" name="hdChooseDate" value="${ tripList.cartList[size].chooseDate }"  >
+                    <input type="hidden" name="hdTotalPerson" value="${ tripList.cartList[size].totalPerson }"  >
+                    <input type="hidden" name="hdChooseOption" value="${ tripList.cartList[size].chooseOption }"  >
+                    </c:forEach>
+                    
                     <hr>
-                    <h2> 별점을 매겨주세요</h2>
-                    <h3>액티비티는 어떠셨나요?</h3>
+                    <h3>액티비티는 어떠셨나요? 별점을 매겨주세요</h3>
     
     
-                        <button class="t-buttons">매우만족</button><button class="t-buttons">만족</button>
-                        <button class="t-buttons">보통</button><button class="t-buttons">불만족</button>
-                        <button class="t-buttons">매우불만족</button>
+					<fieldset name="myform" id="myform">
+				        
+				        <label for="rate1">⭐</label><input type="radio" name="rating" value="1" id="rate1">
+				        <label for="rate2">⭐</label><input type="radio" name="rating" value="2" id="rate2">
+				        <label for="rate3">⭐</label><input type="radio" name="rating" value="3" id="rate3">
+				        <label for="rate4">⭐</label><input type="radio" name="rating" value="4" id="rate4">
+				        <label for="rate5">⭐</label><input type="radio" name="rating" value="5" id="rate5">
+				    
+				    </fieldset>
     
                     <hr>
                     <h5>후기 내용</h5>
                     <hr>
-                    <textarea placeholder="후기 내용을 작성해주세요"></textarea>
+                    <textarea cols ="30" rows="5" name="reviewCon" placeholder="후기 내용을 작성해주세요"></textarea>
 
-                    
-                    <!-- <script>
-                        function imgSize(which){
-                           var width = eval("document."+which+".width");
-                           var height = eval("document."+which+".height");
-                           var temp = 0; 
-                           var max_width= 50;   // 이미지의 가로 최대 크기    
-                           var max_height = 50; // 이미지의 세로 최대 크기
-                           
-                           if ( width > max_width ) {  // 이미지가 600보다 크다면 너비를 600으로 맞우고 비율에 맞춰 세로값을 변경한다.      
-                               height = height/(width / max_width);
-                               eval("document."+which+".width = max_width");     
-                               eval("document."+which+".height = height");
-                               width = max_width;     
-                           }
-                           
-                           if( height > max_height ) {
-                               width = width/(height / max_height);
-                               eval(document.getElementById(which).width = width);
-                               eval(document.getElementById(which).height = max_height);
-                            }
-                        }
-                    </script> -->
-
-                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple height="50" width="50"/> 
+                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event); value="imageFile" /> 
                     <div id="image_container"></div>
 
                     <script> 
                     
-                    function setThumbnail(event) { 
-                        for (var image of event.target.files) { 
-                            var reader = new FileReader(); 
-                            
-                            reader.onload = function(event) { 
-                                var img = document.createElement("img"); 
-                                img.setAttribute("src", event.target.result); 
-                                document.querySelector("div#image_container").appendChild(img); 
-                                }; 
-                                
-                                console.log(image);
-                                 reader.readAsDataURL(image);
-                        } 
-                    } 
-
-                   
-                                
+	                    function setThumbnail(event) { 
+	                        for (var image of event.target.files) { 
+	                            var reader = new FileReader(); 
+	                            
+	                            reader.onload = function(event) { 
+	                                var img = document.createElement("img"); 
+	                                img.setAttribute("src", event.target.result); 
+	                                document.querySelector("div#image_container").appendChild(img); 
+	                                }; 
+	                                
+	                                console.log(image);
+	                                 reader.readAsDataURL(image);
+	                        } 
+	                    } 
+               
                     </script>
                     
 
 
 
+                    <!-- 후기 작성하기 버튼 누르면 UseYn -> Y로 변경 -->
 
                     <button class="t-center-btn">후기 작성하기</button>
+                    
+                    </form>
 
                 </div>
 

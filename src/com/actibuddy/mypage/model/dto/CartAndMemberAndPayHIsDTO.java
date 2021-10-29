@@ -2,6 +2,7 @@ package com.actibuddy.mypage.model.dto;
 
 import java.util.List;
 
+import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 
 public class CartAndMemberAndPayHIsDTO {
@@ -21,6 +22,7 @@ public class CartAndMemberAndPayHIsDTO {
 	private List<CartDTO> cartList;
 	private List<PayHisDTO> payHisList;
 	private List<ActivityDTO> activityInfo;
+	private List<ActiReviewDTO> actiReview;
 	 
 	public CartAndMemberAndPayHIsDTO() {
 		super();
@@ -29,7 +31,8 @@ public class CartAndMemberAndPayHIsDTO {
 
 	public CartAndMemberAndPayHIsDTO(String userId, String userName, String pwd, String email, String birth,
 			String gender, int warn_count, String quitYn, String memType, String memPhone, String introduce,
-			String favoriteActi, List<CartDTO> cartList, List<PayHisDTO> payHisList, List<ActivityDTO> activityInfo) {
+			String favoriteActi, List<CartDTO> cartList, List<PayHisDTO> payHisList, List<ActivityDTO> activityInfo,
+			List<ActiReviewDTO> actiReview) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -46,6 +49,7 @@ public class CartAndMemberAndPayHIsDTO {
 		this.cartList = cartList;
 		this.payHisList = payHisList;
 		this.activityInfo = activityInfo;
+		this.actiReview = actiReview;
 	}
 
 	public String getUserId() {
@@ -168,15 +172,24 @@ public class CartAndMemberAndPayHIsDTO {
 		this.activityInfo = activityInfo;
 	}
 
+	public List<ActiReviewDTO> getActiReview() {
+		return actiReview;
+	}
+
+	public void setActiReview(List<ActiReviewDTO> actiReview) {
+		this.actiReview = actiReview;
+	}
+
 	@Override
 	public String toString() {
 		return "CartAndMemberAndPayHIsDTO [userId=" + userId + ", userName=" + userName + ", pwd=" + pwd + ", email="
 				+ email + ", birth=" + birth + ", gender=" + gender + ", warn_count=" + warn_count + ", quitYn="
 				+ quitYn + ", memType=" + memType + ", memPhone=" + memPhone + ", introduce=" + introduce
 				+ ", favoriteActi=" + favoriteActi + ", cartList=" + cartList + ", payHisList=" + payHisList
-				+ ", activityInfo=" + activityInfo + "]";
+				+ ", activityInfo=" + activityInfo + ", actiReview=" + actiReview + "]";
 	}
 
+	
 
 	
 }

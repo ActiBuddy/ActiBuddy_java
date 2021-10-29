@@ -22,7 +22,7 @@ public class MypageDAO {
 		return session.update("MypageDAO.updateIntroduce", requestIntroduce);
 	}
 
-		public int changeUseYn(SqlSession session, Map<String, String> resultMap) {
+		public int changeUseYn(SqlSession session, CartAndMemberAndPayHIsDTO tripList) {
 		
 		return session.update("MypageDAO.changeUseYn");
 	}
@@ -36,5 +36,11 @@ public class MypageDAO {
 			
 			return session.insert("MypageDAO.insertCart", newCart);
 		}
+		public CartAndMemberAndPayHIsDTO selectCart(SqlSession session, String userId) {
+			
+			
+			return session.selectOne("MypageDAO.selectCart",userId);
+		}
+
 
 }

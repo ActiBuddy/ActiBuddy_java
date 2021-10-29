@@ -67,23 +67,15 @@ public class MemberService {
 	}
 
 
-	public MemberDTO idcheck(MemberDTO requestMember) {
+	public int idcheck(MemberDTO requestMember) {
 
 		SqlSession session = getSqlSession();
-		MemberDTO loginMember = null;
 		
-		String result = memberDAO.idcheck(session, requestMember);
-		
-		// null 처리 
-		if(result != null) {
-			loginMember = memberDAO.selectLoginMember(session, requestMember);
-		} else {
-			loginMember = memberDAO.selectLoginMember(session, requestMember);
-		}
+		int result = memberDAO.idcheck(session, requestMember);
 		
 		session.close();
 		
-		return loginMember;
+		return result;
 	}
 
 

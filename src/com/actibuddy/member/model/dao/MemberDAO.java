@@ -28,7 +28,7 @@ public class MemberDAO {
 
 	}
 	// 아이디 중복 조회
-	public String idcheck(SqlSession session, MemberDTO requestMember) {
+	public int idcheck(SqlSession session, MemberDTO requestMember) {
 
 		return session.selectOne("MemberDAO.idcheck", requestMember);
 	}

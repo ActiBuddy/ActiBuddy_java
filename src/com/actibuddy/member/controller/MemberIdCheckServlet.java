@@ -24,14 +24,6 @@ public class MemberIdCheckServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		
-		 
-	
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	
 		response.setContentType("text/html;charset=UTF-8");
 		String userId = request.getParameter("userId");
 		
@@ -44,19 +36,23 @@ public class MemberIdCheckServlet extends HttpServlet {
 
 		MemberService memberService = new MemberService();
 		
-		MemberDTO loginMember = memberService.idcheck(requestMember);
+		int result = memberService.idcheck(requestMember);
 		
-		System.out.println(loginMember);
+		System.out.println(result);
 
-		
-		
 		// 중복확인만 result 1 0 
-		
 		
 		PrintWriter out = response.getWriter();
 		
-		
-		
+	
+		out.print(result);
+		out.flush();
+		out.close();
+	
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 

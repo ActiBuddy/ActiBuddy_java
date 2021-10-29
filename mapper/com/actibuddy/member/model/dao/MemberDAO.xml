@@ -71,10 +71,10 @@
 	</select>
 	
 	
-	<select id="idcheck" resultType="java.lang.String">
+	<select id="idcheck" resultType="_int">
       
         SELECT
-               A.USER_ID
+               COUNT(*)
           FROM MEMBER A
          WHERE A.QUIT_YN = 'N'
            AND A.USER_ID = #{ userId }

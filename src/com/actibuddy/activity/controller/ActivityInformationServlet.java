@@ -25,12 +25,19 @@ public class ActivityInformationServlet extends HttpServlet {
 
 		ActivityService activityService = new ActivityService();
 		ActivityInfoDTO activity = activityService.selectActivityInfo(actiName);
-//		System.out.println(activity.getActivityList());
+// 		System.out.println("액티비티 리스트 조회 : " + activity.getActivityList());
 //		System.out.println(activity.getConditionList());
 //		System.out.println(activity.getLocationList());
 //		System.out.println(activity.getOptionList());
-  		System.out.println(activity.getReviewList());
+//  	System.out.println(activity.getReviewList());
 //		System.out.println(activity.getTypeList());
+		
+		System.out.println("=====================================================");
+		
+		String[] map = activity.getActivityList().get(0).getLocation().split(",");
+//		for(String m : map) {
+//			System.out.println(m);
+//		}
 		
 		System.out.println("=====================================================");
 		
@@ -39,7 +46,6 @@ public class ActivityInformationServlet extends HttpServlet {
 		for(ActivityDTO acti : recActivity) {
 			System.out.println(acti);
 		}
-
 		
 		String path = "";
 
@@ -47,6 +53,7 @@ public class ActivityInformationServlet extends HttpServlet {
 			path = "/WEB-INF/views/activity/activityInfo.jsp";
 			request.setAttribute("activity", activity);
 			request.setAttribute("recActivity" , recActivity);
+			request.setAttribute("map", map);
 			
 		} else {
 			path = "/WEB-INF/views/common/actiFail.jsp";

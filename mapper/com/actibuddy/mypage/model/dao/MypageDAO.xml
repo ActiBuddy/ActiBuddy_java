@@ -104,5 +104,30 @@
  	
  	</select>
 
+    <insert id="insertCart">
+    
+        INSERT
+          INTO CART A
+        (
+           A.ACTI_NUM
+         , A.CART_NUM
+         , A.USER_ID
+         , A.CHOOSE_OPTION
+         , A.TOTAL_PERSON
+         , A.TOTAL_PRICE
+         , A.CHOOSE_DATE
+        )
+        VALUES
+        (
+          #{ actiNum }
+        , ('CART' || TO_CHAR(SEQ_CART_NUM.nextval))
+        , #{ userId }
+        , #{ chooseOption }
+        , #{ totalPerson }
+        , #{ totalPrice }
+        , #{ chooseDate }
+        )
+    
+    </insert>
   
   </mapper>

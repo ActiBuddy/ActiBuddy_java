@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
+import com.actibuddy.mypage.model.dto.CartDTO;
 
 
 public class MypageDAO {
@@ -29,6 +30,11 @@ public class MypageDAO {
 		public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(SqlSession session, String userId) {
 			
 			return session.selectOne("MypageDAO.selectTripList",userId);
+		}
+
+		public static int insertCart(SqlSession session, CartDTO newCart) {
+			
+			return session.insert("MypageDAO.insertCart", newCart);
 		}
 
 }

@@ -1,7 +1,9 @@
 package com.actibuddy.activity.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -27,7 +29,6 @@ public class ActivityLocationServlet extends HttpServlet {
 		
 		ActivityService activityService = new ActivityService();
 		LocationAndActivityDTO location = activityService.selectLocationInfo(resultMap);
-	
 		System.out.println("location 확인 :" +location);
 		
 		String[] month = location.getVisitMonth().split(",");

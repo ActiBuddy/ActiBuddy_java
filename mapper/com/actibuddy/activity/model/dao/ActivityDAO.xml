@@ -35,6 +35,8 @@
  	   <result property="EndDate" column="END_DATE"/>
  	   <result property="tip" column="ACTI_TIP"/>
  	   <result property="image" column="ACTI_IMG"/>
+ 	   <result property="image2" column="ACTI_IMG2"/>
+ 	   <result property="image3" column="ACTI_IMG3"/>
  	   <result property="loactionCode" column="LOCATION_CODE"/>
  	   <result property="activitTypeCode" column="ACTI_TYPE_NUM"/>
  	   <result property="userId" column="USER_ID"/>
@@ -63,6 +65,8 @@
  	   <result property="EndDate" column="END_DATE"/>
  	   <result property="tip" column="ACTI_TIP"/>
  	   <result property="image" column="ACTI_IMG"/>
+ 	   <result property="image2" column="ACTI_IMG2"/>
+ 	   <result property="image3" column="ACTI_IMG3"/>
  	   <result property="loactionCode" column="LOCATION_CODE"/>
  	   <result property="activitTypeCode" column="ACTI_TYPE_NUM"/>
  	   <result property="userId" column="USER_ID"/>
@@ -117,14 +121,7 @@
      		 , A.GUIDE_TIP
 			 , A.VISIT_MONTH
 			 , A.VISIT_NAME
-             , B.ACTI_NAME
-    		 , B.LOCATION
-     		 , B.PRICE
-			 , B.START_DATE
-			 , B.END_DATE
-			 , B.ACTI_IMG
-			 , B.LOCATION_CODE
-			 , B.ACTI_TYPE_NUM
+             , B.*
              , C.ACTI_REVIEW_STAR
              , C.ACTI_REVIEW_REC
 	  	  FROM LOCATION A
@@ -184,29 +181,6 @@
  	</select>
  	
  	<select id="selectActivityInfo" resultMap="activityInfoResultMap" parameterType="String">
- 	   <!--  SELECT
-               A.*
-             , C.*
-             , D.*
-             , E.*
-             , F.*
-             , G.*
-             , (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
-                  FROM ACTI_REVIEW C
-                  JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
-                 WHERE B.ACTI_NAME = #{ actiName })AS AVG
-             , (SELECT COUNT(C.ACTI_REVIEW_TITLE)
-                  FROM ACTI_REVIEW C
-      	          JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
-                 WHERE B.ACTI_NAME = #{ actiName })AS COUNT    
-        FROM ACTIVITY_INFO A
-        LEFT JOIN ACTI_CONDITION_HIS B ON (A.ACTI_NUM = B.ACTI_NUM)
-        LEFT JOIN ACTI_CONDITION C ON (B.ACTI_CON_NUM = C.ACTI_CON_NUM)
-        LEFT JOIN ACTI_REVIEW D ON (A.ACTI_NUM = D.ACTI_NUM)
-        LEFT JOIN ACTI_TYPE E ON ( A.ACTI_TYPE_NUM = E.ACTI_TYPE_NUM)
-        LEFT JOIN ACTI_OPTION F ON (A.ACTI_NUM = F.ACTI_NUM)
-        LEFT JOIN LOCATION G ON (A.LOCATION_CODE = G.LOCATION_CODE)
-       WHERE A.ACTI_NAME = #{ actiName } -->
        SELECT
                A.*
              , C.*

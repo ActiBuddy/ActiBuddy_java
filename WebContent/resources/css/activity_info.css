@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.carousel-item {
+	height : 400px;
+}
+
 #carouselExampleIndicators{
     width:70%; 
     /* height: auto; */
@@ -288,6 +292,8 @@ input[type=radio]:checked + label {background-color: blue;}
 .review-img {
     position: relative;
     left: 8%;
+    width: 60%;
+    height: 330px;
 }
 
 #review-p {

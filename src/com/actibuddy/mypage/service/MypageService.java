@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dao.MypageDAO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
+import com.actibuddy.mypage.model.dto.CartDTO;
 
 
 public class MypageService {
@@ -68,6 +69,29 @@ public class MypageService {
 		
 		
 		return tripList;
+	}
+
+	/**
+	 * 장바구니 등록용 메소드
+	 * @author kwonsoonpyo
+	 * @param newCart
+	 * @return result
+	 */
+	public int insertCart(CartDTO newCart) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MypageDAO.insertCart(session, newCart);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
 	}
 
 

@@ -43,15 +43,15 @@
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
+   <div class="carousel-inner">
+     <div class="carousel-item active">
       <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
-      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
+     <div class="carousel-item">
+      <img src=${ activity.activityList[0].image2 } class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
-      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
+     <div class="carousel-item">
+      <img src=${ activity.activityList[0].image3 } class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -68,9 +68,9 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="../activity/activity.html">${ activity.locationList[0].name }</a></li>
-    <li class="breadcrumb-item"><a href="#">${ activity.typeList[0].firstTypeName }</a></li>
-    <li class="breadcrumb-item active"><a href="#">${ activity.typeList[0].secondTypeName }</a></li>
+    <li class="breadcrumb-item">${ activity.locationList[0].name }</li>
+    <li class="breadcrumb-item">${ activity.typeList[0].firstTypeName }
+    <li class="breadcrumb-item active">${ activity.typeList[0].secondTypeName }</li>
   </ol>
 </nav>
 
@@ -124,7 +124,6 @@
 
 <div class="option1">
   <br>
-<form>
   <h4 id="date"> 액티비티 참여 일자 선택</h4> <br>
   <input type="text" id="datepicker" name="date" placeholder="날짜를 입력해주세요" readonly="readonly">
   <script>
@@ -168,9 +167,9 @@
   <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
   
     <c:forEach var="size" begin="0" end="${ fn:length(activity.optionList) -1 }" varStatus="st">
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio${ size + 1 }" autocomplete="off">
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio${ size + 1 }" autocomplete="off" value="${ activity.optionList[size].optionName }">
     <label class="btn btn-radio-option" for="btnradio${ size + 1 }">${ activity.optionList[size].optionName }</label> 
-    <input type="hidden" id="hd1" value="${ activity.optionList[size].price }"/>
+    <input type="hidden" id="hd1" name="price" value="${ activity.optionList[size].price }"/>
     <br>
     
     <script>
@@ -193,9 +192,9 @@
   <br><br><br><br>
   
   <h4 id="person"> 인원
-    <input class="person-bar" type="number" name="" id="" max="10" min="0" value="1" step="1">
+    <input class="person-bar" type="number" name="person" id="" max="10" min="0" value="1" step="1">
   </h4>
-</form>
+
   
   <br> <br>
 
@@ -217,7 +216,52 @@
 
   <br> <br>
 
-    <input type="submit" class="btn btn-pay-select" value="장바구니"> 
+    <input type="submit" id="cart" class="btn btn-pay-select" value="장바구니"> 
+    <input type="hidden" name="actiName" value="${ activity.activityList[0].code }">
+    
+    <script>
+     $(function(){			
+		$('#cart').on('click',function(e){
+			
+			let code = '${ activity.activityList[0].code }';
+			let option = $('input[type=radio]:checked').val();
+			let person = $('.person-bar').val();
+			let totalPrice = person * checkprice;
+			let date = $('#datepicker').val();
+			
+			console.log(code);
+			console.log(option);
+			console.log(person);
+			console.log(totalPrice);
+			console.log(date);
+		   
+			 $.ajax({
+	            url:'${ pageContext.servletContext.contextPath }/cart/insert', //Controller에서 인식할 주소
+	            type:'post',
+	            data:{ actiNum : code 
+	            	,  chooseOption : option 
+	            	, totalPerson : person 
+	            	, totalPrice : totalPrice 
+	            	, ChooseDate : date 
+	            	}
+	            ,success:function(result){ //callback
+	            	
+					if(result > 0 ){
+						alert("장바구니에 추가되었습니다.");
+					} else {
+						alert("장바구니 추가에 실패했습니다.");
+					}
+	            	e.preventDefault();
+	            },
+	            error:function(){
+	                alert("error");
+	            }
+	        }); 
+		});
+	}); 
+	
+</script>
+    
 </div>
 
 </div>
@@ -231,7 +275,7 @@
   <script>
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
           mapOption = {
-              center: new kakao.maps.LatLng(37.511146193443025, 127.09816401777348), // 지도의 중심좌표
+              center: new kakao.maps.LatLng(${ map[0] }, ${ map[1] }), // 지도의 중심좌표
               level: 4, // 지도의 확대 레벨
               mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
           }; 
@@ -253,7 +297,7 @@
 
      //지도에 마커를 생성하고 표시한다
      var marker = new kakao.maps.Marker({
-     position: new kakao.maps.LatLng(37.511146193443025, 127.09816401777348), // 마커의 좌표
+     position: new kakao.maps.LatLng(${ map[0] }, ${ map[1] }), // 마커의 좌표
      map: map // 마커를 표시할 지도 객체
      }); 
 
@@ -410,6 +454,41 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); *
 
 <button id="suggestion">추천</button>
 <h6 id="sugCount">${ reviewList.recommend }명이 추천한 후기입니다</h6>
+
+ <script>
+     $(function(){			
+		$('#suggestion').on('click',function(e){
+		   
+			
+			
+			 $.ajax({
+	            url:'${ pageContext.servletContext.contextPath }/cart/insert', //Controller에서 인식할 주소
+	            type:'post',
+	            data:{ actiNum : code 
+	            	,  chooseOption : option 
+	            	, totalPerson : person 
+	            	, totalPrice : totalPrice 
+	            	, ChooseDate : date 
+	            	}
+	            ,success:function(result){ //callback
+	            	
+					if(result > 0 ){
+						alert("장바구니에 추가되었습니다.");
+					} else {
+						alert("장바구니 추가에 실패했습니다.");
+					}
+	            	e.preventDefault();
+	            },
+	            error:function(){
+	                alert("error");
+	            }
+	        }); 
+		});
+	}); 
+	
+</script>
+
+
 
 <button id="declaration">
   <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">

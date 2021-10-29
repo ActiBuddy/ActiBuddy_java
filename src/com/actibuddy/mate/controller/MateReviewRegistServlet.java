@@ -118,6 +118,7 @@ public class MateReviewRegistServlet extends HttpServlet {
 
 					} else {
 						/* 폼 데이터의 경우 => 인코딩타입변환 */
+						// 필드 name 값
 						parameter.put(item.getFieldName(), new String(item.getString().getBytes("ISO-8859-1"), "UTF-8"));
 					}
 				}

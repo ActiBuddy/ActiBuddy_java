@@ -39,7 +39,7 @@
 		</c:if>
 		
 		<!-- 마지막 페이지로 이동 버튼 -->
-		<button id="maxPage">>></button> 
+		<button id="maxPage"></button> 
 	</div>
 	
 	<script>

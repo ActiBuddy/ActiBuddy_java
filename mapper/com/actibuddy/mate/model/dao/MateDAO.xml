@@ -24,7 +24,8 @@
 	<select id="selectReviewTotalCount" resultType="_int">
 		SELECT
 				COUNT(*)
-		  FROM MT_REVIEW
+		  FROM MT_REVIEW A
+         WHERE A.MT_REVIEW_TITLE LIKE '%' || #{ searchValue } || '%'
 	</select>	
 	
 	<!-- 메이트 리뷰 전체 조회 -->
@@ -60,10 +61,13 @@
 			            , A.MT_REVIEW_IMG2
 			            , A.MT_REVIEW_IMG3
      				   FROM MT_REVIEW A
-     			      ORDER BY A.MT_REVIEW_DATE DESC) B)C
-          <![CDATA[
-          WHERE ROWNUM <= #{ endRow }
-          ]]>
+     			      ORDER BY A.MT_REVIEW_DATE DESC) B
+     			      
+     			      )C
+     	 WHERE (C.RNUM BETWEEN #{ startRow } and #{ endRow })
+     	   <if test="searchValue != null">
+     	  	 AND C.MT_REVIEW_TITLE LIKE '%' || #{ searchValue } || '%'
+     	   </if>
 	</select>
 
 	<!-- 메이트 후기 작성 -->
@@ -83,7 +87,7 @@
 		)
 		VALUES
 		(
-		  'MT_REVIEW' || SEQ_ACTI_REVIEW_NUM.NEXTVAL
+		  'MT_REVIEW' || SEQ_MT_REVIEW_NUM.NEXTVAL
         , #{ title }
         , #{ img1 }
         , #{ content }

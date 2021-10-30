@@ -18,7 +18,7 @@
 
 
       <jsp:include page="../common/menubar.jsp"/>
-
+      
     <div class="logo" >
     
         <img src="../resources/image/mainlogo.png" width="400px" height="350px" />
@@ -39,43 +39,9 @@
 
     <div class="body-all">
     
-        <div class="side-all">
-        
-            <div class="side-1">
-                <br><br><br>
-                <img src="${ pageContext.servletContext.contextPath }/resources/image/profile.png" width="100px" height="100px"/>
-                
-                <c:if test="${ !empty sessionScope.loginMember }">
-		
-        			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
 
-				</c:if>
-                
-                
-                <hr>
-                <br>
+        <jsp:include page="../common/mypagesidebar.jsp"/>
 
-                <a href="/acti/mypage/quit" id="quit">회원탈퇴</a>
-    
-                
-            </div>
-            <div class="side-2">
-                
-                <br><br>
-                <div class="menu">
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/triplist">여행 내역</a><br><br><br>
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/review">이용 후기</a><br><br><br>
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/question">문의 사항</a><br><br>
-                <c:if test="${sessionScope.loginMember.memType }=='U'">
-                	<a href="${ pageContext.servletContext.contextPath }/mypage/question">파트너십 상품등록</a><br><br>
-                </c:if>
-                </div>
-            </div>
-
-            
-        </div>
         
         <div class="center-all">
 

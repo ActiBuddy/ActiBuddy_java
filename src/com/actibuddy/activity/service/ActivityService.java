@@ -117,6 +117,12 @@ public class ActivityService {
 		return locationList;
 	}
 
+	/**
+	 * 넘겨받은 지역 이름에 대한 지역 정보 출력용 메소드
+	 * @author 김주환
+	 * @param locationName
+	 * @return
+	 */
 	public LocationDTO selectLocationOne(String locationName) {
 
 		SqlSession session = getSqlSession();

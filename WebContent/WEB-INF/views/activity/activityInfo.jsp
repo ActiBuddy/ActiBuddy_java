@@ -45,7 +45,7 @@
   </div>
    <div class="carousel-inner">
      <div class="carousel-item active">
-      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
+      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="..." style="image:cover">
     </div>
      <div class="carousel-item">
       <img src=${ activity.activityList[0].image2 } class="d-block w-100" alt="...">

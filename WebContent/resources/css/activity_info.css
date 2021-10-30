@@ -307,7 +307,7 @@ input[type=radio]:checked + label {background-color: blue;}
     width: 50%;
 }
 
-#suggestion {
+.suggestion {
     position: relative;
     left: 22%;
     background-color: mintcream; 
@@ -317,7 +317,7 @@ input[type=radio]:checked + label {background-color: blue;}
     float: left;
 }
 
-#sugCount {
+.sugCount {
     position: relative;
     left: 25%;
     margin-top: 1%; 
@@ -325,7 +325,7 @@ input[type=radio]:checked + label {background-color: blue;}
     color: gray;
 }
 
-#declaration {
+.declaration {
     background-color : white; 
     border-style: none; 
     position: relative; 

@@ -34,6 +34,16 @@
 
 <main>
 
+<c:if test="${ sort != null }">
+<script>
+     $(document).ready(function () {
+	$('html, body').animate({
+	scrollTop: $('#reveiw').offset().top
+	}, 'slow');
+	});  
+</script>
+</c:if>
+
 <div class="activity-1">
   
 <!-- 이미지 슬라이드 -->
@@ -45,7 +55,7 @@
   </div>
    <div class="carousel-inner">
      <div class="carousel-item active">
-      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
+      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="..." style="image:cover">
     </div>
      <div class="carousel-item">
       <img src=${ activity.activityList[0].image2 } class="d-block w-100" alt="...">
@@ -217,7 +227,7 @@
   <br> <br>
 
     <input type="submit" id="cart" class="btn btn-pay-select" value="장바구니"> 
-    <input type="hidden" name="actiName" value="${ activity.activityList[0].code }">
+    <%-- <input type="hidden" name="actiName" value="${ activity.activityList[0].code }"> --%>
     
     <script>
      $(function(){			
@@ -235,6 +245,15 @@
 			console.log(totalPrice);
 			console.log(date);
 		   
+	/* 		if(option == null) {
+				alert("옵션을 선택해주세요")
+			} else if(person == null) {
+				alert("인원을 선택해주세요")
+			} else if(date == null) {
+				alert("날짜를 선택해주세요")
+			} */
+			
+			
 			 $.ajax({
 	            url:'${ pageContext.servletContext.contextPath }/cart/insert', //Controller에서 인식할 주소
 	            type:'post',
@@ -369,24 +388,42 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); *
   <h3 id="review-all">(이용후기 ${ activity.count }건)</h3>
 
   <br> <br> <br>
-
+<form method="get" id="sortForm">
   <h5 id="sort"> 정렬 : 
-  <select id="sort-select">
-    <option value="추천순">추천 순</option>
-    <option value="최신순">최신 순</option>
-    <option value="별점높은순">별점 높은 순</option>
-    <option value="별점낮은순">별점 낮은 순</option>
+  <select id="sort-select" name="sort">
+    <option value="rec">추천 순</option>
+    <option value="new">최신 순</option>
+    <option value="high">별점 높은 순</option>
+    <option value="row">별점 낮은 순</option>
 </select>
+<input type="hidden" name="actiName" value="${ activity.activityList[0].name }">
 </h5>
+</form>
+
+<script>
+
+$('#sort-select').on('change', function(){
+	
+	$('#sortForm').attr("action","/acti/review/sort").submit();
+
+}); 
+
+    $('#sort-select').val('${ sort }');
+    
+    
+
+
+</script>
 
 <br><br>
 
-<c:forEach items="${ activity.reviewList }" var="reviewList">
+<%-- <c:forEach items="${ activity.reviewList }" var="reviewList"> --%>
+<c:forEach var="size" begin="0" end="${ fn:length(activity.reviewList) -1 }">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 </svg>
-<h3 id="nickname"> ${ reviewList.writerId } </h3>
+<h3 id="nickname"> ${ activity.reviewList[size].writerId } </h3>
 
 <div class="stars-user">
   <c:set var="userStar" value="<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='currentColor' class='bi bi-star-user1' viewBox='0 0 16 16'>
@@ -394,25 +431,25 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); *
   </svg>" scope="page" />
   
   <c:choose>
-      <c:when test="${ reviewList.reviewStar <= 1.9 }">
+      <c:when test="${ activity.reviewList[size].reviewStar <= 1.9 }">
      <c:out value="${ userStar }" escapeXml="false"/>
   </c:when>
-  <c:when test="${ reviewList.reviewStar <= 2.9 }">
-     <c:out value="${ userStar }" escapeXml="false"/>
-     <c:out value="${ userStar }" escapeXml="false"/>
-  </c:when>
-  <c:when test="${ reviewList.reviewStar <= 3.9 }">
-     <c:out value="${ userStar }" escapeXml="false"/>
+  <c:when test="${ activity.reviewList[size].reviewStar <= 2.9 }">
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
   </c:when>
-  <c:when test="${ reviewList.reviewStar <= 4.9 }">
-     <c:out value="${ userStar }" escapeXml="false"/>
+  <c:when test="${ activity.reviewList[size].reviewStar <= 3.9 }">
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
   </c:when>
-  <c:when test="${ reviewList.reviewStar <= 5 }">
+  <c:when test="${ activity.reviewList[size].reviewStar <= 4.9 }">
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ activity.reviewList[size].reviewStar <= 5 }">
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
@@ -422,60 +459,59 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); *
  </c:choose> 
 
 <c:choose>
-      <c:when test="${ reviewList.reviewStar <= 1.9 }">
+      <c:when test="${ activity.reviewList[size].reviewStar <= 1.9 }">
      <h5 id="review-auto"> 매우 불만족 </h5> <br><br>
   </c:when>
-  <c:when test="${ reviewList.reviewStar <= 2.9 }">
+  <c:when test="${ activity.reviewList[size].reviewStar <= 2.9 }">
      <h5 id="review-auto"> 불만족 </h5> <br><br>
   </c:when>
-  <c:when test="${ reviewList.reviewStar <= 3.9 }">
+  <c:when test="${ activity.reviewList[size].reviewStar <= 3.9 }">
      <h5 id="review-auto"> 보통 </h5> <br><br>
   </c:when>
-  <c:when test="${ reviewList.reviewStar <= 4.9 }">
+  <c:when test="${ activity.reviewList[size].reviewStar <= 4.9 }">
      <h5 id="review-auto"> 만족 </h5> <br><br>
   </c:when>
-  <c:when test="${ reviewList.reviewStar <= 5 }">
+  <c:when test="${ activity.reviewList[size].reviewStar <= 5 }">
      <h5 id="review-auto"> 매우 만족 </h5> <br><br>
   </c:when>
  </c:choose> 
 
 
-  <h6 id="goods-detail"> ${ reviewList.chooseOption } </h6>
+  <h6 id="goods-detail"> ${ activity.reviewList[size].chooseOption } </h6>
 
-  <h5 id="review-date"> ${ reviewList.writeDate } </h5> <br><br>
+  <h5 id="review-date"> ${ activity.reviewList[size].writeDate } </h5> <br><br>
 
 <div class="review-detail">
-<p id="review-p"> ${ reviewList.content }</p>
-<img src= ${ reviewList.image } alt="..." class="review-img">
+<p id="review-p"> ${ activity.reviewList[size].content }</p>
+<img src= ${ activity.reviewList[size].image } alt="..." class="review-img">
 </div>
 </div>
 
 <br>
 
-<button id="suggestion">추천</button>
-<h6 id="sugCount">${ reviewList.recommend }명이 추천한 후기입니다</h6>
+<button class="suggestion" id="suggestion${ size + 1 }">추천</button>
+<h6 class="sugCount" id="sugCount${ size + 1 }">${ activity.reviewList[size].recommend }명이 추천한 후기입니다</h6>
 
  <script>
      $(function(){			
-		$('#suggestion').on('click',function(e){
+		$('#suggestion${ size + 1 }').one('click',function(e){
 		   
-			
+			let reviewNum = '${ activity.reviewList[size].num }';
+			let reviewRec = ${ activity.reviewList[size].recommend };
 			
 			 $.ajax({
-	            url:'${ pageContext.servletContext.contextPath }/cart/insert', //Controller에서 인식할 주소
+	            url:'${ pageContext.servletContext.contextPath }/review/recommend', //Controller에서 인식할 주소
 	            type:'post',
-	            data:{ actiNum : code 
-	            	,  chooseOption : option 
-	            	, totalPerson : person 
-	            	, totalPrice : totalPrice 
-	            	, ChooseDate : date 
-	            	}
-	            ,success:function(result){ //callback
+	            data:{ num : reviewNum 
+	            	,  recommend : reviewRec 
+	            	},
+	            success:function(result){ //callback
 	            	
 					if(result > 0 ){
-						alert("장바구니에 추가되었습니다.");
+						alert("후기 추천이 완료되었습니다.");
+                        $('#sugCount${ size + 1 }').text('${ activity.reviewList[size].recommend + 1 }명이 추천한 후기입니다');
 					} else {
-						alert("장바구니 추가에 실패했습니다.");
+						alert("후기 추천에 실패했습니다.");
 					}
 	            	e.preventDefault();
 	            },
@@ -490,9 +526,40 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); *
 
 
 
-<button id="declaration">
+<button class="declaration" id="declaration${ size + 1 }">
   <img id="declaration-icon" src="../resources/image/activity_info_declaration.png" alt="">
   </button>
+
+<script>
+     $(function(){			
+		$('#declaration${ size + 1 }').one('click',function(e){
+		   
+			let reviewNum = '${ activity.reviewList[size].num }';
+			let reviewRep = '${ activity.reviewList[size].recYn }';
+			
+			 $.ajax({
+	            url:'${ pageContext.servletContext.contextPath }/review/report', //Controller에서 인식할 주소
+	            type:'post',
+	            data:{ num : reviewNum 
+	            	,  recYn : reviewRep 
+	            	},
+	            success:function(result){ //callback
+	            	
+					if(result > 0 ){
+						alert("후기 신고 접수가 완료되었습니다.");
+					} else {
+						alert("후기 신고 접수에 실패했습니다.");
+					}
+	            	e.preventDefault();
+	            },
+	            error:function(){
+	                alert("error");
+	            }
+	        }); 
+		});
+	}); 
+	
+</script>
 
 <br> <br>
 <hr>

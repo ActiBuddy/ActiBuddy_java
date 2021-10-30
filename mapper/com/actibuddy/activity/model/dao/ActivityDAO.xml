@@ -22,7 +22,6 @@
  	   <result property="tip" column="GUIDE_TIP"/>
  	   <result property="visitMonth" column="VISIT_MONTH"/>
  	   <result property="visitName" column="VISIT_NAME"/>
- 	   
  	   <collection property="activityList" resultMap="activityAndReviewMap"/>
  	</resultMap>
  	
@@ -134,6 +133,12 @@
 	     		AND B.PRICE BETWEEN #{ price1 } AND #{ price2 }
 	     	</if>
 	     	
+	     	<if test="date != '' and date != null">
+     		<![CDATA[
+     		 AND B.END_DATE > #{ date }
+     		 ]]>
+	     	</if>
+	     	
 	     	<if test="sort != null and sort == 'star'">
 	   			AND EXISTS (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
 	                      FROM ACTI_REVIEW C
@@ -141,14 +146,7 @@
 	                   )
 				   ORDER BY ACTI_REVIEW_STAR DESC
 	     	</if>
-	     	<trim prefix="AND" prefixOverrides="AND">
-     		<if test="date != '' and date != null">
-     		<![CDATA[
-     		 AND B.START_DATE < #{ date }
-     		 ]]>
-	     	</if>
-	     	</trim>
-	     	
+     		
 	     	<if test="sports != null ">
 	     	AND D.SECOND_TYPE_NAME IN
 	     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">
@@ -266,6 +264,49 @@
        WHERE A.ACTI_NAME = #{ actiName }
  	</select>
  	
+ 	<select id="sortActivityInfo" resultMap="activityInfoResultMap" parameterType="hashMap">
+	 	SELECT
+	               A.*
+	             , C.*
+	             , D.*
+	             , E.*
+	             , F.*
+	             , G.*
+	             , K.CHOOSE_OPTION
+	             , (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
+	                  FROM ACTI_REVIEW C
+	                  JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+	                 WHERE B.ACTI_NAME = #{ actiName })AS AVG
+	             , (SELECT COUNT(C.ACTI_REVIEW_TITLE)
+	                  FROM ACTI_REVIEW C
+	      	          JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+	                 WHERE B.ACTI_NAME = #{ actiName })AS COUNT    
+	        FROM ACTIVITY_INFO A
+	        LEFT JOIN ACTI_CONDITION_HIS B ON (A.ACTI_NUM = B.ACTI_NUM)
+	        LEFT JOIN ACTI_CONDITION C ON (B.ACTI_CON_NUM = C.ACTI_CON_NUM)
+	        LEFT JOIN ACTI_REVIEW D ON (A.ACTI_NUM = D.ACTI_NUM)
+	        LEFT JOIN ACTI_TYPE E ON ( A.ACTI_TYPE_NUM = E.ACTI_TYPE_NUM)
+	        LEFT JOIN ACTI_OPTION F ON (A.ACTI_NUM = F.ACTI_NUM)
+	        LEFT JOIN LOCATION G ON (A.LOCATION_CODE = G.LOCATION_CODE)
+	        LEFT JOIN REVIEW_HIS H ON (D.ACTI_REVIEW_NUM = H.REVIEW_NUM)
+	        LEFT JOIN ACTI_PAYMENT I ON (H.PAY_NUM = I.PAY_NUM)
+	        LEFT JOIN PAY_HIS J ON (I.PAY_NUM = J.PAY_NUM)
+	        LEFT JOIN CART K ON (J.CART_NUM = K.CART_NUM)
+	       WHERE A.ACTI_NAME = #{ actiName }
+	       <if test="sort != null and sort == 'rec'">
+	       ORDER BY D.ACTI_REVIEW_REC DESC
+	       </if>
+	       <if test="sort != null and sort == 'new'">
+	       ORDER BY D.ACTI_REVIEW_DATE DESC
+	       </if>
+	       <if test="sort != null and sort == 'high'">
+	       ORDER BY D.ACTI_REVIEW_STAR DESC
+	       </if>
+	       <if test="sort != null and sort == 'row'">
+	       ORDER BY D.ACTI_REVIEW_STAR ASC
+	       </if>
+ 	</select>
+ 	
  	<select id="selectLocation" resultMap="locationResultMap">
  		SELECT
       		   A.LOCATION_NAME
@@ -342,4 +383,16 @@
   		  FROM LOCATION A
   		 WHERE A.LOCATION_NAME = #{ locationName } 
  	</select>
+ 	
+ 	<update id="updateReviewRec">
+ 	    UPDATE ACTI_REVIEW
+           SET ACTI_REVIEW_REC = #{ recommend } 
+         WHERE ACTI_REVIEW_NUM = #{ num }
+ 	</update>
+ 	
+ 	<update id="updateRepYn">
+ 	    UPDATE ACTI_REVIEW
+           SET ACTI_REVIEW_REP_YN = #{ recYn } 
+         WHERE ACTI_REVIEW_NUM = #{ num }
+ 	</update>
  </mapper>

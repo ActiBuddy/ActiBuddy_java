@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.member.model.dto.MemberDTO;
+import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.service.MypageService;
 
 @WebServlet("/mypage/main")
@@ -18,6 +19,13 @@ public class MypageMainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
+		
+		MypageService mypageService = new MypageService();
+		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
+		
+		request.setAttribute("tripList", tripList);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/myPage.jsp");
 		rd.forward(request, response);

@@ -2,10 +2,12 @@ package com.actibuddy.mypage.service;
 
 import static com.actibuddy.common.mybatis.Template.getSqlSession;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dao.MypageDAO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
@@ -20,6 +22,11 @@ public class MypageService {
 		mypageDAO = new MypageDAO();
 	}
 
+	/**
+	 * 자기소개 등록용
+	 * @param requestIntroduce
+	 * @return 헤쥬
+	 */
 	public int registIntroduce(MemberDTO requestIntroduce) {
 		
 		SqlSession session = getSqlSession();
@@ -59,6 +66,11 @@ public class MypageService {
 		return result;
 	}
 
+	/**
+	 * 여행 리스트 조회 
+	 * @param userId
+	 * @return 혜주
+	 */
 	public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(String userId) {
 		
 		SqlSession session = getSqlSession();
@@ -81,7 +93,7 @@ public class MypageService {
 		
 		SqlSession session = getSqlSession();
 		
-		int result = MypageDAO.insertCart(session, newCart);
+		int result = mypageDAO.insertCart(session, newCart);
 		
 		if(result > 0) {
 			session.commit();
@@ -93,15 +105,37 @@ public class MypageService {
 		
 		return result;
 	}
-	public CartAndMemberAndPayHIsDTO selectCart(String userId) {
+	
+	
+	/**
+	 * 카트 목록 조회
+	 * @param userId
+	 * @return 헤쥬
+	 */
+	public  List<CartAndMemberAndPayHIsDTO> selectCart(String userId) {
 		
 		SqlSession session = getSqlSession();
 		
-		CartAndMemberAndPayHIsDTO tripList = mypageDAO.selectCart(session,userId);
+		List<CartAndMemberAndPayHIsDTO> tripList = mypageDAO.selectCart(session,userId);
 		
 		session.close();
 		
 		return tripList;
+	}
+
+	/**
+	 * 메이트 리뷰 조회
+	 * @param userId
+	 * @return 혜쭈
+	 */
+	public List<MateReviewDTO> selectMtReview(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<MateReviewDTO> selectMtReview = mypageDAO.selectMtReview(session,userId);
+		
+		
+		return selectMtReview;
 	}
 
 

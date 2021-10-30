@@ -20,11 +20,7 @@ public class Pagenation {
 		int startRow;
 		int endRow;
 		
-		/* 총 페이지수 계산
-		 * 예를 들면, 목록수가 123개 이면 페이지 수는 13 페이지임.
-		 * 짜투리 목록이 최소 1개일 때, 1page 로 처리하기 위해
-		 * 0.9를 더하기 함
-		 * */
+		/* 총 페이지수 계산 */
 		maxPage = (int) Math.ceil((double) totalCount / limit);
 
 		/* 현재 페이지에 보여줄 시작 페이지 수 (10개씩 보여지게 할 경우)

@@ -8,11 +8,13 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.activity.model.dao.ActivityDAO;
+import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
+import com.actibuddy.mypage.model.dao.MypageDAO;
 
 public class ActivityService {
 	
@@ -117,6 +119,12 @@ public class ActivityService {
 		return locationList;
 	}
 
+	/**
+	 * 넘겨받은 지역 이름에 대한 지역 정보 출력용 메소드
+	 * @author 김주환
+	 * @param locationName
+	 * @return
+	 */
 	public LocationDTO selectLocationOne(String locationName) {
 
 		SqlSession session = getSqlSession();
@@ -128,7 +136,68 @@ public class ActivityService {
 		return location;
 	}
 
+	/**
+	 * 액티비티 후기 추천수 업데이트 메소드
+	 * @author kwonsoonpyo
+	 * @param review
+	 * @return result
+	 */
+	public int updateReviewRec(ActiReviewDTO review) {
+		
+		SqlSession session = getSqlSession();
+		
+        int result = activityDAO.updateReviewRec(session, review);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
 
+	/**
+	 * 액티비티 후기 신고 여부 업데이트 메소드
+	 * @author kwonsoonpyo
+	 * @param review
+	 * @return result
+	 */
+	public int updateRepYn(ActiReviewDTO review) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = activityDAO.updateRepYn(session, review);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/** 액티비티 정보 조회용 하지만 정렬을 곁들인
+	 * @author kwonsoonpyo
+	 * @param actiName
+	 * @param sort
+	 * @return 액티비티 DTO
+	 */
+	public ActivityInfoDTO sortActivityInfo(Map<String, String> resultMap) {
+		
+		SqlSession session = getSqlSession();
+		
+		ActivityInfoDTO activity = activityDAO.sortActivityInfo(session, resultMap);
+		
+		session.close();
+		
+		return activity;
+	}
 
 	
 }

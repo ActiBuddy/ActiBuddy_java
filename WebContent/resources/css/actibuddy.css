@@ -391,8 +391,10 @@ body {
   float: right;
   width: 25%;
   height: 70px;
+  z-index : 9999;
 /*   border: 1px solid black;
  */}
+ 
 .navbar_link2 span {
   position: relative;
   padding: 0 15px;
@@ -474,7 +476,7 @@ a:hover {
   width: auto;
   height: auto;
   padding: 1% 1% 1% 1%;
-  margin-top: 2.5%;
+  top: 80%;
   margin-left: -3%;
   background-color: rgb(17, 88, 17, 0.05);
   border: 1px solid black;
@@ -536,13 +538,13 @@ a:hover {
   width: auto;
   height: auto;
   padding: 1% 1% 1% 1%;
-  margin-top: 2.9%;
+  top: 85%;
   margin-left: -3%;
-  background-color: rgb(17, 88, 17, 0.05);
-  border: 1px solid black;
+  background-color: rgb(243 246 243);
   position: absolute;
   text-align: center;
   line-height: 30px;
+  z-index: 9999;
 }
 
 #acti_detail2 a {

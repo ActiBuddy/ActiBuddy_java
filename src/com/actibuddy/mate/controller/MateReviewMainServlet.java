@@ -23,9 +23,10 @@ public class MateReviewMainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		/* ======== 페이징 처리 ========*/
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;
-		// 페이지가 없는 경우말고 페이지 번호 가져와줌
+		// 현재페이지가 설정된 경우 페이지 번호는 변경된다.
 		if(currentPage != null && !"".equals(currentPage)) {
 			pageNo = Integer.parseInt(currentPage);
 		}
@@ -33,6 +34,8 @@ public class MateReviewMainServlet extends HttpServlet {
 		if(pageNo <= 0) {
 			pageNo = 1;
 		}
+		
+		/* ======== 검색 처리 ========*/
 		// 검색 값
 		String searchCondition = null;
 		String searchValue = request.getParameter("searchValue");
@@ -40,6 +43,7 @@ public class MateReviewMainServlet extends HttpServlet {
 		Map<String, String> searchMap = new HashMap<>();
 		searchMap.put("searchValue", searchValue);
 		
+		/* ======= 공통 처리 ======== */
 		// 전체 게시물 수 필요
 		// 검색 조건이 있는 경우 검색 조건에 맞는 전체 게시물 수 조회
 		MateReviewService reviewService = new MateReviewService();
@@ -52,7 +56,6 @@ public class MateReviewMainServlet extends HttpServlet {
 		
 		SelectCriteria selectCriteria = null;
 		
-		/* 여기는 조건 다르게 설정해주세요! */
 		
 		// 검색 할 때 페이징 처리와 검색 안할 때 페이징 처리
 		if(searchValue != null && !"".equals(searchValue)) {

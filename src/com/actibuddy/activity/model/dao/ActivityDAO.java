@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityMainDTO;
@@ -47,6 +48,21 @@ public class ActivityDAO {
 	public LocationDTO selectLocationOne(SqlSession session, String locationName) {
 
 		return session.selectOne("ActivityDAO.selectLocationOne", locationName);
-	} 
+	}
+
+	public int updateReviewRec(SqlSession session, ActiReviewDTO review) {
+		
+		return session.update("ActivityDAO.updateReviewRec", review);
+	}
+
+	public int updateRepYn(SqlSession session, ActiReviewDTO review) {
+		
+		return session.update("ActivityDAO.updateRepYn", review);
+	}
+
+	public ActivityInfoDTO sortActivityInfo(SqlSession session, Map<String, String> resultMap) {
+		
+		return session.selectOne("ActivityDAO.sortActivityInfo", resultMap);
+	}
 
 }

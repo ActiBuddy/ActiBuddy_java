@@ -32,7 +32,7 @@ public class MypageDAO {
 			return session.selectOne("MypageDAO.selectTripList",userId);
 		}
 
-		public static int insertCart(SqlSession session, CartDTO newCart) {
+		public int insertCart(SqlSession session, CartDTO newCart) {
 			
 			return session.insert("MypageDAO.insertCart", newCart);
 		}

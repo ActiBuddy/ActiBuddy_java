@@ -81,7 +81,7 @@ public class MypageService {
 		
 		SqlSession session = getSqlSession();
 		
-		int result = MypageDAO.insertCart(session, newCart);
+		int result = mypageDAO.insertCart(session, newCart);
 		
 		if(result > 0) {
 			session.commit();

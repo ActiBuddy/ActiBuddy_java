@@ -97,7 +97,7 @@
 
                  	<c:forEach var="size" begin="0" end="${fn:length(tripList.cartList)-1 }" >
                     <hr>
-                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList.activityInfo[size].name  }'">상세보기 ></button>
+                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList.activityInfo[size].name }'">상세보기 ></button>
                     <h3>액티비티 : ${ tripList.activityInfo[size].name }</h3> 
                     
                     <br>

@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>회원 탈퇴</title>
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mypage.css">
@@ -86,7 +87,6 @@
                 </div>
 
                 <button type="button" class='next' onclick="location.href='/acti/mypage/quit2'">다음</button>
-
                     <script>
 	                    $(".next").attr("disabled", true);
 	                    $("#a").on('click',function(){
@@ -100,11 +100,7 @@
 	                        }
 	                    });
                     </script>
-        
-                
-        
-               
-    
+
             </div>
             
         </div>

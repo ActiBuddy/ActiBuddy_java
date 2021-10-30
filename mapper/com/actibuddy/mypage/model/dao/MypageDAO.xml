@@ -85,8 +85,21 @@
 		<collection property="actiReview" resultMap="reviewResultMap"/>
 	</resultMap>
 	
+	 <resultMap type="com.actibuddy.mate.model.dto.MateReviewDTO" id="mateReviewResultMap">
+		<id property="num" column="MT_REVIEW_NUM"/>
+		<result property="title" column="MT_REVIEW_TITLE"/>
+		<result property="img1" column="MT_REVIEW_IMG1"/>
+		<result property="img2" column="MT_REVIEW_IMG2"/>
+		<result property="img3" column="MT_REVIEW_IMG3"/>
+		<result property="content" column="MT_REVIEW_CON"/>
+		<result property="date" column="MT_REVIEW_DATE"/>
+		<result property="repYn" column="MT_REVIEW_REP_YN"/>
+		<result property="userId" column="USER_ID"/>
+	</resultMap>
+	
 	
 	<update id="updateIntroduce" parameterType="com.actibuddy.member.model.dto.MemberDTO">
+			
 			UPDATE MEMBER A
 			   SET A.INTRODUCE = #{ introduce }
 			     , A.FAVORITE_ACTI = #{ favoriteActi }
@@ -112,6 +125,8 @@
 			      , C.CART_NUM
 			      , P.USE_YN
 			      , M.USER_ID
+			      , M.INTRODUCE
+			      , M.FAVORITE_ACTI
 			  FROM CART C
 			 INNER JOIN ACTIVITY_INFO A
 			    ON A.ACTI_NUM = C.ACTI_NUM
@@ -134,8 +149,6 @@
 			  FROM CART C
 			 INNER JOIN ACTIVITY_INFO A
 			    ON A.ACTI_NUM = C.ACTI_NUM
-			 INNER JOIN PAY_HIS P
-			    ON C.CART_NUM = P.CART_NUM
 			 INNER JOIN MEMBER M
 			    ON C.USER_ID = M.USER_ID
 			 WHERE M.USER_ID = #{ userId }
@@ -167,6 +180,20 @@
         )
     
     </insert>
+    
+    <select id="selectMtReview" resultMap="mateReviewResultMap">
+    	SELECT
+		        M.USER_ID
+		      , R.MT_REVIEW_TITLE
+		      , R.MT_REVIEW_NUM
+		  FROM  MT_REVIEW R
+		  INNER JOIN MEMBER M
+		     ON R.USER_ID = M.USER_ID
+		  WHERE M.USER_ID=#{ userId }
+    
+    
+    </select>
+    
 	<update id="updateReview"></update>
   
   </mapper>

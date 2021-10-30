@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.faq.service.FaqService;
 
-@WebServlet("/faq/commonquestion")
-public class FaqRequestServlet extends HttpServlet {
+@WebServlet("/faq/partnerquestion")
+public class FaqRequestPartnerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,13 +37,13 @@ public class FaqRequestServlet extends HttpServlet {
 		faq.setQueEmail(queEmail);
 		faq.setQueCon(queCon);
 		faq.setQueTitle(queTitle);
-		faq.setQueType("C");
+		faq.setQueType("P");
 		faq.setUserId(userId);
 		
 		System.out.println(faq);
 		
 		
-		int result = new FaqService().registFaqCommon(faq);
+		int result = new FaqService().registFaqPartner(faq);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();

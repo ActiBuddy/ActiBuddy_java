@@ -152,18 +152,20 @@
       </h3>
     </div>
 
-	<form id="faq" action="../faq/question" method="post">
+	<form id="faq" action="${ pageContext.servletContext.contextPath }/faq/partnerquestion" method="post">
     <div class="question">
-      <textarea cols="50" rows="1" placeholder="글제목"></textarea>
-      <textarea cols="50" rows="1" placeholder="기업명"></textarea>
-      <textarea cols="50" rows="1" placeholder="이메일"></textarea>
-      <textarea cols="50" rows="1" placeholder="전화번호"></textarea>
-      <textarea
+      <textarea cols="50" rows="1" placeholder="글제목" name="queTitle"></textarea>
+      <textarea cols="50" rows="1" placeholder="이메일" name="queEmail"></textarea>
+      <textarea 
         cols="50"
         rows="10"
         placeholder="내용"
         style="height: 200px"
-      ></textarea>
+        name="queCon"
+      >
+      </textarea>
+     <textarea style="display: none;" name="userId">${ sessionScope.loginMember.userId }</textarea>
+      
 
       <button type="submit">문의하기</button>
     </div>

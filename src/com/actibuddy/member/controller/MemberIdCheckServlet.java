@@ -25,6 +25,7 @@ public class MemberIdCheckServlet extends HttpServlet {
 	
 		
 		response.setContentType("text/html;charset=UTF-8");
+		
 		String userId = request.getParameter("userId");
 		
 		MemberDTO requestMember = new MemberDTO();

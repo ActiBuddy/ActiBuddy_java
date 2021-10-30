@@ -37,7 +37,7 @@
         </form>
         
         
-        <h3><a href="../singup/signup.html">회원가입</a></h3>
+        <h3><a href="${ pageContext.servletContext.contextPath }/member/regist">회원가입</a></h3>
       </div>
 
    <jsp:include page="../common/footer.jsp"/>

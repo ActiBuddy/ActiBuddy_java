@@ -27,6 +27,7 @@ public class MemberDAO {
 		return session.insert("MemberDAO.insertMember", requestMember);
 
 	}
+	
 	// 아이디 중복 조회
 	public int idcheck(SqlSession session, MemberDTO requestMember) {
 

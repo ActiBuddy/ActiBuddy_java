@@ -10,23 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/mypage/quit")
-public class MypageQuitServlet extends HttpServlet {
+@WebServlet("/mypage/quit2")
+public class MypageQuit2Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
+	       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/memQuit1.jsp");
-		rd.forward(request, response);
-	}
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/memQuit2.jsp");
+			rd.forward(request, response);
+		}
+	
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
-	
-	
 
 }

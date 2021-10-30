@@ -92,14 +92,14 @@
                     <hr>
     
 
-                    <c:forEach var="size" begin="0" end="${fn:length(tripList.cartList)-1 }" >
+                    <c:forEach var="size" begin="0" end="${ fn:length(tripList)-1 }" >
                     <button id="x">X</button>
-                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList.activityInfo[size].name  }'">상세보기 ></button>
-                    <h3>${ tripList.activityInfo[size].name }</h3>
+                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList[size].activityInfo[size].name  }'">상세보기 ></button>
+                    <h3>${ tripList[size].activityInfo[size].name }</h3>
                     <br><br>
-                    <h5>날짜 : ${ tripList.cartList[size].chooseDate }<br> 수량 : ${ tripList.cartList[size].totalPerson }</h5>
+                    <h5>날짜 : ${ tripList[size].cartList[size].chooseDate }<br> 수량 : ${ tripList[size].cartList[size].totalPerson }</h5>
                     <br>
-                    <h4>총 결제할 금액 : ${ tripList.cartList[size].totalPrice } 원</h4>
+                    <h4>총 결제할 금액 : ${ tripList[size].cartList[size].totalPrice } 원</h4>
                     <button id="pay" type="button" onclick="location.href=''">바로 결제</button>
 
                     <hr>

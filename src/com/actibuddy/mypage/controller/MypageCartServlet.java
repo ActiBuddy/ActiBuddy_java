@@ -1,6 +1,7 @@
 package com.actibuddy.mypage.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +26,7 @@ public class MypageCartServlet extends HttpServlet {
 		System.out.println("아이디 : " + userId);
 	
 		MypageService mypageService = new MypageService();
-		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCart(userId);
+		List<CartAndMemberAndPayHIsDTO> tripList = mypageService.selectCart(userId);
 		
 		System.out.println("결과 : " + tripList);
 		

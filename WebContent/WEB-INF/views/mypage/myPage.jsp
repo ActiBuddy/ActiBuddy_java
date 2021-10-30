@@ -68,6 +68,9 @@
                     <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
                     <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
                     <a href="${ pageContext.servletContext.contextPath }/mypage/question">문의 사항</a><br><br>
+                <c:if test="${sessionScope.loginMember.memType }=='P'">
+                	<a href="${ pageContext.servletContext.contextPath }/mypage/question">파트너십 상품등록</a><br><br>
+                </c:if>
                 </div>
             </div>
 

@@ -74,7 +74,7 @@
 
                     <br>
 
-                <button type="submit">확인</button>
+                <button type="submit"  onclick="location.href='/acti/main/page'">확인</button>
                 <br>
                 <button type="submit">취소</button>
     

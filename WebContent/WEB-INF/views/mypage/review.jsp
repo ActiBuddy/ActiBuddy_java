@@ -116,7 +116,7 @@
 					<c:forEach var="size" begin="0" end="${ fn:length(selectMtReview)-1}">
                     <button id="move" type="button" onclick="location.href='/acti/mate/review/select?num=${selectMtReview[size].num }'">상세보기 ></button>
                     
-                    <h3>후기 제목${ selectMtReview[size].title }</h3>
+                    <h3>후기 제목 : ${ selectMtReview[size].title }</h3>
                     <br><br><br>
                     <h4>나와 함께한 메이트 : </h4>
     

@@ -54,28 +54,29 @@ public class MateReviewRegistServlet extends HttpServlet {
 			
 			if(!directory.exists()) {
 				/* 폴더를 한 개만 생성할거면 mkdir, 상위 폴더도 존재하지 않으면 한 번에 생성하란 의미로 mkdirs를 이용한다. */
-				System.out.println("폴더 생성 : " + directory.mkdirs());
+				System.out.println("폴더 생성 : " + directory.mkdir());
 			}
+			
+
+			// 파일업로드 최대크기/저장폴더경로 포함 인스턴스
+			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
+			fileItemFactory.setRepository(new File(fileUploadDirectory));
+			fileItemFactory.setSizeThreshold(maxFileSize);
+			
+			// 업로드 메소드에 인스턴스 넣어주고
+			ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
 			
 			// 파일 정보 맵
 			List<Map<String, String>> fileList = new ArrayList<>();
 			// 다른 파라미터 맵
 			Map<String, String> parameter = new HashMap<>();
 
-			// 파일업로드 최대크기/저장폴더경로 포함 인스턴스
-			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
-			fileItemFactory.setRepository(new File(fileUploadDirectory));
-			fileItemFactory.setSizeThreshold(maxFileSize);
-
-			// 업로드 메소드에 인스턴스 넣어주고
-			ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
-
 			try {
 				// 업로드에서 request를 파싱해서 파일들 가져와준다. 
 				List<FileItem> fileItems = fileUpload.parseRequest(request);
 				// 출력확인
 				for(FileItem item : fileItems) {
-					System.out.println("저장할 파일 설정값 : " + item);
+					System.out.println("저장할 파일값 : " + item);
 				}
 
 				for(int i = 0; i < fileItems.size(); i++) {

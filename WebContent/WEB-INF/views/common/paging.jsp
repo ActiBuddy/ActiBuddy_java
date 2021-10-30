@@ -10,8 +10,12 @@
 
 </head>
 <body>
+
+
 	<div class="pagingArea" align="center">
 
+	    <!-- 맨 앞으로 이동 버튼 -->
+	    <button id="startPage"><<</button>
 	    
 		<!-- 이전 페이지 버튼 -->
 		<c:if test="${ requestScope.selectCriteria.pageNo <= 1 }">
@@ -39,11 +43,14 @@
 			<button class="page-link" id="nextPage">></button>
 		</c:if>
 
+		<!-- 마지막 페이지로 이동 버튼 -->
+		<button id="maxPage">>></button> 
 	</div>
+	
 	
 	<script>
 	
-		const link = "${ pageContext.servletContext.contextPath }/mate/review";
+		const link = location.pathname;
 		let searchText = "";
 		
 		if(${ !empty requestScope.selectCriteria.searchCondition? true: false }) {
@@ -53,7 +60,13 @@
 		if(${ !empty requestScope.selectCriteria.searchValue? true: false }) {
 			searchText += "&searchValue=${ requestScope.selectCriteria.searchValue }";
 		}
-			
+		
+		if(document.getElementById("startPage")) {
+			const $startPage = document.getElementById("startPage");
+			$startPage.onclick = function() {
+				location.href = link + "?currentPage=1" + searchText;
+			}
+		}
 		
 		if(document.getElementById("prevPage")) {
 			const $prevPage = document.getElementById("prevPage");
@@ -69,6 +82,12 @@
 			}
 		}
 		
+		if(document.getElementById("maxPage")) {
+			const $maxPage = document.getElementById("maxPage");
+			$maxPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.selectCriteria.maxPage }" + searchText;
+			}
+		}
 		
 		function pageButtonAction(text) {
 			location.href = link + "?currentPage=" + text + searchText;

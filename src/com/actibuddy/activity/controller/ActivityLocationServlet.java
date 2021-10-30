@@ -47,6 +47,7 @@ public class ActivityLocationServlet extends HttpServlet {
 		for(int i = 0; i < month.length; i++) {
 			map.put("vistis", "<header id=\"visitHeader\">" + month[i] + "</header> <p id=\"visitBody\">" + name[i] +"</p>");
 		}
+		System.out.println(map);
 		
 		
 		String path = "";

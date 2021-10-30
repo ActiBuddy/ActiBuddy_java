@@ -22,7 +22,6 @@
  	   <result property="tip" column="GUIDE_TIP"/>
  	   <result property="visitMonth" column="VISIT_MONTH"/>
  	   <result property="visitName" column="VISIT_NAME"/>
- 	   
  	   <collection property="activityList" resultMap="activityAndReviewMap"/>
  	</resultMap>
  	
@@ -134,6 +133,12 @@
 	     		AND B.PRICE BETWEEN #{ price1 } AND #{ price2 }
 	     	</if>
 	     	
+	     	<if test="date != '' and date != null">
+     		<![CDATA[
+     		 AND B.END_DATE > #{ date }
+     		 ]]>
+	     	</if>
+	     	
 	     	<if test="sort != null and sort == 'star'">
 	   			AND EXISTS (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
 	                      FROM ACTI_REVIEW C
@@ -141,14 +146,7 @@
 	                   )
 				   ORDER BY ACTI_REVIEW_STAR DESC
 	     	</if>
-	     	<trim prefix="AND" prefixOverrides="AND">
-     		<if test="date != '' and date != null">
-     		<![CDATA[
-     		 AND B.START_DATE < #{ date }
-     		 ]]>
-	     	</if>
-	     	</trim>
-	     	
+     		
 	     	<if test="sports != null ">
 	     	AND D.SECOND_TYPE_NAME IN
 	     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">

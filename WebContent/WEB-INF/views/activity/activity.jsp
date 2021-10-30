@@ -42,11 +42,6 @@
 
 	}); 
 	
-	$('#priceBtn').on('click', function() {
-		
-		$('#spanPrice').text(val);
-		
-	})
 	
 	$("input[name=sport]").change(function(){
 		
@@ -213,30 +208,146 @@
 	if('${ price }' != 0 && '${ price }' != '0 - 300000'){
 		
 		$('#spanPrice').text('${ price }');
+		$('#price').val('${ price }');
+		
 	} else if('${ price }' == '0 - 300000'){
-		$('#spanPrice').text('가격')
+		$('#spanPrice').text('가격');
 	}
-		$('#datepicker').val('${ date }');
-		$('#sortBtn').val('${ sort }');
+		
+	$('#datepicker').val('${ date }');	
+	$('#sortBtn').val('${ sort }');
 	
 	
-	if( '${ move }' != null ){
+	if( '${ move }' != "" ){
 		location.href='#actiSearch';
 	}
 	
-	if('${ sport }' != null){
-		
+	if('$ { sport }' != ''){
+		let value = '${ sport }';
+		let checkArr = value.split(',');
+		for(let i = 0; i < checkArr.length; i++){
+		if(checkArr[i] == $('input[name=ticket][value="캠핑 & 글램핑"]').val()){
+			$('input[name=ticket][value="캠핑 & 글램핑"]').attr('checked', true);
+		} else if(checkArr[i] == $('input[name=ticket][value="루지 & 짚라인 & 어드벤처"]').val()){
+			$('input[name=ticket][value="루지 & 짚라인 & 어드벤처"]').attr('checked', true);
+		} else if(checkArr[i] == $('input[name=ticket][value="스키 & 스노보드"]').val()){
+			$('input[name=ticket][value="스키 & 스노보드"]').attr('checked', true);
+		} 
 	}
+		$('#sport').val(checkArr);
+	} else if('$ { select }' != ''){
+		let value = '${ selectAll }';
+		let checkArr = value.split(',');
+		
+		$('input[name=sport]').attr('checked', true);
+		$('input[name=select]').attr('checked', true);
+		
+		$('#selectAll').val(checkArr);
+	}
+	
+	
+	if('${ ticket }' != ''){
+		let value = '${ ticket }';
+		let checkArr = value.split(',');
+		for(let i = 0; i < checkArr.length; i++){
+			if(checkArr[i] == $('input[name=ticket][value="공원 & 자연"]').val()){
+				$('input[name=ticket][value="공원 & 자연"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=ticket][value="테마파크 & 워터파크"]').val()){
+				$('input[name=ticket][value="테마파크 & 워터파크"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=ticket][value="아쿠아리움 & 동물원"]').val()){
+				$('input[name=ticket][value="아쿠아리움 & 동물원"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=ticket][value="루지 & 짚라인 & 어드벤처"]').val()){
+				$('input[name=ticket][value="루지 & 짚라인 & 어드벤처"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=ticket][value="박물관 & 미술관"]').val()){
+				$('input[name=ticket][value="박물관 & 미술관"]').attr('checked', true);
+			} 
+		}
+		
+		$('#ticket').val(checkArr);
+		
+	} else if('${ selectAll2 }' != '') {
+		let value = '${ selectAll2 }';
+		let checkArr = value.split(',');
+
+		$('input[name=ticket]').attr('checked', true);
+		$('input[name=select2]').attr('checked', true);
+		
+		$('#selectAll2').val(checkArr);
+	}
+	  
+	if('$ { spa }' != ''){
+		let value = '${ spa }';
+		let checkArr = value.split(',');
+		
+		for(let i = 0; i < checkArr.length; i++){
+			if(checkArr[i] == $('input[name=ticket][value="스파 & 온천"]').val()){
+				$('input[name=ticket][value="스파 & 온천"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=ticket][value="웰빙 & 웰니스"]').val()){
+				$('input[name=ticket][value="웰빙 & 웰니스"]').attr('checked', true);
+			}
+		} 
+		$('#spa').val(checkArr);
+	} else if('$ { selectAll3 }' != ''){
+		let value = '${ selectAll3 }';
+		let checkArr = value.split(',');
+
+		$('input[name=spa]').attr('checked', true);
+		$('input[name=select3]').attr('checked', true);
+		
+		$('#selectAll3').val(checkArr);
+	}
+	 
+	if('${ tour }' != ''){
+		let value = '${ tour }';
+		let checkArr = value.split(',');
+		
+		for(let i = 0; i < checkArr.length; i++){
+			if(checkArr[i] == $('input[name=ticket][value="워킹 & 자전거투어"]').val()){
+				$('input[name=ticket][value="워킹 & 자전거투어"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=ticket][value="버스 & 스쿠터 & ATV투어"]').val()){
+				$('input[name=ticket][value="버스 & 스쿠터 & ATV투어"]').attr('checked', true);
+			}
+		} 
+		$('#tour').val(checkArr);
+	} else if('${ selectAll4 }' != ''){
+		let value = '${ selectAll4 }';
+		let checkArr = value.split(',');
+
+		$('input[name=tour]').attr('checked', true);
+		$('input[name=select4]').attr('checked', true);
+		
+		$('#selectAll4').val(checkArr);
+	}
+	
+	if('${ water }' != ''){
+		let value = '${ water }';
+		let checkArr = value.split(',');
+		
+		for(let i = 0; i < checkArr.length; i++){
+			if(checkArr[i] == $('input[name=ticket][value="패들보드 & 카약 & 래프팅"]').val()){
+				$('input[name=ticket][value="패들보드 & 카약 & 래프팅"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=ticket][value="서핑 & 기타 수상레저"]').val()){
+				$('input[name=ticket][value="서핑 & 기타 수상레저"]').attr('checked', true);
+			}
+		} 
+		$('#water').val(checkArr);
+	} else if('${ selectAll5 }' != ''){
+		let value = '${ selectAll5 }';
+		let checkArr = value.split(',');
+
+		$('input[name=tour]').attr('checked', true);
+		$('input[name=select4]').attr('checked', true);
+		
+		$('#selectAll5').val(checkArr);
+	}
+	
 	
   });
   </script>
   </head>
-  <br>
   <body>
     <!-- 네비게이션 바-->
     <jsp:include page="../common/menubar.jsp"/>
-    
-    
     <!-- 메인 이미지 및 설명 -->
   
     <div class="container mb-4">
@@ -269,7 +380,7 @@
         <h1 style="margin-bottom: 20px;">방문하기 좋은 시기</h1>
         <ul>
           <li>
-           <c:forEach var="data1" items="${ vistis['vistis'] }">
+           <c:forEach var="data1" items="${ vistis }">
            ${data1}
           </c:forEach>
           </li>
@@ -283,49 +394,46 @@
         <h1>${locationActivity.name} 인기 액티비티</h1>
     </div>
     <div class="container mt-4">
-        <div class="row">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
+            <c:forEach items="${locationActivity.activityList}" var="acti" end="2">
             <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                      <h3 class="card-text">등산</h3>
-                    </div>
+              <div class="card shadow-sm">
+                <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+                <div class="card-body" style="height : 160px">
+                  <p class="card-text">
+                      ${acti.name}
+                  </p></a>
+                  <p id="star">별점 :
+                 
+                 <c:set var = "total" value = "0" />
+
+                 <c:forEach var="result" items="${ acti.reviewList}" varStatus="status">     
+
+                 <c:set var= "total" value="${total + result.reviewStar}"/>
+
+                 </c:forEach>
+
+                 <c:set var = "longAvg" value="${total / fn:length(acti.reviewList)}"/>
+
+                 <fmt:formatNumber type="number" pattern="#.0" value="${total / fn:length(acti.reviewList)}" />
+                 
+                 <%--
+                  해당 액티비티의 리뷰 갯수 공식
+                  <c:set var="count" value="${ fn:length(acti.reviewList) }"
+                  --%>
+
+                  </p>
+                  <p>액티비티 마감일 : ${ acti.endDate }</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">₩${acti.price}부터</small>
                   </div>
+                </div>
+              </div>
             </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                      <h3 class="card-text">서핑</h3>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top">
-                      <div class="card-body">
-                      <h3 class="card-text">페러글라이딩</h3>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                      <h3 class="card-text">스키</h3>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                      <h3 class="card-text">짚라인</h3>
-                    </div>
-                  </div>
-            </div>
-        </div>
+        </c:forEach>
     </div>
+   </div>
+    
 
       <!-- 액티비티 조회 -->
     <div class="container mt-5">
@@ -346,7 +454,7 @@
             <li class="mb-4"><input type="checkbox" name="sport" value="캠핑 & 글램핑"><span>캠핑 & 글램핑</span></li>
             <li class="mb-4"><input type="checkbox" name="sport" value="루지 & 짚라인 & 어드벤처"><span>루지 & 짚라인 & 어드벤처</span></li>
             <li class="mb-4"><input type="checkbox" name="sport" value="스키 & 스노보드"><span>스키 & 스노보드<span></li>
-            <li class="mb-4"><input type="checkbox" name="select" value="selectAll"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="select" value="select"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck" id="sport"/>
@@ -363,7 +471,7 @@
             <li class="mb-4"><input type="checkbox" name="ticket" value="아쿠아리움 & 동물원"><span>아쿠아리움 & 동물원</span></li>
             <li class="mb-4"><input type="checkbox" name="ticket" value="테마파크 & 워터파크"><span>테마파크 & 워터파크<span></li>
             <li class="mb-4"><input type="checkbox" name="ticket" value="박물관 & 미술관"><span>박물관 & 미술관<span></li>
-            <li class="mb-4"><input type="checkbox" name="select2" value="selectAll2"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="select2" value="select2"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck1" id="ticket"/>
@@ -378,7 +486,7 @@
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
             <li class="mb-4"><input type="checkbox" name="spa" value="스파 & 온천"><span>스파 & 온천</span></li>
             <li class="mb-4"><input type="checkbox" name="spa" value="웰빙 & 웰니스"><span>웰빙 & 웰니스</span></li>
-            <li class="mb-4"><input type="checkbox" name="select3" value="selectAll3"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="select3" value="select3"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck2" id="spa"/>
@@ -393,7 +501,7 @@
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
             <li class="mb-4"><input type="checkbox" name="tour" value="워킹 & 자전거투어"><span>워킹 & 자전거투어</span></li>
             <li class="mb-4"><input type="checkbox" name="tour" value="버스 & 스쿠터 & ATV투어"><span>버스 & 스쿠터 & ATV투어</span></li>
-            <li class="mb-4"><input type="checkbox" name="select4" value="selectAll4"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="select4" value="select4"><span>모두선택</span></li>
              <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck3" id="tour"/>
@@ -408,7 +516,7 @@
           <ul class="dropdown-menu" style="padding-left: 30px; width: 220px; height: 220px;" >
             <li class="mb-4"><input type="checkbox" name="water" value="패들보드 & 카약 & 래프팅"><span>패들보드 & 카약 & 래프팅</span></li>
             <li class="mb-4"><input type="checkbox" name="water" value="서핑 & 기타 수상레저"><span>서핑 & 기타 수상레저</span></li>
-            <li class="mb-4"><input type="checkbox" name="select5" value="selectAll5"><span>모두선택</span></li>
+            <li class="mb-4"><input type="checkbox" name="select5" value="select5"><span>모두선택</span></li>
             <input type="submit" value="확인"/>
           </ul>
           <input type="hidden" name="hdCheck4" id="water"/>
@@ -466,7 +574,7 @@
             <div class="col">
               <div class="card shadow-sm">
                 <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
-                <div class="card-body">
+                <div class="card-body" style="height : 160px">
                   <p class="card-text">
                       ${acti.name}
                   </p></a>

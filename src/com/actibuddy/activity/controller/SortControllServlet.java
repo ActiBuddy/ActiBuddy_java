@@ -132,7 +132,9 @@ public class SortControllServlet extends HttpServlet {
 		}
 		ActivityService activityService = new ActivityService();
 		LocationAndActivityDTO locationActivity = activityService.selectLocationInfo(resultMap);
+		System.out.println("locationActivity : " + locationActivity);
 		LocationDTO location = activityService.selectLocationOne(locationName);
+		System.err.println("location : " + location);
 		
 		String[] month = location.getVisitMonth().split(",");
 		String[] name = location.getVisitName().split(",");
@@ -162,8 +164,6 @@ public class SortControllServlet extends HttpServlet {
 			request.setAttribute("price", price);
 		} 
 		
-		
-		
 		if(sort != null) {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
@@ -182,7 +182,6 @@ public class SortControllServlet extends HttpServlet {
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("date", date);
-			System.out.println("날짜확인용");
 		} else if(sport != null && sport != ""){
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
@@ -230,17 +229,20 @@ public class SortControllServlet extends HttpServlet {
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
+			request.setAttribute("selectAll3", selectAll3);
 		} else if(selectAll4 != null && selectAll4 !="") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
+			request.setAttribute("selectAll4", selectAll4);
 		} else if(selectAll5 != null && selectAll5 !="") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
-		}
+			request.setAttribute("selectAll5", selectAll5);
+		} 
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}

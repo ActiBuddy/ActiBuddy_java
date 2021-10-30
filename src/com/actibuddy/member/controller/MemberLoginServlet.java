@@ -22,13 +22,13 @@ public class MemberLoginServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
 		rd.forward(request, response);
 		
-		HttpServletRequest hrequest = (HttpServletRequest) request;
-		
-		String uri = hrequest.getRequestURI();
-		System.out.println("uri : " + uri);
-		
-		String intent = uri.substring(uri.lastIndexOf("/"));
-		System.out.println("intent : " + intent);
+//		HttpServletRequest hrequest = (HttpServletRequest) request;
+//		
+//		String uri = hrequest.getRequestURI();
+//		System.out.println("uri : " + uri);
+//		
+//		String intent = uri.substring(uri.lastIndexOf("/"));
+//		System.out.println("intent : " + intent);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

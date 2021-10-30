@@ -26,9 +26,8 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li class="active">파트너십 관리</li>
-            <li><a href="">파트너십 플랫폼 조회</a></li>
-            <li><a href="">파트너십 문의 접수</a></li>
-            <li><a href="">파트너십 진행 상황</a></li>
+            <li><a href="${ pageContext.servletContext.contextPath }/faq/partner">파트너십 문의</a></li>
+            <li><a href="${ pageContext.servletContext.contextPath }/faq/common">일반 문의</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li class="active">신고 접수</li>

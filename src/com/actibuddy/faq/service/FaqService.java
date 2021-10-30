@@ -34,4 +34,21 @@ public class FaqService {
 		return result;
 	}
 
+	public int registFaqPartner(FaqDTO faq) {
+		SqlSession session = getSqlSession();
+		
+		int result = faqDAO.registFaqPartner(session, faq);
+		
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 }

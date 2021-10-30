@@ -180,7 +180,7 @@
         </div>
         </div>
         	
-    <form id="faq" action="${ pageContext.servletContext.contextPath }/faq/question" method="post">   	
+    <form id="faq" action="${ pageContext.servletContext.contextPath }/faq/commonquestion" method="post">   	
 	<div class="question">
       <textarea cols="50" rows="1" placeholder="글제목" name="queTitle"></textarea>
       <textarea cols="50" rows="1" placeholder="이메일" name="queEmail"></textarea>

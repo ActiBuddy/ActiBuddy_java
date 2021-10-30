@@ -32,9 +32,38 @@
         , #{ queTitle }
         , #{ queCon }
         , #{ queEmail }
-        , 'c'
+        , 'C'
         , SYSDATE
         )
 	</insert>
- 
+	
+	<insert id="registFaqPartner" parameterType="com.actibuddy.faq.model.dto.FaqDTO">
+        INSERT
+          INTO FAQ
+        (
+          QUE_NUM
+        , USER_ID
+        , QUE_TITLE
+        , QUE_CON
+        , QUE_EMAIL
+        , QUE_TYPE
+        , QUE_DATE
+        )
+        VALUES 
+        (
+          SEQ_QUE_NUM.NEXTVAL
+        , #{ userId }
+        , #{ queTitle }
+        , #{ queCon }
+        , #{ queEmail }
+        , 'P'
+        , SYSDATE
+        )
+	</insert>
+
+
+
+
+
+
  </mapper>

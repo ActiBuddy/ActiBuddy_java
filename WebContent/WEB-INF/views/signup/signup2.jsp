@@ -29,7 +29,7 @@
 	            url:'${ pageContext.servletContext.contextPath }/member/idcheck', //Controller에서 인식할 주소
 	            type:'get',
 	            data:{userId:id},
-	            success:function(result){ //callback
+	            success:function(result){     //callback
 	                
 	            	console.log(result);
 	            	
@@ -37,18 +37,18 @@
 						$('#idResult1').css('display', 'block').css('color','red');
 						$('#idResult2').css('display', 'none');
 						$('#userId').focus();
-						$(".login_btn").attr("disabled", true);
+						/* $(".login_btn").attr("disabled", true); */
 
 					} else {
 						$('#idResult2').css('display', 'block');
 						$('#idResult1').css('display', 'none');
-						$(".login_btn").attr("disabled", false);
+						/* $(".login_btn").attr("disabled", false); */
 
 					}
 	            },
 	            error:function(){
-	            	$(this).css('color', 'red');
-	            }
+/* 	            	$(this).css('color', 'red');
+ */	           }
 	        }); 
 		});
 	});

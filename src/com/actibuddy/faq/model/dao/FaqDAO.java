@@ -10,4 +10,8 @@ public class FaqDAO {
 		return session.insert("FaqDAO.registFaqCommon", faq);
 	}
 
+	public int registFaqPartner(SqlSession session, FaqDTO faq) {
+		return session.insert("FaqDAO.registFaqPartner", faq);
+	}
+
 }

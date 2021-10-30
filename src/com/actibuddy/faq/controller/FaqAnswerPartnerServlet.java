@@ -1,4 +1,4 @@
-package com.actibuddy.member.controller;
+package com.actibuddy.faq.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,20 +8,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MemberLogoutServlet
+ * Servlet implementation class FaqPartnerAnswerServlet
  */
-@WebServlet("/member/logout")
-public class MemberLogoutServlet extends HttpServlet {
+@WebServlet("/faq/partner")
+public class FaqAnswerPartnerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = request.getContextPath();
-		
-		request.getSession().invalidate();
-		
-		response.sendRedirect(request.getContextPath());	
-		
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
 
 }

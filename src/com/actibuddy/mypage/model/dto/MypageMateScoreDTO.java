@@ -1,16 +1,15 @@
 package com.actibuddy.mypage.model.dto;
 
-import java.util.Date;
 
 public class MypageMateScoreDTO {
 	
 	private String scoreNum;
 	private String scoreTitle;
 	private String scoreCon;
-	private Character scoreRepYn;
+	private String scoreRepYn;
 	private String scoreStar;
 	private String userId;
-	private String scoreId;
+	private String scoredId;
 	private String plusScore;
 	
 	
@@ -18,8 +17,8 @@ public class MypageMateScoreDTO {
 	}
 
 
-	public MypageMateScoreDTO(String scoreNum, String scoreTitle, String scoreCon, Character scoreRepYn,
-			String scoreStar, String userId, String scoreId, String plusScore) {
+	public MypageMateScoreDTO(String scoreNum, String scoreTitle, String scoreCon, String scoreRepYn, String scoreStar,
+			String userId, String scoredId, String plusScore) {
 		super();
 		this.scoreNum = scoreNum;
 		this.scoreTitle = scoreTitle;
@@ -27,7 +26,7 @@ public class MypageMateScoreDTO {
 		this.scoreRepYn = scoreRepYn;
 		this.scoreStar = scoreStar;
 		this.userId = userId;
-		this.scoreId = scoreId;
+		this.scoredId = scoredId;
 		this.plusScore = plusScore;
 	}
 
@@ -62,12 +61,12 @@ public class MypageMateScoreDTO {
 	}
 
 
-	public Character getScoreRepYn() {
+	public String getScoreRepYn() {
 		return scoreRepYn;
 	}
 
 
-	public void setScoreRepYn(Character scoreRepYn) {
+	public void setScoreRepYn(String scoreRepYn) {
 		this.scoreRepYn = scoreRepYn;
 	}
 
@@ -92,13 +91,13 @@ public class MypageMateScoreDTO {
 	}
 
 
-	public String getScoreId() {
-		return scoreId;
+	public String getScoredId() {
+		return scoredId;
 	}
 
 
-	public void setScoreId(String scoreId) {
-		this.scoreId = scoreId;
+	public void setScoredId(String scoredId) {
+		this.scoredId = scoredId;
 	}
 
 
@@ -115,10 +114,10 @@ public class MypageMateScoreDTO {
 	@Override
 	public String toString() {
 		return "MypageMateScoreDTO [scoreNum=" + scoreNum + ", scoreTitle=" + scoreTitle + ", scoreCon=" + scoreCon
-				+ ", scoreRepYn=" + scoreRepYn + ", scoreStar=" + scoreStar + ", userId=" + userId + ", scoreId="
-				+ scoreId + ", plusScore=" + plusScore + "]";
+				+ ", scoreRepYn=" + scoreRepYn + ", scoreStar=" + scoreStar + ", userId=" + userId + ", scoredId="
+				+ scoredId + ", plusScore=" + plusScore + "]";
 	}
-	
+
 
 
 }

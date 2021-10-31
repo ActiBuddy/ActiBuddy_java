@@ -1,8 +1,7 @@
 package com.actibuddy.mypage.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
-import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.service.MypageService;
 
 
@@ -27,16 +26,14 @@ public class MypagePartnerServlet extends HttpServlet {
 		System.out.println("아이디 : " + userId);
 		
 		MypageService mypageService = new MypageService();
-		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
 		
-		System.out.println("결과 : " + tripList);
+		List<ActivityDTO> selectActiInfo = mypageService.selectActiInfo(userId);
 		
+		System.out.println("결과 : " + selectActiInfo);
 		
-		
-		if(tripList != null) {
-			request.setAttribute("tripList", tripList);
-			
-		}
+
+			request.setAttribute("selectActiInfo", selectActiInfo);
+
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/partnership.jsp");
 		rd.forward(request, response);
@@ -44,17 +41,6 @@ public class MypagePartnerServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
-		System.out.println("아이디 : " + userId);
-		
-		String cartNum = request.getParameter("cartNum");
-		System.out.println("카트 번호 : " + cartNum);
-		
-
-		MypageService mypageService = new MypageService();
-		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
-		int result = mypageService.changeUseYn(tripList);
 		
 		
 	}

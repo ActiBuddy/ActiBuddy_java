@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -46,6 +48,8 @@
         <div class="center-all">
 
             <div class="center-1">
+            <c:if test="${ tripList.introduce eq null }">
+            
             	<form id = "introduce" action="../mypage/main" method="post">
             	
                 <textarea cols ="50" rows="6" id ="text1" name="introduce" placeholder="소개를 작성해주세요"></textarea>
@@ -56,8 +60,29 @@
                 <button type="submit">등록하기</button>
             	
             	</form>
-    
+            	
+            </c:if>
+		<%--   <jsp:forward page="">
+            		<jsp:param value="${tripList.introduce }" name="introduce"/>
+            		<jsp:param value="${tripList.favoriteActi }" name="favoriteActi"/>
+            	</jsp:forward> 		--%>
+            	
+				<c:if test="${ tripList.introduce ne null }">
+	            	<form id = "introduce" action="../mypage/main" method="post">
+	            
+	            	
+		           <textarea cols ="50" rows="6" id ="text1" name="introduce" placeholder="${ introduce.introduce }"></textarea>
+	
+	                <hr>
+	        
+	                <textarea cols ="30" rows="2" name="favoriteActi" placeholder="${introduce.favoriteActi }"></textarea>
+	                <button type="submit">수정하기</button>
+	            	
+	            	</form>
+				</c:if>
+
             </div>
+            
             <div class="center-2">
 				
 				<c:if test="${ !empty sessionScope.loginMember }">
@@ -67,17 +92,33 @@
 				</c:if>
 				
                 <hr> 
-
-                <h3>★★★★★ </h3>
-                <h4>한줄 후기 :</h4>
-                <h5> 함께 했던 메이트 : </h5>
-                <button type="submit"></button>
+                
+				<c:forEach var="size" begin="0" end="${ fn:length(mateScore)-1}">
+				
+			  <c:choose>
+			  <c:when test="${ mateScore[size].scoreStar == 1 }">
+				 <h2>★</h2>
+			  </c:when>
+			  <c:when test="${ mateScore[size].scoreStar == 2 }">
+			     <h2>★★</h2>
+			  </c:when>
+			  <c:when test="${ mateScore[size].scoreStar == 3 }">
+			     <h2>★★★</h2>
+			  </c:when>
+			  <c:when test="${ mateScore[size].scoreStar == 4 }">
+			     <h2>★★★★</h2>
+			  </c:when>
+			  <c:when test="${ mateScore[size].scoreStar == 5 }">
+				<h2>★★★★★</h2>
+			  </c:when>
+			 </c:choose>
+				
+                <h4>한줄 후기 : <c:out value="${mateScore[size].scoreCon }"></c:out> </h4>
+                <h5> 함께 했던 메이트 : ${ mateScore[size].userId}</h5>
                 <hr>
+                
+				</c:forEach>
 
-                <h3>★★★★☆ </h3>
-                <h4>한줄 후기 :</h4>
-                <h5> 함께 했던 메이트 : </h5>
-                <button type="submit"></button>
 
                 
             </div>

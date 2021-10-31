@@ -9,8 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <title>여행 후기</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mypage.css">
 
@@ -44,8 +45,6 @@
     
                 <jsp:include page="../common/mypagesidebar.jsp"/>
             
-        
-        
         <div class="a-center-all">
 
             <div class="a-buttons">
@@ -61,24 +60,43 @@
                     <h4>여행 후기</h4>
                     <hr>
                     <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>★★★★★ </h3>
-                    <h3>후기 제목 </h3>
-                    <h4>후기 상품 : </h4>
+                    
+                    <!-- 별점 가져오기 -->
+                    
+                    <c:forEach items="selectActiReview">
+					<br>
+					<c:choose>
+					  <c:when test="${ selectActiReview[size].scoreStar == 1 }">
+						 <h2>★</h2>
+					  </c:when>
+					  <c:when test="${ selectActiReview[size].scoreStar == 2 }">
+					     <h2>★★</h2>
+					  </c:when>
+					  <c:when test="${ selectActiReview[size].scoreStar == 3 }">
+					     <h2>★★★</h2>
+					  </c:when>
+					  <c:when test="${ selectActiReview[size].scoreStar == 4 }">
+					     <h2>★★★★</h2>
+					  </c:when>
+					  <c:when test="${ selectActiReview[size].scoreStar == 5 }">
+						<h2>★★★★★</h2>
+					  </c:when>
+					</c:choose>
+					
+                    <h3>제목 : ${ selectActiReview.title}</h3>
+                    <br><br>
+                    <h4>후기 상품 : ${ selectActiReview.name}</h4>
     
-                    <h5>날짜 : <br> 수량 : </h5>
+                    <h5>날짜 : ${ selectActiReview.writeDate }</h5><br>
+                    
+                    <%-- <h5>수량 : ${ selectActiReview.reviewList[size].writeDate }</h5> --%>
                     <button id="delete">삭제</button>
     
                     <hr>
+                    
+                    </c:forEach>
+
     
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <h3>★★★★☆ </h3>
-                    <h3>후기 제목 </h3>
-                    <h4>후기 상품 : </h4>
-    
-                    <h5>날짜 : <br> 수량 : </h5>
-                    <button id="delete">삭제</button>
-    
-                    <hr>
                     <h4>메이팅 후기</h4>
                     <hr>
 					

@@ -49,8 +49,9 @@
 	
 	
 	<script>
-	
-        const link = "${ location.href }";
+		const link = "${ pageContext.servletContext.contextPath }/activity/information?actiName=${ activity.activityList[0].name }"
+				+ "&sort=${ sort }";
+        /* const link = "${ location.href }";  */
 		let searchText = "";
 		
 		if(${ !empty requestScope.selectCriteria.searchCondition? true: false }) {
@@ -64,33 +65,33 @@
 		if(document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
 			$startPage.onclick = function() {
-				location.href = link + "?currentPage=1" + searchText;
+				location.href = link + "&currentPage=1" + searchText;
 			}
 		}
 		
 		if(document.getElementById("prevPage")) {
 			const $prevPage = document.getElementById("prevPage");
 			$prevPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.selectCriteria.pageNo - 1 }" + searchText;
+				location.href = link + "&currentPage=${ requestScope.selectCriteria.pageNo - 1 }" + searchText;
 			}
 		}
 		
 		if(document.getElementById("nextPage")) {
 			const $nextPage = document.getElementById("nextPage");
 			$nextPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.selectCriteria.pageNo + 1 }" + searchText;
+				location.href = link + "&currentPage=${ requestScope.selectCriteria.pageNo + 1 }" + searchText;
 			}
 		}
 		
 		if(document.getElementById("maxPage")) {
 			const $maxPage = document.getElementById("maxPage");
 			$maxPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.selectCriteria.maxPage }" + searchText;
+				location.href = link + "&currentPage=${ requestScope.selectCriteria.maxPage }" + searchText;
 			}
 		}
 		
 		function pageButtonAction(text) {
-			location.href = link + "?currentPage=" + text + searchText;
+			location.href = link + "&currentPage=" + text + searchText;
 		}
 	</script>
 </body>

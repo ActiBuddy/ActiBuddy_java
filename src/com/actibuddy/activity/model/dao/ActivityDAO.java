@@ -11,6 +11,7 @@ import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
+import com.actibuddy.common.paging.SelectCriteria;
 
 public class ActivityDAO {
 
@@ -19,9 +20,9 @@ public class ActivityDAO {
 		return session.selectOne("ActivityDAO.selectLocationInfo",resultMap);
 	}
 
-	public ActivityInfoDTO selectActivityInfo(SqlSession session, String actiName) {
+	public ActivityInfoDTO selectActivityInfo(SqlSession session, Map<String, String> actiMap) {
 		
-		return session.selectOne("ActivityDAO.selectActivityInfo", actiName);
+		return session.selectOne("ActivityDAO.selectActivityInfo", actiMap);
 	}
 
 	public List<LocationDTO> selectLocation(SqlSession session) {
@@ -60,9 +61,14 @@ public class ActivityDAO {
 		return session.update("ActivityDAO.updateRepYn", review);
 	}
 
-	public ActivityInfoDTO sortActivityInfo(SqlSession session, Map<String, String> resultMap) {
+	public int selectActiReviewTotalCount(SqlSession session, String actiName) {
 		
-		return session.selectOne("ActivityDAO.sortActivityInfo", resultMap);
+		return session.selectOne("ActivityDAO.selectActiReviewTotalCount", actiName);
+	}
+
+	public List<ActiReviewDTO> selectReviewList(SqlSession session, Map<String, Object> reviewMap) {
+		
+		return session.selectList("ActivityDAO.selectReviewList", reviewMap);
 	}
 
 }

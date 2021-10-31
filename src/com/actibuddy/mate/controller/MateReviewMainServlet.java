@@ -35,6 +35,9 @@ public class MateReviewMainServlet extends HttpServlet {
 			pageNo = 1;
 		}
 		
+		System.out.println(currentPage);
+		System.out.println(pageNo);
+		
 		/* ======== 검색 처리 ========*/
 		// 검색 값
 		String searchCondition = null;

@@ -14,6 +14,7 @@ import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
+import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mypage.model.dao.MypageDAO;
 
 public class ActivityService {
@@ -43,11 +44,11 @@ public class ActivityService {
 	 * @param actiName
 	 * @return 액티비티 DTO
 	 */
-	public ActivityInfoDTO selectActivityInfo(String actiName) {
+	public ActivityInfoDTO selectActivityInfo(Map<String, String> actiMap) {
 		
 		SqlSession session = getSqlSession();
 		
-		ActivityInfoDTO activity = activityDAO.selectActivityInfo(session,actiName);
+		ActivityInfoDTO activity = activityDAO.selectActivityInfo(session,actiMap);
 		
 		session.close();
 		
@@ -182,21 +183,38 @@ public class ActivityService {
 		return result;
 	}
 
-	/** 액티비티 정보 조회용 하지만 정렬을 곁들인
+	/**
+	 * 액티비티 인포 페이지의 후기 갯수 조회용 메소드
 	 * @author kwonsoonpyo
 	 * @param actiName
-	 * @param sort
-	 * @return 액티비티 DTO
+	 * @return totalCount
 	 */
-	public ActivityInfoDTO sortActivityInfo(Map<String, String> resultMap) {
+	public int selectActiReviewTotalCount(String actiName) {
 		
 		SqlSession session = getSqlSession();
 		
-		ActivityInfoDTO activity = activityDAO.sortActivityInfo(session, resultMap);
+		int totalCount = activityDAO.selectActiReviewTotalCount(session, actiName);
 		
 		session.close();
 		
-		return activity;
+		return totalCount;
+	}
+
+	/**
+	 * 액티비티 인포 페이지에서 조회용 메소드 (페이지네이션) 하지만 이제 정렬도 곁들인.
+	 * @author kwonsoonpyo
+	 * @param selectCriteria
+	 * @return ReviewList
+	 */
+	public List<ActiReviewDTO> selectReviewList(Map<String, Object> reviewMap) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<ActiReviewDTO> reviewList = activityDAO.selectReviewList(session, reviewMap);
+		
+		session.close();
+		
+		return reviewList;
 	}
 
 	

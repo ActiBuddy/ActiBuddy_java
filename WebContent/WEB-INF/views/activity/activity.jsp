@@ -208,7 +208,7 @@
 	if('${ price }' != 0 && '${ price }' != '0 - 300000'){
 		
 		$('#spanPrice').text('${ price }');
-		$('#price').val('${ price }');
+		$('#amount2').val('${ price }');
 		
 	} else if('${ price }' == '0 - 300000'){
 		$('#spanPrice').text('가격');
@@ -380,7 +380,7 @@
         <h1 style="margin-bottom: 20px;">방문하기 좋은 시기</h1>
         <ul>
           <li>
-           <c:forEach var="data1" items="${ vistis }">
+           <c:forEach var="data1" items="${ vistis['vistis'] }">
            ${data1}
           </c:forEach>
           </li>
@@ -391,7 +391,7 @@
           
     <!-- 인기 액티비티 -->
     <div class="container mt-5 mb-md-5">
-        <h1>${locationActivity.name} 인기 액티비티</h1>
+        <h1>${locationActivity.name} 추천 액티비티</h1>
     </div>
     <div class="container mt-4">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
@@ -444,7 +444,7 @@
     <div class="side-2" style="height: 530px;">
       <h3 style="margin-left: 10%;">카테고리</h3>
       <br>
-      <form action="/acti/sort/controll" method="post">
+      <form action="/acti/sort/controll" method="get">
       <div class="menu">
         <div class="btn-group mb-5">
           <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -527,14 +527,13 @@
       </form>
     </div>
     <div class="div2">
-        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">${locationActivity.activityList.size()}건의 검색 결과</h2>
+        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">${selectCriteria.totalCount}건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
-    	<form method="post" action="/acti/sort/controll" id="frm">
+    	<form method="get" action="/acti/sort/controll" id="frm">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
               <div class="date">
               <p style="font-size: 18px">예약날짜 : <input type="text" id="datepicker" name="date" readonly="readonly"></p>
-              <input type="hidden" id="date" value="${ date }">
               </div>
             </div>
             <div class="col" style="flex: 1.0; padding: 0px;" >
@@ -547,7 +546,6 @@
                       <input type="text" id="amount2" name="price" readonly style="border:0; color:#f6931f; font-weight:bold;">
                       <div id="slider-range" style="margin-top: 10px;"></div>
                       <button type="submit" class="btn btn-success" id="sub">확인</button>
-		                <input type="hidden" id="price" value="${ price }">
                     </div>
                   </ul>
               </div>
@@ -561,7 +559,6 @@
                     <option value="price">낮은가격순</option>
                     <option value="new">최신순</option>
                 </select>
-                <input type="hidden" id="sort" value="${ sort }">
               </div>
             </div>
           </div>
@@ -613,24 +610,8 @@
     
   <!-- 페이지 이동창 -->    
   <nav>
-    <div class="container row" style="float: right; margin:100 auto;">
-    <ul class="pagination" style="float: right;">
-      <li>
-        <a href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li>
-        <a href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
+    <div class="container mt-5">
+   <jsp:include page="../common/activitypage.jsp"/>
   </div>
   </nav>
   

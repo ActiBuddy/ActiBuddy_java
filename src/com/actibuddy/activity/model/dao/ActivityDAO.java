@@ -65,4 +65,14 @@ public class ActivityDAO {
 		return session.selectOne("ActivityDAO.sortActivityInfo", resultMap);
 	}
 
+	public int totalActivityCount(SqlSession session, String locationName) {
+
+		return session.selectOne("ActivityDAO.totalActivityCount",locationName);
+	}
+
+	public int totalActivityCountByMap(SqlSession session, Map<String, Object> resultMap) {
+		
+		return session.selectOne("ActivityDAO.totalActivityCountByMap", resultMap);
+	}
+
 }

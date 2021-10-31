@@ -23,7 +23,6 @@ public class ActivityMainServlet extends HttpServlet {
 	
 		ActivityService activityService = new ActivityService();
 		
-		
 		List<LocationAndActivityDTO> locationList = activityService.selectAllList();
 
 		

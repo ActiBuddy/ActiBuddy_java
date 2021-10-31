@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.service.ActivityService;
+import com.actibuddy.common.paging.Pagenation;
+import com.actibuddy.common.paging.SelectCriteria;
 
 @WebServlet("/activity/location")
 public class ActivityLocationServlet extends HttpServlet {
@@ -24,10 +26,34 @@ public class ActivityLocationServlet extends HttpServlet {
 		String locationName = request.getParameter("locationName"); 
 		System.out.println("locationName 확인 : " + locationName);
 		
+		/* ======== 페이징 처리 ========*/
+		String currentPage = request.getParameter("currentPage");
+		int pageNo = 1;
+		// 현재페이지가 설정된 경우 페이지 번호는 변경된다.
+		if(currentPage != null && !"".equals(currentPage)) {
+			pageNo = Integer.parseInt(currentPage);
+		}
+		// 페이지 번호가 0보다 작아도 1페이지
+		if(pageNo <= 0) {
+			pageNo = 1;
+		}
+		
 		Map<String,Object> resultMap = new HashMap<>();	
 		resultMap.put("locationName", locationName);
 		
 		ActivityService activityService = new ActivityService();
+		int totalCount = activityService.totalActivityCount(locationName);
+		System.out.println(totalCount);
+		
+		int limit = 9;
+		int buttonAmount = 5;
+		
+		SelectCriteria selectCriteria = null;
+		
+		selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
+		resultMap.put("startRow", selectCriteria.getStartRow());
+		resultMap.put("endRow", selectCriteria.getEndRow());
+		
 		LocationAndActivityDTO location = activityService.selectLocationInfo(resultMap);
 	
 		System.out.println("location 확인 :" + location);
@@ -47,13 +73,12 @@ public class ActivityLocationServlet extends HttpServlet {
 		for(int i = 0; i < month.length; i++) {
 			map.put("vistis", "<header id=\"visitHeader\">" + month[i] + "</header> <p id=\"visitBody\">" + name[i] +"</p>");
 		}
-		System.out.println(map);
-		
 		
 		String path = "";
 		if(location != null){
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", location);
+			request.setAttribute("selectCriteria", selectCriteria);
 			request.setAttribute("vistis", map);
 		} else {
 			path = "/WEB-INF/views/actiFail.jsp";

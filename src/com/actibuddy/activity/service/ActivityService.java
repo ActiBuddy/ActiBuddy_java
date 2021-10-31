@@ -199,5 +199,27 @@ public class ActivityService {
 		return activity;
 	}
 
+	public int totalActivityCount(String locationName) {
+		
+		SqlSession session = getSqlSession();
+		
+		int totalCount = activityDAO.totalActivityCount(session,locationName);
+		
+		session.close();
+		
+		return totalCount;
+	}
+
+	public int totalActivityCountByMap(Map<String, Object> resultMap) {
+
+		SqlSession session = getSqlSession();
+		
+		int totalCount = activityDAO.totalActivityCountByMap(session,resultMap);
+		
+		session.close();
+		
+		return totalCount;
+	}
+
 	
 }

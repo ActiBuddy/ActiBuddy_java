@@ -14,6 +14,8 @@ import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
+import com.actibuddy.activity.model.dto.SearchDTO;
+import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mypage.model.dao.MypageDAO;
 
 public class ActivityService {
@@ -199,6 +201,12 @@ public class ActivityService {
 		return activity;
 	}
 
+	/**
+	 * 액티비티 조회 페이지 페이징 처리를 위한 메소드
+	 * @author 김주환
+	 * @param locationName
+	 * @return
+	 */
 	public int totalActivityCount(String locationName) {
 		
 		SqlSession session = getSqlSession();
@@ -210,6 +218,12 @@ public class ActivityService {
 		return totalCount;
 	}
 
+	/**
+	 * 액티비티 조회 페이지 페이징 처리를 위한 메소드
+	 * @author 김주환
+	 * @param locationName
+	 * @return
+	 */
 	public int totalActivityCountByMap(Map<String, Object> resultMap) {
 
 		SqlSession session = getSqlSession();
@@ -221,5 +235,37 @@ public class ActivityService {
 		return totalCount;
 	}
 
-	
+	public int totalCountBySearch(Map<String, Object> resultMap) {
+
+		SqlSession session = getSqlSession();
+		
+		int totalCount = activityDAO.totalCountBySearch(session, resultMap);
+		
+		session.close();
+		
+		return totalCount;
+	}
+
+	public List<SearchDTO> searchActivity(Map<String, Object> resultMap) {
+
+		SqlSession session = getSqlSession();
+		
+		List<SearchDTO> actiList = activityDAO.searchActivity(session, resultMap);
+		
+		session.close();
+		
+		return actiList;
+	}
+
+	public LocationAndActivityDTO selectActiName(String locationName) {
+
+		SqlSession session = getSqlSession();
+		
+		LocationAndActivityDTO list = activityDAO.selectActiName(session, locationName);
+		
+		session.close();
+		
+		return list;
+	}
+
 }

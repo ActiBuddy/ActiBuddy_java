@@ -50,6 +50,9 @@ public class ActivityLocationServlet extends HttpServlet {
 		
 		SelectCriteria selectCriteria = null;
 		
+		LocationAndActivityDTO actiList = activityService.selectActiName(locationName);
+		System.out.println(actiList);
+		
 		selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
 		resultMap.put("startRow", selectCriteria.getStartRow());
 		resultMap.put("endRow", selectCriteria.getEndRow());

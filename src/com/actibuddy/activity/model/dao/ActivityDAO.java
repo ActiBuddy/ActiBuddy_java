@@ -11,6 +11,8 @@ import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
+import com.actibuddy.activity.model.dto.SearchDTO;
+import com.actibuddy.common.paging.SelectCriteria;
 
 public class ActivityDAO {
 
@@ -73,6 +75,21 @@ public class ActivityDAO {
 	public int totalActivityCountByMap(SqlSession session, Map<String, Object> resultMap) {
 		
 		return session.selectOne("ActivityDAO.totalActivityCountByMap", resultMap);
+	}
+
+	public int totalCountBySearch(SqlSession session, Map<String, Object> resultMap) {
+
+		return session.selectOne("ActivityDAO.totalCountBySearch", resultMap);
+	}
+
+	public List<SearchDTO> searchActivity(SqlSession session, Map<String, Object> resultMap) {
+
+		return session.selectList("ActivityDAO.searchActivity", resultMap);
+	}
+
+	public LocationAndActivityDTO selectActiName(SqlSession session, String locationName) {
+
+		return session.selectOne("ActivityDAO.selectActiName", locationName);
 	}
 
 }

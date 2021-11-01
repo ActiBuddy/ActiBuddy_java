@@ -49,9 +49,15 @@
 	<script>
 			let link = "";
 		if(location.pathname == '/acti/sort/controll'){
-			link = location.pathname + "?hdLocationName=${ locationActivity.name }" + "&price=${ price }";
-		} else {
+			link = location.pathname + "?hdLocationName=${ locationActivity.name }" + "&price=${ price }" 
+			+ "&sort=${ sort } " + "&date=${ date }" + "&sport=${sport}" + "&ticket=${ticket}" + "&tour=${tour}"
+			+ "&spa=${spa}" + "&water=${water}";
+		} else if(location.pathname == '/acti/activity/location'){
 			 link = location.pathname + "?locationName=${ locationActivity.name }";
+		} else if(location.pathname == 'acti/search/activity'){
+			link = location.pathname
+		} else {
+			link = location.pathname
 		}
 		
 		let searchText = "";
@@ -61,7 +67,7 @@
 		}
 		
 		if(${ !empty requestScope.selectCriteria.searchValue? true: false }) {
-			searchText += "&searchValue=${ requestScope.selectCriteria.searchValue }";
+			link += "?searchValue=${ requestScope.selectCriteria.searchValue }" + "&price=${ price }";
 		}
 		
 		if(document.getElementById("startPage")) {

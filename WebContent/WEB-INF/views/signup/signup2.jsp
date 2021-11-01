@@ -11,8 +11,8 @@
   <link  rel="stylesheet" type="text/css" href="../resources/css/signup.css"/>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    
- <script src="${ pageContext.servletContext.contextPath }/resources/js/signup.js"></script>
- <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
+<%--  <script src="${ pageContext.servletContext.contextPath }/resources/js/signup.js"></script>
+ --%> <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
  
     <title>main</title>
   </head>
@@ -37,18 +37,14 @@
 						$('#idResult1').css('display', 'block').css('color','red');
 						$('#idResult2').css('display', 'none');
 						$('#userId').focus();
-						/* $(".login_btn").attr("disabled", true); */
 
 					} else {
 						$('#idResult2').css('display', 'block');
 						$('#idResult1').css('display', 'none');
-						/* $(".login_btn").attr("disabled", false); */
-
 					}
 	            },
 	            error:function(){
-/* 	            	$(this).css('color', 'red');
- */	           }
+ 	           }
 	        }); 
 		});
 	});
@@ -82,6 +78,14 @@
          <span><h2>이름</h2></span>
          <input type="text" name="userName" id="name" placeholder="이름을 입력해주세요!"/>
          <label id="nameResult"></label>
+
+         <span><h2>성별을 선택 해주세요!</h2></span>
+		 <select id="gender" name="gender">
+  			<option>선택해주세요</option>
+		    <option value="M">남자</option>
+  			<option value="F">여자</option>
+		</select>
+
 
          <span><h2>생년월일</h2></span>
               <input type="number" class="birth" name="birth" id="yy" placeholder="19940922 -> 940922" aria-label="년(4자)" maxlength="6" />

@@ -1,5 +1,7 @@
 package com.actibuddy.manager.model.dto;
 
+import java.util.Date;
+
 public class ManagerDTO {
 
 	
@@ -15,6 +17,7 @@ public class ManagerDTO {
 	private String memPhone;
 	private String introduce;
 	private String favoriteActi;
+	private Date enterDate;
 	
 //	USER_NAME, USER_ID, PASSWORD, EMAIL, BIRTH, GENDER, WARN_COUNT, QUIT_YN, MEM_TYPE, MEM_PHONE
 	
@@ -37,6 +40,7 @@ public class ManagerDTO {
 		this.memPhone = memPhone;
 		this.introduce = introduce;
 		this.favoriteActi = favoriteActi;
+		this.enterDate = enterDate;
 	}
 
 
@@ -182,15 +186,19 @@ public class ManagerDTO {
 		this.favoriteActi = favoriteActi;
 	}
 
-
-
-@Override
-	public String toString() {
-		return "MemberDTO [userId=" + userId + ", userName=" + userName + ", pwd=" + pwd + ", email=" + email
-				+ ", birth=" + birth + ", gender=" + gender + ", warn_count=" + warn_count + ", quitYn=" + quitYn
-				+ ", memType=" + memType + ", memPhone=" + memPhone + ", introduce=" + introduce + ", favoriteActi="
-				+ favoriteActi + "]";
+	public Date getEnterDate() {
+		return enterDate;
 	}
 
-	
+	public void setEnterDate(Date enterDate) {
+		this.enterDate = enterDate;
+	}
+
+	@Override
+	public String toString() {
+		return "ManagerDTO [userId=" + userId + ", userName=" + userName + ", pwd=" + pwd + ", email=" + email
+				+ ", birth=" + birth + ", gender=" + gender + ", warn_count=" + warn_count + ", quitYn=" + quitYn
+				+ ", memType=" + memType + ", memPhone=" + memPhone + ", introduce=" + introduce + ", favoriteActi="
+				+ favoriteActi + ", enterDate=" + enterDate + "]";
+	}
 }

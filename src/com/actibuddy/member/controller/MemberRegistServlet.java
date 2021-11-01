@@ -39,6 +39,7 @@ public class MemberRegistServlet extends HttpServlet {
 		String memPhone = request.getParameter("memPhone").replace("-", "");
 		String email = request.getParameter("email");
 		String birth =  request.getParameter("birth");
+		String gender = request.getParameter("gender");
 	
 		System.out.println(pwd);
 		
@@ -51,7 +52,7 @@ public class MemberRegistServlet extends HttpServlet {
 		requestMember.setMemPhone(memPhone);
 		requestMember.setEmail(email);
 		requestMember.setBirth(birth);
-		requestMember.setGender("M");
+		requestMember.setGender(gender);
 		requestMember.setQuitYn("N");
 		requestMember.setMemType("U");
 		

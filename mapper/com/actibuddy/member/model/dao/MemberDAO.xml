@@ -156,8 +156,15 @@
        	      , A.MEM_PHONE        
 		 FROM  MEMBER A
 		WHERE A.MEM_TYPE = 'M' 
-	</select>
+	</select> 
+	
+	<update id="changeToPartner">
+	
+		UPDATE MEMBER
+   		   SET MEM_TYPE = 'P'
+   		 WHERE USER_ID = #{ userId }
  
+ 	</update>
  
  </mapper>
  

@@ -235,15 +235,14 @@
 
                   }
                     else{
-                      $(".but").css({"backgroundColor":"#cbcbcb","cursor":"auto","color":"#303033"}).prop("disabled",false);
-                      alert("안돼");
-                      event.stopPropagation();
-                }
+                      alert("필수 항목에 체크해주세요!");
+/*                       event.stopPropagation();
+ */                }
             });
           });
         </script>
 
-          <div class="signup3"><button class="but1">취소</button></div>
+          <div class="signup3"><a href="${ pageContext.servletContext.contextPath }"><button class="but1">취소</button></a></div>
           <div class="signup4"><button class="but">확인</button></div>
         
         </div>

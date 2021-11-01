@@ -16,8 +16,8 @@
 		<result property="memPhone" column="MEM_PHONE"/>
 		<result property="introduce" column="INTRODUCE"/>
 		<result property="favoriteActi" column="FAVORITE_ACTI"/>
+		<result property="enterDate" column="ENTER_DATE"/>
 		</resultMap>
- 
  
  <resultMap type="com.actibuddy.manager.model.dto.ManagerPartDTO" id="managerPartResultMap">
 		<id property="userId" column="USER_ID"/>
@@ -34,12 +34,23 @@
 		<result property="favoriteActi" column="FAVORITE_ACTI"/>
 		<result property="manPart" column="MAN_PART"/>
 		</resultMap>
- 
- 
- 
- 
- 
- 
+		
+	<!-- <resultMap type="com.actibuddy.manager.model.dto.ManagerDTO" id="memberResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="pwd" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="birth" column="BIRTH"/>
+		<result property="gender" column="GENDER"/>
+		<result property="warn_count" column="WARN_COUNT"/>
+		<result property="quitYn" column="QUIT_YN"/>
+		<result property="memType" column="MEM_TYPE"/>
+		<result property="memPhone" column="MEM_PHONE"/>
+		<result property="introduce" column="INTRODUCE"/>
+		<result property="favoriteActi" column="FAVORITE_ACTI"/>
+		<result property="enterDate" column="ENTER_DATE"/>
+		</resultMap> -->
+
  
  <select id="selectLoginMember" resultMap="memberResultMap">
 		
@@ -71,9 +82,29 @@
         	  , A.WARN_COUNT
         	  , A.QUIT_YN
         	  , A.MEM_TYPE
-       	      , A.MEM_PHONE        
+       	      , A.MEM_PHONE
+       	      , A.ENTER_DATE
 		 FROM  MEMBER A
+		WHERE MEM_TYPE = 'U'
 	</select>
+	
+	<select id="selectPartnerMember" resultMap="memberResultMap">
+		
+		SELECT
+			    A.USER_ID
+        	  , A.USER_NAME
+        	  , A.EMAIL
+        	  , A.BIRTH
+       	  	  , A.GENDER
+        	  , A.WARN_COUNT
+        	  , A.QUIT_YN
+        	  , A.MEM_TYPE
+       	      , A.MEM_PHONE
+       	      , A.ENTER_DATE
+		 FROM  MEMBER A
+		WHERE MEM_TYPE = 'P'
+	</select>
+	
  
  	<select id="selectWarnMember" resultMap="memberResultMap">
 		
@@ -88,10 +119,10 @@
         	  , A.MEM_TYPE
        	      , A.MEM_PHONE        
 		 FROM  MEMBER A
-		 WHERE  A.MEM_TYPE = 'U'
-        AND  A.WARN_COUNT >= 0
-        ORDER BY A.WARN_COUNT DESC
-		 </select> 
+		 WHERE  A.MEM_TYPE IN ('U','P')
+       		AND  A.WARN_COUNT > 0
+     <!--    ORDER BY A.WARN_COUNT DESC -->
+		 </select>  
 		  
 		  
 	<select id="selectManagerMember" resultMap="managerPartResultMap">
@@ -113,6 +144,24 @@
 
 	</select>
  
+ <select id="userinfo" resultMap="memberResultMap">
+		
+		 SELECT
+			    A.USER_ID
+        	  , A.USER_NAME
+        	  , A.EMAIL
+        	  , A.BIRTH
+       	  	  , A.GENDER
+        	  , A.WARN_COUNT
+        	  , A.QUIT_YN
+        	  , A.MEM_TYPE
+       	      , A.MEM_PHONE
+       	      , A.INTRODUCE
+       	      , A.FAVORITE_ACTI
+       	      , A.ENTER_DATE
+		 FROM  MEMBER A
+		WHERE USER_ID = #{userId}
+	</select>
  
  
  </mapper>

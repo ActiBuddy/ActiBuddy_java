@@ -20,9 +20,9 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active">회원 관리</li>
-            <li><a href="${ pageContext.servletContext.contextPath }/manager/main">전체 회원 조회</a></li>
+            <li><a href="${ pageContext.servletContext.contextPath }/manager/main">일반 회원 조회</a></li>
+            <li><a href="${ pageContext.servletContext.contextPath }/manager/partnermember">파트너쉽 회원 조회</a></li>
             <li><a href="${ pageContext.servletContext.contextPath }/manager/warnmember">경고 회원 조회</a></li>
-            <li><a href="#">탈퇴 회원 조회</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li class="active">파트너십 관리</li>
@@ -40,6 +40,9 @@
           <ul class="nav nav-sidebar">
             <li class="active">관리자 관리</li>
             <li><a href="${ pageContext.servletContext.contextPath }/member/grade">관리자 권한 부여</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="${ pageContext.servletContext.contextPath }">메인페이지</a></li>
           </ul>
         </div>
 </body>

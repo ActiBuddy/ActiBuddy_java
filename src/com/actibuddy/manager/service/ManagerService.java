@@ -7,10 +7,14 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.faq.model.dao.FaqDAO;
+import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.manager.model.dao.ManagerDAO;
 import com.actibuddy.manager.model.dto.ManagerDTO;
 import com.actibuddy.member.model.dao.MemberDAO;
 import com.actibuddy.member.model.dto.MemberDTO;
+import com.actibuddy.partnership.model.DTO.PartnerDTO;
+import com.actibuddy.partnership.model.dao.PartnerDAO;
 
 public class ManagerService {
 
@@ -36,22 +40,22 @@ public class ManagerService {
 		
 		SqlSession session = getSqlSession();
 		
-		List<ManagerDTO> memberList = ManagerDAO.selectManagerMember(session);
+		List<ManagerDTO> managerList = ManagerDAO.selectManagerMember(session);
 		
 		session.close();
 		
-		return memberList;
+		return managerList;
 	}
 	
 public List<ManagerDTO> selectWarnMember() {
 
 	SqlSession session = getSqlSession();
 	
-	List<ManagerDTO> memberList = ManagerDAO.selectWarnMember(session);
+	List<ManagerDTO> managerList = ManagerDAO.selectWarnMember(session);
 	
 	session.close();
 	
-	return memberList;
+	return managerList;
 	
 }
 
@@ -66,6 +70,31 @@ public List<ManagerDTO> selectAllMember() {
 		
 		return managerList;
 }
+
+
+public List<ManagerDTO> selectPartnerMember() {
+	SqlSession session = getSqlSession();
+	
+	List<ManagerDTO> managerList = ManagerDAO.selectPartnerMember(session);
+	
+	session.close();
+	
+	return managerList;
+}
+
+
+public ManagerDTO userinfo(ManagerDTO managerList) {
+	
+	SqlSession session = getSqlSession();
+	
+	ManagerDTO userinfo = ManagerDAO.userinfo(session, managerList);
+	
+	session.close();
+	
+	return userinfo;
+}
+
+
 }
 
 

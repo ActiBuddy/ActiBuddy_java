@@ -25,11 +25,9 @@
        
          if($('#userPwd1').val() != $('#userPwd2').val()){
            $('#pwdREsult').html('비밀번호 일치하지 않음<br><br>').css('color','red');
-               $(".login_btn").attr("disabled", false);
            
           } else{
             $('#pwdREsult').html('비밀번호 일치함<br><br>').css('color','blue');
-                                        $(".login_btn").attr("disabled", true);
             
           }
         });
@@ -55,11 +53,9 @@
             	if(!filter.test($("#yy").val())){
 
                  $('#birthResult').html('생년월일을 확인해주세요').css('color','red');
-                 $(".login_btn").attr("disabled", false);
 
                 } else{
                 	 $('#birthResult').html(' ');
-                	 $(".login_btn").attr("disabled", true);
                 	 
                 }
               });

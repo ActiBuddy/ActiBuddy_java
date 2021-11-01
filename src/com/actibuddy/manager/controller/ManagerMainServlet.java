@@ -86,7 +86,7 @@ public class ManagerMainServlet extends HttpServlet {
 		String path ="";
 		if(managerList != null) {
 			path = "/WEB-INF/views/manager/managerMember.jsp";
-			request.setAttribute("memberList", managerList);
+			request.setAttribute("managerList", managerList);
 			request.setAttribute("selectCriteria", selectCriteria);
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";

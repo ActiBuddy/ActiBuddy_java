@@ -27,5 +27,7 @@
 		<mapper resource="com/actibuddy/mypage/model/dao/MypageDAO.xml"/>
  		<mapper resource="com/actibuddy/mate/model/dao/MateDAO.xml"/>
  		<mapper resource="com/actibuddy/faq/model/dao/FaqDAO.xml"/>
+ 		<mapper resource="com/actibuddy/partnership/model/dao/PartnerDAO.xml"/>
+ 		<mapper resource="com/actibuddy/report/model/dao/ReportDAO.xml"/>
 	</mappers>
 </configuration>

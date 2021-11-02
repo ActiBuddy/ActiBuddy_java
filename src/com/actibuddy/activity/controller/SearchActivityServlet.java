@@ -21,6 +21,8 @@ import com.actibuddy.common.paging.SelectCriteria;
 @WebServlet("/search/activity")
 public class SearchActivityServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		/* 검색어 확인 */
@@ -58,15 +60,15 @@ public class SearchActivityServlet extends HttpServlet {
 		System.out.println(searchList);
 
 		String path = "";
-		if(searchList != null) {
+		if(searchValue == ""){
+			path="/WEB-INF/views/activity/searchActivityNull.jsp";
+			request.setAttribute("searchList", searchList);
+			request.setAttribute("selectCriteria", selectCriteria);
+		}else if(searchList != null && !searchList.isEmpty() ) {
 			path="/WEB-INF/views/activity/searchActivity.jsp";
 			request.setAttribute("searchList", searchList);
 			request.setAttribute("selectCriteria", selectCriteria);
-			request.setAttribute("searchValue", selectCriteria.getSearchValue());
-		} else {
-			path="/WEB-INF/views/activity/searchActivity.jsp";
-			request.setAttribute("searchList", searchList);
-		}
+		} 
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

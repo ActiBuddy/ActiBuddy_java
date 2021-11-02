@@ -66,7 +66,7 @@
 
 	<div class="activity_main">
 		<div class="navbar_menu">
-
+			<form action="/acti/search/activity" method="get">
 			<span> 
 			<a href="${ pageContext.servletContext.contextPath }"><img src="${ pageContext.servletContext.contextPath }/resources/image/actibuddylogo.png" class="nav_logo"></a>
 			</span> 
@@ -81,13 +81,13 @@
             </div>
 			</span>
 			<span>
-			<input type="text" placeholder="Search">
+			<input type="text" placeholder="Search" name="searchValue" id="searchBar">
 			</span>
 			<span>
-				<button type="button" class="search-btn"
-					onclick="location.href='../activity/searchActivity.html'">Submit</button>
+				<button type="submit" class="search-btn">Submit</button>
 			<a href="${ pageContext.servletContext.contextPath }/manager/main">매니저 메뉴</a>		
 			</span>
+			</form>
 		</div>
 	
 	<!—  로그인 안되었을 때 —>

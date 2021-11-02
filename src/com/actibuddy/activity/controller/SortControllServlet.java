@@ -215,12 +215,22 @@ public class SortControllServlet extends HttpServlet {
 			request.setAttribute("location", location);
 			request.setAttribute("vistis", map);
 			request.setAttribute("randomList", randomList);
+			request.setAttribute("price", price);
+			request.setAttribute("sport", sport);
+			request.setAttribute("date", date);
+			request.setAttribute("ticket", ticket);
+			request.setAttribute("spa", spa);
+			request.setAttribute("tour", tour);
+			request.setAttribute("water", water);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("selectAll", selectAll);
 		} else if(date != null && date != "") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("date", date);
+			request.setAttribute("sport", sport);
 			request.setAttribute("selectCriteria", selectCriteria);
 			request.setAttribute("randomList", randomList);
 		} else if(sport != null && sport != ""){

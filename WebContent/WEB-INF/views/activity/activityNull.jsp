@@ -429,7 +429,7 @@
     <div class="side-2" style="height: 530px;">
       <h3 style="margin-left: 10%;">카테고리</h3>
       <br>
-      <form action="/acti/sort/controll" method="get">
+      <form action="/acti/sort/controll" method="get" id="frm">
       <div class="menu">
         <div class="btn-group mb-5">
           <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -509,12 +509,10 @@
         </div>
       </div>
       <input type="hidden" name="hdLocationName" value="${location.name}"/>
-      </form>
     </div>
     <div class="div2">
         <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">0건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
-    	<form method="get" action="/acti/sort/controll" id="frm">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
               <div class="date">

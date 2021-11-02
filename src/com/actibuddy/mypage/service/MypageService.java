@@ -182,6 +182,12 @@ public class MypageService {
 		
 		int result = mypageDAO.updateQuit(session,requestUpdate);
 		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
 		session.close();
 		
 		return result;
@@ -196,6 +202,40 @@ public class MypageService {
 		session.close();
 		
 		return selectMateScore;
+	}
+
+	public int deleteCart(CartDTO requestCart) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MypageDAO.deleteCart(session,requestCart);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	public int registReview(ActiReviewDTO requestReview) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MypageDAO.insertReview(session,requestReview);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
 	}
 
 

@@ -74,5 +74,16 @@ public class MypageDAO {
 			return session.selectList("MypageDAO.selectMateScore",userId);
 		}
 
+		public static int deleteCart(SqlSession session, CartDTO requestCart) {
+			
+			
+			return session.delete("MypageDAO.deleteCart",requestCart);
+		}
+
+		public static int insertReview(SqlSession session, ActiReviewDTO requestReview) {
+			
+			return session.insert("MypageDAO.insertReview",requestReview);
+		}
+
 
 }

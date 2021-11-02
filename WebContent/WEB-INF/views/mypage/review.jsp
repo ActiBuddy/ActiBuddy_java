@@ -49,7 +49,7 @@
 
             <div class="a-buttons">
                 <button type="button" id="one" class="forgreen">여행 후기</button>
-                <button type="button" class="forgreen" >메이팅 후기</button>
+                <button type="button" class="forgreen" onclick="onDiplay(),offDisplay()">메이팅 후기</button>
 
             </div>
 
@@ -59,44 +59,43 @@
 
                     <h4>여행 후기</h4>
                     <hr>
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
+              
+                    <c:forEach items="${ selectActireview }" var="actiReview" varStatus="status" >
                     
-                    <!-- 별점 가져오기 -->
-                    
-                    <c:forEach items="selectActiReview">
-					<br>
-					<c:choose>
-					  <c:when test="${ selectActiReview[size].scoreStar == 1 }">
-						 <h2>★</h2>
+			
+					<c:set var="idx" value="${ status.index }"/>
+                    <h5> ${ actiReview.reviewList.get(idx).writeDate}</h5>
+                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ actiReview.name }'">상세보기 ></button>
+                    <c:choose>
+					  <c:when test="${actiReview.reviewList.get(idx).reviewStar == 1 }">
+						 <h2 id="foryellow">★</h2><h2 id="forgray">★★★★</h2>
 					  </c:when>
-					  <c:when test="${ selectActiReview[size].scoreStar == 2 }">
-					     <h2>★★</h2>
+					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 2 }">
+					     <h2 id="foryellow">★★</h2><h2 id="forgray">★★</h2>
 					  </c:when>
-					  <c:when test="${ selectActiReview[size].scoreStar == 3 }">
-					     <h2>★★★</h2>
+					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 3 }">
+					     <h2 id="foryellow">★★★</h2><h2 id="forgray">★★</h2>
 					  </c:when>
-					  <c:when test="${ selectActiReview[size].scoreStar == 4 }">
-					     <h2>★★★★</h2>
+					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 4 }">
+					     <h2 id="foryellow">★★★★</h2><h2 id="forgray">★</h2>
 					  </c:when>
-					  <c:when test="${ selectActiReview[size].scoreStar == 5 }">
-						<h2>★★★★★</h2>
+					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 5 }">
+						<h2 id="foryellow">★★★★★</h2>
 					  </c:when>
-					</c:choose>
-					
-                    <h3>제목 : ${ selectActiReview.title}</h3>
+					</c:choose><br>
+                    <h3>제목 : ${ actiReview.reviewList.get(idx).title}</h3>
                     <br><br>
-                    <h4>후기 상품 : ${ selectActiReview.name}</h4>
+                    <h4>후기 상품 : ${ actiReview.name}</h4>
     
-                    <h5>날짜 : ${ selectActiReview.writeDate }</h5><br>
                     
                     <%-- <h5>수량 : ${ selectActiReview.reviewList[size].writeDate }</h5> --%>
                     <button id="delete">삭제</button>
     
-                    <hr>
-                    
                     </c:forEach>
+                    <hr>
 
     
+                    <div>
                     <h4>메이팅 후기</h4>
                     <hr>
 					
@@ -109,12 +108,10 @@
     
                     <br><hr>
 					</c:forEach>
-
+                    </div>
 
                 </div>
 
-
-    
             </div>
            
         </div>

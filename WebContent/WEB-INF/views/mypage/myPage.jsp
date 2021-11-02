@@ -97,19 +97,19 @@
 				
 			  <c:choose>
 			  <c:when test="${ mateScore[size].scoreStar == 1 }">
-				 <h2>★</h2>
+				 <h2 id="foryellow">★</h2><h2 id="forgray">★★★★</h2>
 			  </c:when>
 			  <c:when test="${ mateScore[size].scoreStar == 2 }">
-			     <h2>★★</h2>
+			     <h2 id="foryellow">★★</h2><h2 id="forgray">★★</h2>
 			  </c:when>
 			  <c:when test="${ mateScore[size].scoreStar == 3 }">
-			     <h2>★★★</h2>
+			     <h2 id="foryellow">★★★</h2><h2 id="forgray">★★</h2>
 			  </c:when>
 			  <c:when test="${ mateScore[size].scoreStar == 4 }">
-			     <h2>★★★★</h2>
+			     <h2 id="foryellow">★★★★</h2><h2 id="forgray">★</h2>
 			  </c:when>
 			  <c:when test="${ mateScore[size].scoreStar == 5 }">
-				<h2>★★★★★</h2>
+				<h2 id="foryellow">★★★★★</h2>
 			  </c:when>
 			 </c:choose>
 				

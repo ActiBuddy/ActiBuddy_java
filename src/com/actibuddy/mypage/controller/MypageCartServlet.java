@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
+import com.actibuddy.mypage.model.dto.CartDTO;
 import com.actibuddy.mypage.service.MypageService;
 
 
@@ -41,6 +42,29 @@ public class MypageCartServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
+		System.out.println("아이디 : " + userId);
+		
+		String cartNum = request.getParameter("cartNum");
+		
+		CartDTO requestCart = new CartDTO();
+		requestCart.setUserId(userId);
+		requestCart.setCartNum(cartNum);
+		
+		
+		int result = new MypageService().deleteCart(requestCart);
+		System.out.println("삭제 성공? : " + result);
+		
+		MypageService mypageService = new MypageService();
+		List<CartAndMemberAndPayHIsDTO> tripList = mypageService.selectCart(userId);
+		
+		System.out.println("결과 : " + tripList);
+		
+		request.setAttribute("tripList", tripList);
+	
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/cart.jsp");
+		rd.forward(request, response);
 	}
 
 }

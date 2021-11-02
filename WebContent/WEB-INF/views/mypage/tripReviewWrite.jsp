@@ -51,7 +51,7 @@
 
                     <h5>이용 후기 작성</h5>
                     <hr>
-                    <form action="${ pageContext.servletContext.contextPath }/mypage/trip/review/write" method="post" >
+                    <form action="${ pageContext.servletContext.contextPath }/mypage/trip/review/write" method="post" enctype="multipart/form-data">
                     
                     <h2 id="titleH2">제목 : </h2><textarea id="title" placeholder="제목를 작성해주세요" name="title"></textarea>
                     
@@ -86,7 +86,7 @@
                     <hr>
                     <textarea cols ="30" rows="5" name="reviewCon" placeholder="후기 내용을 작성해주세요"></textarea>
 
-                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event); value="imageFile" /> 
+                    <input type="file" id="image" name="image" accept="image/*" onchange="setThumbnail(event); value="imageFile" /> 
                     <div id="image_container"></div>
 
                     <script> 
@@ -112,7 +112,7 @@
 
 
                     <!-- 후기 작성하기 버튼 누르면 UseYn -> Y로 변경 -->
-
+					<c:if test="${  }"></c:if>
                     <button class="t-center-btn">후기 작성하기</button>
                     
                     </form>

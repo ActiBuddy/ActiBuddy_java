@@ -57,14 +57,21 @@
                     <hr>
     
 
-                    <c:forEach var="size" begin="0" end="${ fn:length(tripList)-1 }" >
-                    <button id="x">X</button>
-                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList[size].activityInfo[size].name  }'">상세보기 ></button>
-                    <h3>${ tripList[size].activityInfo[size].name }</h3>
+                    <%-- <c:forEach var="size" begin="0" end="${ fn:length(tripList)-1 }" > --%>
+                    <c:forEach var="trip" items="${ tripList }" varStatus="st">
+                    
+                    <form action="../mypage/cart" method="post" id="deleteCart">
+                    <button id="x" type="submit">X</button>
+                    <input type="hidden" name="cartNum" value="${ trip.cartList.get(0).cartNum }">
+                    </form>
+                    
+                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ trip.activityInfo.get(0).name  }'">상세보기 ></button>
+                   <h3>${ trip.activityInfo.get(0).name }</h3>
                     <br><br>
-                    <h5>날짜 : ${ tripList[size].cartList[size].chooseDate }<br> 수량 : ${ tripList[size].cartList[size].totalPerson }</h5>
+                    <h5>날짜 : ${ trip.cartList.get(0).chooseDate }<br> 수량 : ${ trip.cartList.get(0).totalPerson }</h5>
+                    <h5>옵션 : ${ trip.cartList.get(0).chooseOption }</h5>
                     <br>
-                    <h4>총 결제할 금액 : ${ tripList[size].cartList[size].totalPrice } 원</h4>
+                    <h4>총 결제할 금액 : ${ trip.cartList.get(0).totalPrice } 원</h4>
                     <button id="pay" type="button" onclick="location.href=''">바로 결제</button>
 
                     <hr>

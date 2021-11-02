@@ -150,6 +150,7 @@
 			 	SELECT
 			        A.ACTI_NAME
 			      , A.ACTI_NUM
+			      , A.ACTI_IMG
 			      , C.CHOOSE_DATE
 			      , C.TOTAL_PERSON
 			      , C.CHOOSE_OPTION
@@ -177,6 +178,7 @@
 			      , C.TOTAL_PERSON
 			      , C.CHOOSE_OPTION
 			      , C.TOTAL_PRICE
+			      , C.CART_NUM
 			  FROM CART C
 			 INNER JOIN ACTIVITY_INFO A
 			    ON A.ACTI_NUM = C.ACTI_NUM
@@ -260,14 +262,6 @@
 			    ON A.ACTI_NUM = AR.ACTI_NUM
 	   WHERE AR.WRITER_ID = #{ userId }
     </select>
-    
-	<update id="updateReview">
-	
-	
-	
-	
-	</update>
-	
 
 	<update id="updateQuit">
 	
@@ -290,5 +284,45 @@
 		 FROM MT_SCORE
 		WHERE SCORED_ID = #{ userId }
 	</select>
+	
+	<delete id="deleteCart">
+		DELETE 
+		  FROM CART
+		WHERE USER_ID = #{ userId }
+		  AND CART_NUM = #{ cartNum }
+	</delete>
+	
+	
+	<insert id="insertReview">
+		INSERT
+          INTO ACTI_REVIEW A
+        (
+              A.ACTI_REVIEW_NUM
+			, A.ACTI_REVIEW_DATE
+			, A.ACTI_NUM
+			, A.WRITER_ID
+			, A.ACTI_REVIEW_TITLE
+			, A.ACTI_REVIEW_CON
+			, A.ACTI_REVIEW_STAR
+			, A.ACTI_REVIEW_IMG
+			, A.ACTI_REVIEW_REC
+			, A.ACTI_REVIEW_REP_YN
+        )
+        VALUES
+        (
+         'ACTI_REVIEW' || SEQ_MT_REVIEW_NUM.NEXTVAL
+        ,  default
+        , #{ actiNum }
+        , #{ writerId }
+        , #{ title }
+        , #{ content }
+        , #{ reviewStar }
+        , #{ image }
+        , 0 
+        , 'N'
+        )
+	
+	</insert>
+	
   
   </mapper>

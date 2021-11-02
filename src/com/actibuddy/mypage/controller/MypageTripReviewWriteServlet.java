@@ -54,40 +54,6 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
-			String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
-			String actiNum = request.getParameter("hdActivityNum");
-			String chooseOption = request.getParameter("hdChooseOption");
-			String title = request.getParameter("title");
-//		double reviewStar = Double.parseDouble(request.getParameter("rating"));
-			String content = request.getParameter("reviewCon");
-			
-			ActiReviewDTO requestActiReview = new ActiReviewDTO();
-			requestActiReview.setActiNum(actiNum);
-			requestActiReview.setWriterId(userId);
-			requestActiReview.setChooseOption(chooseOption);
-			requestActiReview.setTitle(title);
-//		requestActiReview.setReviewStar(reviewStar);
-			requestActiReview.setContent(content);
-			
-			
-			System.out.println("아이디 : " + userId);
-			System.out.println("액티 번호 : " + actiNum);
-			System.out.println("선택옵션 : " + chooseOption);
-			System.out.println("제목 : " + title);
-//		System.out.println("별점 : " + reviewStar);
-			System.out.println("내용 : " + content);
-			
-			
-			
-			
-			
-			MypageService mypageService = new MypageService();
-			CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
-			
-			request.setAttribute("tripList", tripList);
-			
-			System.out.println(tripList);
-			
 		
 		String rootLocation = getServletContext().getRealPath("/"); // 최상위폴더 위치
 		int maxFileSize = 1024 * 1024 * 10; // 파일 용량선언
@@ -160,9 +126,6 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 						fileMap.put("originFileName", originFileName);
 						fileMap.put("savedFileName", randomFileName);
 						fileMap.put("savePath", fileUploadDirectory);
-
-						int width = 250;
-						int height = 200;
 						
 						fileList.add(fileMap);
 					}
@@ -177,21 +140,21 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 			System.out.println("parameter : " + parameter);
 			System.out.println("fileList : " + fileList);
 			
-			MateReviewDTO requestReview = new MateReviewDTO();
-			requestReview.setTitle(parameter.get("title"));
-			requestReview.setUserId(parameter.get("userId"));
-			requestReview.setContent(parameter.get("con"));
-			requestReview.setRepYn("N");
-
-
-			requestReview.setImg1(fileList.get(0).get("savedFileName"));
-
-
+			/* String reviewStar = Double.parseDouble(request.getParameter("rating")); */
+			String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 			
+			ActiReviewDTO requestReview = new ActiReviewDTO();
+			requestReview.setActiNum(parameter.get("hdActivityNum"));
+			requestReview.setChooseOption(parameter.get("hdChooseOption"));
+			requestReview.setContent(parameter.get("reviewCon"));
+			requestReview.setReviewStar(Double.parseDouble(parameter.get("rating")));
+			requestReview.setTitle(parameter.get("title"));
+			requestReview.setWriterId(userId);
+			requestReview.setImage(fileList.get(0).get("savedFileName"));
 
 			System.out.println(requestReview);
 			
-			int result = new MateReviewService().registReview(requestReview);
+			int result = new MypageService().registReview(requestReview);
 			// result 결과에 따라서 페이지이동
 			// 고려사항
 			// 1. 현재 페이지에 있는데이터를 다른 페이지(서블릿)으로 넘겨줄꺼냐 
@@ -199,7 +162,7 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 			String path = "";
 			if(result > 0) {
 
-				path = "/acti/mate/review";
+				path = "/acti/mypage/review";
 				response.sendRedirect(path);
 
 			} else {

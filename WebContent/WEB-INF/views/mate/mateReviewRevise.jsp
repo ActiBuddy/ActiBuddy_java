@@ -51,7 +51,8 @@
                 제목
             </div>
             <div class="third">
-                <input type="text" name="title" class="write_title" maxlength="25" placeholder="제목을 입력해주세요." required>
+                <input type="text" name="title" class="write_title" maxlength="25" placeholder="제목을 입력해주세요." required
+                value="${ title }">
             </div>
         </div>
             
@@ -68,7 +69,8 @@
         <hr>
         <!-- 텍스트 부분 -->
        <div class="text_box">
-           <textarea name="con" placeholder="글을 입력해주세요." style="resize:none;" required></textarea>
+           <textarea name="con" placeholder="글을 입력해주세요." style="resize:none;" required
+           value="${ content }">></textarea>
        </div>
 
        <hr>
@@ -76,9 +78,9 @@
        <!-- 첨부 부분 -->
        <div class="bottom_border">
            <div class="img_border">
-               <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="img1" value="file1" required></div>
-               <div class="file">두번째 이미지 : <input accept="image/*" type="file" name="img2" value="file2"></div>
-               <div class="file">세번째 이미지 : <input accept="image/*" type="file" name="img3" value="file3"></div>
+               <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="img1" value="${ img1 }" required></div>
+               <div class="file">두번째 이미지 : <input accept="image/*" type="file" name="img2" value="${ img2 }"></div>
+               <div class="file">세번째 이미지 : <input accept="image/*" type="file" name="img3" value="${ img3 }"></div>
                <div class="condition">첫번째 이미지가 썸네일 이미지로 등록됩니다.</div>
            </div>
        </div>

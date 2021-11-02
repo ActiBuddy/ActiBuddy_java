@@ -14,11 +14,89 @@
 		<result property="date" column="MT_REVIEW_DATE"/>
 		<result property="repYn" column="MT_REVIEW_REP_YN"/>
 		<result property="userId" column="USER_ID"/>
-	</resultMap>
+		<result property="recommend" column="MT_REVIEW_REC"/>
+</resultMap>
 	
     <resultMap type="com.actibuddy.mate.model.dto.MateReviewDTO" id="mateMainResultMap">
-		<collection property="reviewList" resultMap="mateReviewResultMap"></collection>
+		<id property="num" column="MT_REVIEW_NUM"/>
+		<result property="title" column="MT_REVIEW_TITLE"/>
+		<result property="img1" column="MT_REVIEW_IMG1"/>
+		<result property="img2" column="MT_REVIEW_IMG2"/>
+		<result property="img3" column="MT_REVIEW_IMG3"/>
+		<result property="content" column="MT_REVIEW_CON"/>
+		<result property="date" column="MT_REVIEW_DATE"/>
+		<result property="repYn" column="MT_REVIEW_REP_YN"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="recommend" column="MT_REVIEW_REC"/>
+		<collection property="reviewList" resultMap="mateReviewResultMap"/>
 	</resultMap>
+	
+	<!-- 베스트 메이트 리뷰 조회 -->
+	<select id="selectBestReview" resultMap="mateReviewResultMap">
+		SELECT ROWNUM 
+ 			, B.MT_REVIEW_NUM
+			, B.MT_REVIEW_TITLE
+			, B.MT_REVIEW_IMG1
+			, B.MT_REVIEW_CON
+			, B.MT_REVIEW_DATE
+			, B.MT_REVIEW_REP_YN
+			, B.USER_ID
+			, B.MT_REVIEW_IMG2
+			, B.MT_REVIEW_IMG3
+			, B.MT_REVIEW_REC
+		  FROM (SELECT
+				  A.MT_REVIEW_NUM
+				, A.MT_REVIEW_TITLE
+				, A.MT_REVIEW_IMG1
+				, A.MT_REVIEW_CON
+				, A.MT_REVIEW_DATE
+				, A.MT_REVIEW_REP_YN
+				, A.USER_ID
+				, A.MT_REVIEW_IMG2
+				, A.MT_REVIEW_IMG3
+				, A.MT_REVIEW_REC
+			  FROM MT_REVIEW A
+		     ORDER BY A.MT_REVIEW_REC DESC) B
+		 WHERE ROWNUM <![CDATA[ < ]]> 6
+	</select>
+	
+	<!-- 메이트 후기 삭제 업데이트 -->
+	<update id="deleteReview">
+		UPDATE MT_REVIEW
+		   SET MT_REVIEW_REP_YN = #{ repYn }
+		 WHERE MT_REVIEW_NUM = #{ num }
+	</update>
+	
+	<!-- 메이트 추천수 업데이트 -->
+	<update id="updateReviewRec">
+		UPDATE MT_REVIEW
+		   SET MT_REVIEW_REC = #{ recommend }
+		 WHERE MT_REVIEW_NUM = #{ num }
+	</update>
+	
+	<!-- 메이트 후기 신고 업데이트 -->
+	<update id="updateRepYn">
+		UPDATE MT_REVIEW
+		   SET MT_REVIEW_REP_YN = #{ repYn }
+		 WHERE MT_REVIEW_NUM = #{ num }
+	</update>
+
+	<!-- 메이트 후기 정보 -->
+	<select id="selectReviewInfo" resultMap="mateReviewResultMap" parameterType="String">
+		SELECT
+			  A.MT_REVIEW_NUM
+			, A.MT_REVIEW_TITLE
+			, A.MT_REVIEW_IMG1
+			, A.MT_REVIEW_CON
+			, A.MT_REVIEW_DATE
+			, A.MT_REVIEW_REP_YN
+			, A.USER_ID
+			, A.MT_REVIEW_IMG2
+			, A.MT_REVIEW_IMG3
+			, A.MT_REVIEW_REC
+		  FROM MT_REVIEW A
+		 WHERE A.MT_REVIEW_NUM = #{ num }
+	</select>
 
 	<!-- 메이트 후기 페이징 -->
 	<select id="selectReviewTotalCount" resultType="_int">
@@ -40,6 +118,7 @@
 		     , C.USER_ID
 		     , C.MT_REVIEW_IMG2
 		     , C.MT_REVIEW_IMG3
+		     , C.MT_REVIEW_REC
   		  FROM (SELECT ROWNUM RNUM
 			        , B.MT_REVIEW_NUM
 			        , B.MT_REVIEW_TITLE
@@ -49,7 +128,8 @@
 			        , B.MT_REVIEW_REP_YN
 			        , B.USER_ID
 			        , B.MT_REVIEW_IMG2
-		        	, B.MT_REVIEW_IMG3	
+		        	, B.MT_REVIEW_IMG3
+		        	, B.MT_REVIEW_REC
       			 FROM (SELECT
 			              A.MT_REVIEW_NUM
 			            , A.MT_REVIEW_TITLE
@@ -60,6 +140,7 @@
 			            , A.USER_ID
 			            , A.MT_REVIEW_IMG2
 			            , A.MT_REVIEW_IMG3
+			            , A.MT_REVIEW_REC
      				   FROM MT_REVIEW A
      			      ORDER BY A.MT_REVIEW_DATE DESC) B
      			      
@@ -84,6 +165,7 @@
 		, A.USER_ID
 		, A.MT_REVIEW_IMG2
 		, A.MT_REVIEW_IMG3
+		, A.MT_REVIEW_REC
 		)
 		VALUES
 		(
@@ -96,6 +178,7 @@
         , #{ userId } 
         , #{ img2 }
         , #{ img3 }
+        , #{ recommend }
 		)
 
 	</insert>

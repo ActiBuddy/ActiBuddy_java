@@ -32,50 +32,24 @@
               <a href="https://www.hyundailivart.co.kr/" target="_blank"><img src="${ pageContext.servletContext.contextPath }/resources/image/livartad.png"></a>
           </div>
       
-          <!-- 베스트 메이팅 후기 -->
+          <!-- 1)베스트 메이팅 후기 -->
           <div class="mate_review1">
               <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_best.png">
       
           </div>
       
-      
-          <div class="mate_review2">
-              <div>
-              <a href="https://www.hyundailivart.co.kr/"><img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png"></a>
+      	 <div class="mate_review2">
+      	 	  <c:forEach var="bestReview" items="${ bestReviewList }">
+              <div class="mate_review3">
+                <a href="/acti/mate/review/select?num=${ bestReview.num }"><img src="${ pageContext.servletContext.contextPath }/resources/image/review/${ bestReview.img1 }"></a>
+                <div>
+                    ${ bestReview.title }
+                </div>
               </div>
-              <div>
-              <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-              </div>
-              <div>
-              <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-              </div>
-              <div>
-              <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-              </div>
-              <div>
-              <img src="${ pageContext.servletContext.contextPath }/resources/image/scuba_diving1.png">
-              </div>
-          </div>
-      
-          <div class="mate_review3">
-              <div>
-                  스쿠버완
-              </div>
-              <div>
-                  스쿠버투
-              </div>
-              <div>
-                  스쿠버쓰리
-              </div>
-              <div>
-                  스쿠버포
-              </div>
-              <div>
-                  스쿠버파이브
-              </div>
-          </div>
-        
-        <!-- 메이팅 후기 -->
+              </c:forEach>
+         </div>
+         
+        <!-- 2)메이팅 후기 -->
         <div class="mate_review4">
             <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_review.png">
         </div>
@@ -87,9 +61,10 @@
                 <div class="mate_review6">
                    <a href="/acti/mate/review/select?num=${ review.num }"> <img src="${ pageContext.servletContext.contextPath }/resources/image/review/${ review.img1 }"></a>
                 </div>
-                <div class="mate_review7">${ review.title }</div>
-                <div class="mate_review8">${ review.userId }</div>
+                <div class="mate_review7"><a href="/acti/mate/review/select?num=${ review.num }">${ review.title }</a></div>
+                <div class="mate_review8"><a href="/acti/mypage/main?userId=${ review.userId }">${ review.userId }</a></div>
                 <div class="mate_review9">${ review.date }</div>
+                <div class="mate_review10">추천수 : ${ review.recommend }</div>
             </div>
          
            </c:forEach>

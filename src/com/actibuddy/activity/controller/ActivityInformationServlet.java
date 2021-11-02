@@ -41,6 +41,8 @@ public class ActivityInformationServlet extends HttpServlet {
 		
 		System.out.println("=====================================================");
 		
+		int viewUpdate = activityService.updateViews(actiName);
+		
 		List<ActivityDTO> recActivity = new ArrayList<>();
 		recActivity = activityService.selectRecommendActivity(actiName);
 //		for(ActivityDTO acti : recActivity) {

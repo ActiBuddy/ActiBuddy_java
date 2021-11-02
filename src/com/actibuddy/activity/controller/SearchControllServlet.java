@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.SearchDTO;
 import com.actibuddy.activity.service.ActivityService;
 import com.actibuddy.common.paging.Pagenation;
@@ -162,12 +163,11 @@ public class SearchControllServlet extends HttpServlet {
 		resultMap.put("startRow", selectCriteria.getStartRow());
 		resultMap.put("endRow", selectCriteria.getEndRow());
 		
-		List<SearchDTO> searchList = activityService.searchActivity(resultMap);
+		List<ActivityDTO> searchList = activityService.searchActivity(resultMap);
 		
 		System.out.println("값"  + searchList);
 		
 		String path = "";
-		
 		if(price != null) {
 			path = "/WEB-INF/views/activity/searchActivity.jsp";
 			request.setAttribute("searchList", searchList);
@@ -182,7 +182,6 @@ public class SearchControllServlet extends HttpServlet {
 			request.setAttribute("move", "move");
 			request.setAttribute("sort", sort);
 			request.setAttribute("selectCriteria", selectCriteria);
-			
 		} 
 		
 		if(searchList == null) {

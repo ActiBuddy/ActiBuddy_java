@@ -73,16 +73,16 @@ public class ActivityService {
 	}
 
 	/**
-	 * 가격으로 정렬한 액티비티 정보 조회
+	 * 해당 지역에 대한 액티비티 정보 조회
 	 * @author 김주환
-	 * @param priceMap
+	 * @param resultMap
 	 * @return
 	 */
-	public LocationAndActivityDTO selectActivityByPrice(Map<String, String> priceMap) {
+	public LocationAndActivityDTO selectActivity(Map<String, Object> resultMap) {
 
 		SqlSession session = getSqlSession();
 	
-		LocationAndActivityDTO location = activityDAO.selectActivityByPrice(session, priceMap);
+		LocationAndActivityDTO location = activityDAO.selectActivity(session, resultMap);
 		
 		session.close();
 		
@@ -235,6 +235,12 @@ public class ActivityService {
 		return totalCount;
 	}
 
+	/**
+	 * 검색어를 포함한 액티비티 총 갯수 검색 메소드
+	 * @author 김주환
+	 * @param resultMap
+	 * @return
+	 */
 	public int totalCountBySearch(Map<String, Object> resultMap) {
 
 		SqlSession session = getSqlSession();
@@ -246,26 +252,66 @@ public class ActivityService {
 		return totalCount;
 	}
 
-	public List<SearchDTO> searchActivity(Map<String, Object> resultMap) {
+	/**
+	 * 검색어를 포함한 액티비티 검색 메소드 
+	 * @author 김주환
+	 * @param resultMap
+	 * @return
+	 */
+	public List<ActivityDTO> searchActivity(Map<String, Object> resultMap) {
 
 		SqlSession session = getSqlSession();
 		
-		List<SearchDTO> actiList = activityDAO.searchActivity(session, resultMap);
+		List<ActivityDTO> actiList = activityDAO.searchActivity(session, resultMap);
 		
 		session.close();
 		
 		return actiList;
 	}
 
-	public LocationAndActivityDTO selectActiName(String locationName) {
+	public List<ActivityDTO> selectActiName(String locationName) {
 
 		SqlSession session = getSqlSession();
 		
-		LocationAndActivityDTO list = activityDAO.selectActiName(session, locationName);
+		List<ActivityDTO> list = activityDAO.selectActiName(session, locationName);
 		
 		session.close();
 		
 		return list;
+	}
+
+	public LocationAndActivityDTO selectRandomList(String locationName) {
+
+		SqlSession session = getSqlSession();
+		
+		LocationAndActivityDTO list = activityDAO.selectRandomList(session, locationName);
+		
+		session.close();
+		
+		return list;
+	}
+
+	/**
+	 * 액티비티 조회수 증가용 메소드
+	 * @author 김주환
+	 * @param actiName
+	 * @return
+	 */
+	public int updateViews(String actiName) {
+
+		SqlSession session = getSqlSession();
+		
+		int result = activityDAO.updateViews(session, actiName);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
 	}
 
 }

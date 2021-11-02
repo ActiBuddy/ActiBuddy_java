@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.SearchDTO;
 import com.actibuddy.activity.service.ActivityService;
 import com.actibuddy.common.paging.Pagenation;
@@ -22,6 +23,7 @@ public class SearchActivityServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		/* 검색어 확인 */
 		String searchValue = request.getParameter("searchValue");
 		System.out.println("search check : " + searchValue);
 		
@@ -52,7 +54,7 @@ public class SearchActivityServlet extends HttpServlet {
 		resultMap.put("startRow", selectCriteria.getStartRow());
 		resultMap.put("endRow", selectCriteria.getEndRow());
 		
-		List<SearchDTO> searchList = activityService.searchActivity(resultMap);
+		List<ActivityDTO> searchList = activityService.searchActivity(resultMap);
 		System.out.println(searchList);
 
 		String path = "";
@@ -62,7 +64,8 @@ public class SearchActivityServlet extends HttpServlet {
 			request.setAttribute("selectCriteria", selectCriteria);
 			request.setAttribute("searchValue", selectCriteria.getSearchValue());
 		} else {
-		
+			path="/WEB-INF/views/activity/searchActivity.jsp";
+			request.setAttribute("searchList", searchList);
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);

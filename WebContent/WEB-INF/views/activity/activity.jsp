@@ -339,9 +339,7 @@
 		$('input[name=select4]').attr('checked', true);
 		
 		$('#selectAll5').val(checkArr);
-	}
-	
-	
+	}	
   });
   </script>
   </head>
@@ -395,40 +393,23 @@
     </div>
     <div class="container mt-4">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
-            <c:forEach items="${locationActivity.activityList}" var="acti" end="2">
+            <c:forEach items="${randomList.activityList}" var="acti" end="2">
             <div class="col">
-              <div class="card shadow-sm">
-                <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+            <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
+              <div class="card shadow-sm" id="clickAcit">
+                <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
                 <div class="card-body" style="height : 160px">
                   <p class="card-text">
                       ${acti.name}
-                  </p></a>
-                  <p id="star">별점 :
-                 
-                 <c:set var = "total" value = "0" />
-
-                 <c:forEach var="result" items="${ acti.reviewList}" varStatus="status">     
-
-                 <c:set var= "total" value="${total + result.reviewStar}"/>
-
-                 </c:forEach>
-
-                 <c:set var = "longAvg" value="${total / fn:length(acti.reviewList)}"/>
-
-                 <fmt:formatNumber type="number" pattern="#.0" value="${total / fn:length(acti.reviewList)}" />
-                 
-                 <%--
-                  해당 액티비티의 리뷰 갯수 공식
-                  <c:set var="count" value="${ fn:length(acti.reviewList) }"
-                  --%>
-
                   </p>
+                  <p>조회수 : ${acti.views} </p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">₩${acti.price}부터</small>
                   </div>
                 </div>
               </div>
+              </a>
             </div>
         </c:forEach>
     </div>
@@ -554,10 +535,10 @@
               <span id="sort">정렬 : </span>
               <div class="dropdown">
                 <select id="sortBtn" name="sort">
-                   	<option value="popular">인기순</option>
-                    <option value="star">별점순</option>
-                    <option value="price">낮은가격순</option>
+                    <option value="views">인기순</option>
                     <option value="new">최신순</option>
+                   	<option value="random">랜덤추천</option>
+                    <option value="price">낮은가격순</option>
                 </select>
               </div>
             </div>
@@ -569,38 +550,21 @@
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
             <c:forEach items="${locationActivity.activityList}" var="acti">
             <div class="col">
+            <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm">
-                <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+                <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
                 <div class="card-body" style="height : 160px">
                   <p class="card-text">
                       ${acti.name}
-                  </p></a>
-                  <p id="star">별점 :
-                 
-                 <c:set var = "total" value = "0" />
-
-                 <c:forEach var="result" items="${ acti.reviewList}" varStatus="status">     
-
-                 <c:set var= "total" value="${total + result.reviewStar}"/>
-
-                 </c:forEach>
-
-                 <c:set var = "longAvg" value="${total / fn:length(acti.reviewList)}"/>
-
-                 <fmt:formatNumber type="number" pattern="#.0" value="${total / fn:length(acti.reviewList)}" />
-                 
-                 <%--
-                  해당 액티비티의 리뷰 갯수 공식
-                  <c:set var="count" value="${ fn:length(acti.reviewList) }"
-                  --%>
-
                   </p>
+                  <p>조회수 : ${ acti.views }</p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">₩${acti.price}부터</small>
                   </div>
                 </div>
               </div>
+              </a>
             </div>
             </c:forEach>
           </div> 

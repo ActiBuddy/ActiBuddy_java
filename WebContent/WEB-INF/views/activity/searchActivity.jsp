@@ -370,7 +370,7 @@
         <div class="mb-4" id="div1"><input type="checkbox" name="location" value="제주도"><span>제주도</span></div>
         <div class="mb-4" id="div1"><input type="checkbox" name="location" value="부산"><span>부산</span></div>
         <input type="hidden" name="location" value="${ location }">
-         <input type="hidden" name="searchValue" value="${ selectCriteria.searchValue }"/>
+        <input type="hidden" name="searchValue" value="${ selectCriteria.searchValue }"/>
       </div>
       </form>
       <hr>
@@ -488,53 +488,36 @@
               <span id="sort">정렬 : </span>
               <div class="dropdown">
                 <select id="sortBtn" name="sort">
-                   	<option value="popular">인기순</option>
-                    <option value="star">별점순</option>
-                    <option value="price">낮은가격순</option>
+                    <option value="views">인기순</option>
                     <option value="new">최신순</option>
+                   	<option value="random">랜덤추천</option>
+                    <option value="price">낮은가격순</option>
                 </select>
               </div>
             </div>
           </div>
-           <input type="hidden" name="searchValue" value="${ selectCriteria.searchValue }"/>
+          <input type="hidden" name="searchValue" value="${selectCriteria.searchValue}"/>
           </form>
         </div>
        <div class="container" id="test" style="float: none; margin:100 auto;">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
-            <c:forEach items="${searchList}" var="acti">
+            <c:forEach items="${searchList}" var="acti" >
             <div class="col">
+            <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm">
-                <a href="/acti/activity/information?actiName=${acti.actiName}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+                <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
                 <div class="card-body" style="height : 160px">
                   <p class="card-text">
-                      ${acti.actiName}
-                  </p></a>
-                  <p id="star">별점 :
-                 
-                 <c:set var = "total" value = "0" />
-
-                 <c:forEach var="result" items="${ acti.reviewList}" varStatus="status">     
-
-                 <c:set var= "total" value="${total + result.reviewStar}"/>
-
-                 </c:forEach>
-
-                 <c:set var = "longAvg" value="${total / fn:length(acti.reviewList)}"/>
-
-                 <fmt:formatNumber type="number" pattern="#.0" value="${total / fn:length(acti.reviewList)}" />
-                 
-                 <%--
-                  해당 액티비티의 리뷰 갯수 공식
-                  <c:set var="count" value="${ fn:length(acti.reviewList) }"
-                  --%>
-
+                      ${acti.name}
                   </p>
+                  <p>조회수 : ${ acti.views }</p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">₩${acti.price}부터</small>
                   </div>
                 </div>
               </div>
+              </a>
             </div>
             </c:forEach>
           </div> 

@@ -11,14 +11,14 @@ public class SearchDTO implements java.io.Serializable{
 	private Date endDate;
 	private String tip;
 	private String image;
-	private List<ActiReviewDTO> reviewList;
+	private List<ActivityDTO> actiList;
 	
 	public SearchDTO() {
 
 	}
 
 	public SearchDTO(String actiName, int price, Date startDate, Date endDate, String tip, String image,
-			List<ActiReviewDTO> reviewList) {
+			List<ActivityDTO> actiList) {
 		super();
 		this.actiName = actiName;
 		this.price = price;
@@ -26,7 +26,7 @@ public class SearchDTO implements java.io.Serializable{
 		this.endDate = endDate;
 		this.tip = tip;
 		this.image = image;
-		this.reviewList = reviewList;
+		this.actiList = actiList;
 	}
 
 	public String getActiName() {
@@ -77,17 +77,17 @@ public class SearchDTO implements java.io.Serializable{
 		this.image = image;
 	}
 
-	public List<ActiReviewDTO> getReviewList() {
-		return reviewList;
+	public List<ActivityDTO> getReviewList() {
+		return actiList;
 	}
 
-	public void setReviewList(List<ActiReviewDTO> reviewList) {
-		this.reviewList = reviewList;
+	public void setReviewList(List<ActivityDTO> actiList) {
+		this.actiList = actiList;
 	}
 
 	@Override
 	public String toString() {
 		return "SearchDTO [actiName=" + actiName + ", price=" + price + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", tip=" + tip + ", image=" + image + ", reviewList=" + reviewList + "]";
+				+ endDate + ", tip=" + tip + ", image=" + image + ", actiList=" + actiList + "]";
 	}
 }

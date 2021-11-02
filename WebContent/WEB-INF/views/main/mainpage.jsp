@@ -23,12 +23,10 @@
 		</div>
 
 		<div class="mainsearch">
-			<ul>
-				<input type="text" size="50" placeholder="Search">
-				</li>
-				<button type="submit" class="search-btn" onclick="location.href='/acti/search/activity'">검색하기</button>
-				</li>
-			</ul>
+				<form action="/acti/search/activity" method="get">
+				<input type="text" size="50" placeholder="Search" name="searchValue">
+				<button type="submit" class="search-btn" id="sub">검색하기</button>
+				</form>
 		</div>
 
 		<div class="all1">

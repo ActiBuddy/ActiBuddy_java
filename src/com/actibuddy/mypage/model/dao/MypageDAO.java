@@ -5,10 +5,15 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.activity.model.dto.ActiReviewDTO;
+import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
+import com.actibuddy.activity.model.dto.ActivityDTO;
+import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
+import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
 
 
 public class MypageDAO {
@@ -47,6 +52,37 @@ public class MypageDAO {
 			
 			
 			return session.selectList("MypageDAO.selectMtReview",userId);
+		}
+
+		public List<ActivityDTO> selectActiInfo(SqlSession session, String userId) {
+			
+			return session.selectList("MypageDAO.selectActiInfo",userId);
+		}
+
+		public List<ActivityAndReviewDTO> selectActiReview(SqlSession session, String userId) {
+			
+			return session.selectList("MypageDAO.selectActiReview",userId);
+		}
+
+		public int updateQuit(SqlSession session, MemberDTO requestUpdate) {
+			
+			return session.update("MypageDAO.updateQuit",requestUpdate);
+		}
+
+		public static List<MypageMateScoreDTO> selectMateScore(SqlSession session, String userId) {
+			
+			return session.selectList("MypageDAO.selectMateScore",userId);
+		}
+
+		public static int deleteCart(SqlSession session, CartDTO requestCart) {
+			
+			
+			return session.delete("MypageDAO.deleteCart",requestCart);
+		}
+
+		public static int insertReview(SqlSession session, ActiReviewDTO requestReview) {
+			
+			return session.insert("MypageDAO.insertReview",requestReview);
 		}
 
 

@@ -60,7 +60,7 @@
             <div class="writer">
                 작성자 : 
             </div>
-            <divclass="name">
+            <div class="name">
                 <input type="text" name="userId" value="${ sessionScope.loginMember.userName }" readonly>
             </div>
         </div>
@@ -76,10 +76,10 @@
        <!-- 첨부 부분 -->
        <div class="bottom_border">
            <div class="img_border">
-               <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="img1" value="file1"></div>
+               <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="img1" value="file1" required></div>
                <div class="file">두번째 이미지 : <input accept="image/*" type="file" name="img2" value="file2"></div>
                <div class="file">세번째 이미지 : <input accept="image/*" type="file" name="img3" value="file3"></div>
-               <div class="condition">사진은 최대 3장까지 첨부가능합니다.</div>
+               <div class="condition">첫번째 이미지가 썸네일 이미지로 등록됩니다.</div>
            </div>
        </div>
 

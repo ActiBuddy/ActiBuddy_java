@@ -208,7 +208,7 @@
 	if('${ price }' != 0 && '${ price }' != '0 - 300000'){
 		
 		$('#spanPrice').text('${ price }');
-		$('#price').val('${ price }');
+		$('#amount2').val('${ price }');
 		
 	} else if('${ price }' == '0 - 300000'){
 		$('#spanPrice').text('가격');
@@ -339,9 +339,7 @@
 		$('input[name=select4]').attr('checked', true);
 		
 		$('#selectAll5').val(checkArr);
-	}
-	
-	
+	}	
   });
   </script>
   </head>
@@ -380,7 +378,7 @@
         <h1 style="margin-bottom: 20px;">방문하기 좋은 시기</h1>
         <ul>
           <li>
-           <c:forEach var="data1" items="${ vistis }">
+           <c:forEach var="data1" items="${ vistis['vistis'] }">
            ${data1}
           </c:forEach>
           </li>
@@ -391,44 +389,27 @@
           
     <!-- 인기 액티비티 -->
     <div class="container mt-5 mb-md-5">
-        <h1>${locationActivity.name} 인기 액티비티</h1>
+        <h1>${locationActivity.name} 추천 액티비티</h1>
     </div>
     <div class="container mt-4">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
-            <c:forEach items="${locationActivity.activityList}" var="acti" end="2">
+            <c:forEach items="${randomList.activityList}" var="acti" end="2">
             <div class="col">
-              <div class="card shadow-sm">
-                <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+            <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
+              <div class="card shadow-sm" id="clickAcit">
+                <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
                 <div class="card-body" style="height : 160px">
                   <p class="card-text">
                       ${acti.name}
-                  </p></a>
-                  <p id="star">별점 :
-                 
-                 <c:set var = "total" value = "0" />
-
-                 <c:forEach var="result" items="${ acti.reviewList}" varStatus="status">     
-
-                 <c:set var= "total" value="${total + result.reviewStar}"/>
-
-                 </c:forEach>
-
-                 <c:set var = "longAvg" value="${total / fn:length(acti.reviewList)}"/>
-
-                 <fmt:formatNumber type="number" pattern="#.0" value="${total / fn:length(acti.reviewList)}" />
-                 
-                 <%--
-                  해당 액티비티의 리뷰 갯수 공식
-                  <c:set var="count" value="${ fn:length(acti.reviewList) }"
-                  --%>
-
                   </p>
+                  <p>조회수 : ${acti.views} </p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">₩${acti.price}부터</small>
                   </div>
                 </div>
               </div>
+              </a>
             </div>
         </c:forEach>
     </div>
@@ -444,7 +425,7 @@
     <div class="side-2" style="height: 530px;">
       <h3 style="margin-left: 10%;">카테고리</h3>
       <br>
-      <form action="/acti/sort/controll" method="post">
+      <form action="/acti/sort/controll" method="get">
       <div class="menu">
         <div class="btn-group mb-5">
           <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -527,14 +508,13 @@
       </form>
     </div>
     <div class="div2">
-        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">${locationActivity.activityList.size()}건의 검색 결과</h2>
+        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">${selectCriteria.totalCount}건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
-    	<form method="post" action="/acti/sort/controll" id="frm">
+    	<form method="get" action="/acti/sort/controll" id="frm">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
               <div class="date">
               <p style="font-size: 18px">예약날짜 : <input type="text" id="datepicker" name="date" readonly="readonly"></p>
-              <input type="hidden" id="date" value="${ date }">
               </div>
             </div>
             <div class="col" style="flex: 1.0; padding: 0px;" >
@@ -547,7 +527,6 @@
                       <input type="text" id="amount2" name="price" readonly style="border:0; color:#f6931f; font-weight:bold;">
                       <div id="slider-range" style="margin-top: 10px;"></div>
                       <button type="submit" class="btn btn-success" id="sub">확인</button>
-		                <input type="hidden" id="price" value="${ price }">
                     </div>
                   </ul>
               </div>
@@ -556,12 +535,11 @@
               <span id="sort">정렬 : </span>
               <div class="dropdown">
                 <select id="sortBtn" name="sort">
-                   	<option value="popular">인기순</option>
-                    <option value="star">별점순</option>
-                    <option value="price">낮은가격순</option>
+                    <option value="views">인기순</option>
                     <option value="new">최신순</option>
+                   	<option value="random">랜덤추천</option>
+                    <option value="price">낮은가격순</option>
                 </select>
-                <input type="hidden" id="sort" value="${ sort }">
               </div>
             </div>
           </div>
@@ -572,38 +550,21 @@
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
             <c:forEach items="${locationActivity.activityList}" var="acti">
             <div class="col">
+            <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm">
-                <a href="/acti/activity/information?actiName=${acti.name}"><img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+                <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
                 <div class="card-body" style="height : 160px">
                   <p class="card-text">
                       ${acti.name}
-                  </p></a>
-                  <p id="star">별점 :
-                 
-                 <c:set var = "total" value = "0" />
-
-                 <c:forEach var="result" items="${ acti.reviewList}" varStatus="status">     
-
-                 <c:set var= "total" value="${total + result.reviewStar}"/>
-
-                 </c:forEach>
-
-                 <c:set var = "longAvg" value="${total / fn:length(acti.reviewList)}"/>
-
-                 <fmt:formatNumber type="number" pattern="#.0" value="${total / fn:length(acti.reviewList)}" />
-                 
-                 <%--
-                  해당 액티비티의 리뷰 갯수 공식
-                  <c:set var="count" value="${ fn:length(acti.reviewList) }"
-                  --%>
-
                   </p>
+                  <p>조회수 : ${ acti.views }</p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">₩${acti.price}부터</small>
                   </div>
                 </div>
               </div>
+              </a>
             </div>
             </c:forEach>
           </div> 
@@ -613,24 +574,8 @@
     
   <!-- 페이지 이동창 -->    
   <nav>
-    <div class="container row" style="float: right; margin:100 auto;">
-    <ul class="pagination" style="float: right;">
-      <li>
-        <a href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li>
-        <a href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
+    <div class="container mt-5">
+   <jsp:include page="../common/activitypage.jsp"/>
   </div>
   </nav>
   

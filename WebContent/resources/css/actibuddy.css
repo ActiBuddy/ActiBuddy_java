@@ -155,6 +155,7 @@ a:hover {
   width: 45%;
   margin: 0px auto 20px auto;
   overflow: hidden;
+  text-align: center;
   /* border: 1px solid red; */
 }
 
@@ -333,11 +334,9 @@ main {
 .all1 {
   width: 60%;
   margin: 0 auto;
-  height: 3000px;
+  height: 700px;
   /* border: 1px solid red; */
 }
-
-
 
 
 body {

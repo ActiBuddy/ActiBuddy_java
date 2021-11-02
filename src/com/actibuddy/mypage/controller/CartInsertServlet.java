@@ -24,7 +24,7 @@ public class CartInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String code = request.getParameter("actiNum");
-		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
+		String userId = request.getParameter("userId");
 		String option = request.getParameter("chooseOption");
 		int person = Integer.parseInt(request.getParameter("totalPerson"));
 		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));

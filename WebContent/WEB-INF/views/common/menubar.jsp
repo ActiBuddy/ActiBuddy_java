@@ -77,7 +77,7 @@
 			<a href="../mate/mateFindWriting.html">메이팅</a>
 			<div id="acti_detail2">
             <a href="#">메이트 매칭</a>
-            <a href="#">메이트 후기</a>
+            <a href="${ pageContext.servletContext.contextPath }/mate/review">메이트 후기</a>
             </div>
 			</span>
 			<span>

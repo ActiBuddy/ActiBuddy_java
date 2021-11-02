@@ -42,44 +42,8 @@
 
     <div class="body-all">
     
-        
-        <div class="side-all">
-            
-    
-            <div class="side-1">
-                <br><br><br>
-                <img src="${ pageContext.servletContext.contextPath }/resources/image/profile.png" width="100px" height="100px"/>
-                
-                <c:if test="${ !empty sessionScope.loginMember }">
-		
-        			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
+			<jsp:include page="../common/mypagesidebar.jsp"/>
 
-				</c:if>
-                
-                
-                <hr>
-                <br>
-
-                <a href="/acti/mypage/quit" id="quit">회원탈퇴</a>
-          	</div>
-            
-            <div class="side-2">
-                
-                <br><br>
-                <div class="menu">
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/triplist">여행 내역</a><br><br><br>
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/review">이용 후기</a><br><br><br>
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/myquestion">문의 사항</a><br><br>
-                </div>
-            </div>
-
-            
-        </div>
-
-
-        
         <div class="center-all">
 
             <div class="t-center-1">
@@ -87,7 +51,7 @@
 
                     <h5>이용 후기 작성</h5>
                     <hr>
-                    <form action="${ pageContext.servletContext.contextPath }/mypage/trip/review/write" method="post" >
+                    <form action="${ pageContext.servletContext.contextPath }/mypage/trip/review/write" method="post" enctype="multipart/form-data">
                     
                     <h2 id="titleH2">제목 : </h2><textarea id="title" placeholder="제목를 작성해주세요" name="title"></textarea>
                     
@@ -122,7 +86,7 @@
                     <hr>
                     <textarea cols ="30" rows="5" name="reviewCon" placeholder="후기 내용을 작성해주세요"></textarea>
 
-                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event); value="imageFile" /> 
+                    <input type="file" id="image" name="image" accept="image/*" onchange="setThumbnail(event); value="imageFile" /> 
                     <div id="image_container"></div>
 
                     <script> 
@@ -148,7 +112,6 @@
 
 
                     <!-- 후기 작성하기 버튼 누르면 UseYn -> Y로 변경 -->
-
                     <button class="t-center-btn">후기 작성하기</button>
                     
                     </form>

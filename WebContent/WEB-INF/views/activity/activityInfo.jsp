@@ -55,14 +55,18 @@
   </div>
    <div class="carousel-inner">
      <div class="carousel-item active">
-      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="..." style="image:cover">
+      <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
     </div>
+    <c:if test="${ not empty activity.activityList[0].image2 }">
      <div class="carousel-item">
       <img src=${ activity.activityList[0].image2 } class="d-block w-100" alt="...">
     </div>
+    </c:if>
+    <c:if test="${ not empty activity.activityList[0].image3 }">
      <div class="carousel-item">
       <img src=${ activity.activityList[0].image3 } class="d-block w-100" alt="...">
     </div>
+    </c:if>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -227,37 +231,41 @@
   <br> <br>
 
     <input type="submit" id="cart" class="btn btn-pay-select" value="장바구니"> 
-    <%-- <input type="hidden" name="actiName" value="${ activity.activityList[0].code }"> --%>
     
     <script>
      $(function(){			
 		$('#cart').on('click',function(e){
 			
-			let code = '${ activity.activityList[0].code }';
+			let user = '${ sessionScope.loginMember.userName }';
+			let date = $('#datepicker').val();
 			let option = $('input[type=radio]:checked').val();
+			
+			 if(!user) {
+		 	    	alert("로그인을 진행해주세요.")
+		 	    } else if(!option) {
+		 	    	alert("옵션을 선택해주세요.")
+		 	    } else if(!date) {
+		 	        alert("날짜를 선택해주세요.") 
+		 	    }  else {
+		 	    	
+			let code = '${ activity.activityList[0].code }';
 			let person = $('.person-bar').val();
 			let totalPrice = person * checkprice;
-			let date = $('#datepicker').val();
 			
-			console.log(code);
-			console.log(option);
-			console.log(person);
-			console.log(totalPrice);
-			console.log(date);
+			console.log("user : " + user);
+			console.log("code : " + code);
+			console.log("option : " + option);
+			console.log("person : " + person);
+			console.log("totalPrice : " + totalPrice);
+			console.log("date : " + date);
 		   
-	/* 		if(option == null) {
-				alert("옵션을 선택해주세요")
-			} else if(person == null) {
-				alert("인원을 선택해주세요")
-			} else if(date == null) {
-				alert("날짜를 선택해주세요")
-			} */
-			
+	 	   
 			
 			 $.ajax({
 	            url:'${ pageContext.servletContext.contextPath }/cart/insert', //Controller에서 인식할 주소
 	            type:'post',
-	            data:{ actiNum : code 
+	            data:{ userId : user
+	            	,  actiNum : code 
 	            	,  chooseOption : option 
 	            	, totalPerson : person 
 	            	, totalPrice : totalPrice 
@@ -276,6 +284,7 @@
 	                alert("error");
 	            }
 	        }); 
+	 	    };
 		});
 	}); 
 	
@@ -404,26 +413,29 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); *
 
 $('#sort-select').on('change', function(){
 	
-	$('#sortForm').attr("action","/acti/review/sort").submit();
+	$('#sortForm').attr("action","/acti/activity/information").submit();
 
 }); 
 
     $('#sort-select').val('${ sort }');
-    
-    
-
 
 </script>
 
+
 <br><br>
 
-<%-- <c:forEach items="${ activity.reviewList }" var="reviewList"> --%>
-<c:forEach var="size" begin="0" end="${ fn:length(activity.reviewList) -1 }">
+<c:choose>
+      <c:when test="${ empty reviewList }">
+      <h1 id="reviewNull"> 아직 작성된 후기가 없습니다. </h1>
+  </c:when>
+      <c:when test="${ not empty reviewList }">
+
+<c:forEach var="size" begin="0" end="${ fn:length(reviewList) -1 }">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 </svg>
-<h3 id="nickname"> ${ activity.reviewList[size].writerId } </h3>
+<h3 id="nickname"> ${ reviewList[size].writerId } </h3>
 
 <div class="stars-user">
   <c:set var="userStar" value="<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='currentColor' class='bi bi-star-user1' viewBox='0 0 16 16'>
@@ -431,25 +443,25 @@ $('#sort-select').on('change', function(){
   </svg>" scope="page" />
   
   <c:choose>
-      <c:when test="${ activity.reviewList[size].reviewStar <= 1.9 }">
+      <c:when test="${ reviewList[size].reviewStar <= 1.9 }">
      <c:out value="${ userStar }" escapeXml="false"/>
   </c:when>
-  <c:when test="${ activity.reviewList[size].reviewStar <= 2.9 }">
-     <c:out value="${ userStar }" escapeXml="false"/>
-     <c:out value="${ userStar }" escapeXml="false"/>
-  </c:when>
-  <c:when test="${ activity.reviewList[size].reviewStar <= 3.9 }">
-     <c:out value="${ userStar }" escapeXml="false"/>
+  <c:when test="${ reviewList[size].reviewStar <= 2.9 }">
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
   </c:when>
-  <c:when test="${ activity.reviewList[size].reviewStar <= 4.9 }">
-     <c:out value="${ userStar }" escapeXml="false"/>
+  <c:when test="${ reviewList[size].reviewStar <= 3.9 }">
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
   </c:when>
-  <c:when test="${ activity.reviewList[size].reviewStar <= 5 }">
+  <c:when test="${ reviewList[size].reviewStar <= 4.9 }">
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+     <c:out value="${ userStar }" escapeXml="false"/>
+  </c:when>
+  <c:when test="${ reviewList[size].reviewStar <= 5 }">
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
      <c:out value="${ userStar }" escapeXml="false"/>
@@ -459,44 +471,50 @@ $('#sort-select').on('change', function(){
  </c:choose> 
 
 <c:choose>
-      <c:when test="${ activity.reviewList[size].reviewStar <= 1.9 }">
+      <c:when test="${ reviewList[size].reviewStar <= 1.9 }">
      <h5 id="review-auto"> 매우 불만족 </h5> <br><br>
   </c:when>
-  <c:when test="${ activity.reviewList[size].reviewStar <= 2.9 }">
+  <c:when test="${ reviewList[size].reviewStar <= 2.9 }">
      <h5 id="review-auto"> 불만족 </h5> <br><br>
   </c:when>
-  <c:when test="${ activity.reviewList[size].reviewStar <= 3.9 }">
+  <c:when test="${ reviewList[size].reviewStar <= 3.9 }">
      <h5 id="review-auto"> 보통 </h5> <br><br>
   </c:when>
-  <c:when test="${ activity.reviewList[size].reviewStar <= 4.9 }">
+  <c:when test="${ reviewList[size].reviewStar <= 4.9 }">
      <h5 id="review-auto"> 만족 </h5> <br><br>
   </c:when>
-  <c:when test="${ activity.reviewList[size].reviewStar <= 5 }">
+  <c:when test="${ reviewList[size].reviewStar <= 5 }">
      <h5 id="review-auto"> 매우 만족 </h5> <br><br>
   </c:when>
  </c:choose> 
 
 
-  <h6 id="goods-detail"> ${ activity.reviewList[size].chooseOption } </h6>
+  <h6 id="goods-detail"> ${ reviewList[size].chooseOption } </h6>
 
-  <h5 id="review-date"> ${ activity.reviewList[size].writeDate } </h5> <br><br>
+  <h5 id="review-date"> ${ reviewList[size].writeDate } </h5> <br><br>
 
 <div class="review-detail">
-<p id="review-p"> ${ activity.reviewList[size].content }</p>
-<img src= ${ activity.reviewList[size].image } alt="..." class="review-img">
+<p id="review-p"> ${ reviewList[size].content }</p>
+<img src= ${ reviewList[size].image } alt="..." class="review-img">
 </div>
 </div>
 
 <br>
 
 <button class="suggestion" id="suggestion${ size + 1 }">추천</button>
-<h6 class="sugCount" id="sugCount${ size + 1 }">${ activity.reviewList[size].recommend }명이 추천한 후기입니다</h6>
+<h6 class="sugCount" id="sugCount${ size + 1 }">${ reviewList[size].recommend }명이 추천한 후기입니다</h6>
 
  <script>
      $(function(){			
 		$('#suggestion${ size + 1 }').one('click',function(e){
 		   
-			let reviewNum = '${ activity.reviewList[size].num }';
+			let user = '${ sessionScope.loginMember.userName }';
+			
+		    if(!user) {
+		    	alert("로그인을 진행해주세요.")
+		    } else {
+			
+			let reviewNum = '${ reviewList[size].num }';
 			let reviewRec = ${ activity.reviewList[size].recommend };
 			
 			 $.ajax({
@@ -509,7 +527,7 @@ $('#sort-select').on('change', function(){
 	            	
 					if(result > 0 ){
 						alert("후기 추천이 완료되었습니다.");
-                        $('#sugCount${ size + 1 }').text('${ activity.reviewList[size].recommend + 1 }명이 추천한 후기입니다');
+                        $('#sugCount${ size + 1 }').text('${ reviewList[size].recommend + 1 }명이 추천한 후기입니다');
 					} else {
 						alert("후기 추천에 실패했습니다.");
 					}
@@ -519,6 +537,7 @@ $('#sort-select').on('change', function(){
 	                alert("error");
 	            }
 	        }); 
+		    };
 		});
 	}); 
 	
@@ -534,8 +553,14 @@ $('#sort-select').on('change', function(){
      $(function(){			
 		$('#declaration${ size + 1 }').one('click',function(e){
 		   
-			let reviewNum = '${ activity.reviewList[size].num }';
-			let reviewRep = '${ activity.reviewList[size].recYn }';
+			let user = '${ sessionScope.loginMember.userName }';
+			
+			if(!user) {
+				alert("로그인을 진행해주세요.")
+			} else {
+				
+			let reviewNum = '${ reviewList[size].num }';
+			let reviewRep = '${ reviewList[size].recYn }';
 			
 			 $.ajax({
 	            url:'${ pageContext.servletContext.contextPath }/review/report', //Controller에서 인식할 주소
@@ -556,6 +581,7 @@ $('#sort-select').on('change', function(){
 	                alert("error");
 	            }
 	        }); 
+		    };
 		});
 	}); 
 	
@@ -569,31 +595,16 @@ $('#sort-select').on('change', function(){
 
 
 <br> <br>
-<!-- 페이지 네이션 -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
 
 
+ <!-- pagination -->
+ <jsp:include page="../common/actiInfoPaging.jsp"/>
+
+ </c:when>
+ </c:choose>
+      
 <hr>
 <br>
-<!--  새로운 JSP 만들어서 넘어갈 때 페이지 내에 있는 지역 이름을 받아서 넘어갈 수는 없을까? -->
 <div class="activity-6">
  <!-- 추천 액티비티 -->
  <strong><h3 id="recomend">추천 액티비티</h3></strong> <br>

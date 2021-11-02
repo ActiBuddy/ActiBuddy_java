@@ -16,6 +16,7 @@ import com.actibuddy.common.paging.Pagenation;
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.mate.model.service.MateReviewService;
+import com.actibuddy.member.model.dto.MemberDTO;
 
 @WebServlet("/mate/review")
 public class MateReviewMainServlet extends HttpServlet {
@@ -34,6 +35,9 @@ public class MateReviewMainServlet extends HttpServlet {
 		if(pageNo <= 0) {
 			pageNo = 1;
 		}
+		
+		System.out.println(currentPage);
+		System.out.println(pageNo);
 		
 		/* ======== 검색 처리 ========*/
 		// 검색 값
@@ -70,10 +74,14 @@ public class MateReviewMainServlet extends HttpServlet {
 		
 //		System.out.println("reviewList : " + reviewList);
 		
+		List<MemberDTO> bestReviewList = reviewService.selectBestReview();
+		System.out.println("리스트 확인 : " + bestReviewList);
+		
 		String path = "";
 		if(reviewList != null) {
 			path = "/WEB-INF/views/mate/mateReview.jsp";
 			request.setAttribute("reviewList", reviewList);
+			request.setAttribute("bestReviewList", bestReviewList);
 			request.setAttribute("selectCriteria", selectCriteria);
 			
 		} else {

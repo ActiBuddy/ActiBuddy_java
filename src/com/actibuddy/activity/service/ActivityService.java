@@ -14,6 +14,7 @@ import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
+import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mypage.model.dao.MypageDAO;
 
 public class ActivityService {
@@ -43,11 +44,11 @@ public class ActivityService {
 	 * @param actiName
 	 * @return 액티비티 DTO
 	 */
-	public ActivityInfoDTO selectActivityInfo(String actiName) {
+	public ActivityInfoDTO selectActivityInfo(Map<String, String> actiMap) {
 		
 		SqlSession session = getSqlSession();
 		
-		ActivityInfoDTO activity = activityDAO.selectActivityInfo(session,actiName);
+		ActivityInfoDTO activity = activityDAO.selectActivityInfo(session,actiMap);
 		
 		session.close();
 		
@@ -71,16 +72,16 @@ public class ActivityService {
 	}
 
 	/**
-	 * 가격으로 정렬한 액티비티 정보 조회
+	 * 해당 지역에 대한 액티비티 정보 조회
 	 * @author 김주환
-	 * @param priceMap
+	 * @param resultMap
 	 * @return
 	 */
-	public LocationAndActivityDTO selectActivityByPrice(Map<String, String> priceMap) {
+	public LocationAndActivityDTO selectActivity(Map<String, Object> resultMap) {
 
 		SqlSession session = getSqlSession();
 	
-		LocationAndActivityDTO location = activityDAO.selectActivityByPrice(session, priceMap);
+		LocationAndActivityDTO location = activityDAO.selectActivity(session, resultMap);
 		
 		session.close();
 		
@@ -182,22 +183,151 @@ public class ActivityService {
 		return result;
 	}
 
-	/** 액티비티 정보 조회용 하지만 정렬을 곁들인
+	/**
+	 * 액티비티 인포 페이지의 후기 갯수 조회용 메소드
 	 * @author kwonsoonpyo
 	 * @param actiName
-	 * @param sort
-	 * @return 액티비티 DTO
+	 * @return totalCount
 	 */
-	public ActivityInfoDTO sortActivityInfo(Map<String, String> resultMap) {
+	public int selectActiReviewTotalCount(String actiName) {
 		
 		SqlSession session = getSqlSession();
 		
-		ActivityInfoDTO activity = activityDAO.sortActivityInfo(session, resultMap);
+		int totalCount = activityDAO.selectActiReviewTotalCount(session, actiName);
 		
 		session.close();
 		
-		return activity;
+		return totalCount;
 	}
 
-	
+	/**
+	 * 액티비티 인포 페이지에서 조회용 메소드 (페이지네이션) 하지만 이제 정렬도 곁들인.
+	 * @author kwonsoonpyo
+	 * @param selectCriteria
+	 * @return ReviewList
+	 */
+	public List<ActiReviewDTO> selectReviewList(Map<String, Object> reviewMap) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<ActiReviewDTO> reviewList = activityDAO.selectReviewList(session, reviewMap);
+		
+		session.close();
+		
+		return reviewList;
+	}
+
+	/**
+	 * 액티비티 조회 페이지 페이징 처리를 위한 메소드
+	 * @author 김주환
+	 * @param locationName
+	 * @return
+	 */
+	public int totalActivityCount(String locationName) {
+		
+		SqlSession session = getSqlSession();
+		
+		int totalCount = activityDAO.totalActivityCount(session,locationName);
+		
+		session.close();
+		
+		return totalCount;
+	}
+
+	/**
+	 * 액티비티 조회 페이지 페이징 처리를 위한 메소드
+	 * @author 김주환
+	 * @param locationName
+	 * @return
+	 */
+	public int totalActivityCountByMap(Map<String, Object> resultMap) {
+
+		SqlSession session = getSqlSession();
+		
+		int totalCount = activityDAO.totalActivityCountByMap(session,resultMap);
+		
+		session.close();
+		
+		return totalCount;
+	}
+
+	/**
+	 * 검색어를 포함한 액티비티 총 갯수 검색 메소드
+	 * @author 김주환
+	 * @param resultMap
+	 * @return
+	 */
+	public int totalCountBySearch(Map<String, Object> resultMap) {
+
+		SqlSession session = getSqlSession();
+		
+		int totalCount = activityDAO.totalCountBySearch(session, resultMap);
+		
+		session.close();
+		
+		return totalCount;
+	}
+
+	/**
+	 * 검색어를 포함한 액티비티 검색 메소드 
+	 * @author 김주환
+	 * @param resultMap
+	 * @return
+	 */
+	public List<ActivityDTO> searchActivity(Map<String, Object> resultMap) {
+
+		SqlSession session = getSqlSession();
+		
+		List<ActivityDTO> actiList = activityDAO.searchActivity(session, resultMap);
+		
+		session.close();
+		
+		return actiList;
+	}
+
+	public List<ActivityDTO> selectActiName(String locationName) {
+
+		SqlSession session = getSqlSession();
+		
+		List<ActivityDTO> list = activityDAO.selectActiName(session, locationName);
+		
+		session.close();
+		
+		return list;
+	}
+
+	public LocationAndActivityDTO selectRandomList(String locationName) {
+
+		SqlSession session = getSqlSession();
+		
+		LocationAndActivityDTO list = activityDAO.selectRandomList(session, locationName);
+		
+		session.close();
+		
+		return list;
+	}
+
+	/**
+	 * 액티비티 조회수 증가용 메소드
+	 * @author 김주환
+	 * @param actiName
+	 * @return
+	 */
+	public int updateViews(String actiName) {
+
+		SqlSession session = getSqlSession();
+		
+		int result = activityDAO.updateViews(session, actiName);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 }

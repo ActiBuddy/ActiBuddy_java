@@ -24,8 +24,33 @@ public class MateReviewSelectServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mate/mateReviewView.jsp");
-		rd.forward(request, response);
+		String num = request.getParameter("num");
+		System.out.println("게시글 번호 : " + num);
+		
+		MateReviewService reviewService = new MateReviewService();
+		MateReviewDTO review = reviewService.selectReviewInfo(num);
+		
+		String path = "";
+		if(review != null) {
+			path = "/WEB-INF/views/mate/mateReviewView.jsp";
+			request.setAttribute("reivew", review);
+			request.setAttribute("num", review.getNum());
+			request.setAttribute("title", review.getTitle());
+			request.setAttribute("userId", review.getUserId());
+			request.setAttribute("date", review.getDate());
+			request.setAttribute("img1", review.getImg1());
+			request.setAttribute("img2", review.getImg2());
+			request.setAttribute("img3", review.getImg3());
+			request.setAttribute("content", review.getContent());
+			request.setAttribute("rep", review.getRepYn());
+			request.setAttribute("recommend", review.getRecommend());
+			
+		} else {
+			path = "/WEB-INF/views/common/failed.jsp";
+			request.setAttribute("message", "메이트 리뷰 상세페이지 조회 실패!");
+		}
+		
+		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
 

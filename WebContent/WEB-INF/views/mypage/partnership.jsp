@@ -58,57 +58,30 @@
 		
         			<c:if test="${ !empty sessionScope.loginMember }">
 		
-        				<h4><c:out value="${ sessionScope.loginMember.userName }"/> 님의 여행</h4>
+        				<h4><c:out value="${ sessionScope.loginMember.userName }"/> 님의 상품</h4>
         			
 					</c:if>
 
-                 	<c:forEach var="size" begin="0" end="${fn:length(tripList.cartList)-1 }" >
                     <hr>
-                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList.activityInfo[size].name }'">상세보기 ></button>
-                    <h3>액티비티 : ${ tripList.activityInfo[size].name }</h3> 
+                 	<c:forEach var="size" begin="0" end="${fn:length(selectActiInfo)-1 }" >
+                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
+                    <h3>액티비티 : ${ selectActiInfo[size].name }</h3> 
                     
-                    <br>
-                    <h5>날짜 : ${ tripList.cartList[size].chooseDate } <br> 수량 : ${ tripList.cartList[size].totalPerson }</h5>
-    
-                    <br><br><br>
-    
-                    <h5 id="usestatus">이용상태 : </h5>
+                    <br><br>
+<%--                     <h5> 시작 날짜 : <fmt:formatDate value="${selectActiInfo[size].StartDate }" pattern="yyyy-MM-dd"/></h5>
+
+
                     
- 
-	                    <button id="complete2" onclick='changeBtnName()' >후기 작성하기</button>
+                    <h5> 마감 날짜 : <fmt:formatDate value="${selectActiInfo[size].EndDate }" pattern="yyyy-MM-dd"/></h5>  --%>
+    
+                    <br><br>
+
 
                     <hr>
     				
     				</c:forEach> 
     				
-    				<script>
-    	
-                    	function changeBtnName()  {
-	                      	/* if (complete2.innerText == "사용완료") {
-	                      		
-	                    	  const btnElement = document.getElementById('complete2');
-	                      	  btnElement.innerText = '후기 작성하기';
-	                      	  
-	                      	}else if(complete2.innerText == "후기 작성하기"){
-	 */
-		                      		window.location.href = '/acti/mypage/trip/review/write';
-	                     	
-                    	}
-                    </script>
     				
-<!--                     <script>
-                    
-                    $("#complete2").click(function(){
-                    	
-                        $(".btnBox").append('<button type="button" id="btn2">후기 작성하기</button>');
-                    });
-
-                    $(document).on("click","#btn2",function(){
-
-                    	window.location.href = '/acti/mypage/trip/review/write';
-                    });
-                    	
-                    </script> -->
                    
 
                 </div>

@@ -70,13 +70,14 @@
                     
                     <img src="../resources/image/profile.png" width="120px" height="120px"/>
 
-                    <h4>해씨초코볼 <br><br> actibuddy11@greedy.com</h4>
+                    <h4>아이디 : ${ sessionScope.loginMember.userName } <br><br> 이메일 : ${ sessionScope.loginMember.email }</h4>
 
                     <br>
-
-                <button type="submit"  onclick="location.href='/acti/main/page'">확인</button>
+				<form action="/mypage/quit2" id="updateQuit" method="post" >
+                <button type="submit" onclick="location.href='/acti/main/page'">확인</button>
+				</form>
                 <br>
-                <button type="submit">취소</button>
+                <button type="reset">취소</button>
     
                 </div>
             

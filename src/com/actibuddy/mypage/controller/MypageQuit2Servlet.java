@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.actibuddy.member.model.dto.MemberDTO;
+import com.actibuddy.mypage.service.MypageService;
+
 
 @WebServlet("/mypage/quit2")
 public class MypageQuit2Servlet extends HttpServlet {
@@ -25,8 +28,19 @@ public class MypageQuit2Servlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
+		
+		MemberDTO requestUpdate = new MemberDTO();
+		requestUpdate.setUserId(userId);
+		
+		int result = new MypageService().updateQuit(requestUpdate);
+		
+		System.out.println("update 성공? : " + result);
+		
+		
+		
+		
 	}
 
 }

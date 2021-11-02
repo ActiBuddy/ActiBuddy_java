@@ -50,7 +50,7 @@
 	
 	<script>
 	
-		const link = location.pathname;
+        const link = "${ location.href }";
 		let searchText = "";
 		
 		if(${ !empty requestScope.selectCriteria.searchCondition? true: false }) {

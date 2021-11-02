@@ -164,7 +164,7 @@
       			let reviewRec = '${ recommend }';
       			
       			
-      			user = '${ sessionScope.userId }';
+      			user = '${ sessionScope.loginMember.userId }';
       			
       			if(!user){
       				alert("로그인 후 추천해주세요.");
@@ -210,7 +210,7 @@
 											// 오류 체크2 : 주석에도 특수기호 사용하면 안된다.
 				console.log(reviewNum);
 
-				user = '${ SessionScope.userId }';
+				user = '${ sessionScope.loginMember.userId }';
 				
 				if(!user) {
 					alert("로그인 먼저 해주세요.");

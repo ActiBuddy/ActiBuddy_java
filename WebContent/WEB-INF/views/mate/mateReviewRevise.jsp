@@ -34,7 +34,8 @@
       <!-- 네비게이션바 -->
       <jsp:include page="../common/menubar.jsp"/>
 
-	<form id="postReview" action="${ pageContext.servletContext.contextPath }/mate/review/regist" method="post" enctype="multipart/form-data">
+	<form id="postReview" action="${ pageContext.servletContext.contextPath }/mate/review/update" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="hdnum" value="${ num }">
     <!-- 주요 html -->
     <div class="around">
         <!-- 로고 이미지 -->
@@ -62,30 +63,86 @@
                 작성자 : 
             </div>
             <div class="name">
-                <input type="text" name="userId" value="${ sessionScope.loginMember.userName }" readonly>
+                <input type="text" name="userId" value="${ sessionScope.loginMember.userId }" readonly>
             </div>
         </div>
 
         <hr>
         <!-- 텍스트 부분 -->
        <div class="text_box">
-           <textarea name="con" placeholder="글을 입력해주세요." style="resize:none;" required
-           value="${ content }">></textarea>
+           <textarea name="con" placeholder="글을 입력해주세요." style="resize:none;" required>${ content }</textarea>
        </div>
 
        <hr>
 
        <!-- 첨부 부분 -->
+              <!-- 첨부 부분 -->
        <div class="bottom_border">
            <div class="img_border">
-               <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="img1" value="${ img1 }" required></div>
-               <div class="file">두번째 이미지 : <input accept="image/*" type="file" name="img2" value="${ img2 }"></div>
-               <div class="file">세번째 이미지 : <input accept="image/*" type="file" name="img3" value="${ img3 }"></div>
+            <a>첫번째 이미지 : &nbsp;</a> 
+               <div class="filebox">
+                   <input type="file" accept="image/*" id="file" name="img1" value="file1" class="upload-hidden" required>
+                   <input class="upload-name" value="${ img1 }">
+                   <label for="file">선택</label>
+                </div>
+            <a>두번째 이미지 : &nbsp;</a> 
+                <div class="filebox">
+                <input type="file" accept="image/*" id="file2" name="img1" value="file2" class="upload-hidden">
+                <input class="upload-name2" value="${ img2 }">
+                <label for="file2">선택</label>
+               </div>
+            <a>세번째 이미지 : &nbsp;</a> 
+               <div class="filebox">
+                <input type="file" accept="image/*" id="file3" name="img1" value="file3" class="upload-hidden">
+                <input class="upload-name3" value="${ img3 }">
+                <label for="file3">선택</label>
+               </div>
                <div class="condition">첫번째 이미지가 썸네일 이미지로 등록됩니다.</div>
            </div>
        </div>
+		
+	  <!-- input 파일명 & 이미지 미리보기 스크립트 -->
+       <script>
+            $("#file").on('change',function(){
+                var fileName = $("#file").val();
+                $(".upload-name").val(fileName);
+            });
 
-        <hr>
+            $("#file2").on('change',function(){
+                var fileName2 = $("#file2").val();
+                $(".upload-name2").val(fileName2);
+            });
+            
+            $("#file3").on('change',function(){
+                var fileName3 = $("#file3").val();
+                $(".upload-name3").val(fileName3);
+            });
+
+        //preview image
+        var imgTarget = $('.filebox .upload-hidden');
+        imgTarget.on('change', function(){
+            var parent = $(this).parent();
+            parent.children('.upload-display').remove(); 
+            if(window.FileReader){
+                //image 파일만
+                if (!$(this)[0].files[0].type.match(/image\//)) return;
+                var reader = new FileReader();
+                reader.onload = function(e){ 
+                    var src = e.target.result;
+                    parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>'); } 
+                    reader.readAsDataURL($(this)[0].files[0]);
+                } else {
+                    $(this)[0].select();
+                    $(this)[0].blur();
+                    var imgSrc = document.selection.createRange().text;
+                    parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+                    var img = $(this).siblings('.upload-display').find('img');
+                    img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")"; } });
+
+
+		</script>
+
+        <hr class="ff">
 
        <!-- 버튼 부분 -->
         <div class="btnborder">

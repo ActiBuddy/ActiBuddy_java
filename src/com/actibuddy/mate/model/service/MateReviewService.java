@@ -172,6 +172,28 @@ public class MateReviewService {
 		return result;
 	}
 
+	/**
+	 * 게시글을 수정해주는 메소드
+	 * @param requestReview
+	 * @return result
+	 */
+	public int updateReview(MateReviewDTO requestReview) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.updateReview(session, requestReview);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 
 
 }

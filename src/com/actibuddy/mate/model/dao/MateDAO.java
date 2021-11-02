@@ -51,5 +51,10 @@ public class MateDAO {
 		return session.update("MateDAO.deleteReview", review);
 	}
 
+	public static int updateReview(SqlSession session, MateReviewDTO requestReview) {
+		
+		return session.update("MateDAO.updateReview", requestReview);
+	}
+
 
 }

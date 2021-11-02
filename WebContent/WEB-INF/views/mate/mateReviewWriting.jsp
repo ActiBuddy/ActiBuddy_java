@@ -61,7 +61,7 @@
                 작성자 : 
             </div>
             <div class="name">
-                <input type="text" name="userId" value="${ sessionScope.loginMember.userName }" readonly>
+                <input type="text" name="userId" value="${ sessionScope.loginMember.userId }" readonly>
             </div>
         </div>
 
@@ -74,16 +74,72 @@
        <hr>
 
        <!-- 첨부 부분 -->
+              <!-- 첨부 부분 -->
        <div class="bottom_border">
            <div class="img_border">
-               <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="img1" value="file1" required></div>
-               <div class="file">두번째 이미지 : <input accept="image/*" type="file" name="img2" value="file2"></div>
-               <div class="file">세번째 이미지 : <input accept="image/*" type="file" name="img3" value="file3"></div>
+            <a>첫번째 이미지 : &nbsp;</a> 
+               <div class="filebox">
+                   <input type="file" accept="image/*" id="file" name="img1" value="file1" class="upload-hidden" required>
+                   <input class="upload-name" value="선택된 파일 없음">
+                   <label for="file">선택</label>
+                </div>
+            <a>두번째 이미지 : &nbsp;</a> 
+                <div class="filebox">
+                <input type="file" accept="image/*" id="file2" name="img1" value="file2" class="upload-hidden">
+                <input class="upload-name2" value="선택된 파일 없음">
+                <label for="file2">선택</label>
+               </div>
+            <a>세번째 이미지 : &nbsp;</a> 
+               <div class="filebox">
+                <input type="file" accept="image/*" id="file3" name="img1" value="file3" class="upload-hidden">
+                <input class="upload-name3" value="선택된 파일 없음">
+                <label for="file3">선택</label>
+               </div>
                <div class="condition">첫번째 이미지가 썸네일 이미지로 등록됩니다.</div>
            </div>
        </div>
 
-        <hr>
+       <script>
+            $("#file").on('change',function(){
+                var fileName = $("#file").val();
+                $(".upload-name").val(fileName);
+            });
+
+            $("#file2").on('change',function(){
+                var fileName2 = $("#file2").val();
+                $(".upload-name2").val(fileName2);
+            });
+            
+            $("#file3").on('change',function(){
+                var fileName3 = $("#file3").val();
+                $(".upload-name3").val(fileName3);
+            });
+
+        //preview image
+        var imgTarget = $('.filebox .upload-hidden');
+        imgTarget.on('change', function(){
+            var parent = $(this).parent();
+            parent.children('.upload-display').remove(); 
+            if(window.FileReader){
+                //image 파일만
+                if (!$(this)[0].files[0].type.match(/image\//)) return;
+                var reader = new FileReader();
+                reader.onload = function(e){ 
+                    var src = e.target.result;
+                    parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>'); } 
+                    reader.readAsDataURL($(this)[0].files[0]);
+                } else {
+                    $(this)[0].select();
+                    $(this)[0].blur();
+                    var imgSrc = document.selection.createRange().text;
+                    parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+                    var img = $(this).siblings('.upload-display').find('img');
+                    img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")"; } });
+
+
+		</script>
+
+        <hr class="ff">
 
        <!-- 버튼 부분 -->
         <div class="btnborder">

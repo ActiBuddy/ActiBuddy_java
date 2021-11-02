@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -18,7 +20,7 @@
 
 
       <jsp:include page="../common/menubar.jsp"/>
-
+      
     <div class="logo" >
     
         <img src="../resources/image/mainlogo.png" width="400px" height="350px" />
@@ -39,47 +41,15 @@
 
     <div class="body-all">
     
-        <div class="side-all">
-        
-            <div class="side-1">
-                <br><br><br>
-                <img src="${ pageContext.servletContext.contextPath }/resources/image/profile.png" width="100px" height="100px"/>
-                
-                <c:if test="${ !empty sessionScope.loginMember }">
-		
-        			<h4 align="center"><c:out value="${ sessionScope.loginMember.userName }"/></h4>
 
-				</c:if>
-                
-                
-                <hr>
-                <br>
+        <jsp:include page="../common/mypagesidebar.jsp"/>
 
-                <a href="/acti/mypage/quit" id="quit">회원탈퇴</a>
-    
-                
-            </div>
-            <div class="side-2">
-                
-                <br><br>
-                <div class="menu">
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/triplist">여행 내역</a><br><br><br>
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/review">이용 후기</a><br><br><br>
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/cart">장바구니</a><br><br><br>
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/matelist">메이트 내역</a><br><br><br> 
-                    <a href="${ pageContext.servletContext.contextPath }/mypage/question">문의 사항</a><br><br>
-                <c:if test="${sessionScope.loginMember.memType }=='P'">
-                	<a href="${ pageContext.servletContext.contextPath }/mypage/question">파트너십 상품등록</a><br><br>
-                </c:if>
-                </div>
-            </div>
-
-            
-        </div>
         
         <div class="center-all">
 
             <div class="center-1">
+            <c:if test="${ tripList.introduce eq null }">
+            
             	<form id = "introduce" action="../mypage/main" method="post">
             	
                 <textarea cols ="50" rows="6" id ="text1" name="introduce" placeholder="소개를 작성해주세요"></textarea>
@@ -90,8 +60,29 @@
                 <button type="submit">등록하기</button>
             	
             	</form>
-    
+            	
+            </c:if>
+		<%--   <jsp:forward page="">
+            		<jsp:param value="${tripList.introduce }" name="introduce"/>
+            		<jsp:param value="${tripList.favoriteActi }" name="favoriteActi"/>
+            	</jsp:forward> 		--%>
+            	
+				<c:if test="${ tripList.introduce ne null }">
+	            	<form id = "introduce" action="../mypage/main" method="post">
+	            
+	            	
+		           <textarea cols ="50" rows="6" id ="text1" name="introduce" placeholder="${ introduce.introduce }"></textarea>
+	
+	                <hr>
+	        
+	                <textarea cols ="30" rows="2" name="favoriteActi" placeholder="${introduce.favoriteActi }"></textarea>
+	                <button type="submit">수정하기</button>
+	            	
+	            	</form>
+				</c:if>
+
             </div>
+            
             <div class="center-2">
 				
 				<c:if test="${ !empty sessionScope.loginMember }">
@@ -101,17 +92,33 @@
 				</c:if>
 				
                 <hr> 
-
-                <h3>★★★★★ </h3>
-                <h4>한줄 후기 :</h4>
-                <h5> 함께 했던 메이트 : </h5>
-                <button type="submit"></button>
+                
+				<c:forEach var="size" begin="0" end="${ fn:length(mateScore)-1}">
+				
+			  <c:choose>
+			  <c:when test="${ mateScore[size].scoreStar == 1 }">
+				 <h2 id="foryellow">★</h2><h2 id="forgray">★★★★</h2>
+			  </c:when>
+			  <c:when test="${ mateScore[size].scoreStar == 2 }">
+			     <h2 id="foryellow">★★</h2><h2 id="forgray">★★</h2>
+			  </c:when>
+			  <c:when test="${ mateScore[size].scoreStar == 3 }">
+			     <h2 id="foryellow">★★★</h2><h2 id="forgray">★★</h2>
+			  </c:when>
+			  <c:when test="${ mateScore[size].scoreStar == 4 }">
+			     <h2 id="foryellow">★★★★</h2><h2 id="forgray">★</h2>
+			  </c:when>
+			  <c:when test="${ mateScore[size].scoreStar == 5 }">
+				<h2 id="foryellow">★★★★★</h2>
+			  </c:when>
+			 </c:choose>
+				
+                <h4>한줄 후기 : <c:out value="${mateScore[size].scoreCon }"></c:out> </h4>
+                <h5> 함께 했던 메이트 : ${ mateScore[size].userId}</h5>
                 <hr>
+                
+				</c:forEach>
 
-                <h3>★★★★☆ </h3>
-                <h4>한줄 후기 :</h4>
-                <h5> 함께 했던 메이트 : </h5>
-                <button type="submit"></button>
 
                 
             </div>

@@ -7,11 +7,16 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.activity.model.dto.ActiReviewDTO;
+import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
+import com.actibuddy.activity.model.dto.ActivityDTO;
+import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dao.MypageDAO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
+import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
 
 
 public class MypageService {
@@ -134,8 +139,103 @@ public class MypageService {
 		
 		List<MateReviewDTO> selectMtReview = mypageDAO.selectMtReview(session,userId);
 		
+		session.close();
 		
 		return selectMtReview;
+	}
+
+	public List<ActivityDTO> selectActiInfo(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<ActivityDTO> selectActiInfo = mypageDAO.selectActiInfo(session,userId);
+		
+		session.close();
+		
+		return selectActiInfo;
+	}
+
+	/**
+	 * 액티비티 리뷰 조회
+	 * @param userId
+	 * @return 헤주
+	 */
+	public List<ActivityAndReviewDTO> selectActiReview(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<ActivityAndReviewDTO> selectActiReview = mypageDAO.selectActiReview(session,userId);
+		
+		session.close();
+		
+		return selectActiReview;
+	}
+
+	/**
+	 * 회원탈퇴 quitYn -> Y
+	 * @param requestUpdate
+	 * @return 혜주
+	 */
+	public int updateQuit(MemberDTO requestUpdate) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.updateQuit(session,requestUpdate);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	public List<MypageMateScoreDTO> selectMateScore(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<MypageMateScoreDTO> selectMateScore = MypageDAO.selectMateScore(session,userId);
+		
+		session.close();
+		
+		return selectMateScore;
+	}
+
+	public int deleteCart(CartDTO requestCart) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MypageDAO.deleteCart(session,requestCart);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	public int registReview(ActiReviewDTO requestReview) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MypageDAO.insertReview(session,requestReview);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
 	}
 
 

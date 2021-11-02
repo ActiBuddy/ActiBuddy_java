@@ -1,6 +1,7 @@
 package com.actibuddy.mypage.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
+import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
 import com.actibuddy.mypage.service.MypageService;
 
 @WebServlet("/mypage/main")
@@ -20,16 +22,25 @@ public class MypageMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		// 소개 가져오기
 		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 		
 		MypageService mypageService = new MypageService();
 		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
 		
 		request.setAttribute("tripList", tripList);
+		
+		// 메이트 평가 가져오기
+		List<MypageMateScoreDTO> mateScore = mypageService.selectMateScore(userId); 
+		
+		request.setAttribute("mateScore", mateScore);
+		System.out.println("메이트 평가 : " + mateScore);
+		
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/myPage.jsp");
 		rd.forward(request, response);
 	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -56,7 +67,16 @@ public class MypageMainServlet extends HttpServlet {
 		  int result = new MypageService().registIntroduce(requestIntroduce);
 		  
 		  System.out.println("mypageController result : " + result);
-		 
+		 System.out.println("aaa : " +  requestIntroduce.getIntroduce());
+		  
+		  RequestDispatcher send = request.getRequestDispatcher("/WEB-INF/views/mypage/myPage.jsp");
+		  request.setCharacterEncoding("UTF-8");
+		  request.setAttribute("introduce", requestIntroduce);
+		  request.setAttribute("userId", userId);
+
+		  
+		  send.forward(request, response);
+		  
 
 	}
 

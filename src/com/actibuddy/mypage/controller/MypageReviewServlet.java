@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.service.MypageService;
@@ -29,9 +30,17 @@ public class MypageReviewServlet extends HttpServlet {
 		MypageService mypageService = new MypageService();
 		List<MateReviewDTO> selectMtReview = mypageService.selectMtReview(userId);
 		
-		System.out.println("리뷰리스트 : " + selectMtReview);
+		System.out.println("메이트 리뷰리스트 : " + selectMtReview);
 		
 		request.setAttribute("selectMtReview", selectMtReview);
+		
+		// 액티비티 후기 가져오기
+		
+		List<ActivityAndReviewDTO> selectActiReview = mypageService.selectActiReview(userId);
+		
+		System.out.println("액티리뷰 리스트 : " + selectActiReview);
+		
+		request.setAttribute("selectActireview", selectActiReview);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/review.jsp");
 		rd.forward(request, response);

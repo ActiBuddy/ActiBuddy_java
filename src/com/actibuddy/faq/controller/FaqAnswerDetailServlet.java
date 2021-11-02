@@ -16,20 +16,28 @@ import com.actibuddy.faq.service.FaqService;
 /**
  * Servlet implementation class FaqPartnerAnswerServlet
  */
-@WebServlet("/faq/partner")
-public class FaqAnswerPartnerServlet extends HttpServlet {
+@WebServlet("/faq/detail")
+public class FaqAnswerDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		String queTitle = request.getParameter("queTitle");
+	
+		FaqDTO detailList = new FaqDTO();
+		
+		detailList.setQueTitle(queTitle);
+		
+		System.out.println(detailList);
+		
 		FaqService faqService = new FaqService();
 		
-		List<FaqDTO> faqList = faqService.partnerFaq();		
+		FaqDTO faqList = faqService.detailFaq(detailList);		
 		
 		System.out.println(faqList);
 		request.setAttribute("faqList", faqList);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/managerPartnerFaq.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/managerDetailFaq.jsp");
 		rd.forward(request, response);
 	
 	}

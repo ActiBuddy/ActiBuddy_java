@@ -24,33 +24,35 @@
     
     <jsp:include page="../common/managersidebar.jsp"/>
 
-          <h2 class="sub-header">경고 회원 조회</h2>
+          <h2 class="sub-header">파트너 문의 조회</h2>
           <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>아이디</th>
-                  <th>회원 이름</th>
-                  <th>경고 건수</th>
-                  <th>회원타입</th>
-                </tr>
-              </thead>
-              <tbody>
-                <c:forEach var="userId" items="${managerList}">
-                <tr>
-                	
-                  <td>${ userId.userId }</td>
-                  <td>${ userId.userName }</td>
-                  <td>${ userId.warn_count }</td>
-                  <td>${ userId.memType }</td>
-                </tr>
-                </c:forEach>
-                
-              </tbody>
-            </table>
-
-           
-
+          
+          <h3>문의 아이디</h3>
+          <h5>${ faqList.userId }</h5>
+          
+          <h3>문의 내용</h3>
+          <h5>${ faqList.queCon }</h5>
+          
+          
+          <h3>문의 날짜</h3>
+          <h5>${ faqList.date }</h5>
+          <br><br>
+          
+          <h2>답변 내용</h2>
+          <form action="${ pageContext.servletContext.contextPath }/faq/answer" method="post">
+          
+          <c:if test="${ !empty faqList.answer }">
+          <textarea class="answerfaq" name="answer" cols="130" rows="10" readonly>${ faqList.answer }</textarea>
+          </c:if>
+          
+          
+          <c:if test="${ empty faqList.answer }">
+          <textarea class="answerfaq" name="answer" cols="130" rows="10"></textarea>
+          <textarea style="display: none;" name="queTitle">${ faqList.queTitle }</textarea>
+          <button type="submit"> 제출하기</button>
+          </c:if>
+		 
+		  </form>	
           </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->

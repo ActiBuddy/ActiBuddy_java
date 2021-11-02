@@ -9,8 +9,10 @@
 		<result property="queTitle" column="QUE_TITLE"/>
 		<result property="queCon" column="QUE_CON"/>
 		<result property="queEmail" column="QUE_EMAIL"/>
-		<result property="quetype" column="QUE_TYPE"/>
+		<result property="queType" column="QUE_TYPE"/>
 		<result property="date" column="QUE_DATE"/>
+		<result property="answer" column="ANSWER"/>
+		<result property="answerYn" column="ANSWER_YN"/>
 	</resultMap>
  
  <insert id="registFaqCommon" parameterType="com.actibuddy.faq.model.dto.FaqDTO">
@@ -24,6 +26,8 @@
         , QUE_EMAIL
         , QUE_TYPE
         , QUE_DATE
+        , ANSWER
+        , ANSWER_YN
         )
         VALUES 
         (
@@ -34,6 +38,8 @@
         , #{ queEmail }
         , 'C'
         , SYSDATE
+        , null
+        , 'N'
         )
 	</insert>
 	
@@ -48,6 +54,8 @@
         , QUE_EMAIL
         , QUE_TYPE
         , QUE_DATE
+        , ANSWER
+        , ANSWER_YN
         )
         VALUES 
         (
@@ -58,12 +66,65 @@
         , #{ queEmail }
         , 'P'
         , SYSDATE
+        , null
+        , 'N'
         )
 	</insert>
 
+ 	<select id="commonFaq" resultMap="faqResultMap">
+ 	SELECT
+ 		  QUE_NUM
+        , USER_ID
+        , QUE_TITLE
+        , QUE_CON
+        , QUE_EMAIL
+        , QUE_TYPE
+        , QUE_DATE
+        , ANSWER
+        , ANSWER_YN
+      FROM FAQ
+      WHERE QUE_TYPE IN('C', 'c')
+	</select>  
 
 
+	<select id="partnerFaq" resultMap="faqResultMap">
+ 	SELECT
+ 		  QUE_NUM
+        , USER_ID
+        , QUE_TITLE
+        , QUE_CON
+        , QUE_EMAIL
+        , QUE_TYPE
+        , QUE_DATE
+        , ANSWER
+        , ANSWER_YN
+      FROM FAQ
+      WHERE QUE_TYPE IN('P', 'p')
+	</select>
 
-
-
+	<select id="detailFaq" resultMap="faqResultMap" >
+ 	SELECT
+ 		  QUE_NUM
+        , USER_ID
+        , QUE_TITLE
+        , QUE_CON
+        , QUE_EMAIL
+        , QUE_TYPE
+        , QUE_DATE
+        , ANSWER
+        , ANSWER_YN
+      FROM FAQ
+	 WHERE QUE_TITLE=#{queTitle}
+	</select>  
+	
+	<update id="updateAnswer" parameterType="com.actibuddy.faq.model.dto.FaqDTO">
+	
+		UPDATE FAQ
+   		   SET ANSWER = #{ answer }
+   		   	 , ANSWER_YN ='Y'
+   		 WHERE QUE_TITLE = #{ queTitle }
+ 
+ 	</update>
+	
+	
  </mapper>

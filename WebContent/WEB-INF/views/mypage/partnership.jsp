@@ -47,8 +47,8 @@
         <div class="a-center-all">
 
             <div class="a-buttons">
-                <button type="button" class="forgreen" id="one">상품 추가</button>
-                
+                <a href="${ pageContext.servletContext.contextPath }/mypage/partner/add">
+                <button type="button" class="forgreen">상품 추가</button></a>
             </div>
 
             <div class="a-center-1">

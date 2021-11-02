@@ -21,14 +21,14 @@
     
     <jsp:include page="../common/managersidebar.jsp"/>
 
-          <h2 class="sub-header">일반 회원 조회</h2>
+          <h2 class="sub-header">파트너 조회</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th>유저이름</th>
                   <th>회원 아이디</th>
-                	<th>가입 날짜</th>
+                  <th>회원 타입</th>
                 </tr>
               </thead>
               <tbody>
@@ -37,7 +37,7 @@
                 <tr>
                   <td>${ userId.userName }</td>
                   <td><a href="../manager/userInfo?userId=${ userId.userId }">${ userId.userId }</a></td>
-                  <td>${ userId.enterDate }</td>
+                  <td>${ userId.memType }</td>
                 </tr>
                 </c:forEach>
               </tbody>
@@ -45,8 +45,8 @@
 
 
           </div>
-<%--            <jsp:include page="../common/page.jsp"/>
- --%>
+           <jsp:include page="../common/page.jsp"/>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="${ pageContext.servletContext.contextPath }/resources/js/bootstrap.min.js"></script>

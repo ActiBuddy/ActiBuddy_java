@@ -43,6 +43,11 @@ public class MemberDAO {
 		return session.selectList("MemberDAO.selectWarnMember");
 	}
 
+	public int changeToPartner(SqlSession session, MemberDTO partnerStatus) {
+		return session.selectOne("MemberDAO.changeToPartner", partnerStatus);
+
+	}
+
 	
 
 	

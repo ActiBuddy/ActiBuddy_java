@@ -21,11 +21,21 @@ public class ManagerDAO {
 	
 	// 경고받은 회원
 	public static List<ManagerDTO> selectWarnMember(SqlSession session) {
-		return session.selectList("MemberDAO.selectWarnMember");
+		return session.selectList("ManagerDAO.selectWarnMember");
 	}
 
 	public static List<ManagerDTO> selectAllMember(SqlSession session) {
-		return session.selectList("MemberDAO.selectAllMember");
+		return session.selectList("ManagerDAO.selectAllMember");
 	
+	}
+	
+
+	public static List<ManagerDTO> selectPartnerMember(SqlSession session) {
+		return session.selectList("ManagerDAO.selectPartnerMember");
+	}
+
+
+	public static ManagerDTO userinfo(SqlSession session, ManagerDTO managerList) {
+		return session.selectOne("ManagerDAO.userinfo", managerList);
 	}
 }

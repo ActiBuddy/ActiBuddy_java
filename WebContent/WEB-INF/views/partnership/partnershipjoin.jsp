@@ -24,33 +24,29 @@
     
     <jsp:include page="../common/managersidebar.jsp"/>
 
-          <h2 class="sub-header">경고 회원 조회</h2>
+          <h2 class="sub-header">파트너 문의 조회</h2>
           <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>아이디</th>
-                  <th>회원 이름</th>
-                  <th>경고 건수</th>
-                  <th>회원타입</th>
-                </tr>
-              </thead>
-              <tbody>
-                <c:forEach var="userId" items="${managerList}">
-                <tr>
-                	
-                  <td>${ userId.userId }</td>
-                  <td>${ userId.userName }</td>
-                  <td>${ userId.warn_count }</td>
-                  <td>${ userId.memType }</td>
-                </tr>
-                </c:forEach>
-                
-              </tbody>
-            </table>
-
-           
-
+          
+	   	  <form id="partnershipForm" action="${ pageContext.servletContext.contextPath }/partner/join" method="post">
+          <h3>회원 아이디</h3>
+          <h5>${ userId }</h5>
+          <textarea type="text" name="userId" style="display: none">${ userId }</textarea>
+          
+          <h3>회사 이름</h3>
+		  <input type="text" name="ownerTitle">
+			          
+          <h3>사업자 번호</h3>
+          <input type="text" name="ownerNum">
+          
+          <h3>계약 시작 날짜</h3>
+          <input type="date" name="startDate">
+          
+          <h3>계약 종료 날짜</h3>
+          <input type="date" name="endDate">
+          
+          <button type="submit">제출</button>
+         
+		  </form>	
           </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->

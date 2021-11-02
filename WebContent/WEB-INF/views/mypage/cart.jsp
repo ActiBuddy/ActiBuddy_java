@@ -93,6 +93,7 @@
     
 
                     <c:forEach var="size" begin="0" end="${ fn:length(tripList)-1 }" >
+                    <form action="/acti/activity/pay" method="post">
                     <button id="x">X</button>
                     <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList[size].activityInfo[size].name  }'">상세보기 ></button>
                     <h3>${ tripList[size].activityInfo[size].name }</h3>
@@ -100,7 +101,16 @@
                     <h5>날짜 : ${ tripList[size].cartList[size].chooseDate }<br> 수량 : ${ tripList[size].cartList[size].totalPerson }</h5>
                     <br>
                     <h4>총 결제할 금액 : ${ tripList[size].cartList[size].totalPrice } 원</h4>
-                    <button id="pay" type="button" onclick="location.href=''">바로 결제</button>
+                    <input type="hidden" name="actiName" value="${ tripList[size].activityInfo[size].name  }">
+                    <input type="hidden" name="image" value="${ tripList[size].activityInfo[size].image }">
+                    <input type="hidden" name="date" value="${ tripList[size].cartList[size].chooseDate }">
+                    <input type="hidden" name="person" value="${ tripList[size].cartList[size].totalPerson }">
+                    <input type="hidden" name="price" value="${ tripList[size].cartList[size].totalPrice }">
+                    <input type="hidden" name="userId" value="${ sessionScope.loginMember.userName }">
+                    <input type="hidden" name="actiNum" value="${ tripList[size].activityInfo[size].code }">
+                    <input type="submit" value="바로 결제" id="pay">
+                    <!-- <button id="pay" type="button" onclick="location.href=''">바로 결제</button> -->
+                    </form>
 
                     <hr>
                     </c:forEach>

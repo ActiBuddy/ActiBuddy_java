@@ -112,23 +112,41 @@
  	</resultMap>
  	
  	<select id="selectLocationInfo" resultMap="locationAndActivityResultMap" parameterType="hashMap">
-	 	SELECT
-	      	   A.LOCATION_CODE
-			 , A.LOCATION_NAME
-		  	 , A.LOCATION_INFO
-			 , A.LOCATION_IMG
-     		 , A.GUIDE_TIP
-			 , A.VISIT_MONTH
-			 , A.VISIT_NAME
-             , B.*
-             , C.ACTI_REVIEW_STAR
-             , C.ACTI_REVIEW_REC
-	  	  FROM LOCATION A
-	      LEFT JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
-	      LEFT JOIN ACTI_REVIEW C ON (B.ACTI_NUM = C.ACTI_NUM)
-	      LEFT JOIN ACTI_TYPE D ON(B.ACTI_TYPE_NUM = D.ACTI_TYPE_NUM)
-	      <where>
-	       A.LOCATION_NAME = #{ locationName, jdbcType=VARCHAR }
+                         
+                         SELECT  M.RNUM
+             , M.*
+        FROM  (SELECT    ROWNUM RNUM
+                         , V.*
+                 FROM (SELECT
+                             A.LOCATION_CODE
+                          , A.LOCATION_NAME
+                          , A.LOCATION_INFO
+                          , A.LOCATION_IMG
+                           , A.GUIDE_TIP
+                         , A.VISIT_MONTH
+                         , A.VISIT_NAME
+                            , B.ACTI_NUM
+							,B.ACTI_NAME
+							,B.LOCATION
+							,B.PRICE
+							,B.START_DATE
+							,B.END_DATE
+							,B.ACTI_TIP
+							,B.ACTI_IMG
+							,B.USER_ID
+							,B.ACTI_IMG2
+							,B.ACTI_IMG3
+                            , C.ACTI_REVIEW_STAR
+                            , C.ACTI_REVIEW_REC
+                            , D.SECOND_TYPE_NAME
+                         FROM LOCATION A
+                              LEFT JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
+                              LEFT JOIN ACTI_REVIEW C ON (B.ACTI_NUM = C.ACTI_NUM)
+                              LEFT JOIN ACTI_TYPE D ON(B.ACTI_TYPE_NUM = D.ACTI_TYPE_NUM)
+                       WHERE A.LOCATION_NAME = '서울' )V    
+                         
+                         ) M
+	       <where>
 	     	<if test="price1 != null">
 	     		AND B.PRICE BETWEEN #{ price1 } AND #{ price2 }
 	     	</if>
@@ -234,7 +252,7 @@
  	</select>
  	
  	<select id="selectActivityInfo" resultMap="activityInfoResultMap" parameterType="hashMap">
-       SELECT
+       <!-- SELECT
                A.*
              , C.*
              , D.*
@@ -261,6 +279,29 @@
         LEFT JOIN ACTI_PAYMENT I ON (H.PAY_NUM = I.PAY_NUM)
         LEFT JOIN PAY_HIS J ON (I.PAY_NUM = J.PAY_NUM)
         LEFT JOIN CART K ON (J.CART_NUM = K.CART_NUM)
+       WHERE A.ACTI_NAME = #{ actiName } -->
+       
+       
+       SELECT
+               A.*
+             , C.*
+             , D.*
+             , E.*
+             , F.*
+             , (SELECT ROUND(AVG(C.ACTI_REVIEW_STAR),1)
+                  FROM ACTI_REVIEW C
+                  JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+                 WHERE B.ACTI_NAME = #{ actiName })AS AVG
+             , (SELECT COUNT(C.ACTI_REVIEW_TITLE)
+                  FROM ACTI_REVIEW C
+      	          JOIN ACTIVITY_INFO B ON (C.ACTI_NUM = B.ACTI_NUM)
+                 WHERE B.ACTI_NAME = #{ actiName })AS COUNT    
+        FROM ACTIVITY_INFO A
+        LEFT JOIN ACTI_CONDITION_HIS B ON (A.ACTI_NUM = B.ACTI_NUM)
+        LEFT JOIN ACTI_CONDITION C ON (B.ACTI_CON_NUM = C.ACTI_CON_NUM)
+        LEFT JOIN ACTI_TYPE D ON ( A.ACTI_TYPE_NUM = D.ACTI_TYPE_NUM)
+        LEFT JOIN ACTI_OPTION E ON (A.ACTI_NUM = E.ACTI_NUM)
+        LEFT JOIN LOCATION F ON (A.LOCATION_CODE = F.LOCATION_CODE)
        WHERE A.ACTI_NAME = #{ actiName }
  	</select>
  	
@@ -368,8 +409,13 @@
           FROM (SELECT ROWNUM RNUM 
                      , B.*
                   FROM (SELECT A.*
+                             , F.CHOOSE_OPTION
                           FROM ACTI_REVIEW A
-                          JOIN ACTIVITY_INFO B ON(A.ACTI_NUM = B.ACTI_NUM)
+                          LEFT JOIN ACTIVITY_INFO B ON(A.ACTI_NUM = B.ACTI_NUM)
+                          LEFT JOIN REVIEW_HIS C ON (A.ACTI_REVIEW_NUM = C.REVIEW_NUM)
+                          LEFT JOIN ACTI_PAYMENT D ON (C.PAY_NUM = D.PAY_NUM)
+                          LEFT JOIN PAY_HIS E ON (D.PAY_NUM = E.PAY_NUM)
+                          LEFT JOIN CART F ON (E.CART_NUM = F.CART_NUM)
                          WHERE B.ACTI_NAME = #{ actiName }
                           <if test="sort != null and sort == 'rec'">
 	                      ORDER BY A.ACTI_REVIEW_REC DESC
@@ -386,30 +432,6 @@
                        )B
                )C
          WHERE C.RNUM BETWEEN #{ selectCriteria.startRow } and #{ selectCriteria.endRow }
-        
-    
          
- 	    <!-- SELECT C.RNUM
-             , C.*
-          FROM (SELECT ROWNUM RNUM 
-                     , B.*
-                  FROM (SELECT A.*
-                          FROM ACTI_REVIEW A
-                         ORDER BY ACTI_REVIEW_DATE DESC
-                       )B
-              )C
-         WHERE C.RNUM BETWEEN #{ startRow } and #{ endRow }
-         <if test="sort != null and sort == 'rec'">
-	     ORDER BY C.ACTI_REVIEW_REC DESC
-	     </if>
-	     <if test="sort != null and sort == 'new'">
-         ORDER BY C.ACTI_REVIEW_DATE DESC
-	     </if>
-	     <if test="sort != null and sort == 'high'">
-	     ORDER BY C.ACTI_REVIEW_STAR DESC
-	     </if>
-	     <if test="sort != null and sort == 'row'">
-	     ORDER BY C.ACTI_REVIEW_STAR ASC
-         </if> -->
  	</select>
  </mapper>

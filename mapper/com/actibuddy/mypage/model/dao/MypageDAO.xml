@@ -142,6 +142,8 @@
  		
  		SELECT
 			        A.ACTI_NAME
+			      , A.ACTI_IMG  
+			      , A.ACTI_NUM
 			      , C.CHOOSE_DATE
 			      , C.TOTAL_PERSON
 			      , C.CHOOSE_OPTION

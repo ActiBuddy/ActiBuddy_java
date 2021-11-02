@@ -231,7 +231,6 @@
   <br> <br>
 
     <input type="submit" id="cart" class="btn btn-pay-select" value="장바구니"> 
-    <%-- <input type="hidden" name="actiName" value="${ activity.activityList[0].code }"> --%>
     
     <script>
      $(function(){			
@@ -419,9 +418,6 @@ $('#sort-select').on('change', function(){
 }); 
 
     $('#sort-select').val('${ sort }');
-    
-    
-
 
 </script>
 

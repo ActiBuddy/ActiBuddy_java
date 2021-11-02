@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dao.MateDAO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
+import com.actibuddy.member.model.dto.MemberDTO;
 
 public class MateReviewService {
 
@@ -73,6 +74,102 @@ public class MateReviewService {
 		session.close();
 		
 		return totalCount;
+	}
+
+	/**
+	 * 선택한 메이트 리뷰 정보
+	 * @param num
+	 * @return review
+	 */
+	public MateReviewDTO selectReviewInfo(String num) {
+		
+		SqlSession session = getSqlSession();
+		
+		MateReviewDTO review = reviewDAO.selectReviewInfo(session, num);
+		
+		session.close();
+		
+		return review;
+	}
+
+	/**
+	 * 메이트 리뷰 신고 업데이트
+	 * @param review
+	 * @return result
+	 */
+	public int updateRepYn(MateReviewDTO review) {
+		
+		SqlSession session = getSqlSession();
+		int result = MateDAO.updateRepYn(session, review);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/**
+	 * 메이트 리뷰 추천 업데이트
+	 * @param review
+	 * @return result
+	 */
+	public int updateReviewRec(MateReviewDTO review) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.updateReviewRec(session, review);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/**
+	 * 베스트 추천 리뷰 5개 조회 메소드
+	 * @return bestReviewList
+	 */
+	public List<MemberDTO> selectBestReview() {
+		
+		SqlSession session = getSqlSession();
+		
+		List<MemberDTO> bestReviewList = MateDAO.selectBestReview(session);
+		
+		session.close();
+		
+		return bestReviewList;
+	}
+
+	/**
+	 * 게시글을 삭제해주는 메소드(상태 변환)
+	 * @param review
+	 * @return result
+	 */
+	public int deleteReview(MateReviewDTO review) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.deleteReview(session, review);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
 	}
 
 

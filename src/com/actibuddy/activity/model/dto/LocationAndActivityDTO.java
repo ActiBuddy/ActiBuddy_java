@@ -11,14 +11,16 @@ public class LocationAndActivityDTO implements java.io.Serializable{
 	private String tip;
 	private String visitMonth;
 	private String visitName;
-	private List<ActivityAndReviewDTO> activityList;
+	private List<ActivityDTO> activityList;
 	
 	public LocationAndActivityDTO() {
 
 	}
 
+	
+
 	public LocationAndActivityDTO(int code, String name, String info, String image, String tip, String visitMonth,
-			String visitName, List<ActivityAndReviewDTO> activityList) {
+			String visitName, List<ActivityDTO> activityList) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -86,11 +88,11 @@ public class LocationAndActivityDTO implements java.io.Serializable{
 		this.visitName = visitName;
 	}
 
-	public List<ActivityAndReviewDTO> getActivityList() {
+	public List<ActivityDTO> getActivityList() {
 		return activityList;
 	}
 
-	public void setActivityList(List<ActivityAndReviewDTO> activityList) {
+	public void setActivityList(List<ActivityDTO> activityList) {
 		this.activityList = activityList;
 	}
 
@@ -100,7 +102,4 @@ public class LocationAndActivityDTO implements java.io.Serializable{
 				+ ", tip=" + tip + ", visitMonth=" + visitMonth + ", visitName=" + visitName + ", activityList="
 				+ activityList + "]";
 	}
-
-	
-	
 }

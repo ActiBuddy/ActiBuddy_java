@@ -397,49 +397,28 @@
         <h1>${location.name} 인기 액티비티</h1>
     </div>
     <div class="container mt-4">
-        <div class="row">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
+            <c:forEach items="${randomList.activityList}" var="acti" end="2">
             <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top">
-                      <div class="card-body">
-                      <h3 class="card-text">등산</h3>
-                    </div>
+            <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
+              <div class="card shadow-sm" id="clickAcit">
+                <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
+                <div class="card-body" style="height : 160px">
+                  <p class="card-text">
+                      ${acti.name}
+                  </p>
+                  <p>조회수 : ${acti.views} </p>
+                  <p>액티비티 마감일 : ${ acti.endDate }</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">₩${acti.price}부터</small>
                   </div>
+                </div>
+              </div>
+              </a>
             </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                      <h3 class="card-text">서핑</h3>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top">
-                      <div class="card-body">
-                      <h3 class="card-text">페러글라이딩</h3>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                      <h3 class="card-text">스키</h3>
-                    </div>
-                  </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../resources/image/seoul.jpeg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                      <h3 class="card-text">짚라인</h3>
-                    </div>
-                  </div>
-            </div>
-        </div>
+        </c:forEach>
     </div>
+   </div>
 
       <!-- 액티비티 조회 -->
     <div class="container mt-5">
@@ -450,7 +429,7 @@
     <div class="side-2" style="height: 530px;">
       <h3 style="margin-left: 10%;">카테고리</h3>
       <br>
-      <form action="/acti/sort/controll" method="post">
+      <form action="/acti/sort/controll" method="get">
       <div class="menu">
         <div class="btn-group mb-5">
           <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -535,7 +514,7 @@
     <div class="div2">
         <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">0건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
-    	<form method="post" action="/acti/sort/controll" id="frm">
+    	<form method="get" action="/acti/sort/controll" id="frm">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
               <div class="date">
@@ -577,6 +556,7 @@
         <div class="container" id="test" style="float: none; margin:100 auto;">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
             <h1 class="container" style="margin-top: 50px">조회결과에 해당하는 액티비티가 없습니다</h1>
+            <!-- <button id="sortBtn" style="width: 200px">메인페이지로 돌아가기</button> <button id="sort">지역으로 돌아가기</button> -->
             <div style="height: 600px"></div>
           </div> 
         </div> 

@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 import com.actibuddy.activity.service.ActivityService;
+import com.actibuddy.common.paging.Pagenation;
+import com.actibuddy.common.paging.SelectCriteria;
 
 @WebServlet("/sort/controll")
 public class SortControllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Map<String,Object> resultMap = new HashMap<>();
 		
@@ -34,6 +36,7 @@ public class SortControllServlet extends HttpServlet {
 		String sort = request.getParameter("sort");
 		System.out.println(sort);
 		
+		/* 카테고리 확인*/
 		String sport = request.getParameter("hdCheck");
 		System.out.println(sport);
 		
@@ -49,6 +52,7 @@ public class SortControllServlet extends HttpServlet {
 		String water = request.getParameter("hdCheck4");
 		System.out.println(water);
 		
+		/* 모두선택 버튼 확인 */
 		String selectAll = request.getParameter("selectAll");
 		System.out.println("모두선택 버튼 값 : " + selectAll);
 		
@@ -63,6 +67,7 @@ public class SortControllServlet extends HttpServlet {
 		
 		String selectAll5 = request.getParameter("selectAll5");
 		System.out.println("모두선택 버튼 값 : " + selectAll5);
+		
 		
 		if(locationName != null) {
 			resultMap.put("date", date);
@@ -130,11 +135,42 @@ public class SortControllServlet extends HttpServlet {
 			String[] selctAlls5 = selectAll5.split(",");
 			resultMap.put("selectAlls5", selctAlls5);
 		}
+		
+		/* ======== 페이징 처리 ========*/
+		String currentPage = request.getParameter("currentPage");
+		int pageNo = 1;
+		// 현재페이지가 설정된 경우 페이지 번호는 변경된다.
+		if(currentPage != null && !"".equals(currentPage)) {
+			pageNo = Integer.parseInt(currentPage);
+		}
+		// 페이지 번호가 0보다 작아도 1페이지
+		if(pageNo <= 0) {
+			pageNo = 1;
+		}
+		
 		ActivityService activityService = new ActivityService();
+		int totalCount = activityService.totalActivityCountByMap(resultMap);
+		System.out.println(totalCount);
+		
+		int limit = 9;
+		int buttonAmount = 5;
+		
+		SelectCriteria selectCriteria = null;
+		
+		selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, null, null);
+		resultMap.put("startRow", selectCriteria.getStartRow());
+		resultMap.put("endRow", selectCriteria.getEndRow());
+		
+		/* 카테고리, 정렬 조건에 따른 정보 조회*/
 		LocationAndActivityDTO locationActivity = activityService.selectLocationInfo(resultMap);
 		System.out.println("locationActivity : " + locationActivity);
+		
+		/* 지역 액티비티 추천 정보 조회*/
+		LocationAndActivityDTO randomList = activityService.selectRandomList(locationName);
+		
+		/* 정보값이 없을때 오류페이지로 넘겨줄 지역정보 값 조회 */
 		LocationDTO location = activityService.selectLocationOne(locationName);
-		System.err.println("location : " + location);
+		System.out.println("location : " + location);
 		
 		String[] month = location.getVisitMonth().split(",");
 		String[] name = location.getVisitName().split(",");
@@ -152,16 +188,15 @@ public class SortControllServlet extends HttpServlet {
 			map.put("vistis", "<header id=\"visitHeader\">" + month[i] + "</header> <p id=\"visitBody\">" + name[i] +"</p>");
 		}
 		
-		System.out.println("값"  + locationActivity);
-		
 		String path = "";
-		
 		if(price != null) {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("price", price);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} 
 		
 		if(sort != null) {
@@ -170,78 +205,104 @@ public class SortControllServlet extends HttpServlet {
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("sort", sort);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 			
 		} 
+		
 		if(locationActivity == null) {
 			path = "/WEB-INF/views/activity/activityNull.jsp";
 			request.setAttribute("location", location);
 			request.setAttribute("vistis", map);
+			request.setAttribute("randomList", randomList);
 		} else if(date != null && date != "") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("date", date);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(sport != null && sport != ""){
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("sport", sport);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(ticket != null && ticket != "") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("ticket", ticket);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(spa != null && spa != "") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("spa", spa);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(tour != null && tour != "") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("tour", tour);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(water != null && water != "") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("water", water);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(selectAll != null && selectAll !="") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("selectAll", selectAll);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(selectAll2 != null && selectAll2 !="") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("selectAll2", selectAll2);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(selectAll3 != null && selectAll3 !="") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("selectAll3", selectAll3);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(selectAll4 != null && selectAll4 !="") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("selectAll4", selectAll4);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} else if(selectAll5 != null && selectAll5 !="") {
 			path = "/WEB-INF/views/activity/activity.jsp";
 			request.setAttribute("locationActivity", locationActivity);
 			request.setAttribute("vistis", map);
 			request.setAttribute("move", "move");
 			request.setAttribute("selectAll5", selectAll5);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("randomList", randomList);
 		} 
 		
 		request.getRequestDispatcher(path).forward(request, response);

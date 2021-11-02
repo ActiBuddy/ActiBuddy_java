@@ -31,9 +31,9 @@ public class ActivityDAO {
 		return session.selectList("ActivityDAO.selectLocation");
 	}
 
-	public LocationAndActivityDTO selectActivityByPrice(SqlSession session, Map<String, String> priceMap) {
+	public LocationAndActivityDTO selectActivity(SqlSession session, Map<String, Object> resultMap) {
 		
-		return session.selectOne("ActivityDAO.selectActivityByPrice", priceMap);
+		return session.selectOne("ActivityDAO.selectActivity", resultMap);
 	}
 
 	public List<ActivityDTO> selectRecommendActivity(SqlSession session, String actiName) {
@@ -69,6 +69,41 @@ public class ActivityDAO {
 	public List<ActiReviewDTO> selectReviewList(SqlSession session, Map<String, Object> reviewMap) {
 		
 		return session.selectList("ActivityDAO.selectReviewList", reviewMap);
+	}
+
+	public int totalActivityCount(SqlSession session, String locationName) {
+
+		return session.selectOne("ActivityDAO.totalActivityCount",locationName);
+	}
+
+	public int totalActivityCountByMap(SqlSession session, Map<String, Object> resultMap) {
+		
+		return session.selectOne("ActivityDAO.totalActivityCountByMap", resultMap);
+	}
+
+	public int totalCountBySearch(SqlSession session, Map<String, Object> resultMap) {
+
+		return session.selectOne("ActivityDAO.totalCountBySearch", resultMap);
+	}
+
+	public List<ActivityDTO> searchActivity(SqlSession session, Map<String, Object> resultMap) {
+
+		return session.selectList("ActivityDAO.searchActivity", resultMap);
+	}
+
+	public List<ActivityDTO> selectActiName(SqlSession session, String locationName) {
+
+		return session.selectList("ActivityDAO.selectActiName", locationName);
+	}
+
+	public LocationAndActivityDTO selectRandomList(SqlSession session, String locationName) {
+
+		return session.selectOne("ActivityDAO.selectRandomList" , locationName);
+	}
+
+	public int updateViews(SqlSession session, String actiName) {
+
+		return session.update("ActivityDAO.updateViews", actiName);
 	}
 
 }

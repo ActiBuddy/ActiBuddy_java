@@ -54,6 +54,7 @@ public class ActivityInformationServlet extends HttpServlet {
 		System.out.println("=====================================================");
 		
 		/* 인포 페이지 하단의 추천 액티비티 가져오기 */
+		int viewUpdate = activityService.updateViews(actiName);
 		List<ActivityDTO> recActivity = new ArrayList<>();
 		recActivity = activityService.selectRecommendActivity(actiName);
 //		for(ActivityDTO acti : recActivity) {

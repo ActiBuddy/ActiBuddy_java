@@ -9,32 +9,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mateFind_writing.css">
+    <!--  데이트피커 -->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<script>
       /* 조건 알럿 */
-      $(function() {
-        $('.btnok').click(function() {
-          if($('select[name=location]').val() == 'none') {
-            alert('지역을 입력해주세요.');
-          } else {
-            if($('input[class="write_title"]').val() == ''){
-            alert('제목을 선택해주세요.');
-            } else {
-              if($('input[name=rgdate]').val() == '') {
-                alert('날짜를 선택해주세요.');
-              } else {
-                if($('textarea[class=write_text]').val() == '') {
-                  alert('내용을 입력해주세요.');
-                } else {
-                  $(location).attr('href', 'matemain.html');
-                }
-              }
-            }
-          }
-        });
-      });
+
+        function validate(){
+       
+        	 if($('select[name=location]').val() == 'none') {
+                 alert('지역을 입력해주세요.');    
+                 return false;
+               } else {
+                 if($('input[class="write_title"]').val() == ''){
+                 alert('제목을 선택해주세요.');
+                 return false;
+                 } else {
+                   if($('input[name=rgdate]').val() == '') {
+                     alert('날짜를 선택해주세요.');
+                     return false;
+                   } else {
+                     if($('textarea[class=write_text]').val() == '') {
+                       alert('내용을 입력해주세요.');
+                       return false;
+                     } else {
+                    	 return true;
+                     }
+                   }
+                 }
+               }
+        }
+
     </script>
 	
     <title>메이트 글 작성</title>
@@ -43,45 +52,48 @@
 	<!-- 네비게이션바 -->
     <jsp:include page="../common/menubar.jsp"/>
     
-     <!-- 주요 html -->
+     <!-- 주요 html  ${ pageContext.servletContext.contextPath } --> 
     <div class="around">
-    	<form>
+   	<form id="frm" action="${ pageContext.servletContext.contextPath }/mate/find/regist" method="post" onsubmit="return validate();">
         <!-- 액티비티 이미지 -->
         <div class="activity">
-        	<button class="show" id="show">액티비티 선택하기</button>
+            <input type="label" class="showbtn" id="showbtn" value="액티비티 선택하기">
             <div class="background">
               <div class="window">
                 <div class="popup">
-                  <img class="popimg" src="../../resources/image/ch_acti.png">
+                  <img class="popimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch_acti.png">
                   <div class="aback">
-                    <img class="abackimg" src="../../resources/image/ch1.png">
-                    <img class="abackimg" src="../../resources/image/ch2.png">
-                    <img class="abackimg" src="../../resources/image/ch3.png">
-                    <img class="abackimg" src="../../resources/image/ch4.png">
+                    <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch1.png">
+                    <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch2.png">
+                    <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch3.png">
+                    <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch4.png">
                     <div class="chborder">
                       <input type="checkbox" name="acti" value="ch1" onclick='checkOnlyOne(this)'>
                       <input type="checkbox" name="acti" value="ch2" onclick='checkOnlyOne(this)'>
                       <input type="checkbox" name="acti" value="ch3" onclick='checkOnlyOne(this)'>
                       <input type="checkbox" name="acti" value="ch4" onclick='checkOnlyOne(this)'>
                     </div>
-                    <img class="abackimg" src="../../resources/image/ch5.png">
-                    <img class="abackimg" src="../../resources/image/ch6.png">
-                    <img class="abackimg" src="../../resources/image/ch7.png">
+                    <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch5.png">
+                    <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch6.png">
+                    <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch7.png">
+                    <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch8.png">
                     <div class="chborder">
                       <input type="checkbox" name="acti" value="ch5" onclick='checkOnlyOne(this)'>
                       <input type="checkbox" name="acti" value="ch6" onclick='checkOnlyOne(this)'>
                       <input type="checkbox" name="acti" value="ch7" onclick='checkOnlyOne(this)'>
+                      <input type="checkbox" name="acti" value="ch8" onclick='checkOnlyOne(this)'>
                     </div>
                   </div>
                   <div class="abtn">
-                  <button id="apply" type="submit">적용</button>
-                  <button id="close">닫기</button>
+                  <label class="pbtn" id="apply"><img src="${ pageContext.servletContext.contextPath }/resources/image/submitbtn.png"></label>
+                  <label class="pbtn" id="close"><img src="${ pageContext.servletContext.contextPath }/resources/image/canclebtn.png"></label>
                   </div>
                 </div>
               </div>
             </div>
-            <!--  --><img src="${ pageContext.servletContext.contextPath }/resources/image/faq_main.jpeg" />
+
         </div>
+        
         <!-- 제목 부분 -->
         <div class="title">
             <div class="first">
@@ -89,7 +101,7 @@
             </div>
             <div class="second">
                 <select class="location" name="location">
-                    <option value="none">지역</option>
+                    <option value="none">지역선택</option>
                     <option value="seoul">서울</option>
                     <option value="gyeonggi">경기</option>
                     <option value="gangwon">강원</option>
@@ -108,7 +120,9 @@
 
       <div class="writer">
         <div class="fix">작성자 :</div>
-        <div class="name"><a href="${ pageContext.servletContext.contextPath }/mypage/mypage.html">parisbaguette</a></div>
+        <div class="name">
+        	<input type="text" name="userId" value="${ sessionScope.loginMember.userId }" readonly>
+        </div>
       </div>
 
       <hr>
@@ -151,10 +165,10 @@
           <div class="condition">성별</div>
           <div class="yellowback">
             <div class="imgborder2">
-              <img src="${ pageContext.servletContext.contextPath }/resources/image/both.png" />
+              <img id="genimg" src="${ pageContext.servletContext.contextPath }/resources/image/both.png" />
             </div>
             <div class="selectborder">
-              <select class="gender">
+              <select id="gender" class="gender">
                 <option value="both">남녀무관</option>
                 <option value="men">남성만</option>
                 <option value="women">여성만</option>
@@ -190,13 +204,14 @@
        </div>
        <!-- 버튼 부분 -->
        <div class="btnborder">
-          <button type="submit" class="btnok">등록</button>
+          <button type="submit" id="btnSave" class="btnok" >등록</button>
           <button class="btnno" onclick="location.href='#'" onclick="location.href='#'">취소</button>
        </div>
       <div class="mate5"></div>
-      
+      </form>
       
       <script>
+      /* 버튼 스크립트 */
       function show () {
           document.querySelector(".background").className = "background show";
        }
@@ -205,10 +220,13 @@
           document.querySelector(".background").className = "background";
        }
 
-       document.querySelector("#show").addEventListener('click', show);
-       document.querySelector("#close").addEventListener('click', close);
+       // 버튼 클릭
+       document.querySelector("#showbtn").addEventListener('click', show);
+       // 적용, 취소 버튼
        document.querySelector("#apply").addEventListener('click', close);
+       document.querySelector("#close").addEventListener('click', close);
     
+       /* 체크박스 스크립트 */
        function checkOnlyOne(element) {
   
            const checkboxes 
@@ -220,6 +238,17 @@
           
           element.checked = true;
         }
+       
+       /* 이미지 변경 스크립트 */
+       $("#gender").change(function () {
+           if($(this).val() == "both") {
+             $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/both.png");
+           } else if ($(this).val() == "men") {
+             $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/men.png");
+           } else if ($(this).val() == "women") {
+             $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/women.png");
+           }
+         });
 
     </script>
       <!-- 찐짜div-->      

@@ -31,6 +31,9 @@
 		<collection property="reviewList" resultMap="mateReviewResultMap"/>
 	</resultMap>
 	
+	
+	
+	<!-- ========== MATE REVIEW ========== -->
 	<!-- 메이트 후기 수정 업데이트 -->
 	<update id="updateReview">
 		UPDATE MT_REVIEW
@@ -47,6 +50,36 @@
 		   	 </if>
 		 WHERE MT_REVIEW_NUM = #{ num }
 	</update>
+	
+	<!-- 베스트 메이트 리뷰 조회 -->
+	<select id="selectNewReview" resultMap="mateReviewResultMap">
+		SELECT ROWNUM 
+ 			, B.MT_REVIEW_NUM
+			, B.MT_REVIEW_TITLE
+			, B.MT_REVIEW_IMG1
+			, B.MT_REVIEW_CON
+			, B.MT_REVIEW_DATE
+			, B.MT_REVIEW_REP_YN
+			, B.USER_ID
+			, B.MT_REVIEW_IMG2
+			, B.MT_REVIEW_IMG3
+			, B.MT_REVIEW_REC
+		  FROM (SELECT
+				  A.MT_REVIEW_NUM
+				, A.MT_REVIEW_TITLE
+				, A.MT_REVIEW_IMG1
+				, A.MT_REVIEW_CON
+				, A.MT_REVIEW_DATE
+				, A.MT_REVIEW_REP_YN
+				, A.USER_ID
+				, A.MT_REVIEW_IMG2
+				, A.MT_REVIEW_IMG3
+				, A.MT_REVIEW_REC
+			  FROM MT_REVIEW A
+			 WHERE A.MT_REVIEW_REP_YN IN ('N','L')
+		     ORDER BY A.MT_REVIEW_DATE DESC) B
+		 WHERE ROWNUM <![CDATA[ < ]]> 6
+	</select>
 	
 	
 	<!-- 베스트 메이트 리뷰 조회 -->
@@ -74,10 +107,12 @@
 				, A.MT_REVIEW_IMG3
 				, A.MT_REVIEW_REC
 			  FROM MT_REVIEW A
+			 WHERE A.MT_REVIEW_REP_YN IN ('N','L')
 		     ORDER BY A.MT_REVIEW_REC DESC) B
 		 WHERE ROWNUM <![CDATA[ < ]]> 6
+		   
 	</select>
-	
+
 	<!-- 메이트 후기 삭제 업데이트 -->
 	<update id="deleteReview">
 		UPDATE MT_REVIEW

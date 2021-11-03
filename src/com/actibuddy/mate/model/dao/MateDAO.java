@@ -45,6 +45,11 @@ public class MateDAO {
 
 		return session.selectList("MateDAO.selectBestReview");
 	}
+	
+	public static List<MemberDTO> selectNewReview(SqlSession session) {
+		
+		return session.selectList("MateDAO.selectNewReview");
+	}
 
 	public static int deleteReview(SqlSession session, MateReviewDTO review) {
 		

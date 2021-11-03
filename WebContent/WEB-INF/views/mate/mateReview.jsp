@@ -24,7 +24,7 @@
     <div class="around">
         <!-- 로고 이미지 -->
         <div class="mate_logo">
-            <img src="${ pageContext.servletContext.contextPath }/resources/image/matereview.png" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/mate/review';" >
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/matereview.png" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/mate/review';">
           
           </div>
           <!-- 광고 이미지 -->

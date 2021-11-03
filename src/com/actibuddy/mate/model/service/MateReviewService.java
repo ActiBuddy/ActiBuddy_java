@@ -149,6 +149,22 @@ public class MateReviewService {
 		
 		return bestReviewList;
 	}
+	
+
+	/**
+	 * 최신순 리뷰 5개 조회 메소드
+	 * @return newReviewList
+	 */
+	public List<MemberDTO> selectNewReview() {
+		
+		SqlSession session = getSqlSession();
+		
+		List<MemberDTO> newReviewList = MateDAO.selectNewReview(session);
+		
+		session.close();
+		
+		return newReviewList;
+	}
 
 	/**
 	 * 게시글을 삭제해주는 메소드(상태 변환)
@@ -193,6 +209,7 @@ public class MateReviewService {
 		
 		return result;
 	}
+
 
 
 

@@ -74,9 +74,9 @@
 			<a href="${ pageContext.servletContext.contextPath }/activity/main">액티비티</a>
 			</span>
 			<span id="acti_2">
-			<a href="../mate/mateFindWriting.html">메이팅</a>
+			<a>메이팅</a>
 			<div id="acti_detail2">
-            <a href="#">메이트 매칭</a>
+            <a href="${ pageContext.servletContext.contextPath }/mate/main">메이트 매칭</a>
             <a href="${ pageContext.servletContext.contextPath }/mate/review">메이트 후기</a>
             </div>
 			</span>

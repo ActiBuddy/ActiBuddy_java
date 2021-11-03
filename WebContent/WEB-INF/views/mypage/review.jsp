@@ -89,7 +89,7 @@
     
                     
                     <%-- <h5>수량 : ${ selectActiReview.reviewList[size].writeDate }</h5> --%>
-                    <button id="delete">삭제</button>
+					<br>
     
                     </c:forEach>
                     <hr>
@@ -117,12 +117,6 @@
         </div>
 
     </div>
-
-
-
-<!-- 하단 바 -->
-   <jsp:include page="../common/footer.jsp"/>
-
-
 </body>
+   <jsp:include page="../common/footer.jsp"/>
 </html>

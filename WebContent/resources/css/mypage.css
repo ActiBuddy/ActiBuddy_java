@@ -13,6 +13,7 @@
     position: relative;
     width: 40%;
     left: 46%;
+    height: auto;
     transform: translate(-50%);
     /* border: 1px solid blue; */
     margin-bottom: 20px;
@@ -21,7 +22,7 @@
 .body-all {
   position: relative;
   width: 70%;
-  height: 100%;
+  height: auto;
   background: rgba(249, 249, 249, 1);
   /* border: 2px solid rgb(19, 19, 39); */
   left: 15%;
@@ -531,6 +532,11 @@
 	color: #c0c0c0;
 	display: inline-block;
 	margin-top: 0px;
+}
+
+#actigive{
+	position:relative;
+	left:45%;
 }
 
 .a-center-text h5{

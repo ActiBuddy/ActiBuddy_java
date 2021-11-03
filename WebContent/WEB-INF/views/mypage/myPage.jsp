@@ -56,26 +56,22 @@
         
                 <hr>
         
-                <textarea cols ="30" rows="2" name="favoriteActi" placeholder="선호하는 액티비티 : "></textarea>
+                <textarea cols ="30" rows="2" name="favoriteActi" placeholder="선호하는 액티비티를 작성해주세요 "></textarea>
                 <button type="submit">등록하기</button>
             	
             	</form>
             	
             </c:if>
-		<%--   <jsp:forward page="">
-            		<jsp:param value="${tripList.introduce }" name="introduce"/>
-            		<jsp:param value="${tripList.favoriteActi }" name="favoriteActi"/>
-            	</jsp:forward> 		--%>
-            	
+
 				<c:if test="${ tripList.introduce ne null }">
 	            	<form id = "introduce" action="../mypage/main" method="post">
 	            
 	            	
-		           <textarea cols ="50" rows="6" id ="text1" name="introduce" placeholder="${ introduce.introduce }"></textarea>
+		           <textarea cols ="50" rows="6" id ="text1" name="introduce" placeholder="${ tripList.introduce }"></textarea>
 	
 	                <hr>
 	        
-	                <textarea cols ="30" rows="2" name="favoriteActi" placeholder="${introduce.favoriteActi }"></textarea>
+	                <textarea cols ="30" rows="2" name="favoriteActi" placeholder="${tripList.favoriteActi }"></textarea>
 	                <button type="submit">수정하기</button>
 	            	
 	            	</form>
@@ -126,10 +122,7 @@
         
     </div>
 
-
+</body>
 <!-- 하단 바 -->
    <jsp:include page="../common/footer.jsp"/>
-
-
-</body>
 </html>

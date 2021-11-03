@@ -50,6 +50,7 @@
                 <a href="${ pageContext.servletContext.contextPath }/mypage/partner/add">
                 <button type="button" class="forgreen">상품 추가</button></a>
             </div>
+                <br>
 
             <div class="a-center-1">
                 
@@ -58,26 +59,20 @@
 		
         			<c:if test="${ !empty sessionScope.loginMember }">
 		
-        				<h4><c:out value="${ sessionScope.loginMember.userName }"/> 님의 상품</h4>
+        				<h4><c:out value="${ sessionScope.loginMember.userName }"/> 님의 등록된 상품</h4>
         			
 					</c:if>
 
                     <hr>
                  	<c:forEach var="size" begin="0" end="${fn:length(selectActiInfo)-1 }" >
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
+                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ selectActiInfo[size].name }'">상세보기 ></button>
                     <h3>액티비티 : ${ selectActiInfo[size].name }</h3> 
                     
                     <br><br>
-<%--                     <h5> 시작 날짜 : <fmt:formatDate value="${selectActiInfo[size].StartDate }" pattern="yyyy-MM-dd"/></h5>
-
-
-                    
+<%--                <h5> 시작 날짜 : <fmt:formatDate value="${selectActiInfo[size].StartDate }" pattern="yyyy-MM-dd"/></h5>
                     <h5> 마감 날짜 : <fmt:formatDate value="${selectActiInfo[size].EndDate }" pattern="yyyy-MM-dd"/></h5>  --%>
     
-                    <br><br>
-
-
-                    <hr>
+                    <br><br><hr>
     				
     				</c:forEach> 
     				

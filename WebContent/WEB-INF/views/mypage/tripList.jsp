@@ -68,15 +68,25 @@
                     <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList.activityInfo[size].name }'">상세보기 ></button>
                     <h3>액티비티 : ${ tripList.activityInfo[size].name }</h3> 
                     
-                    <br>
+                    <br><br>
                     <h5>날짜 : ${ tripList.cartList[size].chooseDate } <br> 수량 : ${ tripList.cartList[size].totalPerson }</h5>
+                    <br><h5>선택 옵션 : ${ tripList.actiReview[size].chooseOption }</h5>
     
-                    <br><br><br>
+                    <br>
     
                     <h5 id="usestatus">이용상태 : </h5>
-                    
- 
+                      
+	                    <c:if test="${ tripList.actiReview[size].content eq null }">
+	                    
 	                    <button id="complete2" onclick='changeBtnName()' >후기 작성하기</button>
+	                    
+	                    </c:if>
+	                    
+	                    <c:if test="${ tripList.actiReview[size].content ne null }">
+	                    
+	                    <button >후기 작성 완료</button>
+	                    
+	                    </c:if>
 
                     <hr>
     				
@@ -85,33 +95,12 @@
     				<script>
     	
                     	function changeBtnName()  {
-	                      	/* if (complete2.innerText == "사용완료") {
-	                      		
-	                    	  const btnElement = document.getElementById('complete2');
-	                      	  btnElement.innerText = '후기 작성하기';
-	                      	  
-	                      	}else if(complete2.innerText == "후기 작성하기"){
-	 */
+
 		                      		window.location.href = '/acti/mypage/trip/review/write';
 	                     	
                     	}
                     </script>
     				
-<!--                     <script>
-                    
-                    $("#complete2").click(function(){
-                    	
-                        $(".btnBox").append('<button type="button" id="btn2">후기 작성하기</button>');
-                    });
-
-                    $(document).on("click","#btn2",function(){
-
-                    	window.location.href = '/acti/mypage/trip/review/write';
-                    });
-                    	
-                    </script> -->
-                   
-
                 </div>
 
             </div>
@@ -123,7 +112,7 @@
 
 
 <!-- 하단 바 -->
-   <jsp:include page="../common/footer.jsp"/>
 
 </body>
+   <jsp:include page="../common/footer.jsp"/>
 </html>

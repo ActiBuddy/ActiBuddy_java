@@ -116,5 +116,10 @@ public class ActivityDAO {
 		
 		return session.selectOne("ActivityDAO.selectPayment");
 	}
+	
+	public int updateStar(SqlSession session, int actiNum) {
+
+		return session.update("ActivityDAO.updateStar");
+	}
 
 }

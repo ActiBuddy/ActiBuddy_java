@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+       <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,17 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>my-questions</title>
+    <title>나의 문의사항</title>
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mypage.css">
 
 </head>
 
-<body>
-
-
       <jsp:include page="../common/menubar.jsp"/>
-
+<body>
 
     <div class="logo" >
     
@@ -50,80 +49,61 @@
                 
                 <div class="c-center-text">
 					
-					<c:if test="${ !empty sessionScope.loginMember }">
+				<c:if test="${ !empty sessionScope.loginMember }">
 		
         			<h3><c:out value="${ sessionScope.loginMember.userName }"/> 님의 문의사항</h3>
 
 				</c:if>
-
+				
+				
+					<c:forEach var="size" begin="0" end="${ fn:length(selectFaq)-1}">
                     <hr>
-
-                    <h3>제목 : </h3>
+                    <h3>제목 : ${selectFaq[size].queTitle}</h3>
                     <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
                     <br> <br> <br>
-                    <h4>문의 처리 상황 : </h4><br>
+                        <c:if test="${ selectFaq[size].answer eq null}">
+                    <h4>문의 처리 상황 : 처리중</h4><br>
+                        </c:if>
+                        <c:if test="${ selectFaq[size].answer ne null}">
+                    <h4>문의 처리 상황 : 처리완료</h4><br>
+                        </c:if>
 
-                    <button id="l-list">답변 보기</button>
+                    <button class="forgreen" id="l-list${ size + 1 }">답변 보기</button>
                     <div class="answer">
                         <br>
                         <p>
-                            문의하신 문의의 답변입니다.
+                        <c:if test="${ selectFaq[size].answer eq null}">
+                    		답변을 기다려주세요. 빠른 시일 내에 처리하겠습니다.
+                        </c:if>
+                        <c:if test="${ selectFaq[size].answer ne null}">
+                            ${selectFaq[size].answer}
+                        </c:if>
                         </p>
+                        <br>
 
                     </div>
+
+                    
                     <script>
                         $(function(){
                             $('.answer').slideUp()
                 
-                            $('#l-list').click(function(){
+                            $('#l-list${ size + 1 }').click(function(){
                                 $(this).next('div').slideToggle();
                             });
                         });
                     </script>
-
-                    <hr>
-
-                    <!-- <h3>제목 : </h3>
-                    <button id="move" type="button" onclick="location.href=''">상세보기 ></button>
-                    <br> <br> <br>
-                    <h4>문의 처리 상황 : </h4><br>
-
-                    <button id="l-list">답변 보기</button>
-                    <div class="answer">
-                        <br>
-                        <p>
-                            문의하신 문의의 답변입니다.
-                        </p>
-
-                    </div>
-                    <script>
-                        $(function(){
-                            $('.answer').slideUp()
-                
-                            $('#l-list').click(function(){
-                                $(this).next('div').slideToggle();
-                            });
-                        });
-                    </script> -->
-
-                    
-
+					</c:forEach>
 
                 </div>
 
-
-    
             </div>
            
         </div>
 
     </div>
 
-
-
-<!-- 하단 바 -->
-   <jsp:include page="../common/footer.jsp"/>
-
-
 </body>
+
+   <jsp:include page="../common/footer.jsp"/>
 </html>

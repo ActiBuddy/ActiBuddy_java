@@ -54,9 +54,11 @@ public class MypagetripListServlet extends HttpServlet {
 
 		MypageService mypageService = new MypageService();
 		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
-		int result = mypageService.changeUseYn(tripList);
 		
 		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/tripList.jsp");
+		request.setAttribute("tripList", tripList);
+		rd.forward(request, response);
 	}
 
 }

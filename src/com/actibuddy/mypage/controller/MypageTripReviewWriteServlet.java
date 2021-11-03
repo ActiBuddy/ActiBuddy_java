@@ -20,6 +20,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.actibuddy.activity.model.dto.ActiReviewDTO;
+import com.actibuddy.activity.service.ActivityService;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.mate.model.service.MateReviewService;
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -155,6 +156,14 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 			System.out.println(requestReview);
 			
 			int result = new MypageService().registReview(requestReview);
+			
+			if(result > 0) {
+				ActivityService actiService = new ActivityService();
+				int actiNum = Integer.parseInt(request.getParameter("hdActivityNum"));
+				int updateStar = actiService.updateStar(actiNum);
+			}
+			
+			
 			// result 결과에 따라서 페이지이동
 			// 고려사항
 			// 1. 현재 페이지에 있는데이터를 다른 페이지(서블릿)으로 넘겨줄꺼냐 
@@ -164,6 +173,7 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 
 				path = "/acti/mypage/review";
 				response.sendRedirect(path);
+				
 
 			} else {
 
@@ -174,6 +184,13 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher(path);
 				rd.forward(request, response);
 			}	
+			
+			MypageService mypageService = new MypageService();
+			CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
+			request.setAttribute("tripList", tripList);
+			
+			RequestDispatcher rdd = request.getRequestDispatcher(path);
+			rdd.forward(request, response);
 			
 		} catch(Exception e) {
 			int cnt = 0;

@@ -368,5 +368,22 @@ public class ActivityService {
 		
 		return payment;
 	}
+		
+	public int updateStar(int actiNum) {
+
+		SqlSession session = getSqlSession();
+		
+		int result = activityDAO.updateStar(session,actiNum);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
 
 }

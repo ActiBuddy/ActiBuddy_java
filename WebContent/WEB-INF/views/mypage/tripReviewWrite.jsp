@@ -107,9 +107,6 @@
 	                    } 
                
                     </script>
-                    
-
-
 
                     <!-- 후기 작성하기 버튼 누르면 UseYn -> Y로 변경 -->
                     <button class="t-center-btn">후기 작성하기</button>

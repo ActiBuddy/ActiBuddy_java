@@ -11,6 +11,7 @@ import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
+import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dao.MypageDAO;
@@ -278,6 +279,17 @@ public class MypageService {
 		session.close();
 		
 		return payResult;
+	}
+	
+	public List<FaqDTO> selectFaq(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<FaqDTO> selectFaq = mypageDAO.selectFaq(session,userId);
+		
+		session.close();
+		
+		return selectFaq;
 	}
 
 

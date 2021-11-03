@@ -1,6 +1,7 @@
 package com.actibuddy.mypage.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,15 +33,27 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 		
 		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 		System.out.println("아이디 : " + userId);
-		
-		String cartNum = request.getParameter("cartNum");
-		System.out.println("카트 번호 : " + cartNum);
-		
 
-		MypageService mypageService = new MypageService();
-		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
-		int result = mypageService.changeUseYn(tripList);
+		String name = request.getParameter("Actiname");
+		String location = request.getParameter("location");
+		String price = request.getParameter("price");
 		
+		
+//		private String code;
+//		private String name;
+//		private String location;
+//		private int price;
+//		private Date StartDate;
+//		private Date EndDate;
+//		private String tip;
+//		private String image;
+//		private String image2;
+//		private String image3;
+//		private String loactionCode;
+//		private String activitTypeCode;
+//		private String userId;
+//		private int views;
+//		
 		
 	}
 

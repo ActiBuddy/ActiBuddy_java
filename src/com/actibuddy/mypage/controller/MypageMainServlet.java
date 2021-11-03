@@ -36,7 +36,6 @@ public class MypageMainServlet extends HttpServlet {
 		request.setAttribute("mateScore", mateScore);
 		System.out.println("메이트 평가 : " + mateScore);
 		
-
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/myPage.jsp");
 		rd.forward(request, response);
 	}
@@ -66,16 +65,20 @@ public class MypageMainServlet extends HttpServlet {
 		 // 서비스에 메소드 생성하게 보내주고 
 		  int result = new MypageService().registIntroduce(requestIntroduce);
 		  
-		  System.out.println("mypageController result : " + result);
+		 System.out.println("mypageController result : " + result);
 		 System.out.println("aaa : " +  requestIntroduce.getIntroduce());
+		 
+		 // 업데이트 한 후에도 메이트평가 정보 가져와야 하니까
+		 MypageService mypageService = new MypageService();
+		 List<MypageMateScoreDTO> mateScore = mypageService.selectMateScore(userId); 
+		 
+		 CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
+			
 		  
-		  RequestDispatcher send = request.getRequestDispatcher("/WEB-INF/views/mypage/myPage.jsp");
-		  request.setCharacterEncoding("UTF-8");
-		  request.setAttribute("introduce", requestIntroduce);
-		  request.setAttribute("userId", userId);
-
-		  
-		  send.forward(request, response);
+		  RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/myPage.jsp");
+		  request.setAttribute("mateScore", mateScore);
+		  request.setAttribute("tripList", tripList);
+		  rd.forward(request, response);
 		  
 
 	}

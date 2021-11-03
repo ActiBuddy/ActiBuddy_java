@@ -443,7 +443,7 @@
 		(
 		  #{ activitTypeCode }
 		, #{ userId }
-		, 'ACTI_NUM' || SEQ_ACTI_NUM.NEXTVAL
+		, SEQ_ACTI_NUM.NEXTVAL
 		, #{ name }
 		, #{ location }
 		, #{ price }

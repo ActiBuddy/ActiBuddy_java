@@ -161,6 +161,7 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 				String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 				System.out.println("아이디 : " + userId);
 				
+				// 모든 값들을 다 인서트 해주고
 				ActivityDTO requestActi = new ActivityDTO();
 				requestActi.setUserId(userId);
 				requestActi.setName(parameter.get("name"));
@@ -204,7 +205,10 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 				/* service를 통해 insert 성공 여부 판별 */
 				int result = new MypageService().registReview(requestActi);
 				
-				System.out.println("등록 성공?? : " + result);
+				System.out.println("등록 성공?? : " + result); 
+				
+				// 여기까지 인서트 성공하고
+				// 인서트된 액티번호를 가져와서 조건들을 넣어줘야함
 				
 				/* 가장 최근에 등록된 액티비티 번호 조회 */
 				ActiConditionHisDTO newActiNum = new MypageService().selectNewActiNum();

@@ -60,7 +60,7 @@ public class SearchActivityServlet extends HttpServlet {
 		System.out.println(searchList);
 
 		String path = "";
-		if(searchValue == ""){
+		if(searchValue == "" || searchList.isEmpty()){
 			path="/WEB-INF/views/activity/searchActivityNull.jsp";
 			request.setAttribute("searchList", searchList);
 			request.setAttribute("selectCriteria", selectCriteria);

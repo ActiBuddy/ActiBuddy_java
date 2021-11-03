@@ -38,8 +38,15 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 		System.out.println("아이디 : " + userId);
 		
+		String actiName = request.getParameter("actiName");
+		System.out.println("액티비티 이름 : " + actiName);
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("userId", userId);
+		map.put("actiName", actiName);
+		
 		MypageService mypageService = new MypageService();
-		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
+		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(map);
 		
 		System.out.println("결과 : " + tripList);
 		
@@ -185,8 +192,10 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 				rd.forward(request, response);
 			}	
 			
+			Map<String,String> map = new HashMap<>();
+			map.put("userId", userId);
 			MypageService mypageService = new MypageService();
-			CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
+			CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(map);
 			request.setAttribute("tripList", tripList);
 			
 			RequestDispatcher rdd = request.getRequestDispatcher(path);

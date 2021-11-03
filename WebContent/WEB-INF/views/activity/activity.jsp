@@ -399,10 +399,11 @@
             <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm" id="clickAcit">
                 <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
-                <div class="card-body" style="height : 160px">
+                <div class="card-body" style="height : 180px">
                   <p class="card-text">
                       ${acti.name}
                   </p>
+                  <p>별점 : ${ acti.star }</p>
                   <p>조회수 : ${acti.views} </p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -535,9 +536,11 @@
               <div class="dropdown">
                 <select id="sortBtn" name="sort">
                     <option value="views">인기순</option>
+                    <option value="star">별점순</option>
                     <option value="new">최신순</option>
                    	<option value="random">랜덤추천</option>
                     <option value="price">낮은가격순</option>
+                    
                 </select>
               </div>
             </div>
@@ -552,10 +555,11 @@
             <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm">
                 <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
-                <div class="card-body" style="height : 160px">
+                <div class="card-body" style="height : 180px">
                   <p class="card-text">
                       ${acti.name}
                   </p>
+                  <p>별점 : ${ acti.star }</p>
                   <p>조회수 : ${ acti.views }</p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">

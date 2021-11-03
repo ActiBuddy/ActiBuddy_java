@@ -190,7 +190,7 @@
  
  	</update>
  	
- 	<select id="selectTripList" parameterType="String" resultMap="tripListResultMap" >
+ 	<select id="selectTripList" parameterType="hashMap" resultMap="tripListResultMap" >
  	
 			 SELECT
 			        A.ACTI_NAME
@@ -212,7 +212,10 @@
 			    ON C.CART_NUM = P.CART_NUM
 			 INNER JOIN MEMBER M
 			    ON C.USER_ID = M.USER_ID
-			 WHERE M.USER_ID = #{ userId}
+			 WHERE M.USER_ID = #{ userId }
+			 <if test="actiName != null">
+			   AND A.ACTI_NAME = #{ actiName }
+			 </if>
                AND P.PAY_STATUS = 'Y'
  	
  	</select>

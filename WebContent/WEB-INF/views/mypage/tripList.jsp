@@ -78,7 +78,7 @@
                       
 	                    <c:if test="${ tripList.actiReview[size].content eq null }">
 	                    
-	                    <button id="complete2" onclick='changeBtnName()' >후기 작성하기</button>
+	                    <button id="complete2" onclick="location.href='/acti/mypage/trip/review/write?actiName=${ tripList.activityInfo[size].name }'" >후기 작성하기</button>
 	                    
 	                    </c:if>
 	                    
@@ -91,15 +91,6 @@
                     <hr>
     				
     				</c:forEach> 
-    				
-    				<script>
-    	
-                    	function changeBtnName()  {
-
-		                      		window.location.href = '/acti/mypage/trip/review/write';
-	                     	
-                    	}
-                    </script>
     				
                 </div>
 

@@ -77,13 +77,14 @@ public class MypageService {
 	/**
 	 * 여행 리스트 조회 
 	 * @param userId
+	 * @param actiName 
 	 * @return 혜주
 	 */
-	public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(String userId) {
+	public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(Map<String,String> map) {
 		
 		SqlSession session = getSqlSession();
 		
-		CartAndMemberAndPayHIsDTO tripList = mypageDAO.selectCartAndMemberAndPayHIs(session,userId);
+		CartAndMemberAndPayHIsDTO tripList = mypageDAO.selectCartAndMemberAndPayHIs(session,map);
 		
 		session.close();
 		

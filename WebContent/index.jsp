@@ -8,11 +8,5 @@
 </head>
 <body>
 <jsp:forward page="/main/page"/> 
-
-	<!-- <script>
-		window.onload= function(){
-			location.href = '/acti/mate/review';
-		}
-	</script>  -->
 </body>
 </html>

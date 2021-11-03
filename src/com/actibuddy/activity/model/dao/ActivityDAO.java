@@ -42,9 +42,9 @@ public class ActivityDAO {
 		return session.selectList("ActivityDAO.selectRecommendActivity", actiName);
 	}
 
-	public List<LocationAndActivityDTO> selectAllList(SqlSession session) {
+	public List<LocationAndActivityDTO> selectAllList(SqlSession session, String location) {
 
-		return session.selectList("ActivityDAO.selectAllList");
+		return session.selectList("ActivityDAO.selectAllList", location);
 	}
 
 	public LocationDTO selectLocationOne(SqlSession session, String locationName) {

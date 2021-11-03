@@ -1,7 +1,9 @@
 package com.actibuddy.mypage.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,8 +27,10 @@ public class MypageMainServlet extends HttpServlet {
 		// 소개 가져오기
 		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 		
+		Map<String, String> map = new HashMap<>();
+		map.put("userId", userId);
 		MypageService mypageService = new MypageService();
-		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
+		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(map);
 		
 		request.setAttribute("tripList", tripList);
 		
@@ -72,7 +76,9 @@ public class MypageMainServlet extends HttpServlet {
 		 MypageService mypageService = new MypageService();
 		 List<MypageMateScoreDTO> mateScore = mypageService.selectMateScore(userId); 
 		 
-		 CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
+		 Map<String, String> map = new HashMap<>();
+		 map.put("userId", userId);
+		 CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(map);
 			
 		  
 		  RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/myPage.jsp");

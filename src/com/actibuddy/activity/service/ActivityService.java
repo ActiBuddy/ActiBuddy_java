@@ -108,13 +108,14 @@ public class ActivityService {
 	/**
 	 * 액티비티 메인 페이지에서 표시해줄 내용을 가져오는 메소드
 	 * @author 김주환
+	 * @param location 
 	 * @return
 	 */
-	public List<LocationAndActivityDTO> selectAllList() {
+	public List<LocationAndActivityDTO> selectAllList(String location) {
 
 		SqlSession session = getSqlSession();
 		
-		List<LocationAndActivityDTO> locationList = activityDAO.selectAllList(session);
+		List<LocationAndActivityDTO> locationList = activityDAO.selectAllList(session,location);
 		
 		session.close();
 		
@@ -377,8 +378,10 @@ public class ActivityService {
 		
 		if(result > 0) {
 			session.commit();
+			System.out.println("성공하였습니다 후후");
 		} else {
 			session.rollback();
+			System.out.println("실패다 이자식아 다시 해!!!!");
 		}
 		
 		session.close();

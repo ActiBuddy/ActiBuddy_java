@@ -38,9 +38,9 @@ public class MypageDAO {
 		return session.update("MypageDAO.changeUseYn");
 	}
 
-		public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(SqlSession session, String userId) {
+		public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(SqlSession session, Map<String, String> map) {
 			
-			return session.selectOne("MypageDAO.selectTripList",userId);
+			return session.selectOne("MypageDAO.selectTripList",map);
 		}
 
 		public int insertCart(SqlSession session, CartDTO newCart) {

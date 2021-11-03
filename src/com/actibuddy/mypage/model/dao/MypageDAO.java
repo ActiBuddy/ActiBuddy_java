@@ -9,6 +9,7 @@ import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
+import com.actibuddy.activity.model.dto.ActivityOptionDTO;
 import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -112,6 +113,16 @@ public class MypageDAO {
 		public ActiConditionHisDTO selectNewActiNum(SqlSession session) {
 			
 			return session.selectOne("MypageDAO.selectNewActiNum");
+		}
+
+		public int insertCon(SqlSession session, ActiConditionHisDTO requestActiCon) {
+			
+			return session.insert("MypageDAO.insertCon",requestActiCon);
+		}
+
+		public int insertOp(SqlSession session, ActivityOptionDTO requestOption) {
+			
+			return session.insert("MypageDAO.insertOp",requestOption);
 		}
 
 

@@ -11,6 +11,7 @@ import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
+import com.actibuddy.activity.model.dto.ActivityOptionDTO;
 import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -335,6 +336,41 @@ public class MypageService {
 		session.close();
 		
 		return newActiNum;
+	}
+
+
+	public int insertCon(ActiConditionHisDTO requestActiCon) {
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.insertCon(session,requestActiCon);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+
+	}
+
+	public int insertOp(ActivityOptionDTO requestOption) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.insertOp(session,requestOption);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
 	}
 	
 }

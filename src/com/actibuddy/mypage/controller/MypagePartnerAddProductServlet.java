@@ -2,7 +2,6 @@ package com.actibuddy.mypage.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,11 +20,9 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.actibuddy.activity.model.dto.ActivityDTO;
-import com.actibuddy.mate.model.dto.MateReviewDTO;
-import com.actibuddy.mate.model.service.MateReviewService;
+import com.actibuddy.activity.model.dto.ActivityOptionDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dto.ActiConditionHisDTO;
-import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.service.MypageService;
 
 
@@ -173,18 +170,7 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 				requestActi.setLoactionCode(parameter.get("locationCode"));
 				requestActi.setActivitTypeCode(parameter.get("actiType"));
 				
-//				ActiConditionHisDTO requestActiCon = new ActiConditionHisDTO();
 //				
-//				String ActiConNum = request.getParameter("ActiConNum");
-//				String ActiConNum2 = request.getParameter("ActiConNum2");
-//				String ActiConNum3 = request.getParameter("ActiConNum3");
-//				String ActiConNum4 = request.getParameter("ActiConNum4");
-//				
-//				if(ActiConNum != null) {
-//					requestActiCon.setActiConNum(ActiConNum);
-//					requestActiCon.setActiNum();
-//					int result = mypageService.insertCon()
-//				}
 					
 					
 				/* 이미지파일 데이터를 DTO에 set해주는 부분 */
@@ -211,7 +197,107 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 				// 인서트된 액티번호를 가져와서 조건들을 넣어줘야함
 				
 				/* 가장 최근에 등록된 액티비티 번호 조회 */
-				ActiConditionHisDTO newActiNum = new MypageService().selectNewActiNum();
+				ActiConditionHisDTO newActiNumDTO = new MypageService().selectNewActiNum();
+				
+				String newActiNum = newActiNumDTO.getActiNum();
+				
+				/* 조회한 액티비티 번호로 액티비티 조건 이력 등록  */
+				ActiConditionHisDTO requestActiCon = new ActiConditionHisDTO();
+				
+				System.out.println(parameter.get("ActiConNum"));
+				System.out.println(parameter.get("ActiConNum2"));
+				System.out.println(parameter.get("ActiConNum3"));
+				System.out.println(parameter.get("ActiConNum4"));
+				
+				
+				String ActiConNum = parameter.get("ActiConNum");
+				String ActiConNum2 = parameter.get("ActiConNum2");
+				String ActiConNum3 = parameter.get("ActiConNum3");
+				String ActiConNum4 = parameter.get("ActiConNum4");
+
+				if(ActiConNum != "" && ActiConNum != null ) {
+					requestActiCon.setActiConNum(ActiConNum);
+					requestActiCon.setActiNum(newActiNum);
+					int conResult = new MypageService().insertCon(requestActiCon);
+					System.out.println("조건 1 등록 ? :" + conResult);
+				}
+				
+				if(ActiConNum2 != "" && ActiConNum2 != null) {
+					requestActiCon.setActiConNum(ActiConNum2);
+					requestActiCon.setActiNum(newActiNum);
+					int conResult = new MypageService().insertCon(requestActiCon);
+					System.out.println("조건 2 등록 ? :" + conResult);
+				}
+				
+				if(ActiConNum3 != "" && ActiConNum3 != null) {
+					requestActiCon.setActiConNum(ActiConNum3);
+					requestActiCon.setActiNum(newActiNum);
+					int conResult = new MypageService().insertCon(requestActiCon);
+					System.out.println("조건 3 등록 ? :" + conResult);
+				}
+				
+				if(ActiConNum4 != "" && ActiConNum4 != null) {
+					requestActiCon.setActiConNum(ActiConNum4);
+					requestActiCon.setActiNum(newActiNum);
+					int conResult = new MypageService().insertCon(requestActiCon);
+					System.out.println("조건 4 등록 ? :" + conResult);
+				}
+				// 옵션 입력 값과 가격을 같이 갖고 온다.?
+				
+				ActivityOptionDTO requestOption = new ActivityOptionDTO();
+				
+				String option1 = parameter.get("option1");
+				String option2 = parameter.get("option2");
+				String option3 = parameter.get("option3");
+				String option4 = parameter.get("option4");
+				
+				
+				if(parameter.get("opPrice1") != null && option1 != null) {
+					
+					int opPrice1 = Integer.parseInt(parameter.get("opPrice1"));
+					requestOption.setActiNum(newActiNum);
+					requestOption.setOptionName(option1);
+					requestOption.setPrice(opPrice1);
+					int resultOp = new MypageService().insertOp(requestOption);
+					System.out.println("옵션 1 성공 ? : " + resultOp);
+				}
+				if(parameter.get("opPrice2") != null && option2 != null) {
+					
+					int opPrice2 = Integer.parseInt(parameter.get("opPrice2"));
+					requestOption.setActiNum(newActiNum);
+					requestOption.setOptionName(option2);
+					requestOption.setPrice(opPrice2);
+					int resultOp = new MypageService().insertOp(requestOption);
+					System.out.println("옵션 2 성공 ? : " + resultOp);
+				}
+				if(parameter.get("opPrice3") != null && option3 != null) {
+					
+					int opPrice3 = Integer.parseInt(parameter.get("opPrice3")); 
+					requestOption.setActiNum(newActiNum);
+					requestOption.setOptionName(option3);
+					requestOption.setPrice(opPrice3);
+					int resultOp = new MypageService().insertOp(requestOption);
+					System.out.println("옵션 3 성공 ? : " + resultOp);
+				}
+				if(parameter.get("opPrice4") != null && option4 != null) {
+					
+					int opPrice4 = Integer.parseInt(parameter.get("opPrice4"));
+					requestOption.setActiNum(newActiNum);
+					requestOption.setOptionName(option4);
+					requestOption.setPrice(opPrice4);
+					int resultOp = new MypageService().insertOp(requestOption);
+					System.out.println("옵션 4 성공 ? : " + resultOp);
+				}
+				
+				
+				System.out.println("옵션1 : " + parameter.get("option1"));
+				System.out.println(parameter.get("opPrice1"));
+				System.out.println("옵션 2 : " + parameter.get("option2"));
+				System.out.println(parameter.get("opPrice2"));
+				System.out.println("옵션 3 : " + parameter.get("option3"));
+				System.out.println(parameter.get("opPrice3"));
+				System.out.println("옵션 4 : " + parameter.get("option4"));
+				System.out.println(parameter.get("opPrice4"));
 				
 				
 				// result 결과에 따라서 페이지이동

@@ -66,6 +66,8 @@
  	<result property="recommend" column="ACTI_REVIEW_REC"/>
  	<result property="recYn" column="ACTI_REVIEW_REP_YN"/>
  	<result property="chooseOption" column="CHOOSE_OPTION"/>
+ 	<result property="actiNo" column="ACTI_NO"/>
+ 	
  	</resultMap>
 
 	<resultMap type="com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO" id="tripListResultMap">
@@ -173,6 +175,13 @@
 		<result property="date" column="QUE_DATE"/>
 		<result property="answer" column="ANSWER"/>
 		<result property="answerYn" column="ANSWER_YN"/>
+	</resultMap>
+	
+	<resultMap type="com.actibuddy.activity.model.dto.ActivityOptionDTO" id="optionResultMap">
+		<result property="optionNum" column="OPTION_NUM"/>
+		<result property="price" column="OPTION_PRICE"/>
+		<result property="optionName" column="OPTION_NAME"/>
+		<result property="actiNum" column="ACTI_NUM"/>
 	</resultMap>
 	
 	<resultMap type="com.actibuddy.mypage.model.dto.ActiConditionHisDTO" id="newActiResultMap">
@@ -319,6 +328,7 @@
         INNER JOIN ACTIVITY_INFO A
 			    ON A.ACTI_NUM = AR.ACTI_NUM
 	   WHERE AR.WRITER_ID = #{ userId }
+	     AND AR.REVIEW_TITLE IS NOT NULL
     </select>
 
 	<update id="updateQuit">
@@ -441,6 +451,8 @@
 		, ACTI_IMG2
 		, ACTI_IMG3
 		, LOCATION_CODE
+		, MAIN_IMG
+		, ACTI_NO
 		)
 		VALUES
 		(
@@ -457,15 +469,59 @@
 		, '../resources/image/addActi/' || #{ image2 }
 		, '../resources/image/addActi/' || #{ image3 }
 		, #{ loactionCode } 
+		, '/resources/image/addActi/' || #{ image }
+		, SEQ_ACTI_NO.NEXTVAL
 		)
 	
 	</insert>
 	
 	<select id="selectNewActiNum" resultMap="newActiResultMap">
-	
-
-
+		SELECT
+		       RNUM
+		     , V2.*
+		  FROM (SELECT ROWNUM RNUM
+		             , V.*
+		          FROM (SELECT *
+		                  FROM ACTIVITY_INFO
+		                 ORDER BY ACTI_NO DESC
+		               ) V
+		       )V2
+		  WHERE RNUM <![CDATA[ < ]]> 2
 	</select>
+	
+	<insert id="insertCon">
+	 INSERT 
+	  INTO ACTI_CONDITION_HIS
+	(
+	  ACTI_NUM
+	, ACTI_CON_NUM
+	)
+	VALUES
+	(
+	  #{ actiNum }
+	, #{ ActiConNum }
+	)
+	</insert>
+	
+	<insert id="insertOp">
+	INSERT
+	  INTO ACTI_OPTION
+	(
+	  OPTION_NUM
+	, OPTION_PRICE
+	, OPTION_NAME
+	, ACTI_NUM
+	
+	)
+	VALUES
+	(
+	  'ACTI_OPTION_NUM' || SEQ_OPTION_NUM.NEXTVAL
+	 ,#{ price }
+	 ,#{ optionName }
+	 ,#{ actiNum }
+	
+	)
+	</insert>
 	
   
   </mapper>

@@ -108,14 +108,14 @@
 						<br><br><hr>
 						<span><h4>조건 선택</h4></span>
 						<select id="condition1" name="ActiConNum" size="1">
-         					<option>액티비티 조건1을 선택해주세요!</option>
+         					<option value="" selected disabled hidden>액티비티 조건1을 선택해주세요!</option>
 							<option value="ACTI_CON16">그룹당 5명 이하</option>
 							<option value="ACTI_CON17">그룹당 10명 이하</option>
 							<option value="ACTI_CON18">그룹당 10명 이상</option>
 						</select>
 						<br><br>
 						<select id="condition2" name="ActiConNum2" size="1">
-         					<option>액티비티 조건2를 선택해주세요!</option>
+         					<option value="" selected disabled hidden>액티비티 조건2를 선택해주세요!</option>
 							<option value="ACTI_CON9">액티비티 시작 전 무료 취소 가능</option>
 							<option value="ACTI_CON10">24시간 전 취소 가능</option>
 							<option value="ACTI_CON11">48시간 전 취소 가능</option>
@@ -126,7 +126,7 @@
 						</select>
 						<br><br>
 						<select id="condition1" name="ActiConNum3" size="1">
-         					<option>액티비티 조건3을 선택해주세요!</option>
+         					<option value="" selected disabled hidden>액티비티 조건3을 선택해주세요!</option>
 							<option value="ACTI_CON19">일정 약 1시간이내 소요</option>
 							<option value="ACTI_CON20">일정 약 2시간이내 소요</option>
 							<option value="ACTI_CON21">일정 약 4시간이내 소요</option>
@@ -134,16 +134,34 @@
 						</select>
 						<br><br>
 						<select id="condition1" name="ActiConNum4" size="1">
-         					<option>액티비티 조건4을 선택해주세요!</option>
+         					<option value="" selected disabled hidden>액티비티 조건4을 선택해주세요!</option>
 							<option value="ACTI_CON15">날짜 지정 티켓</option>
 							<option value="ACTI_CON24">오픈 티켓</option>
 						</select>	
 						<br><br>					
 						<hr>
 						
+						<span><h4>액티비티 옵션</h4></span>
+						<h5>옵션은 최대 4개까지 설정 가능합니다.</h5>
+         				<input type="text" name="option1" style="width:250px" placeholder="액티비티 옵션을 입력해주세요!"/>
+         				<input type="text" name="opPrice1" style="width:250px" placeholder="액티비티 옵션 가격을 입력해주세요!"/>
+         				<br><br><hr>
+         				<span><h4>액티비티 옵션</h4></span>
+         				<input type="text" name="option2" style="width:250px" placeholder="액티비티 옵션을 입력해주세요!"/>
+         				<input type="text" name="opPrice2" style="width:250px" placeholder="액티비티 옵션 가격을 입력해주세요!"/>
+         				<br><br><hr>
+         				<span><h4>액티비티 옵션</h4></span>
+         				<input type="text" name="option3" style="width:250px" placeholder="액티비티 옵션을 입력해주세요!"/>
+         				<input type="text" name="opPrice3" style="width:250px" placeholder="액티비티 옵션 가격을 입력해주세요!"/>
+         				<br><br><hr>
+         				<span><h4>액티비티 옵션</h4></span>
+         				<input type="text" name="option4" style="width:250px" placeholder="액티비티 옵션을 입력해주세요!"/>
+         				<input type="text" name="opPrice4" style="width:250px" placeholder="액티비티 옵션 가격을 입력해주세요!"/>
+         				<br><br><hr>
+						
          				
 						<span><h4>액티비티 팁</h4></span>
-						<input type="text" name="tip" style="width:250px" placeholder="액티비티 팁을 입력해주세요!"/>
+						<input type="text" name="tip" style="width:500px" placeholder="액티비티 팁을 입력해주세요!"/>
 						
 						<br><br><hr>
 						<div class="img_border"><br>

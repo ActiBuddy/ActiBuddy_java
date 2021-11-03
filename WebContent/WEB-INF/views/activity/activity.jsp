@@ -154,9 +154,10 @@
 			$('#selectAll2').val(checkList);
 		});
 	 
+	 
 	 $("input[name=select3]").change(function() {
 			
-			let checkArr = $("input[name=tour]:checked");
+			let checkArr = $("input[name=spa]:checked");
 			let checkList = "";
 			for(let i = 0; i < checkArr.length; i++){
 				if(i < checkArr.length-1){
@@ -173,7 +174,7 @@
 	 
 	 $("input[name=select4]").change(function() {
 			
-			let checkArr = $("input[name=spa]:checked");
+			let checkArr = $("input[name=tour]:checked");
 			let checkList = "";
 			for(let i = 0; i < checkArr.length; i++){
 				if(i < checkArr.length-1){
@@ -222,20 +223,20 @@
 		location.href='#actiSearch';
 	}
 	
-	if('$ { sport }' != ''){
+	if('${ sport }' != ''){
 		let value = '${ sport }';
 		let checkArr = value.split(',');
 		for(let i = 0; i < checkArr.length; i++){
-		if(checkArr[i] == $('input[name=ticket][value="캠핑 & 글램핑"]').val()){
-			$('input[name=ticket][value="캠핑 & 글램핑"]').attr('checked', true);
-		} else if(checkArr[i] == $('input[name=ticket][value="루지 & 짚라인 & 어드벤처"]').val()){
-			$('input[name=ticket][value="루지 & 짚라인 & 어드벤처"]').attr('checked', true);
-		} else if(checkArr[i] == $('input[name=ticket][value="스키 & 스노보드"]').val()){
-			$('input[name=ticket][value="스키 & 스노보드"]').attr('checked', true);
+		if(checkArr[i] == $('input[name=sport][value="캠핑 & 글램핑"]').val()){
+			$('input[name=sport][value="캠핑 & 글램핑"]').attr('checked', true);
+		} else if(checkArr[i] == $('input[name=sport][value="루지 & 짚라인 & 어드벤처"]').val()){
+			$('input[name=sport][value="루지 & 짚라인 & 어드벤처"]').attr('checked', true);
+		} else if(checkArr[i] == $('input[name=sport][value="스키 & 스노보드"]').val()){
+			$('input[name=sport][value="스키 & 스노보드"]').attr('checked', true);
 		} 
 	}
 		$('#sport').val(checkArr);
-	} else if('$ { select }' != ''){
+	} else if('${ select }' != ''){
 		let value = '${ selectAll }';
 		let checkArr = value.split(',');
 		
@@ -275,19 +276,19 @@
 		$('#selectAll2').val(checkArr);
 	}
 	  
-	if('$ { spa }' != ''){
+	if('${ spa }' != ''){
 		let value = '${ spa }';
 		let checkArr = value.split(',');
 		
 		for(let i = 0; i < checkArr.length; i++){
-			if(checkArr[i] == $('input[name=ticket][value="스파 & 온천"]').val()){
-				$('input[name=ticket][value="스파 & 온천"]').attr('checked', true);
-			} else if(checkArr[i] == $('input[name=ticket][value="웰빙 & 웰니스"]').val()){
-				$('input[name=ticket][value="웰빙 & 웰니스"]').attr('checked', true);
+			if(checkArr[i] == $('input[name=spa][value="스파 & 온천"]').val()){
+				$('input[name=spa][value="스파 & 온천"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=spa][value="웰빙 & 웰니스"]').val()){
+				$('input[name=spa][value="웰빙 & 웰니스"]').attr('checked', true);
 			}
 		} 
 		$('#spa').val(checkArr);
-	} else if('$ { selectAll3 }' != ''){
+	} else if('${ selectAll3 }' != ''){
 		let value = '${ selectAll3 }';
 		let checkArr = value.split(',');
 
@@ -302,10 +303,10 @@
 		let checkArr = value.split(',');
 		
 		for(let i = 0; i < checkArr.length; i++){
-			if(checkArr[i] == $('input[name=ticket][value="워킹 & 자전거투어"]').val()){
-				$('input[name=ticket][value="워킹 & 자전거투어"]').attr('checked', true);
-			} else if(checkArr[i] == $('input[name=ticket][value="버스 & 스쿠터 & ATV투어"]').val()){
-				$('input[name=ticket][value="버스 & 스쿠터 & ATV투어"]').attr('checked', true);
+			if(checkArr[i] == $('input[name=tour][value="워킹 & 자전거투어"]').val()){
+				$('input[name=tour][value="워킹 & 자전거투어"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=tour][value="버스 & 스쿠터 & ATV투어"]').val()){
+				$('input[name=tour][value="버스 & 스쿠터 & ATV투어"]').attr('checked', true);
 			}
 		} 
 		$('#tour').val(checkArr);
@@ -324,10 +325,10 @@
 		let checkArr = value.split(',');
 		
 		for(let i = 0; i < checkArr.length; i++){
-			if(checkArr[i] == $('input[name=ticket][value="패들보드 & 카약 & 래프팅"]').val()){
-				$('input[name=ticket][value="패들보드 & 카약 & 래프팅"]').attr('checked', true);
-			} else if(checkArr[i] == $('input[name=ticket][value="서핑 & 기타 수상레저"]').val()){
-				$('input[name=ticket][value="서핑 & 기타 수상레저"]').attr('checked', true);
+			if(checkArr[i] == $('input[name=water][value="패들보드 & 카약 & 래프팅"]').val()){
+				$('input[name=water][value="패들보드 & 카약 & 래프팅"]').attr('checked', true);
+			} else if(checkArr[i] == $('input[name=water][value="서핑 & 기타 수상레저"]').val()){
+				$('input[name=water][value="서핑 & 기타 수상레저"]').attr('checked', true);
 			}
 		} 
 		$('#water').val(checkArr);
@@ -335,8 +336,8 @@
 		let value = '${ selectAll5 }';
 		let checkArr = value.split(',');
 
-		$('input[name=tour]').attr('checked', true);
-		$('input[name=select4]').attr('checked', true);
+		$('input[name=water]').attr('checked', true);
+		$('input[name=select5]').attr('checked', true);
 		
 		$('#selectAll5').val(checkArr);
 	}	
@@ -425,7 +426,7 @@
     <div class="side-2" style="height: 530px;">
       <h3 style="margin-left: 10%;">카테고리</h3>
       <br>
-      <form action="/acti/sort/controll" method="get">
+      <form action="/acti/sort/controll" method="get" id="frm">
       <div class="menu">
         <div class="btn-group mb-5">
           <span class="dropdown-toggle" style="padding-left: 20px; font-size: 16px;" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -505,12 +506,10 @@
         </div>
       </div>
       <input type="hidden" name="hdLocationName" value="${locationActivity.name}"/>
-      </form>
     </div>
     <div class="div2">
         <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">${selectCriteria.totalCount}건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
-    	<form method="get" action="/acti/sort/controll" id="frm">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
               <div class="date">
@@ -568,7 +567,7 @@
             </div>
             </c:forEach>
           </div> 
-        </div> 
+        </div>
       </div>
     </div>  
     

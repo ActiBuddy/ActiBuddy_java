@@ -12,6 +12,7 @@
  	   <result property="tip" column="GUIDE_TIP"/>
  	   <result property="visitMonth" column="VISIT_MONTH"/>
  	   <result property="visitName" column="VISIT_NAME"/>
+ 	   <result property="mainImg" column="MAIN_IMG"/>
  	</resultMap>
  	
  	<resultMap type="com.actibuddy.activity.model.dto.LocationAndActivityDTO" id="locationAndActivityResultMap">
@@ -148,104 +149,105 @@
                          FROM LOCATION A
                               JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
                               JOIN ACTI_TYPE D ON(B.ACTI_TYPE_NUM = D.ACTI_TYPE_NUM)
-                       WHERE A.LOCATION_NAME = #{ locationName } )V    
-                         
-                         ) M
-	      <where>
-	 	    (M.RNUM BETWEEN  #{ startRow } and #{ endRow } )
-	     <if test="price1 != null">
-	     		AND M.PRICE BETWEEN #{ price1 } AND #{ price2 }
-	     	</if>
-	     	
-	     	<if test="date != '' and date != null">
-     		<![CDATA[
-     		 AND M.END_DATE > #{ date }
-     		 ]]>
-	     	</if>
-	     	
-	     	<if test="sports != null ">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="tickets != null">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="tickets" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="spas != null">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="spas" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="tours != null">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="tours" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="waters != null">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="waters" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls != null">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls2 != null">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls2" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls3 != null">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls3" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls4 != null">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls4" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls5 != null">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls5" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     </where>
-	     	<if test="sort != null and sort == 'views'">
-	   			ORDER BY M.ACTI_VIEWS DESC
-	     	</if>
-	       <if test="sort != null and sort == 'random'">
-	       	 	ORDER BY DBMS_RANDOM.RANDOM
-	       </if>
-	       <if test="sort != null and sort == 'price'">
-	       	 	ORDER BY M.PRICE ASC
-	       </if>
-	       <if test="sort != null and sort == 'new'">
-	       	 	ORDER BY M.START_DATE DESC
-	       </if>
+                      <where>
+					   A.LOCATION_NAME = #{ locationName }
+					 <if test="price1 != null">
+			     		AND B.PRICE BETWEEN #{ price1 } AND #{ price2 }
+			     	</if>
+			     	
+			     	<if test="date != '' and date != null">
+			    		<![CDATA[
+			    		 AND B.END_DATE > #{ date }
+			    		 ]]>
+			     	</if>
+			     	
+			     	<if test="sports != null ">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="tickets != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="tickets" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="spas != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="spas" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="tours != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="tours" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="waters != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="waters" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls2 != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls2" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls3 != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls3" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls4 != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls4" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls5 != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls5" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     </where>
+			     	<if test="sort != null and sort == 'views'">
+			   			ORDER BY B.ACTI_VIEWS DESC
+			     	</if>
+			       <if test="sort != null and sort == 'random'">
+			       	 	ORDER BY DBMS_RANDOM.RANDOM
+			       </if>
+			       <if test="sort != null and sort == 'price'">
+			       	 	ORDER BY B.PRICE ASC
+			       </if>
+			       <if test="sort != null and sort == 'new'">
+			       	 	ORDER BY B.START_DATE DESC
+			       </if>
+					 		 )V
+			 				
+			 				)M
+			 WHERE (M.RNUM BETWEEN  #{ startRow } and #{ endRow } )
+	     
  	</select>
  	
  	<select id="selectActiName" resultMap="activityResultMap" parameterType="hashMap">
@@ -285,7 +287,7 @@
  		SELECT
       		   A.LOCATION_NAME
              , A.LOCATION_INFO
-     		 , A.LOCATION_IMG
+     		 , A.MAIN_IMG
   		  FROM LOCATION A
  	</select>
  	
@@ -316,7 +318,101 @@
 			     		 , B.ACTI_VIEWS 
 			  		  FROM LOCATION A
 			  		  JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
-			 		 WHERE A.LOCATION_NAME = #{ locationName }) V
+					<where>
+					   A.LOCATION_NAME = #{ locationName }
+					 <if test="price1 != null">
+			     		AND B.PRICE BETWEEN #{ price1 } AND #{ price2 }
+			     	</if>
+			     	
+			     	<if test="date != '' and date != null">
+			    		<![CDATA[
+			    		 AND B.END_DATE > #{ date }
+			    		 ]]>
+			     	</if>
+			     	
+			     	<if test="sports != null ">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="tickets != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="tickets" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="spas != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="spas" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="tours != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="tours" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="waters != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="waters" item="arr" index="index" open="(" close=")" separator=",">
+			     	 #{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls2 != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls2" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls3 != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls3" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls4 != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls4" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     	
+			     	<if test="selectAlls5 != null">
+			     	AND D.SECOND_TYPE_NAME IN
+			     	<foreach collection="selectAlls5" item="arr" index="index" open="(" close=")" separator=",">
+			     	#{ arr }
+			     	</foreach>
+			     	</if>
+			     </where>
+			     	<if test="sort != null and sort == 'views'">
+			   			ORDER BY B.ACTI_VIEWS DESC
+			     	</if>
+			       <if test="sort != null and sort == 'random'">
+			       	 	ORDER BY DBMS_RANDOM.RANDOM
+			       </if>
+			       <if test="sort != null and sort == 'price'">
+			       	 	ORDER BY B.PRICE ASC
+			       </if>
+			       <if test="sort != null and sort == 'new'">
+			       	 	ORDER BY B.START_DATE DESC
+			       </if>
+					 		 ) V
 			 				)M
 			 		WHERE (M.RNUM BETWEEN  #{ startRow } and #{ endRow } )
  	</select>
@@ -373,6 +469,7 @@
 	     WHERE A.LOCATION_NAME = #{ locationName }
  	</select>
  	
+ 	<!-- 정렬, 카테고리를 통한 액티비티 정보를 조회하는 쿼리문 -->
  	<select id="totalActivityCountByMap" resultType="_int">
  		SELECT
  			   COUNT(*)
@@ -477,123 +574,13 @@
 	       	 	ORDER BY B.START_DATE DESC
 	       </if>
  	</select>
+ 	
  	<!-- 검색어를 가진 액티비티 총 갯수 -->
  	<select id="totalCountBySearch" resultType="_int">
- 		SELECT 
- 			   COUNT(*)
-	  	  FROM LOCATION A
-	      LEFT JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
-          LEFT JOIN ACTI_TYPE D ON(B.ACTI_TYPE_NUM = D.ACTI_TYPE_NUM)
-         <where>
-            A.LOCATION_NAME LIKE '%' || #{ searchValue } || '%' 
-			OR B.ACTI_NAME LIKE '%' || #{ searchValue } || '%'
-            <if test="price1 != null">
-	     		AND B.PRICE BETWEEN #{ price1 } AND #{ price2 }
-	     	</if>
-	     	
-	     	<if test="date != '' and date != null">
-     		<![CDATA[
-     		 AND B.END_DATE > #{ date }
-     		 ]]>
-	     	</if>
-	     	
-	     	<if test="sports != null and sports != '' ">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="tickets != null and tickets != '' ">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="tickets" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="spas != null and spas != '' ">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="spas" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="tours != null and tours != ''">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="tours" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="waters != null and waters != ''">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="waters" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls != null and selectAlls != ''">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls2 != null and selectAlls2 != ''">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls2" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls3 != null and selectAlls3 != ''">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls3" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls4 != null and selectAlls4 != ''">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls4" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls5 != null and selectAlls5 != ''">
-	     	AND D.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls5" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     </where>
-	     	<if test="sort != null and sort == 'views'">
-	   			ORDER BY B.ACTI_VIEWS
-	     	</if>
-	       <if test="sort != null and sort == 'random'">
-	       	 	ORDER BY DBMS_RANDOM.RANDOM
-	       </if>
-	       <if test="sort != null and sort == 'price'">
-	       	 	ORDER BY B.PRICE ASC
-	       </if>
-	       <if test="sort != null and sort == 'new'">
-	       	 	ORDER BY B.START_DATE DESC
-	       </if> 
- 	</select>
- 	
- 	<!-- 검색어를 포함한 액티비티 검색 쿼리문 -->
- 	<select id="searchActivity" resultMap="activityResultMap" parameterType="hashMap">
- 	 	SELECT  M.RNUM
-            , M.ACTI_NAME
-            , M.PRICE
-            , M.START_DATE
-            , M.END_DATE
-            , M.ACTI_TIP
-            , M.ACTI_IMG
-            , M.ACTI_TYPE_NUM
-            , M.ACTI_VIEWS
-            , M.SECOND_TYPE_NAME
+ 		SELECT  
+           COUNT(*)
 		 FROM  (SELECT ROWNUM RNUM
+		 				 , V.LOCATION_NAME
 			             , V.ACTI_NAME
 			             , V.PRICE
 			             , V.START_DATE
@@ -604,7 +591,151 @@
 			             , V.ACTI_VIEWS
 			             , V.SECOND_TYPE_NAME
 					  FROM (SELECT
-					               B.ACTI_NAME
+					  			   A.LOCATION_NAME
+					             , B.ACTI_NAME
+					             , B.PRICE
+					             , B.START_DATE
+					             , B.END_DATE
+					             , B.ACTI_TIP
+					             , B.ACTI_IMG
+					             , B.ACTI_TYPE_NUM
+					             , B.ACTI_VIEWS
+					             , D.SECOND_TYPE_NAME
+						  	  FROM LOCATION A
+                              JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
+                              JOIN ACTI_TYPE D ON(B.ACTI_TYPE_NUM = D.ACTI_TYPE_NUM)
+						     WHERE A.LOCATION_NAME LIKE '%' || #{ searchValue } || '%' 
+						       OR B.ACTI_NAME LIKE '%' || #{ searchValue } || '%') V 
+					       	<where>
+					        <if test="price1 != null">
+					     		AND V.PRICE BETWEEN #{ price1 } AND #{ price2 }
+					     	</if>
+					     	
+					     	<if test="date != '' and date != null">
+					    		<![CDATA[
+					    		 AND V.END_DATE > #{ date }
+					    		 ]]>
+					     	</if>
+					     	
+					     	<if test="sports != null and sports != '' ">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="tickets != null and tickets != '' ">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="tickets" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="spas != null and spas != '' ">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="spas" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="tours != null and tours != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="tours" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="waters != null and waters != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="waters" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls != null and selectAlls != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls2 != null and selectAlls2 != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls2" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls3 != null and selectAlls3 != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls3" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls4 != null and selectAlls4 != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls4" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls5 != null and selectAlls5 != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls5" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="locations != null and locations != ''">
+					     	AND V.LOCATION_NAME IN
+					     	<foreach collection="locations" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     </where>
+					     	<if test="sort != null and sort == 'views'">
+					   			ORDER BY V.ACTI_VIEWS
+					     	</if>
+					       <if test="sort != null and sort == 'random'">
+					       	 	ORDER BY DBMS_RANDOM.RANDOM
+					       </if>
+					       <if test="sort != null and sort == 'price'">
+					       	 	ORDER BY V.PRICE ASC
+					       </if>
+					       <if test="sort != null and sort == 'new'">
+					       	 	ORDER BY V.START_DATE DESC
+					       </if>     
+						    )M 
+ 	</select>
+ 	
+ 	<!-- 검색어를 포함한 액티비티 검색 쿼리문 -->
+ 	<select id="searchActivity" resultMap="activityResultMap" parameterType="hashMap">
+ 	 	SELECT  M.RNUM
+ 	 		, M.LOCATION_NAME
+            , M.ACTI_NAME
+            , M.PRICE
+            , M.START_DATE
+            , M.END_DATE
+            , M.ACTI_TIP
+            , M.ACTI_IMG
+            , M.ACTI_TYPE_NUM
+            , M.ACTI_VIEWS
+            , M.SECOND_TYPE_NAME
+		 FROM  (SELECT ROWNUM RNUM
+		 				 , V.LOCATION_NAME
+			             , V.ACTI_NAME
+			             , V.PRICE
+			             , V.START_DATE
+			             , V.END_DATE
+			             , V.ACTI_TIP
+			             , V.ACTI_IMG
+			             , V.ACTI_TYPE_NUM
+			             , V.ACTI_VIEWS
+			             , V.SECOND_TYPE_NAME
+					  FROM (SELECT
+					  			   A.LOCATION_NAME
+					             , B.ACTI_NAME
 					             , B.PRICE
 					             , B.START_DATE
 					             , B.END_DATE
@@ -618,102 +749,109 @@
                               JOIN ACTI_TYPE D ON(B.ACTI_TYPE_NUM = D.ACTI_TYPE_NUM)
 						     WHERE A.LOCATION_NAME LIKE '%' || #{ searchValue } || '%' 
 						       OR B.ACTI_NAME LIKE '%' || #{ searchValue } || '%') V    
-						       
+						       <where>
+					           <if test="price1 != null">
+					     		AND V.PRICE BETWEEN #{ price1 } AND #{ price2 }
+					     	</if>
+					     	
+					     	<if test="date != '' and date != null">
+					    		<![CDATA[
+					    		 AND V.END_DATE > #{ date }
+					    		 ]]>
+					     	</if>
+					     	
+					     	<if test="sports != null and sports != '' ">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="tickets != null and tickets != '' ">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="tickets" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="spas != null and spas != '' ">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="spas" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="tours != null and tours != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="tours" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="waters != null and waters != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="waters" item="arr" index="index" open="(" close=")" separator=",">
+					     	 #{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls != null and selectAlls != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls2 != null and selectAlls2 != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls2" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls3 != null and selectAlls3 != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls3" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls4 != null and selectAlls4 != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls4" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="selectAlls5 != null and selectAlls5 != ''">
+					     	AND V.SECOND_TYPE_NAME IN
+					     	<foreach collection="selectAlls5" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     	
+					     	<if test="locations != null and locations != ''">
+					     	AND V.LOCATION_NAME IN
+					     	<foreach collection="locations" item="arr" index="index" open="(" close=")" separator=",">
+					     	#{ arr }
+					     	</foreach>
+					     	</if>
+					     </where>
+					     	<if test="sort != null and sort == 'views'">
+					   			ORDER BY V.ACTI_VIEWS DESC
+					     	</if>
+					       <if test="sort != null and sort == 'random'">
+					       	 	ORDER BY DBMS_RANDOM.RANDOM
+					       </if>
+					       <if test="sort != null and sort == 'price'">
+					       	 	ORDER BY V.PRICE ASC
+					       </if>
+					       <if test="sort != null and sort == 'new'">
+					       	 	ORDER BY V.START_DATE DESC
+					       </if>
 						       )M
-            <where>
-             M.RNUM BETWEEN  #{ startRow } AND #{ endRow } 
-            <if test="price1 != null">
-	     		AND M.PRICE BETWEEN #{ price1 } AND #{ price2 }
-	     	</if>
-	     	
-	     	<if test="date != '' and date != null">
-     		<![CDATA[
-     		 AND M.END_DATE > #{ date }
-     		 ]]>
-	     	</if>
-	     	
-	     	<if test="sports != null and sports != '' ">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="sports" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="tickets != null and tickets != '' ">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="tickets" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="spas != null and spas != '' ">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="spas" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="tours != null and tours != ''">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="tours" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="waters != null and waters != ''">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="waters" item="arr" index="index" open="(" close=")" separator=",">
-	     	 #{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls != null and selectAlls != ''">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls2 != null and selectAlls2 != ''">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls2" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls3 != null and selectAlls3 != ''">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls3" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls4 != null and selectAlls4 != ''">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls4" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     	
-	     	<if test="selectAlls5 != null and selectAlls5 != ''">
-	     	AND M.SECOND_TYPE_NAME IN
-	     	<foreach collection="selectAlls5" item="arr" index="index" open="(" close=")" separator=",">
-	     	#{ arr }
-	     	</foreach>
-	     	</if>
-	     </where>
-	     	<if test="sort != null and sort == 'views'">
-	   			ORDER BY M.ACTI_VIEWS
-	     	</if>
-	       <if test="sort != null and sort == 'random'">
-	       	 	ORDER BY DBMS_RANDOM.RANDOM
-	       </if>
-	       <if test="sort != null and sort == 'price'">
-	       	 	ORDER BY M.PRICE ASC
-	       </if>
-	       <if test="sort != null and sort == 'new'">
-	       	 	ORDER BY M.START_DATE DESC
-	       </if>
+           WHERE M.RNUM BETWEEN  #{ startRow } AND #{ endRow } 
+            
  	</select>
  	
  	<!-- 지역별 액티비티 랜덤 추천용 쿼리문 -->

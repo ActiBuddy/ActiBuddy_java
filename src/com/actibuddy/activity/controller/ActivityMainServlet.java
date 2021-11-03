@@ -26,7 +26,7 @@ public class ActivityMainServlet extends HttpServlet {
 		List<LocationAndActivityDTO> locationList = activityService.selectAllList();
 
 		
-		System.out.println(locationList);
+		System.out.println("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ: " + locationList);
 		
 		String path = "";
 		if(locationList != null) {

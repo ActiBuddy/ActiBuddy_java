@@ -67,9 +67,8 @@ public class SearchControllServlet extends HttpServlet {
 		String selectAll5 = request.getParameter("selectAll5");
 		System.out.println("모두선택 버튼 값 : " + selectAll5);
 		
-		String location = request.getParameter("location");
+		String location = request.getParameter("locationNames");
 		System.out.println("지역 선택 값 : " + location);
-		
 		
 		if(searchValue != null) {
 			resultMap.put("date", date);
@@ -138,6 +137,11 @@ public class SearchControllServlet extends HttpServlet {
 			resultMap.put("selectAlls5", selctAlls5);
 		}
 		
+		if(location != null && location != "") {
+			String[] locations = location.split(",");
+			resultMap.put("locations", locations);
+		}
+		
 		/* ======== 페이징 처리 ========*/
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;
@@ -184,8 +188,22 @@ public class SearchControllServlet extends HttpServlet {
 			request.setAttribute("selectCriteria", selectCriteria);
 		} 
 		
+		
 		if(searchList == null) {
-			path = "/WEB-INF/views/activity/activityNull.jsp";
+			path = "/WEB-INF/views/activity/searchActivity.jsp";
+			request.setAttribute("searchValue", selectCriteria.getSearchValue());
+			request.setAttribute("searchList", searchList);
+			request.setAttribute("move", "move");
+			request.setAttribute("price", price);
+			request.setAttribute("sport", sport);
+			request.setAttribute("date", date);
+			request.setAttribute("ticket", ticket);
+			request.setAttribute("spa", spa);
+			request.setAttribute("tour", tour);
+			request.setAttribute("water", water);
+			request.setAttribute("location", location);
+			request.setAttribute("selectCriteria", selectCriteria);
+			request.setAttribute("selectAll", selectAll);
 		} else if(date != null && date != "") {
 			path = "/WEB-INF/views/activity/searchActivity.jsp";
 			request.setAttribute("searchList", searchList);
@@ -251,7 +269,13 @@ public class SearchControllServlet extends HttpServlet {
 			request.setAttribute("move", "move");
 			request.setAttribute("selectAll5", selectAll5);
 			request.setAttribute("selectCriteria", selectCriteria);
-		} 
+		} else if(location != null && location != "") {
+			path = "/WEB-INF/views/activity/searchActivity.jsp";
+			request.setAttribute("searchList", searchList);
+			request.setAttribute("move", "move");
+			request.setAttribute("location", location);
+			request.setAttribute("selectCriteria", selectCriteria);
+		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}

@@ -24,8 +24,8 @@
 
 		<div class="mainsearch">
 				<form action="/acti/search/activity" method="get">
-				<input type="text" size="50" placeholder="Search" name="searchValue">
-				<button type="submit" class="search-btn" id="sub">검색하기</button>
+				<input type="text" size="50" placeholder="Search" name="searchValue" id="searchBar">
+				<button type="submit" class="search-btn">검색하기</button>
 				</form>
 		</div>
 
@@ -34,7 +34,7 @@
 			<div class="mainimage">
 				<c:forEach var="location" items="${ locationList }">
 				<div class="si">
-					<a href="activity/location?locationName=${ location.name }"><img src="${ location.image } "></a>
+					<a href="activity/location?locationName=${ location.name }"><img src="${ location.mainImg } "></a>
 					<div>
 						<h1>${ location.name }</h1>
 					</div>

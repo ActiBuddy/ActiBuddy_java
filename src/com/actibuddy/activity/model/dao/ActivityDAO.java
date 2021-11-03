@@ -106,4 +106,9 @@ public class ActivityDAO {
 		return session.update("ActivityDAO.updateViews", actiName);
 	}
 
+	public int updateStar(SqlSession session, int actiNum) {
+
+		return session.update("ActivityDAO.updateStar");
+	}
+
 }

@@ -100,8 +100,8 @@
 
 
 
-<!-- 하단 바 -->
-   <jsp:include page="../common/footer.jsp"/>
 
 </body>
+<!-- 하단 바 -->
+   <jsp:include page="../common/footer.jsp"/>
 </html>

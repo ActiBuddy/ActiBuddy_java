@@ -829,4 +829,13 @@
                       WHERE ACTI_NAME = #{ actiName } )
  WHERE ACTI_NAME = #{ actiName } 
  	</update>
+ 	
+ 	<update id="updateStar">
+ 		UPDATE ACTIVITY_INFO
+  		   SET ACTI_STAR = (SELECT ROUND(AVG(B.ACTI_REVIEW_STAR),1)
+                      FROM ACTIVITY_INFO A
+                      JOIN ACTI_REVIEW B ON(A.ACTI_NUM = B.ACTI_NUM)
+                      WHERE A.ACTI_NUM = #{ actiNum })
+ 	 	 WHERE ACTI_NUM =  #{ actiNum } 
+ 	</update>
  </mapper>

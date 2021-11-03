@@ -51,20 +51,21 @@
                 <div class="a-center-text">
         			<h4><c:out value="${ sessionScope.loginMember.userName }"/>님의 상품 등록</h4>
         			<hr>
+        			
 					<form id="addproductForm" action="${ pageContext.servletContext.contextPath }/mypage/partner/add" method="post">
 						<div>
 						<span><h4>액티비티 이름</h4></span>
-         				<input type="text" name="userId" style="width:250px" placeholder="액티비티 이름을 입력해주세요!"/>
+         				<input type="text" name="Actiname" style="width:250px" placeholder="액티비티 이름을 입력해주세요!"/>
+         				<br><br><hr>
          				
-         				<span><h4>위도</h4></span>
-         				<input type="text" name="latitude" style="width:250px" placeholder="위도를 입력해주세요!"/>
-         				
-         				<span><h4>경도</h4></span>
-         				<input type="text" name="longitude" style="width:250px" placeholder="경도를 입력해주세요!"/>
-         				
+         				<span><h4>위도 및 경도</h4></span>
+         				<input type="text" name="location" style="width:250px" placeholder="(위도),(경도) 형태로 입력해주세요!"/>
+         				<br><br><hr>
+         			
          				<span><h4>액티비티 최소 가격</h4></span>
-         				<input type="text" name="minimum" style="width:250px" placeholder="액티비티 최소 가격을 입력해주세요!"/>
+         				<input type="text" name="price" style="width:250px" placeholder="액티비티 최소 가격을 입력해주세요!"/>
          				
+         				<br><br><hr>
          				<span><h4>액티비티 타입</h4></span>
          				<select id="location" name="location" size="1">
          					<option>액티비티를 선택해주세요!</option>
@@ -82,13 +83,15 @@
 							<option value="ACTI_TYPE70">서핑 & 기타 수상레저</option>
 							<option value="ACTI_TYPE71">패들보드 & 카약 & 래프팅</option>
 						</select>
-						
-						
+						<br><br><hr>
+         				
          				<span><h4>시작 날짜</h4></span>
          				<input type="date" name="longitude" style="width:250px" placeholder="시작날짜를 입력해주세요!"/>
+         				<br><br><hr>
          				
          				<span><h4>종료 날짜</h4></span>
          				<input type="date" name="longitude" style="width:250px" placeholder="종료날짜를 입력해주세요!"/>
+         				<br><br><hr>
          				
          				<span><h4>지역</h4></span>
          				<select id="location" name="location" size="1">
@@ -102,16 +105,19 @@
 							<option value="7">충청도</option>
 							<option value="8">부산</option>
 						</select>
-						<br><br>
-						<div class="img_border">
+						<br><br><hr>
+						<div class="img_border"><br>
                <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="img1" value="file1"></div>
                <div class="file">두번째 이미지 : <input accept="image/*" type="file" name="img2" value="file2"></div>
                <div class="file">세번째 이미지 : <input accept="image/*" type="file" name="img3" value="file3"></div>
-               <h5>사진은 최대 3장까지 첨부 가능합니다.</h5>
+               <br><hr><h5>사진은 최대 3장까지 첨부 가능합니다.</h5>
            </div>
          				
          				<!--  위도, 경도, 액티비티 최소 가격, 액티타입, 시작날짜, 종료날, 액티비티 , 이미지 1,2,3, 아이디, (가격, 옵션)  -->
 						</div>
+						<br><br>
+						<button type="submit" class="forgreen" id="actigive">등록하기</button>
+						<br><br>
 					</form>
                 </div>
             </div>

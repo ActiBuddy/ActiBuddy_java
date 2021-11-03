@@ -126,6 +126,40 @@
  		<result property="plusScore" column="PLUS_SCORE"/>
  		<result property="scoreTitle" column="MT_SCORE_TITLE"/>
  	</resultMap>
+ 	
+ 	<resultMap type="com.actibuddy.activity.model.dto.LocationDTO" id="locationResultMap">
+ 	   <id property="code" column="LOCATION_CODE"/>
+ 	   <result property="name" column="LOCATION_NAME"/>
+ 	   <result property="info" column="LOCATION_INFO"/>
+ 	   <result property="image" column="LOCATION_IMG"/>
+ 	   <result property="tip" column="GUIDE_TIP"/>
+ 	   <result property="visitMonth" column="VISIT_MONTH"/>
+ 	   <result property="visitName" column="VISIT_NAME"/>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.actibuddy.activity.model.dto.LocationAndActivityDTO" id="locationAndActivityResultMap">
+ 	   <id property="code" column="LOCATION_CODE"/>
+ 	   <result property="name" column="LOCATION_NAME"/>
+ 	   <result property="info" column="LOCATION_INFO"/>
+ 	   <result property="image" column="LOCATION_IMG"/>
+ 	   <result property="tip" column="GUIDE_TIP"/>
+ 	   <result property="visitMonth" column="VISIT_MONTH"/>
+ 	   <result property="visitName" column="VISIT_NAME"/>
+ 	   <result property="avg" column="AVG"/>
+ 	   <collection property="activityList" resultMap="activityResultMap"/>
+ 	</resultMap>
+ 	
+ 	 <resultMap type="com.actibuddy.faq.model.dto.FaqDTO" id="faqResultMap">
+		<id property="queNo" column="QUE_NUM"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="queTitle" column="QUE_TITLE"/>
+		<result property="queCon" column="QUE_CON"/>
+		<result property="queEmail" column="QUE_EMAIL"/>
+		<result property="queType" column="QUE_TYPE"/>
+		<result property="date" column="QUE_DATE"/>
+		<result property="answer" column="ANSWER"/>
+		<result property="answerYn" column="ANSWER_YN"/>
+	</resultMap>
 	
 	
 	
@@ -147,7 +181,7 @@
  	
  	<select id="selectTripList" parameterType="String" resultMap="tripListResultMap" >
  	
-			 	SELECT
+			 SELECT
 			        A.ACTI_NAME
 			      , A.ACTI_NUM
 			      , A.ACTI_IMG
@@ -159,6 +193,7 @@
 			      , M.USER_ID
 			      , M.INTRODUCE
 			      , M.FAVORITE_ACTI
+                  , P.PAY_STATUS
 			  FROM CART C
 			 INNER JOIN ACTIVITY_INFO A
 			    ON A.ACTI_NUM = C.ACTI_NUM
@@ -166,7 +201,8 @@
 			    ON C.CART_NUM = P.CART_NUM
 			 INNER JOIN MEMBER M
 			    ON C.USER_ID = M.USER_ID
-			 WHERE M.USER_ID = #{ userId }
+			 WHERE M.USER_ID = #{ userId}
+               AND P.PAY_STATUS = 'Y'
  	
  	</select>
  	
@@ -325,6 +361,21 @@
         )
 	
 	</insert>
+	
+	<select id="selectFaq" resultMap="faqResultMap">
+		SELECT
+			    QUE_NUM
+			  ,	QUE_CON
+			  ,	QUE_TITLE
+			  ,	QUE_DATE
+			  ,	USER_ID
+			  ,	QUE_TYPE
+			  ,	QUE_EMAIL
+			  ,	ANSWER
+			  ,	ANSWER_YN
+		 FROM FAQ
+		WHERE USER_ID = #{userId}
+	</select>
 	
   
   </mapper>

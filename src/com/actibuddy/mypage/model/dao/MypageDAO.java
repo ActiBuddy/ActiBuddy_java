@@ -9,6 +9,7 @@ import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
+import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
@@ -83,6 +84,11 @@ public class MypageDAO {
 		public static int insertReview(SqlSession session, ActiReviewDTO requestReview) {
 			
 			return session.insert("MypageDAO.insertReview",requestReview);
+		}
+
+		public List<FaqDTO> selectFaq(SqlSession session, String userId) {
+			
+			return session.selectList("MypageDAO.selectFaq",userId);
 		}
 
 

@@ -1,6 +1,7 @@
 package com.actibuddy.report.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,35 +14,37 @@ import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.report.service.ReportService;
 
-@WebServlet("/report/reportInfo")
-public class ReportInfoServlet extends HttpServlet {
+@WebServlet("/report/rejected")
+public class RejectedReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String title = request.getParameter("title");
 
+		String title = request.getParameter("title");
+		
 		MateReviewDTO reviewreport = new MateReviewDTO();		// 메이트 리뷰 DTO
 		ActiReviewDTO actireviewreport = new ActiReviewDTO();	// 액티비티 리뷰 DTO
 		
 		reviewreport.setTitle(title);
 		actireviewreport.setTitle(title);
 		
+		System.out.println("리뷰 리포트 " + reviewreport );
+		System.out.println("리뷰 리포트 " + actireviewreport );
+		
 		ReportService reportService = new ReportService();
 		
-		MateReviewDTO reviewreportinfo = reportService.matefindrepdetail(reviewreport);
-		ActiReviewDTO actireviewreportinfo = reportService.actireviewrepdetail(actireviewreport);
+		List<MateReviewDTO> reviewreportinfo = reportService.rejectedmatefindrepdetail(reviewreport);
+		List<ActiReviewDTO> actireviewreportinfo = reportService.rejectedactireviewrepdetail(actireviewreport);
+		
+		System.out.println(reviewreportinfo);
+		System.out.println(actireviewreportinfo);
 		
 		request.setAttribute("reviewreportinfo", reviewreportinfo);
 		request.setAttribute("actireviewreportinfo", actireviewreportinfo);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/report/reportinfo.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/report/rejectedreport.jsp");
 		rd.forward(request, response);
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	
 	}
 
 }

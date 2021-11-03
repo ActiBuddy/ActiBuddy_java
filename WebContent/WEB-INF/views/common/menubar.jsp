@@ -86,7 +86,9 @@
 			<span>
 				<button type="button" class="search-btn"
 					onclick="location.href='../activity/searchActivity.html'">Submit</button>
+			<c:if test="${ sessionScope.loginMember.memType eq 'M'}">		
 			<a href="${ pageContext.servletContext.contextPath }/manager/main">매니저 메뉴</a>		
+			</c:if>
 			</span>
 		</div>
 	
@@ -109,7 +111,6 @@
 				<span>
 				<a href="${ pageContext.servletContext.contextPath }/mypage/main" style="color:green; font-weight: bold;">마이페이지</a>
 				</span>
-				<button class="idcheck">로그인 아이디 확인</button>
 				<span>
 				<button type="button" class="logout_btn" onclick="location.href='${ pageContext.servletContext.contextPath }/member/logout'">로그아웃</button>
 				</span>

@@ -141,7 +141,6 @@
 		 FROM MEMBER A
     		, MANAGER M
 		WHERE A.USER_ID = M.USER_ID
-
 	</select>
  
  <select id="userinfo" resultMap="memberResultMap">
@@ -162,6 +161,32 @@
 		 FROM  MEMBER A
 		WHERE USER_ID = #{userId}
 	</select>
+	
+	
+ 	<!-- 매니저 정보 -->
+ 	<select id="managerinfo" resultMap="managerPartResultMap">
+ SELECT
+			    A.USER_ID
+        	  , A.USER_NAME
+        	  , A.EMAIL
+        	  , A.BIRTH
+       	  	  , A.GENDER
+        	  , A.WARN_COUNT
+        	  , A.QUIT_YN
+        	  , A.MEM_TYPE
+       	      , A.MEM_PHONE
+       	      , M.MAN_PART        
+		 FROM MEMBER A
+    		, MANAGER M
+		WHERE A.USER_ID = M.USER_ID
+		 AND A.USER_ID = #{userId}
+	</select>
  
+ <update id ="managerpartChange">
+ 
+ UPDATE MANAGER
+    SET MAN_PART = #{manPart}
+  WHERE USER_ID= #{userId}  
+ </update>
  
  </mapper>

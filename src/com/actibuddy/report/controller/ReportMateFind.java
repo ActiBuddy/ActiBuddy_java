@@ -20,16 +20,13 @@ public class ReportMateFind extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		ReportService reportService = new ReportService();
 		
 //		MateReviewDTO mateReviewDTO = new MateReviewDTO();
 //		ActiReviewDTO actiReviewDTO = new ActiReviewDTO();
 		
-		System.out.println("확인");
+		ReportService reportService = new ReportService();
 		
 		List<MateReviewDTO> matefindrep = reportService.matefindrep();
-		
-		System.out.println(matefindrep);
 		
 		request.setAttribute("matefindrep", matefindrep);
 		

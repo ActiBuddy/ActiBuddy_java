@@ -45,9 +45,6 @@
 	  			});
 	  		});
   		});
-  		
-  		
-  		
   
   </script>
   <body> 
@@ -58,31 +55,59 @@
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
+             	 <tr>
+                 	 <th>REPORT 관리자</th>
+                  </tr>
+              </thead>
+              
+              <tbody>
+                <c:forEach var="user" items="${memberList}">
+             		<c:if test="${ user.manPart eq 'report'}">
+             		   <tr>
+             		  	  <td>
+             				<a href="../manager/managerinfo?managerId=${ user.userId }">${ user.userId }</a>
+             			  </td>
+             			<tr>
+               		</c:if>
+                </c:forEach>
+              </tbody>
+             </table>
+              
+             <table class="table table-striped">
+              <thead>
                 <tr>
-                  <th>아이디</th>
-                  <th>파트</th>
-                  <th>파트 변경</th>
+                  <th>MEMBER 관리자</th>
                 </tr>
               </thead>
               <tbody>
-              
-              
                 <c:forEach var="user" items="${memberList}">
-                <tr>
-                  <td>${ user.userId }</td>
-                  <td>${ user.manPart }</td>
-                  <td>
-                  <!-- <form action=""> -->
-                  <select id="interest" name="interest" size="1">
-					<option name="inten" value="report">신고</option>
-					<option name="inten" value="manager">회원</option>
-					<option name="inten" value="FAQ">문의접수</option>
-				</select>
-				<!-- </form> -->
-				</td>
-                </tr>
+             		<c:if test="${ user.manPart eq 'member'}">
+             		   <tr>
+             		  	  <td>
+             				<a href="../manager/managerinfo?managerId=${ user.userId }">${ user.userId }</a>
+             			  </td>
+             			<tr>
+               		</c:if>
                 </c:forEach>
-                
+              </tbody>
+            </table>
+                 
+            <table class="table table-striped">     
+              <thead>
+                <tr>
+                  <th>FAQ 관리자</th>
+                </tr>
+              </thead>
+              <tbody>
+                <c:forEach var="user" items="${memberList}">
+             		<c:if test="${ user.manPart eq 'FAQ'}">
+             		   <tr>
+             		  	  <td>
+             				<a href="../manager/managerinfo?managerId=${ user.userId }">${ user.userId }</a>
+             			  </td>
+             			<tr>
+               		</c:if>
+                </c:forEach>
               </tbody>
             </table>
           </div>

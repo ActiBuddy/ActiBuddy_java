@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메이트 찾기</title>
 
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet">
-    <link href="../../resources/css/mate.css" rel="stylesheet">
-    <link href="../../resources/css/FAQ.css" rel="stylesheet">
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/mate.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 
 </head>
 <body>
@@ -21,65 +23,23 @@
     
     <!-- 로고 이미지 -->
     <div class="mate_logo">
-      <a href="#"><img src="../../resources/image/matematching.png"></a>
+      <a href="#"><img src="${ pageContext.servletContext.contextPath }/resources/image//matematching.png"></a>
     </div>
 
      <!-- 광고 이미지 -->
     <div class="mate_ad">
-        <a href="https://www.hyundailivart.co.kr/"><img src="../../resources/image/livartad.png"></a>
+        <a href="https://www.hyundailivart.co.kr/" target="_blank"><img src="${ pageContext.servletContext.contextPath }/resources/image/livartad.png"></a>
     </div>
 
-     <!-- 메이팅 후기 -->
-    <div class="mate_review1">
-        <img src="../../resources/image/mate_review.png">
-
-    </div>
-
-
-    <div class="mate_review2">
-        <div>
-        <a href="https://www.hyundailivart.co.kr/"><img src="../../resources/image/scuba_diving1.png"></a>
-        </div>
-        <div>
-        <img src="../../resources/image/scuba_diving1.png">
-        </div>
-        <div>
-        <img src="../../resources/image/scuba_diving1.png">
-        </div>
-        <div>
-        <img src="../../resources/image/scuba_diving1.png">
-        </div>
-        <div>
-        <img src="../../resources/image/scuba_diving1.png">
-        </div>
-    </div>
-
-    <div class="mate_review3">
-        <div>
-            스쿠버완
-        </div>
-        <div>
-            스쿠버투
-        </div>
-        <div>
-            스쿠버쓰리
-        </div>
-        <div>
-            스쿠버포
-        </div>
-        <div>
-            스쿠버파이브
-        </div>
-    </div>
 
      <!-- 메이트 마감 임박 -->
     <div class="mate_hurry1">
-        <img src="../../resources/image/mate_hurry.png">
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_hurry.png">
     </div>
 
     <div class="mate_hurry2">
         <div class="mate_hurry3">
-            <img src="../../resources/image/mate_one.png">
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_one.png">
             <span class="h_title">
                 같이 여수갈 사람 구해요
             </span>
@@ -97,7 +57,7 @@
             </span>
         </div>
         <div class="mate_hurry3">
-            <img src="../../resources/image/mate_two.png">
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_two.png">
             <span class="h_title">
                 같이 여수갈 사람 구해요
             </span>
@@ -115,7 +75,7 @@
             </span>
         </div>
         <div class="mate_hurry3">
-            <img src="../../resources/image/mate_three.png">
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_three.png">
             <span class="h_title">
                 같이 여수갈 사람 구해요
             </span>
@@ -136,7 +96,7 @@
 
      <!-- 메이트 찾기 -->
     <div class="mate_find1">
-        <img src="../../resources/image/mate_find.png">
+        <img src="${ pageContext.servletContext.contextPath }/resources/image//mate_find.png">
     </div>
    
     <div class="mate_tabs">
@@ -278,7 +238,7 @@
                       </li>
                     </ul>
                   </nav>
-                <button><a href="#">작성하기</a></button>
+                <button onclick="location.href='${ pageContext.servletContext.contextPath }/mate/find/regist'">작성하기</button>
             </div>
         
             <div class="search">
@@ -1326,6 +1286,22 @@
     </div>
 
      <!-- **** 탭 누르는거 끝 **** -->
+     </div>
+     
+     <!-- 메이팅 후기 -->
+    <div class="mate_review1">
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_review.png" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/mate/review';">
+    </div>
+
+    <div class="mate_review2">
+      	 <c:forEach var="bestReview" items="${ bestReviewList }">
+            <div class="mate_review3">
+                <a href="/acti/mate/review/select?num=${ bestReview.num }"><img src="${ pageContext.servletContext.contextPath }/resources/image/review/${ bestReview.img1 }"></a>
+                <div>
+                    ${ bestReview.title }
+                </div>
+              </div>
+          </c:forEach>
      </div>
 </body>
 

@@ -175,8 +175,8 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 			if(result > 0) {
 
 			    ActivityService actiService = new ActivityService(); 
-			    int actiNum = Integer.parseInt(request.getParameter("hdActivityNum"));
-			    System.out.println("액티비티 번호 : " + actiNum);
+			    String actiNum = parameter.get("hdActivityNum");
+			    System.out.println("액티비티 이름 : " + actiNum);
 				int updateStar = actiService.updateStar(actiNum);
 				System.out.println("업데이트 결과 : " + updateStar);
 				path = "/acti/mypage/review";

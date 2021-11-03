@@ -117,9 +117,14 @@ public class ActivityDAO {
 		return session.selectOne("ActivityDAO.selectPayment");
 	}
 	
-	public int updateStar(SqlSession session, int actiNum) {
+	public int updateStar(SqlSession session, String actiNum) {
 
-		return session.update("ActivityDAO.updateStar");
+		return session.update("ActivityDAO.updateStar", actiNum);
+	}
+
+	public List<ActivityDTO> selectManyView(SqlSession session) {
+		
+		return session.selectList("ActivityDAO.selectManyView");
 	}
 
 }

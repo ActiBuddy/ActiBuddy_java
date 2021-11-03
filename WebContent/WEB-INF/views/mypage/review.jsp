@@ -70,7 +70,7 @@
 						 <h2 id="foryellow">★</h2><h2 id="forgray">★★★★</h2>
 					  </c:when>
 					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 2 }">
-					     <h2 id="foryellow">★★</h2><h2 id="forgray">★★</h2>
+					     <h2 id="foryellow">★★</h2><h2 id="forgray">★★★</h2>
 					  </c:when>
 					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 3 }">
 					     <h2 id="foryellow">★★★</h2><h2 id="forgray">★★</h2>

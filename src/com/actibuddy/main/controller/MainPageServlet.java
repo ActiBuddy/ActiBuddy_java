@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
 import com.actibuddy.activity.service.ActivityService;
 
@@ -27,7 +28,11 @@ public class MainPageServlet extends HttpServlet {
 			System.out.println(locationList);
 		}
 		
+		List<ActivityDTO> actiList = activityService.selectManyView();
+		
+		
 		request.setAttribute("locationList", locationList);
+		request.setAttribute("activityList", actiList);
 		request.getRequestDispatcher("/WEB-INF/views/main/mainpage.jsp").forward(request, response);
 		
 	}

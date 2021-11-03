@@ -20,6 +20,7 @@ public class ActivityDTO implements java.io.Serializable{
 	private String userId;
 	private int views;
 	private double star;
+	private String mainImg;
 	
 	public ActivityDTO() {
 
@@ -27,7 +28,7 @@ public class ActivityDTO implements java.io.Serializable{
 
 	public ActivityDTO(String code, String name, String location, int price, Date startDate, Date endDate, String tip,
 			String image, String image2, String image3, String loactionCode, String activitTypeCode, String userId, int views,
-			double star) {
+			double star, String mainImg) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -44,6 +45,7 @@ public class ActivityDTO implements java.io.Serializable{
 		this.userId = userId;
 		this.views = views;
 		this.star = star;
+		this.mainImg = mainImg;
 	}
 
 	public String getCode() {
@@ -166,12 +168,20 @@ public class ActivityDTO implements java.io.Serializable{
 		this.star = star;
 	}
 
+	public String getMainImg() {
+		return mainImg;
+	}
+
+	public void setMainImg(String mainImg) {
+		this.mainImg = mainImg;
+	}
+
 	@Override
 	public String toString() {
 		return "ActivityDTO [code=" + code + ", name=" + name + ", location=" + location + ", price=" + price
 				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", tip=" + tip + ", image=" + image
 				+ ", image2=" + image2 + ", image3=" + image3 + ", loactionCode=" + loactionCode + ", activitTypeCode="
-				+ activitTypeCode + ", userId=" + userId + ", views=" + views + ", star=" + star + "]";
+				+ activitTypeCode + ", userId=" + userId + ", views=" + views + ", star=" + star + ", mainImg=" + mainImg + "]";
 	}
 	
 }

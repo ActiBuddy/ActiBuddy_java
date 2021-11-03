@@ -46,6 +46,8 @@
  	   <result property="EndDate" column="END_DATE"/>
  	   <result property="tip" column="ACTI_TIP"/>
  	   <result property="image" column="ACTI_IMG"/>
+ 	   <result property="image2" column="ACTI_IMG2"/>
+ 	   <result property="image3" column="ACTI_IMG3"/>
  	   <result property="loactionCode" column="LOCATION_CODE"/>
  	   <result property="activitTypeCode" column="ACTI_TYPE_NUM"/>
  	   <result property="userId" column="USER_ID"/>
@@ -173,6 +175,10 @@
 		<result property="answerYn" column="ANSWER_YN"/>
 	</resultMap>
 	
+	<resultMap type="com.actibuddy.mypage.model.dto.ActiConditionHisDTO" id="newActiResultMap">
+	<result property="actiNum" column="ACTI_NUM"/>
+	<result property="ActiConNum" column="ACTI_CON_NUM"/>
+	</resultMap>
 	
 	<update id="updateIntroduce" parameterType="com.actibuddy.member.model.dto.MemberDTO">
 			
@@ -359,14 +365,14 @@
         )
         VALUES
         (
-         'ACTI_REVIEW' || SEQ_MT_REVIEW_NUM.NEXTVAL
+         'ACTI_REVIEW_NUM' || SEQ_MT_REVIEW_NUM.NEXTVAL
         ,  default
         , #{ actiNum }
         , #{ writerId }
         , #{ title }
         , #{ content }
         , #{ reviewStar }
-        , #{ image }
+        , '../resources/image/tripReview/' || #{ image }
         , 0 
         , 'N'
         )
@@ -413,6 +419,49 @@
 			  ,	ANSWER_YN
 		 FROM FAQ
 		WHERE USER_ID = #{userId}
+	</select>
+	
+	<insert id="insertActi">
+	  INSERT
+		INTO ACTIVITY_INFO
+		(
+		  ACTI_TYPE_NUM
+		, USER_ID
+	    , ACTI_NUM
+		, ACTI_NAME
+		, LOCATION
+		, PRICE
+		, START_DATE
+		, END_DATE
+		, ACTI_TIP
+		, ACTI_IMG
+		, ACTI_IMG2
+		, ACTI_IMG3
+		, LOCATION_CODE
+		)
+		VALUES
+		(
+		  #{ activitTypeCode }
+		, #{ userId }
+		, 'ACTI_NUM' || SEQ_ACTI_NUM.NEXTVAL
+		, #{ name }
+		, #{ location }
+		, #{ price }
+		, #{ StartDate }
+		, #{ EndDate }
+		, #{ tip }
+		, '../resources/image/addActi/' || #{ image }
+		, '../resources/image/addActi/' || #{ image2 }
+		, '../resources/image/addActi/' || #{ image3 }
+		, #{ loactionCode } 
+		)
+	
+	</insert>
+	
+	<select id="selectNewActiNum" resultMap="newActiResultMap">
+	
+
+
 	</select>
 	
   

@@ -15,6 +15,7 @@ import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dao.MypageDAO;
+import com.actibuddy.mypage.model.dto.ActiConditionHisDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
 import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
@@ -281,6 +282,11 @@ public class MypageService {
 		return payResult;
 	}
 	
+	/**
+	 * 문의사항 가져오기
+	 * @param userId
+	 * @return해주
+	 */
 	public List<FaqDTO> selectFaq(String userId) {
 		
 		SqlSession session = getSqlSession();
@@ -292,8 +298,42 @@ public class MypageService {
 		return selectFaq;
 	}
 
+	/**
+	 * 액티비티 등록
+	 * @param requestActi
+	 * @return 혜주
+	 */
+	public int registReview(ActivityDTO requestActi) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MypageDAO.insertActi(session,requestActi);
+				
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
 
-
-
+	/**
+	 * 최근 등록된 액티비티 번호 조회용 메소드
+	 * @author 조혜쭈
+	 * @return
+	 */
+	public ActiConditionHisDTO selectNewActiNum() {
+		
+		SqlSession session = getSqlSession();
+		
+		ActiConditionHisDTO newActiNum = mypageDAO.selectNewActiNum(session);
+		
+		session.close();
+		
+		return newActiNum;
+	}
 	
 }

@@ -12,6 +12,7 @@ import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
+import com.actibuddy.mypage.model.dto.ActiConditionHisDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
 import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
@@ -101,6 +102,16 @@ public class MypageDAO {
 		public List<FaqDTO> selectFaq(SqlSession session, String userId) {
 			
 			return session.selectList("MypageDAO.selectFaq",userId);
+		}
+
+		public static int insertActi(SqlSession session, ActivityDTO requestActi) {
+			
+			return session.insert("MypageDAO.insertActi",requestActi);
+		}
+
+		public ActiConditionHisDTO selectNewActiNum(SqlSession session) {
+			
+			return session.selectOne("MypageDAO.selectNewActiNum");
 		}
 
 

@@ -14,6 +14,8 @@ import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
 import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
+import com.actibuddy.mypage.model.dto.PayHisDTO;
+import com.actibuddy.mypage.model.dto.PayResultDTO;
 
 
 public class MypageDAO {
@@ -83,6 +85,16 @@ public class MypageDAO {
 		public static int insertReview(SqlSession session, ActiReviewDTO requestReview) {
 			
 			return session.insert("MypageDAO.insertReview",requestReview);
+		}
+
+		public int insertPayHis(SqlSession session, PayHisDTO payHis) {
+			
+			return session.insert("MypageDAO.insertPayHis", payHis);
+		}
+
+		public PayResultDTO selectPayResult(SqlSession session, String cartNum) {
+			
+			return session.selectOne("MypageDAO.selectPayResult", cartNum);
 		}
 
 

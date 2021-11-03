@@ -20,22 +20,25 @@ public class ActiPayServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		System.out.println("pay1 서블릿입니다 ======================================");
 		System.out.println("결제할 액티비티 이름 : " + request.getParameter("actiName"));
 		System.out.println("결제할 액티비티 번호 : " + request.getParameter("actiNum"));
 		System.out.println("결제할 액티비티 사진 : " + request.getParameter("image"));
 		System.out.println("결제할 액티비티 날짜 : " + request.getParameter("date"));
+		System.out.println("결제할 액티비티 옵션 : " + request.getParameter("option"));
 		System.out.println("결제할 액티비티 인원 : " + request.getParameter("person"));
 		System.out.println("결제할 액티비티 가격 : " + request.getParameter("price"));
-		System.out.println("결제할 유저 아이디 : " + request.getParameter("userId"));
+		System.out.println("결제할 장바구니 번호 : " + request.getParameter("cartNum"));
 		
 		Map<String, String> payInfo = new HashMap<>();
 		payInfo.put("actiName", request.getParameter("actiName"));
 		payInfo.put("actiNum", request.getParameter("actiNum"));
 		payInfo.put("image", request.getParameter("image"));
 		payInfo.put("date", request.getParameter("date"));
+		payInfo.put("option", request.getParameter("option"));
 		payInfo.put("person", request.getParameter("person"));
 		payInfo.put("price", request.getParameter("price"));
-		payInfo.put("userId", request.getParameter("userId"));
+		payInfo.put("cartNum", request.getParameter("cartNum"));
 		
 		String path = "";
 

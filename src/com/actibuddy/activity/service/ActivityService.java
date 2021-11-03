@@ -14,6 +14,7 @@ import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
+import com.actibuddy.activity.model.dto.PaymentDTO;
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mypage.model.dao.MypageDAO;
 
@@ -328,6 +329,44 @@ public class ActivityService {
 		session.close();
 		
 		return result;
+	}
+
+	/**
+	 * 결제 테이블에 고유 번호와 결제 시간을 등록해주는 메소드
+	 * @author kwonsoonpyo
+	 * @return result
+	 */
+	public int insertPayment() {
+		
+		SqlSession session = getSqlSession();
+		
+		int result= activityDAO.insertPayment(session);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/**
+	 * 최근 결제 내역을 조회하는 메소드
+	 * @author kwonsoonpyo
+	 * @return PaymentDTO
+	 */
+	public PaymentDTO selectPayment() {
+		
+		SqlSession session = getSqlSession();
+		
+		PaymentDTO payment = activityDAO.selectPayment(session);
+		
+		session.close();
+		
+		return payment;
 	}
 
 }

@@ -17,6 +17,8 @@ import com.actibuddy.mypage.model.dao.MypageDAO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
 import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
+import com.actibuddy.mypage.model.dto.PayHisDTO;
+import com.actibuddy.mypage.model.dto.PayResultDTO;
 
 
 public class MypageService {
@@ -236,6 +238,46 @@ public class MypageService {
 		session.close();
 		
 		return result;
+	}
+
+	/**
+	 * 결제 이력 등록용 메소드
+	 * @author kwonsoonpyo
+	 * @param payHis
+	 * @return result
+	 */
+	public int insertPayHis(PayHisDTO payHis) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.insertPayHis(session, payHis);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/**
+	 * 결제 후 성공 / 실패 화면에서 보여질 카트 정보를 가져오는 메소드
+	 * @author kwonsoonpyo
+	 * @param cartNum
+	 * @return payResult
+	 */
+	public PayResultDTO selectPayResult(String cartNum) {
+		
+		SqlSession session = getSqlSession();
+		
+		PayResultDTO payResult = mypageDAO.selectPayResult(session, cartNum);
+		
+		session.close();
+		
+		return payResult;
 	}
 
 

@@ -13,7 +13,6 @@ public class CartDTO implements java.io.Serializable{
 	private Date ChooseDate;
 	
 	
-	
 	public CartDTO() {
 		super();
 		// TODO Auto-generated constructor stub

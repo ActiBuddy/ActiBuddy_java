@@ -236,7 +236,7 @@
      $(function(){			
 		$('#cart').on('click',function(e){
 			
-			let user = '${ sessionScope.loginMember.userName }';
+			let user = '${ sessionScope.loginMember.userId }';
 			let date = $('#datepicker').val();
 			let option = $('input[type=radio]:checked').val();
 			
@@ -508,7 +508,7 @@ $('#sort-select').on('change', function(){
      $(function(){			
 		$('#suggestion${ size + 1 }').one('click',function(e){
 		   
-			let user = '${ sessionScope.loginMember.userName }';
+			let user = '${ sessionScope.loginMember.userId }';
 			
 		    if(!user) {
 		    	alert("로그인을 진행해주세요.")
@@ -553,7 +553,7 @@ $('#sort-select').on('change', function(){
      $(function(){			
 		$('#declaration${ size + 1 }').one('click',function(e){
 		   
-			let user = '${ sessionScope.loginMember.userName }';
+			let user = '${ sessionScope.loginMember.userId }';
 			
 			if(!user) {
 				alert("로그인을 진행해주세요.")

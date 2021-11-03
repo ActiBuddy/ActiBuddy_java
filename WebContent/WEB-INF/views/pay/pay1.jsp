@@ -56,7 +56,7 @@
         <h2 id="confirm"> 예약 정보 </h2> <hr> <br>
         <img id="img" src="${ payInfo.image }"> <br>
         <h5 id="activity-name">${ payInfo.actiName }</h5> <br>
-        <h6 id="option">체험 다이빙</h6> <br><br><br><br>
+        <h6 id="option"> ${ payInfo.option } </h6> <br><br><br><br>
 
         <h5 id="date"> 날짜 : ${ payInfo.date }</h5>
         <h5 id="person"> 수량 : ${ payInfo.person }</h5>
@@ -68,9 +68,10 @@
         <input type="hidden" name="actiName" value="${ payInfo.actiName }">
         <input type="hidden" name="actiNum" value="${ payInfo.actiNum }">
         <input type="hidden" name="date" value="${ payInfo.date }">
+        <input type="hidden" name="option" value="${ payInfo.option }">
         <input type="hidden" name="person" value="${ payInfo.person }">
         <input type="hidden" name="price" value="${ payInfo.price }">
-        <input type="hidden" name="userId" value="${ sessionScope.loginMember.userName }">
+        <input type="hidden" name="cartNum" value="${ payInfo.cartNum }">
 
         <input id="progress" type="submit" value="결제 진행">
 

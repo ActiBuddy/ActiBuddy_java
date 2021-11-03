@@ -72,15 +72,15 @@
                     <h5>옵션 : ${ trip.cartList.get(0).chooseOption }</h5>
                     <br>
                      <h4>총 결제할 금액 : ${ trip.cartList.get(0).totalPrice } 원</h4>
-                    <input type="hidden" name="actiName" value="${ tripList[size].activityInfo[size].name  }">
-                    <input type="hidden" name="image" value="${ tripList[size].activityInfo[size].image }">
-                    <input type="hidden" name="date" value="${ tripList[size].cartList[size].chooseDate }">
-                    <input type="hidden" name="person" value="${ tripList[size].cartList[size].totalPerson }">
-                    <input type="hidden" name="price" value="${ tripList[size].cartList[size].totalPrice }">
-                    <input type="hidden" name="userId" value="${ sessionScope.loginMember.userName }">
-                    <input type="hidden" name="actiNum" value="${ tripList[size].activityInfo[size].code }">
+                    <input type="hidden" name="actiName" value="${ trip.activityInfo.get(0).name  }">
+                    <input type="hidden" name="image" value="${ trip.activityInfo.get(0).image }">
+                    <input type="hidden" name="date" value="${ trip.cartList.get(0).chooseDate }">
+                    <input type="hidden" name="option" value="${ trip.cartList.get(0).chooseOption }">
+                    <input type="hidden" name="person" value="${ trip.cartList.get(0).totalPerson }">
+                    <input type="hidden" name="price" value="${ trip.cartList.get(0).totalPrice }">
+                    <input type="hidden" name="actiNum" value="${ trip.activityInfo.get(0).code }">
+                    <input type="hidden" name="cartNum" value="${ trip.cartList.get(0).cartNum }">
                     <input type="submit" value="바로 결제" id="pay">
-                    <!-- <button id="pay" type="button" onclick="location.href=''">바로 결제</button> -->
                     </form>
 
                     <hr>

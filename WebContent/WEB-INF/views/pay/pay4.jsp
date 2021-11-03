@@ -30,7 +30,7 @@
 
     <div id="top">
         <div id="circle">
-            <h4 id="info">결제 완료</h4>
+            <h4 id="info">결제 실패</h4>
         </div>
     </div>
 
@@ -49,8 +49,8 @@
         <h2 id="all">총금액: </h2>
         <h2 id="price"> ₩ ${ payInfo.price }</h2> <br> <hr>
 
-        <h5 id="completion">카카오 페이 결제가 정상적으로 완료되었습니다.</h5> <br>
-        <h5 id="payment">결제 일 : ${ payInfo.payDate }</h5>
+        <h5 id="completion" style="color: red;">카카오 페이 결제가 취소되었습니다. </h5> <br>
+        <h5 id="payment" style="color: red;">취소 일시 : ${ payInfo.payDate }</h5>
 
         <a id="a" href="${ pageContext.servletContext.contextPath }/mypage/triplist">
             <input id="next" type="submit" value="확인">

@@ -23,71 +23,46 @@ public class ActiPayServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		System.out.println("pay2 서블릿입니다 ======================================");
 		System.out.println("결제할 액티비티 이름 : " + request.getParameter("actiName"));
 		System.out.println("결제할 액티비티 번호 : " + request.getParameter("actiNum"));
 		System.out.println("결제할 액티비티 사진 : " + request.getParameter("image"));
 		System.out.println("결제할 액티비티 날짜 : " + request.getParameter("date"));
+		System.out.println("결제할 액티비티 옵션 : " + request.getParameter("option"));
 		System.out.println("결제할 액티비티 인원 : " + request.getParameter("person"));
 		System.out.println("결제할 액티비티 가격 : " + request.getParameter("price"));
-		System.out.println("결제할 유저 아이디 : " + request.getParameter("userId"));
+		System.out.println("결제할 장바구니 번호 : " + request.getParameter("cartNum"));
 		
-		request.getRequestDispatcher("/WEB-INF/views/pay/pay2.jsp").forward(request, response);
+		Map<String, String> payInfo = new HashMap<>();
+		payInfo.put("actiName", request.getParameter("actiName"));
+		payInfo.put("actiNum", request.getParameter("actiNum"));
+		payInfo.put("image", request.getParameter("image"));
+		payInfo.put("date", request.getParameter("date"));
+		payInfo.put("option", request.getParameter("option"));
+		payInfo.put("person", request.getParameter("person"));
+		payInfo.put("price", request.getParameter("price"));
+		payInfo.put("cartNum", request.getParameter("cartNum"));
+		
+		String path = "";
+
+		if(payInfo != null) {
+			path = "/WEB-INF/views/pay/pay2.jsp";
+			request.setAttribute("payInfo", payInfo);
+			
+		} else {
+			path = "/WEB-INF/views/common/actiFail.jsp";
+		}
+
+		request.getRequestDispatcher(path).forward(request, response);
 		
 		
-// 		Integer person = Integer.parseInt(request.getParameter("person")); 
-//		Integer price = Integer.parseInt(request.getParameter("price")); 
-//	    int taxFree = (int) (price - (price * 0.1));
-//	    Integer tax_free_amount = new Integer(taxFree);
-//		
-//		
-//	    URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
-//	    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-//	    conn.setRequestMethod("POST");
-//	    conn.setRequestProperty("Authorization", "KakaoAK b67d9351c8c65daff4a8e6e1359c582e");
-//	    conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-//	    conn.setDoInput(true);
-//	    conn.setDoOutput(true);
-//	    
-//	    String partner_order_id = null;
-//	    String partner_user_id = null;
-//	    
-//	    
-//	    Map<String, Object> params = new HashMap<>();
-//	    params.put("cid", "TC0ONETIME");
-//		params.put("partner_order_id", partner_order_id);
-//		params.put("partner_user_id", partner_user_id);
-//	    params.put("item_name", request.getParameter("actiName"));
-//	    params.put("item_code", request.getParameter("actiNum"));
-//	    params.put("quantity", person);
-//	    params.put("total_amount", price);
-//	    params.put("tax_free_amount", tax_free_amount);
-//	    params.put("approval_url", "http://localhost:8888/WEB-INF/views/pay/pay2.jsp");
-//	    params.put("cancel_url", "http://localhost:8888/WEB-INF/views/pay/cancle.jsp");
-//	    params.put("fail_url", "http://localhost:8888/WEB-INF/views/pay/fail.jsp");
-//	    
-//	    String string_params = new String();
-//	    for(Map.Entry<String, Object> elem : params.entrySet()) {
-//	    	string_params += (elem.getKey() + "=" + elem.getValue() + "&");
-//	    }
-//	    
-//	    conn.getOutputStream().write(string_params.getBytes());
-//	    
-//	    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//	    
-//	    JSONParser parser = new JSONParser();
-//	    try {
-//			JSONObject obj = (JSONObject)parser.parse(in);
-//			
-//			String successUrl = (String)obj.get("/acti/activity/pay3");
-//			
-//			request.getRequestDispatcher(successUrl).forward(request, response);
-//		} catch (IOException | ParseException e) {
-//			e.printStackTrace();
-//		}
 	    
 	}
 	

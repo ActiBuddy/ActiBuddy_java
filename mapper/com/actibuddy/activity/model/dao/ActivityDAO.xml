@@ -113,6 +113,11 @@
  	   <collection property="activityList" resultMap="activityResultMap"></collection>
  	</resultMap>
  	
+ 	<resultMap type="com.actibuddy.activity.model.dto.PaymentDTO" id="paymentResultMap">
+ 	<id property="payNum" column="PAY_NUM"/>
+ 	<result property="payDate" column="PAY_DATE"/>
+ 	</resultMap>
+ 	
  	<!-- 액티비티 카테고리, 정렬로 정보를 구하는 쿼리문 -->
  	<select id="selectLocationInfo" resultMap="locationAndActivityResultMap" parameterType="hashMap">
 	   SELECT  M.RNUM
@@ -829,4 +834,31 @@
                       WHERE ACTI_NAME = #{ actiName } )
  WHERE ACTI_NAME = #{ actiName } 
  	</update>
+ 	
+ 	<insert id="insertPayment">
+ 	    INSERT
+          INTO ACTI_PAYMENT
+        (
+          PAY_NUM
+        , PAY_DATE
+        )
+        VALUES
+        (
+          ('PAY_NUM' || TO_CHAR(SEQ_PAY_NUM.nextval))
+        , DEFAULT
+        )
+ 	</insert>
+ 	
+ 	<select id="selectPayment" resultMap="paymentResultMap">
+ 	    SELECT RNUM
+             , V2.*
+          FROM (SELECT ROWNUM RNUM
+                     , V.*
+                  FROM (SELECT *
+                          FROM ACTI_PAYMENT
+                         ORDER BY PAY_NUM DESC
+                       )V
+               )V2
+         WHERE RNUM <![CDATA[ < ]]> 2
+ 	</select>
  </mapper>

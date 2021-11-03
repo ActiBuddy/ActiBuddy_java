@@ -126,6 +126,18 @@
  		<result property="plusScore" column="PLUS_SCORE"/>
  		<result property="scoreTitle" column="MT_SCORE_TITLE"/>
  	</resultMap>
+ 	
+ 	<resultMap type="com.actibuddy.mypage.model.dto.PayResultDTO" id="payResultMap">
+ 	    <id property="cartNum" column="CART_NUM"/>
+		<result property="actiNum" column="ACTI_NUM"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="chooseOption" column="CHOOSE_OPTION"/>
+		<result property="totalPerson" column="TOTAL_PERSON"/>
+		<result property="totalPrice" column="TOTAL_PRICE"/>
+		<result property="chooseDate" column="CHOOSE_DATE"/>	
+		<result property="actiName" column="ACTI_NAME"/>
+		<result property="img" column="ACTI_IMG"/>
+ 	</resultMap>
 	
 	
 	
@@ -323,8 +335,35 @@
         , 0 
         , 'N'
         )
-	
 	</insert>
+	
+	<insert id="insertPayHis">
+	    INSERT
+		  INTO PAY_HIS
+		(
+		  PAY_NUM
+		, CART_NUM
+		, PAY_STATUS
+		, USE_YN
+		)
+		VALUES
+		(
+		  #{ payNum }
+		, #{ cartNum }
+		, 'Y'
+		, DEFAULT
+		)
+	</insert>
+	
+	<select id="selectPayResult" resultMap="payResultMap" parameterType="String">
+	    SELECT
+               A.*
+             , B.ACTI_NAME
+             , B.ACTI_IMG
+          FROM CART A
+          JOIN ACTIVITY_INFO B ON (A.ACTI_NUM = B.ACTI_NUM)
+         WHERE A.CART_NUM = #{ cartNum }
+	</select>
 	
   
   </mapper>

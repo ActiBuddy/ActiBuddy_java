@@ -11,6 +11,7 @@ import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityMainDTO;
 import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.model.dto.LocationDTO;
+import com.actibuddy.activity.model.dto.PaymentDTO;
 import com.actibuddy.common.paging.SelectCriteria;
 
 public class ActivityDAO {
@@ -104,6 +105,16 @@ public class ActivityDAO {
 	public int updateViews(SqlSession session, String actiName) {
 
 		return session.update("ActivityDAO.updateViews", actiName);
+	}
+
+	public int insertPayment(SqlSession session) {
+		
+		return session.insert("ActivityDAO.insertPayment");
+	}
+
+	public PaymentDTO selectPayment(SqlSession session) {
+		
+		return session.selectOne("ActivityDAO.selectPayment");
 	}
 
 }

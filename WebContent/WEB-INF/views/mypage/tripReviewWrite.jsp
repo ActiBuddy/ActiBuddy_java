@@ -55,17 +55,15 @@
                     
                     <h2 id="titleH2">제목 : </h2><textarea id="title" placeholder="제목를 작성해주세요" name="title"></textarea>
                     
-                    <c:forEach var="size" begin="0" end="${fn:length(tripList.activityInfo)-1 }" >
-                    <hr><h3>후기 상품 :  ${ tripList.activityInfo[size].name }</h3>
-                    <input type="hidden" name="hdActivityNum" value="${ tripList.cartList[size].actiNum }"  >
+                    <hr><h3>후기 상품 :  ${ tripList.activityInfo[0].name }</h3>
+                    <input type="hidden" name="hdActivityNum" value="${ tripList.cartList[0].actiNum }"  >
                     <br>
-                    <h5>선택 날짜 : ${ tripList.cartList[size].chooseDate }  </h5>
-                    <h5>선택한 옵션 : ${ tripList.cartList[size].chooseOption }</h5>
-                    <h5>선택한 수량 : ${ tripList.cartList[size].totalPerson }</h5>
-                    <input type="hidden" name="hdChooseDate" value="${ tripList.cartList[size].chooseDate }"  >
-                    <input type="hidden" name="hdTotalPerson" value="${ tripList.cartList[size].totalPerson }"  >
-                    <input type="hidden" name="hdChooseOption" value="${ tripList.cartList[size].chooseOption }"  >
-                    </c:forEach>
+                    <h5>선택 날짜 : ${ tripList.cartList[0].chooseDate }  </h5>
+                    <h5>선택한 옵션 : ${ tripList.cartList[0].chooseOption }</h5>
+                    <h5>선택한 수량 : ${ tripList.cartList[0].totalPerson }</h5>
+                    <input type="hidden" name="hdChooseDate" value="${ tripList.cartList[0].chooseDate }"  >
+                    <input type="hidden" name="hdTotalPerson" value="${ tripList.cartList[0].totalPerson }"  >
+                    <input type="hidden" name="hdChooseOption" value="${ tripList.cartList[0].chooseOption }"  >
                     
                     <hr>
                     <h3>액티비티는 어떠셨나요? 별점을 매겨주세요</h3>

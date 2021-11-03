@@ -164,11 +164,7 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 			
 			int result = new MypageService().registReview(requestReview);
 			
-			if(result > 0) {
-				ActivityService actiService = new ActivityService();
-				int actiNum = Integer.parseInt(request.getParameter("hdActivityNum"));
-				int updateStar = actiService.updateStar(actiNum);
-			}
+			
 			
 			
 			// result 결과에 따라서 페이지이동
@@ -178,6 +174,11 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 			String path = "";
 			if(result > 0) {
 
+			    ActivityService actiService = new ActivityService(); 
+			    int actiNum = Integer.parseInt(request.getParameter("hdActivityNum"));
+			    System.out.println("액티비티 번호 : " + actiNum);
+				int updateStar = actiService.updateStar(actiNum);
+				System.out.println("업데이트 결과 : " + updateStar);
 				path = "/acti/mypage/review";
 				response.sendRedirect(path);
 				
@@ -192,14 +193,14 @@ public class MypageTripReviewWriteServlet extends HttpServlet {
 				rd.forward(request, response);
 			}	
 			
-			Map<String,String> map = new HashMap<>();
-			map.put("userId", userId);
-			MypageService mypageService = new MypageService();
-			CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(map);
-			request.setAttribute("tripList", tripList);
-			
-			RequestDispatcher rdd = request.getRequestDispatcher(path);
-			rdd.forward(request, response);
+//			Map<String,String> map = new HashMap<>();
+//			map.put("userId", userId);
+//			MypageService mypageService = new MypageService();
+//			CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(map);
+//			request.setAttribute("tripList", tripList);
+//			
+//			RequestDispatcher rdd = request.getRequestDispatcher(path);
+//			rdd.forward(request, response);
 			
 		} catch(Exception e) {
 			int cnt = 0;

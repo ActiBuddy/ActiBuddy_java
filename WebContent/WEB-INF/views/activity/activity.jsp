@@ -399,7 +399,7 @@
             <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm" id="clickAcit">
                 <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
-                <div class="card-body" style="height : 180px">
+                <div class="card-body" style="height : 190px">
                   <p class="card-text">
                       ${acti.name}
                   </p>
@@ -555,7 +555,7 @@
             <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm">
                 <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
-                <div class="card-body" style="height : 180px">
+                <div class="card-body" style="height : 190px">
                   <p class="card-text">
                       ${acti.name}
                   </p>

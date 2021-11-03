@@ -378,8 +378,10 @@ public class ActivityService {
 		
 		if(result > 0) {
 			session.commit();
+			System.out.println("성공하였습니다 후후");
 		} else {
 			session.rollback();
+			System.out.println("실패다 이자식아 다시 해!!!!");
 		}
 		
 		session.close();

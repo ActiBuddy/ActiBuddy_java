@@ -15,8 +15,147 @@
 		<result property="userId" column="USER_ID"/>
 	</resultMap>
   
+  <resultMap type="com.actibuddy.activity.model.dto.ActiReviewDTO" id="reviewResultMap">
+ 	<id property="num" column="ACTI_REVIEW_NUM"/>
+ 	<result property="writeDate" column="ACTI_REVIEW_DATE"/>
+ 	<result property="actiNum" column="ACTI_NUM"/>
+ 	<result property="writerId" column="WRITER_ID"/>
+ 	<result property="title" column="ACTI_REVIEW_TITLE"/>
+ 	<result property="content" column="ACTI_REVIEW_CON"/>
+ 	<result property="reviewStar" column="ACTI_REVIEW_STAR"/>
+ 	<result property="image" column="ACTI_REVIEW_IMG"/>
+ 	<result property="recommend" column="ACTI_REVIEW_REC"/>
+ 	<result property="recYn" column="ACTI_REVIEW_REP_YN"/>
+ 	<result property="chooseOption" column="CHOOSE_OPTION"/>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.actibuddy.member.model.dto.MemberDTO" id="memberResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="pwd" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="birth" column="BIRTH"/>
+		<result property="gender" column="GENDER"/>
+		<result property="warn_count" column="WARN_COUNT"/>
+		<result property="quitYn" column="QUIT_YN"/>
+		<result property="memType" column="MEM_TYPE"/>
+		<result property="memPhone" column="MEM_PHONE"/>
+		<result property="introduce" column="INTRODUCE"/>
+		<result property="favoriteActi" column="FAVORITE_ACTI"/>
+		
+	</resultMap>
+  
+  
+  
+   <!-- =========메이팅 리뷰 신고 보기 ============== -->
+  
   <select id="matefindrep" resultMap="mateReviewResultMap">
   		SELECT
+			    A.MT_REVIEW_NUM
+		, A.MT_REVIEW_TITLE
+		, A.MT_REVIEW_IMG1
+		, A.MT_REVIEW_CON
+		, A.MT_REVIEW_DATE
+		, A.MT_REVIEW_REP_YN
+		, A.USER_ID
+		, A.MT_REVIEW_IMG2
+		, A.MT_REVIEW_IMG3       
+		 FROM  MT_REVIEW A
+		WHERE MT_REVIEW_REP_YN = 'L' 
+  </select>
+  
+  
+  <select id="matefindrepdetail" resultMap="mateReviewResultMap">
+  	SELECT
+			    A.MT_REVIEW_NUM
+		, A.MT_REVIEW_TITLE
+		, A.MT_REVIEW_IMG1
+		, A.MT_REVIEW_CON
+		, A.MT_REVIEW_DATE
+		, A.MT_REVIEW_REP_YN
+		, A.USER_ID
+		, A.MT_REVIEW_IMG2
+		, A.MT_REVIEW_IMG3       
+		 FROM  MT_REVIEW A
+	  WHERE A.MT_REVIEW_TITLE = #{title}
+  </select>
+  
+  <!-- 메이팅 리뷰 처리  -->
+  <!-- 신고 처리 반려  -->
+  <update id="rejectreport">
+  UPDATE MT_REVIEW
+            SET MT_REVIEW_REP_YN = 'N'
+        WHERE MT_REVIEW_TITLE = #{title} 
+  </update>
+  
+  <!-- 신고 처리 수리  -->
+   <update id="mateReviewwran">
+  UPDATE MT_REVIEW
+            SET MT_REVIEW_REP_YN = 'Y'
+        WHERE MT_REVIEW_TITLE = #{title} 
+  </update>
+  
+  <update id="mateReviewwranmember">
+   UPDATE MEMBER
+   	  SET WARN_COUNT = WARN_COUNT + 1
+    WHERE USER_ID = #{userId}	  	
+  </update>
+  
+  <!-- ========================================= -->
+  
+  <!-- =========액티비티 리뷰 신고 보기 ============== -->
+  <select id="actireviewrep" resultMap="reviewResultMap">
+  SELECT
+  		 ACTI_REVIEW_NUM
+  	   , ACTI_REVIEW_DATE
+  	   , ACTI_NUM	
+  	   , WRITER_ID
+  	   , ACTI_REVIEW_TITLE
+  	   , ACTI_REVIEW_CON
+  	   , ACTI_REVIEW_REP_YN
+  	FROM ACTI_REVIEW
+   WHERE ACTI_REVIEW_REP_YN='L'
+  </select>
+  
+  <select id="actireviewrepdetail" resultMap="reviewResultMap">
+  SELECT
+  		 ACTI_REVIEW_NUM
+  	   , ACTI_REVIEW_DATE
+  	   , ACTI_NUM	
+  	   , WRITER_ID
+  	   , ACTI_REVIEW_TITLE
+  	   , ACTI_REVIEW_CON
+  	   , ACTI_REVIEW_REP_YN
+  	FROM ACTI_REVIEW
+   WHERE ACTI_REVIEW_TITLE=#{title}
+  </select>
+  
+    <!-- 액티비티 리뷰 처리  -->
+  <!-- 신고 처리 반려  -->
+  <update id="rejectreportactireview">
+  UPDATE ACTI_REVIEW
+            SET ACTI_REVIEW_REP_YN = 'N'
+        WHERE ACTI_REVIEW_TITLE = #{title} 
+  </update>
+  
+ <!-- 신고 처리 수리  -->
+ <update id="actiReviewwarn">
+ UPDATE ACTI_REVIEW
+            SET ACTI_REVIEW_REP_YN = 'Y'
+        WHERE ACTI_REVIEW_TITLE = #{title} 
+ </update>
+  
+  <update id="actiReviewwarnmember">
+   UPDATE MEMBER
+   	  SET WARN_COUNT = WARN_COUNT + 1
+    WHERE USER_ID = #{userId}	  	
+  </update>
+  
+  <!-- ========================================= -->
+  
+  <!-- ================== 신고처리 완료된 신고 목록 보기 =================== -->
+  <select id="rejectedmatefindrepdetail" resultMap="mateReviewResultMap">
+  SELECT
 			    A.MT_REVIEW_NUM
 		, A.MT_REVIEW_TITLE
 		, A.MT_REVIEW_IMG1
@@ -30,5 +169,17 @@
 		WHERE MT_REVIEW_REP_YN = 'Y' 
   </select>
   
+  <select id="rejectedactireviewrepdetail" resultMap="reviewResultMap">
+  SELECT
+  		 ACTI_REVIEW_NUM
+  	   , ACTI_REVIEW_DATE
+  	   , ACTI_NUM	
+  	   , WRITER_ID
+  	   , ACTI_REVIEW_TITLE
+  	   , ACTI_REVIEW_CON
+  	   , ACTI_REVIEW_REP_YN
+  	FROM ACTI_REVIEW
+   WHERE ACTI_REVIEW_REP_YN='Y'
+  </select>
   
   </mapper>

@@ -34,7 +34,6 @@ public class PartnerService {
 
 			session.rollback();
 		}
-		session.close();
 		return result1;
 	}
 

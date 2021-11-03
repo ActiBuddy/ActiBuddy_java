@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.manager.model.dto.ManagerDTO;
+import com.actibuddy.manager.model.dto.ManagerPartDTO;
 
 public class ManagerDAO {
 
@@ -37,5 +38,15 @@ public class ManagerDAO {
 
 	public static ManagerDTO userinfo(SqlSession session, ManagerDTO managerList) {
 		return session.selectOne("ManagerDAO.userinfo", managerList);
+	}
+
+	// 매니저 정보 조회
+	public static ManagerPartDTO managerinfo(SqlSession session, ManagerPartDTO managerpart) {
+		return session.selectOne("ManagerDAO.managerinfo", managerpart);
+	}
+
+
+	public static int managerpartChange(SqlSession session, ManagerPartDTO managerpart) {
+		return session.update("ManagerDAO.managerpartChange", managerpart);
 	}
 }

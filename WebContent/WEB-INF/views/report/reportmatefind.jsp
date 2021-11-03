@@ -30,17 +30,19 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>아이디</th>
+                  <th>작성 아이디</th>
                   <th>내용</th>
                   <th>작성날짜</th>
+                  <th>처리여부</th>
                 </tr>
               </thead>
 				<tbody>
                 <c:forEach var="userId" items="${matefindrep}">
                 <tr>
                   <td>${ userId.userId }</td>
-                  <td><a href="../report/reportInfo?userId=${ userId.userId }">${ userId.content }</a></td>
+                  <td><a href="../report/reportInfo?title=${ userId.title }">${ userId.content }</a></td>
                   <td>${ userId.date }</td>
+                  <td>${ userId.repYn }</td>
                 </tr>
                 </c:forEach>
               </tbody>

@@ -11,6 +11,7 @@ import com.actibuddy.faq.model.dao.FaqDAO;
 import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.manager.model.dao.ManagerDAO;
 import com.actibuddy.manager.model.dto.ManagerDTO;
+import com.actibuddy.manager.model.dto.ManagerPartDTO;
 import com.actibuddy.member.model.dao.MemberDAO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.partnership.model.DTO.PartnerDTO;
@@ -47,54 +48,87 @@ public class ManagerService {
 		return managerList;
 	}
 	
-public List<ManagerDTO> selectWarnMember() {
-
-	SqlSession session = getSqlSession();
-	
-	List<ManagerDTO> managerList = ManagerDAO.selectWarnMember(session);
-	
-	session.close();
-	
-	return managerList;
-	
-}
-
-
-public List<ManagerDTO> selectAllMember() {
+	public List<ManagerDTO> selectWarnMember() {
 
 		SqlSession session = getSqlSession();
+	
+		List<ManagerDTO> managerList = ManagerDAO.selectWarnMember(session);
+	
+		session.close();
+	
+		return managerList;
+	
+	}
+
+
+	public List<ManagerDTO> selectAllMember() {
+
+			SqlSession session = getSqlSession();
+			
+			List<ManagerDTO> managerList = ManagerDAO.selectAllMember(session);
+			
+			session.close();
+			
+			return managerList;
+	}
+
+
+	public List<ManagerDTO> selectPartnerMember() {
+		SqlSession session = getSqlSession();
 		
-		List<ManagerDTO> managerList = ManagerDAO.selectAllMember(session);
+		List<ManagerDTO> managerList = ManagerDAO.selectPartnerMember(session);
 		
 		session.close();
 		
 		return managerList;
-}
-
-
-public List<ManagerDTO> selectPartnerMember() {
-	SqlSession session = getSqlSession();
+	}
 	
-	List<ManagerDTO> managerList = ManagerDAO.selectPartnerMember(session);
 	
-	session.close();
+	public ManagerDTO userinfo(ManagerDTO managerList) {
+		
+		SqlSession session = getSqlSession();
+		
+		ManagerDTO userinfo = ManagerDAO.userinfo(session, managerList);
+		
+		session.close();
+		
+		return userinfo;
+	}
 	
-	return managerList;
-}
-
-
-public ManagerDTO userinfo(ManagerDTO managerList) {
 	
-	SqlSession session = getSqlSession();
+	// 매니저 정보 불러오기
 	
-	ManagerDTO userinfo = ManagerDAO.userinfo(session, managerList);
+	public ManagerPartDTO managerinfo(ManagerPartDTO managerpart) {
 	
-	session.close();
+		SqlSession session = getSqlSession();
+		
+		ManagerPartDTO managerinfo = ManagerDAO.managerinfo(session, managerpart);
+		
+		session.close();
+		
+		return managerinfo;
+	}
 	
-	return userinfo;
-}
-
-
-}
-
-
+	// 매니저 파트 변경
+	public int managerpartChange(ManagerPartDTO managerpart) {
+	
+		SqlSession session = getSqlSession();
+		
+		int result = ManagerDAO.managerpartChange(session, managerpart);
+		
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+	
+		return result;
+	}
+	
+	
+	}
+	
+	

@@ -112,4 +112,9 @@ public class MateDAO {
 		return session.update("MateDAO.updateFindYn", find);
 	}
 
+	public static int updateComReqYn(SqlSession session, MateCommentDTO comment) {
+
+		return session.update("MateDAO.updateComReqYn", comment);
+	}
+
 }

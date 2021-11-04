@@ -493,4 +493,11 @@
 		   SET MT_FIND_REP_YN = #{ repYn }
 		 WHERE MT_FIND_NUM = #{ num }  
 	</update>
+	
+	<!-- 메이팅 댓글 신고에 대한 쿼리문 -->
+	<update id="updateComReqYn">
+		UPDATE COMENT
+		   SET MT_COM_REP_YN = #{ repYn }
+		 WHERE MT_COM_NUM = #{ num }  
+	</update>
 </mapper>

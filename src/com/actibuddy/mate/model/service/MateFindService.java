@@ -180,5 +180,28 @@ public class MateFindService {
 		
 		return result;
 	}
+
+	/**
+	 * 메이팅 댓글 신고 메소드
+	 * @author 김주환
+	 * @param comment
+	 * @return
+	 */
+	public int updateComReqYn(MateCommentDTO comment) {
+
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.updateComReqYn(session, comment);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.close();
+		}
+		
+		session.close();
+		
+		return result;
+	}
 	
 }

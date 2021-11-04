@@ -544,8 +544,8 @@
 		, 'N'
 		, #{ userId }
 		, ('MT_SCORE' || TO_CHAR(SEQ_MT_SCORE_NUM.nextval))
-		, ${ scoreStar }
-		, ${ plusScore }
+		, #{ scoreStar }
+		, #{ plusScore }
 		)
 	</insert>
 	

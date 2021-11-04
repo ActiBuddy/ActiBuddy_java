@@ -54,10 +54,10 @@
             </div>
 
             <div class="a-center-1">
-                
                 <div class="l-center-text">
                     <h3>메이트 신청한 내역</h3>
                     <hr>
+                <c:if test="${ not empty mtApply }">
                     <c:forEach var="size" begin="0" end="${  fn:length(mtApply.applyList) - 1 }">
                     <div class="l-one-line">
 
@@ -91,6 +91,7 @@
                         <br>
                         <hr>
                         </c:forEach>
+                        </c:if>
 
                       <!-- <div class="l-one-line">
 

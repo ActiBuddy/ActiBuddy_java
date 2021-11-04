@@ -65,7 +65,7 @@
 				        <label for="rate2">⭐</label><input type="radio" name="rating" value="2" id="rate2">
 				        <label for="rate3">⭐</label><input type="radio" name="rating" value="3" id="rate3">
 				        <label for="rate4">⭐</label><input type="radio" name="rating" value="4" id="rate4">
-				        <label for="rate5">⭐</label><input type="radio" name="rating" value="5" id="rate5">
+				        <label for="rate5">⭐</label><input type="radio" name="rating" value="5" id="rate5" checked>
 				    </fieldset>
 				
 		  

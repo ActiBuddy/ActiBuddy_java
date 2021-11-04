@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="MateDAO">
-
+ <mapper namespace="MateDAO">
+ 
  <resultMap type="com.actibuddy.mate.model.dto.MateReviewDTO" id="mateReviewResultMap">
 		<id property="num" column="MT_REVIEW_NUM"/>
 		<result property="title" column="MT_REVIEW_TITLE"/>
@@ -31,8 +31,127 @@
 		<collection property="reviewList" resultMap="mateReviewResultMap"/>
 	</resultMap>
 	
+	<resultMap type="com.actibuddy.mate.model.dto.MateFindDTO" id="mateFindResultMap">
+	   <id property="num" column="MT_FIND_NUM"/>
+	   <result property="title" column="MT_FIND_TITLE"/>
+	   <result property="content" column="MT_FIND_CONTENT"/>
+	   <result property="repYn" column="MT_FIND_REP_YN"/>
+	   <result property="date" column="MT_FIND_DATE"/>
+	   <result property="location" column="MT_FIND_LOCATION"/>
+	   <result property="imgName" column="MT_FIND_IMG"/>
+	   <result property="view" column="MT_FIND_VIEW"/>
+	   <result property="gender" column="MT_FIND_GENDER"/>
+	   <result property="people" column="MT_FIND_PEOPLE"/>
+	   <result property="age" column="MT_FIND_AGE"/>
+	   <result property="deadline" column="MT_FIND_DEADLINE"/>
+	   <result property="state" column="MT_FIND_STATE"/>
+	   <result property="userId" column="USER_ID"/>
+	   <result property="count" column="MT_FIND_COUNT"/>
+	</resultMap>
 	
+	<!-- 메이트 후기 글 리스트 -->
+    <select id="selectAllFindList" resultMap="mateFindResultMap">
+       SELECT A.RNUM
+		  , A.MT_FIND_NUM
+		  , A.MT_FIND_TITLE
+		  , A.MT_FIND_CONTENT
+		  , A.MT_FIND_REP_YN
+		  , A.MT_FIND_DATE
+		  , A.MT_FIND_LOCATION
+		  , A.MT_FIND_IMG
+		  , A.MT_FIND_VIEW
+		  , A.MT_FIND_GENDER
+		  , A.MT_FIND_PEOPLE
+		  , A.MT_FIND_AGE
+		  , A.MT_FIND_DEADLINE
+		  , A.MT_FIND_STATE
+		  , A.USER_ID
+		  , A.MT_FIND_COUNT
+			FROM (SELECT ROWNUM RNUM
+					  ,	B.MT_FIND_NUM
+					  , B.MT_FIND_TITLE
+					  , B.MT_FIND_CONTENT
+					  , B.MT_FIND_REP_YN
+					  , B.MT_FIND_DATE
+					  , B.MT_FIND_LOCATION
+					  , B.MT_FIND_IMG
+					  , B.MT_FIND_VIEW
+					  , B.MT_FIND_GENDER
+					  , B.MT_FIND_PEOPLE
+					  , B.MT_FIND_AGE
+					  , B.MT_FIND_DEADLINE
+					  , B.MT_FIND_STATE
+					  , B.USER_ID
+					  , B.MT_FIND_COUNT
+						FROM (SELECT 
+								C.MT_FIND_NUM
+							  , C.MT_FIND_TITLE
+							  , C.MT_FIND_CONTENT
+							  , C.MT_FIND_REP_YN
+							  , C.MT_FIND_DATE
+							  , C.MT_FIND_LOCATION
+							  , C.MT_FIND_IMG
+							  , C.MT_FIND_VIEW
+							  , C.MT_FIND_GENDER
+							  , C.MT_FIND_PEOPLE
+							  , C.MT_FIND_AGE
+							  , C.MT_FIND_DEADLINE
+							  , C.MT_FIND_STATE
+							  , C.USER_ID
+							  , C.MT_FIND_COUNT
+								FROM MT_FIND C
+							   ORDER BY MT_FIND_DATE DESC)B)A
+			WHERE (A.RNUM BETWEEN #{ startRow } and #{ endRow })
+    </select>
 	
+	<!-- 메이트 구인 게시글수 조회 -->
+    <select id="selectFindTotalCount" resultType="_int">
+    	SELECT
+    		COUNT(*)
+    	  FROM MT_FIND A
+    </select>
+	
+	<!-- 메이트 구인글 작성 -->
+	<insert id="insertFind">
+		INSERT
+		  INTO MT_FIND A
+		(
+		 A.MT_FIND_NUM
+       , A.MT_FIND_TITLE
+	   , A.MT_FIND_CONTENT
+	   , A.MT_FIND_REP_YN
+	   , A.MT_FIND_DATE
+	   , A.MT_FIND_LOCATION
+       , A.MT_FIND_IMG
+       , A.MT_FIND_VIEW
+       , A.MT_FIND_GENDER
+       , A.MT_FIND_PEOPLE
+       , A.MT_FIND_AGE
+       , A.MT_FIND_DEADLINE
+       , A.MT_FIND_STATE
+       , A.USER_ID
+       , A.MT_FIND_COUNT
+		)
+		VALUES
+		(
+		  SEQ_MT_FIND_NUM.NEXTVAL
+        , #{ title }
+        , #{ content }
+        , 'N'
+        , default
+        , #{ location }
+        , #{ imgName }
+        , 0
+        , #{ gender }
+        , #{ people }
+        , #{ age }
+        , #{ date }
+        , '신청가능'
+        , #{ userId }
+        , 1
+		)
+	</insert>
+
 	<!-- ========== MATE REVIEW ========== -->
 	<!-- 메이트 후기 수정 업데이트 -->
 	<update id="updateReview">
@@ -238,5 +357,4 @@
 		)
 
 	</insert>
-
 </mapper>

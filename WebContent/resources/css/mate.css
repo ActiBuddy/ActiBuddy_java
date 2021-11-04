@@ -363,18 +363,33 @@ a {
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* 작성하기 버튼 */
- .write-border button{
-   position: relative;
-   float: right;
-    height: 95%;
-    width: 16%;
-    margin-top: -6.7%;
+/* 작성 버튼 */
+.write{
+    position: relative;
+    float: right;
+    margin-left: -14%;
+    margin-right: 3%;
+    width: 13%;
+    height: 35px;
     background-color: olivedrab;
-    /* border-color: rgb(207, 228, 204); */
-    border: none;
+    border-color:  olivedrab;
     border-radius: 5%;
+}
+
+
+/* 검색 부분 */
+#searchValue {
+    margin: 3.5% 0 5% 24%;
+    width:40%;
+    height: 30px;
   }
+  
+.searchbutton{
+    width: 8%;
+    height: 32px;
+  }
+
+
 
 /* li태그 정렬(컬러추가해도 안보임) */
 .pagination li {
@@ -420,17 +435,3 @@ a {
   border-radius: 100%;
   color: #ffffff;
 }
-
-
-/* 검색 */
-  .searchtext {
-    margin-left: 23%;
-    margin-bottom: 1%;
-    width: 40%;
-    height: 25px;
-  }
-  
-  .searchbutton{
-    width: 10%;
-    height: 32px;
-  }

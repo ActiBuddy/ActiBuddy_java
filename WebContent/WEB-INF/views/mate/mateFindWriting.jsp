@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -9,16 +11,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css">
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/resources/css/mateFind_writing.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!--  데이트피커 -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-   
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
 
 	<script>
       /* 조건 알럿 */
-
         function validate(){
        
         	 if($('select[name=location]').val() == 'none') {
@@ -48,6 +50,7 @@
 	
     <title>메이트 글 작성</title>
   </head>
+  
   <body>
 	<!-- 네비게이션바 -->
     <jsp:include page="../common/menubar.jsp"/>
@@ -55,9 +58,9 @@
      <!-- 주요 html  ${ pageContext.servletContext.contextPath } --> 
     <div class="around">
    	<form id="frm" action="${ pageContext.servletContext.contextPath }/mate/find/regist" method="post" onsubmit="return validate();">
-        <!-- 액티비티 이미지 -->
+        <!-- 액티비티 이미지 선택 -->
         <div class="activity">
-            <input type="label" class="showbtn" id="showbtn" value="액티비티 선택하기">
+            <img name="result" id="result" src="${ pageContext.servletContext.contextPath }/resources/image/chooseacti.png">
             <div class="background">
               <div class="window">
                 <div class="popup">
@@ -68,31 +71,53 @@
                     <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch3.png">
                     <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch4.png">
                     <div class="chborder">
-                      <input type="checkbox" name="acti" value="ch1" onclick='checkOnlyOne(this)'>
-                      <input type="checkbox" name="acti" value="ch2" onclick='checkOnlyOne(this)'>
-                      <input type="checkbox" name="acti" value="ch3" onclick='checkOnlyOne(this)'>
-                      <input type="checkbox" name="acti" value="ch4" onclick='checkOnlyOne(this)'>
+                      <input type="checkbox" name="acti" value="cho1" onclick='checkOnlyOne(this)'>
+                      <input type="checkbox" name="acti" value="cho2" onclick='checkOnlyOne(this)'>
+                      <input type="checkbox" name="acti" value="cho3" onclick='checkOnlyOne(this)'>
+                      <input type="checkbox" name="acti" value="cho4" onclick='checkOnlyOne(this)'>
                     </div>
                     <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch5.png">
                     <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch6.png">
                     <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch7.png">
                     <img class="abackimg" src="${ pageContext.servletContext.contextPath }/resources/image/ch8.png">
                     <div class="chborder">
-                      <input type="checkbox" name="acti" value="ch5" onclick='checkOnlyOne(this)'>
-                      <input type="checkbox" name="acti" value="ch6" onclick='checkOnlyOne(this)'>
-                      <input type="checkbox" name="acti" value="ch7" onclick='checkOnlyOne(this)'>
-                      <input type="checkbox" name="acti" value="ch8" onclick='checkOnlyOne(this)'>
+                      <input type="checkbox" name="acti" value="cho5" onclick='checkOnlyOne(this)'>
+                      <input type="checkbox" name="acti" value="cho6" onclick='checkOnlyOne(this)'>
+                      <input type="checkbox" name="acti" value="cho7" onclick='checkOnlyOne(this)'>
+                      <input type="checkbox" name="acti" value="cho8" onclick='checkOnlyOne(this)'>
                     </div>
                   </div>
                   <div class="abtn">
-                  <label class="pbtn" id="apply"><img src="${ pageContext.servletContext.contextPath }/resources/image/submitbtn.png"></label>
+                  <label class="pbtn" id="apply" onclick='getCheckboxValue()'><img src="${ pageContext.servletContext.contextPath }/resources/image/submitbtn.png"></label>
                   <label class="pbtn" id="close"><img src="${ pageContext.servletContext.contextPath }/resources/image/canclebtn.png"></label>
                   </div>
                 </div>
               </div>
             </div>
-
         </div>
+        
+        <script>
+        	/* 선택박스 값 함수 */
+        	function getCheckboxValue() {
+        		const query = 'input[name="acti"]:checked';
+        		
+        		const selected = document.querySelectorAll(query);
+        		// 선택된 목록에서 value 찾기
+        		let result='';
+        		selected.forEach((el) => {
+        			result += '${ pageContext.servletContext.contextPath }/resources/image/' + el.value + '.png'
+        		});
+        		
+        		if(result != '') {
+        			$("#result").attr("src", result);
+        		} else {
+        			$("#result").attr("src", '${ pageContext.servletContext.contextPath }/resources/image/matematching.png');
+        		}
+    
+        	}
+        	  
+        	
+        </script>
         
         <!-- 제목 부분 -->
         <div class="title">
@@ -113,7 +138,7 @@
                 </select>
             </div>
             <div class="third">
-                <input type="text" class="write_title" maxlength="25" placeholder="제목을 입력해주세요.">
+                <input type="text" name="title" class="write_title" maxlength="25" placeholder="제목을 입력해주세요." required>
             </div>
         </div>
       </div>
@@ -156,10 +181,46 @@
               <img src="${ pageContext.servletContext.contextPath }/resources/image/c_two.png"/>
             </div>
             <div class="selectborder">
-              <input type="date" name="rgdate">
+             <input type="text" id="datepicker" name="date" placeholder="날짜를 입력해주세요" readonly="readonly">
             </div>
           </div>
         </div>
+        
+        <script>
+        
+        $(function(){
+      	  $("#datepicker").datepicker({ 
+      	    minDate: "0", 
+      	    maxDate: "2021-12-31",
+      	    dateFormat : "yy-mm-dd"
+      	  });
+      	});
+
+      	$(function() {
+      	   $( "#datepicker" ).datepicker(); 
+      	  });
+
+      	$(document).ready(function(){ 
+      	  $.datepicker.setDefaults({ 
+      	    changeMonth: true,
+      	    changeYear: true, 
+      	    nextText: '다음 달',
+      	    prevText: '이전 달', 
+      	    yearRange: 'c-50:c+20', 
+      	    showButtonPanel: true, 
+      	    currentText: '오늘 날짜', 
+      	    closeText: '닫기', 
+      	    showMonthAfterYear: true,
+      	    dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+      	    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+      	   }); 
+      	  });
+
+      	  $.datepicker._gotoToday = function(id) {
+      	    $(id).datepicker('setDate', new Date()).datepicker('hide').blur();
+      	};
+        
+        </script>
 
         <div class="border">
           <div class="condition">성별</div>
@@ -168,10 +229,10 @@
               <img id="genimg" src="${ pageContext.servletContext.contextPath }/resources/image/both.png" />
             </div>
             <div class="selectborder">
-              <select id="gender" class="gender">
-                <option value="both">남녀무관</option>
-                <option value="men">남성만</option>
-                <option value="women">여성만</option>
+              <select id="gender" class="gender" name="gender">
+                <option value="B">남녀무관</option>
+                <option value="M">남성만</option>
+                <option value="W">여성만</option>
               </select>
             </div>
           </div>
@@ -184,12 +245,12 @@
               <img src="${ pageContext.servletContext.contextPath }/resources/image/c_four.png" />
             </div>
             <div class="selectborder">
-              <select class="gender">
+              <select class="gender" name="age">
                 <option value="0">연령무관</option>
                 <option value="23">20대~30대</option>
                 <option value="34">30대~40대</option>
                 <option value="45">40대~50대</option>
-                <option value="45">50대~60대</option>
+                <option value="56">50대~60대</option>
               </select>
             </div>
           </div>
@@ -200,12 +261,12 @@
        
         <!-- 텍스트 부분 -->
        <div class="text_box">
-          <textarea class="write_text" placeholder="글을 입력해주세요."></textarea>
+          <textarea name="con" class="write_text" placeholder="글을 입력해주세요." required></textarea>
        </div>
        <!-- 버튼 부분 -->
        <div class="btnborder">
           <button type="submit" id="btnSave" class="btnok" >등록</button>
-          <button class="btnno" onclick="location.href='#'" onclick="location.href='#'">취소</button>
+          <button type="reset" class="btnno" >취소</button>
        </div>
       <div class="mate5"></div>
       </form>
@@ -221,7 +282,7 @@
        }
 
        // 버튼 클릭
-       document.querySelector("#showbtn").addEventListener('click', show);
+       document.querySelector("#result").addEventListener('click', show);
        // 적용, 취소 버튼
        document.querySelector("#apply").addEventListener('click', close);
        document.querySelector("#close").addEventListener('click', close);
@@ -241,16 +302,18 @@
        
        /* 이미지 변경 스크립트 */
        $("#gender").change(function () {
-           if($(this).val() == "both") {
+           if($(this).val() == "B") {
              $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/both.png");
-           } else if ($(this).val() == "men") {
+           } else if ($(this).val() == "M") {
              $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/men.png");
-           } else if ($(this).val() == "women") {
+           } else if ($(this).val() == "W") {
              $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/women.png");
            }
          });
 
     </script>
+    
+    
       <!-- 찐짜div-->      
     </div>
 

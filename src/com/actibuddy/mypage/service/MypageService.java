@@ -12,7 +12,9 @@ import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityOptionDTO;
 import com.actibuddy.faq.model.dto.FaqDTO;
+import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
 import com.actibuddy.mate.model.dto.MateFindApplyDTO;
+import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dao.MypageDAO;
@@ -373,14 +375,32 @@ public class MypageService {
 		return result;
 	}
 
-	public List<MateFindApplyDTO> selectMtApply(String userId) {
+	public List<MateFindAndApplyDTO> selectMtApply(String userId) {
 		
 		SqlSession session = getSqlSession();
 		
-		List<MateFindApplyDTO> selectMtApply = MypageDAO.selectMtApply(session,userId);
+		List<MateFindAndApplyDTO> selectMtApply = MypageDAO.selectMtApply(session,userId);
 		
 		return selectMtApply;
 	}
+
+	public int updateMtFindNum(MateFindDTO requestMtFindNum) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.updateMtFindNum(session,requestMtFindNum);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 	
 	
 }

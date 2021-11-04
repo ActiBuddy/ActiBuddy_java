@@ -11,7 +11,9 @@ import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityOptionDTO;
 import com.actibuddy.faq.model.dto.FaqDTO;
+import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
 import com.actibuddy.mate.model.dto.MateFindApplyDTO;
+import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dto.ActiConditionHisDTO;
@@ -126,9 +128,14 @@ public class MypageDAO {
 			return session.insert("MypageDAO.insertOp",requestOption);
 		}
 
-		public static List<MateFindApplyDTO> selectMtApply(SqlSession session, String userId) {
+		public static List<MateFindAndApplyDTO> selectMtApply(SqlSession session, String userId) {
 			
 			return session.selectList("MypageDAO.selectMtApply",userId);
+		}
+
+		public int updateMtFindNum(SqlSession session, MateFindDTO requestMtFindNum) {
+			
+			return session.update("MypageDAO.requestMtFindNum",requestMtFindNum);
 		}
 
 

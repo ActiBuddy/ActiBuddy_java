@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -90,29 +92,29 @@
                         
                     <h3>메이트 신청받은 내역</h3>
                     <hr>
-                    <div class="l-one-line">
+                      <div class="l-one-line">
 
                         <img src="../resources/image/hreart.png" width="32px" height="30px">
                         <span></span>
-                        <h3>메이팅 구인 제목 및 날짜 </h3>
+                        <h3>${mtApplyList2[0].findList[0].title }</h3>
                         <button type="button" onclick="location.href=''">상세보기 ></button>
                         <br><br>
                     </div>
                     
                     <button id="l-list">메이트 구인 내역</button>
-                    <div class="people">
+                      <div class="people">
+                    <form action="../mypage/matelist" method="post"> <!-- // 가져오고 나서 update해주기     -->
+                       <c:forEach items="${mtApplyList2}" var="apply" varStatus="status">
                         <br>
-                        // MT_APPLY_HIS에서 신청한 아이디 가져오기
-                        <form action="updateYn" method="post"> // 가져오고 나서 update해주기
-                        <input type="hidden" value=""> // 히든값으로 신청자 아이디 같이 넘겨줘야 
-                        <h4>신청자 : </h4><button type="submit" >수락</button><br>                        
-                        </form>
-
-                        
-                        <!-- <buttont type="submit" id="okay">수락</button>
-                        <buttont id="no">거절</button> -->
-
-                    </div>
+                         <!-- MT_APPLY_HIS에서 신청한 아이디 가져오기 -->
+                       	  <c:set var="idx" value="${status.index}"></c:set>           
+                        <h4>신청자 : ${apply.applyList.get(index).appliedId}</h4>
+                        <!-- 신청한 아이디 히든으로 넘겨주고 -->
+                        <input type="hidden"  name="appliedId" value="${apply.applyList.get(index).appliedId}">
+                        <button type="submit" value="Y">수락</button><button type="submit" value="N" >거절</button><br>                                                
+                        </c:forEach> 
+                    </form>
+                      </div>
                     <script>
                         $(function(){
                             $('.people').slideUp()
@@ -123,7 +125,11 @@
                         });
                     </script>
                     <br><br><br><br><br><br><br>
-                    <button class="forgreen" id="magam">마감하기</button>
+                    <!-- 마감하기 누르면  -> MT_FIND_STATE 신청마감으로 업데이트 -->
+	                    <form action="../mypage/matelist" method="post">
+	                    <input type="hidden" name="num" value="${ mtApplyList2[0].applyList[0].num}">
+	                    	<button type="submit" class="forgreen" id="magam">마감하기</button>
+	                    </form>
                     <hr>
 
                 

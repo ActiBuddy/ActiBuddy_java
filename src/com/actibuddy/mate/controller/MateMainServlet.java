@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.actibuddy.common.paging.Pagenation;
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dto.MateFindDTO;
+import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.mate.model.service.MateFindService;
 import com.actibuddy.mate.model.service.MateReviewService;
-import com.actibuddy.member.model.dto.MemberDTO;
 
 @WebServlet("/mate/main")
 public class MateMainServlet extends HttpServlet {
@@ -56,7 +56,7 @@ public class MateMainServlet extends HttpServlet {
 
 		System.out.println("totalCount : " + totalCount);
 
-		int limit = 5;
+		int limit = 10;
 		int buttonAmount = 5;
 
 		SelectCriteria selectCriteria = null;
@@ -71,11 +71,12 @@ public class MateMainServlet extends HttpServlet {
 		System.out.println("criteria : " + selectCriteria);
 		/* find 조회 */
 		List<MateFindDTO> findList = findService.selectAllFindList(selectCriteria);
+		List<MateFindDTO> hurryFindList = findService.selectHurryFind();
 		
 		/* review 조회 */
 		MateReviewService reviewService = new MateReviewService();
-		List<MemberDTO> newReviewList = reviewService.selectNewReview();
-
+		List<MateReviewDTO> newReviewList = reviewService.selectNewReview();
+		
 		System.out.println("findList : " + findList);
 
 
@@ -85,6 +86,7 @@ public class MateMainServlet extends HttpServlet {
 			request.setAttribute("findList", findList);
 			request.setAttribute("selectCriteria", selectCriteria);
 			request.setAttribute("newReviewList", newReviewList);
+			request.setAttribute("hurryFindList", hurryFindList);
 
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";

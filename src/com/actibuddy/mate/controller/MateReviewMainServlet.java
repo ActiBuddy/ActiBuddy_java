@@ -76,7 +76,7 @@ public class MateReviewMainServlet extends HttpServlet {
 		
 //		System.out.println("reviewList : " + reviewList);
 		
-		List<MemberDTO> bestReviewList = reviewService.selectBestReview();
+		List<MateReviewDTO> bestReviewList = reviewService.selectBestReview();
 		System.out.println("리스트 확인 : " + bestReviewList);
 		
 		String path = "";

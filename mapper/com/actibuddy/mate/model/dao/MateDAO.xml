@@ -49,6 +49,68 @@
 	   <result property="count" column="MT_FIND_COUNT"/>
 	</resultMap>
 	
+	<!-- 메이트  -->
+	<select id="selectHurryFind" resultMap="mateFindResultMap">
+	SELECT   ROWNUM
+	       , B.MT_FIND_NUM
+	       , B.MT_FIND_TITLE
+	       , B.MT_FIND_CONTENT
+	       , B.MT_FIND_DATE
+	       , B.MT_FIND_LOCATION
+	       , B.MT_FIND_IMG
+		   , B.MT_FIND_VIEW
+	       , B.MT_FIND_GENDER
+	       , B.MT_FIND_PEOPLE
+	       , B.MT_FIND_AGE
+	       , B.MT_FIND_DEADLINE
+	       , B.MT_FIND_STATE
+	       , B.USER_ID
+	       , B.MT_FIND_COUNT
+		FROM (SELECT
+				  A.MT_FIND_NUM
+			    , A.MT_FIND_TITLE
+			    , A.MT_FIND_CONTENT
+			    , A.MT_FIND_DATE
+			    , A.MT_FIND_LOCATION
+			    , A.MT_FIND_IMG
+			    , A.MT_FIND_VIEW
+			    , A.MT_FIND_GENDER
+			    , A.MT_FIND_PEOPLE
+			    , A.MT_FIND_AGE
+			    , A.MT_FIND_DEADLINE
+			    , A.MT_FIND_STATE
+			    , A.USER_ID
+			    , A.MT_FIND_COUNT
+			  FROM MT_FIND A
+	        WHERE A.MT_FIND_REP_YN ='N'
+	          AND A.MT_FIND_STATE = '신청가능'
+	        ORDER BY A.MT_FIND_DEADLINE ASC)B
+	        WHERE ROWNUM <![CDATA[ < ]]> 4
+	</select>
+	
+	<!-- 메이트 후기글 -->
+	<select id="selectFindInfo" resultMap="mateFindResultMap" parameterType="String">
+	   SELECT
+			  A.MT_FIND_NUM
+		    , A.MT_FIND_TITLE
+		    , A.MT_FIND_CONTENT
+		    , A.MT_FIND_REP_YN
+		    , A.MT_FIND_DATE
+		    , A.MT_FIND_LOCATION
+		    , A.MT_FIND_IMG
+		    , A.MT_FIND_VIEW
+		    , A.MT_FIND_GENDER
+		    , A.MT_FIND_PEOPLE
+		    , A.MT_FIND_AGE
+		    , A.MT_FIND_DEADLINE
+		    , A.MT_FIND_STATE
+		    , A.USER_ID
+		    , A.MT_FIND_COUNT
+		  FROM MT_FIND A
+		 WHERE A.MT_FIND_NUM = #{ num }
+	
+	</select>
+	
 	<!-- 메이트 후기 글 리스트 -->
     <select id="selectAllFindList" resultMap="mateFindResultMap">
        SELECT A.RNUM
@@ -154,7 +216,7 @@
 
 	<!-- ========== MATE REVIEW ========== -->
 	<!-- 메이트 후기 수정 업데이트 -->
-	<update id="updateReview">
+	<update id="updateReview" >
 		UPDATE MT_REVIEW
 		   SET MT_REVIEW_TITLE = #{ title }
 		   	 , MT_REVIEW_CON = #{ content }

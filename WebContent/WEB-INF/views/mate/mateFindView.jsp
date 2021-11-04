@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
-    <link href="../../resources/css/mateFind_view.css" rel="stylesheet" />
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/mateFind_view.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>같이 여수갈사람 구해요!!!</title>
+    <title>${ title }</title>
   </head>
   <body>
     
@@ -22,19 +25,19 @@
 
          <!-- 액티비티 이미지 -->
         <div class="activity">
-            <img src="../../resources/image/faq_main.jpeg" />
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/${ imgName }.png" />
         </div>
     
          <!-- 제목 부분 -->
         <div class="title">
             <div class="first">
-                <img src="../../resources/image/heart2.png">
+                <img src="${ pageContext.servletContext.contextPath }/resources/image/heart2.png">
             </div>
             <div class="second">
-                전라
+                ${ location }
             </div>
             <div class="third">
-                <p>같이 여수갈 사람 구해요 ! ! !</p>
+                <p>${ title }</p>
             </div>
         </div>
             
@@ -44,13 +47,13 @@
                 작성자 : 
             </div>
             <div class="name">
-                parisbaguette
+                ${ userId }
             </div>
             <div class="view">
                 조회 52
             </div>
             <div class="writer_date">
-                2021.10.03  ・ 
+                ${ date } ・ 
             </div>
         </div>
     
@@ -64,10 +67,10 @@
                 </div>
                <div class="yellowback">
                    <div class="imgborder1">
-                       <img src="../../resources/image/c_one.png">
+                       <img src="${ pageContext.servletContext.contextPath }/resources/image/c_one.png">
                    </div>
                    <div class="selectborder">
-                      1/6
+                      ${ count } / ${ people }
                    </div>
                </div>
             </div>
@@ -78,10 +81,10 @@
               </div>
               <div class="yellowback">
                   <div class="imgborder1">
-                    <img src="../../resources/image/c_two.png">
+                    <img src="${ pageContext.servletContext.contextPath }/resources/image/c_two.png">
                   </div>
                   <div class="selectborder">
-                    ~2021.10.30
+                    ~ ${ deadline }
                   </div>
               </div>
             </div>
@@ -92,10 +95,18 @@
               </div>
               <div class="yellowback">
                   <div class="imgborder2">
-                    <img src="../../resources/image/both.png">
+                    <img src="${ pageContext.servletContext.contextPath }/resources/image/${ gender }.png">
                   </div>
                   <div class="selectborder">
+                  <c:if test="${ gender eq 'B'}">
                    남녀무관
+                   </c:if>
+                   <c:if test="${ gender eq 'W'}">
+                   여성만
+                   </c:if>
+                   <c:if test="${ gender eq 'M'}">
+                   남성만
+                   </c:if>
                   </div>
               </div>
             </div>
@@ -106,10 +117,24 @@
               </div>
               <div class="yellowback">
                   <div class="imgborder2">
-                    <img src="../../resources/image/c_four.png">
+                    <img src="${ pageContext.servletContext.contextPath }/resources/image/c_four.png">
                   </div>
                    <div class="selectborder">
-                    20대, 30대
+                    <c:if test="${ age eq 0}">
+                    	연령무관
+                    </c:if>
+                    <c:if test="${ age eq 23}">
+                    	20대~30대
+                    </c:if>
+                    <c:if test="${ age eq 34}">
+                    	30대~40대
+                    </c:if>
+                    <c:if test="${ age eq 45}">
+                    	40대~50대
+                    </c:if>
+                    <c:if test="${ age eq 56}">
+                    	50대~60대
+                    </c:if>
                    </div>
               </div>
             </div>
@@ -121,20 +146,14 @@
          <!-- 텍스트 부분 -->
        <div class="text_box">
            <div>
-              11월 첫째주에 같이 여수가실 분 있나요?<br>
-              ㅇㅇ게스트하우스에서 지내려합니다.<br>
-              5일 여행인데, 최소 2일은 같이 지냈으면 좋겠습니다<br>
-              제가 차가 있어서 편하게 오세요<br>
-              저는 28살 남자입니다. 또래분들 환영해요~!!!
-              같이 좋은 추억 만들고싶어요~ <br>
-              자세한 활동은 제 프로필 확인하거나 댓글 부탁드립니다.
+              ${ content }
            </div>
        </div>
 
         <!-- 버튼 부분 -->
        <div class="btnborder">
           <button class="btngo"><a href="#">신청하기</a></button>
-          <div class="report"><img src="../../resources/image/report2.png"></div>
+          <div class="report"><img src="${ pageContext.servletContext.contextPath }/resources/image/warning2.png"></div>
        </div>
 
 
@@ -156,7 +175,7 @@
           <div class="com1_border">
               <div class="com_writer1">작성자 : </div>
               <div class="com_writer2">sangho</div>
-              <div class="com_writer3"><img src="../../resources/image/mypage/wraning.png"/></div>
+              <div class="com_writer3"><img src="${ pageContext.servletContext.contextPath }/resources/image/wraning.png"/></div>
               <div class="com_writer4">
                   <div class="com_writer5">저도 차끌고가도되나요?</div>
                   <div class="com_writer6">
@@ -166,12 +185,12 @@
               </div>
           </div>
           <div class="com2_iborder">
-              <img src="../../resources/image/comment_arrow.png"/>    
+              <img src="${ pageContext.servletContext.contextPath }/resources/image/comment_arrow.png"/>    
           </div>
           <div class="com2_border">
               <div class="com_writer1">작성자 : </div>
               <div class="com_writer2">parisbaguette</div>
-              <div class="com2_writer3"><img src="../../resources/image/mypage/wraning.png"/></div>
+              <div class="com2_writer3"><img src="${ pageContext.servletContext.contextPath }/resources/image/wraning.png"/></div>
               <div class="com_writer4">
                 <div class="com_writer5">네^^ 게하 주차장이 넓더라구요~</div>
                 <div class="com_writer6">

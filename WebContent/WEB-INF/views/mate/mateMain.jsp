@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메이트 찾기</title>
 
+  
     <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
     <link href="${ pageContext.servletContext.contextPath }/resources/css/mate.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -36,17 +37,31 @@
     <div class="mate_hurry1">
         <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_hurry.png">
     </div>
-
+	<c:set var="hurry" value="${ hurryFindList }"/>
     <div class="mate_hurry2">
         <div class="mate_hurry3">
             <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_one.png">
             <span class="h_title">
-                같이 여수갈 사람 구해요
+                ${ hurry[0].title }
             </span>
             <span class="h_text">
-                parisbaguette<br><br>
-                인원:2/6<br><br>
-                희망연령:20대,30대<br><br>
+                ${ hurry[0].userId }<br><br>
+                인원:${ hurry[0].count }/${ hurry[0].people }<br><br>
+                <c:if test="${ hurry[0].age eq 0 }">
+                희망연령:연령무관<br><br>
+                </c:if>
+                <c:if test="${ hurry[0].age eq 23 }">
+                희망연령:20대~30대<br><br>
+                </c:if>
+                <c:if test="${ hurry[0].age eq 34 }">
+                희망연령:30대~40대<br><br>
+                </c:if>
+                <c:if test="${ hurry[0].age eq 45 }">
+                희망연령:40대~50대<br><br>
+                </c:if>
+                <c:if test="${ hurry[0].age eq 56 }">
+                희망연령:50대~60대<br><br>
+                </c:if> 
                 남녀무관
             </span>
             <span class="h_date">
@@ -137,8 +152,8 @@
                   <c:forEach var="find" items="${ findList }">
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a>${ find.title }</a></td>
-                  <td>${ find.userId }</td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">${ find.title }</a></td>
+                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>

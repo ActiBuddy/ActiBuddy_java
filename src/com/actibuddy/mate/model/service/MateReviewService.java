@@ -139,11 +139,11 @@ public class MateReviewService {
 	 * 베스트 추천 리뷰 5개 조회 메소드
 	 * @return bestReviewList
 	 */
-	public List<MemberDTO> selectBestReview() {
+	public List<MateReviewDTO> selectBestReview() {
 		
 		SqlSession session = getSqlSession();
 		
-		List<MemberDTO> bestReviewList = MateDAO.selectBestReview(session);
+		List<MateReviewDTO> bestReviewList = MateDAO.selectBestReview(session);
 		
 		session.close();
 		
@@ -155,11 +155,11 @@ public class MateReviewService {
 	 * 최신순 리뷰 5개 조회 메소드
 	 * @return newReviewList
 	 */
-	public List<MemberDTO> selectNewReview() {
+	public List<MateReviewDTO> selectNewReview() {
 		
 		SqlSession session = getSqlSession();
 		
-		List<MemberDTO> newReviewList = MateDAO.selectNewReview(session);
+		List<MateReviewDTO> newReviewList = MateDAO.selectNewReview(session);
 		
 		session.close();
 		

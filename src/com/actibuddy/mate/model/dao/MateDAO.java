@@ -43,12 +43,12 @@ public class MateDAO {
 		return session.update("MateDAO.updateReviewRec", review);
 	}
 
-	public static List<MemberDTO> selectBestReview(SqlSession session) {
+	public static List<MateReviewDTO> selectBestReview(SqlSession session) {
 
 		return session.selectList("MateDAO.selectBestReview");
 	}
 	
-	public static List<MemberDTO> selectNewReview(SqlSession session) {
+	public static List<MateReviewDTO> selectNewReview(SqlSession session) {
 		
 		return session.selectList("MateDAO.selectNewReview");
 	}
@@ -78,6 +78,16 @@ public class MateDAO {
 	public List<MateFindDTO> selectAllFindList(SqlSession session, SelectCriteria selectCriteria) {
 
 		return session.selectList("MateDAO.selectAllFindList", selectCriteria);
+	}
+
+	public MateFindDTO selectFindInfo(SqlSession session, String num) {
+		
+		return session.selectOne("MateDAO.selectFindInfo", num);
+	}
+
+	public List<MateFindDTO> selectHurryFind(SqlSession session) {
+		
+		return session.selectList("selectHurryFind");
 	}
 
 }

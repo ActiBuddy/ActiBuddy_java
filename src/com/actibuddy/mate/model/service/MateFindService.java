@@ -59,6 +59,11 @@ public class MateFindService {
 		return totalCount;
 	}
 
+	/**
+	 * 메이트 게시글 조회(페이징)
+	 * @param selectCriteria
+	 * @return findList
+	 */
 	public List<MateFindDTO> selectAllFindList(SelectCriteria selectCriteria) {
 		
 		SqlSession session = getSqlSession();
@@ -68,6 +73,37 @@ public class MateFindService {
 		session.close();
 		
 		return findList;
+	}
+
+	/**
+	 * 선택한 메이트 게시글 정보
+	 * @param num
+	 * @return find
+	 */
+	public MateFindDTO selectFindInfo(String num) {
+
+		SqlSession session = getSqlSession();
+		
+		MateFindDTO find = findDAO.selectFindInfo(session, num);
+		
+		session.close();
+		
+		return find;
+	}
+
+	/**
+	 * 마감임박 메이트 게시글 조회
+	 * @return
+	 */
+	public List<MateFindDTO> selectHurryFind() {
+		
+		SqlSession session = getSqlSession();
+		
+		List<MateFindDTO> hurryFindList = findDAO.selectHurryFind(session);
+		
+		session.close();
+		
+		return hurryFindList;
 	}
 	
 	

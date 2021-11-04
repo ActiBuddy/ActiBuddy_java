@@ -63,12 +63,12 @@ public class ReportDAO {
 	}
 	//================================ 신고처리 완료된 신고 목록 보기 =========================================
 
-	public static List<MateReviewDTO> rejectedmatefindrepdetail(SqlSession session, MateReviewDTO reviewreport) {
-		return session.selectList("ReportDAO.rejectedmatefindrepdetail", reviewreport);
+	public static List<MateReviewDTO> rejectedmatefindrepdetail(SqlSession session) {
+		return session.selectList("ReportDAO.rejectedmatefindrepdetail");
 	}
 
-	public static List<ActiReviewDTO> rejectedactireviewrepdetail(SqlSession session, ActiReviewDTO actireviewreport) {
-		return session.selectList("ReportDAO.rejectedactireviewrepdetail", actireviewreport);
+	public static List<ActiReviewDTO> rejectedactireviewrepdetail(SqlSession session) {
+		return session.selectList("ReportDAO.rejectedactireviewrepdetail");
 	}
 
 	

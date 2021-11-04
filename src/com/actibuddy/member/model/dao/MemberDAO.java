@@ -67,6 +67,11 @@ public class MemberDAO {
 		return session.selectOne("MemberDAO.findpwd", member);
 	}
 
+	public static int changepwd(SqlSession session, MemberDTO member) {
+		// TODO Auto-generated method stub
+		return session.update("MemberDAO.changepwd",member);
+	}
+
 
 	
 

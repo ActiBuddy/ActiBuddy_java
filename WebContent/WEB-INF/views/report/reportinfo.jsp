@@ -24,7 +24,7 @@
     
     <jsp:include page="../common/managersidebar.jsp"/>
 
-          <h2 class="sub-header">파트너 문의 조회</h2>
+          <h2 class="sub-header">신고 내용 조회</h2>
           <div class="table-responsive">
           
           <h3>리뷰 번호</h3>
@@ -67,7 +67,7 @@
 		  </c:if>    --%>       
           
 	 	  <c:choose>
-	 	  <c:when test="${ reviewreportinfo.repYn eq 'N' }">
+	 	  <c:when test="${ reviewreportinfo.repYn eq 'N' || eviewreportinfo.repYn eq 'L' }">
 	 	  <form action="../report/reject" method="post">
 		  <textarea type="text" name="title" style="display:none">${ reviewreportinfo.title }</textarea>
           <button type="submit">신고 반려</button>
@@ -79,7 +79,7 @@
           </form>
 	 	  </c:when>
 	 	  
-	 	  <c:when test="${ actireviewreportinfo.recYn eq 'N'}">
+	 	  <c:when test="${ actireviewreportinfo.recYn eq 'N' || actireviewreportinfo.recYn eq 'L'}">
 	 	  <form action="../report/reject" method="post">
 		  <textarea type="text" name="title1" style="display:none">${ actireviewreportinfo.title }</textarea>
           <button type="submit">신고 반려</button>

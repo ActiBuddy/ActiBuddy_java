@@ -251,6 +251,8 @@
            <button type="submit" class="login_btn" id="registmember">회원가입하기</button>
          </form>
 
+	
+
          <div>
          </div>
 

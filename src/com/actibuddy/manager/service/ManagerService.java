@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.faq.model.dao.FaqDAO;
 import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.manager.model.dao.ManagerDAO;
@@ -72,11 +73,11 @@ public class ManagerService {
 			return managerList;
 	}
 
-
-	public List<ManagerDTO> selectPartnerMember() {
+	// 파트너 회원 조회(페이징)
+	public List<ManagerDTO> selectPartnerMember(SelectCriteria selectCriteria) {
 		SqlSession session = getSqlSession();
 		
-		List<ManagerDTO> managerList = ManagerDAO.selectPartnerMember(session);
+		List<ManagerDTO> managerList = ManagerDAO.selectPartnerMember(session, selectCriteria);
 		
 		session.close();
 		
@@ -145,6 +146,18 @@ public class ManagerService {
 		session.close();
 		
 		return result1;
+	}
+
+	// 페이징을 위한 전체 게시글 수 조회 메소드
+	public int selectFindTotalCount(Map<String, String> searchMap) {
+		
+		SqlSession session = getSqlSession();
+		
+		int totalCount = ManagerDAO.selectFindTotalCount(session, searchMap);
+
+		session.close();
+		
+		return totalCount;
 	}
 
 

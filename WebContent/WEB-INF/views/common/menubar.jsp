@@ -61,6 +61,15 @@
 	    	  });
 	      
 	</script>
+	
+	<!-- <style type="text/css">
+ /* link - 아직 클릭하지 않은 경우 red 색상 설정 */
+ a:link { color: #000000; text-decoration: none; !important }	
+ /* visited - 한번 클릭하거나 전에 클릭한적 있을 경우 #c71d44 설정 */
+ a:visited { color: #000000; text-decoration: none; !important } 	
+ /* hover - 마우스를 해당 링크에 위치했을 경우 #006DD7 설정 */
+ a:hover { color: #000000; text-decoration: none; !important }
+</style> -->
 </head>
 <body>
 
@@ -85,6 +94,8 @@
 			</span>
 			<span>
 				<button type="submit" class="search-btn">Submit</button>
+			</span>
+			<span>
 			<c:if test="${ sessionScope.loginMember.memType eq 'M'}">		
 			<a href="${ pageContext.servletContext.contextPath }/manager/main">매니저 메뉴</a>		
 			</c:if>

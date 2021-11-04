@@ -153,6 +153,22 @@ public class MemberService {
 	}
 
 
+	public int changepwd(MemberDTO member) {
+
+		SqlSession session = getSqlSession();
+		
+		int result = MemberDAO.changepwd(session, member);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		return result;
+	}
+
+
 	
 
 

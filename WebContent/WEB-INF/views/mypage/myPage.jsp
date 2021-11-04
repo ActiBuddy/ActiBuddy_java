@@ -88,7 +88,8 @@
 				</c:if>
 				
                 <hr> 
-                <c:if test=" ${ mateScore } != null and  ${ mateScore} != ''">
+                <c:choose>
+				<c:when test="${  not empty mateScore }">
 				<c:forEach var="size" begin="0" end="${ fn:length(mateScore)-1}">
 				
 			  <c:choose>
@@ -114,8 +115,12 @@
                 <hr>
                 
 				</c:forEach>
+				</c:when>
+				<c:otherwise>
+				<h1> 아직 받은 평가가 없습니다. </h1>
+				</c:otherwise>
+				</c:choose>
 
-			</c:if>
                 
             </div>
         </div>

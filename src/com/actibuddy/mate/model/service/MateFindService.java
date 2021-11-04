@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dao.MateDAO;
+import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 
@@ -68,6 +69,23 @@ public class MateFindService {
 		session.close();
 		
 		return findList;
+	}
+
+	/**
+	 * 특정 사용자의 메이트 신청 이력을 조회해주는 메소드
+	 * @author kwonsoonpyo
+	 * @param userId
+	 * @return mtApplyList
+	 */
+	public List<MateFindApplyDTO> selectMtApplyHis(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<MateFindApplyDTO> mtApplyList = findDAO.selectMtApplyHis(session, userId);
+		
+		session.close();
+		
+		return mtApplyList;
 	}
 	
 	

@@ -43,6 +43,7 @@
  	   <result property="userId" column="USER_ID"/>
  	   <result property="views" column="ACTI_VIEWS"/>
  	   <result property="star" column="ACTI_STAR"/>
+ 	   <result property="actiNo" column="ACTI_NO"/>
  	   <result property="mainImg" column="MAIN_IMG"/>
  	</resultMap>
  	

@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <jsp:forward page="/main/page"/> --%>
-<jsp:forward page="/WEB-INF/views/mate/mateFindPostView.jsp"></jsp:forward>
+ <jsp:forward page="/main/page"/>
 </body>
 </html>

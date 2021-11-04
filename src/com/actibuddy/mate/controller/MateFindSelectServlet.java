@@ -1,9 +1,7 @@
 package com.actibuddy.mate.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,36 +13,23 @@ import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.service.MateFindService;
 
-@WebServlet("/mate/comment")
-public class MateFindComment extends HttpServlet {
+@WebServlet("/mate/find/select")
+public class MateFindSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String num = request.getParameter("num");
-		String text = request.getParameter("text");
-		String userId = request.getParameter("userId");
-		System.out.println("num 확인 : " + num);
-		System.out.println("text 확인 : " + text);
-		System.out.println("userId 확인 : " + userId);
-		
-		Map<String,String> map = new HashMap<>();
-		map.put("num", num);
-		map.put("text", text);
-		map.put("userId", userId);
-		
-		MateFindService mateService = new MateFindService();
-		int result = mateService.insertComment(map);
-		
+		System.out.println("게시글 번호 : " + num);
+	
 		MateFindService findService = new MateFindService();
 		MateFindDTO find = findService.selectFindInfo(num);
-		System.out.println(find);
 		List<MateCommentDTO> comment = findService.selectComment(num);
 		System.out.println(comment);
 		
 		String path = "";
-		if(result > 0) {
-			path="/WEB-INF/views/mate/mateFindView.jsp";
+		if(find != null) {
+			path = "/WEB-INF/views/mate/mateFindView.jsp";
 			request.setAttribute("find", find);
 			request.setAttribute("num", find.getNum());
 			request.setAttribute("title", find.getTitle());
@@ -59,15 +44,13 @@ public class MateFindComment extends HttpServlet {
 			request.setAttribute("deadline", find.getDeadline());
 			request.setAttribute("state", find.getState());
 			request.setAttribute("count", find.getCount());
-			request.setAttribute("success", "success");
 			request.setAttribute("comment", comment);
 			
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";
-			request.setAttribute("message", "댓글 입력 실패!");
+			request.setAttribute("message", "메이트 찾기 상세페이지 조회 실패!");
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
-
 }

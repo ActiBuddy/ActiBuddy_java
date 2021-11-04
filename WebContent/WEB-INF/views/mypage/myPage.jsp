@@ -88,7 +88,7 @@
 				</c:if>
 				
                 <hr> 
-                
+                <c:if test=" ${ mateScore } != null and  ${ mateScore} != ''">
 				<c:forEach var="size" begin="0" end="${ fn:length(mateScore)-1}">
 				
 			  <c:choose>
@@ -115,7 +115,7 @@
                 
 				</c:forEach>
 
-
+			</c:if>
                 
             </div>
         </div>

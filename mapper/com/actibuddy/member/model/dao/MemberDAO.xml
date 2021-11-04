@@ -228,6 +228,7 @@
  		   AND USER_ID = #{userId}	   
  	
  	</select>
+ 	
  	<update id="changepwd">
  	
  	UPDATE MEMBER
@@ -236,5 +237,11 @@
  	
  	</update>
  
+ 	<!-- 비밀번호 변경 쿼리문 -->
+ <update id="updatePwd">
+ 	UPDATE MEMBER
+   SET PASSWORD = #{ pwd }
+ WHERE USER_ID = #{ userId }
+ </update>
  </mapper>
  

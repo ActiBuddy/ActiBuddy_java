@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link href="../resources/css/actibuddy.css" rel="stylesheet" />
-    <link href="../resources/css/mateFind_postview.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>같이 여수갈사람 구해요!!!</title>
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/mateFind_view.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>${ title }</title>
   </head>
   <body>
     
@@ -23,19 +26,19 @@
 
          <!-- 액티비티 이미지 -->
         <div class="activity">
-            <img src="../../resources/image/faq_main.jpeg" />
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/${ imgName }.png" />
         </div>
     
          <!-- 제목 부분 -->
         <div class="title">
             <div class="first">
-                <img src="../../resources/image/heart2.png">
+                <img src="${ pageContext.servletContext.contextPath }/resources/image/heart2.png">
             </div>
             <div class="second">
-                전라
+                ${ location }
             </div>
             <div class="third">
-                <p>같이 여수갈 사람 구해요 ! ! !</p>
+                <p>${ title }</p>
             </div>
         </div>
             
@@ -45,13 +48,13 @@
                 작성자 : 
             </div>
             <div class="name">
-                parisbaguette
+                ${ userId }
             </div>
             <div class="view">
                 조회 52
             </div>
             <div class="writer_date">
-                2021.10.03  ・ 
+                ${ date } ・ 
             </div>
         </div>
     
@@ -65,10 +68,10 @@
                 </div>
                <div class="yellowback">
                    <div class="imgborder1">
-                       <img src="../../resources/image/c_one.png">
+                       <img src="${ pageContext.servletContext.contextPath }/resources/image/c_one.png">
                    </div>
                    <div class="selectborder">
-                      1/6
+                      ${ count } / ${ people }
                    </div>
                </div>
             </div>
@@ -79,10 +82,10 @@
               </div>
               <div class="yellowback">
                   <div class="imgborder1">
-                    <img src="../../resources/image/c_two.png">
+                    <img src="${ pageContext.servletContext.contextPath }/resources/image/c_two.png">
                   </div>
                   <div class="selectborder">
-                    ~2021.10.30
+                    ~ ${ deadline }
                   </div>
               </div>
             </div>
@@ -93,10 +96,18 @@
               </div>
               <div class="yellowback">
                   <div class="imgborder2">
-                    <img src="../../resources/image/both.png">
+                    <img src="${ pageContext.servletContext.contextPath }/resources/image/${ gender }.png">
                   </div>
                   <div class="selectborder">
+                  <c:if test="${ gender eq 'B'}">
                    남녀무관
+                   </c:if>
+                   <c:if test="${ gender eq 'W'}">
+                   여성만
+                   </c:if>
+                   <c:if test="${ gender eq 'M'}">
+                   남성만
+                   </c:if>
                   </div>
               </div>
             </div>
@@ -107,10 +118,24 @@
               </div>
               <div class="yellowback">
                   <div class="imgborder2">
-                    <img src="../../resources/image/c_four.png">
+                    <img src="${ pageContext.servletContext.contextPath }/resources/image/c_four.png">
                   </div>
                    <div class="selectborder">
-                    20대, 30대
+                    <c:if test="${ age eq 0}">
+                    	연령무관
+                    </c:if>
+                    <c:if test="${ age eq 23}">
+                    	20대~30대
+                    </c:if>
+                    <c:if test="${ age eq 34}">
+                    	30대~40대
+                    </c:if>
+                    <c:if test="${ age eq 45}">
+                    	40대~50대
+                    </c:if>
+                    <c:if test="${ age eq 56}">
+                    	50대~60대
+                    </c:if>
                    </div>
               </div>
             </div>
@@ -122,20 +147,18 @@
          <!-- 텍스트 부분 -->
        <div class="text_box">
            <div>
-              11월 첫째주에 같이 여수가실 분 있나요?<br>
-              ㅇㅇ게스트하우스에서 지내려합니다.<br>
-              5일 여행인데, 최소 2일은 같이 지냈으면 좋겠습니다<br>
-              제가 차가 있어서 편하게 오세요<br>
-              저는 28살 남자입니다. 또래분들 환영해요~!!!
-              같이 좋은 추억 만들고싶어요~ <br>
-              자세한 활동은 제 프로필 확인하거나 댓글 부탁드립니다.
+              ${ content }
            </div>
        </div>
 
         <!-- 버튼 부분 -->
        <div class="btnborder">
           <button class="btngo"><a href="#">신청하기</a></button>
-          <div class="report"><img src="../../resources/image/report2.png"></div>
+          <div class="report">
+        <button id="repbtn" class="repbtn">
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/warning2.png">
+        </button>
+        </div>
        </div>
 
 
@@ -150,48 +173,127 @@
          <div class="comtext2"><textarea name="text" placeholder="댓글을 작성해주세요"></textarea></div>
          <div class="comtext3"><input type="submit" class="c3" value="등록"></div>
          <input type="hidden" name="userId" value="${ sessionScope.loginMember.userId }">
+         <input type="hidden" name="num" value="${ num }">
        </div>
 	   </form>
        <hr>
 
         <!-- 댓글 내용 -->
+        <c:if test="${ comment != null and !empty comment}">
        <div class="comment">
+       	<c:forEach var="com" items="${ comment }">
           <div class="com1_border">
               <div class="com_writer1">작성자 : </div>
-              <div class="com_writer2">sangho</div>
-              <div class="com_writer3"><img src="../resources/image/mypage/wraning.png"/></div>
+              <div class="com_writer2">${ com.userId }</div>
+              <div class="com_writer3">
+              <button id="repbtn2" class="repbtn" style="border: none;" name="val" value="${ com.num }">
+              <img src="${ pageContext.servletContext.contextPath }/resources/image/wraning.png"/>
+              </button></div>
+
               <div class="com_writer4">
-                  <div class="com_writer5">저도 차끌고가도되나요?</div>
+                  <div class="com_writer5">${ com.comment }</div>
                   <div class="com_writer6">
-                      <div class="re">답글달기</div>
-                      <div class="date">2021/10/15 15:40</div>
+                     <div class="date">
+					<fmt:formatDate value="${ com.date }" type="date" pattern="yyyy/MM/dd"/>
+				    <fmt:formatDate value="${ com.date }" type="time" pattern="(a) hh:mm:ss"/>
+					</div>
                   </div>
               </div>
           </div>
-          <div class="com2_iborder">
-              <img src="../resources/image/comment_arrow.png"/>    
-          </div>
-          <div class="com2_border">
-              <div class="com_writer1">작성자 : </div>
-              <div class="com_writer2">parisbaguette</div>
-              <div class="com2_writer3"><img src="../resources/image/mypage/wraning.png"/></div>
-              <div class="com_writer4">
-                <div class="com_writer5">네^^ 게하 주차장이 넓더라구요~</div>
-                <div class="com_writer6">
-                    <div class="re">답글달기</div>
-                    <div class="date">2021/10/15 16:10</div>
-                </div>
-            </div>
-       </div>
+          </c:forEach>
     <!-- 찐짜div-->
-    </div>
-    
+    	</div>
     <hr>
+          </c:if>
+    
 
     <div class="blank">
 
     </div>
+    <script>
+		$(function() {
+			$('#repbtn').one('click', function(e) {
+				
+				let findNum = '${ num }'; // 오류 체크1 : script안에서는 특수 기호가 들어가면 문자열로 인식을 못한다!
+											// 오류 체크2 : 주석에도 특수기호 사용하면 안된다.
+				console.log(findNum);
 
+				user = '${ sessionScope.loginMember.userId }';
+				
+				if(!user) {
+					alert("로그인 먼저 해주세요.");
+				} else {
+					
+					$.ajax({
+						url:'${ pageContext.servletContext.contextPath }/mate/find/report',
+						type:'post',
+					    data:{ num : findNum
+					    },
+					    success:function(result){
+					    	
+					    	if(result > 0){
+					    		alert("\'" + "${ title }" + "\'  글의 신고가 접수되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
+					    		
+					    	} else {
+					    		alert("게시글 신고 접수에 실패했습니다.");
+					    	}
+					    	e.preventDefault();
+					    },
+					    error:function(){
+					           alert("error");
+					    }
+					    
+					 });
+				}
+			});
+		});
+	</script>
+	
+	<!-- 이거 하다 말았음 -->
+	<script>
+		$(function() {
+			$('#repbtn2').one('click', function(e) {
+				
+				let commentNum = $('#repbtn2').val(); // 오류 체크1 : script안에서는 특수 기호가 들어가면 문자열로 인식을 못한다!
+											// 오류 체크2 : 주석에도 특수기호 사용하면 안된다.
+				console.log(commentNum);
+
+				user = '${ sessionScope.loginMember.userId }';
+				
+				if(!user) {
+					alert("로그인 먼저 해주세요.");
+				} else {
+					
+					$.ajax({
+						url:'${ pageContext.servletContext.contextPath }/mate/find/report',
+						type:'post',
+					    data:{ num : commentNum
+					    },
+					    success:function(result){
+					    	
+					    	if(result > 0){
+					    		alert("\'" + "${ coment.comment }" + "\'  글의 신고가 접수되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
+					    		
+					    	} else {
+					    		alert("게시글 신고 접수에 실패했습니다.");
+					    	}
+					    	e.preventDefault();
+					    },
+					    error:function(){
+					           alert("error");
+					    }
+					    
+					 });
+				}
+			});
+		});
+	</script>
+    
+	<script>
+		if('${ success }' != null && '${success}' != ''){
+			alert('댓글 등록에 성공하였습니다');
+		}
+	</script>
    <jsp:include page="../common/footer.jsp"/>
     </body>
   </html>

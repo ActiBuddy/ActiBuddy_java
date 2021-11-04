@@ -71,6 +71,11 @@ public class MemberDAO {
 		// TODO Auto-generated method stub
 		return session.update("MemberDAO.changepwd",member);
 	}
+	
+	public static int updatePwd(SqlSession session, Map<String, String> map) {
+
+		return session.update("MemberDAO.updatePwd", map);
+	}
 
 
 	

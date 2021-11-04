@@ -62,7 +62,7 @@
         				<h4><c:out value="${ sessionScope.loginMember.userName }"/> 님의 여행</h4>
         			
 					</c:if>
-
+					<c:if test=" ${ mateScore } != null and  ${ tripList } != ''">
                  	<c:forEach var="size" begin="0" end="${fn:length(tripList.cartList)-1 }" >
                     <hr>
                     <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList.activityInfo[size].name }'">상세보기 ></button>
@@ -91,7 +91,7 @@
                     <hr>
     				
     				</c:forEach> 
-    				
+    				</c:if>
                 </div>
 
             </div>

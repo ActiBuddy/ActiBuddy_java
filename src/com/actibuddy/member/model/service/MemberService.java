@@ -165,6 +165,25 @@ public class MemberService {
 			session.rollback();
 		}
 		
+	    session.close();
+	    
+	    return result;
+     }
+
+	public int updatePwd(Map<String, String> map) {
+
+		SqlSession session = getSqlSession();
+		
+		int result = MemberDAO.updatePwd(session,map);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
 		return result;
 	}
 

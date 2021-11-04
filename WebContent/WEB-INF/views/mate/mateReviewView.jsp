@@ -199,7 +199,7 @@
         <img src="${ pageContext.servletContext.contextPath }/resources/image/warning2.png">
         </button>
         </div>
-     </div>
+     	</div>
 
 	<script>
 	

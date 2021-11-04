@@ -48,6 +48,77 @@
 	   <result property="userId" column="USER_ID"/>
 	   <result property="count" column="MT_FIND_COUNT"/>
 	</resultMap>
+
+	<resultMap type="com.actibuddy.mate.model.dto.MateCommentDTO" id="commentResultMap">
+		<id property="num" column="MT_COM_NUM"/>
+		<result property="repYn" column="MT_COM_REP_YN"/>
+		<result property="comment" column="MT_COM_CON"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="findNum" column="MT_FIND_NUM"/>
+		<result property="date" column="MT_COM_DATE"/>
+	</resultMap>
+	
+	<!-- 메이트  -->
+	<select id="selectHurryFind" resultMap="mateFindResultMap">
+	SELECT   ROWNUM
+	       , B.MT_FIND_NUM
+	       , B.MT_FIND_TITLE
+	       , B.MT_FIND_CONTENT
+	       , B.MT_FIND_DATE
+	       , B.MT_FIND_LOCATION
+	       , B.MT_FIND_IMG
+		   , B.MT_FIND_VIEW
+	       , B.MT_FIND_GENDER
+	       , B.MT_FIND_PEOPLE
+	       , B.MT_FIND_AGE
+	       , B.MT_FIND_DEADLINE
+	       , B.MT_FIND_STATE
+	       , B.USER_ID
+	       , B.MT_FIND_COUNT
+		FROM (SELECT
+				  A.MT_FIND_NUM
+			    , A.MT_FIND_TITLE
+			    , A.MT_FIND_CONTENT
+			    , A.MT_FIND_DATE
+			    , A.MT_FIND_LOCATION
+			    , A.MT_FIND_IMG
+			    , A.MT_FIND_VIEW
+			    , A.MT_FIND_GENDER
+			    , A.MT_FIND_PEOPLE
+			    , A.MT_FIND_AGE
+			    , A.MT_FIND_DEADLINE
+			    , A.MT_FIND_STATE
+			    , A.USER_ID
+			    , A.MT_FIND_COUNT
+			  FROM MT_FIND A
+	        WHERE A.MT_FIND_REP_YN ='N'
+	          AND A.MT_FIND_STATE = '신청가능'
+	        ORDER BY A.MT_FIND_DEADLINE ASC)B
+	        WHERE ROWNUM <![CDATA[ < ]]> 4
+	</select>
+	
+	<!-- 메이트 후기글 -->
+	<select id="selectFindInfo" resultMap="mateFindResultMap" parameterType="String">
+	   SELECT
+			  A.MT_FIND_NUM
+		    , A.MT_FIND_TITLE
+		    , A.MT_FIND_CONTENT
+		    , A.MT_FIND_REP_YN
+		    , A.MT_FIND_DATE
+		    , A.MT_FIND_LOCATION
+		    , A.MT_FIND_IMG
+		    , A.MT_FIND_VIEW
+		    , A.MT_FIND_GENDER
+		    , A.MT_FIND_PEOPLE
+		    , A.MT_FIND_AGE
+		    , A.MT_FIND_DEADLINE
+		    , A.MT_FIND_STATE
+		    , A.USER_ID
+		    , A.MT_FIND_COUNT
+		  FROM MT_FIND A
+		 WHERE A.MT_FIND_NUM = #{ num }
+	
+	</select>
 	
 	<resultMap type="com.actibuddy.mate.model.dto.MateFindApplyDTO" id="mtFindApplyResultMap">
 	<id property="applyNum" column="MT_APPLY_NUM"/>
@@ -168,7 +239,7 @@
 
 	<!-- ========== MATE REVIEW ========== -->
 	<!-- 메이트 후기 수정 업데이트 -->
-	<update id="updateReview">
+	<update id="updateReview" >
 		UPDATE MT_REVIEW
 		   SET MT_REVIEW_TITLE = #{ title }
 		   	 , MT_REVIEW_CON = #{ content }
@@ -380,4 +451,46 @@
 		  JOIN MT_FIND C ON (A.MT_FIND_NUM = C.MT_FIND_NUM)
 		 WHERE A.APPLIED_ID = #{ appliedId }
 	</select>
+	
+	<!-- 게시글에 댓글 추가하는 쿼리문 -->
+	<insert id="insertComment">
+		INSERT
+		  INTO COMENT A
+		(
+		  A.MT_COM_NUM
+		, A.MT_COM_REP_YN
+		, A.MT_COM_CON
+		, A.USER_ID
+		, A.MT_FIND_NUM
+		, A.MT_COM_DATE
+		) 
+		VALUES
+		(
+		  'MT_COM' || SEQ_COM_NUM.NEXTVAL
+		, 'N'
+		, #{ text }
+		, #{ userId }
+		, #{ num }
+		, DEFAULT
+		)
+	</insert>
+	<!-- 해당 게시글에 대한 댓글 조회 쿼리문 -->
+	<select id="selectComment" parameterType="string" resultMap="commentResultMap">
+	SELECT
+		   MT_COM_NUM
+	     , MT_COM_REP_YN
+	     , MT_COM_CON
+	     , USER_ID
+	     , MT_FIND_NUM
+	     , MT_COM_DATE
+	  FROM COMENT
+	 WHERE MT_FIND_NUM = #{ num } 
+	</select>
+	
+	<!-- 메이팅 게시글 신고에 대한 쿼리문 -->
+	<update id="updateFindYn">
+		UPDATE MT_FIND
+		   SET MT_FIND_REP_YN = #{ repYn }
+		 WHERE MT_FIND_NUM = #{ num }  
+	</update>
 </mapper>

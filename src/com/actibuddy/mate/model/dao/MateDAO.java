@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
+import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -44,12 +45,12 @@ public class MateDAO {
 		return session.update("MateDAO.updateReviewRec", review);
 	}
 
-	public static List<MemberDTO> selectBestReview(SqlSession session) {
+	public static List<MateReviewDTO> selectBestReview(SqlSession session) {
 
 		return session.selectList("MateDAO.selectBestReview");
 	}
 	
-	public static List<MemberDTO> selectNewReview(SqlSession session) {
+	public static List<MateReviewDTO> selectNewReview(SqlSession session) {
 		
 		return session.selectList("MateDAO.selectNewReview");
 	}
@@ -84,6 +85,31 @@ public class MateDAO {
 	public MateFindAndApplyDTO selectMtApplyHis(SqlSession session, String userId) {
 		
 		return session.selectOne("MateDAO.selectMtApplyHis", userId);
+	}
+	
+	public MateFindDTO selectFindInfo(SqlSession session, String num) {
+		
+		return session.selectOne("MateDAO.selectFindInfo", num);
+	}
+
+	public List<MateFindDTO> selectHurryFind(SqlSession session) {
+		
+		return session.selectList("selectHurryFind");
+	}
+
+	public int insertComment(SqlSession session, Map<String, String> map) {
+
+		return session.insert("MateDAO.insertComment", map);
+	}
+
+	public static List<MateCommentDTO> selectComment(SqlSession session, String num) {
+
+		return session.selectList("MateDAO.selectComment", num);
+	}
+
+	public static int updateFindYn(SqlSession session, MateFindDTO find) {
+
+		return session.update("MateDAO.updateFindYn", find);
 	}
 
 }

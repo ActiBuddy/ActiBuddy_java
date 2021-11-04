@@ -1,5 +1,7 @@
 package com.actibuddy.member.model.dto;
 
+import java.util.Map;
+
 public class MemberDTO {
 
 	private String userId;
@@ -195,8 +197,6 @@ public String idcheck(String userId2) {
 	// TODO Auto-generated method stub
 	return null;
 }
-	
-	
 	
 	
 	

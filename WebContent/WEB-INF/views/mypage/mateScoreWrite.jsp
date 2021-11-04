@@ -49,34 +49,15 @@
                 <h2>메이트 평가 작성  </h2>
                 <hr>
                 
-                <form id="writeScore" action="../score/write" method="post">
+                <form id="writeScore" action="${ pageContext.servletContext.contextPath }/mypage/mate/score/insert" method="post">
                 
                 <h3>제목 : </h3><textarea id="title" name="title" placeholder="제목를 작성해주세요"></textarea>
                 
-                <h5>참가한 메이팅 : </h5>
                 <br><br>
-                <h5> 평가할 메이트 : </h5>
+                <h5>참가한 메이팅 : ${ title } </h5>
+                <h5> 평가할 메이트 : ${ mateId } </h5>
                 <hr>
                 <h4>별점을 매겨주세요</h4>
-				
-				
-				
-					<!-- <p class="star_rating" name="on" >
-					    <a href="#" name="on" value="1">★</a>
-					    <a href="#" name="on" value="2">★</a>
-					    <a href="#" name="on" value="3">★</a>
-					    <a href="#" name="on" value="4">★</a>
-					    <a href="#" name="on" value="5">★</a>
-					</p>
-					
-					<script>
-					$( ".star_rating a" ).click(function() {
-					     $(this).parent().children("a").removeClass("on");
-					     $(this).addClass("on").prevAll("a").addClass("on");
-					     console.log($(this).attr("value"));
-
-					});
-					</script> -->
 					
 					<fieldset name="myform" id="myform">
 				        
@@ -123,7 +104,8 @@
                 <textarea name="elseWrite" placeholder="기타 평가를 작성해주세요"></textarea>
                 <br><br><br>
 
-                <button type="submit">후기 작성하기</button>
+                <input type="hidden" name="mateId" value="${ mateId }">
+                <input type="submit" value="후기 작성하기">
                 
                 </form>
 

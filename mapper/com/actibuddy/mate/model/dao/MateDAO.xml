@@ -372,7 +372,7 @@
 
 	</insert>
 	
-	<select id="selectMtApplyHis" resultMap="mtFindApplyResultMap" parameterType="String">
+	<select id="selectMtApplyHis" resultMap="mtFindAndApplyResultMap" parameterType="String">
 	    SELECT A.*
              , C.*
 		  FROM MT_APPLY_HIS A 

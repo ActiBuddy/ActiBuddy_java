@@ -523,5 +523,31 @@
 	)
 	</insert>
 	
+	<insert id="insertScore">
+	    INSERT 
+		  INTO MT_SCORE
+		(
+		  SCORED_ID
+		, MT_SCORE_TITLE
+		, MT_SCORE_CON
+		, MT_SCORE_REP_YN
+		, USER_ID
+		, MT_SCORE_NUM
+		, MT_SCORE_STAR
+		, PLUS_SCORE
+		)
+		VALUES
+		(
+		  #{ scoredId }
+		, #{ scoreTitle }
+		, #{ scoreCon }
+		, 'N'
+		, #{ userId }
+		, ('MT_SCORE' || TO_CHAR(SEQ_MT_SCORE_NUM.nextval))
+		, ${ scoreStar }
+		, ${ plusScore }
+		)
+	</insert>
+	
   
   </mapper>

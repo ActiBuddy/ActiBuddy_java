@@ -125,5 +125,10 @@ public class MypageDAO {
 			return session.insert("MypageDAO.insertOp",requestOption);
 		}
 
+		public int insertScore(SqlSession session, MypageMateScoreDTO scoreDTO) {
+			
+			return session.insert("MypageDAO.insertScore", scoreDTO);
+		}
+
 
 }

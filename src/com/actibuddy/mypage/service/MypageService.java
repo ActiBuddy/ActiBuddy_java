@@ -372,5 +372,28 @@ public class MypageService {
 		
 		return result;
 	}
+
+	/**
+	 * 메이트 평가 등록용 메소드
+	 * @author kwonsoonpyo
+	 * @param scoreDTO
+	 * @return result
+	 */
+	public int insertScore(MypageMateScoreDTO scoreDTO) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.insertScore(session, scoreDTO);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
 	
 }

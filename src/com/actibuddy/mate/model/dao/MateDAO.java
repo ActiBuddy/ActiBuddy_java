@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.common.paging.SelectCriteria;
-import com.actibuddy.mate.model.dto.MateFindApplyDTO;
+import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -81,9 +81,9 @@ public class MateDAO {
 		return session.selectList("MateDAO.selectAllFindList", selectCriteria);
 	}
 
-	public List<MateFindApplyDTO> selectMtApplyHis(SqlSession session, String userId) {
+	public MateFindAndApplyDTO selectMtApplyHis(SqlSession session, String userId) {
 		
-		return session.selectList("MateDAO.selectMtApplyHis", userId);
+		return session.selectOne("MateDAO.selectMtApplyHis", userId);
 	}
 
 }

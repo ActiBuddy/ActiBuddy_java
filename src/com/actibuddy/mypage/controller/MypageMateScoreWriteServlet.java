@@ -18,31 +18,31 @@ public class MypageMateScoreWriteServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateScoreWrite.jsp");
-		rd.forward(request, response);
-		
-		
+
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 로그인된 아이디 담아주고
-		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
-		
 		// jsp에서 입력된 값을 넘겨주자
 		String title = request.getParameter("title"); // 제목
-		String checkScore = request.getParameter("checkScore"); // 체크박스 값
-		String elseWrite = request.getParameter("elseWrite"); // 기타 작성 값
-		String scoreStar = request.getParameter("rating"); // 별점 값
+		String mateId = request.getParameter("mateId"); // 평가할 메이트 아이디
 		
-		System.out.println(userId);
 		System.out.println(title);
-		System.out.println(checkScore);
-		System.out.println(elseWrite);
-		System.out.println("별점 : " + scoreStar);
+		System.out.println(mateId);
 		
+		String path = "";
+
+		if(title != null && mateId != null) {
+			path = "/WEB-INF/views/mypage/mateScoreWrite.jsp";
+			request.setAttribute("title", title);
+			request.setAttribute("mateId", mateId);
+			
+		} else {
+			path = "/WEB-INF/views/common/actiFail.jsp";
+		}
+
+		request.getRequestDispatcher(path).forward(request, response);
 		
 
 	}

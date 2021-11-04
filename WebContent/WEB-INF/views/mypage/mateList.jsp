@@ -86,6 +86,8 @@
                         <button type="button" id="complete">참가완료</button>
                         <br>
                         <hr>
+                        
+                        
                     <h3>메이트 신청받은 내역</h3>
                     <hr>
                     <div class="l-one-line">
@@ -100,9 +102,13 @@
                     <button id="l-list">메이트 구인 내역</button>
                     <div class="people">
                         <br>
-                        <h4>신청자 : 김준희</h4><br>
-                        <h4>신청자 : 김준희</h4><br>
-                        <h4>신청자 : 김준희</h4>
+                        // MT_APPLY_HIS에서 신청한 아이디 가져오기
+                        <form action="updateYn" method="post"> // 가져오고 나서 update해주기
+                        <input type="hidden" value=""> // 히든값으로 신청자 아이디 같이 넘겨줘야 
+                        <h4>신청자 : </h4><button type="submit" >수락</button><br>                        
+                        </form>
+
+                        
                         <!-- <buttont type="submit" id="okay">수락</button>
                         <buttont id="no">거절</button> -->
 

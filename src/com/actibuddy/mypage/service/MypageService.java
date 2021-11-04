@@ -10,9 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
-import com.actibuddy.activity.model.dto.ActivityInfoDTO;
 import com.actibuddy.activity.model.dto.ActivityOptionDTO;
 import com.actibuddy.faq.model.dto.FaqDTO;
+import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dao.MypageDAO;
@@ -372,5 +372,15 @@ public class MypageService {
 		
 		return result;
 	}
+
+	public List<MateFindApplyDTO> selectMtApply(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		List<MateFindApplyDTO> selectMtApply = MypageDAO.selectMtApply(session,userId);
+		
+		return selectMtApply;
+	}
+	
 	
 }

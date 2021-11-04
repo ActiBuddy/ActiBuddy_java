@@ -57,7 +57,8 @@
                 <div class="l-center-text">
                     <h3>메이트 신청한 내역</h3>
                     <hr>
-                <c:if test="${ not empty mtApply }">
+                    <c:choose>
+				    <c:when test="${  not empty mtApply }">
                     <c:forEach var="size" begin="0" end="${  fn:length(mtApply.applyList) - 1 }">
                     <div class="l-one-line">
 
@@ -91,23 +92,12 @@
                         <br>
                         <hr>
                         </c:forEach>
-                        </c:if>
+                        </c:when>
+                        <c:otherwise>
+                        <h1> 아직 신청한 메이트 내역이 없습니다.</h1>
+                        </c:otherwise>
+                        </c:choose>
 
-                      <!-- <div class="l-one-line">
-
-                        <img src="../resources/image/hreart.png" width="32px" height="30px">
-                        <span></span>
-                        <h3>메이팅 구인 제목 및 날짜 </h3>
-                        
-                        <br><br>
-                    </div>
-
-                        <h4>희망인원 : <br> 희망성별 : </h4>
-                        <br><br>
-                        <button type="button" id="reviewGo" onclick="location.href='/acti/mypage/mate/score/write'">후기쓰기</button>
-                        <button type="button" id="complete">참가완료</button>
-                        <br>
-                        <hr> -->
                         
                     <h3>메이트 신청받은 내역</h3>
                     <hr>

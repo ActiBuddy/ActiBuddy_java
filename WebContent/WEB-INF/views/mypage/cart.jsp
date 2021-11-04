@@ -56,7 +56,8 @@
                     <br>
                     <hr>
     
-					<c:if test=" ${ mateScore } != null and  ${ tripList } != ''">
+					<c:choose>
+				    <c:when test="${  not empty tripList }">
                     <c:forEach var="trip" items="${ tripList }" varStatus="st">
                     
                     <form action="../mypage/cart" method="post" id="deleteCart">
@@ -85,7 +86,11 @@
 
                     <hr>
                     </c:forEach>
-                    </c:if>
+                    </c:when>
+                    <c:otherwise>
+                    <h1> 아직 등록된 장바구니가 없습니다.</h1>
+                    </c:otherwise>
+                    </c:choose>
 
 
                 </div>

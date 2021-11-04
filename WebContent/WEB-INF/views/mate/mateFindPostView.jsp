@@ -6,8 +6,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../resources/css/actibuddy.css" rel="stylesheet" />
-    <link href="../../resources/css/mateFind_postview.css" rel="stylesheet" />
+    <link href="resources/css/actibuddy.css" rel="stylesheet" />
+    <link href="resources/css/mateFind_postview.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>같이 여수갈 사람 구해요 ! ! ! </title>
@@ -136,12 +136,14 @@
        <hr>
     
        <!-- 댓글 부분 -->
+       <form action="/acti/mate/comment" method="post">
        <div class="commentborder">
          <div class="comtext1">댓글 : </div>
-         <div class="comtext2"><textarea></textarea></div>
+         <div class="comtext2"><textarea name="text" placeholder="댓글을 작성해주세요"></textarea></div>
          <div class="comtext3"><input type="submit" class="c3" value="등록"></div>
+         <input type="hidden" name="userId" value="${ sessionScope.loginMember.userId }">
        </div>
-
+	   </form>
        <hr>
         <!-- 댓글 내용 -->
        <div class="comment">

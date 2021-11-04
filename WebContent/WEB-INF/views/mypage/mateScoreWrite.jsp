@@ -48,7 +48,6 @@
             <div class="r-center-1">
                 <h2>메이트 평가 작성  </h2>
                 <hr>
-                
                 <form id="writeScore" action="../score/write" method="post">
                 
                 <h3>제목 : </h3><textarea id="title" name="title" placeholder="제목를 작성해주세요"></textarea>

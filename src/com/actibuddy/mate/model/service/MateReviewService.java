@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dao.MateDAO;
+import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 
@@ -209,6 +210,8 @@ public class MateReviewService {
 		
 		return result;
 	}
+
+
 
 
 

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.common.paging.Pagenation;
 import com.actibuddy.common.paging.SelectCriteria;
+import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.mate.model.service.MateReviewService;
 

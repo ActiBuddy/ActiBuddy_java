@@ -67,6 +67,11 @@ public class MemberDAO {
 		return session.selectOne("MemberDAO.findpwd", member);
 	}
 
+	public static int updatePwd(SqlSession session, Map<String, String> map) {
+
+		return session.update("MemberDAO.updatePwd", map);
+	}
+
 
 	
 

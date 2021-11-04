@@ -1,12 +1,15 @@
 package com.actibuddy.mate.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.service.MateFindService;
 
@@ -21,6 +24,8 @@ public class MateFindSelectServlet extends HttpServlet {
 	
 		MateFindService findService = new MateFindService();
 		MateFindDTO find = findService.selectFindInfo(num);
+		List<MateCommentDTO> comment = findService.selectComment(num);
+		System.out.println(comment);
 		
 		String path = "";
 		if(find != null) {
@@ -39,6 +44,7 @@ public class MateFindSelectServlet extends HttpServlet {
 			request.setAttribute("deadline", find.getDeadline());
 			request.setAttribute("state", find.getState());
 			request.setAttribute("count", find.getCount());
+			request.setAttribute("comment", comment);
 			
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";

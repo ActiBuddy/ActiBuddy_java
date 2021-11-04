@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.common.paging.SelectCriteria;
+import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -88,6 +89,21 @@ public class MateDAO {
 	public List<MateFindDTO> selectHurryFind(SqlSession session) {
 		
 		return session.selectList("selectHurryFind");
+	}
+
+	public int insertComment(SqlSession session, Map<String, String> map) {
+
+		return session.insert("MateDAO.insertComment", map);
+	}
+
+	public static List<MateCommentDTO> selectComment(SqlSession session, String num) {
+
+		return session.selectList("MateDAO.selectComment", num);
+	}
+
+	public static int updateFindYn(SqlSession session, MateFindDTO find) {
+
+		return session.update("MateDAO.updateFindYn", find);
 	}
 
 }

@@ -56,7 +56,7 @@
                     <br>
                     <hr>
     
-
+					<c:if test=" ${ mateScore } != null and  ${ tripList } != ''">
                     <c:forEach var="trip" items="${ tripList }" varStatus="st">
                     
                     <form action="../mypage/cart" method="post" id="deleteCart">
@@ -85,7 +85,7 @@
 
                     <hr>
                     </c:forEach>
-                    
+                    </c:if>
 
 
                 </div>

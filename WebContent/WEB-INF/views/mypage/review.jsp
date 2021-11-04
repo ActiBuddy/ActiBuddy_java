@@ -59,7 +59,7 @@
 
                     <h4>여행 후기</h4>
                     <hr>
-              
+              		<c:if test="${ selectActireview } != null and ${ selectActireview } != ''">
                     <c:forEach items="${ selectActireview }" var="actiReview" varStatus="status" >
 					<c:set var="idx" value="${ status.index }"/>
 
@@ -90,12 +90,12 @@
     
                     <hr>
                     </c:forEach>
-
+					</c:if>
     
                     <div>
                     <h4>메이팅 후기</h4>
                     <hr>
-					
+					<c:if test="${ selectMtReview } != null and ${ selectMtReview } != ''">
 					<c:forEach var="size" begin="0" end="${ fn:length(selectMtReview)-1}">
                     <button id="move" type="button" onclick="location.href='/acti/mate/review/select?num=${selectMtReview[size].num }'">상세보기 ></button>
                     
@@ -105,8 +105,8 @@
     
                     <br><hr>
 					</c:forEach>
+					</c:if>
                     </div>
-
                 </div>
 
             </div>

@@ -48,6 +48,15 @@
 	   <result property="userId" column="USER_ID"/>
 	   <result property="count" column="MT_FIND_COUNT"/>
 	</resultMap>
+
+	<resultMap type="com.actibuddy.mate.model.dto.MateCommentDTO" id="commentResultMap">
+		<id property="num" column="MT_COM_NUM"/>
+		<result property="repYn" column="MT_COM_REP_YN"/>
+		<result property="comment" column="MT_COM_CON"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="findNum" column="MT_FIND_NUM"/>
+		<result property="date" column="MT_COM_DATE"/>
+	</resultMap>
 	
 	<!-- 메이트  -->
 	<select id="selectHurryFind" resultMap="mateFindResultMap">
@@ -419,4 +428,46 @@
 		)
 
 	</insert>
+	
+	<!-- 게시글에 댓글 추가하는 쿼리문 -->
+	<insert id="insertComment">
+		INSERT
+		  INTO COMENT A
+		(
+		  A.MT_COM_NUM
+		, A.MT_COM_REP_YN
+		, A.MT_COM_CON
+		, A.USER_ID
+		, A.MT_FIND_NUM
+		, A.MT_COM_DATE
+		) 
+		VALUES
+		(
+		  'MT_COM' || SEQ_COM_NUM.NEXTVAL
+		, 'N'
+		, #{ text }
+		, #{ userId }
+		, #{ num }
+		, DEFAULT
+		)
+	</insert>
+	<!-- 해당 게시글에 대한 댓글 조회 쿼리문 -->
+	<select id="selectComment" parameterType="string" resultMap="commentResultMap">
+	SELECT
+		   MT_COM_NUM
+	     , MT_COM_REP_YN
+	     , MT_COM_CON
+	     , USER_ID
+	     , MT_FIND_NUM
+	     , MT_COM_DATE
+	  FROM COMENT
+	 WHERE MT_FIND_NUM = #{ num } 
+	</select>
+	
+	<!-- 메이팅 게시글 신고에 대한 쿼리문 -->
+	<update id="updateFindYn">
+		UPDATE MT_FIND
+		   SET MT_FIND_REP_YN = #{ repYn }
+		 WHERE MT_FIND_NUM = #{ num }  
+	</update>
 </mapper>

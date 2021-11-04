@@ -14,7 +14,6 @@
     <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
     <link href="${ pageContext.servletContext.contextPath }/resources/css/mateFind_view.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <title>${ title }</title>
   </head>
   <body>
@@ -155,13 +154,18 @@
         <!-- 버튼 부분 -->
        <div class="btnborder">
           <button class="btngo"><a href="#">신청하기</a></button>
-          <div class="report"><img src="${ pageContext.servletContext.contextPath }/resources/image/warning2.png"></div>
+          <div class="report">
+        <button id="repbtn" class="repbtn">
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/warning2.png">
+        </button>
+        </div>
        </div>
 
 
         </div>
 
        <hr>
+       
 
          <!-- 댓글 작성 -->
         <form action="/acti/mate/comment" method="post">
@@ -170,49 +174,129 @@
          <div class="comtext2"><textarea name="text" placeholder="댓글을 작성해주세요"></textarea></div>
          <div class="comtext3"><input type="submit" class="c3" value="등록"></div>
          <input type="hidden" name="userId" value="${ sessionScope.loginMember.userId }">
+         <input type="hidden" name="num" value="${ num }">
        </div>
 	   </form>
        <hr>
 
         <!-- 댓글 내용 -->
+        <c:if test="${ comment != null and !empty comment}">
        <div class="comment">
+       	<c:forEach var="com" items="${ comment }">
           <div class="com1_border">
               <div class="com_writer1">작성자 : </div>
-              <div class="com_writer2">sangho</div>
-              <div class="com_writer3"><img src="${ pageContext.servletContext.contextPath }/resources/image/wraning.png"/></div>
+              <div class="com_writer2">${ com.userId }</div>
+              <div class="com_writer3">
+              <button id="repbtn2" class="repbtn" style="border: none;">
+              <img src="${ pageContext.servletContext.contextPath }/resources/image/wraning.png"/>
+              <input type="hidden" name="commetTitle" value="${ com.num }"/>
+              </button></div>
 
               <div class="com_writer4">
-                  <div class="com_writer5">저도 차끌고가도되나요?</div>
+                  <div class="com_writer5">${ com.comment }</div>
                   <div class="com_writer6">
-                      <div class="re">답글달기</div>
-                      <div class="date">2021/10/15 15:40</div>
+                  
+                      <div class="date">
+					<fmt:formatDate value="${ com.date }" type="date" pattern="yyyy/MM/dd (E)"/>
+				    <fmt:formatDate value="${ com.date }" type="time" pattern="(a) hh:mm:ss"/>
+					</div>
                   </div>
               </div>
           </div>
-          <div class="com2_iborder">
-              <img src="${ pageContext.servletContext.contextPath }/resources/image/comment_arrow.png"/>    
-          </div>
-          <div class="com2_border">
-              <div class="com_writer1">작성자 : </div>
-              <div class="com_writer2">parisbaguette</div>
-              <div class="com2_writer3"><img src="${ pageContext.servletContext.contextPath }/resources/image/wraning.png"/></div>
-              <div class="com_writer4">
-                <div class="com_writer5">네^^ 게하 주차장이 넓더라구요~</div>
-                <div class="com_writer6">
-                    <div class="re">답글달기</div>
-                    <div class="date">2021/10/15 16:10</div>
-                </div>
-            </div>
-       </div>
+          </c:forEach>
     <!-- 찐짜div-->
-    </div>
-    
+    	</div>
     <hr>
+          </c:if>
+    
 
     <div class="blank">
 
     </div>
+    <script>
+		$(function() {
+			$('#repbtn').one('click', function(e) {
+				
+				let findNum = '${ num }'; // 오류 체크1 : script안에서는 특수 기호가 들어가면 문자열로 인식을 못한다!
+											// 오류 체크2 : 주석에도 특수기호 사용하면 안된다.
+				console.log(findNum);
 
+				user = '${ sessionScope.loginMember.userId }';
+				
+				if(!user) {
+					alert("로그인 먼저 해주세요.");
+				} else {
+					
+					$.ajax({
+						url:'${ pageContext.servletContext.contextPath }/mate/find/report',
+						type:'post',
+					    data:{ num : findNum
+					    },
+					    success:function(result){
+					    	
+					    	if(result > 0){
+					    		alert("\'" + "${ title }" + "\'  글의 신고가 접수되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
+					    		
+					    	} else {
+					    		alert("게시글 신고 접수에 실패했습니다.");
+					    	}
+					    	e.preventDefault();
+					    },
+					    error:function(){
+					           alert("error");
+					    }
+					    
+					 });
+				}
+			});
+		});
+	</script>
+	
+	<!-- 이거 하다 말았음 -->
+	<script>
+		$(function() {
+			$('#repbtn2').one('click', function(e) {
+				
+				let commentNum = '${ comment.num }'; // 오류 체크1 : script안에서는 특수 기호가 들어가면 문자열로 인식을 못한다!
+											// 오류 체크2 : 주석에도 특수기호 사용하면 안된다.
+				console.log(commentNum);
+
+				user = '${ sessionScope.loginMember.userId }';
+				
+				if(!user) {
+					alert("로그인 먼저 해주세요.");
+				} else {
+					
+					$.ajax({
+						url:'${ pageContext.servletContext.contextPath }/mate/find/report',
+						type:'post',
+					    data:{ num : commentNum
+					    },
+					    success:function(result){
+					    	
+					    	if(result > 0){
+					    		alert("\'" + "${ coment.comment }" + "\'  글의 신고가 접수되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
+					    		
+					    	} else {
+					    		alert("게시글 신고 접수에 실패했습니다.");
+					    	}
+					    	e.preventDefault();
+					    },
+					    error:function(){
+					           alert("error");
+					    }
+					    
+					 });
+				}
+			});
+		});
+	</script>
+    
+	<script>
+		if('${ success }' != null && '${success}' != ''){
+			alert('댓글 등록에 성공하였습니다');
+		}
+	</script>
    <jsp:include page="../common/footer.jsp"/>
     </body>
   </html>

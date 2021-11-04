@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.mate.model.dto.MateFindApplyDTO;
-import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.service.MypageService;
+import com.actibuddy.mate.model.service.MateFindService;
+import com.actibuddy.member.model.dto.MemberDTO;
 
 
 @WebServlet("/mypage/matelist")
@@ -22,14 +23,24 @@ public class MypageMateListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		
 		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 		System.out.println("아이디 : " + userId);
 		
 		MypageService mypageService = new MypageService();
-		List<MateFindApplyDTO> mtApplyList = mypageService.selectMtApply(userId);
+		List<MateFindApplyDTO> mtApplyList2 = mypageService.selectMtApply(userId);
 		
-		request.setAttribute("mtApplyList", mtApplyList );
+		request.setAttribute("mtApplyList2", mtApplyList2 );
+
+		/* 사용자가 신청한 메이팅 구인글 조회하기 */
+		MateFindService mateFindService = new MateFindService();
+		List<MateFindApplyDTO> mtApplyList = mateFindService.selectMtApplyHis(userId);
+		
+		for(MateFindApplyDTO mt : mtApplyList ) {
+			System.out.println(mt);
+		}
+
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
 		rd.forward(request, response);

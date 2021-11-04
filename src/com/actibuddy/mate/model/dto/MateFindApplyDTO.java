@@ -5,18 +5,19 @@ public class MateFindApplyDTO {
 	private String num;
 	private char accYn;
 	private String applyNum;
-	private String applyedId;
+	private String appliedId;
+
 
 	public MateFindApplyDTO() {
 	
 	}
 
-	public MateFindApplyDTO(String num, char accYn, String applyNum, String applyedId) {
-		super();
+
+	public MateFindApplyDTO(String num, char accYn, String applyNum, String appliedId) {
 		this.num = num;
 		this.accYn = accYn;
 		this.applyNum = applyNum;
-		this.applyedId = applyedId;
+		this.appliedId = appliedId;
 	}
 
 	public String getNum() {
@@ -43,19 +44,20 @@ public class MateFindApplyDTO {
 		this.applyNum = applyNum;
 	}
 
-	public String getApplyedId() {
-		return applyedId;
+
+	public String getAppliedId() {
+		return appliedId;
 	}
 
-	public void setApplyedId(String applyedId) {
-		this.applyedId = applyedId;
+	public void setAppliedId(String appliedId) {
+		this.appliedId = appliedId;
 	}
 
 	@Override
 	public String toString() {
-		return "MateFindApplyDTO [num=" + num + ", accYn=" + accYn + ", applyNum=" + applyNum + ", applyedId="
-				+ applyedId + "]";
-	}
 
+		return "MateFindApplyDTO [num=" + num + ", accYn=" + accYn + ", applyNum=" + applyNum + ", appliedId="
+				+ appliedId + "]";
+	}
 	
 }

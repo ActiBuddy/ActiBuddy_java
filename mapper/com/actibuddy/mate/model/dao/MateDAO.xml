@@ -49,6 +49,20 @@
 	   <result property="count" column="MT_FIND_COUNT"/>
 	</resultMap>
 	
+	<resultMap type="com.actibuddy.mate.model.dto.MateFindApplyDTO" id="mtFindApplyResultMap">
+	<id property="applyNum" column="MT_APPLY_NUM"/>
+	<result property="num" column="MT_FIND_NUM"/>
+	<result property="accYn" column="MT_FIND_YN"/>
+	<result property="appliedId" column="APPLIED_ID"/>
+	</resultMap>
+	
+	<resultMap type="com.actibuddy.mate.model.dto.MateFindAndApplyDTO" id="mtFindAndApplyResultMap">
+	    <collection property="applyList" resultMap="mtFindApplyResultMap"/>
+	    <collection property="findList" resultMap="mateFindResultMap"/>
+	</resultMap>
+
+
+	
 	<!-- 메이트 후기 글 리스트 -->
     <select id="selectAllFindList" resultMap="mateFindResultMap">
        SELECT A.RNUM
@@ -357,4 +371,13 @@
 		)
 
 	</insert>
+	
+	<select id="selectMtApplyHis" resultMap="mtFindApplyResultMap" parameterType="String">
+	    SELECT A.*
+             , C.*
+		  FROM MT_APPLY_HIS A 
+		  JOIN MEMBER B ON (A.APPLIED_ID = B.USER_ID)
+		  JOIN MT_FIND C ON (A.MT_FIND_NUM = C.MT_FIND_NUM)
+		 WHERE A.APPLIED_ID = #{ appliedId }
+	</select>
 </mapper>

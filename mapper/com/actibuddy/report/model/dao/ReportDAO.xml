@@ -45,7 +45,18 @@
 		
 	</resultMap>
   
-  
+  <!--  <resultMap type="com.actibuddy.mate.model.dto.MateReviewDTO" id="mateReviewResultMap">
+		<id property="num" column="MT_REVIEW_NUM"/>
+		<result property="title" column="MT_REVIEW_TITLE"/>
+		<result property="img1" column="MT_REVIEW_IMG1"/>
+		<result property="img2" column="MT_REVIEW_IMG2"/>
+		<result property="img3" column="MT_REVIEW_IMG3"/>
+		<result property="content" column="MT_REVIEW_CON"/>
+		<result property="date" column="MT_REVIEW_DATE"/>
+		<result property="repYn" column="MT_REVIEW_REP_YN"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="recommend" column="MT_REVIEW_REC"/>
+</resultMap> -->
   
    <!-- =========메이팅 리뷰 신고 보기 ============== -->
   
@@ -152,6 +163,23 @@
   </update>
   
   <!-- ========================================= -->
+  
+    <!-- ========= 메이팅 리뷰 신고 보기 ============== -->
+  <select id="matereviewrep" resultMap="mateReviewResultMap" >
+		SELECT
+			  A.MT_REVIEW_NUM
+			, A.MT_REVIEW_TITLE
+			, A.MT_REVIEW_IMG1
+			, A.MT_REVIEW_CON
+			, A.MT_REVIEW_DATE
+			, A.MT_REVIEW_REP_YN
+			, A.USER_ID
+			, A.MT_REVIEW_IMG2
+			, A.MT_REVIEW_IMG3
+			, A.MT_REVIEW_REC
+		  FROM MT_REVIEW A
+		 WHERE A.MT_REVIEW_REP_YN = 'L'
+	</select>
   
   <!-- ================== 신고처리 완료된 신고 목록 보기 =================== -->
   <select id="rejectedmatefindrepdetail" resultMap="mateReviewResultMap">

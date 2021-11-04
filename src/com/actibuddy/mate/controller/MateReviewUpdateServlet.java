@@ -178,7 +178,7 @@ public class MateReviewUpdateServlet extends HttpServlet {
 					requestReview.setUserId(parameter.get("userId"));
 					requestReview.setContent(parameter.get("con"));
 					requestReview.setNum(parameter.get("hdnum"));
-					requestReview.setRepYn('N');
+					requestReview.setRepYn("L");
 				
 
 					/* 이미지파일 데이터를 DTO에 set해주는 부분 */

@@ -20,7 +20,7 @@ public class MateReviewDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String num = request.getParameter("num");
-		char updateRepYn = 'D';
+		String updateRepYn = "D";
 		
 		MateReviewDTO review = new MateReviewDTO();
 		review.setNum(num);

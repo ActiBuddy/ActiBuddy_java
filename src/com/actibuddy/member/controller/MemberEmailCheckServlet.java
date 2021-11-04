@@ -14,11 +14,8 @@ import javax.servlet.http.HttpSession;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.member.model.service.MemberService;
 
-/**
- * Servlet implementation class MemberIdCheckServlet
- */
-@WebServlet("/member/idcheck")
-public class MemberIdCheckServlet extends HttpServlet {
+@WebServlet("/member/emailcheck")
+public class MemberEmailCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,15 +23,14 @@ public class MemberIdCheckServlet extends HttpServlet {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		
-		String userId = request.getParameter("userId");
+		String email = request.getParameter("email");
 		
-		MemberDTO requestMember = new MemberDTO();
-		
-		requestMember.setUserId(userId);
+		MemberDTO requestEmail = new MemberDTO();
+		requestEmail.setEmail(email);
 		
 		MemberService memberService = new MemberService();
 		
-		int result = memberService.idcheck(requestMember);
+		int result = memberService.emailcheck(requestEmail);
 		
 		System.out.println(result);
 

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.manager.model.dto.ManagerDTO;
 import com.actibuddy.manager.model.dto.ManagerPartDTO;
+import com.actibuddy.member.model.dto.MemberDTO;
 
 public class ManagerDAO {
 
@@ -49,4 +50,19 @@ public class ManagerDAO {
 	public static int managerpartChange(SqlSession session, ManagerPartDTO managerpart) {
 		return session.update("ManagerDAO.managerpartChange", managerpart);
 	}
+
+// ====================== 매니저 생성 파트====================
+	
+	// 파트 등록
+	public static int registManagerPart(SqlSession session, ManagerPartDTO managerpart) {
+		return session.insert("ManagerDAO.registManagerPart", managerpart);
+	}
+
+	// 아이디 생성
+	public static int registManagerId(SqlSession session, MemberDTO requestMember) {
+		return session.insert("ManagerDAO.registManagerId", requestMember);
+	}
+
+
 }
+

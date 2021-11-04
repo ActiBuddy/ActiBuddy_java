@@ -30,6 +30,7 @@ public class SelectCriteria implements java.io.Serializable {
 		this.endRow = endRow;
 		this.searchCondition = searchCondition;
 		this.searchValue = searchValue;
+		
 	}
 
 	public int getPageNo() {
@@ -127,5 +128,8 @@ public class SelectCriteria implements java.io.Serializable {
 				+ endPage + ", startRow=" + startRow + ", endRow=" + endRow + ", searchCondition=" + searchCondition
 				+ ", searchValue=" + searchValue + "]";
 	}
+
+
+	
 	
 }

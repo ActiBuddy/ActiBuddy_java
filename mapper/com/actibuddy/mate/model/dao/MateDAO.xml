@@ -84,6 +84,7 @@
 			  FROM MT_FIND A
 	        WHERE A.MT_FIND_REP_YN ='N'
 	          AND A.MT_FIND_STATE = '신청가능'
+	          AND A.MT_FIND_DEADLINE > SYSDATE
 	        ORDER BY A.MT_FIND_DEADLINE ASC)B
 	        WHERE ROWNUM <![CDATA[ < ]]> 4
 	</select>

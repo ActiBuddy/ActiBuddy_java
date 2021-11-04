@@ -127,14 +127,14 @@
             <div class="second">
                 <select class="location" name="location">
                     <option value="none">지역선택</option>
-                    <option value="seoul">서울</option>
-                    <option value="gyeonggi">경기</option>
-                    <option value="gangwon">강원</option>
-                    <option value="chungcheong">충청</option>
-                    <option value="jeolla">전라</option>
-                    <option value="gyeongsang">경상</option>
-                    <option value="busan">부산</option>
-                    <option value="jeju">제주</option>
+                    <option value="서울">서울</option>
+                    <option value="경기">경기</option>
+                    <option value="강원">강원</option>
+                    <option value="충청">충청</option>
+                    <option value="전라">전라</option>
+                    <option value="경상">경상</option>
+                    <option value="부산">부산</option>
+                    <option value="제주">제주</option>
                 </select>
             </div>
             <div class="third">
@@ -226,7 +226,7 @@
           <div class="condition">성별</div>
           <div class="yellowback">
             <div class="imgborder2">
-              <img id="genimg" src="${ pageContext.servletContext.contextPath }/resources/image/both.png" />
+              <img id="genimg" src="${ pageContext.servletContext.contextPath }/resources/image/B.png" />
             </div>
             <div class="selectborder">
               <select id="gender" class="gender" name="gender">
@@ -303,11 +303,11 @@
        /* 이미지 변경 스크립트 */
        $("#gender").change(function () {
            if($(this).val() == "B") {
-             $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/both.png");
+             $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/B.png");
            } else if ($(this).val() == "M") {
-             $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/men.png");
+             $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/M.png");
            } else if ($(this).val() == "W") {
-             $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/women.png");
+             $("#genimg").attr("src","${ pageContext.servletContext.contextPath }/resources/image/W.png");
            }
          });
 

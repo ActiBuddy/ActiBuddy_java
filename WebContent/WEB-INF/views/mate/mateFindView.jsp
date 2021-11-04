@@ -154,7 +154,7 @@
 
         <!-- 버튼 부분 -->
        <div class="btnborder">
-          <button class="btngo"><a href="#">신청하기</a></button>
+          <button class="btngo">신청하기</button>
           <div class="report"><img src="${ pageContext.servletContext.contextPath }/resources/image/warning2.png"></div>
        </div>
 

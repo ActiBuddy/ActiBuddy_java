@@ -35,18 +35,38 @@ public class MateMainServlet extends HttpServlet {
 		if(pageNo <= 0) {
 			pageNo = 1;
 		}
-
-		System.out.println(currentPage);
-		System.out.println(pageNo);
-
+		
 		/* ======== 검색 처리 ========*/
 		// 검색 값
-		String searchCondition = request.getParameter("location");
 		String searchValue = request.getParameter("searchValue");
+		String location = request.getParameter("location");
+		String searchCondition ="";
+		
+		System.out.println("지역 : " + location);
+		System.out.println("검색값 : " + searchValue);
+		
+		// 처음에 지역에 선택이 안되었기 때문에(radio -> label로 변경해서 처리해서)
+		if(location == null) {
+			location = "a";
+		}
+		
+		switch(location) {
+		case "a": searchCondition="전체";break;
+		case "b": searchCondition="서울"; break;
+		case "c": searchCondition="경기"; break;
+		case "d": searchCondition="강원"; break;
+		case "e": searchCondition="충청"; break;
+		case "f": searchCondition="전라"; break;
+		case "g": searchCondition="경상"; break;
+		case "h": searchCondition="부산"; break;
+		case "i": searchCondition="제주"; break;
+		}
+		
+		
 		// map 설정
 		Map<String, String> searchMap = new HashMap<>();
-		searchMap.put("searchCondition", searchCondition);
 		searchMap.put("searchValue", searchValue);
+		searchMap.put("searchCondition", searchCondition);
 
 		/* ======= 공통 처리 ======== */
 		// 전체 게시물 수 필요
@@ -62,7 +82,7 @@ public class MateMainServlet extends HttpServlet {
 		SelectCriteria selectCriteria = null;
 
 		// 검색 할 때 페이징 처리와 검색 안할 때 페이징 처리
-		if(searchValue != null && !"".equals(searchValue)) {
+		if(searchCondition != null && !"".equals(searchCondition)) {
 			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue);
 		} else {
 			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
@@ -87,6 +107,7 @@ public class MateMainServlet extends HttpServlet {
 			request.setAttribute("selectCriteria", selectCriteria);
 			request.setAttribute("newReviewList", newReviewList);
 			request.setAttribute("hurryFindList", hurryFindList);
+		    request.setAttribute("location1", location);
 
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";

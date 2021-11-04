@@ -53,22 +53,11 @@
                 <h4>서울부터 서울 근교까지 한번에!</h4>
             </div>
 		    <c:forEach var="acti" items="${ locationList }" end="2">
-		    <div class="col" style="margin-top: 5%;">
-            <a href="/acti/activity/information?actiName=${ acti.activityList.get(0).name }" style="font-size: 16px">
-              <div class="card shadow-sm" style="width : 350px; height: 400px; background-color: ">
-                <img src="${ acti.activityList.get(0).image }"  id="check1" width="100%" height="400px" style="background-image: contain;"></img>
-                <div class="card-body" style="height : 160px">
-                  <p class="card-text">
-                      ${ acti.activityList.get(0).name }
-                  </p>
-                  <p>조회수 : ${ acti.activityList.get(0).views }</p>
-                  <p>액티비티 마감일 : ${ acti.activityList.get(0).endDate }</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">₩${ acti.activityList.get(0).price }부터</small>
-                  </div>
-                </div>
-              </div>
-              </a>
+            <div class="col-md-3">
+                <a href="${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
+                <h4 class="bodyText">${ acti.activityList.get(0).name }</h4>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 ${ acti.activityList.get(0).star }</span>
+                <p style="margin : 10px 0 0 10px">₩${ acti.activityList.get(0).price }부터</p>
             </div>
             </c:forEach>
         </div>
@@ -77,92 +66,61 @@
 
     <div class="menu2" id="seoul" style="margin-top: 10%;">
         <div class="row">
-            <div class="col-md-3" style="margin-top: 6%; padding-left: 10%;">
-                <h3>국내 최대 테마파크인</h3>
+             <div class="col-md-3" style="margin-top: 10%; padding-left: 7%;">
+                <h3>국내 최대 테마파크!</h3>
                 <h3>에버랜드와 캐리비안 베이</h3>
                 <h3>지금 당장 경기도로 가자!!</h3>
             </div>
+            <c:forEach var="acti" items="${ locationList2 }" end="2">
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
-                <h3 class="bodyText">롯데월드 자유 이용권</h3>
-                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
-                <p class="bottomText">￦18,000원부터</p>
+                <a href="${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
+                <h4 class="bodyText">${ acti.activityList.get(0).name }</h4>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 ${ acti.activityList.get(0).star }</span>
+                <p style="margin : 10px 0 0 10px">₩${ acti.activityList.get(0).price }부터</p>
             </div>
-            <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
-                <h3 class="bodyText">경복궁</h3>
-                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
-                <p class="bottomText">￦18,000원부터</p>
-            </div>
-            <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
-                <h3 class="bodyText">서울 어린이대공원</h3>
-                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
-                <p class="bottomText">￦18,000원부터</p>
-            </div>
+            </c:forEach>
         </div>
-        <a href="../activity/activity.html" style="text-decoration: none;"><button class="moreBtn" type="submit">더보기</button></a>
+        <a href="/acti/activity/location?locationName=${locationList2[0].name}" style="text-decoration: none;"><button class="moreBtn" type="submit">더보기</button></a>
     </div>
 
     <div class="menu3" id="seoul" style="margin-top: 10%;">
         <div class="row">
-            <div class="col-md-3" style="margin-top: 6%; padding-left: 10%;">
+            <div class="col-md-3" style="margin-top: 10%; padding-left: 7%;">
                 <h3>여름하면 제주도지!</h3>
                 <h3>액티비티 하면 제주도!</h3>
                 <h3>제주도하면 액티비티!</h3>
             </div>
+            <c:forEach var="acti" items="${ locationList3 }" end="2">
             <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
-                <h3 class="bodyText">롯데월드 자유 이용권</h3>
-                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
-                <p class="bottomText">￦18,000원부터</p>
+                <a href="${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
+                <h4 class="bodyText">${ acti.activityList.get(0).name }</h4>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 ${ acti.activityList.get(0).star }</span>
+                <p style="margin : 10px 0 0 10px">₩${ acti.activityList.get(0).price }부터</p>
             </div>
-            <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
-                <h3 class="bodyText">경복궁</h3>
-                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
-                <p class="bottomText">￦18,000원부터</p>
-            </div>
-            <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
-                <h3 class="bodyText">서울 어린이대공원</h3>
-                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
-                <p class="bottomText">￦18,000원부터</p>
-            </div>
-        </div>
-        <a href="../activity/activity.html" style="text-decoration: none;"><button class="moreBtn" type="submit">더보기</button></a>
+            </c:forEach>
+        <a href="/acti/activity/location?locationName=${locationList3[0].name}" style="text-decoration: none;"><button class="moreBtn" type="submit">더보기</button></a>
     </div>
-
-    <div class="menu4" id="seoul">
+  </div>
+  
+    <div class="menu4" id="seoul" style="margin-top: 10%;">
         <div class="row">
-            <div class="col-md-3" style="margin-top: 6%; padding-left: 10%;">
-                <h3>여름하면 제주도지!</h3>
-                <h3>액티비티 하면 제주도!</h3>
-                <h3>제주도하면 액티비티!</h3>
+            <div class="col-md-3" style="margin-top: 10%; padding-left: 7%;">
+                <h3>마! 여행은 부산아이가!</h3>
+                <h3>먹거리 즐길거리가 많은</h3>
+                <h3>부산으로 떠나요!</h3>
             </div>
             
+            <c:forEach var="acti" items="${ locationList4 }" end="2">
             <div class="col-md-3">
-                <a href=""><img class="imgback" src="../resources/image/seoul.jpeg"></a>
-                <h3 class="bodyText">롯데월드 자유 이용권</h3>
-                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
-                <p class="bottomText">￦18,000원부터</p>
+                <a href="${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
+                <h4 class="bodyText">${ acti.activityList.get(0).name }</h4>
+                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 ${ acti.activityList.get(0).star }</span>
+                <p style="margin : 10px 0 0 10px">₩${ acti.activityList.get(0).price }부터</p>
             </div>
-            <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
-                <h3 class="bodyText">경복궁</h3>
-                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
-                <p class="bottomText">￦18,000원부터</p>
-            </div>
-            <div class="col-md-3">
-                <a href="https://www.naver.com/"><img class="imgback" src="../resources/image/seoul.jpeg"></a>
-                <h3 class="bodyText">서울 어린이대공원</h3>
-                <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 4.4</span>
-                <p class="bottomText">￦18,000원부터</p>
-            </div>
-        </div>
-        <a href="../activity/activity.html" style="text-decoration: none;"><button class="moreBtn" type="submit">더보기</button></a>
+            </c:forEach>
+        <a href="/acti/activity/location?locationName=${locationList4[0].name}" style="text-decoration: none;"><button class="moreBtn" type="submit">더보기</button></a>
     </div>
-            
+    </div> 
 
         <jsp:include page="../common/footer.jsp"/>
 </body>

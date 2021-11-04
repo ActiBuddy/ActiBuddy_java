@@ -43,7 +43,8 @@
                 <tr>
                   <td>${ userId.userId }</td>
                   <td><a href="../faq/detail?queTitle=${ userId.queTitle }">${ userId.queTitle }</a></td>
-                  <td><fmt:formatDate pattern="hh시-mm-ss" value="${ userId.date }"/> </td>
+<%--                   <td><fmt:formatDate pattern="hh시-mm-ss" value="${ userId.date }"/> </td> --%>
+                  <td>${ userId.date }</td>
                   <td>${ userId.answerYn }</td>
                 </tr>
                 </c:forEach>

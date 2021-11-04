@@ -84,8 +84,8 @@
 			<input type="text" placeholder="Search" name="searchValue" id="searchBar">
 			</span>
 			<span>
-			<c:if test="${ sessionScope.loginMember.memType eq 'M'}">		
 				<button type="submit" class="search-btn">Submit</button>
+			<c:if test="${ sessionScope.loginMember.memType eq 'M'}">		
 			<a href="${ pageContext.servletContext.contextPath }/manager/main">매니저 메뉴</a>		
 			</c:if>
 			</span>

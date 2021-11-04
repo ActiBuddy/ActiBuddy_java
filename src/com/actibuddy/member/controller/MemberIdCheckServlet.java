@@ -29,12 +29,9 @@ public class MemberIdCheckServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		
 		MemberDTO requestMember = new MemberDTO();
+		
 		requestMember.setUserId(userId);
 		
-		
-		System.out.println(userId);
-		System.out.println(requestMember);
-
 		MemberService memberService = new MemberService();
 		
 		int result = memberService.idcheck(requestMember);

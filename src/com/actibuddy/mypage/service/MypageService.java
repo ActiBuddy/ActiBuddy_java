@@ -11,10 +11,12 @@ import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
+import com.actibuddy.activity.model.dto.ActivityOptionDTO;
 import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dao.MypageDAO;
+import com.actibuddy.mypage.model.dto.ActiConditionHisDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
 import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
@@ -77,13 +79,14 @@ public class MypageService {
 	/**
 	 * 여행 리스트 조회 
 	 * @param userId
+	 * @param actiName 
 	 * @return 혜주
 	 */
-	public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(String userId) {
+	public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(Map<String,String> map) {
 		
 		SqlSession session = getSqlSession();
 		
-		CartAndMemberAndPayHIsDTO tripList = mypageDAO.selectCartAndMemberAndPayHIs(session,userId);
+		CartAndMemberAndPayHIsDTO tripList = mypageDAO.selectCartAndMemberAndPayHIs(session,map);
 		
 		session.close();
 		
@@ -281,6 +284,11 @@ public class MypageService {
 		return payResult;
 	}
 	
+	/**
+	 * 문의사항 가져오기
+	 * @param userId
+	 * @return해주
+	 */
 	public List<FaqDTO> selectFaq(String userId) {
 		
 		SqlSession session = getSqlSession();
@@ -292,8 +300,77 @@ public class MypageService {
 		return selectFaq;
 	}
 
+	/**
+	 * 액티비티 등록
+	 * @param requestActi
+	 * @return 혜주
+	 */
+	public int registReview(ActivityDTO requestActi) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MypageDAO.insertActi(session,requestActi);
+				
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/**
+	 * 최근 등록된 액티비티 번호 조회용 메소드
+	 * @author 조혜쭈
+	 * @return
+	 */
+	public ActiConditionHisDTO selectNewActiNum() {
+		
+		SqlSession session = getSqlSession();
+		
+		ActiConditionHisDTO newActiNum = mypageDAO.selectNewActiNum(session);
+		
+		session.close();
+		
+		return newActiNum;
+	}
 
 
+	public int insertCon(ActiConditionHisDTO requestActiCon) {
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.insertCon(session,requestActiCon);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
 
+	}
+
+	public int insertOp(ActivityOptionDTO requestOption) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.insertOp(session,requestOption);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
 	
 }

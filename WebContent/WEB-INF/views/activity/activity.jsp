@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="../resources/css/activity-style.css">
     <link rel="stylesheet" href="../resources/css/FAQ.css">
     <script src="${ pageContext.servletContext.contextPath }/resources/js/activity.js?ver=3"></script>
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/mate.css" rel="stylesheet" />
   <script>
   $(function() {
 	
@@ -355,7 +356,7 @@
             <img src="${locationActivity.image}">
           </div>
             <div>
-            <h1 id="title">${locationActivity.name}</h1>
+            <h1 id="title" style="font-weight: 900;">${locationActivity.name}</h1>
             <p id="content">
                 ${locationActivity.info}
             </p>
@@ -367,7 +368,7 @@
     <div class="container mt-5 mb-5">
         <div class="row">
           <div class="col">
-            <h1 id="tipTitle" style="margin-bottom: 20px;">${locationActivity.name} 여행 가이드 및 팁</h1>
+            <h1 id="tipTitle" style="margin-bottom: 20px; font-weight: 700;">${locationActivity.name} 여행 가이드 및 팁</h1>
             <div class=tip>
             <p id="tipBody">
             ${locationActivity.tip}
@@ -376,7 +377,7 @@
         </div>
      
       <div class="col" id="visit">
-        <h1 style="margin-bottom: 20px;">방문하기 좋은 시기</h1>
+        <h1 style="margin-bottom: 20px; font-weight: 700;">방문하기 좋은 시기</h1>
         <ul>
           <li>
            <c:forEach var="data1" items="${ vistis['vistis'] }">
@@ -390,7 +391,7 @@
           
     <!-- 인기 액티비티 -->
     <div class="container mt-5 mb-md-5">
-        <h1>${locationActivity.name} 추천 액티비티</h1>
+        <h1 style="font-weight: 700">${locationActivity.name} 추천 액티비티</h1>
     </div>
     <div class="container mt-4">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
@@ -399,10 +400,11 @@
             <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm" id="clickAcit">
                 <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
-                <div class="card-body" style="height : 160px">
+                <div class="card-body" style="height : 190px">
                   <p class="card-text">
                       ${acti.name}
                   </p>
+                  <p>별점 : ${ acti.star }</p>
                   <p>조회수 : ${acti.views} </p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -419,7 +421,7 @@
 
       <!-- 액티비티 조회 -->
     <div class="container mt-5">
-      <h1>${locationActivity.name} 액티비티</h1>
+      <h1 style="font-weight: 700;">${locationActivity.name} 액티비티</h1>
       <hr>
     </div>   
   <div class="bigDiv">
@@ -508,7 +510,7 @@
       <input type="hidden" name="hdLocationName" value="${locationActivity.name}"/>
     </div>
     <div class="div2">
-        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto;" id="actiSearch">${selectCriteria.totalCount}건의 검색 결과</h2>
+        <h2 class="container mt-5 mb-5" style="float: none; margin:100 auto; font-weight: 700;" id="actiSearch">${selectCriteria.totalCount}건의 검색 결과</h2>
         <div class="container" style="float: none; margin:100 auto;">
           <div class="row mb-5" style="float: none; margin:0 auto;">
             <div class="col" style="flex: 0;">
@@ -535,9 +537,11 @@
               <div class="dropdown">
                 <select id="sortBtn" name="sort">
                     <option value="views">인기순</option>
+                    <option value="star">별점순</option>
                     <option value="new">최신순</option>
                    	<option value="random">랜덤추천</option>
                     <option value="price">낮은가격순</option>
+                    
                 </select>
               </div>
             </div>
@@ -552,10 +556,11 @@
             <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm">
                 <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
-                <div class="card-body" style="height : 160px">
+                <div class="card-body" style="height : 190px">
                   <p class="card-text">
                       ${acti.name}
                   </p>
+                  <p>별점 : ${ acti.star }</p>
                   <p>조회수 : ${ acti.views }</p>
                   <p>액티비티 마감일 : ${ acti.endDate }</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -579,39 +584,64 @@
   </nav>
   
     <!-- 메이트 마감 임박 -->
-    <div class="mateDiv">
-      <h1 style="margin-right: 75%; margin-top: 10%">메이트 마감 임박</h1>
-      <div class="row" id="box">
-        <div class="col">
-          <a href="../Mate/matemain.html"><img id="mateImg" src="../resources/image/mate.png"></a>
+    <div class="mate_hurry1">
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_hurry.png">
+    </div>
+    <div class="mate_hurry2">
+        <div class="mate_hurry3">
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_one.png">
+            <span class="h_title">
+                같이 여수갈 사람 구해요
+            </span>
+            <span class="h_text">
+                parisbaguette<br><br>
+                인원:2/6<br><br>
+                희망연령:20대,30대<br><br>
+                남녀무관
+            </span>
+            <span class="h_date">
+                ~10/17
+            </span>
+            <span class="h_btn">
+                <button>신청하러가기</button>
+            </span>
         </div>
-        <div class="col">
-          <div class="mateBox">
-            <div class="mateTop">
-              <img src="../resources/image/heart.png">
-              <h5 id="mateTitle">감귤마을 스쿠버 다이빙</h5>
-            </div>
-            <div class="matebody">
-            <p id="left">작성자 : </p><p id="left">감귤</p> 
-            <p id="date">~10/8</p>  
-            <button type="button" class="btn btn-success" id="btn">참여하기</button>
-            </div>
-          </div>
+        <div class="mate_hurry3">
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_two.png">
+            <span class="h_title">
+                같이 여수갈 사람 구해요
+            </span>
+            <span class="h_text">
+                parisbaguette<br><br>
+                인원:2/6<br><br>
+                희망연령:20대,30대<br><br>
+                남녀무관
+            </span>
+            <span class="h_date">
+                ~10/17
+            </span>
+            <span class="h_btn">
+                <button>신청하러가기</button>
+            </span>
         </div>
-        <div class="col">
-          <div class="mateBox">
-            <div class="mateTop">
-              <img src="../resources/image/heart.png">
-              <h5 id="mateTitle">감귤마을 스쿠버 다이빙</h5>
-            </div>
-            <div class="matebody">
-            <p id="left">작성자 : </p><span id="left">감귤</span> 
-            <p id="date">~10/8</p>
-            <button type="button" class="btn btn-success" id="btn">참여하기</button>
-            </div>
-          </div>
+        <div class="mate_hurry3">
+            <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_three.png">
+            <span class="h_title">
+                같이 여수갈 사람 구해요
+            </span>
+            <span class="h_text">
+                parisbaguette<br><br>
+                인원:2/6<br><br>
+                희망연령:20대,30대<br><br>
+                남녀무관
+            </span>
+            <span class="h_date">
+                ~10/17
+            </span>
+            <span class="h_btn">
+                <button>신청하러가기</button>
+            </span>
         </div>
-      </div>
     </div>
  <!-- 하단 footer-->
 <jsp:include page="../common/footer.jsp"/>

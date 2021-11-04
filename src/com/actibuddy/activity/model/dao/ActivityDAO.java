@@ -42,9 +42,9 @@ public class ActivityDAO {
 		return session.selectList("ActivityDAO.selectRecommendActivity", actiName);
 	}
 
-	public List<LocationAndActivityDTO> selectAllList(SqlSession session) {
+	public List<LocationAndActivityDTO> selectAllList(SqlSession session, String location) {
 
-		return session.selectList("ActivityDAO.selectAllList");
+		return session.selectList("ActivityDAO.selectAllList", location);
 	}
 
 	public LocationDTO selectLocationOne(SqlSession session, String locationName) {
@@ -117,9 +117,14 @@ public class ActivityDAO {
 		return session.selectOne("ActivityDAO.selectPayment");
 	}
 	
-	public int updateStar(SqlSession session, int actiNum) {
+	public int updateStar(SqlSession session, String actiNum) {
 
-		return session.update("ActivityDAO.updateStar");
+		return session.update("ActivityDAO.updateStar", actiNum);
+	}
+
+	public List<ActivityDTO> selectManyView(SqlSession session) {
+		
+		return session.selectList("ActivityDAO.selectManyView");
 	}
 
 }

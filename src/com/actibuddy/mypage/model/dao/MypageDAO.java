@@ -9,9 +9,11 @@ import com.actibuddy.activity.model.dto.ActiReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityAndReviewDTO;
 import com.actibuddy.activity.model.dto.ActivityDTO;
 import com.actibuddy.activity.model.dto.ActivityInfoDTO;
+import com.actibuddy.activity.model.dto.ActivityOptionDTO;
 import com.actibuddy.faq.model.dto.FaqDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
+import com.actibuddy.mypage.model.dto.ActiConditionHisDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
 import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
@@ -37,9 +39,9 @@ public class MypageDAO {
 		return session.update("MypageDAO.changeUseYn");
 	}
 
-		public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(SqlSession session, String userId) {
+		public CartAndMemberAndPayHIsDTO selectCartAndMemberAndPayHIs(SqlSession session, Map<String, String> map) {
 			
-			return session.selectOne("MypageDAO.selectTripList",userId);
+			return session.selectOne("MypageDAO.selectTripList",map);
 		}
 
 		public int insertCart(SqlSession session, CartDTO newCart) {
@@ -101,6 +103,26 @@ public class MypageDAO {
 		public List<FaqDTO> selectFaq(SqlSession session, String userId) {
 			
 			return session.selectList("MypageDAO.selectFaq",userId);
+		}
+
+		public static int insertActi(SqlSession session, ActivityDTO requestActi) {
+			
+			return session.insert("MypageDAO.insertActi",requestActi);
+		}
+
+		public ActiConditionHisDTO selectNewActiNum(SqlSession session) {
+			
+			return session.selectOne("MypageDAO.selectNewActiNum");
+		}
+
+		public int insertCon(SqlSession session, ActiConditionHisDTO requestActiCon) {
+			
+			return session.insert("MypageDAO.insertCon",requestActiCon);
+		}
+
+		public int insertOp(SqlSession session, ActivityOptionDTO requestOption) {
+			
+			return session.insert("MypageDAO.insertOp",requestOption);
 		}
 
 

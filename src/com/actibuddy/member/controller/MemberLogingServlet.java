@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.actibuddy.manager.model.dto.ManagerPartDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.member.model.service.MemberService;
 
@@ -37,9 +38,13 @@ public class MemberLogingServlet extends HttpServlet {
 		requestMember.setUserId(memberId);
 		requestMember.setPwd(memberPwd);
 		
+		ManagerPartDTO managerlogin = new ManagerPartDTO();
+		managerlogin.setUserId(memberId);
+		
 		MemberService memberService = new MemberService();
 		
 		MemberDTO loginMember = memberService.loginCheck(requestMember);
+		ManagerPartDTO loginManager = memberService.managerlogin(managerlogin);
 		
 		System.out.println(loginMember);
 		
@@ -49,12 +54,11 @@ public class MemberLogingServlet extends HttpServlet {
 		if(loginMember != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", loginMember);
+			session.setAttribute("loginManager", loginManager);
 			
 			response.sendRedirect(request.getContextPath());
 
 		} else {
-//			request.setAttribute("message", "로그인 실패!");
-			System.out.println("dmd dkseho~");
 			request.getRequestDispatcher("/WEB-INF/views/common/failed.jsp").forward(request, response);
 		}
 		

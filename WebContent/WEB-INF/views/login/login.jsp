@@ -38,8 +38,10 @@
         
         
         <h3><a href="${ pageContext.servletContext.contextPath }/member/regist">회원가입</a></h3>
+        <h3><a href="${ pageContext.servletContext.contextPath }/member/findid">아이디 / 비밀번호 찾기</a></h3>
+        
       </div>
-
+ 		<br><br><br><br><br>
    <jsp:include page="../common/footer.jsp"/>
     </main>
   </body>

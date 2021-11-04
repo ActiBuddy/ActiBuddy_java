@@ -47,13 +47,13 @@
           <h5>${ reviewreportinfo.userId }</h5>
           <h5>${ actireviewreportinfo.writerId }</h5>
           
-          <br><br>
+          <br><br><br><br><br><br>
           
+          
+          <%-- <c:if test="${ reviewreportinfo.repYn eq 'N' or actireviewreportinfo.recYn eq 'N'  }"> 
           <form action="../report/reject" method="post">
-         
 		  <textarea type="text" name="title" style="display:none">${ reviewreportinfo.title }</textarea>
 		  <textarea type="text" name="title1" style="display:none">${ actireviewreportinfo.title }</textarea>
-          
           <button type="submit">신고 반려</button>
           </form>
           
@@ -64,8 +64,37 @@
           <textarea type="text" name="userId1" style="display: none">${ actireviewreportinfo.writerId }</textarea>
           <button type="submit">신고 수리</button>
           </form>
+		  </c:if>    --%>       
           
-          
+	 	  <c:choose>
+	 	  <c:when test="${ reviewreportinfo.repYn eq 'N' }">
+	 	  <form action="../report/reject" method="post">
+		  <textarea type="text" name="title" style="display:none">${ reviewreportinfo.title }</textarea>
+          <button type="submit">신고 반려</button>
+          </form>
+	 	  <form action="../report/accept" method="post">
+          <textarea type="text" name="title" style="display: none">${ reviewreportinfo.title }</textarea>
+          <textarea type="text" name="userId" style="display: none">${ reviewreportinfo.userId }</textarea>
+          <button type="submit">신고 수리</button>
+          </form>
+	 	  </c:when>
+	 	  
+	 	  <c:when test="${ actireviewreportinfo.recYn eq 'N'}">
+	 	  <form action="../report/reject" method="post">
+		  <textarea type="text" name="title1" style="display:none">${ actireviewreportinfo.title }</textarea>
+          <button type="submit">신고 반려</button>
+          </form>
+	 	  <form action="../report/accept" method="post">
+          <textarea type="text" name="title1" style="display: none">${ actireviewreportinfo.title }</textarea>
+          <textarea type="text" name="userId1" style="display: none">${ actireviewreportinfo.writerId }</textarea>
+          <button type="submit">신고 수리</button>
+          </form>
+	 	  </c:when>
+	 	  
+	 	  
+	 	  
+	 	  </c:choose>
+
           
           </div>
     <!-- Bootstrap core JavaScript

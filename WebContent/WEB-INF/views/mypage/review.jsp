@@ -61,9 +61,8 @@
                     <hr>
               
                     <c:forEach items="${ selectActireview }" var="actiReview" varStatus="status" >
-                    
-			
 					<c:set var="idx" value="${ status.index }"/>
+
                     <h5> ${ actiReview.reviewList.get(idx).writeDate}</h5>
                     <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ actiReview.name }'">상세보기 ></button>
                     <c:choose>
@@ -71,7 +70,7 @@
 						 <h2 id="foryellow">★</h2><h2 id="forgray">★★★★</h2>
 					  </c:when>
 					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 2 }">
-					     <h2 id="foryellow">★★</h2><h2 id="forgray">★★</h2>
+					     <h2 id="foryellow">★★</h2><h2 id="forgray">★★★</h2>
 					  </c:when>
 					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 3 }">
 					     <h2 id="foryellow">★★★</h2><h2 id="forgray">★★</h2>
@@ -85,14 +84,12 @@
 					</c:choose><br>
                     <h3>제목 : ${ actiReview.reviewList.get(idx).title}</h3>
                     <br><br>
-                    <h4>후기 상품 : ${ actiReview.name}</h4>
+                    <h4>후기 상품 : ${ actiReview.name }</h4>
     
-                    
-                    <%-- <h5>수량 : ${ selectActiReview.reviewList[size].writeDate }</h5> --%>
 					<br>
     
-                    </c:forEach>
                     <hr>
+                    </c:forEach>
 
     
                     <div>

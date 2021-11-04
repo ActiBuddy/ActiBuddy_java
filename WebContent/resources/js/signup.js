@@ -65,7 +65,6 @@
       $('#email').keyup(function() {
         let filter = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
             if(filter.test($("#email").val())){
-              $('#emailResult').html('good').css('color','red');
               $(this).focus().css('background','palegreen');
             }else{ 
               $('#emailResult').html('이메일을 확인해주세요').css('color','red');

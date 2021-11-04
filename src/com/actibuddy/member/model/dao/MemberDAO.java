@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.manager.model.dto.ManagerPartDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 
 public class MemberDAO {
@@ -33,6 +34,10 @@ public class MemberDAO {
 
 		return session.selectOne("MemberDAO.idcheck", requestMember);
 	}
+	
+	public int emailcheck(SqlSession session, MemberDTO requestEmail) {
+		return session.selectOne("MemberDAO.emailcheck", requestEmail);
+	}
 
 	public static List<MemberDTO> selectAllMember(SqlSession session) {
 		
@@ -43,10 +48,25 @@ public class MemberDAO {
 		return session.selectList("MemberDAO.selectWarnMember");
 	}
 
+	// 파트너쉽 회원으로 변경하는 메소드
 	public int changeToPartner(SqlSession session, MemberDTO partnerStatus) {
 		return session.selectOne("MemberDAO.changeToPartner", partnerStatus);
 
 	}
+
+	// 매니저로 로그인후 파트 구분 짓는 메소드
+	public static ManagerPartDTO managerlogin(SqlSession session, ManagerPartDTO managerlogin) {
+		return session.selectOne("MemberDAO.managerlogin", managerlogin);
+	}
+
+	public static MemberDTO findid(SqlSession session, MemberDTO member) {
+		return session.selectOne("MemberDAO.findid", member);
+	}
+
+	public static MemberDTO findpwd(SqlSession session, MemberDTO member) {
+		return session.selectOne("MemberDAO.findpwd", member);
+	}
+
 
 	
 

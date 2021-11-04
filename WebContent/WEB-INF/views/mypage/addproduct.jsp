@@ -52,10 +52,10 @@
         			<h4><c:out value="${ sessionScope.loginMember.userName }"/>님의 상품 등록</h4>
         			<hr>
         			
-					<form id="addproductForm" action="${ pageContext.servletContext.contextPath }/mypage/partner/add" method="post">
+					<form id="addproductForm" action="${ pageContext.servletContext.contextPath }/mypage/partner/add" method="post" enctype="multipart/form-data">
 						<div>
 						<span><h4>액티비티 이름</h4></span>
-         				<input type="text" name="Actiname" style="width:250px" placeholder="액티비티 이름을 입력해주세요!"/>
+         				<input type="text" name="name" style="width:250px" placeholder="액티비티 이름을 입력해주세요!"/>
          				<br><br><hr>
          				
          				<span><h4>위도 및 경도</h4></span>
@@ -67,7 +67,7 @@
          				
          				<br><br><hr>
          				<span><h4>액티비티 타입</h4></span>
-         				<select id="location" name="location" size="1">
+         				<select id="actiType" name="actiType" size="1">
          					<option>액티비티를 선택해주세요!</option>
 							<option value="ACTI_TYPE41">캠핑 & 글램핑</option>
 							<option value="ACTI_TYPE43">루지 & 짚라인 & 어드벤처</option>
@@ -86,15 +86,15 @@
 						<br><br><hr>
          				
          				<span><h4>시작 날짜</h4></span>
-         				<input type="date" name="longitude" style="width:250px" placeholder="시작날짜를 입력해주세요!"/>
+         				<input type="date" name="StartDate" style="width:250px" placeholder="시작날짜를 입력해주세요!"/>
          				<br><br><hr>
          				
          				<span><h4>종료 날짜</h4></span>
-         				<input type="date" name="longitude" style="width:250px" placeholder="종료날짜를 입력해주세요!"/>
+         				<input type="date" name="EndDate" style="width:250px" placeholder="종료날짜를 입력해주세요!"/>
          				<br><br><hr>
          				
          				<span><h4>지역</h4></span>
-         				<select id="location" name="location" size="1">
+         				<select id="locationCode" name="locationCode" size="1">
          					<option>지역을 선택해주세요!</option>
 							<option value="1">서울</option>
 							<option value="2">경기도</option>
@@ -106,12 +106,70 @@
 							<option value="8">부산</option>
 						</select>
 						<br><br><hr>
+						<span><h4>조건 선택</h4></span>
+						<select id="condition1" name="ActiConNum" size="1">
+         					<option value="" selected disabled hidden>액티비티 조건1을 선택해주세요!</option>
+							<option value="ACTI_CON16">그룹당 5명 이하</option>
+							<option value="ACTI_CON17">그룹당 10명 이하</option>
+							<option value="ACTI_CON18">그룹당 10명 이상</option>
+						</select>
+						<br><br>
+						<select id="condition2" name="ActiConNum2" size="1">
+         					<option value="" selected disabled hidden>액티비티 조건2를 선택해주세요!</option>
+							<option value="ACTI_CON9">액티비티 시작 전 무료 취소 가능</option>
+							<option value="ACTI_CON10">24시간 전 취소 가능</option>
+							<option value="ACTI_CON11">48시간 전 취소 가능</option>
+							<option value="ACTI_CON12">72시간 전 취소 가능</option>
+							<option value="ACTI_CON13">일주일 전 취소 가능</option>
+							<option value="ACTI_CON14">조건부 취소</option>
+							<option value="ACTI_CON23">취소 불가</option>
+						</select>
+						<br><br>
+						<select id="condition1" name="ActiConNum3" size="1">
+         					<option value="" selected disabled hidden>액티비티 조건3을 선택해주세요!</option>
+							<option value="ACTI_CON19">일정 약 1시간이내 소요</option>
+							<option value="ACTI_CON20">일정 약 2시간이내 소요</option>
+							<option value="ACTI_CON21">일정 약 4시간이내 소요</option>
+							<option value="ACTI_CON22">일정 약 4시간이상 소요</option>
+						</select>
+						<br><br>
+						<select id="condition1" name="ActiConNum4" size="1">
+         					<option value="" selected disabled hidden>액티비티 조건4을 선택해주세요!</option>
+							<option value="ACTI_CON15">날짜 지정 티켓</option>
+							<option value="ACTI_CON24">오픈 티켓</option>
+						</select>	
+						<br><br>					
+						<hr>
+						
+						<span><h4>액티비티 옵션</h4></span>
+						<h5>옵션은 최대 4개까지 설정 가능합니다.</h5>
+         				<input type="text" name="option1" style="width:250px" placeholder="액티비티 옵션을 입력해주세요!"/>
+         				<input type="text" name="opPrice1" style="width:250px" placeholder="액티비티 옵션 가격을 입력해주세요!"/>
+         				<br><br><hr>
+         				<span><h4>액티비티 옵션</h4></span>
+         				<input type="text" name="option2" style="width:250px" placeholder="액티비티 옵션을 입력해주세요!"/>
+         				<input type="text" name="opPrice2" style="width:250px" placeholder="액티비티 옵션 가격을 입력해주세요!"/>
+         				<br><br><hr>
+         				<span><h4>액티비티 옵션</h4></span>
+         				<input type="text" name="option3" style="width:250px" placeholder="액티비티 옵션을 입력해주세요!"/>
+         				<input type="text" name="opPrice3" style="width:250px" placeholder="액티비티 옵션 가격을 입력해주세요!"/>
+         				<br><br><hr>
+         				<span><h4>액티비티 옵션</h4></span>
+         				<input type="text" name="option4" style="width:250px" placeholder="액티비티 옵션을 입력해주세요!"/>
+         				<input type="text" name="opPrice4" style="width:250px" placeholder="액티비티 옵션 가격을 입력해주세요!"/>
+         				<br><br><hr>
+						
+         				
+						<span><h4>액티비티 팁</h4></span>
+						<input type="text" name="tip" style="width:500px" placeholder="액티비티 팁을 입력해주세요!"/>
+						
+						<br><br><hr>
 						<div class="img_border"><br>
-               <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="img1" value="file1"></div>
-               <div class="file">두번째 이미지 : <input accept="image/*" type="file" name="img2" value="file2"></div>
-               <div class="file">세번째 이미지 : <input accept="image/*" type="file" name="img3" value="file3"></div>
-               <br><hr><h5>사진은 최대 3장까지 첨부 가능합니다.</h5>
-           </div>
+			               <div class="file">첫번째 이미지 : <input accept="image/*" type="file" name="image1" value="image1"></div>
+			               <div class="file">두번째 이미지 : <input accept="image/*" type="file" name="image2" value="image2"></div>
+			               <div class="file">세번째 이미지 : <input accept="image/*" type="file" name="image3" value="image3"></div>
+			               <br><hr><h5>사진은 최대 3장까지 첨부 가능합니다.</h5>
+			           </div>
          				
          				<!--  위도, 경도, 액티비티 최소 가격, 액티타입, 시작날짜, 종료날, 액티비티 , 이미지 1,2,3, 아이디, (가격, 옵션)  -->
 						</div>
@@ -119,6 +177,7 @@
 						<button type="submit" class="forgreen" id="actigive">등록하기</button>
 						<br><br>
 					</form>
+					
                 </div>
             </div>
         </div>

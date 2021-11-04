@@ -147,5 +147,16 @@ public class ReportService {
 		return reviewreportinfo;
 	}
 
+	public List<MateReviewDTO> matereviewrep() {
+
+		SqlSession session = getSqlSession();
+		
+		List<MateReviewDTO> matereviewrep = ReportDAO.matereviewrep(session);
+		
+		session.close();
+		
+		return matereviewrep;
+	}
+
 
 }

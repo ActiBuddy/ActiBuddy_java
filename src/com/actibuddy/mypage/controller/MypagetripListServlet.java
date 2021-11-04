@@ -26,8 +26,10 @@ public class MypagetripListServlet extends HttpServlet {
 		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 		System.out.println("아이디 : " + userId);
 		
+		Map<String, String> map = new HashMap<>();
+		map.put("userId", userId);
 		MypageService mypageService = new MypageService();
-		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
+		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(map);
 		
 		System.out.println("결과 : " + tripList);
 		
@@ -52,8 +54,10 @@ public class MypagetripListServlet extends HttpServlet {
 		System.out.println("카트 번호 : " + cartNum);
 		
 
+		Map<String, String> map = new HashMap<>();
+		map.put("userId", userId);
 		MypageService mypageService = new MypageService();
-		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(userId);
+		CartAndMemberAndPayHIsDTO tripList = mypageService.selectCartAndMemberAndPayHIs(map);
 		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/tripList.jsp");

@@ -1,6 +1,7 @@
 package com.actibuddy.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,9 +42,6 @@ public class MemberRegistServlet extends HttpServlet {
 		String birth =  request.getParameter("birth");
 		String gender = request.getParameter("gender");
 	
-		System.out.println(pwd);
-		
-		
 		
 		MemberDTO requestMember = new MemberDTO();
 		requestMember.setUserId(userId);
@@ -68,12 +66,16 @@ public class MemberRegistServlet extends HttpServlet {
 		
 		String page = "";
 		
+		
+		response.setContentType("text/html; charset=UTF-8"); 
+		PrintWriter writer = response.getWriter(); 
+
+		출처: https://blythe.tistory.com/12 [Blythe]
 		if(result > 0) {
 			
-			page = "/WEB-INF/views/common/success.jsp";
+			page = "/WEB-INF/views/main/mainpage.jsp";
 			
-			request.setAttribute("successCode", "insertMember");
-			
+			writer.println("<script>alert('success'); </script>"); writer.close();
 		} else {
 			
 			page = "/WEB-INF/views/common/failed.jsp";

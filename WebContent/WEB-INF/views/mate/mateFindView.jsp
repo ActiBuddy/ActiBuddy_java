@@ -3,12 +3,14 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
     <link href="${ pageContext.servletContext.contextPath }/resources/css/mateFind_view.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -162,12 +164,14 @@
        <hr>
 
          <!-- 댓글 작성 -->
+        <form action="/acti/mate/comment" method="post">
        <div class="commentborder">
          <div class="comtext1">댓글 : </div>
-         <div class="comtext2"><textarea></textarea></div>
+         <div class="comtext2"><textarea name="text" placeholder="댓글을 작성해주세요"></textarea></div>
          <div class="comtext3"><input type="submit" class="c3" value="등록"></div>
+         <input type="hidden" name="userId" value="${ sessionScope.loginMember.userId }">
        </div>
-
+	   </form>
        <hr>
 
         <!-- 댓글 내용 -->
@@ -176,6 +180,7 @@
               <div class="com_writer1">작성자 : </div>
               <div class="com_writer2">sangho</div>
               <div class="com_writer3"><img src="${ pageContext.servletContext.contextPath }/resources/image/wraning.png"/></div>
+
               <div class="com_writer4">
                   <div class="com_writer5">저도 차끌고가도되나요?</div>
                   <div class="com_writer6">
@@ -199,9 +204,6 @@
                 </div>
             </div>
        </div>
-
-       
-       
     <!-- 찐짜div-->
     </div>
     

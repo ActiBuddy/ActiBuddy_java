@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.actibuddy.manager.model.dto.ManagerPartDTO;
 import com.actibuddy.member.model.dao.MemberDAO;
 import com.actibuddy.member.model.dto.MemberDTO;
 
@@ -101,6 +102,54 @@ public class MemberService {
 		
 		return memberList;
 		
+	}
+
+	// 매니저 로그인 으로 파트 구분 짓기
+	public ManagerPartDTO managerlogin(ManagerPartDTO managerlogin) {
+		
+		SqlSession session = getSqlSession();
+		
+		ManagerPartDTO managerloginpart = MemberDAO.managerlogin(session, managerlogin);
+		
+		session.close();
+		
+		return managerloginpart;
+	}
+
+	// 
+	public int emailcheck(MemberDTO requestEmail) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = memberDAO.emailcheck(session, requestEmail);
+		
+		session.close();
+		
+		return result;
+	}
+
+
+	public MemberDTO findid(MemberDTO member) {
+
+		SqlSession session = getSqlSession();
+		
+		MemberDTO memberfind = MemberDAO.findid(session, member);
+		
+		session.close();
+		
+		return memberfind;
+	}
+
+
+	public MemberDTO findpwd(MemberDTO member) {
+		
+		SqlSession session = getSqlSession();
+		
+		MemberDTO memberfind = MemberDAO.findpwd(session, member);
+		
+		session.close();
+		
+		return memberfind;
 	}
 
 

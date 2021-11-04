@@ -29,6 +29,10 @@ public class ReportDAO {
 
 	}
 
+	public static List<MateReviewDTO> matereviewrep(SqlSession session) {
+		return session.selectList("ReportDAO.matereviewrep");
+	}
+	
 	public static ActiReviewDTO actireviewrepdetail(SqlSession session, ActiReviewDTO actireviewreport) {
 		return session.selectOne("ReportDAO.actireviewrepdetail",actireviewreport);
 	}
@@ -66,5 +70,7 @@ public class ReportDAO {
 	public static List<ActiReviewDTO> rejectedactireviewrepdetail(SqlSession session, ActiReviewDTO actireviewreport) {
 		return session.selectList("ReportDAO.rejectedactireviewrepdetail", actireviewreport);
 	}
+
+	
 	
 }

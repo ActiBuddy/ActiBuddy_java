@@ -108,13 +108,14 @@ public class ActivityService {
 	/**
 	 * 액티비티 메인 페이지에서 표시해줄 내용을 가져오는 메소드
 	 * @author 김주환
+	 * @param location 
 	 * @return
 	 */
-	public List<LocationAndActivityDTO> selectAllList() {
+	public List<LocationAndActivityDTO> selectAllList(String location) {
 
 		SqlSession session = getSqlSession();
 		
-		List<LocationAndActivityDTO> locationList = activityDAO.selectAllList(session);
+		List<LocationAndActivityDTO> locationList = activityDAO.selectAllList(session,location);
 		
 		session.close();
 		
@@ -297,6 +298,12 @@ public class ActivityService {
 		return list;
 	}
 
+	/**
+	 * 액티비티 메인페이지 조회용 메소드
+	 * @author 김주환
+	 * @param locationName
+	 * @return
+	 */
 	public LocationAndActivityDTO selectRandomList(String locationName) {
 
 		SqlSession session = getSqlSession();
@@ -369,7 +376,13 @@ public class ActivityService {
 		return payment;
 	}
 		
-	public int updateStar(int actiNum) {
+	/**
+	 * 액티비티 별점 평균 업데이트용 메소드
+	 * @author 김주환
+	 * @param actiNum
+	 * @return
+	 */
+	public int updateStar(String actiNum) {
 
 		SqlSession session = getSqlSession();
 		
@@ -377,13 +390,31 @@ public class ActivityService {
 		
 		if(result > 0) {
 			session.commit();
+			System.out.println("성공하였습니다 후후");
 		} else {
 			session.rollback();
+			System.out.println("실패다 이자식아 다시 해!!!!");
 		}
 		
 		session.close();
 		
 		return result;
+	}
+
+	/**
+	 * 메인페이지 인기 액티비티 출력용 메소드
+	 * @author 김주환
+	 * @return
+	 */
+	public List<ActivityDTO> selectManyView() {
+
+		SqlSession session = getSqlSession();
+		
+		List<ActivityDTO> actiList = activityDAO.selectManyView(session);
+		
+		session.close();
+		
+		return actiList;
 	}
 
 }

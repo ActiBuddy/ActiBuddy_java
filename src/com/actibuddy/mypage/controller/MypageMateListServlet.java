@@ -30,20 +30,26 @@ public class MypageMateListServlet extends HttpServlet {
 		MypageService mypageService = new MypageService();
 		List<MateFindAndApplyDTO> mtApplyList2 = mypageService.selectMtApply(userId);
 		
-		
 		System.out.println(mtApplyList2);
 		request.setAttribute("mtApplyList2", mtApplyList2);
+		
+		/* 사용자가 신청한 메이팅 구인글 조회하기 */
+		MateFindService mateFindService = new MateFindService();
+		MateFindAndApplyDTO mtApply = mateFindService.selectMtApplyHis(userId);
+		System.out.println(mtApply);
+		
+		String path = "";
 
-		/*
-		 * 사용자가 신청한 메이팅 구인글 조회하기 MateFindService mateFindService = new
-		 * MateFindService(); List<MateFindApplyDTO> mtApplyList =
-		 * mateFindService.selectMtApplyHis(userId);
-		 * 
-		 * for(MateFindApplyDTO mt : mtApplyList ) { System.out.println(mt); }
-		 */
+		if(mtApply != null) {
+			path = "/WEB-INF/views/mypage/mateList.jsp";
+			request.setAttribute("mtApply", mtApply);
+			
+		} else {
+			path = "/WEB-INF/views/common/actiFail.jsp";
+		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
-		rd.forward(request, response);
+		request.getRequestDispatcher(path).forward(request, response);
+		
 
 	}
 
@@ -53,12 +59,6 @@ public class MypageMateListServlet extends HttpServlet {
 		// 신청자아이디 함께 넘겨서....????? 어떻게 아이디 하나값만 넘기지..? 수락 or 거절 버튼으로 MT_APPLY_HIS에  MT_FIND_YN을 YN 업데이트
 		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 		System.out.println("아이디 : " + userId);
-		
-		
-		/* 사용자가 신청한 메이팅 구인글 조회하기 */
-		MateFindService mateFindService = new MateFindService();
-		MateFindAndApplyDTO mtApply = mateFindService.selectMtApplyHis(userId);
-		System.out.println(mtApply);
 		
 		String appliedId = request.getParameter("appliedId");
 		System.out.println("신청자 아이디 : " + appliedId);
@@ -72,17 +72,8 @@ public class MypageMateListServlet extends HttpServlet {
 		
 		int result = new MypageService().updateMtFindNum(requestMtFindNum);
 		
-		String path = "";
-
-		if(mtApply != null) {
-			path = "/WEB-INF/views/mypage/mateList.jsp";
-			request.setAttribute("mtApply", mtApply);
-			
-		} else {
-			path = "/WEB-INF/views/common/actiFail.jsp";
-		}
-
-		request.getRequestDispatcher(path).forward(request, response);
+//		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
+//		rd.forward(request, response);
 		
 
 	}

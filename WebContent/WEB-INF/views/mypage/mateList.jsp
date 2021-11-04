@@ -98,20 +98,8 @@
                         <h1> 아직 신청한 메이트 내역이 없습니다.</h1>
                         </c:otherwise>
                         </c:choose>
-
-
-                        <br><br>
-                    </div>
-
-                        <h4>희망인원 : <br> 희망성별 : </h4>
-                        <br><br>
-                        <button type="button" id="reviewGo" onclick="location.href='/acti/mypage/mate/score/write'">후기쓰기</button>
-                        <button type="button" id="complete">참가완료</button>
-                        <br>
-                        <hr>
                         
                         
-
                     <h3>메이트 신청받은 내역</h3>
                     <hr>
                       <div class="l-one-line">

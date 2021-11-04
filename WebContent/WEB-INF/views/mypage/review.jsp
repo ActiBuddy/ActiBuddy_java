@@ -103,6 +103,7 @@
 					<%   } %>
     				<% } %>
                     <hr>
+
                     </c:forEach>
                     </c:when>
                     <c:otherwise>

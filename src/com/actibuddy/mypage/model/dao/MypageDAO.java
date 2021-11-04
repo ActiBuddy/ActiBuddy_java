@@ -143,5 +143,10 @@ public class MypageDAO {
 			return session.update("MypageDAO.requestMtFindNum",requestMtFindNum);
 		}
 
+		public int updatePayYn(SqlSession session, String cartNum) {
+			
+			return session.update("MypageDAO.updatePayYn", cartNum);
+		}
+
 
 }

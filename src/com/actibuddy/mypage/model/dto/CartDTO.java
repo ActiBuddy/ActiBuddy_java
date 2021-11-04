@@ -12,12 +12,13 @@ public class CartDTO implements java.io.Serializable{
 	private int totalPrice;
 	private Date ChooseDate;
 	private String payYn;
-	
+
 	
 	public CartDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 
 
 	public CartDTO(String actiNum, String cartNum, String userId, String chooseOption, int totalPerson, int totalPrice,
@@ -34,9 +35,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public String getActiNum() {
 		return actiNum;
 	}
+
 
 
 	public void setActiNum(String actiNum) {
@@ -44,9 +47,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public String getCartNum() {
 		return cartNum;
 	}
+
 
 
 	public void setCartNum(String cartNum) {
@@ -54,9 +59,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public String getUserId() {
 		return userId;
 	}
+
 
 
 	public void setUserId(String userId) {
@@ -64,9 +71,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public String getChooseOption() {
 		return chooseOption;
 	}
+
 
 
 	public void setChooseOption(String chooseOption) {
@@ -74,9 +83,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public int getTotalPerson() {
 		return totalPerson;
 	}
+
 
 
 	public void setTotalPerson(int totalPerson) {
@@ -84,9 +95,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public int getTotalPrice() {
 		return totalPrice;
 	}
+
 
 
 	public void setTotalPrice(int totalPrice) {
@@ -94,9 +107,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public Date getChooseDate() {
 		return ChooseDate;
 	}
+
 
 
 	public void setChooseDate(Date chooseDate) {
@@ -114,6 +129,7 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "CartDTO [actiNum=" + actiNum + ", cartNum=" + cartNum + ", userId=" + userId + ", chooseOption="
@@ -121,9 +137,6 @@ public class CartDTO implements java.io.Serializable{
 				+ ChooseDate + ", payYn=" + payYn + "]";
 	}
 
-
-	
-	
 	
 
 }

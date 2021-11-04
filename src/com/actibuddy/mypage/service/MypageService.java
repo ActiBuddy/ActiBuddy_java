@@ -424,6 +424,23 @@ public class MypageService {
 		return result;
 	}
 
+	public int updatePayYn(String cartNum) {
+		
+	    SqlSession session = getSqlSession();
+	    
+	    int result = mypageDAO.updatePayYn(session, cartNum);
+	    
+	    if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 	
 	
 }

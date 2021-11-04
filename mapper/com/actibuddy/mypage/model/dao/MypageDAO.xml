@@ -299,6 +299,7 @@
          , A.TOTAL_PERSON
          , A.TOTAL_PRICE
          , A.CHOOSE_DATE
+         , A.PAY_YN
         )
         VALUES
         (
@@ -309,6 +310,7 @@
         , #{ totalPerson }
         , #{ totalPrice }
         , #{ chooseDate }
+        , DEFAULT
         )
     
     </insert>
@@ -598,6 +600,12 @@
 		   SET MT_FIND_STATE = '신청마감'
 		 WHERE MT_FIND_NUM = #{ num }
 	
+	</update>
+	
+	<update id="updatePayYn">
+	    UPDATE CART
+		   SET PAY_YN = 'Y'
+		 WHERE CART_NUM = #{ cartNum }
 	</update>
 	
   

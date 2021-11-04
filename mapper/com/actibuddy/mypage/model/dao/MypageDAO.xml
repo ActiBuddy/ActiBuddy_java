@@ -189,6 +189,36 @@
 	<result property="ActiConNum" column="ACTI_CON_NUM"/>
 	</resultMap>
 	
+	<resultMap type="com.actibuddy.mate.model.dto.MateFindApplyDTO" id="mtApplyResultMap">
+	<result property="num" column="MT_FIND_NUM"/>
+	<result property="accYn" column="MT_FIND_YN"/>
+	<result property="applyNum" column="MT_APPLY_NUM"/>
+	<result property="appliedId" column="APPLIED_ID"/>
+	</resultMap>
+	
+	<resultMap type="com.actibuddy.mate.model.dto.MateFindDTO" id="mateFindResultMap">
+	   <id property="num" column="MT_FIND_NUM"/>
+	   <result property="title" column="MT_FIND_TITLE"/>
+	   <result property="content" column="MT_FIND_CONTENT"/>
+	   <result property="repYn" column="MT_FIND_REP_YN"/>
+	   <result property="date" column="MT_FIND_DATE"/>
+	   <result property="location" column="MT_FIND_LOCATION"/>
+	   <result property="imgName" column="MT_FIND_IMG"/>
+	   <result property="view" column="MT_FIND_VIEW"/>
+	   <result property="gender" column="MT_FIND_GENDER"/>
+	   <result property="people" column="MT_FIND_PEOPLE"/>
+	   <result property="age" column="MT_FIND_AGE"/>
+	   <result property="deadline" column="MT_FIND_DEADLINE"/>
+	   <result property="state" column="MT_FIND_STATE"/>
+	   <result property="userId" column="USER_ID"/>
+	   <result property="count" column="MT_FIND_COUNT"/>
+	</resultMap>
+	
+	<resultMap type="com.actibuddy.mate.model.dto.MateFindAndApplyDTO" id="mtFindAndApplyResult">
+		<collection property="applyList" resultMap="mtApplyResultMap"/>
+		<collection property="findList" resultMap="mateFindResultMap"/>
+	</resultMap>
+	
 	<update id="updateIntroduce" parameterType="com.actibuddy.member.model.dto.MemberDTO">
 			
 			UPDATE MEMBER A
@@ -378,7 +408,7 @@
         )
         VALUES
         (
-         'ACTI_REVIEW_NUM' || SEQ_MT_REVIEW_NUM.NEXTVAL
+         'ACTI_REVIEW_NUM' || TO_CHAR(SEQ_ACTI_REVIEW_NUM.NEXTVAL)
         ,  default
         , #{ actiNum }
         , #{ writerId }
@@ -548,6 +578,25 @@
 		, #{ plusScore }
 		)
 	</insert>
+	<select id="selectMtApply" resultMap="mtFindAndApplyResult">
+          SELECT
+		         A.MT_FIND_NUM
+			   , A.MT_FIND_YN
+			   , A.MT_APPLY_NUM
+			   , A.APPLIED_ID
+			   , F.MT_FIND_TITLE
+	       FROM MT_APPLY_HIS A
+          INNER JOIN MT_FIND F
+             ON A.MT_FIND_NUM = F.MT_FIND_NUM
+          WHERE F.USER_ID = #{ userId }
+	</select>
+	
+	<update id="requestMtFindNum" parameterType="com.actibuddy.mate.model.dto.MateFindDTO">
+		UPDATE MT_FIND
+		   SET MT_FIND_STATE = '신청마감'
+		 WHERE MT_FIND_NUM = #{ num }
+	
+	</update>
 	
   
   </mapper>

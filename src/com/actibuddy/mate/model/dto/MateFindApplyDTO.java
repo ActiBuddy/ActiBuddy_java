@@ -7,12 +7,13 @@ public class MateFindApplyDTO {
 	private String applyNum;
 	private String appliedId;
 
+
 	public MateFindApplyDTO() {
 	
 	}
 
+
 	public MateFindApplyDTO(String num, char accYn, String applyNum, String appliedId) {
-		super();
 		this.num = num;
 		this.accYn = accYn;
 		this.applyNum = applyNum;
@@ -43,6 +44,7 @@ public class MateFindApplyDTO {
 		this.applyNum = applyNum;
 	}
 
+
 	public String getAppliedId() {
 		return appliedId;
 	}
@@ -53,10 +55,9 @@ public class MateFindApplyDTO {
 
 	@Override
 	public String toString() {
+
 		return "MateFindApplyDTO [num=" + num + ", accYn=" + accYn + ", applyNum=" + applyNum + ", appliedId="
 				+ appliedId + "]";
 	}
-
-	
 	
 }

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
-import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.service.MateFindService;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -72,8 +71,8 @@ public class MypageMateListServlet extends HttpServlet {
 		
 		int result = new MypageService().updateMtFindNum(requestMtFindNum);
 		
-//		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
-//		rd.forward(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
+		rd.forward(request, response);
 		
 
 	}

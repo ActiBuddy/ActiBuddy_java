@@ -28,6 +28,7 @@
 		<result property="totalPerson" column="TOTAL_PERSON"/>
 		<result property="totalPrice" column="TOTAL_PRICE"/>
 		<result property="chooseDate" column="CHOOSE_DATE"/>		
+		<result property="payYn" column="PAY_YN"/>		
 	</resultMap>
 	
 	<resultMap type="com.actibuddy.mypage.model.dto.PayHisDTO" id="PayHisResultMap">
@@ -282,6 +283,7 @@
 			 INNER JOIN MEMBER M
 			    ON C.USER_ID = M.USER_ID
 			 WHERE M.USER_ID = #{ userId }
+			   AND C.PAY_YN = 'N'
  	
  	</select>
 

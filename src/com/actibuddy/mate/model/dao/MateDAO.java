@@ -6,11 +6,13 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.common.paging.SelectCriteria;
+import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
 
 public class MateDAO {
 
+	/* 메이트 리뷰 */
 	public int insertReview(SqlSession session, MateReviewDTO requestReview) {
 		
 		return session.insert("MateDAO.insertReview", requestReview);
@@ -61,5 +63,21 @@ public class MateDAO {
 		return session.update("MateDAO.updateReview", requestReview);
 	}
 
+	/* 메이트 구인 */
+	
+	public int insertFind(SqlSession session, MateFindDTO requestFind) {
+
+		return session.insert("MateDAO.insertFind", requestFind);
+	}
+
+	public int selectFindTotalCount(SqlSession session, Map<String, String> searchMap) {
+
+		return session.selectOne("MateDAO.selectFindTotalCount", searchMap);
+	}
+
+	public List<MateFindDTO> selectAllFindList(SqlSession session, SelectCriteria selectCriteria) {
+
+		return session.selectList("MateDAO.selectAllFindList", selectCriteria);
+	}
 
 }

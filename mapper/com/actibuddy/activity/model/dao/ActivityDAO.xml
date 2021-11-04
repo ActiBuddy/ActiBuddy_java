@@ -43,6 +43,7 @@
  	   <result property="userId" column="USER_ID"/>
  	   <result property="views" column="ACTI_VIEWS"/>
  	   <result property="star" column="ACTI_STAR"/>
+ 	   <result property="mainImg" column="MAIN_IMG"/>
  	</resultMap>
  	
  	<resultMap type="com.actibuddy.activity.model.dto.ActiReviewDTO" id="reviewResultMap">
@@ -958,6 +959,22 @@
          WHERE C.RNUM BETWEEN #{ selectCriteria.startRow } and #{ selectCriteria.endRow }
          
  	</select>
+ 	<!-- 메인페이지에서 인기 액티비티를 띄워주는 쿼리문 -->
+ 	<select id="selectManyView" resultMap="activityResultMap">
+ 		SELECT
+ 		       A.ACTI_NAME
+ 		     , A.PRICE
+ 		     , A.START_DATE
+ 		     , A.END_DATE
+ 		     , A.ACTI_VIEWS
+ 		     , A.ACTI_STAR
+ 		     , A.ACTI_IMG
+ 		     , A.MAIN_IMG
+ 		  FROM ACTIVITY_INFO A
+ 		 WHERE A.ACTI_VIEWS IS NOT NULL 
+ 		 ORDER BY A.ACTI_VIEWS DESC 
+ 	</select>
+ 	
  	<!-- 클릭시 조회수 증가용 쿼리문 -->
  	<update id="updateViews">
  		UPDATE ACTIVITY_INFO

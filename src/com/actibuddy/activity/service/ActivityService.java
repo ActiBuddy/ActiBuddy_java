@@ -298,6 +298,12 @@ public class ActivityService {
 		return list;
 	}
 
+	/**
+	 * 액티비티 메인페이지 조회용 메소드
+	 * @author 김주환
+	 * @param locationName
+	 * @return
+	 */
 	public LocationAndActivityDTO selectRandomList(String locationName) {
 
 		SqlSession session = getSqlSession();
@@ -370,7 +376,13 @@ public class ActivityService {
 		return payment;
 	}
 		
-	public int updateStar(int actiNum) {
+	/**
+	 * 액티비티 별점 평균 업데이트용 메소드
+	 * @author 김주환
+	 * @param actiNum
+	 * @return
+	 */
+	public int updateStar(String actiNum) {
 
 		SqlSession session = getSqlSession();
 		
@@ -387,6 +399,22 @@ public class ActivityService {
 		session.close();
 		
 		return result;
+	}
+
+	/**
+	 * 메인페이지 인기 액티비티 출력용 메소드
+	 * @author 김주환
+	 * @return
+	 */
+	public List<ActivityDTO> selectManyView() {
+
+		SqlSession session = getSqlSession();
+		
+		List<ActivityDTO> actiList = activityDAO.selectManyView(session);
+		
+		session.close();
+		
+		return actiList;
 	}
 
 }

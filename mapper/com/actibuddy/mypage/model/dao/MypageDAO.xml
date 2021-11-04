@@ -328,7 +328,7 @@
         INNER JOIN ACTIVITY_INFO A
 			    ON A.ACTI_NUM = AR.ACTI_NUM
 	   WHERE AR.WRITER_ID = #{ userId }
-	     AND AR.REVIEW_TITLE IS NOT NULL
+	     AND AR.ACTI_REVIEW_TITLE IS NOT NULL
     </select>
 
 	<update id="updateQuit">

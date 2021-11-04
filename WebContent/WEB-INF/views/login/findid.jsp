@@ -23,7 +23,7 @@
 	     <button type="submit">아이디 찾기</button>
          </form>
     	<br><br><br><br><br><br>
-      <form id="joinForm" action="${ pageContext.servletContext.contextPath }/member/findpwd" method="post">
+      <form id="joinForm" action="${ pageContext.servletContext.contextPath }/member/authentication" method="post">
          <span><h2>비밀번호 찾기</h2></span>
          <span><h5>아이디를 입력해주세요.</h5></span>
          <input type="text" name="userId" id="email"/>

@@ -51,6 +51,13 @@
 		<result property="enterDate" column="ENTER_DATE"/>
 		</resultMap> -->
 
+<!-- 매니저/파트너 회원수 조회 -->
+    <select id="selectFindTotalCount" resultType="_int">
+    	SELECT
+    		COUNT(*)
+    	  FROM PARTNERSHIP A
+    </select>
+
  
  <select id="selectLoginMember" resultMap="memberResultMap">
 		
@@ -73,36 +80,95 @@
 	
 	<select id="selectAllMember" resultMap="memberResultMap">
 		
-		SELECT
-			    A.USER_ID
-        	  , A.USER_NAME
-        	  , A.EMAIL
-        	  , A.BIRTH
-       	  	  , A.GENDER
-        	  , A.WARN_COUNT
-        	  , A.QUIT_YN
-        	  , A.MEM_TYPE
-       	      , A.MEM_PHONE
-       	      , A.ENTER_DATE
-		 FROM  MEMBER A
-		WHERE MEM_TYPE = 'U'
+		<!-- SELECT
+				C.RNUM
+			  , C.USER_ID
+        	  , C.USER_NAME
+        	  , C.EMAIL
+        	  , C.BIRTH
+       	  	  , C.GENDER
+        	  , C.WARN_COUNT
+        	  , C.QUIT_YN
+        	  , C.MEM_TYPE
+       	      , C.MEM_PHONE
+       	      , C.ENTER_DATE
+		   FROM (SELECT ROWNUM RNUM
+		   			  , B.USER_ID
+		   			  , B.USER_NAME
+		        	  , B.EMAIL
+		        	  , B.BIRTH
+		       	  	  , B.GENDER
+		        	  , B.WARN_COUNT
+		        	  , B.QUIT_YN
+		        	  , B.MEM_TYPE
+		       	      , B.MEM_PHONE
+		       	      , B.ENTER_DATE
+		   		   FROM ( -->
+		   		   SELECT
+		   		   			   A.USER_ID
+				        	  , A.USER_NAME
+				        	  , A.EMAIL
+				        	  , A.BIRTH
+				       	  	  , A.GENDER
+				        	  , A.WARN_COUNT
+				        	  , A.QUIT_YN
+				        	  , A.MEM_TYPE
+				       	      , A.MEM_PHONE
+				       	      , A.ENTER_DATE
+		   		         FROM MEMBER A
+		   		  		WHERE MEM_TYPE = 'U'
+		   		  		<!-- ORDER BY A.ENTER_DATE)B
+		   		   )C	  
+		   	WHERE (C.RNUM BETWEEN #{ startRow } and #{ endRow })
+     	   <if test="searchValue != null">
+     	  	 AND C.MT_REVIEW_TITLE LIKE '%' || #{ searchValue } || '%'
+     	   </if> -->
 	</select>
 	
 	<select id="selectPartnerMember" resultMap="memberResultMap">
 		
 		SELECT
-			    A.USER_ID
-        	  , A.USER_NAME
-        	  , A.EMAIL
-        	  , A.BIRTH
-       	  	  , A.GENDER
-        	  , A.WARN_COUNT
-        	  , A.QUIT_YN
-        	  , A.MEM_TYPE
-       	      , A.MEM_PHONE
-       	      , A.ENTER_DATE
-		 FROM  MEMBER A
-		WHERE MEM_TYPE = 'P'
+				C.RNUM
+			  , C.USER_ID
+        	  , C.USER_NAME
+        	  , C.EMAIL
+        	  , C.BIRTH
+       	  	  , C.GENDER
+        	  , C.WARN_COUNT
+        	  , C.QUIT_YN
+        	  , C.MEM_TYPE
+       	      , C.MEM_PHONE
+       	      , C.ENTER_DATE
+		   FROM (SELECT ROWNUM RNUM
+		   			  , B.USER_ID
+		   			  , B.USER_NAME
+		        	  , B.EMAIL
+		        	  , B.BIRTH
+		       	  	  , B.GENDER
+		        	  , B.WARN_COUNT
+		        	  , B.QUIT_YN
+		        	  , B.MEM_TYPE
+		       	      , B.MEM_PHONE
+		       	      , B.ENTER_DATE
+		   		   FROM (SELECT
+		   		   			    A.USER_ID
+				        	  , A.USER_NAME
+				        	  , A.EMAIL
+				        	  , A.BIRTH
+				       	  	  , A.GENDER
+				        	  , A.WARN_COUNT
+				        	  , A.QUIT_YN
+				        	  , A.MEM_TYPE
+				       	      , A.MEM_PHONE
+				       	      , A.ENTER_DATE
+		   		         FROM MEMBER A
+		   		  		WHERE MEM_TYPE = 'P'
+		   		  		ORDER BY A.ENTER_DATE)B
+		   		   )C	  
+		   	WHERE (C.RNUM BETWEEN #{ startRow } and #{ endRow })
+     	   <if test="searchValue != null">
+     	  	 AND C.USER_NAME LIKE '%' || #{ searchValue } || '%'
+     	   </if>
 	</select>
 	
  

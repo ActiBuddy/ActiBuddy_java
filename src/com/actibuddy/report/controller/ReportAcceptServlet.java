@@ -33,6 +33,7 @@ public class ReportAcceptServlet extends HttpServlet {
 		
 		mateReviewwran.setTitle(title);  // 제목으로 찾은후 신고값 Y로 변경
 		actiReviewwarn.setTitle(title1); // 제목으로 찾은후 신고값 Y로 변경
+		actiReviewwarn.setWriterId(userId1);
 		
 		MemberDTO mateReviewwranmember = new MemberDTO(); // 메이트 리뷰 신고후 아이디 조회
 		MemberDTO actiReviewwarnmember = new MemberDTO(); // 액티비티 리뷰 신고후 아이디 조회
@@ -40,7 +41,7 @@ public class ReportAcceptServlet extends HttpServlet {
 		mateReviewwranmember.setUserId(userId);
 		actiReviewwarnmember.setUserId(userId1);
 		
-		System.out.println("제목이 뭐임" + actiReviewwarn);
+		System.out.println("제목이 뭐임" + actiReviewwarnmember);
 		
 		
 		ReportService reportService = new ReportService();

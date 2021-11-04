@@ -64,6 +64,51 @@
                   <th>처리여부</th>
                 </tr>
               </thead>
+              <tbody>
+                <c:forEach var="reviewreportinfo" items="${reviewreportinfo}">
+                <tr>
+                  <td>${ reviewreportinfo.userId }</td>
+               <td><a href="../report/reportInfo?title=${ reviewreportinfo.title }">${ reviewreportinfo.title }</a></td>
+                  <td>${ reviewreportinfo.date }</td>
+                  <td>${ reviewreportinfo.repYn }</td>
+                </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+                
+                <h3>메이트 찾기 신고</h3>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>작성 아이디</th>
+                  <th>글 제목</th>
+                  <th>작성날짜</th>
+                  <th>처리여부</th>
+                </tr>
+                <tbody>
+              </thead>
+                <c:forEach var="reviewreportinfo" items="${reviewreportinfo}">
+                <tr>
+                  <td>${ reviewreportinfo.userId }</td>
+               <td><a href="../report/reportInfo?title=${ reviewreportinfo.title }">${ reviewreportinfo.title }</a></td>
+                  <td>${ reviewreportinfo.date }</td>
+                  <td>${ reviewreportinfo.repYn }</td>
+                </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+                
+                <h3>댓글 신고</h3>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>작성 아이디</th>
+                  <th>글 제목</th>
+                  <th>작성날짜</th>
+                  <th>처리여부</th>
+                </tr>
+              </thead>
+              <tbody>
                 <c:forEach var="reviewreportinfo" items="${reviewreportinfo}">
                 <tr>
                   <td>${ reviewreportinfo.userId }</td>

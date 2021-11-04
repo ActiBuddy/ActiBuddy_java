@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.manager.model.dto.ManagerDTO;
 import com.actibuddy.manager.model.dto.ManagerPartDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -31,9 +32,9 @@ public class ManagerDAO {
 	
 	}
 	
-
-	public static List<ManagerDTO> selectPartnerMember(SqlSession session) {
-		return session.selectList("ManagerDAO.selectPartnerMember");
+// 매니저 - 파트너 회원 조회 페이징 처리
+	public static List<ManagerDTO> selectPartnerMember(SqlSession session, SelectCriteria selectCriteria) {
+		return session.selectList("ManagerDAO.selectPartnerMember", selectCriteria);
 	}
 
 
@@ -61,6 +62,14 @@ public class ManagerDAO {
 	// 아이디 생성
 	public static int registManagerId(SqlSession session, MemberDTO requestMember) {
 		return session.insert("ManagerDAO.registManagerId", requestMember);
+	}
+
+
+	
+	// 매니저 - 파트너 회원 검색, 페이징
+	public static int selectFindTotalCount(SqlSession session, Map<String, String> searchMap) {
+		return session.selectOne("ManagerDAO.selectFindTotalCount", searchMap);
+
 	}
 
 

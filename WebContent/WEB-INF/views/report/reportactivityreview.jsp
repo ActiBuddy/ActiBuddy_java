@@ -24,9 +24,10 @@
    <jsp:include page="../common/managersidebar.jsp"/>
 
          <span> <h2 class="sub-header">액티비티 후기 신고 접수</h2></span>
-          <span> <form action="../report/rejected?title=${ actireviewreportinfo.title }" method="get">
+          <form action="../report/rejected?title" method="get">
           	<textarea type="text" name="title" style="display:none">${ actireviewreportinfo.title }</textarea>
-         	 <button type="submit">처리 완료된 신고 보기</button></span>
+         	 <button type="submit">처리 완료된 신고 보기</button>
+         	 </form>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>

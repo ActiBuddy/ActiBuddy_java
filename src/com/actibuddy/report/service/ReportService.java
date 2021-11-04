@@ -125,22 +125,22 @@ public class ReportService {
 //	==========================================================================================
 	
 //	========================= 신고 처리 되어진 메소드 조회============================================
-	public List<MateReviewDTO> rejectedmatefindrepdetail(MateReviewDTO reviewreport) {
+	public List<MateReviewDTO> rejectedmatefindrepdetail() {
 		
 		SqlSession session = getSqlSession();
 		
-		List<MateReviewDTO> reviewreportinfo = ReportDAO.rejectedmatefindrepdetail(session, reviewreport);
+		List<MateReviewDTO> reviewreportinfo = ReportDAO.rejectedmatefindrepdetail(session);
 				
 		session.close();
 		
 		return reviewreportinfo;
 	}
 
-	public List<ActiReviewDTO> rejectedactireviewrepdetail(ActiReviewDTO actireviewreport) {
+	public List<ActiReviewDTO> rejectedactireviewrepdetail() {
 		
 		SqlSession session = getSqlSession();
 		
-		List<ActiReviewDTO> reviewreportinfo = ReportDAO.rejectedactireviewrepdetail(session, actireviewreport);
+		List<ActiReviewDTO> reviewreportinfo = ReportDAO.rejectedactireviewrepdetail(session);
 				
 		session.close();
 		

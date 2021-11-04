@@ -228,6 +228,13 @@
  		   AND USER_ID = #{userId}	   
  	
  	</select>
+ 	<update id="changepwd">
+ 	
+ 	UPDATE MEMBER
+ 	   SET PASSWORD = #{pwd}
+ 	 WHERE USER_ID = #{userId} 
+ 	
+ 	</update>
  
  </mapper>
  

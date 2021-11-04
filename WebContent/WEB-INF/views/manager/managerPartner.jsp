@@ -44,7 +44,15 @@
             </table>
 
           </div>
-           <jsp:include page="../common/page.jsp"/>
+           <jsp:include page="../common/paging.jsp"/>
+           
+            <div class="search">
+        <form id="searchForm" action="${ pageContext.servletContext.contextPath }/manager/partnermember" method="get">
+               <input type="hidden" name="currentPage" value="1">
+               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 파트너를 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
+               <button type="submit" class="searchbutton">검색하기</button>
+		</form>
+        </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

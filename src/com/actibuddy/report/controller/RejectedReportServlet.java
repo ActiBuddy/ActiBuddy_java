@@ -20,21 +20,19 @@ public class RejectedReportServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String title = request.getParameter("title");
-		
-		MateReviewDTO reviewreport = new MateReviewDTO();		// 메이트 리뷰 DTO
-		ActiReviewDTO actireviewreport = new ActiReviewDTO();	// 액티비티 리뷰 DTO
-		
-		reviewreport.setTitle(title);
-		actireviewreport.setTitle(title);
-		
-		System.out.println("리뷰 리포트 " + reviewreport );
-		System.out.println("리뷰 리포트 " + actireviewreport );
+//		String title = request.getParameter("title");
+//		
+//		MateReviewDTO reviewreport = new MateReviewDTO();		// 메이트 리뷰 DTO
+//		ActiReviewDTO actireviewreport = new ActiReviewDTO();	// 액티비티 리뷰 DTO
+//		reviewreport.setTitle(title);
+//		actireviewreport.setTitle(title);
+//		System.out.println("리뷰 리포트 " + reviewreport );
+//		System.out.println("리뷰 리포트 " + actireviewreport );
 		
 		ReportService reportService = new ReportService();
 		
-		List<MateReviewDTO> reviewreportinfo = reportService.rejectedmatefindrepdetail(reviewreport);
-		List<ActiReviewDTO> actireviewreportinfo = reportService.rejectedactireviewrepdetail(actireviewreport);
+		List<MateReviewDTO> reviewreportinfo = reportService.rejectedmatefindrepdetail();
+		List<ActiReviewDTO> actireviewreportinfo = reportService.rejectedactireviewrepdetail();
 		
 		System.out.println(reviewreportinfo);
 		System.out.println(actireviewreportinfo);

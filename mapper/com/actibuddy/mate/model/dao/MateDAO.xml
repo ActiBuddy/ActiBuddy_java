@@ -91,7 +91,7 @@
 			    , A.USER_ID
 			    , A.MT_FIND_COUNT
 			  FROM MT_FIND A
-	        WHERE A.MT_FIND_REP_YN ='N'
+	        WHERE A.MT_FIND_REP_YN IN ('N','L')
 	          AND A.MT_FIND_STATE = '신청가능'
 	          AND A.MT_FIND_DEADLINE > SYSDATE
 	        ORDER BY A.MT_FIND_DEADLINE ASC)B
@@ -500,5 +500,32 @@
 		UPDATE COMENT
 		   SET MT_COM_REP_YN = #{ repYn }
 		 WHERE MT_COM_NUM = #{ num }  
+	</update>
+	
+	<insert id="insertApply">
+		INSERT 
+		  INTO MT_APPLY_HIS A
+		(
+		  A.MT_FIND_NUM
+		, A.MT_FIND_YN
+		, A.MT_APPLY_NUM
+		, A.APPLIED_ID
+		)
+		VALUES
+		(
+		  #{ num }
+		, 'L'
+		, 'MT_APPLY_NUM' || SEQ_MT_APPLY_NUM.NEXTVAL
+		, #{ appliedId }
+		)
+	</insert>
+	
+	<update id="updateViews">
+		UPDATE MT_FIND
+   		   SET MT_FIND_VIEW = (SELECT 
+                            MT_FIND_VIEW + 1
+                       FROM MT_FIND
+                      WHERE MT_FIND_NUM = #{ num } )
+ 		 WHERE MT_FIND_NUM = #{ num } 
 	</update>
 </mapper>

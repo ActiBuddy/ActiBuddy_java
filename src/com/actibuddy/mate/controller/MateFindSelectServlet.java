@@ -21,11 +21,14 @@ public class MateFindSelectServlet extends HttpServlet {
 
 		String num = request.getParameter("num");
 		System.out.println("게시글 번호 : " + num);
-	
+		
+//		String userId = 
+		
 		MateFindService findService = new MateFindService();
 		MateFindDTO find = findService.selectFindInfo(num);
 		List<MateCommentDTO> comment = findService.selectComment(num);
-		System.out.println(comment);
+//		MateFindApplyHisServlet apply = findService.selectApplyFind()
+		int result = findService.updateViews(num);
 		
 		String path = "";
 		if(find != null) {
@@ -44,6 +47,7 @@ public class MateFindSelectServlet extends HttpServlet {
 			request.setAttribute("deadline", find.getDeadline());
 			request.setAttribute("state", find.getState());
 			request.setAttribute("count", find.getCount());
+			request.setAttribute("view", find.getView());
 			request.setAttribute("comment", comment);
 			
 		} else {

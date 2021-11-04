@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dao.MateDAO;
 import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
+import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 
@@ -196,7 +197,41 @@ public class MateFindService {
 		if(result > 0) {
 			session.commit();
 		} else {
-			session.close();
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	public int insertApply(MateFindApplyDTO find) {
+
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.insertApply(session, find);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	public int updateViews(String num) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.updateViews(session, num);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
 		}
 		
 		session.close();

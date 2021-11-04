@@ -51,7 +51,7 @@
                 ${ userId }
             </div>
             <div class="view">
-                조회 52
+                조회 ${ view }
             </div>
             <div class="writer_date">
                 ${ date } ・ 
@@ -153,7 +153,16 @@
 
         <!-- 버튼 부분 -->
        <div class="btnborder">
-          <button class="btngo"><a href="#">신청하기</a></button>
+       		<c:set var="id" value="${ sessionScope.loginMember.userId }"/> 
+       		<c:choose>
+       		<c:when test="${ userId eq id }">
+       		
+       		</c:when>
+       		<c:when test="${ userId ne id }">
+       		
+           <button id="abc" class="btngo">신청하기</button>
+       		</c:when>
+          </c:choose>
           <div class="report">
         <button id="repbtn" class="repbtn">
         <img src="${ pageContext.servletContext.contextPath }/resources/image/warning2.png">
@@ -188,7 +197,8 @@
               <div class="com_writer3">
               <button id="repbtn${ size + 1 }" class="repbtn" style="border: none;" name="val" value="${ com.num }">
               <img src="${ pageContext.servletContext.contextPath }/resources/image/wraning.png"/>
-              </button></div>
+              </button>
+              </div>
               <div class="com_writer4">
                   <div class="com_writer5">${ comment[size].comment }</div>
                   <div class="com_writer6">
@@ -222,7 +232,6 @@
 					    	
 					    	if(result > 0){
 					    		alert("해당 댓글의 신고가 접수되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
-					    		
 					    		
 					    	} else {
 					    		alert("댓글 신고 접수에 실패했습니다.");
@@ -288,8 +297,51 @@
 			});
 		});
 	</script>
-	
 	<!-- 이거 하다 말았음 -->
+	
+	<script>
+		$(function() {
+			$('#abc').on('click', function(e) {
+				
+				user = '${ sessionScope.loginMember.userId }';
+				
+				if(!user) {
+					alert("로그인 먼저 해주세요.");
+				} else {
+					
+					let returnValue = confirm('신청하시겠습니까??');
+					
+					if(returnValue){
+						
+					
+					
+					$.ajax({
+						url:'${ pageContext.servletContext.contextPath }/find/apply',
+						type:'post',
+					    data:{ findNum : '${ num }', userId : '${ sessionScope.loginMember.userId }'
+					    },
+					    success:function(result){
+					    	
+					    	if(result > 0){
+					    		alert("신청이 완료되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
+					    		$('#abc').attr('disabled',true).css('background-color','black');
+					    	} 
+					    	e.preventDefault();
+					    },
+					    error:function(){
+					           alert("신청에 실패했습니다.");
+					    }
+					    
+					 });
+					
+					} else {
+						alert("취소되었습니다");
+					}
+				}
+			});
+		});
+	</script>
+	
 	
 	<script>
 		if('${ success }' != null && '${success}' != ''){

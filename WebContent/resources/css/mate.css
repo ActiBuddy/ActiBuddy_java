@@ -258,12 +258,12 @@ a {
   }
 
   /* 탭 컨텐츠 스타일 */
-  .mtab_content {
+/*   .mtab_content {
     display: none;
     padding: 40px 40px 0;
     clear: both;
     overflow: hidden;
-  }
+  } */
 
 
 .post{

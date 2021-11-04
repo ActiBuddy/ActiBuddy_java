@@ -61,38 +61,6 @@
 
                     <h4>여행 후기</h4>
                     <hr>
-<<<<<<< HEAD
-              		<c:choose>
-				    <c:when test="${  not empty selectActireview }">
-                    <c:forEach items="${ selectActireview }" var="actiReview" varStatus="status" >
-					<c:set var="idx" value="${ status.index }"/>
-
-                    <h5> ${ actiReview.reviewList.get(idx).writeDate}</h5>
-                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ actiReview.name }'">상세보기 ></button>
-                    <c:choose>
-					  <c:when test="${actiReview.reviewList.get(idx).reviewStar == 1 }">
-						 <h2 id="foryellow">★</h2><h2 id="forgray">★★★★</h2>
-					  </c:when>
-					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 2 }">
-					     <h2 id="foryellow">★★</h2><h2 id="forgray">★★★</h2>
-					  </c:when>
-					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 3 }">
-					     <h2 id="foryellow">★★★</h2><h2 id="forgray">★★</h2>
-					  </c:when>
-					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 4 }">
-					     <h2 id="foryellow">★★★★</h2><h2 id="forgray">★</h2>
-					  </c:when>
-					  <c:when test="${ actiReview.reviewList.get(idx).reviewStar == 5 }">
-						<h2 id="foryellow">★★★★★</h2>
-					  </c:when>
-					</c:choose><br>
-                    <h3>제목 : ${ actiReview.reviewList.get(idx).title}</h3>
-                    <br><br>
-                    <h4>후기 상품 : ${ actiReview.name }</h4>
-    
-					<br>
-    
-=======
               
 					<% List<ActivityAndReviewDTO> list = (List<ActivityAndReviewDTO>)request.getAttribute("selectActireview"); %>
 					
@@ -129,21 +97,7 @@
 					
 					<%   } %>
     				<% } %>
->>>>>>> refs/remotes/origin/hyejoo
                     <hr>
-<<<<<<< HEAD
-                    </c:forEach>
-                    </c:when>
-                    <c:otherwise>
-                    <h1>아직 등록된 여행 후기가 없습니다.</h1>
-                    </c:otherwise>
-                    </c:choose>
-                    
-                    
-=======
-
-    
->>>>>>> refs/remotes/origin/hyejoo
                     <div>
                     <h4>메이팅 후기</h4>
                     <hr>

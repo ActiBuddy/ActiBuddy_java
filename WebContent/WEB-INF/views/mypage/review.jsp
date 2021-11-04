@@ -1,3 +1,5 @@
+<%@page import="com.actibuddy.activity.model.dto.ActivityAndReviewDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -59,7 +61,9 @@
 
                     <h4>여행 후기</h4>
                     <hr>
-              		<c:if test="${ selectActireview } != null and ${ selectActireview } != ''">
+<<<<<<< HEAD
+              		<c:choose>
+				    <c:when test="${  not empty selectActireview }">
                     <c:forEach items="${ selectActireview }" var="actiReview" varStatus="status" >
 					<c:set var="idx" value="${ status.index }"/>
 
@@ -88,24 +92,77 @@
     
 					<br>
     
+=======
+              
+					<% List<ActivityAndReviewDTO> list = (List<ActivityAndReviewDTO>)request.getAttribute("selectActireview"); %>
+					
+					<% for(int i = 0; i < list.size(); i++){ %>    
+	                    <% for(int j = 0; j < list.get(i).getReviewList().size(); j++){ %>
+							<c:set var="title" value="<%= list.get(i).getReviewList().get(j).getTitle() %>"/>
+		                    <c:set var="acti" value="<%= list.get(i).getName() %>"/>
+	                    
+		                    <h5> <%= list.get(i).getReviewList().get(j).getWriteDate() %></h5>
+		                    <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ acti }'">상세보기 ></button>
+		                      <c:set var="start" value="<%= list.get(i).getReviewList().get(j).getReviewStar() %>"/>
+		                    <c:choose>
+							  <c:when test="${start == 1 }">
+								 <h2 id="foryellow">★</h2><h2 id="forgray">★★★★</h2>
+							  </c:when>
+							  <c:when test="${ start == 2 }">
+							     <h2 id="foryellow">★★</h2><h2 id="forgray">★★★</h2>
+							  </c:when>
+							  <c:when test="${ start == 3 }">
+							     <h2 id="foryellow">★★★</h2><h2 id="forgray">★★</h2>
+							  </c:when>
+							  <c:when test="${ start == 4 }">
+							     <h2 id="foryellow">★★★★</h2><h2 id="forgray">★</h2>
+							  </c:when>
+							  <c:when test="${ start == 5 }">
+								<h2 id="foryellow">★★★★★</h2>
+							  </c:when>
+							</c:choose><br>
+		                  	<h3>제목 : ${ title }</h3>
+		                    <br><br>
+			                 <h4>후기 상품 : ${ acti }</h4>
+		    
+							<br>
+					
+					<%   } %>
+    				<% } %>
+>>>>>>> refs/remotes/origin/hyejoo
                     <hr>
+<<<<<<< HEAD
                     </c:forEach>
-					</c:if>
+                    </c:when>
+                    <c:otherwise>
+                    <h1>아직 등록된 여행 후기가 없습니다.</h1>
+                    </c:otherwise>
+                    </c:choose>
+                    
+                    
+=======
+
     
+>>>>>>> refs/remotes/origin/hyejoo
                     <div>
                     <h4>메이팅 후기</h4>
                     <hr>
-					<c:if test="${ selectMtReview } != null and ${ selectMtReview } != ''">
+					<c:choose>
+				    <c:when test="${  not empty selectMtReview }">
 					<c:forEach var="size" begin="0" end="${ fn:length(selectMtReview)-1}">
                     <button id="move" type="button" onclick="location.href='/acti/mate/review/select?num=${selectMtReview[size].num }'">상세보기 ></button>
                     
                     <h3>후기 제목 : ${ selectMtReview[size].title }</h3>
                     <br><br><br>
                     <h4>나와 함께한 메이트 : </h4>
-    
+      
                     <br><hr>
 					</c:forEach>
-					</c:if>
+					</c:when>
+					<c:otherwise>
+					<h1> 아직 등록된 메이팅 후기가 없습니다.</h1>
+					</c:otherwise>
+					</c:choose>
                     </div>
                 </div>
 

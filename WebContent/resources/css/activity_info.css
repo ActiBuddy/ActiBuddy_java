@@ -346,12 +346,13 @@ input[type=radio]:checked + label {background-color: blue;}
     position: relative;
     width: 22%;
     margin: 0 auto;
-    /* border: 1px solid red; */
+    border: 1px solid red;
 }
 
 .page-link {
     background-color: mintcream;
     color: black;
+    display: none;
 }
 
 #suggestion2 {
@@ -403,3 +404,4 @@ input[type=radio]:checked + label {background-color: blue;}
 .card-body {
     margin-bottom: 30%;
 }
+

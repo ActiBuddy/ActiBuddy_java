@@ -593,10 +593,6 @@ $('#sort-select').on('change', function(){
 
 </c:forEach>
 
-
-<br> <br>
-
-
  <!-- pagination -->
  <jsp:include page="../common/actiInfoPaging.jsp"/>
 

@@ -85,7 +85,7 @@ public class ActivityInformationServlet extends HttpServlet {
 		
 		System.out.println("totalBoardCount : " + totalCount);
 		
-		int limit = 2;
+		int limit = 4;
 		int buttonAmount = 5;
 		
 		SelectCriteria selectCriteria = null;

@@ -62,7 +62,10 @@
         				<h4><c:out value="${ sessionScope.loginMember.userName }"/> 님의 여행</h4>
         			
 					</c:if>
-					<c:if test=" ${ mateScore } != null and  ${ tripList } != ''">
+					
+					
+					<c:choose>
+				    <c:when test="${  not empty tripList }">
                  	<c:forEach var="size" begin="0" end="${fn:length(tripList.cartList)-1 }" >
                     <hr>
                     <button id="move" type="button" onclick="location.href='/acti/activity/information?actiName=${ tripList.activityInfo[size].name }'">상세보기 ></button>
@@ -91,7 +94,11 @@
                     <hr>
     				
     				</c:forEach> 
-    				</c:if>
+    				</c:when>
+    				<c:otherwise>
+    				<h1>아직 등록된 여행 내역이 없습니다.</h1>
+    				</c:otherwise>
+    				</c:choose>
                 </div>
 
             </div>

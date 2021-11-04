@@ -56,6 +56,8 @@
 				</c:if>
 				
 				
+			     	<c:choose>
+				    <c:when test="${  not empty selectFaq }">
 					<c:forEach var="size" begin="0" end="${ fn:length(selectFaq)-1}">
                     <hr>
                     <h3>제목 : ${selectFaq[size].queTitle}</h3>
@@ -94,6 +96,11 @@
                         });
                     </script>
 					</c:forEach>
+					</c:when>
+					<c:otherwise>
+					<h1> 아직 등록된 문의사항이 없습니다. </h1>
+					</c:otherwise>
+					</c:choose>
 
                 </div>
 

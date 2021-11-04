@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
-    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-=======
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
->>>>>>> refs/remotes/origin/hyejoo
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -103,9 +99,7 @@
                         </c:otherwise>
                         </c:choose>
 
-                        
-<<<<<<< HEAD
-=======
+
                         <br><br>
                     </div>
 
@@ -117,20 +111,16 @@
                         <hr>
                         
                         
->>>>>>> refs/remotes/origin/hyejoo
+
                     <h3>메이트 신청받은 내역</h3>
                     <hr>
                       <div class="l-one-line">
 
                         <img src="../resources/image/hreart.png" width="32px" height="30px">
                         <span></span>
-<<<<<<< HEAD
-                        <h3>메이팅 구인 제목 및 날짜 </h3>
-                        <button type="button" onclick="location.href='/acti/'">상세보기 ></button>
-=======
+
                         <h3>${mtApplyList2[0].findList[0].title }</h3>
                         <button type="button" onclick="location.href=''">상세보기 ></button>
->>>>>>> refs/remotes/origin/hyejoo
                         <br><br>
                     </div>
                     

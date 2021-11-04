@@ -148,5 +148,21 @@ public class MypageDAO {
 			return session.update("MypageDAO.updatePayYn", cartNum);
 		}
 
+		public MypageMateScoreDTO selectScoreNum(SqlSession session) {
+			
+			return session.selectOne("MypageDAO.selectScoreNum");
+		}
+
+		public MateFindApplyDTO selectAppNo(SqlSession session, MateFindApplyDTO app) {
+			
+			
+			return session.selectOne("MypageDAO.selectAppNo", app);
+		}
+
+		public int insertScoreHis(SqlSession session, Map<String, String> hisNum) {
+			
+			return session.insert("MypageDAO.isertScoreHis", hisNum);
+		}
+
 
 }

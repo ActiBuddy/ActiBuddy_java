@@ -82,11 +82,11 @@ public class MateFindService {
 	 * @param userId
 	 * @return mtApply
 	 */
-	public MateFindAndApplyDTO selectMtApplyHis(String userId) {
+	public List<MateFindDTO> selectMtApplyHis(String userId) {
 		
 		SqlSession session = getSqlSession();
 		
-		MateFindAndApplyDTO mtApply = findDAO.selectMtApplyHis(session, userId);
+		List<MateFindDTO> mtApply = findDAO.selectMtApplyHis(session, userId);
 		
 		session.close();
 		

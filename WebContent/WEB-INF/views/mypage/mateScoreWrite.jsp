@@ -105,6 +105,7 @@
                 <br><br><br>
 
                 <input type="hidden" name="mateId" value="${ mateId }">
+                <input type="hidden" name="findNo" value="${ findNo }">
                 <input type="submit" value="후기 작성하기">
                 
                 </form>

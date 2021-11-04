@@ -25,7 +25,7 @@
 
     <div class="logo" >
     
-        <img src="../resources/image/mainlogo.png" width="400px" height="350px" />
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/mainlogo.png" width="400px" height="350px" />
         
     </div>
 
@@ -59,25 +59,25 @@
                     <hr>
                     <c:choose>
 				    <c:when test="${  not empty mtApply }">
-                    <c:forEach var="size" begin="0" end="${  fn:length(mtApply.applyList) - 1 }">
+                    <c:forEach var="mt" items="${ mtApply }">
                     <div class="l-one-line">
 
-                        <img src="../resources/image/hreart.png" width="32px" height="30px">
+                        <img src="${ pageContext.servletContext.contextPath }/resources/image/hreart.png" width="32px" height="30px">
                         <span></span>
-                        <h3>${ mtApply.findList[size].title }</h3>
+                        <h3>${ mt.title }</h3>
                         <button type="button" onclick="location.href=''">댓글 확인하기</button>
                         <br><br>
                     </div>
 
-                        <h4>희망인원 : ${ mtApply.findList[size].people } 명<br> 희망성별 : 
+                        <h4>희망인원 : ${ mt.people } 명<br> 희망성별 : 
                         <c:choose>
-					    <c:when test="${ mtApply.findList[size].gender eq 'M' }">
+					    <c:when test="${ mt.gender eq 'M' }">
 					    남자
 					    </c:when>
-					    <c:when test="${ mtApply.findList[size].gender eq 'W' }">
+					    <c:when test="${ mt.gender eq 'W' }">
 					    여자
 					    </c:when>
-					    <c:when test="${ mtApply.findList[size].gender eq 'B' }">
+					    <c:when test="${ mt.gender eq 'B' }">
 					    남녀 무관
 					    </c:when>
 					    </c:choose>
@@ -85,10 +85,11 @@
                         <br><br>
                         <form action="${ pageContext.servletContext.contextPath }/mypage/mate/score/write" method="post">
                         <input type="submit" id="reviewGo" value="후기쓰기">
-                        <input type="hidden" name="title" value="${ mtApply.findList[size].title }">
-                        <input type="hidden" name="mateId" value="${ mtApply.findList[size].userId }">
+                        <input type="hidden" name="title" value="${ mt.title }">
+                        <input type="hidden" name="mateId" value="${ mt.userId }">
+                        <input type="hidden" name="num" value="${ mt.num }">
                         </form>
-                        <button type="button" id="complete">${ mtApply.findList[size].state }</button>
+                        <button type="button" id="complete">${ mt.state }</button>
                         <br>
                         <hr>
                         </c:forEach>
@@ -102,7 +103,7 @@
                     <hr>
                       <div class="l-one-line">
 
-                        <img src="../resources/image/hreart.png" width="32px" height="30px">
+                        <img src="${ pageContext.servletContext.contextPath }/resources/image/hreart.png" width="32px" height="30px">
                         <span></span>
                         <h3>${mtApplyList2[0].findList[0].title }</h3>
                         <button type="button" onclick="location.href=''">상세보기 ></button>

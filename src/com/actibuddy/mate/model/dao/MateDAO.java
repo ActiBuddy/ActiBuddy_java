@@ -82,9 +82,9 @@ public class MateDAO {
 		return session.selectList("MateDAO.selectAllFindList", selectCriteria);
 	}
 
-	public MateFindAndApplyDTO selectMtApplyHis(SqlSession session, String userId) {
+	public List <MateFindDTO> selectMtApplyHis(SqlSession session, String userId) {
 		
-		return session.selectOne("MateDAO.selectMtApplyHis", userId);
+		return session.selectList("MateDAO.selectMtApplyHis", userId);
 	}
 	
 	public MateFindDTO selectFindInfo(SqlSession session, String num) {

@@ -35,8 +35,10 @@ public class MypageMateListServlet extends HttpServlet {
 		
 		/* 사용자가 신청한 메이팅 구인글 조회하기 */
 		MateFindService mateFindService = new MateFindService();
-		MateFindAndApplyDTO mtApply = mateFindService.selectMtApplyHis(userId);
-		System.out.println(mtApply);
+		List<MateFindDTO> mtApply = mateFindService.selectMtApplyHis(userId);
+		for(MateFindDTO mf : mtApply) {
+			System.out.println(mf);
+		}
 		
 		String path = "";
 

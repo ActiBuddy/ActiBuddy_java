@@ -128,13 +128,6 @@
 	<result property="appliedId" column="APPLIED_ID"/>
 	</resultMap>
 	
-	<resultMap type="com.actibuddy.mate.model.dto.MateFindAndApplyDTO" id="mtFindAndApplyResultMap">
-	    <collection property="applyList" resultMap="mtFindApplyResultMap"/>
-	    <collection property="findList" resultMap="mateFindResultMap"/>
-	</resultMap>
-
-
-	
 	<!-- 메이트 후기 글 리스트 -->
     <select id="selectAllFindList" resultMap="mateFindResultMap">
        SELECT A.RNUM
@@ -444,9 +437,9 @@
 
 	</insert>
 	
-	<select id="selectMtApplyHis" resultMap="mtFindAndApplyResultMap" parameterType="String">
-	    SELECT A.*
-             , C.*
+	<!-- 사용자가 신청한 메이트 내역 조회 -->
+	<select id="selectMtApplyHis" resultMap="mateFindResultMap" parameterType="String">
+	    SELECT C.*
 		  FROM MT_APPLY_HIS A 
 		  JOIN MEMBER B ON (A.APPLIED_ID = B.USER_ID)
 		  JOIN MT_FIND C ON (A.MT_FIND_NUM = C.MT_FIND_NUM)

@@ -24,32 +24,13 @@
     
     <jsp:include page="../common/managersidebar.jsp"/>
 
-          <h2 class="sub-header">파트너 문의 조회</h2>
+          <h2 class="sub-header">처리 완료된 신고 조회</h2>
           <div class="table-responsive">
           
-          <%-- <h3>리뷰 번호</h3>
-          <h5>${ reviewreportinfo.num }</h5>
-          <h5>${ actireviewreportinfo.num }</h5> --%>
-          
-          <%-- <h3>리뷰 제목</h3>
-          <h5>${ reviewreportinfo.title }</h5>
-          <h5>${ actireviewreportinfo.title }</h5>
-          
-          <h3>리뷰 내용</h3>
-          <h5>${ reviewreportinfo.content }</h5>
-          <h5>${ actireviewreportinfo.content }</h5>
-          
-          <h3>리뷰 작성 날짜</h3>
-          <h5>${ reviewreportinfo.date }</h5>
-          <h5>${ actireviewreportinfo.writeDate }</h5>
-          
-          <h3>신고받은 유저 정보</h3>
-          <h5>${ reviewreportinfo.userId }</h5>
-          <h5>${ actireviewreportinfo.writerId }</h5>
-          
-          <br><br> --%>
           
           <div class="table-responsive">
+          
+          <h3>액티비티 리뷰 신고</h3>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -70,7 +51,19 @@
                   <td>${ actireviewreportinfo.recYn }</td>
                 </tr>
                 </c:forEach>
-				
+				</tbody>
+            </table>
+            
+            <h3>메이트 리뷰 신고</h3>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>작성 아이디</th>
+                  <th>글 제목</th>
+                  <th>작성날짜</th>
+                  <th>처리여부</th>
+                </tr>
+              </thead>
                 <c:forEach var="reviewreportinfo" items="${reviewreportinfo}">
                 <tr>
                   <td>${ reviewreportinfo.userId }</td>

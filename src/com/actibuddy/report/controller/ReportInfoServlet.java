@@ -24,6 +24,7 @@ public class ReportInfoServlet extends HttpServlet {
 		MateReviewDTO reviewreport = new MateReviewDTO();		// 메이트 리뷰 DTO
 		ActiReviewDTO actireviewreport = new ActiReviewDTO();	// 액티비티 리뷰 DTO
 		
+		
 		reviewreport.setTitle(title);
 		actireviewreport.setTitle(title);
 		
@@ -34,6 +35,9 @@ public class ReportInfoServlet extends HttpServlet {
 		
 		request.setAttribute("reviewreportinfo", reviewreportinfo);
 		request.setAttribute("actireviewreportinfo", actireviewreportinfo);
+		
+		System.out.println(reviewreportinfo);
+		System.out.println(actireviewreportinfo);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/report/reportinfo.jsp");
 		rd.forward(request, response);

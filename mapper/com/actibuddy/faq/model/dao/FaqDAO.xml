@@ -73,22 +73,26 @@
 
  	<select id="commonFaq" resultMap="faqResultMap">
  	SELECT
- 		  QUE_NUM
-        , USER_ID
-        , QUE_TITLE
-        , QUE_CON
-        , QUE_EMAIL
-        , QUE_TYPE
-        , QUE_DATE
-        , ANSWER
-        , ANSWER_YN
-      FROM FAQ
-      WHERE QUE_TYPE IN('C', 'c')
+       ROWNUM
+     , A.QUE_NUM
+     , A.QUE_CON
+     , A.QUE_TITLE
+     , A.QUE_DATE
+     , A.USER_ID
+     , A.QUE_CON
+     , A.QUE_TYPE
+     , A.QUE_EMAIL
+     , A.ANSWER
+     , A.ANSWER_YN
+  FROM (
+            SELECT * FROM FAQ ORDER BY QUE_DATE DESC) A
+ WHERE A.QUE_TYPE ='C'
+   AND A.ANSWER_YN ='N'
 	</select>  
 
 
 	<select id="partnerFaq" resultMap="faqResultMap">
- 	SELECT
+ 	<!-- SELECT
  		  QUE_NUM
         , USER_ID
         , QUE_TITLE
@@ -99,7 +103,24 @@
         , ANSWER
         , ANSWER_YN
       FROM FAQ
-      WHERE QUE_TYPE IN('P', 'p')
+      WHERE QUE_TYPE IN('P', 'p') -->
+      
+      SELECT
+       ROWNUM
+     , A.QUE_NUM
+     , A.QUE_CON
+     , A.QUE_TITLE
+     , A.QUE_DATE
+     , A.USER_ID
+     , A.QUE_CON
+     , A.QUE_TYPE
+     , A.QUE_EMAIL
+     , A.ANSWER
+     , A.ANSWER_YN
+  FROM (
+            SELECT * FROM FAQ ORDER BY QUE_DATE DESC) A
+ WHERE A.QUE_TYPE ='P'
+   AND A.ANSWER_YN ='N'
 	</select>
 
 	<select id="detailFaq" resultMap="faqResultMap" >

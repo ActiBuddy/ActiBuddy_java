@@ -24,8 +24,6 @@ public class ManagerGradeServlet extends HttpServlet {
 		
 		List<ManagerDTO> managerList = managerService.selectManagerMember();		
 		
-		System.out.println(managerList);
-		
 		request.setAttribute("memberList", managerList);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/managerManager.jsp");

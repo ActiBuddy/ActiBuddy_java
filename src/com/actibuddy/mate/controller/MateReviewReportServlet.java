@@ -20,7 +20,7 @@ public class MateReviewReportServlet extends HttpServlet {
 	
 		String reviewNum = request.getParameter("num");
 //		char repYn = request.getParameter("rep").charAt(0);
-		char updateRepYn = 'L';
+		String updateRepYn = "L";
 		
 		System.out.println("신고할 후기 게시글 번호 : " + reviewNum);
 		System.out.println("신고 업데이트값 : " + updateRepYn);

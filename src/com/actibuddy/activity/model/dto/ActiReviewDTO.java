@@ -13,7 +13,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 	private double reviewStar;
 	private String image;
 	private int recommend;
-	private char recYn;
+	private String recYn;
 	private String chooseOption;
 	
 	public ActiReviewDTO() {
@@ -21,7 +21,7 @@ public class ActiReviewDTO implements java.io.Serializable{
 	}
 
 	public ActiReviewDTO(String num, Date writeDate, String actiNum, String writerId, String title, String content,
-			double reviewStar, String image, int recommend, char recYn, String chooseOption) {
+			double reviewStar, String image, int recommend, String recYn, String chooseOption) {
 		super();
 		this.num = num;
 		this.writeDate = writeDate;
@@ -108,11 +108,11 @@ public class ActiReviewDTO implements java.io.Serializable{
 		this.recommend = recommend;
 	}
 
-	public char getRecYn() {
+	public String getRecYn() {
 		return recYn;
 	}
 
-	public void setRecYn(char recYn) {
+	public void setRecYn(String recYn) {
 		this.recYn = recYn;
 	}
 

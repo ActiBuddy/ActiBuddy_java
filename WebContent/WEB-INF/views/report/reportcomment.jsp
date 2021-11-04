@@ -35,6 +35,9 @@
     <jsp:include page="../common/managersidebar.jsp"/>
 
           <h2 class="sub-header">댓글 신고 접수</h2>
+          <span> <form action="../report/rejected?title=${ actireviewreportinfo.title }" method="get">
+          	<textarea type="text" name="title" style="display:none">${ actireviewreportinfo.title }</textarea>
+         	 <button type="submit">처리 완료된 신고 보기</button></span>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -48,145 +51,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Lorem</td>
-                  <td><a href="../Mate/mate_writing.html">토토 조아요</a></td>
-                  <td>2021/10/16</td>
-                  <td>1회</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>amet</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>0회</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Integer</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>1회</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>libero</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>3회</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>dapibus</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>3회</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Nulla</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>3회</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>nibh</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>0회</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>sagittis</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>2회</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>Fusce</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>0회</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>augue</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>0회</td>
-                </tr>
-                <tr>
-                  <td>11</td>
-                  <td>massa</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>2회</td>
-                </tr>
-                <tr>
-                  <td>12</td>
-                  <td>eget</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>2회</td>
-                </tr>
-                <tr>
-                  <td>13</td>
-                  <td>taciti</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>1회</td>
-                </tr>
-                <tr>
-                  <td>14</td>
-                  <td>torquent</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>2회</td>
-                </tr>
-                <tr>
-                  <td>15</td>
-                  <td>per</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>3회</td>
-                </tr>
-                <tr>
-                  <td>16</td>
-                  <td>sodales</td>
-                  <td>토토 조아요</td>
-                  <td>2021/10/16</td>
-                  <td>3회</td>
-                </tr>
+               
               </tbody>
             </table>
-
-            <nav>
-              <ul class="pagination">
-                <li>
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-
           </div>
-        </div>
-      </div>
-    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

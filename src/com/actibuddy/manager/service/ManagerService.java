@@ -127,6 +127,27 @@ public class ManagerService {
 	
 		return result;
 	}
+
+	// 매니저 등록 (파트 지정)
+	public int registManager(MemberDTO requestMember, ManagerPartDTO managerpart) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result2 = ManagerDAO.registManagerId(session, requestMember);
+		int result1 = ManagerDAO.registManagerPart(session, managerpart);
+		
+		if(result1 > 0 && result2 > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result1;
+	}
+
+
 	
 	
 	}

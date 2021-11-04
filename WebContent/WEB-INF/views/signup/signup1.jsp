@@ -226,6 +226,7 @@
         }
 
             });
+            
             $('.but').click(function(){
                   if(
                     (($("input[name=chk1]").prop("checked") == true)  &&  ($("input[name=chk2]").prop("checked") == true)) 

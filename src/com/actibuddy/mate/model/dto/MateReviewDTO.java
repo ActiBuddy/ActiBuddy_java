@@ -11,7 +11,7 @@ public class MateReviewDTO {
 	private String img3;
 	private String content;
 	private java.sql.Date date;
-	private char repYn;
+	private String repYn;
 	private String userId;
 	private int recommend;
 	
@@ -20,7 +20,7 @@ public class MateReviewDTO {
 	}
 	
 	public MateReviewDTO(String num, String title, String img1, String img2, String img3, String content, Date date,
-			char repYn, String userId, int recommend) {
+			String repYn, String userId, int recommend) {
 		super();
 		this.num = num;
 		this.title = title;
@@ -75,10 +75,10 @@ public class MateReviewDTO {
 	public void setDate(java.sql.Date date) {
 		this.date = date;
 	}
-	public char getRepYn() {
+	public String getRepYn() {
 		return repYn;
 	}
-	public void setRepYn(char repYn) {
+	public void setRepYn(String repYn) {
 		this.repYn = repYn;
 	}
 	public String getUserId() {

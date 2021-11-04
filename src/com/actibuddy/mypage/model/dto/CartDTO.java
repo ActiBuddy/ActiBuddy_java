@@ -11,6 +11,8 @@ public class CartDTO implements java.io.Serializable{
 	private int totalPerson;
 	private int totalPrice;
 	private Date ChooseDate;
+	private String payYn;
+	
 	
 	
 	public CartDTO() {
@@ -19,8 +21,9 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public CartDTO(String actiNum, String cartNum, String userId, String chooseOption, int totalPerson, int totalPrice,
-			Date chooseDate) {
+			Date chooseDate, String payYn) {
 		super();
 		this.actiNum = actiNum;
 		this.cartNum = cartNum;
@@ -29,7 +32,9 @@ public class CartDTO implements java.io.Serializable{
 		this.totalPerson = totalPerson;
 		this.totalPrice = totalPrice;
 		ChooseDate = chooseDate;
+		this.payYn = payYn;
 	}
+
 
 
 	public String getActiNum() {
@@ -37,9 +42,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public void setActiNum(String actiNum) {
 		this.actiNum = actiNum;
 	}
+
 
 
 	public String getCartNum() {
@@ -47,9 +54,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public void setCartNum(String cartNum) {
 		this.cartNum = cartNum;
 	}
+
 
 
 	public String getUserId() {
@@ -57,9 +66,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 
 
 	public String getChooseOption() {
@@ -67,9 +78,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public void setChooseOption(String chooseOption) {
 		this.chooseOption = chooseOption;
 	}
+
 
 
 	public int getTotalPerson() {
@@ -77,9 +90,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public void setTotalPerson(int totalPerson) {
 		this.totalPerson = totalPerson;
 	}
+
 
 
 	public int getTotalPrice() {
@@ -87,9 +102,11 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
 
 
 	public Date getChooseDate() {
@@ -97,18 +114,33 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
+
 	public void setChooseDate(Date chooseDate) {
 		ChooseDate = chooseDate;
 	}
+
+
+
+	public String getPayYn() {
+		return payYn;
+	}
+
+
+
+	public void setPayYn(String payYn) {
+		this.payYn = payYn;
+	}
+
 
 
 	@Override
 	public String toString() {
 		return "CartDTO [actiNum=" + actiNum + ", cartNum=" + cartNum + ", userId=" + userId + ", chooseOption="
 				+ chooseOption + ", totalPerson=" + totalPerson + ", totalPrice=" + totalPrice + ", ChooseDate="
-				+ ChooseDate + "]";
+				+ ChooseDate + ", payYn=" + payYn + "]";
 	}
-	
+
+
 	
 
 }

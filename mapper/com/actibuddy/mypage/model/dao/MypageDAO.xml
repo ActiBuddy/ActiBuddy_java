@@ -27,7 +27,8 @@
 		<result property="chooseOption" column="CHOOSE_OPTION"/>
 		<result property="totalPerson" column="TOTAL_PERSON"/>
 		<result property="totalPrice" column="TOTAL_PRICE"/>
-		<result property="chooseDate" column="CHOOSE_DATE"/>		
+		<result property="chooseDate" column="CHOOSE_DATE"/>
+		<result property="payYn" column="PAY_YN"/>		
 	</resultMap>
 	
 	<resultMap type="com.actibuddy.mypage.model.dto.PayHisDTO" id="PayHisResultMap">
@@ -297,6 +298,7 @@
          , A.TOTAL_PERSON
          , A.TOTAL_PRICE
          , A.CHOOSE_DATE
+         , A.PAY_YN
         )
         VALUES
         (
@@ -307,6 +309,7 @@
         , #{ totalPerson }
         , #{ totalPrice }
         , #{ chooseDate }
+        , DEFAULT
         )
     
     </insert>
@@ -596,6 +599,12 @@
 		   SET MT_FIND_STATE = '신청마감'
 		 WHERE MT_FIND_NUM = #{ num }
 	
+	</update>
+	
+	<update id="updatePayYn">
+	    UPDATE CART
+		   SET PAY_YN = 'Y'
+		 WHERE CART_NUM = #{ cartNum }
 	</update>
 	
   

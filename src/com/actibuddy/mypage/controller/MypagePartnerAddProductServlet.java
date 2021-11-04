@@ -251,8 +251,13 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 				String option3 = parameter.get("option3");
 				String option4 = parameter.get("option4");
 				
+			    System.out.println("옵션1 가격 : " + parameter.get("opPrice1"));
+			    System.out.println("옵션2 가격 : " +parameter.get("opPrice2"));
+			    System.out.println("옵션3 가격 : " +parameter.get("opPrice3"));
+			    System.out.println("옵션4 가격 : " +parameter.get("opPrice4"));
 				
-				if(parameter.get("opPrice1") != null && option1 != null) {
+				
+				if((!parameter.get("opPrice1").equals("")) && (!option1.equals(""))) {
 					
 					int opPrice1 = Integer.parseInt(parameter.get("opPrice1"));
 					requestOption.setActiNum(newActiNum);
@@ -261,7 +266,7 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 					int resultOp = new MypageService().insertOp(requestOption);
 					System.out.println("옵션 1 성공 ? : " + resultOp);
 				}
-				if(parameter.get("opPrice2") != null && option2 != null) {
+				if((!parameter.get("opPrice2").equals("")) && (!option2.equals(""))) {
 					
 					int opPrice2 = Integer.parseInt(parameter.get("opPrice2"));
 					requestOption.setActiNum(newActiNum);
@@ -270,7 +275,7 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 					int resultOp = new MypageService().insertOp(requestOption);
 					System.out.println("옵션 2 성공 ? : " + resultOp);
 				}
-				if(parameter.get("opPrice3") != null && option3 != null) {
+				if((!parameter.get("opPrice3").equals("")) && (!option3.equals(""))) {
 					
 					int opPrice3 = Integer.parseInt(parameter.get("opPrice3")); 
 					requestOption.setActiNum(newActiNum);
@@ -279,7 +284,7 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 					int resultOp = new MypageService().insertOp(requestOption);
 					System.out.println("옵션 3 성공 ? : " + resultOp);
 				}
-				if(parameter.get("opPrice4") != null && option4 != null) {
+				if((!parameter.get("opPrice4").equals("")) && (!option4.equals(""))) {
 					
 					int opPrice4 = Integer.parseInt(parameter.get("opPrice4"));
 					requestOption.setActiNum(newActiNum);

@@ -189,33 +189,42 @@
          	if(location == ''){
          		location = "a";
          	}
-         	if(location == 'a'){
+         	
+         	let localName = '';
+         	switch(location) {
+    		case "a": localName="all";break;
+    		case "b": localName="seoul"; break;
+    		case "c": localName="gyeonggi"; break;
+    		case "d": localName="gangwon"; break;
+    		case "e": localName="chungcheong"; break;
+    		case "f": localName="jeolla"; break;
+    		case "g": localName="gyeongsang"; break;
+    		case "h": localName="busan"; break;
+    		case "i": localName="jeju"; break;
+    		}
+         	
+         	
+         	
          		
-	         	let data = $('.mtab_content');
-	         	for(let i = 0; i < data.length; i++){
-					
-					if(data[i].id == ('all_content')){
-						$(data[i]).css("display","block");
-					}else {
-						$(data[i]).css("display","none");						
-					}
-				}
-         	}
-     	});
-			function check1(value){
+         	let data = $('.mtab_content');
+         	
+         	for(let i = 0; i < data.length; i++){
 				
-				let data = $('.mtab_content');
-				
-				for(let i = 0; i < data.length; i++){
-					
-					if(data[i].id == (value.id+'_content')){
-						$(data[i]).css("display","block");
-					}else {
-						$(data[i]).css("display","none");									
-					}
+				if(data[i].id == (localName+'_content')){
+					data[i].style="display:block;";
+					/* $(data[i]).css("display","block"); */
+				}else {
+					data[i].style="display:none;";
+				/* 	$(data[i]).css("display","none");		 */				
 				}
 			}
-		
+						
+         	
+         	
+         			
+     	});
+
+         
 
 
         </script>
@@ -258,7 +267,8 @@
        
         	<!-- 검색 부분 -->
            <div class="search">
-	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/main" method="get">
+	               <input type="hidden" id="searchCondition" name="location" value="a">
 	               <input type="hidden" name="currentPage" value="1">
 	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
 	               <button type="submit" class="searchbutton">검색하기</button>
@@ -283,7 +293,7 @@
             </thead>
             <tbody>
                 <c:forEach var="find" items="${ findList }">
-                <if test="${ find.location ne '서울' }">
+                <c:if test='${ find.location eq "서울" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
                   <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
@@ -292,8 +302,8 @@
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>
                   </tr>
-                </if>     
-                  </c:forEach>
+				</c:if>
+                </c:forEach>
              </tbody>
         </table>
          <!-- 작성하기버튼 로그인처리 -->
@@ -306,7 +316,8 @@
        
         	<!-- 검색 부분 -->
            <div class="search">
-	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/main" method="get">
+	               <input type="hidden" id="searchCondition" name="location" value="b">
 	               <input type="hidden" name="currentPage" value="1">
 	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
 	               <button type="submit" class="searchbutton">검색하기</button>
@@ -330,6 +341,7 @@
             </thead>
            <tbody>
                   <c:forEach var="find" items="${ findList }">
+                  <c:if test='${ find.location eq "경기" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
                   <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
@@ -338,6 +350,7 @@
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>
                   </tr>
+                  </c:if>
                   </c:forEach>
                 </tbody>
             </table>
@@ -352,7 +365,8 @@
        
         	<!-- 검색 부분 -->
            <div class="search">
-	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/main?location=${ location }" method="get">
+	            <input type="hidden" id="searchCondition" name="location" value="c">
 	               <input type="hidden" name="currentPage" value="1">
 	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
 	               <button type="submit" class="searchbutton">검색하기</button>
@@ -376,6 +390,7 @@
             </thead>
            <tbody>
                   <c:forEach var="find" items="${ findList }">
+                  <c:if test='${ find.location eq "강원" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
                   <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
@@ -384,6 +399,7 @@
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>
                   </tr>
+                  </c:if>
                   </c:forEach>
                 </tbody>
             </table>
@@ -398,7 +414,8 @@
        
         	<!-- 검색 부분 -->
            <div class="search">
-	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/main?location=${ location }" method="get">
+	            <input type="hidden" id="searchCondition" name="location" value="d">
 	               <input type="hidden" name="currentPage" value="1">
 	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
 	               <button type="submit" class="searchbutton">검색하기</button>
@@ -421,6 +438,7 @@
             </thead>
            <tbody>
                   <c:forEach var="find" items="${ findList }">
+                  <c:if test='${ find.location eq "충청" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
                   <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
@@ -429,6 +447,7 @@
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>
                   </tr>
+                  </c:if>
                   </c:forEach>
                 </tbody>
             </table>
@@ -443,7 +462,8 @@
        
         	<!-- 검색 부분 -->
            <div class="search">
-	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/main?location=${ location }" method="get">
+	            <input type="hidden" id="searchCondition" name="location" value="e">
 	               <input type="hidden" name="currentPage" value="1">
 	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
 	               <button type="submit" class="searchbutton">검색하기</button>
@@ -466,6 +486,7 @@
             </thead>
            <tbody>
                   <c:forEach var="find" items="${ findList }">
+                  <c:if test='${ find.location eq "전라" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
                   <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
@@ -474,6 +495,7 @@
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>
                   </tr>
+                  </c:if>
                   </c:forEach>
                 </tbody>
             </table>
@@ -488,7 +510,8 @@
        
         	<!-- 검색 부분 -->
            <div class="search">
-	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/main?location=${ location }" method="get">
+	            <input type="hidden" id="searchCondition" name="location" value="f">
 	               <input type="hidden" name="currentPage" value="1">
 	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
 	               <button type="submit" class="searchbutton">검색하기</button>
@@ -511,6 +534,7 @@
             </thead>
             <tbody>
                   <c:forEach var="find" items="${ findList }">
+                  <c:if test='${ find.location eq "경상" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
                   <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
@@ -519,6 +543,7 @@
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>
                   </tr>
+                  </c:if>
                   </c:forEach>
                 </tbody>
             </table>
@@ -533,7 +558,8 @@
        
         	<!-- 검색 부분 -->
            <div class="search">
-	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/main?location=${ location }" method="get">
+	            <input type="hidden" id="searchCondition" name="location" value="g">
 	               <input type="hidden" name="currentPage" value="1">
 	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
 	               <button type="submit" class="searchbutton">검색하기</button>
@@ -554,92 +580,23 @@
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="../Mate/mate_title.html">[부산]  2조 소회의실 부탁드려요!</a></td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row" >2</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                   <th scope="row" >4</th>
-                   <td>제목이 들어갑니다.</td>
-                   <td>parisbaguette</td>
-                   <td>~10/8</td>
-                   <td>2/4</td>
-                   <td>신청가능</td>
-                </tr>
-                <tbody>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" >6</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                       <th scope="row" >8</th>
-                       <td>제목이 들어갑니다.</td>
-                       <td>parisbaguette</td>
-                       <td>~10/8</td>
-                       <td>2/4</td>
-                       <td>신청가능</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>제목이 들어갑니다.</td>
-                        <td>parisbaguette</td>
-                        <td>~10/8</td>
-                        <td>2/4</td>
-                        <td>신청가능</td>
-                      </tr>
-                      <tr>
-                         <th scope="row" >10</th>
-                         <td>제목이 들어갑니다.</td>
-                         <td>parisbaguette</td>
-                         <td>~10/8</td>
-                         <td>2/4</td>
-                         <td>신청가능</td>
-                      </tr>
-                      
+             <tbody>
+                  <c:forEach var="find" items="${ findList }">
+                  <c:if test='${ find.location eq "부산" }'>
+                  <tr>
+                  <th scope="row">${ find.num }</th>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
+                  <td>${ find.deadline }</td>
+                  <td>${ find.count }/${ find.people }</td>
+                  <td>${ find.state }</td>
+                  </tr>
+                  </c:if>
+                  </c:forEach>
                 </tbody>
-        </table>
-         <!-- 작성하기버튼 로그인처리 -->
+            </table>
+            
+            <!-- 작성하기버튼 로그인처리 -->
 		   <c:if test="${ !empty sessionScope.loginMember }">
 	       <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/find/regist'">작성하기</button>
 	       </c:if>
@@ -649,7 +606,8 @@
        
         	<!-- 검색 부분 -->
            <div class="search">
-	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/main?location=${ location }" method="get">
+	            <input type="hidden" id="searchCondition" name="location" value="h">
 	               <input type="hidden" name="currentPage" value="1">
 	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
 	               <button type="submit" class="searchbutton">검색하기</button>
@@ -670,92 +628,33 @@
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="../Mate/mate_title.html">[제주] 2조 소회의실 부탁드려요!</a></td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row" >2</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                   <th scope="row" >4</th>
-                   <td>제목이 들어갑니다.</td>
-                   <td>parisbaguette</td>
-                   <td>~10/8</td>
-                   <td>2/4</td>
-                   <td>신청가능</td>
-                </tr>
-                <tbody>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" >6</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                       <th scope="row" >8</th>
-                       <td>제목이 들어갑니다.</td>
-                       <td>parisbaguette</td>
-                       <td>~10/8</td>
-                       <td>2/4</td>
-                       <td>신청가능</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>제목이 들어갑니다.</td>
-                        <td>parisbaguette</td>
-                        <td>~10/8</td>
-                        <td>2/4</td>
-                        <td>신청가능</td>
-                      </tr>
-                      <tr>
-                         <th scope="row" >10</th>
-                         <td>제목이 들어갑니다.</td>
-                         <td>parisbaguette</td>
-                         <td>~10/8</td>
-                         <td>2/4</td>
-                         <td>신청가능</td>
-                      </tr>
-                      
-                </tbody>
-        </table>
-         <!-- 작성하기버튼 로그인처리 -->
+     	   <tbody>
+     	   		 
+                  <c:forEach var="find" items="${ findList }">
+                  <c:if test='${find.location eq "제주" }'>
+                  <tr>
+                  <th scope="row">${ find.num }</th>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
+                  <td>${ find.deadline }</td>
+                  <td>${ find.count }/${ find.people }</td>
+                  <td>${ find.state }</td>
+                  </tr>
+                  </c:if>
+                  
+                  
+                  </c:forEach>
+                  
+                   <c:if test='${ empty (find.location eq "제주") }'>
+                  <tr>
+                  <td>값이 없습니다.</td>
+                  </tr>
+                  </c:if>
+                  
+            </tbody>
+            </table>
+            
+            <!-- 작성하기버튼 로그인처리 -->
 		   <c:if test="${ !empty sessionScope.loginMember }">
 	       <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/find/regist'">작성하기</button>
 	       </c:if>
@@ -765,7 +664,8 @@
        
         	<!-- 검색 부분 -->
            <div class="search">
-	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/main?location=${ location }" method="get">
+	            <input type="hidden" id="searchCondition" name="location" value="i">
 	               <input type="hidden" name="currentPage" value="1">
 	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
 	               <button type="submit" class="searchbutton">검색하기</button>
@@ -779,7 +679,7 @@
      
      <!-- 메이팅 후기 -->
     <div class="mate_review1">
-        <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_review.png" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/mate/review';">
+        <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_review.png" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/mate/main';">
     </div>
 
     <div class="mate_review2">

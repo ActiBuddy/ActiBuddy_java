@@ -62,7 +62,7 @@ public class MateMainServlet extends HttpServlet {
 		case "i": searchCondition="제주"; break;
 		}
 		
-		
+		System.out.println("서치 : " + searchCondition);
 		// map 설정
 		Map<String, String> searchMap = new HashMap<>();
 		searchMap.put("searchValue", searchValue);
@@ -82,22 +82,25 @@ public class MateMainServlet extends HttpServlet {
 		SelectCriteria selectCriteria = null;
 
 		// 검색 할 때 페이징 처리와 검색 안할 때 페이징 처리
-		if(searchCondition != null && !"".equals(searchCondition)) {
+		if(searchValue != null && !"".equals(searchValue)) {
 			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue);
 		} else {
 			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
 		}
 
+		System.out.println("로케이션 : " + location);
+		System.out.println("밸류 : " + searchValue);
 		System.out.println("criteria : " + selectCriteria);
 		/* find 조회 */
 		List<MateFindDTO> findList = findService.selectAllFindList(selectCriteria);
 		List<MateFindDTO> hurryFindList = findService.selectHurryFind();
 		
+		System.out.println("파인드 : " + findList);
 		/* review 조회 */
 		MateReviewService reviewService = new MateReviewService();
 		List<MateReviewDTO> newReviewList = reviewService.selectNewReview();
 		
-		System.out.println("findList : " + findList);
+		
 
 
 		String path = "";

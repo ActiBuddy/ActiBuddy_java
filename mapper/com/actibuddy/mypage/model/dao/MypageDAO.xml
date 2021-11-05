@@ -198,7 +198,7 @@
 	</resultMap>
 	
 	<resultMap type="com.actibuddy.mate.model.dto.MateFindDTO" id="mateFindResultMap">
-	   <id property="num" column="MT_FIND_NUM"/>
+	   <result property="num" column="MT_FIND_NUM"/>
 	   <result property="title" column="MT_FIND_TITLE"/>
 	   <result property="content" column="MT_FIND_CONTENT"/>
 	   <result property="repYn" column="MT_FIND_REP_YN"/>

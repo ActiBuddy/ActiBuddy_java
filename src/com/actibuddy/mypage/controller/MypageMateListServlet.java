@@ -33,21 +33,23 @@ public class MypageMateListServlet extends HttpServlet {
 		request.setAttribute("mtApplyList2", mtApplyList2);
 		
 		/* 사용자가 신청한 메이팅 구인글 조회하기 */
-		MateFindService mateFindService = new MateFindService();
-		MateFindAndApplyDTO mtApply = mateFindService.selectMtApplyHis(userId);
-		System.out.println(mtApply);
+		/*
+		 * MateFindService mateFindService = new MateFindService(); MateFindAndApplyDTO
+		 * mtApply = mateFindService.selectMtApplyHis(userId);
+		 * System.out.println(mtApply);
+		 * 
+		 * String path = "";
+		 * 
+		 * if(mtApply != null) { path = "/WEB-INF/views/mypage/mateList.jsp";
+		 * request.setAttribute("mtApply", mtApply);
+		 * 
+		 * } else { path = "/WEB-INF/views/common/actiFail.jsp"; }
+		 * 
+		 * request.getRequestDispatcher(path).forward(request, response);
+		 */
 		
-		String path = "";
-
-		if(mtApply != null) {
-			path = "/WEB-INF/views/mypage/mateList.jsp";
-			request.setAttribute("mtApply", mtApply);
-			
-		} else {
-			path = "/WEB-INF/views/common/actiFail.jsp";
-		}
-
-		request.getRequestDispatcher(path).forward(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
+		rd.forward(request, response);
 		
 
 	}
@@ -63,13 +65,15 @@ public class MypageMateListServlet extends HttpServlet {
 		System.out.println("신청자 아이디 : " + appliedId);
 		
 		// 마감하기 버튼 누르면 MT_FIND 신청마감으로 업데이트
-		String mtFindNum = request.getParameter("mtFindNum");
+		String mtFindNum = request.getParameter("num");
 		System.out.println("마감하기 위한 메이트 번호 : " + mtFindNum);
 		
 		MateFindDTO requestMtFindNum = new MateFindDTO();
 		requestMtFindNum.setNum("num");
 		
 		int result = new MypageService().updateMtFindNum(requestMtFindNum);
+		
+		System.out.println("마감 업뎃 성공? : " + result);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
 		rd.forward(request, response);

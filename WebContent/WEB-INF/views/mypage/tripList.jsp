@@ -90,8 +90,6 @@
 	                    <button >후기 작성 완료</button>
 	                    
 	                    </c:if>
-
-                    <hr>
     				
     				</c:forEach> 
     				</c:when>

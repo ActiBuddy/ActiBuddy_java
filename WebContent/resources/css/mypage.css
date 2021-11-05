@@ -23,7 +23,7 @@
   position: relative;
   width: 70%;
   height: auto;
-  background: rgba(249, 249, 249, 1);
+ /*  background: rgba(249, 249, 249, 1); */
   /* border: 2px solid rgb(19, 19, 39); */
   left: 15%;
   margin-bottom: 100px;
@@ -52,7 +52,7 @@
 }
 .side-1 h4 {
     position: relative;
-    left: 13%;
+    left: 11%;
     transform: translate(-37px);
 }
 .side-2 {

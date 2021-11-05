@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
-import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.service.MateFindService;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.member.model.dto.MemberDTO;
@@ -39,18 +38,10 @@ public class MypageMateListServlet extends HttpServlet {
 		for(MateFindDTO mf : mtApply) {
 			System.out.println(mf);
 		}
+		request.setAttribute("mtApply", mtApply);
 		
-		String path = "";
-
-		if(mtApply != null) {
-			path = "/WEB-INF/views/mypage/mateList.jsp";
-			request.setAttribute("mtApply", mtApply);
-			
-		} else {
-			path = "/WEB-INF/views/common/actiFail.jsp";
-		}
-
-		request.getRequestDispatcher(path).forward(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
+		rd.forward(request, response);
 		
 
 	}
@@ -66,7 +57,7 @@ public class MypageMateListServlet extends HttpServlet {
 		System.out.println("신청자 아이디 : " + appliedId);
 		
 		// 마감하기 버튼 누르면 MT_FIND 신청마감으로 업데이트
-		String mtFindNum = request.getParameter("mtFindNum");
+		String mtFindNum = request.getParameter("num");
 		System.out.println("마감하기 위한 메이트 번호 : " + mtFindNum);
 		
 		MateFindDTO requestMtFindNum = new MateFindDTO();
@@ -74,8 +65,10 @@ public class MypageMateListServlet extends HttpServlet {
 		
 		int result = new MypageService().updateMtFindNum(requestMtFindNum);
 		
-//		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
-//		rd.forward(request, response);
+		System.out.println("마감 업뎃 성공? : " + result);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
+		rd.forward(request, response);
 		
 
 	}

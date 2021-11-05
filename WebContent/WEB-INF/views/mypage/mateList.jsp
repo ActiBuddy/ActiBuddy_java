@@ -3,6 +3,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -95,34 +96,39 @@
                         </c:forEach>
                         </c:when>
                         <c:otherwise>
-                        <h1> 아직 신청한 메이트 내역이 없습니다.</h1>
+                        <h2> 아직 신청한 메이트 내역이 없습니다.</h2><hr>
                         </c:otherwise>
                         </c:choose>
-
+                        
+                        
                     <h3>메이트 신청받은 내역</h3>
                     <hr>
                       <div class="l-one-line">
+                       <c:forEach items="${mtApplyList2}" var="apply" varStatus="status">
 
                         <img src="${ pageContext.servletContext.contextPath }/resources/image/hreart.png" width="32px" height="30px">
                         <span></span>
-                        <h3>${mtApplyList2[0].findList[0].title }</h3>
+						<c:forEach items="${apply.findList }" var="find">
+                        	<h3>${apply.find.title }</h3>
+                       	</c:forEach>
                         <button type="button" onclick="location.href=''">상세보기 ></button>
                         <br><br>
                     </div>
                     
                     <button id="l-list">메이트 구인 내역</button>
                       <div class="people">
+                       <c:forEach items="${ apply.applyList}" var="app">
+                       		${ app.num }
+	                         <br>
+	                         <!-- MT_APPLY_HIS에서 신청한 아이디 가져오기 -->         
+	                        <h4>신청자 : ${apply.app.appliedId}</h4>
+	                        <!-- 신청한 아이디 히든으로 넘겨주고 -->
                     <form action="../mypage/matelist" method="post"> <!-- // 가져오고 나서 update해주기     -->
-                       <c:forEach items="${mtApplyList2}" var="apply" varStatus="status">
-                        <br>
-                         <!-- MT_APPLY_HIS에서 신청한 아이디 가져오기 -->
-                       	  <c:set var="idx" value="${status.index}"></c:set>           
-                        <h4>신청자 : ${apply.applyList.get(index).appliedId}</h4>
-                        <!-- 신청한 아이디 히든으로 넘겨주고 -->
-                        <input type="hidden"  name="appliedId" value="${apply.applyList.get(index).appliedId}">
-                        <button type="submit" value="Y">수락</button><button type="submit" value="N" >거절</button><br>                                                
-                        </c:forEach> 
+	                        <input type="hidden"  name="appliedId" value="${apply.app.appliedId}">
+	                        <button type="submit" value="Y">수락</button><button type="submit" value="N" >거절</button><br>  
                     </form>
+                        </c:forEach> 
+                       </c:forEach>
                       </div>
                     <script>
                         $(function(){
@@ -137,7 +143,10 @@
                     <!-- 마감하기 누르면  -> MT_FIND_STATE 신청마감으로 업데이트 -->
 	                    <form action="../mypage/matelist" method="post">
 	                    <input type="hidden" name="num" value="${ mtApplyList2[0].applyList[0].num}">
-	                    	<button type="submit" class="forgreen" id="magam">마감하기</button>
+	                    		<button type="submit" class="forgreen" id="magam">마감하기</button>
+	                    	<c:if test="${ mtApplyList2[0].applyList[0].num} eq '신청마감'">
+	                    		<button type="button" id="magam">마감완료</button>
+	                    	</c:if>
 	                    </form>
                     <hr>
 

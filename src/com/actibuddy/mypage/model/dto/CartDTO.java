@@ -12,8 +12,7 @@ public class CartDTO implements java.io.Serializable{
 	private int totalPrice;
 	private Date ChooseDate;
 	private String payYn;
-	
-	
+
 	
 	public CartDTO() {
 		super();
@@ -120,11 +119,9 @@ public class CartDTO implements java.io.Serializable{
 	}
 
 
-
 	public String getPayYn() {
 		return payYn;
 	}
-
 
 
 	public void setPayYn(String payYn) {
@@ -139,7 +136,6 @@ public class CartDTO implements java.io.Serializable{
 				+ chooseOption + ", totalPerson=" + totalPerson + ", totalPrice=" + totalPrice + ", ChooseDate="
 				+ ChooseDate + ", payYn=" + payYn + "]";
 	}
-
 
 	
 

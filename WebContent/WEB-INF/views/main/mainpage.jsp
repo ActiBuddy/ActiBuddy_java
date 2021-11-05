@@ -35,7 +35,7 @@
 
 		<div class="mainsearch">
 				<form action="/acti/search/activity" method="get">
-				<input type="text" size="50" placeholder="Search" name="searchValue" id="searchBar">
+				<input type="text" size="50" placeholder="Search" name="searchValue" id="searchBar1">
 				<button type="submit" class="search-btn">검색하기</button>
 				</form>
 		</div>

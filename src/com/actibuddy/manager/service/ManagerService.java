@@ -49,11 +49,11 @@ public class ManagerService {
 		return managerList;
 	}
 	
-	public List<ManagerDTO> selectWarnMember() {
+	public List<ManagerDTO> selectWarnMember(SelectCriteria selectCriteria) {
 
 		SqlSession session = getSqlSession();
 	
-		List<ManagerDTO> managerList = ManagerDAO.selectWarnMember(session);
+		List<ManagerDTO> managerList = ManagerDAO.selectWarnMember(session, selectCriteria);
 	
 		session.close();
 	
@@ -62,11 +62,11 @@ public class ManagerService {
 	}
 
 
-	public List<ManagerDTO> selectAllMember() {
+	public List<ManagerDTO> selectAllMember(SelectCriteria selectCriteria) {
 
 			SqlSession session = getSqlSession();
 			
-			List<ManagerDTO> managerList = ManagerDAO.selectAllMember(session);
+			List<ManagerDTO> managerList = ManagerDAO.selectAllMember(session, selectCriteria);
 			
 			session.close();
 			
@@ -161,6 +161,28 @@ public class ManagerService {
 	}
 
 
+		public int commonMemberTotalCount(Map<String, String> searchMap) {
+		
+		SqlSession session = getSqlSession();
+		
+		int totalCount = ManagerDAO.commonMemberTotalCount(session, searchMap);
+
+		session.close();
+		
+		return totalCount;
+	}
+
+
+		public int warnmemberTotalCount(Map<String, String> searchMap) {
+			
+			SqlSession session = getSqlSession();
+			
+			int totalCount = ManagerDAO.warnmemberTotalCount(session, searchMap);
+
+			session.close();
+			
+			return totalCount;
+		}
 	
 	
 	}

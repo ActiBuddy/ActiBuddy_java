@@ -49,14 +49,16 @@ public class ManagerMainServlet extends HttpServlet {
 		searchMap.put("searchCondition", searchCondition);
 		searchMap.put("searchValue", searchValue);
 		
+		System.out.println(searchMap);
 		/* 전체 게시물 수가 필요하다.
 		 * 데이터베이스에서 먼저 전체 게시물 수를 조회해올 것이다.
 		 * 검색조건이 있는 경우 검색 조건에 맞는 전체 게시물 수를 조회한다.
 		 * */
 		ManagerService managerService = new ManagerService();
-//		int totalCount = managerService.selectTotalCount(searchMap);
 		
-//		System.out.println("totalBoardCount : " + totalCount);
+		int totalCount = managerService.commonMemberTotalCount(searchMap);
+		
+		System.out.println("totalBoardCount : " + totalCount);
 		
 		/* 한 페이지에 보여 줄 게시물 수 */
 		int limit = 10;		//얘도 파라미터로 전달받아도 된다.
@@ -66,34 +68,24 @@ public class ManagerMainServlet extends HttpServlet {
 		/* 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받는다. */
 		SelectCriteria selectCriteria = null;
 		
-//		if(searchCondition != null && !"".equals(searchCondition)) {
-//			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, searchCondition, searchValue);
-//		} else {
-//			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
-//		}
-//		
-//		System.out.println(selectCriteria);
-//		
+		if(searchValue != null && !"".equals(searchValue)) {
+			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount, null, searchValue);
+		} else {
+			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
+		}
 		
+		System.out.println(selectCriteria);
 		
-//		ManagerService managerService = new ManagerService();
-		
-		List<ManagerDTO> managerList = managerService.selectAllMember();		
+		List<ManagerDTO> managerList = managerService.selectAllMember(selectCriteria);		
 		
 		System.out.println(managerList);
 		
 		
-		String path ="";
-		if(managerList != null) {
-			path = "/WEB-INF/views/manager/managerMember.jsp";
 			request.setAttribute("managerList", managerList);
 			request.setAttribute("selectCriteria", selectCriteria);
-		} else {
-			path = "/WEB-INF/views/common/failed.jsp";
-			request.setAttribute("message", "게시물 목록 조회 실패!");
-		}
 		
-		request.getRequestDispatcher(path).forward(request, response);
+	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/managerMember.jsp");
+	rd.forward(request, response);
 	
 	}
 

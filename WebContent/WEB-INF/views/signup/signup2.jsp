@@ -185,8 +185,7 @@
         		alert("번호를 확인해주세요!");
         		 return false;
         	} else {
-        		alert("성공!");
-				 return false;
+        		alert("회원가입이 완료 되었습니다!");
         	}
         });
         });
@@ -207,7 +206,7 @@
          <input type="text" name="userId" id="userId" placeholder="아이디를 입력해주세요!"autocomplete="off"/>
          <label id="idResult1" style="display: none">중복된 아이디 입니다. 다른 아이디를 입력해주세요!</label>
          <label id="idResult2" style="display: none">사용가능한 아이디 입니다.</label>
-         <input type="checkbox" id="idcheck"/>
+         <input type="checkbox" id="idcheck" style="display: none"/>
          
          <span><h2>비밀번호</h2></span>
          <input type="password" name="pwd" id="userPwd1" placeholder="비밀번호를 입력해주세요!" autocomplete="off"/>
@@ -215,37 +214,37 @@
          <span><h2>비밀번호 확인</h2></span>
          <input type="password" name="name" id="userPwd2" placeholder="비밀번호를 확인해주세요!"/>
          <label id="pwdREsult"></label>
-         <input type="checkbox" id="pwdcheck"/>
+         <input type="checkbox" id="pwdcheck"style="display: none"/>
 
          <span><h2>이름</h2></span>
          <input type="text" name="userName" id="name" placeholder="이름을 입력해주세요!" autocomplete="off"/>
          <label id="nameResult"></label>
-         <input type="checkbox" id="namecheck"/>
+         <input type="checkbox" id="namecheck"style="display: none"/>
 
          <span><h2>성별을 선택 해주세요!</h2></span>
 		 <select id="gender" name="gender">
   			<option>선택해주세요</option>
-		    <option value="M">남자</option>
+		    <option value="M" selected>남자</option>
   			<option value="F">여자</option>
 		</select>
 
          <span><h2>생년월일</h2></span>
           <input type="number" class="birth" name="birth" id="yy" placeholder="19940922 -> 940922" aria-label="년(4자)" maxlength="6" />
          <label id="birthResult"></label>
-         <input type="checkbox" id="birthcheck"/>
+         <input type="checkbox" id="birthcheck" style="display: none"/>
 
          <span><h2>이메일</h2></span>
          <input type="text" name="email" id="email" placeholder="이메일을 입력해주세요!" />
          <label id="emailResult"></label>
          <label id="email1" style="display: none">중복된 이메일 입니다. 다른 아이디를 입력해주세요!</label>
          <label id="email2" style="display: none">사용가능한 이메일 입니다.</label>
-         <input type="checkbox" id="emailcheck"/>
-         <input type="checkbox" id="emailcheck1"/>
+         <input type="checkbox" id="emailcheck" style="display: none"/>
+         <input type="checkbox" id="emailcheck1" style="display: none"/>
          
          <span><h2>연락처</h2></span>
          <input type="text" name="memPhone" id="phone" placeholder="전화번호를 입력해주세요!"/>
          <label id="phoneResult"></label>
-         <input type="checkbox" id="phonecheck"/>
+         <input type="checkbox" id="phonecheck" style="display: none"/>
          
          <br><br><br><br>
            <button type="submit" class="login_btn" id="registmember">회원가입하기</button>

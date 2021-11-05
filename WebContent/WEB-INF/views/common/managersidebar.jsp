@@ -41,9 +41,10 @@
           <ul class="nav nav-sidebar">
             <li class="active">신고 접수</li>
             <li><a href="${ pageContext.servletContext.contextPath }/report/actireview">액티비티 후기</a></li>
-            <li><a href="${ pageContext.servletContext.contextPath }/report/matefind">메이트 매칭</a></li>
+            <li><a href="${ pageContext.servletContext.contextPath }/report/matefind">메이트 찾기</a></li>
             <li><a href="${ pageContext.servletContext.contextPath }/report/matingreview">메이팅 후기</a></li>
             <li><a href="${ pageContext.servletContext.contextPath }/report/comment">댓글</a></li>
+            <li><a href="${ pageContext.servletContext.contextPath }/report/rejected?title">처리 완료된 신고 보기</a></li>
           </ul>
           </form>
           </c:if>

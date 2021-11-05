@@ -26,10 +26,7 @@
     <jsp:include page="../common/managersidebar.jsp"/>
 
           <h2 class="sub-header">메이트 매칭 신고 접수</h2>
-          <span> <form action="../report/rejected?title=${ actireviewreportinfo }" method="get">
-          	<textarea type="text" name="title" style="display:none">${ actireviewreportinfo.title }</textarea>
-         	 <button type="submit">처리 완료된 신고 보기</button></span>
-          <div class="table-responsive">
+          <%-- <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -50,7 +47,7 @@
                 </c:forEach>
               </tbody>
             </table>
-          </div>
+          </div> --%>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

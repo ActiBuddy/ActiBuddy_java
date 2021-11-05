@@ -67,6 +67,7 @@
 		  </c:if>    --%>       
           
 	 	  <c:choose>
+	 	  
 	 	  <c:when test="${ reviewreportinfo.repYn eq 'N' || eviewreportinfo.repYn eq 'L' }">
 	 	  <form action="../report/reject" method="post">
 		  <textarea type="text" name="title" style="display:none">${ reviewreportinfo.title }</textarea>

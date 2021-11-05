@@ -15,6 +15,8 @@ import com.actibuddy.report.model.dao.ReportDAO;
 
 public class ReportService {
 
+	//=================== 메이트 신고 화면 조회 
+	// 메이트 찾기 신고
 	public List<MateReviewDTO> matefindrep() {
 
 		SqlSession session = getSqlSession();
@@ -26,6 +28,21 @@ public class ReportService {
 		return matefindrep;
 	
 	}
+	public List<ActiReviewDTO> actireviewrep() {
+		
+		SqlSession session = getSqlSession();
+		
+		List<ActiReviewDTO> actireviewrep = ReportDAO.actireviewrep(session);
+		
+		session.close();
+		
+		return actireviewrep;
+	}
+	
+	
+	
+	//==========================================================
+	
 
 	public MateReviewDTO matefindrepdetail(MateReviewDTO reviewreport) {
 
@@ -65,16 +82,6 @@ public class ReportService {
 		return result;
 	}
 
-	public List<ActiReviewDTO> actireviewrep() {
-		
-		SqlSession session = getSqlSession();
-		
-		List<ActiReviewDTO> actireviewrep = ReportDAO.actireviewrep(session);
-		
-		session.close();
-		
-		return actireviewrep;
-	}
 
 	public int rejectreportactireview(ActiReviewDTO actiReviewwarn) {
 		SqlSession session = getSqlSession();

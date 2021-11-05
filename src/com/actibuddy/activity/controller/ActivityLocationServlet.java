@@ -2,6 +2,7 @@ package com.actibuddy.activity.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import com.actibuddy.activity.model.dto.LocationAndActivityDTO;
 import com.actibuddy.activity.service.ActivityService;
 import com.actibuddy.common.paging.Pagenation;
 import com.actibuddy.common.paging.SelectCriteria;
+import com.actibuddy.mate.model.dto.MateFindDTO;
+import com.actibuddy.mate.model.service.MateFindService;
 
 @WebServlet("/activity/location")
 public class ActivityLocationServlet extends HttpServlet {
@@ -81,6 +84,9 @@ public class ActivityLocationServlet extends HttpServlet {
 		/* 지역 액티비티 추천 정보 조회*/
 		LocationAndActivityDTO randomList = activityService.selectRandomList(locationName);
 		
+		MateFindService findService = new MateFindService();
+		List<MateFindDTO> hurryFindList = findService.selectHurryFind();
+		
 		String path = "";
 		if(location != null){
 			path = "/WEB-INF/views/activity/activity.jsp";
@@ -88,9 +94,7 @@ public class ActivityLocationServlet extends HttpServlet {
 			request.setAttribute("selectCriteria", selectCriteria);
 			request.setAttribute("vistis", map);
 			request.setAttribute("randomList", randomList);
-		} else {
-			path = "/WEB-INF/views/actiFail.jsp";
-			request.setAttribute("message", "값을 불러오는데 실패하였습니다");
+			request.setAttribute("hurryFindList", hurryFindList);
 		} 
 		
 		request.getRequestDispatcher(path).forward(request, response);

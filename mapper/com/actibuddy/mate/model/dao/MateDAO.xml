@@ -176,13 +176,6 @@
 	
 	</select>
 	
-	<resultMap type="com.actibuddy.mate.model.dto.MateFindApplyDTO" id="mtFindApplyResultMap">
-	<id property="applyNum" column="MT_APPLY_NUM"/>
-	<result property="num" column="MT_FIND_NUM"/>
-	<result property="accYn" column="MT_FIND_YN"/>
-	<result property="appliedId" column="APPLIED_ID"/>
-	</resultMap>
-	
 	<!-- 메이트 후기 글 리스트 -->
     <select id="selectAllFindList" resultMap="mateFindResultMap">
        SELECT A.RNUM
@@ -236,30 +229,30 @@
 								FROM MT_FIND C
 						      <where>
 						    	  <if test="searchCondition == '서울'">
-						    	    A.MT_FIND_LOCATION = '서울'
+						    	    C.MT_FIND_LOCATION = '서울'
 						    	  </if>
 						    	  <if test="searchCondition == '경기'">
-						    	    A.MT_FIND_LOCATION = '경기'
+						    	    C.MT_FIND_LOCATION = '경기'
 						    	  </if>
 						    	  <if test="searchCondition == '강원'">
-						    	    A.MT_FIND_LOCATION = '강원'
+						    	    C.MT_FIND_LOCATION = '강원'
 						    	  </if>
 						    	  <if test="searchCondition == '충청'">
-						    	    A.MT_FIND_LOCATION = '충청'
+						    	    C.MT_FIND_LOCATION = '충청'
 						    	  </if>
 						    	  <if test="searchCondition == '전라'">
-						    	    A.MT_FIND_LOCATION = '전라'
+						    	    C.MT_FIND_LOCATION = '전라'
 						    	  </if>
 						    	  <if test="searchCondition == '경상'">
-						    	    A.MT_FIND_LOCATION = '경상'
+						    	    C.MT_FIND_LOCATION = '경상'
 						    	  </if>
-						    	  <if test="searchCondition == '부선'">
-						    	    A.MT_FIND_LOCATION = '부산'
+						    	  <if test="searchCondition == '부산'">
+						    	    C.MT_FIND_LOCATION = '부산'
 						    	  </if>
 						    	  <if test="searchCondition == '제주'">
-						    	    A.MT_FIND_LOCATION = '제주'
+						    	    C.MT_FIND_LOCATION = '제주'
 						    	  </if>
-						    	  AND A.MT_FIND_REP_YN IN('N','L')
+						    	  AND C.MT_FIND_REP_YN IN('N','L')
 					    	  </where>
 							   ORDER BY MT_FIND_DATE DESC)B)A
 			WHERE (A.RNUM BETWEEN #{ startRow } and #{ endRow })
@@ -566,8 +559,17 @@
 	     , MT_FIND_NUM
 	     , MT_COM_DATE
 	  FROM COMENT
-	 WHERE MT_FIND_NUM = #{ num } 
+	 WHERE MT_FIND_NUM = #{ num }
+	   AND MT_COM_REP_YN IN ('N','L')
 	</select>
 	
+	<!-- 해당 게시글에 대한 사용자 신청 여부 조회 쿼리문 -->
+	<select id="selectApplyFind" parameterType="hashMap" resultMap="mtFindApplyResultMap">
+		SELECT
+		       MT_FIND_YN
+		  FROM MT_APPLY_HIS
+		 WHERE MT_FIND_NUM = #{ num }
+		   AND APPLIED_ID = #{ userId }
+	</select>
 
 </mapper>

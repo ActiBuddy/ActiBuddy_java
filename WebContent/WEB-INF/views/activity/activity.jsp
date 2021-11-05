@@ -587,59 +587,126 @@
     <div class="mate_hurry1">
         <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_hurry.png">
     </div>
+	<c:set var="hurry" value="${ hurryFindList }"/>
     <div class="mate_hurry2">
         <div class="mate_hurry3">
             <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_one.png">
             <span class="h_title">
-                같이 여수갈 사람 구해요
+                ${ hurry[0].title }
             </span>
             <span class="h_text">
-                parisbaguette<br><br>
-                인원:2/6<br><br>
-                희망연령:20대,30대<br><br>
+                ${ hurry[0].userId }<br><br>
+                인원:${ hurry[0].count }/${ hurry[0].people }<br><br>
+                <c:if test="${ hurry[0].age eq 0 }">
+                희망연령:연령무관<br><br>
+                </c:if>
+                <c:if test="${ hurry[0].age eq 23 }">
+                희망연령:20대~30대<br><br>
+                </c:if>
+                <c:if test="${ hurry[0].age eq 34 }">
+                희망연령:30대~40대<br><br>
+                </c:if>
+                <c:if test="${ hurry[0].age eq 45 }">
+                희망연령:40대~50대<br><br>
+                </c:if>
+                <c:if test="${ hurry[0].age eq 56 }">
+                희망연령:50대~60대<br><br>
+                </c:if> 
+                <c:if test="${ hurry[0].gender eq 'B' }">
                 남녀무관
+                </c:if>
+                <c:if test="${ hurry[0].gender eq 'W' }">
+                여성만
+                </c:if>
+                <c:if test="${ hurry[0].gender eq 'M' }">
+                남성만
+                </c:if>
             </span>
             <span class="h_date">
-                ~10/17
+            ~<fmt:formatDate value="${ hurry[0].deadline }" type="date" pattern="MM/dd"/><br> 
             </span>
             <span class="h_btn">
-                <button>신청하러가기</button>
+                <button onclick="location.href='/acti/mate/find/select?num=${ hurry[0].num }'">신청하러가기</button>
             </span>
         </div>
         <div class="mate_hurry3">
             <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_two.png">
             <span class="h_title">
-                같이 여수갈 사람 구해요
+                ${ hurry[1].title }
             </span>
             <span class="h_text">
-                parisbaguette<br><br>
-                인원:2/6<br><br>
-                희망연령:20대,30대<br><br>
+                ${ hurry[1].userId }<br><br>
+                인원:${ hurry[1].count }/${ hurry[1].people }<br><br>
+                <c:if test="${ hurry[1].age eq 0 }">
+                희망연령:연령무관<br><br>
+                </c:if>
+                <c:if test="${ hurry[1].age eq 23 }">
+                희망연령:20대~30대<br><br>
+                </c:if>
+                <c:if test="${ hurry[1].age eq 34 }">
+                희망연령:30대~40대<br><br>
+                </c:if>
+                <c:if test="${ hurry[1].age eq 45 }">
+                희망연령:40대~50대<br><br>
+                </c:if>
+                <c:if test="${ hurry[1].age eq 56 }">
+                희망연령:50대~60대<br><br>
+                </c:if> 
+                <c:if test="${ hurry[1].gender eq 'B' }">
                 남녀무관
+                </c:if>
+                <c:if test="${ hurry[1].gender eq 'W' }">
+                여성만
+                </c:if>
+                <c:if test="${ hurry[1].gender eq 'M' }">
+                남성만
+                </c:if>
             </span>
             <span class="h_date">
-                ~10/17
+             ~<fmt:formatDate value="${ hurry[1].deadline }" type="date" pattern="MM/dd"/><br>
             </span>
             <span class="h_btn">
-                <button>신청하러가기</button>
+                <button onclick="location.href='/acti/mate/find/select?num=${ hurry[1].num }'">신청하러가기</button>
             </span>
         </div>
         <div class="mate_hurry3">
             <img src="${ pageContext.servletContext.contextPath }/resources/image/mate_three.png">
             <span class="h_title">
-                같이 여수갈 사람 구해요
+                ${ hurry[2].title }
             </span>
             <span class="h_text">
-                parisbaguette<br><br>
-                인원:2/6<br><br>
-                희망연령:20대,30대<br><br>
+                ${ hurry[2].userId }<br><br>
+                인원:${ hurry[2].count }/${ hurry[2].people }<br><br>
+                <c:if test="${ hurry[2].age eq 0 }">
+                희망연령:연령무관<br><br>
+                </c:if>
+                <c:if test="${ hurry[2].age eq 23 }">
+                희망연령:20대~30대<br><br>
+                </c:if>
+                <c:if test="${ hurry[2].age eq 34 }">
+                희망연령:30대~40대<br><br>
+                </c:if>
+                <c:if test="${ hurry[2].age eq 45 }">
+                희망연령:40대~50대<br><br>
+                </c:if>
+                <c:if test="${ hurry[2].age eq 56 }">
+                희망연령:50대~60대<br><br>
+                </c:if> 
+                <c:if test="${ hurry[2].gender eq 'B' }">
                 남녀무관
+                </c:if>
+                <c:if test="${ hurry[2].gender eq 'W' }">
+                여성만
+                </c:if>
+                <c:if test="${ hurry[2].gender eq 'M' }">
+                남성만
+                </c:if>
             </span>
             <span class="h_date">
-                ~10/17
+              ~<fmt:formatDate value="${ hurry[2].deadline }" type="date" pattern="MM/dd"/><br>
             </span>
             <span class="h_btn">
-                <button>신청하러가기</button>
+                <button onclick="location.href='/acti/mate/find/select?num=${ hurry[2].num }'">신청하러가기</button>
             </span>
         </div>
     </div>

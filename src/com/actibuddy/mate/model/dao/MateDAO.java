@@ -128,4 +128,9 @@ public class MateDAO {
 		return session.update("MateDAO.updateViews", num);
 	}
 
+	public static MateFindApplyDTO selectApplyFind(SqlSession session, Map<String, String> map) {
+
+		return session.selectOne("MateDAO.selectApplyFind", map);
+	}
+
 }

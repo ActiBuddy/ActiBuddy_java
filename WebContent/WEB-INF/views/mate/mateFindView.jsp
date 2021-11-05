@@ -14,9 +14,24 @@
     <link href="${ pageContext.servletContext.contextPath }/resources/css/actibuddy.css" rel="stylesheet" />
     <link href="${ pageContext.servletContext.contextPath }/resources/css/mateFind_view.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+	if(${ state == '신청마감'}){
+	
+	    function back(){
+	
+	         alert("신청마감된 게시글입니다");
+	
+	         history.go(-1);
+	   	 }
+	} 
+    </script>
+	    	
     <title>${ title }</title>
+    
   </head>
-  <body>
+  <body onload ="back()">
+    
+    
     
     <!-- 네비게이션바 -->
        <jsp:include page="../common/menubar.jsp"/>
@@ -54,7 +69,7 @@
                 조회 ${ view }
             </div>
             <div class="writer_date">
-                ${ date } ・ 
+                ${ date } 
             </div>
         </div>
     
@@ -155,13 +170,27 @@
        <div class="btnborder">
        		<c:set var="id" value="${ sessionScope.loginMember.userId }"/> 
        		<c:choose>
+       		
        		<c:when test="${ userId eq id }">
-       		
+       		<button id="delete" class="btndelete">삭제하기</button>
+       		<button id="close" class="btnclose">마감하기</button>
        		</c:when>
-       		<c:when test="${ userId ne id }">
        		
+       		<c:when test="${ findYn eq null or id eq null}">
            <button id="abc" class="btngo">신청하기</button>
        		</c:when>
+       		
+       		<c:when test="${ fn:contains(findYn, 'L') }">
+       		<button id="abc" class="btngo" disabled="disabled" style="background: gray; border-color : gray">신청중</button>
+       		</c:when>
+			
+			<c:when test="${ fn:contains(findYn, 'Y') }">
+			<button id="abc" class="btngo" disabled="disabled" style="background: skyblue; border-color : skyblue;" >참가확인 완료</button>
+			</c:when>       
+			
+			<c:when test="${ fn:contains(findYn, 'X') }">
+			<button id="abc" class="btngo" disabled="disabled" style="background: black; border-color: black" >신청불가</button>
+			</c:when> 	
           </c:choose>
           <div class="report">
         <button id="repbtn" class="repbtn">
@@ -176,16 +205,28 @@
        <hr>
 
          <!-- 댓글 작성 -->
-        <form action="/acti/mate/comment" method="post">
+        <form id="frm" method="post">
        <div class="commentborder">
          <div class="comtext1">댓글 : </div>
          <div class="comtext2"><textarea name="text" placeholder="댓글을 작성해주세요"></textarea></div>
-         <div class="comtext3"><input type="submit" class="c3" value="등록"></div>
+         <div class="comtext3"><input type="button" id="sub" class="c3" value="등록"></div>
          <input type="hidden" name="userId" value="${ sessionScope.loginMember.userId }">
          <input type="hidden" name="num" value="${ num }">
        </div>
 	   </form>
        <hr>
+
+		<script>
+			$(function() {
+				$('#sub').on('click', function () {
+					if('${ sessionScope.loginMember.userId }' != null && '${ sessionScope.loginMember.userId }' != ''){
+						$('#frm').attr("action","/acti/sort/controll").submit();
+					} else {
+						alert("액티버디 로그인 하신 후 이용해 주시기 바랍니다.");
+					}
+				})
+			})
+		</script>
 
         <!-- 댓글 내용 -->
         <c:if test="${ comment != null and !empty comment}">
@@ -220,7 +261,7 @@
 				user = '${ sessionScope.loginMember.userId }';
 				
 				if(!user) {
-					alert("로그인 먼저 해주세요.");
+					alert("액티버디 로그인 하신 후 이용해 주시기 바랍니다.");
 				} else {
 					
 					$.ajax({
@@ -232,7 +273,7 @@
 					    	
 					    	if(result > 0){
 					    		alert("해당 댓글의 신고가 접수되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
-					    		
+					    		$('#repbtn${size + 1}').remove();
 					    	} else {
 					    		alert("댓글 신고 접수에 실패했습니다.");
 					    	}
@@ -247,7 +288,6 @@
 			});
 		});
 	</script>
-    
           
           </c:forEach>
     <!-- 찐짜div-->
@@ -270,7 +310,7 @@
 				user = '${ sessionScope.loginMember.userId }';
 				
 				if(!user) {
-					alert("로그인 먼저 해주세요.");
+					alert("액티버디 로그인 하신 후 이용해 주시기 바랍니다.");
 				} else {
 					
 					$.ajax({
@@ -297,7 +337,6 @@
 			});
 		});
 	</script>
-	<!-- 이거 하다 말았음 -->
 	
 	<script>
 		$(function() {
@@ -306,14 +345,12 @@
 				user = '${ sessionScope.loginMember.userId }';
 				
 				if(!user) {
-					alert("로그인 먼저 해주세요.");
+					alert("액티버디 로그인 하신 후 이용해 주시기 바랍니다.");
 				} else {
 					
 					let returnValue = confirm('신청하시겠습니까??');
 					
 					if(returnValue){
-						
-					
 					
 					$.ajax({
 						url:'${ pageContext.servletContext.contextPath }/find/apply',
@@ -321,10 +358,9 @@
 					    data:{ findNum : '${ num }', userId : '${ sessionScope.loginMember.userId }'
 					    },
 					    success:function(result){
-					    	
 					    	if(result > 0){
 					    		alert("신청이 완료되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
-					    		$('#abc').attr('disabled',true).css('background-color','black');
+					    		$('#abc').attr('disabled',true).css({'background':'gray', 'border-color' : 'gray' }).text('신청중');
 					    	} 
 					    	e.preventDefault();
 					    },

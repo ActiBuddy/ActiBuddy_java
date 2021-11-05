@@ -229,30 +229,30 @@
 								FROM MT_FIND C
 						      <where>
 						    	  <if test="searchCondition == '서울'">
-						    	    A.MT_FIND_LOCATION = '서울'
+						    	    C.MT_FIND_LOCATION = '서울'
 						    	  </if>
 						    	  <if test="searchCondition == '경기'">
-						    	    A.MT_FIND_LOCATION = '경기'
+						    	    C.MT_FIND_LOCATION = '경기'
 						    	  </if>
 						    	  <if test="searchCondition == '강원'">
-						    	    A.MT_FIND_LOCATION = '강원'
+						    	    C.MT_FIND_LOCATION = '강원'
 						    	  </if>
 						    	  <if test="searchCondition == '충청'">
-						    	    A.MT_FIND_LOCATION = '충청'
+						    	    C.MT_FIND_LOCATION = '충청'
 						    	  </if>
 						    	  <if test="searchCondition == '전라'">
-						    	    A.MT_FIND_LOCATION = '전라'
+						    	    C.MT_FIND_LOCATION = '전라'
 						    	  </if>
 						    	  <if test="searchCondition == '경상'">
-						    	    A.MT_FIND_LOCATION = '경상'
+						    	    C.MT_FIND_LOCATION = '경상'
 						    	  </if>
 						    	  <if test="searchCondition == '부선'">
-						    	    A.MT_FIND_LOCATION = '부산'
+						    	    C.MT_FIND_LOCATION = '부산'
 						    	  </if>
 						    	  <if test="searchCondition == '제주'">
-						    	    A.MT_FIND_LOCATION = '제주'
+						    	    C.MT_FIND_LOCATION = '제주'
 						    	  </if>
-						    	  AND A.MT_FIND_REP_YN IN('N','L')
+						    	  AND C.MT_FIND_REP_YN IN('N','L')
 					    	  </where>
 							   ORDER BY MT_FIND_DATE DESC)B)A
 			WHERE (A.RNUM BETWEEN #{ startRow } and #{ endRow })
@@ -267,7 +267,10 @@
     	  <if test="searchValue != null">
     	    A.MT_FIND_TITLE LIKE '%' || #{ searchValue } || '%'
     	  </if>
-    	  AND A.MT_FIND_REP_YN IN('N','L')
+    	  <if test="searchCondition != null || searchCondition == ''">
+    	    A.MT_FIND_LOCATION = #{ location }
+    	  </if>
+    	    AND A.MT_FIND_REP_YN IN('N','L')
     	  </where>
     </select>
 	
@@ -520,11 +523,14 @@
 	
 	<!-- 사용자가 신청한 메이트 내역 조회 -->
 	<select id="selectMtApplyHis" resultMap="mateFindResultMap" parameterType="String">
-	    SELECT C.*
+		SELECT C.*
 		  FROM MT_APPLY_HIS A 
 		  JOIN MEMBER B ON (A.APPLIED_ID = B.USER_ID)
 		  JOIN MT_FIND C ON (A.MT_FIND_NUM = C.MT_FIND_NUM)
-		 WHERE A.APPLIED_ID = #{ appliedId }
+		  LEFT JOIN MT_SCORE_HIS D ON (A.MT_APPLY_NUM = D.MT_APPLY_NUM)
+		 WHERE A.APPLIED_ID = #{appliedId}
+		   AND D.MT_SCORE_NUM IS NULL
+ 
 	</select>
 	
 	<!-- 게시글에 댓글 추가하는 쿼리문 -->

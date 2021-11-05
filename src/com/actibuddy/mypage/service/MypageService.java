@@ -21,6 +21,7 @@ import com.actibuddy.mypage.model.dao.MypageDAO;
 import com.actibuddy.mypage.model.dto.ActiConditionHisDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
+import com.actibuddy.mypage.model.dto.MTFindApplyDTO;
 import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
 import com.actibuddy.mypage.model.dto.PayHisDTO;
 import com.actibuddy.mypage.model.dto.PayResultDTO;
@@ -398,20 +399,20 @@ public class MypageService {
 		return result;
 	}
 
-	public List<MateFindAndApplyDTO> selectMtApply(String userId) {
+	public List<MTFindApplyDTO> selectMtApply(String userId) {
 		
 		SqlSession session = getSqlSession();
 		
-		List<MateFindAndApplyDTO> selectMtApply = MypageDAO.selectMtApply(session,userId);
+		List<MTFindApplyDTO> selectMtApply = MypageDAO.selectMtApply(session,userId);
 		
 		return selectMtApply;
 	}
 
-	public int updateMtFindNum(MateFindDTO requestMtFindNum) {
+	public int updateMtFindNum(String mtFindNum) {
 		
 		SqlSession session = getSqlSession();
 		
-		int result = mypageDAO.updateMtFindNum(session,requestMtFindNum);
+		int result = mypageDAO.updateMtFindNum(session,mtFindNum);
 		
 		if(result > 0) {
 			session.commit();
@@ -500,6 +501,43 @@ public class MypageService {
 		
 		return result;
 	}
+
+	public int updateFindStateYes(Map<String, String> updateState) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.updateFindStateYes(session, updateState);
+
+	    if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+		
+	}
+
+	public int updateFindStateNo(Map<String, String> updateState) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.updateFindStateNo(session, updateState);
+
+	    if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+
+	}
+
 
 	
 	

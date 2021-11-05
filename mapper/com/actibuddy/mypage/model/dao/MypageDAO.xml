@@ -198,7 +198,7 @@
 	<result property="appliedId" column="APPLIED_ID"/>
 	</resultMap>
 	
-	<resultMap type="com.actibuddy.mate.model.dto.MateFindDTO" id="mateFindResultMap">
+	<resultMap type="com.actibuddy.mypage.model.dto.MTFindApplyDTO" id="mtFindApplyResultMap">
 	   <result property="num" column="MT_FIND_NUM"/>
 	   <result property="title" column="MT_FIND_TITLE"/>
 	   <result property="content" column="MT_FIND_CONTENT"/>
@@ -214,13 +214,8 @@
 	   <result property="state" column="MT_FIND_STATE"/>
 	   <result property="userId" column="USER_ID"/>
 	   <result property="count" column="MT_FIND_COUNT"/>
+	   <collection property="applyList" resultMap="mtApplyResultMap"/>
 	</resultMap>
-	
-	<resultMap type="com.actibuddy.mate.model.dto.MateFindAndApplyDTO" id="mtFindAndApplyResult">
-		<collection property="applyList" resultMap="mtApplyResultMap"/>
-		<collection property="findList" resultMap="mateFindResultMap"/>
-	</resultMap>
-	
 	<update id="updateIntroduce" parameterType="com.actibuddy.member.model.dto.MemberDTO">
 			
 			UPDATE MEMBER A
@@ -585,13 +580,15 @@
 		, SEQ_SCORE_NO.NEXTVAL
 		)
 	</insert>
-	<select id="selectMtApply" resultMap="mtFindAndApplyResult">
+	<select id="selectMtApply" resultMap="mtFindApplyResultMap">
           SELECT
 		         A.MT_FIND_NUM
 			   , A.MT_FIND_YN
 			   , A.MT_APPLY_NUM
 			   , A.APPLIED_ID
 			   , F.MT_FIND_TITLE
+			   , F.MT_FIND_STATE
+			   , A.MT_FIND_YN
 	       FROM MT_APPLY_HIS A
           INNER JOIN MT_FIND F
              ON A.MT_FIND_NUM = F.MT_FIND_NUM
@@ -645,5 +642,23 @@
 		, #{ sNum }
 		)
     </insert>
+    
+    <update id="updateFindStateYes">
+    	UPDATE MT_APPLY_HIS
+    	   SET MT_FIND_YN = 'Y'
+    	 WHERE APPLIED_ID = #{appliedId}
+    	   AND MT_FIND_NUM = #{mtFindNum}
+    	  
+    </update>
+    
+    <update id="updateFindStateNo">
+    	UPDATE MT_APPLY_HIS
+    	   SET MT_FIND_YN = 'X'
+    	 WHERE APPLIED_ID = #{appliedId}
+    	   AND MT_FIND_NUM = #{mtFindNum}
+    
+    </update>
+    
+    
   
   </mapper>

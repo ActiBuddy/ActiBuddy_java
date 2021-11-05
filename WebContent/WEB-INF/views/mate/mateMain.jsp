@@ -185,7 +185,7 @@
         
          $(document).ready(function(){
 
-            let location = '${ location1}';
+            let location = '${ location1 }';
          	if(location == ''){
          		location = "a";
          	}
@@ -195,9 +195,9 @@
 	         	for(let i = 0; i < data.length; i++){
 					
 					if(data[i].id == ('all_content')){
-						$(data[i]).css("background","pink");
+						$(data[i]).css("display","block");
 					}else {
-						$(data[i]).css("background","red");						
+						$(data[i]).css("display","none");						
 					}
 				}
          	}
@@ -209,9 +209,9 @@
 				for(let i = 0; i < data.length; i++){
 					
 					if(data[i].id == (value.id+'_content')){
-						$(data[i]).css("color","pink");
+						$(data[i]).css("display","block");
 					}else {
-						$(data[i]).css("color","red");									
+						$(data[i]).css("display","none");									
 					}
 				}
 			}
@@ -221,7 +221,7 @@
         </script>
         
         <!-- 전체 탭 -->
-        <div class="mtab_content" id="all_content" ">
+        <div class="mtab_content" id="all_content">
           
             <table>
                 <thead>
@@ -235,16 +235,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                
                   <c:forEach var="find" items="${ findList }">
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>
-                  </tr>                          
+                  </tr>
                   </c:forEach>
                 </tbody>
             </table>
@@ -287,12 +286,12 @@
                 <if test="${ find.location ne '서울' }">
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>
-                  </tr>                     
+                  </tr>
                 </if>     
                   </c:forEach>
              </tbody>
@@ -329,93 +328,21 @@
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="../Mate/mate_title.html">[경기]  2조 소회의실 부탁드려요!</a></td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row" >2</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                   <th scope="row" >4</th>
-                   <td>제목이 들어갑니다.</td>
-                   <td>parisbaguette</td>
-                   <td>~10/8</td>
-                   <td>2/4</td>
-                   <td>신청가능</td>
-                </tr>
-                <tbody>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" >6</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                       <th scope="row" >8</th>
-                       <td>제목이 들어갑니다.</td>
-                       <td>parisbaguette</td>
-                       <td>~10/8</td>
-                       <td>2/4</td>
-                       <td>신청가능</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>제목이 들어갑니다.</td>
-                        <td>parisbaguette</td>
-                        <td>~10/8</td>
-                        <td>2/4</td>
-                        <td>신청가능</td>
-                      </tr>
-                      <tr>
-                         <th scope="row" >10</th>
-                         <td>제목이 들어갑니다.</td>
-                         <td>parisbaguette</td>
-                         <td>~10/8</td>
-                         <td>2/4</td>
-                         <td>신청가능</td>
-                      </tr>
-                      
+           <tbody>
+                  <c:forEach var="find" items="${ findList }">
+                  <tr>
+                  <th scope="row">${ find.num }</th>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
+                  <td>${ find.deadline }</td>
+                  <td>${ find.count }/${ find.people }</td>
+                  <td>${ find.state }</td>
+                  </tr>
+                  </c:forEach>
                 </tbody>
-        </table>
-        
-         <!-- 작성하기버튼 로그인처리 -->
+            </table>
+            
+            <!-- 작성하기버튼 로그인처리 -->
 		   <c:if test="${ !empty sessionScope.loginMember }">
 	       <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/find/regist'">작성하기</button>
 	       </c:if>
@@ -447,92 +374,21 @@
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="../Mate/mate_title.html">[강원]  2조 소회의실 부탁드려요!</a></td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row" >2</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                   <th scope="row" >4</th>
-                   <td>제목이 들어갑니다.</td>
-                   <td>parisbaguette</td>
-                   <td>~10/8</td>
-                   <td>2/4</td>
-                   <td>신청가능</td>
-                </tr>
-                <tbody>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" >6</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                       <th scope="row" >8</th>
-                       <td>제목이 들어갑니다.</td>
-                       <td>parisbaguette</td>
-                       <td>~10/8</td>
-                       <td>2/4</td>
-                       <td>신청가능</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>제목이 들어갑니다.</td>
-                        <td>parisbaguette</td>
-                        <td>~10/8</td>
-                        <td>2/4</td>
-                        <td>신청가능</td>
-                      </tr>
-                      <tr>
-                         <th scope="row" >10</th>
-                         <td>제목이 들어갑니다.</td>
-                         <td>parisbaguette</td>
-                         <td>~10/8</td>
-                         <td>2/4</td>
-                         <td>신청가능</td>
-                      </tr>
-                      
+           <tbody>
+                  <c:forEach var="find" items="${ findList }">
+                  <tr>
+                  <th scope="row">${ find.num }</th>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
+                  <td>${ find.deadline }</td>
+                  <td>${ find.count }/${ find.people }</td>
+                  <td>${ find.state }</td>
+                  </tr>
+                  </c:forEach>
                 </tbody>
-        </table>
-         <!-- 작성하기버튼 로그인처리 -->
+            </table>
+            
+            <!-- 작성하기버튼 로그인처리 -->
 		   <c:if test="${ !empty sessionScope.loginMember }">
 	       <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/find/regist'">작성하기</button>
 	       </c:if>
@@ -563,92 +419,21 @@
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="../Mate/mate_title.html">[충청]  2조 소회의실 부탁드려요!</a></td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row" >2</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                   <th scope="row" >4</th>
-                   <td>제목이 들어갑니다.</td>
-                   <td>parisbaguette</td>
-                   <td>~10/8</td>
-                   <td>2/4</td>
-                   <td>신청가능</td>
-                </tr>
-                <tbody>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" >6</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                       <th scope="row" >8</th>
-                       <td>제목이 들어갑니다.</td>
-                       <td>parisbaguette</td>
-                       <td>~10/8</td>
-                       <td>2/4</td>
-                       <td>신청가능</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>제목이 들어갑니다.</td>
-                        <td>parisbaguette</td>
-                        <td>~10/8</td>
-                        <td>2/4</td>
-                        <td>신청가능</td>
-                      </tr>
-                      <tr>
-                         <th scope="row" >10</th>
-                         <td>제목이 들어갑니다.</td>
-                         <td>parisbaguette</td>
-                         <td>~10/8</td>
-                         <td>2/4</td>
-                         <td>신청가능</td>
-                      </tr>
-                      
+           <tbody>
+                  <c:forEach var="find" items="${ findList }">
+                  <tr>
+                  <th scope="row">${ find.num }</th>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
+                  <td>${ find.deadline }</td>
+                  <td>${ find.count }/${ find.people }</td>
+                  <td>${ find.state }</td>
+                  </tr>
+                  </c:forEach>
                 </tbody>
-        </table>
-        <!-- 작성하기버튼 로그인처리 -->
+            </table>
+            
+            <!-- 작성하기버튼 로그인처리 -->
 		   <c:if test="${ !empty sessionScope.loginMember }">
 	       <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/find/regist'">작성하기</button>
 	       </c:if>
@@ -679,92 +464,21 @@
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="../Mate/mate_title.html">[전라]  2조 소회의실 부탁드려요!</a></td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row" >2</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                   <th scope="row" >4</th>
-                   <td>제목이 들어갑니다.</td>
-                   <td>parisbaguette</td>
-                   <td>~10/8</td>
-                   <td>2/4</td>
-                   <td>신청가능</td>
-                </tr>
-                <tbody>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" >6</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                       <th scope="row" >8</th>
-                       <td>제목이 들어갑니다.</td>
-                       <td>parisbaguette</td>
-                       <td>~10/8</td>
-                       <td>2/4</td>
-                       <td>신청가능</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>제목이 들어갑니다.</td>
-                        <td>parisbaguette</td>
-                        <td>~10/8</td>
-                        <td>2/4</td>
-                        <td>신청가능</td>
-                      </tr>
-                      <tr>
-                         <th scope="row" >10</th>
-                         <td>제목이 들어갑니다.</td>
-                         <td>parisbaguette</td>
-                         <td>~10/8</td>
-                         <td>2/4</td>
-                         <td>신청가능</td>
-                      </tr>
-                      
+           <tbody>
+                  <c:forEach var="find" items="${ findList }">
+                  <tr>
+                  <th scope="row">${ find.num }</th>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
+                  <td>${ find.deadline }</td>
+                  <td>${ find.count }/${ find.people }</td>
+                  <td>${ find.state }</td>
+                  </tr>
+                  </c:forEach>
                 </tbody>
-        </table>
-         <!-- 작성하기버튼 로그인처리 -->
+            </table>
+            
+            <!-- 작성하기버튼 로그인처리 -->
 		   <c:if test="${ !empty sessionScope.loginMember }">
 	       <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/find/regist'">작성하기</button>
 	       </c:if>
@@ -796,119 +510,35 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="../Mate/mate_title.html">[경상]  2조 소회의실 부탁드려요!</a></td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row" >2</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>제목이 들어갑니다.</td>
-                  <td>parisbaguette</td>
-                  <td>~10/8</td>
-                  <td>2/4</td>
-                  <td>신청가능</td>
-                </tr>
-                <tr>
-                   <th scope="row" >4</th>
-                   <td>제목이 들어갑니다.</td>
-                   <td>parisbaguette</td>
-                   <td>~10/8</td>
-                   <td>2/4</td>
-                   <td>신청가능</td>
-                </tr>
-                <tbody>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" >6</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">7</th>
-                      <td>제목이 들어갑니다.</td>
-                      <td>parisbaguette</td>
-                      <td>~10/8</td>
-                      <td>2/4</td>
-                      <td>신청가능</td>
-                    </tr>
-                    <tr>
-                       <th scope="row" >8</th>
-                       <td>제목이 들어갑니다.</td>
-                       <td>parisbaguette</td>
-                       <td>~10/8</td>
-                       <td>2/4</td>
-                       <td>신청가능</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>제목이 들어갑니다.</td>
-                        <td>parisbaguette</td>
-                        <td>~10/8</td>
-                        <td>2/4</td>
-                        <td>신청가능</td>
-                      </tr>
-                      <tr>
-                         <th scope="row" >10</th>
-                         <td>제목이 들어갑니다.</td>
-                         <td>parisbaguette</td>
-                         <td>~10/8</td>
-                         <td>2/4</td>
-                         <td>신청가능</td>
-                      </tr>
-                      
+                  <c:forEach var="find" items="${ findList }">
+                  <tr>
+                  <th scope="row">${ find.num }</th>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
+                  <td>${ find.deadline }</td>
+                  <td>${ find.count }/${ find.people }</td>
+                  <td>${ find.state }</td>
+                  </tr>
+                  </c:forEach>
                 </tbody>
-        </table>
-        <div class="write-border">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link-num" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link-num" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link-num" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link-num" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link-num" href="#">5</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            <button><a href="#">작성하기</a></button>
-        </div>
-    
-        <div class="search">
-            <ul>
-               <input type="text" class="searchtext" placeholder="찾고싶은 게시물의 제목을 입력해주세요"></li>
-               <button type="submit" class="searchbutton">검색하기</button></li>
-            </ul>
-        </div>
+            </table>
+            
+            <!-- 작성하기버튼 로그인처리 -->
+		   <c:if test="${ !empty sessionScope.loginMember }">
+	       <button class="write" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/find/regist'">작성하기</button>
+	       </c:if>
+	       
+            <!-- pagination -->
+     	   <jsp:include page="../common/pagingF.jsp"/>	
+       
+        	<!-- 검색 부분 -->
+           <div class="search">
+	           <form id="searchForm" action="${ pageContext.servletContext.contextPath }/mate/review" method="get">
+	               <input type="hidden" name="currentPage" value="1">
+	               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 게시물의 제목을 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
+	               <button type="submit" class="searchbutton">검색하기</button>
+			   </form>
+           </div>
     </div>
     <!-- 부산 탭 -->
     <div class="mtab_content" id="busan_content">

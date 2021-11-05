@@ -218,8 +218,29 @@ hr {
     margin-right: 6%;
     background-color:rgba(0, 166, 81, 1);
     border-color: rgba(0, 166, 81, 1);
-    color: white;
+    color: black;
+    font-weight : 900;
     border-radius: 5px;
+}
+
+.btndelete{
+	width:32%;
+    height: 60%;
+    margin-right: 6%;
+    background: #e76f6f;
+    border-color: #e76f6f; 
+    color : black; 
+    font-weight: 900;
+}
+
+.btnclose{
+	width:32%;
+    height: 60%;
+    margin-right: 6%;
+    background: rgb(239 239 209);
+    border-color: rgb(239 239 209);
+    color : black; 
+    font-weight: 900;
 }
 
 .report {

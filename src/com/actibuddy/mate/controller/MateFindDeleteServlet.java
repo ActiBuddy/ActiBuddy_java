@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
 import com.actibuddy.mate.model.service.MateReviewService;
 
@@ -17,11 +18,11 @@ public class MateFindDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+//		
 //		String num = request.getParameter("num");
 //		char updateRepYn = 'D';
 //		
-//		MateReviewDTO review = new MateReviewDTO();
+//		MateFindDTO review = new MateFindDTO();
 //		review.setNum(num);
 //		review.setRepYn(updateRepYn);
 //		

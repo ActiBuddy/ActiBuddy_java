@@ -1,7 +1,9 @@
 package com.actibuddy.mate.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.actibuddy.mate.model.dto.MateCommentDTO;
+import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.service.MateFindService;
+import com.actibuddy.member.model.dto.MemberDTO;
 
 @WebServlet("/mate/find/select")
 public class MateFindSelectServlet extends HttpServlet {
@@ -22,12 +26,25 @@ public class MateFindSelectServlet extends HttpServlet {
 		String num = request.getParameter("num");
 		System.out.println("게시글 번호 : " + num);
 		
-//		String userId = 
-		
 		MateFindService findService = new MateFindService();
 		MateFindDTO find = findService.selectFindInfo(num);
 		List<MateCommentDTO> comment = findService.selectComment(num);
-//		MateFindApplyHisServlet apply = findService.selectApplyFind()
+		
+		if(request.getSession().getAttribute("loginMember") != null) {
+			
+			String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
+			System.out.println(userId);
+			Map<String, String> map = new HashMap<>();
+			map.put("num", num);
+			map.put("userId", userId);
+			MateFindApplyDTO apply = findService.selectApplyFind(map);
+			if(apply != null && apply.getAccYn() != 0) {
+				
+				request.setAttribute("findYn", apply.getAccYn());
+			}
+		}
+		
+		
 		int result = findService.updateViews(num);
 		
 		String path = "";

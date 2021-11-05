@@ -246,7 +246,7 @@
 						    	  <if test="searchCondition == '경상'">
 						    	    C.MT_FIND_LOCATION = '경상'
 						    	  </if>
-						    	  <if test="searchCondition == '부선'">
+						    	  <if test="searchCondition == '부산'">
 						    	    C.MT_FIND_LOCATION = '부산'
 						    	  </if>
 						    	  <if test="searchCondition == '제주'">
@@ -565,8 +565,17 @@
 	     , MT_FIND_NUM
 	     , MT_COM_DATE
 	  FROM COMENT
-	 WHERE MT_FIND_NUM = #{ num } 
+	 WHERE MT_FIND_NUM = #{ num }
+	   AND MT_COM_REP_YN IN ('N','L')
 	</select>
 	
+	<!-- 해당 게시글에 대한 사용자 신청 여부 조회 쿼리문 -->
+	<select id="selectApplyFind" parameterType="hashMap" resultMap="mtFindApplyResultMap">
+		SELECT
+		       MT_FIND_YN
+		  FROM MT_APPLY_HIS
+		 WHERE MT_FIND_NUM = #{ num }
+		   AND APPLIED_ID = #{ userId }
+	</select>
 
 </mapper>

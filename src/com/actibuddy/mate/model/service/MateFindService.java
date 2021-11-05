@@ -205,6 +205,12 @@ public class MateFindService {
 		return result;
 	}
 
+	/**
+	 * 메이트 신청 인서트 메소드
+	 * @author 김주환
+	 * @param find
+	 * @return
+	 */
 	public int insertApply(MateFindApplyDTO find) {
 
 		SqlSession session = getSqlSession();
@@ -222,6 +228,12 @@ public class MateFindService {
 		return result;
 	}
 
+	/**
+	 * 게시글 조회수 증가용 메소드
+	 * @author 김주환
+	 * @param num
+	 * @return
+	 */
 	public int updateViews(String num) {
 		
 		SqlSession session = getSqlSession();
@@ -237,6 +249,23 @@ public class MateFindService {
 		session.close();
 		
 		return result;
+	}
+
+	/**
+	 * 신청자가 해당 게시글에 대한 신청여부를 확인하는 메소드
+	 * @author 김주환
+	 * @param map
+	 * @return
+	 */
+	public MateFindApplyDTO selectApplyFind(Map<String, String> map) {
+
+		SqlSession session = getSqlSession();
+		
+		MateFindApplyDTO apply = MateDAO.selectApplyFind(session, map);
+		
+		session.close();
+		
+		return apply;
 	}
 	
 }

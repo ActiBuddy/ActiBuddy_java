@@ -57,12 +57,12 @@
      <div class="carousel-item active">
       <img src=${ activity.activityList[0].image } class="d-block w-100" alt="...">
     </div>
-    <c:if test="${ not empty activity.activityList[0].image2 }">
+    <c:if test="${ (not empty activity.activityList[0].image2) and (activity.activityList[0].image2 != '../resources/image/addActi/')}">
      <div class="carousel-item">
       <img src=${ activity.activityList[0].image2 } class="d-block w-100" alt="...">
     </div>
     </c:if>
-    <c:if test="${ not empty activity.activityList[0].image3 }">
+    <c:if test="${ (not empty activity.activityList[0].image3) and (activity.activityList[0].image3 != '../resources/image/addActi/')}">
      <div class="carousel-item">
       <img src=${ activity.activityList[0].image3 } class="d-block w-100" alt="...">
     </div>

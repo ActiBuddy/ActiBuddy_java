@@ -88,7 +88,7 @@ public class MypageMateListServlet extends HttpServlet {
 		
 		if(no != null) {
 			
-			if(no.equals("N") ) { // 거절버튼 누르면
+			if(no.equals("X") ) { // 거절버튼 누르면
 				int result3 = new MypageService().updateFindStateNo(updateState);
 				System.out.println("X업데이트 성공..: " + result3);
 			}

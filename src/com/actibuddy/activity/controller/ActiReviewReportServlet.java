@@ -23,7 +23,7 @@ public class ActiReviewReportServlet extends HttpServlet {
         
 		String reviewNum = request.getParameter("num");
 		char repYn = request.getParameter("recYn").charAt(0);
-		String updateRepYn = "Y";
+		String updateRepYn = "L";
 		
 		System.out.println("신고할 후기 게시글 번호 : " + reviewNum);
 		System.out.println("신고할 후기 게시글 신고 여부 : " + repYn);

@@ -49,7 +49,7 @@
             <div class="search">
         <form id="searchForm" action="${ pageContext.servletContext.contextPath }/manager/partnermember" method="get">
                <input type="hidden" name="currentPage" value="1">
-               <input type="search" id="searchValue" name="searchValue" placeholder="찾고싶은 파트너를 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
+               <input type="search" id="searchValue" name="searchValue" placeholder="파트너를 입력해주세요" value="<c:out value="${ requestScope.selectCriteria.searchValue }"/>">
                <button type="submit" class="searchbutton">검색하기</button>
 		</form>
         </div>

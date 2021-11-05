@@ -21,17 +21,9 @@ public class ReportMateFind extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		
-//		MateReviewDTO mateReviewDTO = new MateReviewDTO();
-//		ActiReviewDTO actiReviewDTO = new ActiReviewDTO();
-		
 		ReportService reportService = new ReportService();
 		
-		List<MateReviewDTO> matefindrep = reportService.matefindrep();
 		
-		request.setAttribute("matefindrep", matefindrep);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/report/reportmatefind.jsp");
-		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

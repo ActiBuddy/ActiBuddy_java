@@ -22,17 +22,14 @@ public class ReportMatingReview extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		ReportService reportService = new ReportService();
-//
-//		List<MateReviewDTO> matereviewrep = reportService.matereviewrep();
-//		
-//		System.out.println(matereviewrep);
-//		
-//		request.setAttribute("matereviewrep", matereviewrep);
+		ReportService reportService = new ReportService();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/report/reportmatingreview.jsp");
+		List<MateReviewDTO> matereviewrep = reportService.matefindrep();
+		
+		request.setAttribute("matefindrep", matereviewrep);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/report/reportmatefind.jsp");
 		rd.forward(request, response);
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

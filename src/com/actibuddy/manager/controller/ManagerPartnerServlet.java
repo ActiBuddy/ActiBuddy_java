@@ -48,6 +48,8 @@ public class ManagerPartnerServlet extends HttpServlet {
 		searchMap.put("searchCondition", searchCondition);
 		searchMap.put("searchValue", searchValue);
 
+		System.out.println(searchMap);
+
 		/* ======= 공통 처리 ======== */
 		// 전체 게시물 수 필요
 		// 검색 조건이 있는 경우 검색 조건에 맞는 전체 게시물 수 조회
@@ -72,6 +74,7 @@ public class ManagerPartnerServlet extends HttpServlet {
 			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
 		}
 		
+		System.out.println(selectCriteria);
 		
 		List<ManagerDTO> managerList = managerService.selectPartnerMember(selectCriteria);		
 		

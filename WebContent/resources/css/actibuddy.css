@@ -72,6 +72,13 @@ a {
 	padding: 1px 2px !important;
 }
 
+#searchBar1{
+	
+	width:300px;
+	height :30px !important;
+	padding: 1px 2px !important;
+}
+
 .navbar_menu span {
   display: table-cell;
   vertical-align: middle;

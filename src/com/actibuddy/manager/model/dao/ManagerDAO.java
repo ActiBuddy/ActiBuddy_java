@@ -23,13 +23,12 @@ public class ManagerDAO {
 	}
 	
 	// 경고받은 회원
-	public static List<ManagerDTO> selectWarnMember(SqlSession session) {
-		return session.selectList("ManagerDAO.selectWarnMember");
+	public static List<ManagerDTO> selectWarnMember(SqlSession session, SelectCriteria selectCriteria) {
+		return session.selectList("ManagerDAO.selectWarnMember", selectCriteria);
 	}
 
-	public static List<ManagerDTO> selectAllMember(SqlSession session) {
-		return session.selectList("ManagerDAO.selectAllMember");
-	
+	public static List<ManagerDTO> selectAllMember(SqlSession session, SelectCriteria selectCriteria) {
+		return session.selectList("ManagerDAO.selectAllMember", selectCriteria);
 	}
 	
 // 매니저 - 파트너 회원 조회 페이징 처리
@@ -69,6 +68,17 @@ public class ManagerDAO {
 	// 매니저 - 파트너 회원 검색, 페이징
 	public static int selectFindTotalCount(SqlSession session, Map<String, String> searchMap) {
 		return session.selectOne("ManagerDAO.selectFindTotalCount", searchMap);
+
+	}
+
+
+	public static int commonMemberTotalCount(SqlSession session, Map<String, String> searchMap) {
+		return session.selectOne("ManagerDAO.commonMemberTotalCount", searchMap);
+	}
+
+
+	public static int warnmemberTotalCount(SqlSession session, Map<String, String> searchMap) {
+		return session.selectOne("ManagerDAO.warnmemberTotalCount", searchMap);
 
 	}
 

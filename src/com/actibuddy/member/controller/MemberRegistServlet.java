@@ -64,27 +64,8 @@ public class MemberRegistServlet extends HttpServlet {
 
 		System.out.println("memberController result : " + result);
 		
-		String page = "";
-		
-		
-		response.setContentType("text/html; charset=UTF-8"); 
-		PrintWriter writer = response.getWriter(); 
+		response.sendRedirect("../member/login");
 
-		출처: https://blythe.tistory.com/12 [Blythe]
-		if(result > 0) {
-			
-			page = "/WEB-INF/views/main/mainpage.jsp";
-			
-			writer.println("<script>alert('success'); </script>"); writer.close();
-		} else {
-			
-			page = "/WEB-INF/views/common/failed.jsp";
-			
-			request.setAttribute("message", "회원 가입 실패!");
-		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
-	
 	}
 
 }

@@ -176,13 +176,6 @@
 	
 	</select>
 	
-	<resultMap type="com.actibuddy.mate.model.dto.MateFindApplyDTO" id="mtFindApplyResultMap">
-	<id property="applyNum" column="MT_APPLY_NUM"/>
-	<result property="num" column="MT_FIND_NUM"/>
-	<result property="accYn" column="MT_FIND_YN"/>
-	<result property="appliedId" column="APPLIED_ID"/>
-	</resultMap>
-	
 	<!-- 메이트 후기 글 리스트 -->
     <select id="selectAllFindList" resultMap="mateFindResultMap">
        SELECT A.RNUM

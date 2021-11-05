@@ -926,6 +926,7 @@
           FROM ACTI_REVIEW A
           JOIN ACTIVITY_INFO B ON (A.ACTI_NUM = B.ACTI_NUM)
          WHERE B.ACTI_NAME = #{ actiName }
+           AND A.ACTI_REVIEW_REP_YN IN ('N', 'L')
  	</select>
  	
  	<select id="selectReviewList" resultMap="reviewResultMap" parameterType="HashMap">
@@ -943,6 +944,7 @@
                           LEFT JOIN PAY_HIS E ON (D.PAY_NUM = E.PAY_NUM)
                           LEFT JOIN CART F ON (E.CART_NUM = F.CART_NUM)
                          WHERE B.ACTI_NAME = #{ actiName }
+                           AND A.ACTI_REVIEW_REP_YN IN ('N', 'L')
                           <if test="sort != null and sort == 'rec'">
 	                      ORDER BY A.ACTI_REVIEW_REC DESC
 	                      </if>

@@ -97,7 +97,7 @@
 </svg>
 <h2 class="starscore">${ activity.avgStar } </h2>
 <a href="#review-all"> 
-  <h3 id="reviewnum"> (이용후기 ${ activity.count }건)</h3>
+  <h3 id="reviewnum"> (이용후기 ${ selectCriteria.totalCount }건)</h3>
 </a>
 </div>
 
@@ -394,7 +394,7 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); *
   
 </div>
 
-  <h3 id="review-all">(이용후기 ${ activity.count }건)</h3>
+  <h3 id="review-all">(이용후기 ${ selectCriteria.totalCount }건)</h3>
 
   <br> <br> <br>
 <form method="get" id="sortForm">

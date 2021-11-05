@@ -65,11 +65,6 @@
 	<result property="appliedId" column="APPLIED_ID"/>
 	</resultMap>
 	
-	<resultMap type="com.actibuddy.mate.model.dto.MateFindAndApplyDTO" id="mtFindAndApplyResultMap">
-	    <collection property="applyList" resultMap="mtFindApplyResultMap"/>
-	    <collection property="findList" resultMap="mateFindResultMap"/>
-	</resultMap>
-	
 	<!-- ================ 주환이 쿼리문 ================ -->
 	<!-- 메이팅 게시글 신고에 대한 쿼리문 -->
 	<update id="updateFindYn">
@@ -560,28 +555,6 @@
  
 	</select>
 	
-	<!-- 게시글에 댓글 추가하는 쿼리문 -->
-	<insert id="insertComment">
-		INSERT
-		  INTO COMENT A
-		(
-		  A.MT_COM_NUM
-		, A.MT_COM_REP_YN
-		, A.MT_COM_CON
-		, A.USER_ID
-		, A.MT_FIND_NUM
-		, A.MT_COM_DATE
-		) 
-		VALUES
-		(
-		  'MT_COM' || SEQ_COM_NUM.NEXTVAL
-		, 'N'
-		, #{ text }
-		, #{ userId }
-		, #{ num }
-		, DEFAULT
-		)
-	</insert>
 	<!-- 해당 게시글에 대한 댓글 조회 쿼리문 -->
 	<select id="selectComment" parameterType="string" resultMap="commentResultMap">
 	SELECT

@@ -220,7 +220,7 @@
 			$(function() {
 				$('#sub').on('click', function () {
 					if('${ sessionScope.loginMember.userId }' != null && '${ sessionScope.loginMember.userId }' != ''){
-						$('#frm').attr("action","/acti/sort/controll").submit();
+						$('#frm').attr("action","/acti/mate/comment").submit();
 					} else {
 						alert("액티버디 로그인 하신 후 이용해 주시기 바랍니다.");
 					}

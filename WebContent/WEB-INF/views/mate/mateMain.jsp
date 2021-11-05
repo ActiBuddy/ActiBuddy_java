@@ -247,7 +247,7 @@
                   <c:forEach var="find" items="${ findList }">
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
@@ -296,7 +296,7 @@
                 <c:if test='${ find.location eq "서울" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
@@ -344,7 +344,7 @@
                   <c:if test='${ find.location eq "경기" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
@@ -393,7 +393,7 @@
                   <c:if test='${ find.location eq "강원" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
@@ -441,7 +441,7 @@
                   <c:if test='${ find.location eq "충청" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
@@ -489,7 +489,7 @@
                   <c:if test='${ find.location eq "전라" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
@@ -537,7 +537,7 @@
                   <c:if test='${ find.location eq "경상" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
@@ -585,7 +585,7 @@
                   <c:if test='${ find.location eq "부산" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
@@ -634,7 +634,7 @@
                   <c:if test='${find.location eq "제주" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>

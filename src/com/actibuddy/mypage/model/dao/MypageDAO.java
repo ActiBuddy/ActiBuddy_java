@@ -19,6 +19,7 @@ import com.actibuddy.member.model.dto.MemberDTO;
 import com.actibuddy.mypage.model.dto.ActiConditionHisDTO;
 import com.actibuddy.mypage.model.dto.CartAndMemberAndPayHIsDTO;
 import com.actibuddy.mypage.model.dto.CartDTO;
+import com.actibuddy.mypage.model.dto.MTFindApplyDTO;
 import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
 import com.actibuddy.mypage.model.dto.PayHisDTO;
 import com.actibuddy.mypage.model.dto.PayResultDTO;
@@ -133,14 +134,14 @@ public class MypageDAO {
 			return session.insert("MypageDAO.insertScore", scoreDTO);
 		}
 
-		public static List<MateFindAndApplyDTO> selectMtApply(SqlSession session, String userId) {
+		public static List<MTFindApplyDTO> selectMtApply(SqlSession session, String userId) {
 			
 			return session.selectList("MypageDAO.selectMtApply",userId);
 		}
 
-		public int updateMtFindNum(SqlSession session, MateFindDTO requestMtFindNum) {
+		public int updateMtFindNum(SqlSession session, String mtFindNum) {
 			
-			return session.update("MypageDAO.requestMtFindNum",requestMtFindNum);
+			return session.update("MypageDAO.requestMtFindNum",mtFindNum);
 		}
 
 		public int updatePayYn(SqlSession session, String cartNum) {
@@ -162,6 +163,16 @@ public class MypageDAO {
 		public int insertScoreHis(SqlSession session, Map<String, String> hisNum) {
 			
 			return session.insert("MypageDAO.isertScoreHis", hisNum);
+		}
+
+		public int updateFindStateYes(SqlSession session, Map<String, String> updateState) {
+			
+			return session.update("MypageDAO.updateFindStateYes",updateState);
+		}
+
+		public int updateFindStateNo(SqlSession session, Map<String, String> updateState) {
+			
+			return session.update("MypageDAO.updateFindStateNo",updateState);
 		}
 
 

@@ -16,6 +16,7 @@ import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.service.MateFindService;
 import com.actibuddy.member.model.dto.MemberDTO;
+import com.actibuddy.mypage.model.dto.MTFindApplyDTO;
 import com.actibuddy.mypage.model.dto.MypageMateScoreDTO;
 import com.actibuddy.mypage.service.MypageService;
 
@@ -88,7 +89,7 @@ public class MypageMateScoreInsertServlet extends HttpServlet {
 			if(result2 > 0) {
 				
 				/* 다시 메이트 내역으로 되돌아갈 때 필요한 정보들 조회 */
-				List<MateFindAndApplyDTO> mtApplyList2 = mypageService.selectMtApply(userId);
+				List<MTFindApplyDTO> mtApplyList2 = mypageService.selectMtApply(userId);
 				
 				System.out.println(mtApplyList2);
 				request.setAttribute("mtApplyList2", mtApplyList2);

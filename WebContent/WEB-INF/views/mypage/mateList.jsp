@@ -100,21 +100,19 @@
                         </c:choose>
                         
                     <h3>메이트 신청받은 내역</h3>
+                 <c:forEach items="${mtApplyList2}" var="apply">
                     <hr>
-                 <c:forEach items="${mtApplyList2}" var="apply" varStatus="status">
                       <div class="l-one-line">
 
                         <img src="../resources/image/hreart.png" width="32px" height="30px">
 
                         <span></span>
-					  <c:forEach items="${apply.findList}" var="find">
-                        	<h3>${ find.title }</h3>
-                      </c:forEach>
+                        	<h3>${ apply.title }</h3>
                         <button type="button" onclick="location.href=''">상세보기 ></button>
                         <br><br>
                     </div>
                     
-                    <button id="l-list">메이트 구인 내역</button>
+                    <button id="l-list${ apply.num }" class="l-list">메이트 구인 내역</button>
                       <div class="people">
                        <c:forEach items="${ apply.applyList}" var="app">
 	                         <br>
@@ -122,38 +120,62 @@
 	                        <h4>신청자 : ${app.appliedId}</h4>
                        	
 	                        <!-- 신청한 아이디 히든으로 넘겨주고 -->
-                    <form action="../mypage/matelist" method="post"> <!-- // 가져오고 나서 update해주기     -->
+                    <form action="../mypage/matelist" method="post" id="formok"> <!-- // 가져오고 나서 update해주기     -->
+	                    <input type="hidden"  name="appliedId" value="${app.appliedId}">
+	                    <input type="hidden"  name="findNum" value="${apply.num}">
+							<c:set value="${app.accYn}" var="state"/>
+	                       <c:if test="${state eq 'L'.charAt(0)}">
+	                        <button type="submit" value="Y" name="yes" id="okaya">수락</button>
+	                       </c:if>
+                    </form>
+                    <form action="../mypage/matelist" method="post" id="formno"> <!-- // 가져오고 나서 update해주기     -->
 	                        <input type="hidden"  name="appliedId" value="${app.appliedId}">
-	                        <button type="submit" value="Y">수락</button><button type="submit" value="N" >거절</button><br>  
+	                        <input type="hidden"  name="findNum" value="${apply.num}">
+	                        <c:set value="${app.accYn}" var="state"/>
+	                        <c:if test="${state eq 'L'.charAt(0)}">
+	                        <button type="submit" value="X"  name="no" id="nop">거절</button><br>
+	                        </c:if>
+	                       <c:if test="${state eq 'Y'.charAt(0)}">
+	                       <h5 style="margin-bottom: 10px; margin-top: 0px;">수락됨</h5>
+	                       </c:if>
+	                       <c:if test="${state eq 'X'.charAt(0)}">
+	                       <h5 style="margin-bottom: 10px; margin-top: 0px;">거절됨</h5>
+	                       </c:if>
                     </form>
                         </c:forEach> 
                       </div>
                       
+                    <br><br><br><br><br>
+                    <!-- 마감하기 누르면  -> MT_FIND_STATE 신청마감으로 업데이트 -->
+	                   <form action="../mypage/matelist" method="post">
+	                    <input type="hidden" name="findNum" value="${ apply.num}">
+		                    <c:if test='${apply.state eq "신청가능"}'>
+		                    	<button type="submit" class="forgreen" id="magam">마감하기</button>
+		                    </c:if>
+		                    <c:if test='${apply.state eq "신청마감"}'>
+		                    	<button type="button" id="magam" style="border: none; color: darkgray;">마감완료</button>
+		                    </c:if>
+	                    
+	                   </form>
+
 	                    <script>
 	                        $(function(){
 	                            $('.people').slideUp()
 	              
-	                            $('#l-list').click(function(){
+	                            $('#l-list${ apply.num }').click(function(){
 	                                $(this).next('div').slideToggle();
 	                            });
 	                        });
+	                        
+	                        var btn = document.getElementById('btn-world');
+	                        btn.disabled = 'disabled';
 	                    </script>
+					<br>
                   </c:forEach>
-                    <br><br><br><br><br><br><br>
-                    <!-- 마감하기 누르면  -> MT_FIND_STATE 신청마감으로 업데이트 -->
-	                    <form action="../mypage/matelist" method="post">
-	                    <input type="hidden" name="num" value="${ app.num}">
-	                    		<button type="submit" class="forgreen" id="magam">마감하기</button>
-	                    	<c:if test="${ app.num} eq '신청마감'">
-	                    		<button type="button" id="magam">마감완료</button>
-	                    	</c:if>
-	                    </form>
-                    <hr>
-
-                
-
+                  <br>
                 </div>
-
+				
+				
 
     
             </div>

@@ -5,7 +5,7 @@ import java.sql.Date;
 public class MateCommentDTO implements java.io.Serializable{
 
 	private String num;
-	private String repYn;
+	private char repYn;
 	private String comment;
 	private String userId;
 	private String findNum;
@@ -15,7 +15,7 @@ public class MateCommentDTO implements java.io.Serializable{
 
 	}
 
-	public MateCommentDTO(String num, String repYn, String comment, String userId, String findNum, Date date) {
+	public MateCommentDTO(String num, char repYn, String comment, String userId, String findNum, Date date) {
 		super();
 		this.num = num;
 		this.repYn = repYn;
@@ -33,11 +33,11 @@ public class MateCommentDTO implements java.io.Serializable{
 		this.num = num;
 	}
 
-	public String getRepYn() {
+	public char getRepYn() {
 		return repYn;
 	}
 
-	public void setRepYn(String repYn) {
+	public void setRepYn(char repYn) {
 		this.repYn = repYn;
 	}
 

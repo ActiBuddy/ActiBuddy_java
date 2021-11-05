@@ -33,20 +33,12 @@ public class MypageMateListServlet extends HttpServlet {
 		request.setAttribute("mtApplyList2", mtApplyList2);
 		
 		/* 사용자가 신청한 메이팅 구인글 조회하기 */
-		/*
-		 * MateFindService mateFindService = new MateFindService(); MateFindAndApplyDTO
-		 * mtApply = mateFindService.selectMtApplyHis(userId);
-		 * System.out.println(mtApply);
-		 * 
-		 * String path = "";
-		 * 
-		 * if(mtApply != null) { path = "/WEB-INF/views/mypage/mateList.jsp";
-		 * request.setAttribute("mtApply", mtApply);
-		 * 
-		 * } else { path = "/WEB-INF/views/common/actiFail.jsp"; }
-		 * 
-		 * request.getRequestDispatcher(path).forward(request, response);
-		 */
+		MateFindService mateFindService = new MateFindService();
+		List<MateFindDTO> mtApply = mateFindService.selectMtApplyHis(userId);
+		for(MateFindDTO mf : mtApply) {
+			System.out.println(mf);
+		}
+		request.setAttribute("mtApply", mtApply);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mypage/mateList.jsp");
 		rd.forward(request, response);

@@ -979,11 +979,11 @@
  	<!-- 클릭시 조회수 증가용 쿼리문 -->
  	<update id="updateViews">
  		UPDATE ACTIVITY_INFO
-   SET ACTI_VIEWS = (SELECT 
+   		   SET ACTI_VIEWS = (SELECT 
                             ACTI_VIEWS + 1
                        FROM ACTIVITY_INFO
                       WHERE ACTI_NAME = #{ actiName } )
- WHERE ACTI_NAME = #{ actiName } 
+ 		 WHERE ACTI_NAME = #{ actiName } 
  	</update>
  	
  	<insert id="insertPayment">

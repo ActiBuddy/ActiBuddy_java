@@ -11,6 +11,7 @@ public class MypageMateScoreDTO {
 	private String userId;
 	private String scoredId;
 	private String plusScore;
+	private int scoreNo;
 	
 	
 	public MypageMateScoreDTO() {
@@ -18,7 +19,7 @@ public class MypageMateScoreDTO {
 
 
 	public MypageMateScoreDTO(String scoreNum, String scoreTitle, String scoreCon, String scoreRepYn, String scoreStar,
-			String userId, String scoredId, String plusScore) {
+			String userId, String scoredId, String plusScore, int scoreNo) {
 		super();
 		this.scoreNum = scoreNum;
 		this.scoreTitle = scoreTitle;
@@ -28,6 +29,7 @@ public class MypageMateScoreDTO {
 		this.userId = userId;
 		this.scoredId = scoredId;
 		this.plusScore = plusScore;
+		this.scoreNo = scoreNo;
 	}
 
 
@@ -111,12 +113,23 @@ public class MypageMateScoreDTO {
 	}
 
 
+	public int getScoreNo() {
+		return scoreNo;
+	}
+
+
+	public void setScoreNo(int scoreNo) {
+		this.scoreNo = scoreNo;
+	}
+
+
 	@Override
 	public String toString() {
 		return "MypageMateScoreDTO [scoreNum=" + scoreNum + ", scoreTitle=" + scoreTitle + ", scoreCon=" + scoreCon
 				+ ", scoreRepYn=" + scoreRepYn + ", scoreStar=" + scoreStar + ", userId=" + userId + ", scoredId="
-				+ scoredId + ", plusScore=" + plusScore + "]";
+				+ scoredId + ", plusScore=" + plusScore + ", scoreNo=" + scoreNo + "]";
 	}
+
 
 
 

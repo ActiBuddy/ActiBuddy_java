@@ -130,6 +130,7 @@
  		<result property="scoreStar" column="MT_SCORE_STAR"/>
  		<result property="plusScore" column="PLUS_SCORE"/>
  		<result property="scoreTitle" column="MT_SCORE_TITLE"/>
+ 		<result property="scoreNo" column="SCORE_NO"/>
  	</resultMap>
  	
  	<resultMap type="com.actibuddy.mypage.model.dto.PayResultDTO" id="payResultMap">
@@ -569,6 +570,7 @@
 		, MT_SCORE_NUM
 		, MT_SCORE_STAR
 		, PLUS_SCORE
+		, SCORE_NO
 		)
 		VALUES
 		(
@@ -580,6 +582,7 @@
 		, ('MT_SCORE' || TO_CHAR(SEQ_MT_SCORE_NUM.nextval))
 		, #{ scoreStar }
 		, #{ plusScore }
+		, SEQ_SCORE_NO.NEXTVAL
 		)
 	</insert>
 	<select id="selectMtApply" resultMap="mtFindAndApplyResult">
@@ -606,7 +609,41 @@
 	    UPDATE CART
 		   SET PAY_YN = 'Y'
 		 WHERE CART_NUM = #{ cartNum }
-	</update>
 	
+	</update>
+
+    <select id="selectScoreNum" resultMap="mateScoreResultMap">
+        SELECT RNUM
+		     , B.*
+		  FROM (SELECT ROWNUM RNUM
+		     , A.*
+		  FROM (SELECT *
+		          FROM MT_SCORE
+		         ORDER BY SCORE_NO DESC
+		       )A
+		  )B
+		 WHERE RNUM <![CDATA[ < ]]> 2
+    </select>
+    
+    <select id="selectAppNo" resultMap="mtApplyResultMap">
+        SELECT *
+		  FROM MT_APPLY_HIS
+		 WHERE APPLIED_ID = #{ appliedId }
+		   AND MT_FIND_NUM = #{ num }
+    </select>
+    
+    <insert id="isertScoreHis">
+        INSERT
+		  INTO MT_SCORE_HIS
+		(
+		  MT_APPLY_NUM
+		, MT_SCORE_NUM
+		)
+		VALUES
+		(
+		  #{ aNum }
+		, #{ sNum }
+		)
+    </insert>
   
   </mapper>

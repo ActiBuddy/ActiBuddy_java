@@ -7,7 +7,6 @@ public class MateFindApplyDTO {
 	private String applyNum;
 	private String appliedId;
 
-
 	public MateFindApplyDTO() {
 	
 	}

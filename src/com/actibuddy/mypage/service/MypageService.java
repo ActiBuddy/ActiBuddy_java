@@ -424,12 +424,72 @@ public class MypageService {
 		return result;
 	}
 
+	/** 결제 시 장바구니에 결제여부 수정용 메소드
+	 * @author kwonsoonpyo
+	 * @param cartNum
+	 * @return result
+	 */
 	public int updatePayYn(String cartNum) {
 		
 	    SqlSession session = getSqlSession();
 	    
 	    int result = mypageDAO.updatePayYn(session, cartNum);
 	    
+	    if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/**
+	 * 평가 등록 후 최근 등록된 평가번호 조회용 메소드
+	 * @author kwonsoonpyo
+	 * @return MypageMateScoreDTO
+	 */
+	public MypageMateScoreDTO selectScoreNum() {
+		
+		SqlSession session = getSqlSession();
+		
+		MypageMateScoreDTO scoreDTO = mypageDAO.selectScoreNum(session);
+		
+		session.close();
+		
+		return scoreDTO;
+	}
+
+	/**
+	 * 사용자가 참여한 메이팅의 신청 이력 번호 조회용 메소드
+	 * @author kwonsoonpyo
+	 * @return MateFindApplyDTO
+	 */
+	public MateFindApplyDTO selectAppNo(MateFindApplyDTO app) {
+		
+		SqlSession session = getSqlSession();
+		
+		MateFindApplyDTO appDTO = mypageDAO.selectAppNo(session, app);
+		
+		session.close();
+		
+		return appDTO;
+	}
+
+	/**
+	 * 메이트 평가 후 평가 이력 정보 등록용 메소드
+	 * @author kwonsoonpyo
+	 * @param hisNum
+	 * @return result
+	 */
+	public int insertScoreHis(Map<String, String> hisNum) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = mypageDAO.insertScoreHis(session, hisNum);
+
 	    if(result > 0) {
 			session.commit();
 		} else {

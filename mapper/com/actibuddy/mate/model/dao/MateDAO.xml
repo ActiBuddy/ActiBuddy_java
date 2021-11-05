@@ -70,6 +70,7 @@
 	    <collection property="findList" resultMap="mateFindResultMap"/>
 	</resultMap>
 	
+	<!-- ================ 주환이 쿼리문 ================ -->
 	<!-- 메이팅 게시글 신고에 대한 쿼리문 -->
 	<update id="updateFindYn">
 		UPDATE MT_FIND
@@ -83,6 +84,53 @@
 		   SET MT_COM_REP_YN = #{ repYn }
 		 WHERE MT_COM_NUM = #{ num }  
 	</update>
+	
+		<!-- 게시글 신청 이력 쿼리문 -->
+	<select id="selectMtApplyHis" resultMap="mtFindAndApplyResultMap" parameterType="String">
+	    SELECT A.*
+             , C.*
+		  FROM MT_APPLY_HIS A 
+		  JOIN MEMBER B ON (A.APPLIED_ID = B.USER_ID)
+		  JOIN MT_FIND C ON (A.MT_FIND_NUM = C.MT_FIND_NUM)
+		 WHERE A.APPLIED_ID = #{ appliedId }
+	</select>
+	
+	<!-- 게시글에 댓글 추가하는 쿼리문 -->
+	<insert id="insertComment">
+		INSERT
+		  INTO COMENT A
+		(
+		  A.MT_COM_NUM
+		, A.MT_COM_REP_YN
+		, A.MT_COM_CON
+		, A.USER_ID
+		, A.MT_FIND_NUM
+		, A.MT_COM_DATE
+		) 
+		VALUES
+		(
+		  'MT_COM' || SEQ_COM_NUM.NEXTVAL
+		, 'N'
+		, #{ text }
+		, #{ userId }
+		, #{ num }
+		, DEFAULT
+		)
+	</insert>
+	
+	<!-- 해당 게시글에 대한 댓글 조회 쿼리문 -->
+	<select id="selectComment" parameterType="string" resultMap="commentResultMap">
+	SELECT
+		   MT_COM_NUM
+	     , MT_COM_REP_YN
+	     , MT_COM_CON
+	     , USER_ID
+	     , MT_FIND_NUM
+	     , MT_COM_DATE
+	  FROM COMENT
+	 WHERE MT_FIND_NUM = #{ num } 
+	</select>
+	
 	
 	<!-- 메이트 신청 -->
 	<insert id="insertApply">
@@ -112,6 +160,8 @@
                       WHERE MT_FIND_NUM = #{ num } )
  		 WHERE MT_FIND_NUM = #{ num } 
 	</update>
+	
+	<!-- ================ 주환이 쿼리문 ================ -->
 	
 	<!-- 메이트 마감 임박 -->
 	<select id="selectHurryFind" resultMap="mateFindResultMap">
@@ -229,34 +279,37 @@
 							  , C.MT_FIND_COUNT
 								FROM MT_FIND C
 						      <where>
-						    	  <if test="searchCondition == '서울'">
+						    	  <if test='searchCondition == "서울"'>
 						    	    C.MT_FIND_LOCATION = '서울'
 						    	  </if>
-						    	  <if test="searchCondition == '경기'">
+						    	  <if test='searchCondition == "경기"'>
 						    	    C.MT_FIND_LOCATION = '경기'
 						    	  </if>
-						    	  <if test="searchCondition == '강원'">
+						    	  <if test='searchCondition == "강원"'>
 						    	    C.MT_FIND_LOCATION = '강원'
 						    	  </if>
-						    	  <if test="searchCondition == '충청'">
+						    	  <if test='searchCondition == "충청"'>
 						    	    C.MT_FIND_LOCATION = '충청'
 						    	  </if>
-						    	  <if test="searchCondition == '전라'">
+						    	  <if test='searchCondition == "전라"'>
 						    	    C.MT_FIND_LOCATION = '전라'
 						    	  </if>
-						    	  <if test="searchCondition == '경상'">
+						    	  <if test='searchCondition == "경상"'>
 						    	    C.MT_FIND_LOCATION = '경상'
 						    	  </if>
-						    	  <if test="searchCondition == '부선'">
+						    	  <if test='searchCondition == "부산"'>
 						    	    C.MT_FIND_LOCATION = '부산'
 						    	  </if>
-						    	  <if test="searchCondition == '제주'">
+						    	  <if test='searchCondition == "제주"'>
 						    	    C.MT_FIND_LOCATION = '제주'
 						    	  </if>
 						    	  AND C.MT_FIND_REP_YN IN('N','L')
 					    	  </where>
 							   ORDER BY MT_FIND_DATE DESC)B)A
 			WHERE (A.RNUM BETWEEN #{ startRow } and #{ endRow })
+			  <if test="searchValue != null">
+     	  	 AND A.MT_FIND_TITLE LIKE '%' || #{ searchValue } || '%'
+     	     </if>
     </select>
 	
 	<!-- 메이트 구인 게시글수 조회 (수정)-->
@@ -264,15 +317,13 @@
     	SELECT
     		COUNT(*)
     	  FROM MT_FIND A
-    	  <where>
-    	  <if test="searchValue != null">
-    	    A.MT_FIND_TITLE LIKE '%' || #{ searchValue } || '%'
-    	  </if>
-    	  <if test="searchCondition != null || searchCondition == ''">
-    	    A.MT_FIND_LOCATION = #{ location }
-    	  </if>
-    	    AND A.MT_FIND_REP_YN IN('N','L')
-    	  </where>
+    	 WHERE A.MT_FIND_REP_YN IN('N','L')
+	        <if test='searchValue != null'>
+	    	 AND A.MT_FIND_TITLE LIKE '%' || #{ searchValue } || '%'
+	    	</if>
+	    	<if test='searchCondition != "전체"'>
+	    	 AND A.MT_FIND_LOCATION LIKE '%' || #{ searchCondition } || '%'
+	    	</if>	  
     </select>
 	
 	<!-- 메이트 구인글 작성 -->
@@ -522,49 +573,6 @@
 
 	</insert>
 	
-	<select id="selectMtApplyHis" resultMap="mtFindAndApplyResultMap" parameterType="String">
-	    SELECT A.*
-             , C.*
-		  FROM MT_APPLY_HIS A 
-		  JOIN MEMBER B ON (A.APPLIED_ID = B.USER_ID)
-		  JOIN MT_FIND C ON (A.MT_FIND_NUM = C.MT_FIND_NUM)
-		 WHERE A.APPLIED_ID = #{ appliedId }
-	</select>
-	
-	<!-- 게시글에 댓글 추가하는 쿼리문 -->
-	<insert id="insertComment">
-		INSERT
-		  INTO COMENT A
-		(
-		  A.MT_COM_NUM
-		, A.MT_COM_REP_YN
-		, A.MT_COM_CON
-		, A.USER_ID
-		, A.MT_FIND_NUM
-		, A.MT_COM_DATE
-		) 
-		VALUES
-		(
-		  'MT_COM' || SEQ_COM_NUM.NEXTVAL
-		, 'N'
-		, #{ text }
-		, #{ userId }
-		, #{ num }
-		, DEFAULT
-		)
-	</insert>
-	<!-- 해당 게시글에 대한 댓글 조회 쿼리문 -->
-	<select id="selectComment" parameterType="string" resultMap="commentResultMap">
-	SELECT
-		   MT_COM_NUM
-	     , MT_COM_REP_YN
-	     , MT_COM_CON
-	     , USER_ID
-	     , MT_FIND_NUM
-	     , MT_COM_DATE
-	  FROM COMENT
-	 WHERE MT_FIND_NUM = #{ num } 
-	</select>
-	
+
 
 </mapper>

@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dao.MateDAO;
 import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
+import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 
@@ -169,6 +170,63 @@ public class MateFindService {
 		SqlSession session = getSqlSession();
 		
 		int result = MateDAO.updateFindYn(session, find);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/**
+	 * 메이팅 댓글 신고 메소드
+	 * @author 김주환
+	 * @param comment
+	 * @return
+	 */
+	public int updateComReqYn(MateCommentDTO comment) {
+
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.updateComReqYn(session, comment);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	public int insertApply(MateFindApplyDTO find) {
+
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.insertApply(session, find);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	public int updateViews(String num) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.updateViews(session, num);
 		
 		if(result > 0) {
 			session.commit();

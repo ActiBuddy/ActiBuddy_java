@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
+import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
 import com.actibuddy.mate.model.dto.MateReviewDTO;
@@ -110,6 +111,21 @@ public class MateDAO {
 	public static int updateFindYn(SqlSession session, MateFindDTO find) {
 
 		return session.update("MateDAO.updateFindYn", find);
+	}
+
+	public static int updateComReqYn(SqlSession session, MateCommentDTO comment) {
+
+		return session.update("MateDAO.updateComReqYn", comment);
+	}
+
+	public static int insertApply(SqlSession session, MateFindApplyDTO find) {
+
+		return session.insert("MateDAO.insertApply", find);
+	}
+
+	public static int updateViews(SqlSession session, String num) {
+
+		return session.update("MateDAO.updateViews", num);
 	}
 
 }

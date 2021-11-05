@@ -51,7 +51,7 @@
                 ${ userId }
             </div>
             <div class="view">
-                조회 52
+                조회 ${ view }
             </div>
             <div class="writer_date">
                 ${ date } ・ 
@@ -153,7 +153,16 @@
 
         <!-- 버튼 부분 -->
        <div class="btnborder">
-          <button class="btngo"><a href="#">신청하기</a></button>
+       		<c:set var="id" value="${ sessionScope.loginMember.userId }"/> 
+       		<c:choose>
+       		<c:when test="${ userId eq id }">
+       		
+       		</c:when>
+       		<c:when test="${ userId ne id }">
+       		
+           <button id="abc" class="btngo">신청하기</button>
+       		</c:when>
+          </c:choose>
           <div class="report">
         <button id="repbtn" class="repbtn">
         <img src="${ pageContext.servletContext.contextPath }/resources/image/warning2.png">
@@ -181,25 +190,65 @@
         <!-- 댓글 내용 -->
         <c:if test="${ comment != null and !empty comment}">
        <div class="comment">
-       	<c:forEach var="com" items="${ comment }">
+       	<c:forEach var="size" begin="0" end="${ fn:length(comment)-1 }">
           <div class="com1_border">
               <div class="com_writer1">작성자 : </div>
-              <div class="com_writer2">${ com.userId }</div>
+              <div class="com_writer2">${ comment[size].userId }</div>
               <div class="com_writer3">
-              <button id="repbtn2" class="repbtn" style="border: none;" name="val" value="${ com.num }">
+              <button id="repbtn${ size + 1 }" class="repbtn" style="border: none;" name="val" value="${ com.num }">
               <img src="${ pageContext.servletContext.contextPath }/resources/image/wraning.png"/>
-              </button></div>
-
+              </button>
+              </div>
               <div class="com_writer4">
-                  <div class="com_writer5">${ com.comment }</div>
+                  <div class="com_writer5">${ comment[size].comment }</div>
                   <div class="com_writer6">
                      <div class="date">
-					<fmt:formatDate value="${ com.date }" type="date" pattern="yyyy/MM/dd"/>
-				    <fmt:formatDate value="${ com.date }" type="time" pattern="(a) hh:mm:ss"/>
+					<fmt:formatDate value="${ comment[size].date }" type="date" pattern="yyyy/MM/dd"/>
+				    <fmt:formatDate value="${ comment[size].date }" type="time" pattern="(a) hh:mm:ss"/>
 					</div>
                   </div>
               </div>
           </div>
+          
+          <script>
+		$(function() {
+			$('#repbtn${size + 1}').one('click', function(e) {
+				let commentNum = '${ comment[size].num }' // 오류 체크1 : script안에서는 특수 기호가 들어가면 문자열로 인식을 못한다!
+											// 오류 체크2 : 주석에도 특수기호 사용하면 안된다.
+				console.log(commentNum);
+
+				user = '${ sessionScope.loginMember.userId }';
+				
+				if(!user) {
+					alert("로그인 먼저 해주세요.");
+				} else {
+					
+					$.ajax({
+						url:'${ pageContext.servletContext.contextPath }/mate/find/report',
+						type:'post',
+					    data:{ comNum : commentNum
+					    },
+					    success:function(result){
+					    	
+					    	if(result > 0){
+					    		alert("해당 댓글의 신고가 접수되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
+					    		
+					    	} else {
+					    		alert("댓글 신고 접수에 실패했습니다.");
+					    	}
+					    	e.preventDefault();
+					    },
+					    error:function(){
+					           alert("error");
+					    }
+					    
+					 });
+				}
+			});
+		});
+	</script>
+    
+          
           </c:forEach>
     <!-- 찐짜div-->
     	</div>
@@ -248,47 +297,52 @@
 			});
 		});
 	</script>
-	
 	<!-- 이거 하다 말았음 -->
+	
 	<script>
 		$(function() {
-			$('#repbtn2').one('click', function(e) {
+			$('#abc').on('click', function(e) {
 				
-				let commentNum = $('#repbtn2').val(); // 오류 체크1 : script안에서는 특수 기호가 들어가면 문자열로 인식을 못한다!
-											// 오류 체크2 : 주석에도 특수기호 사용하면 안된다.
-				console.log(commentNum);
-
 				user = '${ sessionScope.loginMember.userId }';
 				
 				if(!user) {
 					alert("로그인 먼저 해주세요.");
 				} else {
 					
+					let returnValue = confirm('신청하시겠습니까??');
+					
+					if(returnValue){
+						
+					
+					
 					$.ajax({
-						url:'${ pageContext.servletContext.contextPath }/mate/find/report',
+						url:'${ pageContext.servletContext.contextPath }/find/apply',
 						type:'post',
-					    data:{ num : commentNum
+					    data:{ findNum : '${ num }', userId : '${ sessionScope.loginMember.userId }'
 					    },
 					    success:function(result){
 					    	
 					    	if(result > 0){
-					    		alert("\'" + "${ coment.comment }" + "\'  글의 신고가 접수되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
-					    		
-					    	} else {
-					    		alert("게시글 신고 접수에 실패했습니다.");
-					    	}
+					    		alert("신청이 완료되었습니다."); // 오류 체크3: 알럿에서도 마찬가지이다.
+					    		$('#abc').attr('disabled',true).css('background-color','black');
+					    	} 
 					    	e.preventDefault();
 					    },
 					    error:function(){
-					           alert("error");
+					           alert("신청에 실패했습니다.");
 					    }
 					    
 					 });
+					
+					} else {
+						alert("취소되었습니다");
+					}
 				}
 			});
 		});
 	</script>
-    
+	
+	
 	<script>
 		if('${ success }' != null && '${success}' != ''){
 			alert('댓글 등록에 성공하였습니다');

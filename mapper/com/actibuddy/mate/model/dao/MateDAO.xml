@@ -58,7 +58,62 @@
 		<result property="date" column="MT_COM_DATE"/>
 	</resultMap>
 	
-	<!-- 메이트  -->
+	<resultMap type="com.actibuddy.mate.model.dto.MateFindApplyDTO" id="mtFindApplyResultMap">
+	<id property="applyNum" column="MT_APPLY_NUM"/>
+	<result property="num" column="MT_FIND_NUM"/>
+	<result property="accYn" column="MT_FIND_YN"/>
+	<result property="appliedId" column="APPLIED_ID"/>
+	</resultMap>
+	
+	<resultMap type="com.actibuddy.mate.model.dto.MateFindAndApplyDTO" id="mtFindAndApplyResultMap">
+	    <collection property="applyList" resultMap="mtFindApplyResultMap"/>
+	    <collection property="findList" resultMap="mateFindResultMap"/>
+	</resultMap>
+	
+	<!-- 메이팅 게시글 신고에 대한 쿼리문 -->
+	<update id="updateFindYn">
+		UPDATE MT_FIND
+		   SET MT_FIND_REP_YN = #{ repYn }
+		 WHERE MT_FIND_NUM = #{ num }  
+	</update>
+	
+	<!-- 메이팅 댓글 신고에 대한 쿼리문 -->
+	<update id="updateComReqYn">
+		UPDATE COMENT
+		   SET MT_COM_REP_YN = #{ repYn }
+		 WHERE MT_COM_NUM = #{ num }  
+	</update>
+	
+	<!-- 메이트 신청 -->
+	<insert id="insertApply">
+		INSERT 
+		  INTO MT_APPLY_HIS A
+		(
+		  A.MT_FIND_NUM
+		, A.MT_FIND_YN
+		, A.MT_APPLY_NUM
+		, A.APPLIED_ID
+		)
+		VALUES
+		(
+		  #{ num }
+		, 'L'
+		, 'MT_APPLY_NUM' || SEQ_MT_APPLY_NUM.NEXTVAL
+		, #{ appliedId }
+		)
+	</insert>
+	
+	<!-- 메이트 구인글 조회수 -->
+	<update id="updateViews">
+		UPDATE MT_FIND
+   		   SET MT_FIND_VIEW = (SELECT 
+                            MT_FIND_VIEW + 1
+                       FROM MT_FIND
+                      WHERE MT_FIND_NUM = #{ num } )
+ 		 WHERE MT_FIND_NUM = #{ num } 
+	</update>
+	
+	<!-- 메이트 마감 임박 -->
 	<select id="selectHurryFind" resultMap="mateFindResultMap">
 	SELECT   ROWNUM
 	       , B.MT_FIND_NUM
@@ -120,19 +175,6 @@
 		 WHERE A.MT_FIND_NUM = #{ num }
 	
 	</select>
-	
-	<resultMap type="com.actibuddy.mate.model.dto.MateFindApplyDTO" id="mtFindApplyResultMap">
-	<id property="applyNum" column="MT_APPLY_NUM"/>
-	<result property="num" column="MT_FIND_NUM"/>
-	<result property="accYn" column="MT_FIND_YN"/>
-	<result property="appliedId" column="APPLIED_ID"/>
-	</resultMap>
-	
-	<resultMap type="com.actibuddy.mate.model.dto.MateFindAndApplyDTO" id="mtFindAndApplyResultMap">
-	    <collection property="applyList" resultMap="mtFindApplyResultMap"/>
-	    <collection property="findList" resultMap="mateFindResultMap"/>
-	</resultMap>
-
 
 	
 	<!-- 메이트 후기 글 리스트 -->
@@ -186,15 +228,48 @@
 							  , C.USER_ID
 							  , C.MT_FIND_COUNT
 								FROM MT_FIND C
+						      <where>
+						    	  <if test="searchCondition == '서울'">
+						    	    A.MT_FIND_LOCATION = '서울'
+						    	  </if>
+						    	  <if test="searchCondition == '경기'">
+						    	    A.MT_FIND_LOCATION = '경기'
+						    	  </if>
+						    	  <if test="searchCondition == '강원'">
+						    	    A.MT_FIND_LOCATION = '강원'
+						    	  </if>
+						    	  <if test="searchCondition == '충청'">
+						    	    A.MT_FIND_LOCATION = '충청'
+						    	  </if>
+						    	  <if test="searchCondition == '전라'">
+						    	    A.MT_FIND_LOCATION = '전라'
+						    	  </if>
+						    	  <if test="searchCondition == '경상'">
+						    	    A.MT_FIND_LOCATION = '경상'
+						    	  </if>
+						    	  <if test="searchCondition == '부선'">
+						    	    A.MT_FIND_LOCATION = '부산'
+						    	  </if>
+						    	  <if test="searchCondition == '제주'">
+						    	    A.MT_FIND_LOCATION = '제주'
+						    	  </if>
+						    	  AND A.MT_FIND_REP_YN IN('N','L')
+					    	  </where>
 							   ORDER BY MT_FIND_DATE DESC)B)A
 			WHERE (A.RNUM BETWEEN #{ startRow } and #{ endRow })
     </select>
 	
-	<!-- 메이트 구인 게시글수 조회 -->
+	<!-- 메이트 구인 게시글수 조회 (수정)-->
     <select id="selectFindTotalCount" resultType="_int">
     	SELECT
     		COUNT(*)
     	  FROM MT_FIND A
+    	  <where>
+    	  <if test="searchValue != null">
+    	    A.MT_FIND_TITLE LIKE '%' || #{ searchValue } || '%'
+    	  </if>
+    	  AND A.MT_FIND_REP_YN IN('N','L')
+    	  </where>
     </select>
 	
 	<!-- 메이트 구인글 작성 -->
@@ -488,44 +563,5 @@
 	 WHERE MT_FIND_NUM = #{ num } 
 	</select>
 	
-	<!-- 메이팅 게시글 신고에 대한 쿼리문 -->
-	<update id="updateFindYn">
-		UPDATE MT_FIND
-		   SET MT_FIND_REP_YN = #{ repYn }
-		 WHERE MT_FIND_NUM = #{ num }  
-	</update>
-	
-	<!-- 메이팅 댓글 신고에 대한 쿼리문 -->
-	<update id="updateComReqYn">
-		UPDATE COMENT
-		   SET MT_COM_REP_YN = #{ repYn }
-		 WHERE MT_COM_NUM = #{ num }  
-	</update>
-	
-	<insert id="insertApply">
-		INSERT 
-		  INTO MT_APPLY_HIS A
-		(
-		  A.MT_FIND_NUM
-		, A.MT_FIND_YN
-		, A.MT_APPLY_NUM
-		, A.APPLIED_ID
-		)
-		VALUES
-		(
-		  #{ num }
-		, 'L'
-		, 'MT_APPLY_NUM' || SEQ_MT_APPLY_NUM.NEXTVAL
-		, #{ appliedId }
-		)
-	</insert>
-	
-	<update id="updateViews">
-		UPDATE MT_FIND
-   		   SET MT_FIND_VIEW = (SELECT 
-                            MT_FIND_VIEW + 1
-                       FROM MT_FIND
-                      WHERE MT_FIND_NUM = #{ num } )
- 		 WHERE MT_FIND_NUM = #{ num } 
-	</update>
+
 </mapper>

@@ -99,6 +99,9 @@
                         </c:otherwise>
                         </c:choose>
                         
+                        
+                    <c:choose>
+                    <c:when test="${ not empty mtApplyList2}">
                     <h3>메이트 신청받은 내역</h3>
                  <c:forEach items="${mtApplyList2}" var="apply">
                     <hr>
@@ -153,9 +156,8 @@
 		                    	<button type="submit" class="forgreen" id="magam">마감하기</button>
 		                    </c:if>
 		                    <c:if test='${apply.state eq "신청마감"}'>
-		                    	<button type="button" id="magam" style="border: none; color: darkgray;">마감완료</button>
+		                    	<button type="button" id="magam" value="magam" name="magam" style="border: none; color: darkgray;">마감완료</button>
 		                    </c:if>
-	                    
 	                   </form>
 
 	                    <script>
@@ -171,10 +173,14 @@
 	                        btn.disabled = 'disabled';
 	                    </script>
 					<br>
-                  </c:forEach>
                   <br>
+                  </c:forEach>
+                  </c:when>
+                  <c:otherwise>
+                        <h2> 아직 신청받은 메이트 내역이 없습니다.</h2><hr>
+                  </c:otherwise>
+				</c:choose>
                 </div>
-				
 				
 
     

@@ -51,13 +51,13 @@
                 ${ userId }
             </div>
             <div class="view">
-                ${ recommend }
+                  ${ views } ・ 추천 ${ recommend }
             </div>
             <div class="writer_date">
-                ${ date } ・ 추천
+                ${ date } &nbsp;&nbsp; 조회
             </div>
         </div>
-    
+        
         <hr>
          <!-- 이미지 슬라이드 -->
         <div class="image_view">
@@ -113,7 +113,7 @@
  
        <!-- 게시글 수정/삭제 버튼 -->
        <c:set var="userId" value="${ userId }"/>
-       <c:if test="${ sessionScope.loginMember.userName eq userId}">
+       <c:if test="${ sessionScope.loginMember.userId eq userId}">
 	   <div class="btnborder">
           <button id="btnok" class="btnok" onclick="location.href='${ pageContext.servletContext.contextPath }/mate/review/update?num=${ num }'">수정</button>
           <button id="btnno" class="btnno">삭제</button>
@@ -149,7 +149,7 @@
 	   </script>
 	   
 	   <!-- 게시글 추천 버튼 -->
-	   <c:if test="${ sessionScope.loginMember.userName ne userId}">
+	   <c:if test="${ sessionScope.loginMember.userId ne userId}">
 	   <div class="recborder">
            <button id="recbtn" class="recbtn">추천하기</button>
        </div>

@@ -95,13 +95,10 @@ public class MateMainServlet extends HttpServlet {
 		List<MateFindDTO> findList = findService.selectAllFindList(selectCriteria);
 		List<MateFindDTO> hurryFindList = findService.selectHurryFind();
 		
-		System.out.println("파인드 : " + findList);
+		System.out.println("마감 임박 파인드 : " + hurryFindList);
 		/* review 조회 */
 		MateReviewService reviewService = new MateReviewService();
 		List<MateReviewDTO> newReviewList = reviewService.selectNewReview();
-		
-		
-
 
 		String path = "";
 		if(findList != null) {

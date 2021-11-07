@@ -43,7 +43,7 @@
               <div class="mate_review3">
                 <a href="/acti/mate/review/select?num=${ bestReview.num }"><img src="${ pageContext.servletContext.contextPath }/resources/image/review/${ bestReview.img1 }"></a>
                 <div>
-                    ${ bestReview.title }
+                    <span onclick="location.href='/acti/mate/review/select?num=${ bestReview.num }'">${ bestReview.title }</span>
                 </div>
               </div>
               </c:forEach>
@@ -63,8 +63,8 @@
                 </div>
                 <div class="mate_review7"><a href="/acti/mate/review/select?num=${ review.num }">${ review.title }</a></div>
                 <div class="mate_review8"><a href="/acti/mypage/main?userId=${ review.userId }">${ review.userId }</a></div>
-                <div class="mate_review9">${ review.date }</div>
-                <div class="mate_review10">추천수 : ${ review.recommend }</div>
+                <div class="mate_review9">${ review.date }</div><div class="mate_review10"> 조회 ${ review.views }</div>
+                <div class="mate_review10">추천수 ${ review.recommend } ・</div>
             </div>
          
            </c:forEach>

@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.actibuddy.common.paging.SelectCriteria;
 import com.actibuddy.mate.model.dao.MateDAO;
-import com.actibuddy.mate.model.dto.MateFindAndApplyDTO;
 import com.actibuddy.mate.model.dto.MateFindApplyDTO;
 import com.actibuddy.mate.model.dto.MateCommentDTO;
 import com.actibuddy.mate.model.dto.MateFindDTO;
@@ -24,7 +23,7 @@ public class MateFindService {
 
 	/**
 	 * 메이트 구인글을 등록하는 메소드
-	 * @author junheekim
+	 * @author kimjunhee
 	 * @param requestFind
 	 * @return result
 	 */
@@ -47,6 +46,7 @@ public class MateFindService {
 
 	/**
 	 * 페이징을 위한 전체 게시글 수 조회 메소드
+	 * @author kimjunhee
 	 * @param searchMap
 	 * @return totalCount
 	 */
@@ -63,6 +63,7 @@ public class MateFindService {
 
 	/**
 	 * 메이트 게시글 조회(페이징)
+	 * @author kimjunhee
 	 * @param selectCriteria
 	 * @return findList
 	 */
@@ -94,8 +95,10 @@ public class MateFindService {
 		return mtApply;
 	}
 	
-	/*
+
+	/**
 	 * 선택한 메이트 게시글 정보
+	 * @author kimjunhee
 	 * @param num
 	 * @return find
 	 */
@@ -112,7 +115,8 @@ public class MateFindService {
 
 	/**
 	 * 마감임박 메이트 게시글 조회
-	 * @return
+	 * @author kimjunhee
+	 * @return hurryFindList
 	 */
 	public List<MateFindDTO> selectHurryFind() {
 		
@@ -125,6 +129,12 @@ public class MateFindService {
 		return hurryFindList;
 	}
 
+	/**
+	 * 해당 게시글에 대한 댓글 등록 메소드
+	 * @author 김주환
+	 * @param map
+	 * @return result
+	 */
 	public int insertComment(Map<String, String> map) {
 
 		SqlSession session = getSqlSession();
@@ -146,7 +156,7 @@ public class MateFindService {
 	 * 해당 게시글에 대한 댓글 조회 메소드
 	 * @author 김주환
 	 * @param num
-	 * @return
+	 * @return comment
 	 */
 	public List<MateCommentDTO> selectComment(String num) {
 		
@@ -186,7 +196,7 @@ public class MateFindService {
 	 * 메이팅 댓글 신고 메소드
 	 * @author 김주환
 	 * @param comment
-	 * @return
+	 * @return result
 	 */
 	public int updateComReqYn(MateCommentDTO comment) {
 
@@ -206,10 +216,10 @@ public class MateFindService {
 	}
 
 	/**
-	 * 메이트 신청 인서트 메소드
+	 * 메이트 신청 메소드
 	 * @author 김주환
 	 * @param find
-	 * @return
+	 * @return result
 	 */
 	public int insertApply(MateFindApplyDTO find) {
 
@@ -229,10 +239,10 @@ public class MateFindService {
 	}
 
 	/**
-	 * 게시글 조회수 증가용 메소드
+	 * 메이트 게시글 조회수 업데이트 메소드
 	 * @author 김주환
 	 * @param num
-	 * @return
+	 * @return result
 	 */
 	public int updateViews(String num) {
 		

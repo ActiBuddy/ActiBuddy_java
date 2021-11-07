@@ -3,6 +3,7 @@ package com.actibuddy.mate.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +31,7 @@ public class MateFindApplyHisServlet extends HttpServlet {
 		
 		MateFindService mateService = new MateFindService();
 		int result = mateService.insertApply(find);
+		System.out.println("result : " + result);
 		
 		response.setCharacterEncoding("UTF-8");
 		

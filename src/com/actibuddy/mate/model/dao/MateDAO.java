@@ -65,6 +65,11 @@ public class MateDAO {
 		
 		return session.update("MateDAO.updateReview", requestReview);
 	}
+	
+	public static int updateReviewViews(SqlSession session, String num) {
+		
+		return session.update("MateDAO.updateReviewViews", num);
+	}
 
 	/* 메이트 구인 */
 	
@@ -127,7 +132,6 @@ public class MateDAO {
 
 		return session.update("MateDAO.updateViews", num);
 	}
-
 	public static MateFindApplyDTO selectApplyFind(SqlSession session, Map<String, String> map) {
 
 		return session.selectOne("MateDAO.selectApplyFind", map);

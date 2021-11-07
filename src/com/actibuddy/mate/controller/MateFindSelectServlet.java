@@ -22,8 +22,6 @@ public class MateFindSelectServlet extends HttpServlet {
 		String num = request.getParameter("num");
 		System.out.println("게시글 번호 : " + num);
 		
-//		String userId = 
-		
 		MateFindService findService = new MateFindService();
 		MateFindDTO find = findService.selectFindInfo(num);
 		List<MateCommentDTO> comment = findService.selectComment(num);

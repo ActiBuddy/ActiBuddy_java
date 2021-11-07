@@ -15,6 +15,7 @@
 		<result property="repYn" column="MT_REVIEW_REP_YN"/>
 		<result property="userId" column="USER_ID"/>
 		<result property="recommend" column="MT_REVIEW_REC"/>
+		<result property="views" column="MT_REVIEW_VIEWS"/>
 </resultMap>
 	
     <resultMap type="com.actibuddy.mate.model.dto.MateReviewDTO" id="mateMainResultMap">
@@ -28,6 +29,7 @@
 		<result property="repYn" column="MT_REVIEW_REP_YN"/>
 		<result property="userId" column="USER_ID"/>
 		<result property="recommend" column="MT_REVIEW_REC"/>
+		<result property="views" column="MT_REVIEW_VIEWS"/>
 		<collection property="reviewList" resultMap="mateReviewResultMap"/>
 	</resultMap>
 	
@@ -162,6 +164,7 @@
 	</update>
 	
 	<!-- ================ 주환이 쿼리문 ================ -->
+
 	
 	<!-- 메이트 마감 임박 -->
 	<select id="selectHurryFind" resultMap="mateFindResultMap">
@@ -360,7 +363,7 @@
         , #{ gender }
         , #{ people }
         , #{ age }
-        , #{ date }
+        , #{ deadline }
         , '신청가능'
         , #{ userId }
         , 1
@@ -368,6 +371,17 @@
 	</insert>
 
 	<!-- ========== MATE REVIEW ========== -->
+		
+	<!-- 메이트 리뷰 조회수 -->
+	<update id="updateReviewViews">
+		UPDATE MT_REVIEW
+   		   SET MT_REVIEW_VIEWS = (SELECT 
+                          		  MT_REVIEW_VIEWS + 1
+                     		  FROM MT_REVIEW		
+                    		 WHERE MT_REVIEW_NUM = #{ num } )
+ 		 WHERE MT_REVIEW_NUM = #{ num } 
+	</update>
+	
 	<!-- 메이트 후기 수정 업데이트 -->
 	<update id="updateReview" >
 		UPDATE MT_REVIEW
@@ -398,6 +412,7 @@
 			, B.MT_REVIEW_IMG2
 			, B.MT_REVIEW_IMG3
 			, B.MT_REVIEW_REC
+			, B.MT_REVIEW_VIEWS
 		  FROM (SELECT
 				  A.MT_REVIEW_NUM
 				, A.MT_REVIEW_TITLE
@@ -409,6 +424,7 @@
 				, A.MT_REVIEW_IMG2
 				, A.MT_REVIEW_IMG3
 				, A.MT_REVIEW_REC
+				, A.MT_REVIEW_VIEWS
 			  FROM MT_REVIEW A
 			 WHERE A.MT_REVIEW_REP_YN IN ('N','L')
 		     ORDER BY A.MT_REVIEW_DATE DESC) B
@@ -429,6 +445,7 @@
 			, B.MT_REVIEW_IMG2
 			, B.MT_REVIEW_IMG3
 			, B.MT_REVIEW_REC
+			, B.MT_REVIEW_VIEWS
 		  FROM (SELECT
 				  A.MT_REVIEW_NUM
 				, A.MT_REVIEW_TITLE
@@ -440,6 +457,7 @@
 				, A.MT_REVIEW_IMG2
 				, A.MT_REVIEW_IMG3
 				, A.MT_REVIEW_REC
+				, A.MT_REVIEW_VIEWS
 			  FROM MT_REVIEW A
 			 WHERE A.MT_REVIEW_REP_YN IN ('N','L')
 		     ORDER BY A.MT_REVIEW_REC DESC) B
@@ -481,6 +499,7 @@
 			, A.MT_REVIEW_IMG2
 			, A.MT_REVIEW_IMG3
 			, A.MT_REVIEW_REC
+			, A.MT_REVIEW_VIEWS
 		  FROM MT_REVIEW A
 		 WHERE A.MT_REVIEW_NUM = #{ num }
 		   AND A.MT_REVIEW_REP_YN IN ('N','L')
@@ -508,6 +527,7 @@
 		     , C.MT_REVIEW_IMG2
 		     , C.MT_REVIEW_IMG3
 		     , C.MT_REVIEW_REC
+		     , C.MT_REVIEW_VIEWS
   		  FROM (SELECT ROWNUM RNUM
 			        , B.MT_REVIEW_NUM
 			        , B.MT_REVIEW_TITLE
@@ -519,6 +539,7 @@
 			        , B.MT_REVIEW_IMG2
 		        	, B.MT_REVIEW_IMG3
 		        	, B.MT_REVIEW_REC
+		        	, B.MT_REVIEW_VIEWS
       			 FROM (SELECT
 			              A.MT_REVIEW_NUM
 			            , A.MT_REVIEW_TITLE
@@ -530,6 +551,7 @@
 			            , A.MT_REVIEW_IMG2
 			            , A.MT_REVIEW_IMG3
 			            , A.MT_REVIEW_REC
+			            , A.MT_REVIEW_VIEWS
      				   FROM MT_REVIEW A
      				  WHERE A.MT_REVIEW_REP_YN IN ('N','L')
      			      ORDER BY A.MT_REVIEW_DATE DESC) B
@@ -556,6 +578,7 @@
 		, A.MT_REVIEW_IMG2
 		, A.MT_REVIEW_IMG3
 		, A.MT_REVIEW_REC
+		, A.MT_REVIEW_VIEWS
 		)
 		VALUES
 		(
@@ -569,6 +592,7 @@
         , #{ img2 }
         , #{ img3 }
         , #{ recommend }
+        , 0
 		)
 
 	</insert>

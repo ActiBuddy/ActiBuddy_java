@@ -51,13 +51,13 @@
                 ${ userId }
             </div>
             <div class="view">
-                ${ recommend }
+                  ${ views } ・ 추천 ${ recommend }
             </div>
             <div class="writer_date">
-                ${ date } ・ 추천
+                ${ date } &nbsp;&nbsp; 조회
             </div>
         </div>
-    
+        
         <hr>
          <!-- 이미지 슬라이드 -->
         <div class="image_view">

@@ -23,7 +23,7 @@ public class MateReviewService {
 
 	/**
 	 * 메이팅 리뷰를 등록하는 메소드
-	 * @author junheekim
+	 * @author kimjunhee
 	 * @param requestReview
 	 * @return result
 	 */
@@ -46,6 +46,7 @@ public class MateReviewService {
 
 	/**
 	 * 메이팅 리뷰 조회(페이징)
+	 * @author kimjunhee
 	 * @param SelectCriteria
 	 * @return reviewList
 	 */
@@ -63,6 +64,7 @@ public class MateReviewService {
 	
 	/**
 	 * 페이징 처리위한 전체 게시물 '갯수' 조회 메소드
+	 * @author kimjunhee
 	 * @param searchMap
 	 * @return totalCount
 	 */
@@ -79,6 +81,7 @@ public class MateReviewService {
 
 	/**
 	 * 선택한 메이트 리뷰 정보
+	 * @author kimjunhee
 	 * @param num
 	 * @return review
 	 */
@@ -95,6 +98,7 @@ public class MateReviewService {
 
 	/**
 	 * 메이트 리뷰 신고 업데이트
+	 * @author kimjunhee
 	 * @param review
 	 * @return result
 	 */
@@ -116,6 +120,7 @@ public class MateReviewService {
 
 	/**
 	 * 메이트 리뷰 추천 업데이트
+	 * @author kimjunhee
 	 * @param review
 	 * @return result
 	 */
@@ -138,6 +143,7 @@ public class MateReviewService {
 
 	/**
 	 * 베스트 추천 리뷰 5개 조회 메소드
+	 * @author kimjunhee
 	 * @return bestReviewList
 	 */
 	public List<MateReviewDTO> selectBestReview() {
@@ -154,6 +160,7 @@ public class MateReviewService {
 
 	/**
 	 * 최신순 리뷰 5개 조회 메소드
+	 * @author kimjunhee
 	 * @return newReviewList
 	 */
 	public List<MateReviewDTO> selectNewReview() {
@@ -169,6 +176,7 @@ public class MateReviewService {
 
 	/**
 	 * 게시글을 삭제해주는 메소드(상태 변환)
+	 * @author kimjunhee
 	 * @param review
 	 * @return result
 	 */
@@ -191,6 +199,7 @@ public class MateReviewService {
 
 	/**
 	 * 게시글을 수정해주는 메소드
+	 * @author kimjunhee
 	 * @param requestReview
 	 * @return result
 	 */
@@ -199,6 +208,29 @@ public class MateReviewService {
 		SqlSession session = getSqlSession();
 		
 		int result = MateDAO.updateReview(session, requestReview);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/**
+	 * 게시글 조회수를 업데이트해주는 메소드
+	 * @author kimjunhee
+	 * @param num
+	 * @return result
+	 */
+	public int updateReviewViews(String num) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = MateDAO.updateReviewViews(session, num);
 		
 		if(result > 0) {
 			session.commit();

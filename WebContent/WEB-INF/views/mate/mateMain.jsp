@@ -25,7 +25,7 @@
     
     <!-- 로고 이미지 -->
     <div class="mate_logo">
-      <a href="#"><img src="${ pageContext.servletContext.contextPath }/resources/image//matematching.png"></a>
+      <a href="#"><img src="${ pageContext.servletContext.contextPath }/resources/image/matematching.png"></a>
     </div>
 
      <!-- 광고 이미지 -->
@@ -171,15 +171,15 @@
     <div class="mate_tabs">
         <!-- <input id="all" type="radio" name="mtab_item" checked> -->
         
-        <a href="/acti/mate/main?location=a"><label class="mtab_item" id="all" for="all" onclick="check1(this);">전체</label></a>
-        <a href="/acti/mate/main?location=b"><label class="mtab_item" id="seoul" for="seoul" onclick="check1(this);">서울</label></a>
-        <a href="/acti/mate/main?location=c"><label class="mtab_item" id="gyeonggi" for="gyeonggi" onclick="check1(this);">경기</label></a>
-        <a href="/acti/mate/main?location=d"><label class="mtab_item" id="gangwon" for="gangwon" onclick="check1(this);">강원</label></a>
-        <a href="/acti/mate/main?location=e"><label class="mtab_item" id="chungcheong" for="chungcheong" onclick="check1(this);">충청</label></a>
-        <a href="/acti/mate/main?location=f"><label class="mtab_item" id="jeolla" for="jeolla" onclick="check1(this);">전라</label></a>
-        <a href="/acti/mate/main?location=g"><label class="mtab_item" id="gyeongsang" for="gyeongsang" onclick="check1(this);">경상</label></a>
-        <a href="/acti/mate/main?location=h"><label class="mtab_item" id="busan" for="busan" onclick="check1(this);">부산</label></a>
-        <a href="/acti/mate/main?location=i"><label class="mtab_item" id="jeju" for="jeju" onclick="check1(this);">제주</label></a>
+        <a href="/acti/mate/main?location=a"><label class="mtab_item" name="all" id="all" for="all" onclick="check1(this);">전체</label></a>
+        <a href="/acti/mate/main?location=b"><label class="mtab_item" name="seoul" id="seoul" for="seoul" onclick="check1(this);">서울</label></a>
+        <a href="/acti/mate/main?location=c"><label class="mtab_item" name="gyeonggi" id="gyeonggi" for="gyeonggi" onclick="check1(this);">경기</label></a>
+        <a href="/acti/mate/main?location=d"><label class="mtab_item" name="gangwon" id="gangwon" for="gangwon" onclick="check1(this);">강원</label></a>
+        <a href="/acti/mate/main?location=e"><label class="mtab_item" name="chungcheong" id="chungcheong" for="chungcheong" onclick="check1(this);">충청</label></a>
+        <a href="/acti/mate/main?location=f"><label class="mtab_item" name="jeolla" id="jeolla" for="jeolla" onclick="check1(this);">전라</label></a>
+        <a href="/acti/mate/main?location=g"><label class="mtab_item" name="gyeongsang" id="gyeongsang" for="gyeongsang" onclick="check1(this);">경상</label></a>
+        <a href="/acti/mate/main?location=h"><label class="mtab_item" name="busan" id="busan" for="busan" onclick="check1(this);">부산</label></a>
+        <a href="/acti/mate/main?location=i"><label class="mtab_item" name="jeju" id="jeju" for="jeju" onclick="check1(this);">제주</label></a>
         <!-- **** 탭 누르는거 시작 **** -->
         <script>
         
@@ -192,7 +192,7 @@
          	
          	let localName = '';
          	switch(location) {
-    		case "a": localName="all";break;
+    		case "a": localName="all"; break;
     		case "b": localName="seoul"; break;
     		case "c": localName="gyeonggi"; break;
     		case "d": localName="gangwon"; break;
@@ -203,8 +203,7 @@
     		case "i": localName="jeju"; break;
     		}
          	
-         	
-         	
+
          		
          	let data = $('.mtab_content');
          	
@@ -213,6 +212,36 @@
 				if(data[i].id == (localName+'_content')){
 					data[i].style="display:block;";
 					/* $(data[i]).css("display","block"); */
+					$('label').css('background-color', 'white');
+					
+					if(localName == "all") {
+						$('#all').css('background-color', 'olivedrab');
+					}
+					if(localName == "seoul") {
+						$('#seoul').css('background-color', 'olivedrab');
+					}
+					if(localName == "gyeonggi") {
+						$('#gyeonggi').css('background-color', 'olivedrab');
+					}
+					if(localName == "gangwon") {
+						$('#gangwon').css('background-color', 'olivedrab');
+					}
+					if(localName == "chungcheong") {
+						$('#chungcheong').css('background-color', 'olivedrab');
+					}
+					if(localName == "jeolla") {
+						$('#jeolla').css('background-color', 'olivedrab');
+					}
+					if(localName == "gyeongsang") {
+						$('#gyeongsang').css('background-color', 'olivedrab');
+					}
+					if(localName == "busan") {
+						$('#busan').css('background-color', 'olivedrab');
+					}
+					if(localName == "jeju") {
+						$('#jeju').css('background-color', 'olivedrab');
+					}
+					
 				}else {
 					data[i].style="display:none;";
 				/* 	$(data[i]).css("display","none");		 */				
@@ -239,7 +268,7 @@
                       <th scope="cols" style="width: 1200px;">제목</th>
                       <th scope="cols">작성자</th>
                       <th scope="cols">모집기간</th>
-                      <th scope="cols">인원현황</th>
+                      <th scope="cols">인원</th>
                       <th scope="cols">상태</th>
                     </tr>
                 </thead>
@@ -247,7 +276,7 @@
                   <c:forEach var="find" items="${ findList }">
                   <tr>
                   <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+                  <td><a href="/acti/mate/find/select?num=${ find.num }">[${ find.location }] ${ find.title }</a></td>
                   <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
                   <td>${ find.deadline }</td>
                   <td>${ find.count }/${ find.people }</td>
@@ -287,13 +316,13 @@
                   <th scope="cols" style="width: 1200px;">제목</th>
                   <th scope="cols">작성자</th>
                   <th scope="cols">모집기간</th>
-                  <th scope="cols">인원현황</th>
+                  <th scope="cols">인원</th>
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
-            <tbody>
-                <c:forEach var="find" items="${ findList }">
-                <c:if test='${ find.location eq "서울" }'>
+           <tbody>
+                  <c:forEach var="find" items="${ findList }">
+                  <c:if test='${ find.location eq "서울" }'>
                   <tr>
                   <th scope="row">${ find.num }</th>
                   <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
@@ -302,8 +331,12 @@
                   <td>${ find.count }/${ find.people }</td>
                   <td>${ find.state }</td>
                   </tr>
-				</c:if>
-                </c:forEach>
+                  </c:if>
+                  </c:forEach>
+                </tbody>
+            </table>
+            
+				
              </tbody>
         </table>
          <!-- 작성하기버튼 로그인처리 -->
@@ -335,7 +368,7 @@
                   <th scope="cols" style="width: 1200px;">제목</th>
                   <th scope="cols">작성자</th>
                   <th scope="cols">모집기간</th>
-                  <th scope="cols">인원현황</th>
+                  <th scope="cols">인원</th>
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
@@ -384,7 +417,7 @@
                   <th scope="cols" style="width: 1200px;">제목</th>
                   <th scope="cols">작성자</th>
                   <th scope="cols">모집기간</th>
-                  <th scope="cols">인원현황</th>
+                  <th scope="cols">인원</th>
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
@@ -432,7 +465,7 @@
                   <th scope="cols" style="width: 1200px;">제목</th>
                   <th scope="cols">작성자</th>
                   <th scope="cols">모집기간</th>
-                  <th scope="cols">인원현황</th>
+                  <th scope="cols">인원</th>
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
@@ -480,7 +513,7 @@
                   <th scope="cols" style="width: 1200px;">제목</th>
                   <th scope="cols">작성자</th>
                   <th scope="cols">모집기간</th>
-                  <th scope="cols">인원현황</th>
+                  <th scope="cols">인원</th>
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
@@ -528,7 +561,7 @@
                   <th scope="cols" style="width: 1200px;">제목</th>
                   <th scope="cols">작성자</th>
                   <th scope="cols">모집기간</th>
-                  <th scope="cols">인원현황</th>
+                  <th scope="cols">인원</th>
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
@@ -576,7 +609,7 @@
                   <th scope="cols" style="width: 1200px;">제목</th>
                   <th scope="cols">작성자</th>
                   <th scope="cols">모집기간</th>
-                  <th scope="cols">인원현황</th>
+                  <th scope="cols">인원</th>
                   <th scope="cols">상태</th>
                 </tr>
             </thead>
@@ -616,43 +649,33 @@
     </div>
     <!-- 제주 탭 -->
     <div class="mtab_content" id="jeju_content">
-          
-        <table>
-            <thead>
-                <tr>
-                  <th scope="cols">번호</th>
-                  <th scope="cols" style="width: 1200px;">제목</th>
-                  <th scope="cols">작성자</th>
-                  <th scope="cols">모집기간</th>
-                  <th scope="cols">인원현황</th>
-                  <th scope="cols">상태</th>
-                </tr>
-            </thead>
-     	   <tbody>
-     	   		 
-                  <c:forEach var="find" items="${ findList }">
-                  <c:if test='${find.location eq "제주" }'>
-                  <tr>
-                  <th scope="row">${ find.num }</th>
-                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
-                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
-                  <td>${ find.deadline }</td>
-                  <td>${ find.count }/${ find.people }</td>
-                  <td>${ find.state }</td>
-                  </tr>
-                  </c:if>
-                  
-                  
-                  </c:forEach>
-                  
-                   <c:if test='${ empty (find.location eq "제주") }'>
-                  <tr>
-                  <td>값이 없습니다.</td>
-                  </tr>
-                  </c:if>
-                  
-            </tbody>
+     	    <table>
+	            <thead>
+	                <tr>
+	                  <th scope="cols">번호</th>
+	                  <th scope="cols" style="width: 1200px;">제목</th>
+	                  <th scope="cols">작성자</th>
+	                  <th scope="cols">모집기간</th>
+	                  <th scope="cols">인원</th>
+	                  <th scope="cols">상태</th>
+	                </tr>
+	            </thead>
+	           <tbody>
+	                  <c:forEach var="find" items="${ findList }">
+	                  <c:if test='${ find.location eq "제주" }'>
+	                  <tr>
+	                  <th scope="row">${ find.num }</th>
+	                  <td><a href="/acti/mate/find/select?num=${ find.num }&location=${ find.location }">[${ find.location }] ${ find.title }</a></td>
+	                  <td><a href="/acti/mypage/main?userId=${ find.userId }">${ find.userId }</td>
+	                  <td>${ find.deadline }</td>
+	                  <td>${ find.count }/${ find.people }</td>
+	                  <td>${ find.state }</td>
+	                  </tr>
+	                  </c:if>
+	                  </c:forEach>
+	                </tbody>
             </table>
+            
             
             <!-- 작성하기버튼 로그인처리 -->
 		   <c:if test="${ !empty sessionScope.loginMember }">
@@ -687,7 +710,7 @@
             <div class="mate_review3">
                 <a href="/acti/mate/review/select?num=${ newReview.num }"><img src="${ pageContext.servletContext.contextPath }/resources/image/review/${ newReview.img1 }"></a>
                 <div>
-                    ${ newReview.title }
+                    <span onclick="location.href='/acti/mate/review/select?num=${ newReview.num }'">${ newReview.title }</span>
                 </div>
               </div>
           </c:forEach>

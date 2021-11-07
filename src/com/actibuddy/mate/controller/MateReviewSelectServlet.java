@@ -28,8 +28,11 @@ public class MateReviewSelectServlet extends HttpServlet {
 		String num = request.getParameter("num");
 		System.out.println("게시글 번호 : " + num);
 		
+		
 		MateReviewService reviewService = new MateReviewService();
 		MateReviewDTO review = reviewService.selectReviewInfo(num);
+		
+		int result = reviewService.updateReviewViews(num);
 		
 		String path = "";
 		if(review != null) {
@@ -42,9 +45,11 @@ public class MateReviewSelectServlet extends HttpServlet {
 			request.setAttribute("img1", review.getImg1());
 			request.setAttribute("img2", review.getImg2());
 			request.setAttribute("img3", review.getImg3());
+			request.setAttribute("views", response);
 			request.setAttribute("content", review.getContent());
 			request.setAttribute("rep", review.getRepYn());
 			request.setAttribute("recommend", review.getRecommend());
+			request.setAttribute("views", review.getViews());
 			
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";

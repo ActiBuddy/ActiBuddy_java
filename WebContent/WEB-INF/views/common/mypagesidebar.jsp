@@ -27,7 +27,7 @@
                 <hr>
                 <br>
 				<a href="/acti/change/pwd" style="left : 20%; margin-left : 30px">비밀번호 변경</a>
-                <a href="/acti/mypage/quit" style="margin-left : 70px;">회원탈퇴</a>
+                <a href="/acti/mypage/quit" style="margin-left : 41px;">회원탈퇴</a>
     
                 
             </div>

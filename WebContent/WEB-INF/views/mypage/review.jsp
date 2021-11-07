@@ -61,7 +61,8 @@
 
                     <h4>여행 후기</h4>
                     <hr>
-
+					<%-- <c:choose>
+					<c:when test="${ not empty selectActireciew }"> --%>
 					<% List<ActivityAndReviewDTO> list = (List<ActivityAndReviewDTO>)request.getAttribute("selectActireview"); %>
 					
 					<% for(int i = 0; i < list.size(); i++){ %>    
@@ -93,14 +94,12 @@
 		                    <br><br>
 			                 <h4>후기 상품 : ${ acti }</h4>
 		    
-							<br>
+							<br><hr>
 					
 					<%   } %>
     				<% } %>
-                    <hr>
-
-                   <%--  </c:forEach> --%>
-<%--                     </c:when>
+<%--     				</c:when>
+                    
                     <c:otherwise>
                     <h1>아직 등록된 여행 후기가 없습니다.</h1>
                     </c:otherwise>

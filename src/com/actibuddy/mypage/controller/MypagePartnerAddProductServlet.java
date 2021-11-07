@@ -133,8 +133,6 @@ public class MypagePartnerAddProductServlet extends HttpServlet {
 							fileMap.put("savedFileName", randomFileName);
 							fileMap.put("savePath", fileUploadDirectory);
 
-//							int width = 470;
-//							int height = 450; 쓰는법모름
 //							
 							/* arrylist인 fileList에 각각의 이미지 map정보를 넣어줌 */
 							fileList.add(fileMap);

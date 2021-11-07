@@ -459,6 +459,7 @@
   		  FROM LOCATION A 
   		  LEFT JOIN ACTIVITY_INFO B ON(A.LOCATION_CODE = B.LOCATION_CODE)
   		  WHERE A.LOCATION_NAME = #{ location }
+  		  ORDER BY B.ACTI_VIEWS DESC
  	</select>
  	
  	<select id="selectLocationOne" resultMap="locationResultMap" parameterType="String">
@@ -577,7 +578,7 @@
 	   			ORDER BY B.ACTI_VIEWS
 	     	</if>
 	     	<if test="sort != null and sort == 'star'">
-			       	 	ORDER BY B.ACTI_STAR DESC
+			    ORDER BY B.ACTI_STAR DESC
 			</if>
 	       <if test="sort != null and sort == 'random'">
 	       	 	ORDER BY DBMS_RANDOM.RANDOM
@@ -905,7 +906,7 @@
   		  FROM LOCATION A
   		  JOIN ACTIVITY_INFO B ON (A.LOCATION_CODE = B.LOCATION_CODE)
  		 WHERE A.LOCATION_NAME = #{ locationName }
- 		 ORDER BY DBMS_RANDOM.RANDOM
+ 		ORDER BY B.ACTI_VIEWS DESC
  	</select>
  	
  	<update id="updateReviewRec">

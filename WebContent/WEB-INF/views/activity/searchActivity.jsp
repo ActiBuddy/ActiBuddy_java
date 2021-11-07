@@ -552,12 +552,13 @@
         </div>
        <div class="container" id="test" style="float: none; margin:100 auto;">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="float: none; margin:0 auto;">
+            <c:if test="${ searchList ne null and !empty searchList }">
             <c:forEach items="${searchList}" var="acti" >
             <div class="col">
             <a href="/acti/activity/information?actiName=${acti.name}" style="font-size: 16px">
               <div class="card shadow-sm">
                 <img src="${acti.image}"  id="check1" width="100%" height="225"  role="img" ></img>
-                <div class="card-body" style="height : 190px">
+                <div class="card-body" style="height : 210px">
                   <p class="card-text">
                       ${acti.name}
                   </p>
@@ -572,6 +573,10 @@
               </a>
             </div>
             </c:forEach>
+            </c:if>
+            <c:if test="${ searchList eq null and empty searchList }">
+            <h1 class="display-1" style="font-weight: 900">해당하는 조건에 대한 검색결과가 없습니다</h1>
+            </c:if>
           </div> 
       </div>
       </div> 

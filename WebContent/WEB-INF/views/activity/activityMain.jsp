@@ -54,7 +54,7 @@
             </div>
 		    <c:forEach var="acti" items="${ locationList }" end="2">
             <div class="col-md-3">
-                <a href="${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
+                <a href="/acti/activity/information?actiName=${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
                 <h4 class="bodyText">${ acti.activityList.get(0).name }</h4>
                 <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 ${ acti.activityList.get(0).star }</span>
                 <p style="margin : 10px 0 0 10px">₩${ acti.activityList.get(0).price }부터</p>
@@ -73,7 +73,7 @@
             </div>
             <c:forEach var="acti" items="${ locationList2 }" end="2">
             <div class="col-md-3">
-                <a href="${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
+                <a href="/acti/activity/information?actiName=${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
                 <h4 class="bodyText">${ acti.activityList.get(0).name }</h4>
                 <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 ${ acti.activityList.get(0).star }</span>
                 <p style="margin : 10px 0 0 10px">₩${ acti.activityList.get(0).price }부터</p>
@@ -92,7 +92,7 @@
             </div>
             <c:forEach var="acti" items="${ locationList3 }" end="2">
             <div class="col-md-3">
-                <a href="${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
+                <a href="/acti/activity/information?actiName=${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
                 <h4 class="bodyText">${ acti.activityList.get(0).name }</h4>
                 <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 ${ acti.activityList.get(0).star }</span>
                 <p style="margin : 10px 0 0 10px">₩${ acti.activityList.get(0).price }부터</p>
@@ -112,7 +112,7 @@
             
             <c:forEach var="acti" items="${ locationList4 }" end="2">
             <div class="col-md-3">
-                <a href="${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
+                <a href="/acti/activity/information?actiName=${ acti.activityList.get(0).name }"><img class="imgback" src="${ acti.activityList.get(0).image }"></a>
                 <h4 class="bodyText">${ acti.activityList.get(0).name }</h4>
                 <img src="../resources/image/Star.png" style="height: 30px; width: 30px;"><span>별점 ${ acti.activityList.get(0).star }</span>
                 <p style="margin : 10px 0 0 10px">₩${ acti.activityList.get(0).price }부터</p>

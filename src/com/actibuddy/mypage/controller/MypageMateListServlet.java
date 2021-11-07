@@ -56,13 +56,10 @@ public class MypageMateListServlet extends HttpServlet {
 		String userId = ((MemberDTO) request.getSession().getAttribute("loginMember")).getUserId();
 		System.out.println("아이디 : " + userId);
 		  
-		
 		// 마감하기 버튼 누르면 MT_FIND '신청마감'으로 업데이트
 		String mtFindNum = request.getParameter("findNum");
 		System.out.println("마감하기 위한 메이트 번호 : " + mtFindNum);
-
-		int result = new MypageService().updateMtFindNum(mtFindNum);
-		System.out.println("마감 업뎃 성공? : " + result);
+		
 		
 		// 수락 / 거절 버튼 누르면 업데이트
 		String yes = request.getParameter("yes");
@@ -91,6 +88,19 @@ public class MypageMateListServlet extends HttpServlet {
 			if(no.equals("X") ) { // 거절버튼 누르면
 				int result3 = new MypageService().updateFindStateNo(updateState);
 				System.out.println("X업데이트 성공..: " + result3);
+			}
+		}
+		
+		
+		// 다른 버튼 누르면 마감 안되게 하자
+		String magam = request.getParameter("magam");
+		
+		if(magam != null) {
+			
+			if(magam.equals("magam")) {
+				
+				int result = new MypageService().updateMtFindNum(mtFindNum);
+				System.out.println("마감 업뎃 성공? : " + result);
 			}
 		}
 

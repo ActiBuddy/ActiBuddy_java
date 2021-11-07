@@ -48,7 +48,6 @@
 
             <div class="a-buttons">
                 <button type="button" class="forgreen" id="one">여행 내역</button>
-                <button type="button" class="forgreen">다가오는 여행</button>
 
             </div>
 
@@ -62,9 +61,9 @@
         				<h4><c:out value="${ sessionScope.loginMember.userName }"/> 님의 여행</h4>
         			
 					</c:if>
+					<hr>
 					
-					
-					<c:choose>
+				<c:choose>
 				    <c:when test="${  not empty tripList }">
                  	<c:forEach var="size" begin="0" end="${fn:length(tripList.cartList)-1 }" >
                     <hr>
@@ -80,21 +79,17 @@
                     <h5 id="usestatus">이용상태 : </h5>
                       
 	                    <c:if test="${ tripList.actiReview[size].content eq null }">
-	                    
-	                    <button id="complete2" onclick="location.href='/acti/mypage/trip/review/write?actiName=${ tripList.activityInfo[size].name }'" >후기 작성하기</button>
-	                    
+	                    	<button id="complete2" onclick="location.href='/acti/mypage/trip/review/write?actiName=${ tripList.activityInfo[size].name }'" >후기 작성하기</button>
 	                    </c:if>
 	                    
 	                    <c:if test="${ tripList.actiReview[size].content ne null }">
-	                    
 	                    <button >후기 작성 완료</button>
-	                    
 	                    </c:if>
-    				
+    					<hr>
     				</c:forEach> 
-    				</c:when>
+			</c:when>
     				<c:otherwise>
-    				<h1>아직 등록된 여행 내역이 없습니다.</h1>
+    					<h1>아직 등록된 여행 내역이 없습니다.</h1>
     				</c:otherwise>
     				</c:choose>
                 </div>

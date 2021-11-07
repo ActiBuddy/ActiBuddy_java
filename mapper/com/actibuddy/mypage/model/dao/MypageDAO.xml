@@ -17,7 +17,6 @@
 		<result property="memPhone" column="MEM_PHONE"/>
 		<result property="introduce" column="INTRODUCE"/>
 		<result property="favoriteActi" column="FAVORITE_ACTI"/>
-
 	</resultMap>
 	
 	<resultMap type="com.actibuddy.mypage.model.dto.CartDTO" id="CartResultMap">

@@ -55,7 +55,6 @@ public class MypageMainServlet extends HttpServlet {
 		String favoriteActi = request.getParameter("favoriteActi");
 		String introduce = request.getParameter("introduce");
 		
-		
 		System.out.println(introduce);
 		System.out.println(favoriteActi); // 잘 들어오는지 확인하고 : ok
 //		System.out.println("로그인된 아이디 : " + userId); // : ok

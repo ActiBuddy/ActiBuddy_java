@@ -30,9 +30,6 @@ public class MemberRegistServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		request.setCharacterEncoding("UTF-8");
-
-		
 		String userId = request.getParameter("userId");
 		String pwd = request.getParameter("pwd");
 		String userName = request.getParameter("userName");
@@ -41,7 +38,6 @@ public class MemberRegistServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String birth =  request.getParameter("birth");
 		String gender = request.getParameter("gender");
-	
 		
 		MemberDTO requestMember = new MemberDTO();
 		requestMember.setUserId(userId);
@@ -53,12 +49,6 @@ public class MemberRegistServlet extends HttpServlet {
 		requestMember.setGender(gender);
 		requestMember.setQuitYn("N");
 		requestMember.setMemType("U");
-		
-		
-		System.out.println("memberController requestMember : " + requestMember.getPwd());
-		
-		System.out.println("memberController requestMember : " + requestMember);
-
 		
 		int result = new MemberService().registMember(requestMember);
 

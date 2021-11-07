@@ -47,7 +47,7 @@
 		<result property="manPart" column="MAN_PART"/>
 		</resultMap>
 	
-	
+	<!-- 멤버 등록용 메소드 -->
 	<insert id="insertMember" parameterType="com.actibuddy.member.model.dto.MemberDTO">
         INSERT
           INTO MEMBER A

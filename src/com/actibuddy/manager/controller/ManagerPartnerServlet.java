@@ -24,14 +24,11 @@ public class ManagerPartnerServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/* ======== 페이징 처리 ========*/
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;
-		// 현재페이지가 설정된 경우 페이지 번호는 변경된다.
 		if(currentPage != null && !"".equals(currentPage)) {
 			pageNo = Integer.parseInt(currentPage);
 		}
-		// 페이지 번호가 0보다 작아도 1페이지
 		if(pageNo <= 0) {
 			pageNo = 1;
 		}
@@ -39,23 +36,12 @@ public class ManagerPartnerServlet extends HttpServlet {
 		System.out.println(currentPage);
 		System.out.println(pageNo);
 
-		/* ======== 검색 처리 ========*/
-		// 검색 값
 		String searchCondition = request.getParameter("location");
 		String searchValue = request.getParameter("searchValue");
-		// map 설정
 		Map<String, String> searchMap = new HashMap<>();
 		searchMap.put("searchCondition", searchCondition);
 		searchMap.put("searchValue", searchValue);
 
-		System.out.println(searchMap);
-
-		/* ======= 공통 처리 ======== */
-		// 전체 게시물 수 필요
-		// 검색 조건이 있는 경우 검색 조건에 맞는 전체 게시물 수 조회
-		
-		
-//		=================================================
 		ManagerService managerService = new ManagerService();
 		
 		int totalCount = managerService.selectFindTotalCount(searchMap);
@@ -73,12 +59,9 @@ public class ManagerPartnerServlet extends HttpServlet {
 		} else {
 			selectCriteria = Pagenation.getSelectCriteria(pageNo, totalCount, limit, buttonAmount);
 		}
-		
 		System.out.println(selectCriteria);
 		
 		List<ManagerDTO> managerList = managerService.selectPartnerMember(selectCriteria);		
-		
-		System.out.println("리스트 확인" + managerList);
 		
 		request.setAttribute("managerList", managerList);
 		request.setAttribute("selectCriteria", selectCriteria);

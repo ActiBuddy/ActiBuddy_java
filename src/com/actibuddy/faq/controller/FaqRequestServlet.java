@@ -50,7 +50,7 @@ public class FaqRequestServlet extends HttpServlet {
 		if(result > 0) {
 			out.println("<script>alert('success'); history.go(-1);</script>");
 		} else {
-			out.println("<script>alert('sorry 안댔음'); history.go(-1);</script>");
+			out.println("<script>alert('sorry'); history.go(-1);</script>");
 		}
 		
 	}

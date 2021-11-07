@@ -24,6 +24,13 @@
          </div>
          </c:if>
 
+		<c:if test="${ empty memberfindid.userId}">
+		<div class="signup">
+         <span><h5>입력하신 이메일 주소에 일치하는 아이디가 없습니다.</h5></span>
+         <a href="${ pageContext.servletContext.contextPath }/member/findid">아이디 찾기</a>
+         </div>
+		</c:if>
+
          <c:if test="${ !empty memberfindpwd.pwd}">
          <div class="signup">
          <span><h2>찾으시는 아이디는 ${memberfindpwd.pwd} 입니다.</h2></span>

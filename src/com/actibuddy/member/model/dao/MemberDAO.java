@@ -23,6 +23,7 @@ public class MemberDAO {
 		return session.selectOne("MemberDAO.selectLoginMember", requestMember);
 	}
 
+	// 멤버 등록 메소드
 	public int insertMember(SqlSession session, MemberDTO requestMember) {
 
 		return session.insert("MemberDAO.insertMember", requestMember);

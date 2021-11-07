@@ -503,10 +503,11 @@
 			   </form>
            </div>
     </div>
+    
     <!-- 전라 탭 -->
     <div class="mtab_content" id="jeolla_content">
           
-        <table>
+         <table>
             <thead>
                 <tr>
                   <th scope="cols">번호</th>

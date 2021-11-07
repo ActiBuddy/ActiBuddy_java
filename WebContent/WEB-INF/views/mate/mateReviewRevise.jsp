@@ -147,7 +147,7 @@
        <!-- 버튼 부분 -->
         <div class="btnborder">
             <button type="submit" class="btnok">등록</button>
-            <button type="reset" class="btnno">취소</button>
+            <button type="reset" class="btnno" onclick="location.href='/acti/mate/review/select?num=${num}'">취소</button>
          </div>
        </div>
 

@@ -554,13 +554,13 @@
 			            , A.MT_REVIEW_VIEWS
      				   FROM MT_REVIEW A
      				  WHERE A.MT_REVIEW_REP_YN IN ('N','L')
+     				  <if test="searchValue != null">
+     	  			 AND A.MT_REVIEW_TITLE LIKE '%' || #{ searchValue } || '%'
+     	  			 </if>
      			      ORDER BY A.MT_REVIEW_DATE DESC) B
      			      
      			      )C
      	 WHERE (C.RNUM BETWEEN #{ startRow } and #{ endRow })
-     	   <if test="searchValue != null">
-     	  	 AND C.MT_REVIEW_TITLE LIKE '%' || #{ searchValue } || '%'
-     	   </if>
 	</select>
 
 	<!-- 메이트 후기 작성 -->

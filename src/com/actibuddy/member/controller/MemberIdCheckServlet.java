@@ -41,7 +41,6 @@ public class MemberIdCheckServlet extends HttpServlet {
 		// 중복확인만 result 1 0 
 		
 		PrintWriter out = response.getWriter();
-		
 	
 		out.print(result);
 		out.flush();

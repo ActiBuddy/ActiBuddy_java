@@ -47,7 +47,7 @@ public class MemberService {
 		
 	}
 
-
+	// 멤버 등록 메소드
 	public int registMember(MemberDTO requestMember) {
 		
 		

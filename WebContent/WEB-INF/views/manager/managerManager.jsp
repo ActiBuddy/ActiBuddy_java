@@ -16,37 +16,6 @@
     <title>관리자 페이지</title>
 
   </head>
-  <script>
-  		$(function(){
-  			
-	  	/* 	$('select[name=interest]').change(function(){
-	  			$('select[name=] option:selected').each(function(){
-	  				
-	  				console.dir(this);
-	  			});
-	  		}); */
-	  		
-	  		$('select[name=interest]').change(function(e){
-	  			let checkValue;
-	  			let userId;
-	  			$(e.target.children).each(function(){
-	  				if(this.selected == true){
-	  					ch
-	  				} else{
-	  					}	
-	  				}
-	  			$.ajax({
-	  				url:'${ pageContext.servletContext.contextPath }/manager/part', //Controller에서 인식할 주소
-	  				type:'post',
-	  				data:{userId:id, manpart:manpart},
-	  				success:function(result){
-	  				
-	  				
-	  			});
-	  		});
-  		});
-  
-  </script>
   <body> 
     
     <jsp:include page="../common/managersidebar.jsp"/>

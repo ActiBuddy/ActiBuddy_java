@@ -122,7 +122,7 @@
                $('#birthResult').html('생년월일을 확인해주세요').css('color','red');
                 $('#birthcheck').attr('checked', 'checked');
              } else{
-              	 $('#birthResult').html(' ');
+              	 $('#birthResult').html('확인되었습니다.').css('color','blue');
                $('#birthcheck').removeAttr('checked');
               }
             });
@@ -186,6 +186,7 @@
         		 return false;
         	} else {
         		alert("회원가입이 완료 되었습니다!");
+        		return false;
         	}
         });
         });

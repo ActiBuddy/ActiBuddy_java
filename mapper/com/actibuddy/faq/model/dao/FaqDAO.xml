@@ -70,7 +70,8 @@
         , 'N'
         )
 	</insert>
-
+	
+	<!-- 일반 문의 조회 -->
  	<select id="commonFaq" resultMap="faqResultMap">
  	SELECT
        ROWNUM
@@ -87,7 +88,7 @@
   FROM (
             SELECT * FROM FAQ ORDER BY QUE_DATE DESC) A
  WHERE A.QUE_TYPE ='C'
-   AND A.ANSWER_YN ='N'
+   AND A.ANSWER_YN IN ('N','Y')
 	</select>  
 
 
@@ -120,7 +121,7 @@
   FROM (
             SELECT * FROM FAQ ORDER BY QUE_DATE DESC) A
  WHERE A.QUE_TYPE ='P'
-   AND A.ANSWER_YN ='N'
+   AND A.ANSWER_YN IN ('N','Y')
 	</select>
 
 	<select id="detailFaq" resultMap="faqResultMap" >

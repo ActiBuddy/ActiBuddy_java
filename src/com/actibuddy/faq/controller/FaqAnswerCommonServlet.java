@@ -26,7 +26,6 @@ public class FaqAnswerCommonServlet extends HttpServlet {
 		
 		List<FaqDTO> faqList = faqService.commonFaq();		
 		
-		System.out.println(faqList);
 		request.setAttribute("faqList", faqList);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/manager/managerCommonFaq.jsp");

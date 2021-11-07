@@ -39,16 +39,7 @@ public class ManagerRegistServlet extends HttpServlet {
 		MemberDTO requestMember = new MemberDTO();
 		requestMember.setUserId(userId);
 		requestMember.setPwd(pwd);
-		requestMember.setUserName("manager");
-		requestMember.setMemPhone("manager");
-		requestMember.setEmail("manager");
-		requestMember.setBirth("manager");
-		requestMember.setGender("N");
-		requestMember.setQuitYn("N");
-		requestMember.setMemType("U");
 		
-		System.out.println("pwd" + pwd);
-
 		ManagerPartDTO managerpart = new ManagerPartDTO();
 		
 		managerpart.setManPart(mamPart);

@@ -541,7 +541,6 @@
                     <option value="new">최신순</option>
                    	<option value="random">랜덤추천</option>
                     <option value="price">낮은가격순</option>
-                    
                 </select>
               </div>
             </div>

@@ -34,7 +34,6 @@ public class ActivityMainServlet extends HttpServlet {
 		List<LocationAndActivityDTO> locationList3 = activityService.selectAllList(location3);
 		List<LocationAndActivityDTO> locationList4 = activityService.selectAllList(location4);
 
-		System.out.println("ㅁㅁㅁㅁㅁㅁㅁㅁㅁ " + locationList);
 		
 		String path = "";
 		if(locationList != null) {
